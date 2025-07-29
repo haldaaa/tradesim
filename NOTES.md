@@ -58,3 +58,59 @@ Création des routes FastAPI (app/main.py)
 ≈ 180–200 lignes de code écrites (sans les imports)
 
 Zéro dépendance inutile, tout est propre, structuré, fonctionnel.
+
+
+
+
+
+29/07/2025 17h31 PP Cambodge
+
+Durée de la session : ~2h10 (début vers 15h05 - fin vers 17h15 heure Cambodge)
+
+🎯 Objectif principal :
+Mise en place du lancement dynamique de la simulation avec nombre de tours définissable, en vue d'une version future tournant en mode infini.
+
+✅ Ce qui a été fait aujourd'hui :
+Création du fichier simulate.py :
+
+Permet de lancer la simulation via CLI : python simulate.py --tours 10
+
+Gestion propre du dossier app/
+
+Prévu : support du mode infini plus tard
+
+Ajout d’un log humain clair en cas de tour sans achat :
+
+Exemple : Aucun achat effectué - Tour vide, on continue.
+
+Implémenté dans simulateur.py, tick incrémental + message dans log humain ET JSON
+
+Ajout des timestamps dans les logs (simulateur.py) :
+
+timestamp (format ISO) et timestamp_humain (lisible)
+
+Ajouté dans chaque entrée JSON et dans les logs humains
+
+Ajout du type de produit dans les logs JSON et humains
+
+Nettoyage de la structure de logs :
+
+Suppression du doublon app/logs/
+
+Tous les logs sont désormais dans logs/ à la racine
+
+Gestion via config.py avec BASE_DIR propre
+
+📁 Fichiers modifiés ou créés :
+simulate.py ✅
+
+simulateur.py ✅ (refactor complet + commentaires)
+
+config.py ✅ (ajout de BASE_DIR, FICHIER_LOG, FICHIER_LOG_HUMAIN)
+
+logs/simulation.jsonl (généré)
+
+logs/simulation_humain.log (généré)
+
+
+

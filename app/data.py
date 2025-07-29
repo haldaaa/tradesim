@@ -71,6 +71,9 @@ for fid, (nom, pays) in enumerate(noms_fournisseurs, start=1):
 
 
 
+# -------------------------
+# Entreprises
+# -------------------------
 
 noms_entreprises = ["MagaToys", "BuildTech", "BioLogix"]
 pays_possibles = ["France", "Allemagne", "Canada"]

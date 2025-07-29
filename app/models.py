@@ -1,5 +1,6 @@
 from pydantic import BaseModel
 from enum import Enum
+from datetime import datetime
 from typing import Dict, List
 
 
@@ -46,3 +47,16 @@ class Entreprise(BaseModel):
     budget_initial: float
     types_preferes: List[TypeProduit]
     strategie: str  # "moins_cher" ou "par_type"
+
+
+class Transaction(BaseModel):
+    timestamp: datetime
+    entreprise_id: int
+    fournisseur_id: int
+    produit_id: int
+    produit_nom: str
+    quantite: int
+    prix_unitaire: float
+    total: float
+    succes: bool
+    raison_echec: str | None = None

@@ -1,0 +1,125 @@
+[29/07/2025 17:22:37] (tick 1) BuildTech a acheté 31x Acier (produit_fini) chez NordicTools à 36.09€ (total: 1118.79€) [budget restant: 1418.69€] [stratégie: moins_cher]
+[29/07/2025 17:22:37] (tick 1) MagaToys a acheté 3x Acier (produit_fini) chez NordicTools à 36.09€ (total: 108.27€) [budget restant: 2008.99€] [stratégie: moins_cher]
+[29/07/2025 17:22:37] (tick 2) BioLogix a acheté 22x Planches (produit_fini) chez TechDistrib à 49.30€ (total: 1084.60€) [budget restant: 1002.74€] [stratégie: par_type]
+[29/07/2025 17:22:37] (tick 2) BuildTech a acheté 15x Acier (produit_fini) chez NordicTools à 36.09€ (total: 541.35€) [budget restant: 877.34€] [stratégie: moins_cher]
+[29/07/2025 17:22:37] (tick 3) BioLogix a acheté 18x Acier (produit_fini) chez NordicTools à 36.09€ (total: 649.62€) [budget restant: 353.12€] [stratégie: par_type]
+[29/07/2025 17:22:37] (tick 3) BuildTech a acheté 22x Acier (produit_fini) chez NordicTools à 36.09€ (total: 793.98€) [budget restant: 83.36€] [stratégie: moins_cher]
+[29/07/2025 17:22:38] (tick 4) BuildTech a acheté 1x Acier (produit_fini) chez NordicTools à 36.09€ (total: 36.09€) [budget restant: 47.27€] [stratégie: moins_cher]
+[29/07/2025 17:22:38] (tick 4) MagaToys a acheté 2x Acier (produit_fini) chez NordicTools à 36.09€ (total: 72.18€) [budget restant: 1936.81€] [stratégie: moins_cher]
+[29/07/2025 17:22:38] (tick 5) MagaToys a acheté 5x Acier (produit_fini) chez NordicTools à 36.09€ (total: 180.45€) [budget restant: 1756.36€] [stratégie: moins_cher]
+[29/07/2025 17:22:38] (tick 5) BuildTech a acheté 1x Acier (produit_fini) chez NordicTools à 36.09€ (total: 36.09€) [budget restant: 11.18€] [stratégie: moins_cher]
+[29/07/2025 17:22:38] (tick 6) MagaToys a acheté 11x Acier (produit_fini) chez NordicTools à 36.09€ (total: 396.99€) [budget restant: 1359.37€] [stratégie: moins_cher]
+[29/07/2025 17:22:38] (tick 7) BioLogix a acheté 1x Planches (produit_fini) chez TechDistrib à 49.30€ (total: 49.30€) [budget restant: 303.82€] [stratégie: par_type]
+[29/07/2025 17:22:38] (tick 8) BioLogix a acheté 1x Planches (produit_fini) chez TechDistrib à 49.30€ (total: 49.30€) [budget restant: 254.52€] [stratégie: par_type]
+[29/07/2025 17:22:38] (tick 8) MagaToys a acheté 29x Acier (produit_fini) chez NordicTools à 36.09€ (total: 1046.61€) [budget restant: 312.76€] [stratégie: moins_cher]
+[29/07/2025 17:22:38] (tick 9) BioLogix a acheté 5x Acier (produit_fini) chez NordicTools à 36.09€ (total: 180.45€) [budget restant: 74.07€] [stratégie: par_type]
+[29/07/2025 17:22:38] (tick 10) BioLogix a acheté 1x Acier (produit_fini) chez NordicTools à 36.09€ (total: 36.09€) [budget restant: 37.98€] [stratégie: par_type]
+[29/07/2025 17:22:38] (tick 10) MagaToys a acheté 1x Acier (produit_fini) chez NordicTools à 36.09€ (total: 36.09€) [budget restant: 276.67€] [stratégie: moins_cher]
+[29/07/2025 17:22:38] (tick 11) MagaToys a acheté 7x Acier (produit_fini) chez NordicTools à 36.09€ (total: 252.63€) [budget restant: 24.04€] [stratégie: moins_cher]
+[29/07/2025 17:22:38] (tick 12) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:38] (tick 13) BioLogix a acheté 1x Acier (produit_fini) chez NordicTools à 36.09€ (total: 36.09€) [budget restant: 1.89€] [stratégie: par_type]
+[29/07/2025 17:22:39] (tick 14) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:39] (tick 15) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:39] (tick 16) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:39] (tick 17) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:39] (tick 18) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:39] (tick 19) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:39] (tick 20) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:39] (tick 21) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:39] (tick 22) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:40] (tick 23) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:40] (tick 24) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:40] (tick 25) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:40] (tick 26) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:40] (tick 27) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:40] (tick 28) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:40] (tick 29) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:40] (tick 30) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:40] (tick 31) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:40] (tick 32) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:41] (tick 33) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:41] (tick 34) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:41] (tick 35) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:41] (tick 36) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:41] (tick 37) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:41] (tick 38) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:41] (tick 39) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:41] (tick 40) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:41] (tick 41) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:42] (tick 42) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:42] (tick 43) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:42] (tick 44) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:42] (tick 45) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:42] (tick 46) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:42] (tick 47) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:42] (tick 48) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:42] (tick 49) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:42] (tick 50) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:42] (tick 51) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:43] (tick 52) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:43] (tick 53) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:43] (tick 54) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:43] (tick 55) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:43] (tick 56) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:43] (tick 57) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:43] (tick 58) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:43] (tick 59) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:43] (tick 60) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:44] (tick 61) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:44] (tick 62) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:44] (tick 63) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:44] (tick 64) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:44] (tick 65) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:44] (tick 66) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:44] (tick 67) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:44] (tick 68) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:44] (tick 69) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:44] (tick 70) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:45] (tick 71) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:45] (tick 72) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:45] (tick 73) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:45] (tick 74) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:45] (tick 75) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:45] (tick 76) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:45] (tick 77) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:45] (tick 78) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:45] (tick 79) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:46] (tick 80) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:46] (tick 81) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:46] (tick 82) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:46] (tick 83) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:46] (tick 84) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:46] (tick 85) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:46] (tick 86) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:46] (tick 87) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:46] (tick 88) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:46] (tick 89) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:47] (tick 90) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:47] (tick 91) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:47] (tick 92) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:47] (tick 93) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:47] (tick 94) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:47] (tick 95) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:47] (tick 96) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:47] (tick 97) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:47] (tick 98) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:48] (tick 99) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:22:48] (tick 100) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:25:05] (tick 1) BuildTech a acheté 37x Acier (consommable) chez TechDistrib à 4.85€ (total: 179.45€) [budget restant: 916.19€] [stratégie: moins_cher]
+[29/07/2025 17:25:05] (tick 1) BioLogix a acheté 100x Acier (consommable) chez TechDistrib à 4.85€ (total: 485.00€) [budget restant: 918.08€] [stratégie: moins_cher]
+[29/07/2025 17:25:05] (tick 2) BioLogix a acheté 11x Acier (consommable) chez TechDistrib à 4.85€ (total: 53.35€) [budget restant: 864.73€] [stratégie: moins_cher]
+[29/07/2025 17:25:05] (tick 2) MagaToys a acheté 1x Aspirateur (matiere_premiere) chez TechDistrib à 271.38€ (total: 271.38€) [budget restant: 2314.45€] [stratégie: par_type]
+[29/07/2025 17:25:05] (tick 3) MagaToys a acheté 3x Bois (matiere_premiere) chez ElectroPlus à 164.64€ (total: 493.92€) [budget restant: 1820.53€] [stratégie: par_type]
+[29/07/2025 17:25:05] (tick 3) BioLogix a acheté 17x Acier (consommable) chez PlancheCompagnie à 21.20€ (total: 360.40€) [budget restant: 504.33€] [stratégie: moins_cher]
+[29/07/2025 17:25:05] (tick 4) MagaToys a acheté 3x Aspirateur (matiere_premiere) chez TechDistrib à 271.38€ (total: 814.14€) [budget restant: 1006.39€] [stratégie: par_type]
+[29/07/2025 17:25:05] (tick 4) BioLogix a acheté 9x Acier (consommable) chez PlancheCompagnie à 21.20€ (total: 190.80€) [budget restant: 313.53€] [stratégie: moins_cher]
+[29/07/2025 17:25:06] (tick 5) BioLogix a acheté 11x Acier (consommable) chez TechDistrib à 4.85€ (total: 53.35€) [budget restant: 260.18€] [stratégie: moins_cher]
+[29/07/2025 17:25:06] (tick 5) BuildTech a acheté 4x Acier (consommable) chez PlancheCompagnie à 21.20€ (total: 84.80€) [budget restant: 831.39€] [stratégie: moins_cher]
+[29/07/2025 17:25:06] (tick 6) BioLogix a acheté 1x Planches (produit_fini) chez PlancheCompagnie à 91.10€ (total: 91.10€) [budget restant: 169.08€] [stratégie: moins_cher]
+[29/07/2025 17:25:06] (tick 6) BuildTech a acheté 1x Planches (produit_fini) chez NordicTools à 247.16€ (total: 247.16€) [budget restant: 584.23€] [stratégie: moins_cher]
+[29/07/2025 17:25:06] (tick 7) BuildTech a acheté 3x Planches (produit_fini) chez PlancheCompagnie à 91.10€ (total: 273.30€) [budget restant: 310.93€] [stratégie: moins_cher]
+[29/07/2025 17:25:06] (tick 7) MagaToys a acheté 3x Aspirateur (matiere_premiere) chez TechDistrib à 271.38€ (total: 814.14€) [budget restant: 192.25€] [stratégie: par_type]
+[29/07/2025 17:25:06] (tick 8) BioLogix a acheté 1x Planches (produit_fini) chez PlancheCompagnie à 91.10€ (total: 91.10€) [budget restant: 77.98€] [stratégie: moins_cher]
+[29/07/2025 17:25:06] (tick 8) BuildTech a acheté 3x Planches (produit_fini) chez AsieImport à 93.96€ (total: 281.88€) [budget restant: 29.05€] [stratégie: moins_cher]
+[29/07/2025 17:25:06] (tick 9) Aucun achat effectué - Tour vide, on continue.
+[29/07/2025 17:25:06] (tick 10) MagaToys a acheté 1x Bois (matiere_premiere) chez ElectroPlus à 164.64€ (total: 164.64€) [budget restant: 27.61€] [stratégie: par_type]
