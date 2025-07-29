@@ -41,3 +41,30 @@ Dashboard et visualisation (étapes futures) :
 Exporter les données en JSON ou exposer des métriques
 
 Brancher un Grafana via Prometheus ou autre
+
+
+
+29/07/2025
+
+🔧 À faire absolument :
+ Ajouter une option --infinite à simulate.py pour un mode sans fin
+
+ Refactoriser le tick pour qu’il soit persistant ou réinitialisé proprement si besoin
+
+ Ajouter un champ nb_achats au log JSON pour faciliter l’exploitation dans Grafana
+
+🧪 Tests unitaires (démarrage dès que le simulateur est stable) :
+ Tester les comportements des stratégies d’achat
+
+ Vérifier que le budget diminue correctement et que le stock se met à jour
+
+ Tester les cas d’erreur (ex. : pas de stock, budget insuffisant)
+
+🚀 Prochaine roadmap :
+ Mettre tous les paramètres (budget, nb entreprises, etc.) dans un fichier .env ou config.json
+
+ Préparer le Dockerfile + conteneurisation
+
+ Intégration future avec Prometheus et Grafana pour visualiser les logs
+
+
