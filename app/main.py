@@ -1,9 +1,9 @@
 
 
 from fastapi import FastAPI
-from .models import Produit, TypeProduit, FournisseurComplet, ProduitChezFournisseur, Entreprise
-from app.data import fake_produits_db, fake_fournisseurs_db, fake_entreprises_db, prix_par_fournisseur
-from app.models import Fournisseur  # type: ignore
+from models import Produit, TypeProduit, FournisseurComplet, ProduitChezFournisseur, Entreprise
+from data import fake_produits_db, fake_fournisseurs_db, fake_entreprises_db, prix_par_fournisseur
+from models import Fournisseur  # type: ignore
 
 
 # Création de l'application FastAPI
