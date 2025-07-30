@@ -14,10 +14,42 @@ from app.config import (
     N_ENTREPRISES_PAR_TOUR,
     FICHIER_LOG,
     FICHIER_LOG_HUMAIN,
+    TICK_INTERVAL_EVENT,
+    PROBABILITE_EVENEMENT,
 )
+from app.events.inflation import appliquer_inflation
+from app.events.variation_disponibilite import appliquer_variation_disponibilite
+from app.events.reassort import evenement_reassort
+from app.events.recharge_budget import appliquer_recharge_budget
 
 os.makedirs(os.path.dirname(FICHIER_LOG), exist_ok=True)
 os.makedirs(os.path.dirname(FICHIER_LOG_HUMAIN), exist_ok=True)
+
+# Définition des fichiers de logs spéciaux event
+EVENT_LOG_JSON = os.path.join(os.path.dirname(FICHIER_LOG), "event.jsonl")
+EVENT_LOG_HUMAIN = os.path.join(os.path.dirname(FICHIER_LOG_HUMAIN), "event.log")
+os.makedirs(os.path.dirname(EVENT_LOG_JSON), exist_ok=True)
+os.makedirs(os.path.dirname(EVENT_LOG_HUMAIN), exist_ok=True)
+
+# Fonction utilitaire pour logguer les events dans tous les fichiers
+
+def log_event(logs, event_type):
+    for log in logs:
+        # Ajout du type d'event dans le log général
+        log_general = dict(log)
+        log_general["event_type"] = event_type
+        # Log JSON général
+        with open(FICHIER_LOG, "a", encoding="utf-8") as f:
+            f.write(json.dumps(log_general) + "\n")
+        # Log humain général
+        with open(FICHIER_LOG_HUMAIN, "a", encoding="utf-8") as f:
+            f.write(f"[EVENT: {event_type.upper()}] {log['log_humain']}\n")
+        # Log JSON event
+        with open(EVENT_LOG_JSON, "a", encoding="utf-8") as f:
+            f.write(json.dumps(log) + "\n")
+        # Log humain event
+        with open(EVENT_LOG_HUMAIN, "a", encoding="utf-8") as f:
+            f.write(f"[EVENT: {event_type.upper()}] {log['log_humain']}\n")
 
 tick = 0
 
@@ -70,10 +102,29 @@ def simulation_tour():
             "timestamp": horodatage_iso,
             "timestamp_humain": horodatage_humain,
             "aucune_action": True,
-            "message": "Aucune entreprise n’a agi à ce tick."
+            "message": "Aucune entreprise n'a agi à ce tick."
         }
         with open(FICHIER_LOG, "a", encoding="utf-8") as f:
             f.write(json.dumps(log_json) + "\n")
+
+    # Déclenchement des events tous les TICK_INTERVAL_EVENT ticks
+    if tick % TICK_INTERVAL_EVENT == 0:
+        # Recharge budget
+        if random.random() < PROBABILITE_EVENEMENT["recharge_budget"]:
+            logs = appliquer_recharge_budget(tick)
+            log_event(logs, "recharge_budget")
+        # Reassort
+        if random.random() < PROBABILITE_EVENEMENT["reassort"]:
+            logs = evenement_reassort(tick)
+            log_event(logs, "reassort")
+        # Inflation
+        if random.random() < PROBABILITE_EVENEMENT["inflation"]:
+            logs = appliquer_inflation(tick)
+            log_event(logs, "inflation")
+        # Variation disponibilité
+        if random.random() < PROBABILITE_EVENEMENT["variation_disponibilite"]:
+            logs = appliquer_variation_disponibilite(tick)
+            log_event(logs, "variation_disponibilite")
 
 
 def get_produits_disponibles():

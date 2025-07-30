@@ -1,6 +1,8 @@
 from .models import Produit, TypeProduit, Fournisseur, Entreprise
 import random
 from typing import List, Dict, Tuple
+# from app.data import fake_produits_db  # LIGNE À SUPPRIMER OU COMMENTER
+
 
 # -------------------------
 # Produits
@@ -99,3 +101,9 @@ for i in range(3):
     )
 
     fake_entreprises_db.append(entreprise)
+
+
+
+# Events 
+##  Liste des produits ou catégories ayant déjà subi une inflation
+produits_ayant_subi_inflation = set()

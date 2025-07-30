@@ -114,3 +114,69 @@ logs/simulation_humain.log (généré)
 
 
 
+
+29/07/2025
+
+ 29 juillet 2025
+🎯 Objectif de la journée
+Mettre en place un système d’événements cycliques dans la simulation TradeSim, avec une architecture modulaire, des logs complets, et un comportement réaliste.
+
+🔧 Modules implémentés / modifiés
+1. cycle.py
+Orchestrateur principal des événements cycliques.
+
+Appelé à chaque tick (tous les X_TICKS_EVENT) dans simulateur.py.
+
+Déclenche les événements suivants :
+
+Rechargement de budget
+
+Réassort de stock
+
+Inflation des prix
+
+Variation de disponibilité
+
+2. recharge_budget.py
+Recharge aléatoirement le budget d’un sous-ensemble d’entreprises.
+
+Montant aléatoire entre RECHARGE_BUDGET_MIN et RECHARGE_BUDGET_MAX.
+
+3. reassort.py
+Réapprovisionne certains produits actifs avec une quantité aléatoire.
+
+Seuls les produits actif=True sont concernés.
+
+4. inflation.py
+Applique une inflation temporaire sur un produit ou une catégorie.
+
+Le prix revient progressivement à la normale.
+
+Les produits déjà touchés conservent un bonus d’inflation lors d'une future hausse.
+
+5. variation_disponibilite.py
+Active ou désactive aléatoirement certains produits.
+
+Simule des ruptures ou retours en stock.
+
+📦 Architecture des logs
+Logs généraux :
+logs/simulation.jsonl → log machine en JSONL
+
+logs/simulation_humain.log → log humain lisible
+
+Logs d’événements (dédiés) :
+logs/events.jsonl → tous les événements en JSONL
+
+logs/events_humain.log → tous les événements en clair
+
+Tous les événements globaux sont marqués avec le tag [EVENT].
+
+🛠️ Fichier event_logger.py (central)
+Fonction log_evenement_json() → écrit les logs JSON avec tag [EVENT]
+
+Fonction log_evenement_humain() → écrit les logs texte humains
+
+Utilisé par tous les modules d’événement
+
+
