@@ -1,2 +1,90 @@
 [EVENT: INFLATION] 🔴 Produit ciblé : Aspirateur - 1 prix modifiés | Min: +40.0% | Max: +40.0% | Moy: +40.0%
 [EVENT: VARIATION_DISPONIBILITE] 🔄 📉 1 désactivés | 📈 3 réactivés | Total modifié: 4 produits
+[EVENT: RECHARGE_BUDGET] [RECHARGE] MagaToys: +66€ (ancien: 88.22000000000023€ → nouveau: 154.22000000000023€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] BuildTech: +158€ (ancien: 25.509999999999955€ → nouveau: 183.50999999999996€)
+[EVENT: RECHARGE_BUDGET] [RESUME RECHARGE] 2 entreprises rechargées | Total: +224€ | Moyenne: +112.0€
+[EVENT: REASSORT] [REASSORT] [PRODUITS] 1 produits réapprovisionnés | [QUANTITE] +38 unités total | [FOURNISSEURS] 1 fournisseurs concernés
+[EVENT: INFLATION] [INFLATION] Produit ciblé : Acier - Prix modifié: +40.0%
+[EVENT: RECHARGE_BUDGET] [RECHARGE] BuildTech: +63€ (ancien: 27.52000000000008€ → nouveau: 90.52000000000008€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] BioLogix: +136€ (ancien: 1.8199999999999932€ → nouveau: 137.82€)
+[EVENT: RECHARGE_BUDGET] [RESUME RECHARGE] 2 entreprises rechargées | Total: +199€ | Moyenne: +99.5€
+[EVENT: INFLATION] [INFLATION] Produit ciblé : Planches - 3 prix modifiés | Min: +40.0% | Max: +61.0% | Moy: +54.0%
+[EVENT: RECHARGE_BUDGET] [RECHARGE] MagaToys: +142€ (ancien: 106.78000000000006€ → nouveau: 248.78000000000006€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] BuildTech: +194€ (ancien: 239.30999999999995€ → nouveau: 433.30999999999995€)
+[EVENT: RECHARGE_BUDGET] [RESUME RECHARGE] 2 entreprises rechargées | Total: +336€ | Moyenne: +168.0€
+[EVENT: REASSORT] [REASSORT] [PRODUITS] 1 produits réapprovisionnés | [QUANTITE] +26 unités total | [FOURNISSEURS] 1 fournisseurs concernés
+[EVENT: VARIATION_DISPONIBILITE] [VARIATION] [DESACTIVE] 1 désactivés (Planches) | [REACTIVE] 3 réactivés (Lampe, Sac à dos, Vélo) | Total modifié: 4 produits
+[EVENT: REASSORT] [REASSORT] [PRODUITS] 3 produits réapprovisionnés | [QUANTITE] +69 unités total | [FOURNISSEURS] 3 fournisseurs concernés
+[EVENT: INFLATION] [INFLATION] Produit ciblé : Bois - 2 prix modifiés | Min: +40.0% | Max: +61.0% | Moy: +50.5%
+[EVENT: RECHARGE_BUDGET] [RECHARGE] MagaToys: +121€ (ancien: 108.82000000000002€ → nouveau: 229.82000000000002€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] BioLogix: +96€ (ancien: 55.30000000000031€ → nouveau: 151.3000000000003€)
+[EVENT: RECHARGE_BUDGET] [RESUME RECHARGE] 2 entreprises rechargées | Total: +217€ | Moyenne: +108.5€
+[EVENT: RECHARGE_BUDGET] [RECHARGE] MagaToys: +94€ (ancien: 85.68€ → nouveau: 179.68€)
+[EVENT: RECHARGE_BUDGET] [RESUME RECHARGE] 1 entreprises rechargées | Total: +94€ | Moyenne: +94.0€
+[EVENT: REASSORT] [REASSORT] [PRODUITS] 2 produits réapprovisionnés | [QUANTITE] +44 unités total | [FOURNISSEURS] 1 fournisseurs concernés
+[EVENT: REASSORT] [REASSORT] [PRODUITS] 1 produits réapprovisionnés | [QUANTITE] +41 unités total | [FOURNISSEURS] 1 fournisseurs concernés
+[EVENT: REASSORT] [REASSORT] [PRODUITS] 3 produits réapprovisionnés | [QUANTITE] +86 unités total | [FOURNISSEURS] 2 fournisseurs concernés
+[EVENT: REASSORT] [REASSORT] [PRODUITS] 1 produits réapprovisionnés | [QUANTITE] +12 unités total | [FOURNISSEURS] 1 fournisseurs concernés
+[EVENT: REASSORT] [REASSORT] [PRODUITS] 2 produits réapprovisionnés | [QUANTITE] +46 unités total | [FOURNISSEURS] 1 fournisseurs concernés
+[EVENT: RECHARGE_BUDGET] [RECHARGE] MagaToys: +73€ (ancien: 12.4€ → nouveau: 85.4€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] BuildTech: +59€ (ancien: 50.46€ → nouveau: 109.46000000000001€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] BioLogix: +101€ (ancien: 36.23€ → nouveau: 137.23€)
+[EVENT: RECHARGE_BUDGET] [RESUME RECHARGE] 3 entreprises rechargées | Total: +233€ | Moyenne: +77.67€
+[EVENT: REASSORT] [REASSORT] [PRODUITS] 3 produits réapprovisionnés | [QUANTITE] +70 unités total | [FOURNISSEURS] 3 fournisseurs concernés
+[EVENT: REASSORT] [REASSORT] [PRODUITS] 1 produits réapprovisionnés | [QUANTITE] +48 unités total | [FOURNISSEURS] 1 fournisseurs concernés
+[EVENT: RECHARGE_BUDGET] [RECHARGE] MagaToys: +188€ (ancien: 7.64€ → nouveau: 195.64€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] BuildTech: +63€ (ancien: 31.7€ → nouveau: 94.7€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] BioLogix: +81€ (ancien: 59.47€ → nouveau: 140.47€)
+[EVENT: RECHARGE_BUDGET] [RESUME RECHARGE] 3 entreprises rechargées | Total: +332€ | Moyenne: +110.67€
+[EVENT: REASSORT] [REASSORT] [PRODUITS] 1 produits réapprovisionnés | [QUANTITE] +15 unités total | [FOURNISSEURS] 1 fournisseurs concernés
+[EVENT: RECHARGE_BUDGET] [RECHARGE] BuildTech: +53€ (ancien: 15.88€ → nouveau: 68.88€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] BioLogix: +53€ (ancien: 2839.39€ → nouveau: 2892.39€)
+[EVENT: RECHARGE_BUDGET] [RESUME RECHARGE] 2 entreprises rechargées | Total: +106€ | Moyenne: +53.0€
+[EVENT: RECHARGE_BUDGET] [RECHARGE] MagaToys: +155€ (ancien: 2980.56€ → nouveau: 3135.56€)
+[EVENT: RECHARGE_BUDGET] [RESUME RECHARGE] 1 entreprises rechargées | Total: +155€ | Moyenne: +155.0€
+[EVENT: REASSORT] [REASSORT] [PRODUITS] 1 produits réapprovisionnés | [QUANTITE] +19 unités total | [FOURNISSEURS] 1 fournisseurs concernés
+[EVENT: RECHARGE_BUDGET] [RECHARGE] MagaToys: +158€ (ancien: 3135.56€ → nouveau: 3293.56€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] BuildTech: +152€ (ancien: 11.24€ → nouveau: 163.24€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] BioLogix: +170€ (ancien: 2892.39€ → nouveau: 3062.39€)
+[EVENT: RECHARGE_BUDGET] [RESUME RECHARGE] 3 entreprises rechargées | Total: +480€ | Moyenne: +160.0€
+[EVENT: RECHARGE_BUDGET] [RECHARGE] MagaToys: +199€ (ancien: 3293.56€ → nouveau: 3492.56€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] BuildTech: +51€ (ancien: 19.14€ → nouveau: 70.14€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] BioLogix: +198€ (ancien: 3062.39€ → nouveau: 3260.39€)
+[EVENT: RECHARGE_BUDGET] [RESUME RECHARGE] 3 entreprises rechargées | Total: +448€ | Moyenne: +149.33€
+[EVENT: RECHARGE_BUDGET] [RECHARGE] MagaToys: +71€ (ancien: 11.91€ → nouveau: 82.91€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] BuildTech: +96€ (ancien: 16.77€ → nouveau: 112.77€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] BioLogix: +191€ (ancien: 19.96€ → nouveau: 210.96€)
+[EVENT: RECHARGE_BUDGET] [RESUME RECHARGE] 3 entreprises rechargées | Total: +358€ | Moyenne: +119.33€
+[EVENT: VARIATION_DISPONIBILITE] [VARIATION] [DESACTIVE] 1 désactivés (Aspirateur) | [REACTIVE] 3 réactivés (Table, Lampe, Câble USB) | Total modifié: 4 produits
+[EVENT: RECHARGE_BUDGET] [RECHARGE] MagaToys: +182€ (ancien: 10.87€ → nouveau: 192.87€)
+[EVENT: RECHARGE_BUDGET] [RESUME RECHARGE] 1 entreprises rechargées | Total: +182€ | Moyenne: +182.0€
+[EVENT: RECHARGE_BUDGET] [RECHARGE] BuildTech: +88€ (ancien: 7.5€ → nouveau: 95.5€)
+[EVENT: RECHARGE_BUDGET] [RESUME RECHARGE] 1 entreprises rechargées | Total: +88€ | Moyenne: +88.0€
+[EVENT: RECHARGE_BUDGET] [RECHARGE] BuildTech: +198€ (ancien: 39.0€ → nouveau: 237.0€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] BioLogix: +93€ (ancien: 5.34€ → nouveau: 98.34€)
+[EVENT: RECHARGE_BUDGET] [RESUME RECHARGE] 2 entreprises rechargées | Total: +291€ | Moyenne: +145.5€
+[EVENT: REASSORT] [REASSORT] [PRODUITS] 3 produits réapprovisionnés | [QUANTITE] +94 unités total | [FOURNISSEURS] 3 fournisseurs concernés
+[EVENT: INFLATION] [INFLATION] Produit ciblé : Bois - 2 prix modifiés | Min: +40.0% | Max: +61.0% | Moy: +50.5%
+[EVENT: INFLATION] [INFLATION] Catégorie ciblée : matiere_premiere - 4 prix modifiés | Min: +40.0% | Max: +61.0% | Moy: +55.8%
+[EVENT: RECHARGE_BUDGET] [RECHARGE] MagaToys: +78€ (ancien: 42.68€ → nouveau: 120.68€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] BioLogix: +131€ (ancien: 45.59€ → nouveau: 176.59€)
+[EVENT: RECHARGE_BUDGET] [RESUME RECHARGE] 2 entreprises rechargées | Total: +209€ | Moyenne: +104.5€
+[EVENT: RECHARGE_BUDGET] [RECHARGE] MagaToys: +71€ (ancien: 0.17€ → nouveau: 71.17€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] BuildTech: +86€ (ancien: 147.96€ → nouveau: 233.96€)
+[EVENT: RECHARGE_BUDGET] [RESUME RECHARGE] 2 entreprises rechargées | Total: +157€ | Moyenne: +78.5€
+[EVENT: VARIATION_DISPONIBILITE] [VARIATION] [DESACTIVE] 1 désactivés (Planches) | [REACTIVE] 3 réactivés (Planches, Moniteur, Écouteurs) | Total modifié: 4 produits
+[EVENT: RECHARGE_BUDGET] [RECHARGE] MagaToys: +221€ (ancien: 1.93€ → nouveau: 222.93€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] BuildTech: +313€ (ancien: 750.63€ → nouveau: 1063.63€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] BioLogix: +447€ (ancien: 15.79€ → nouveau: 462.79€)
+[EVENT: RECHARGE_BUDGET] [RESUME RECHARGE] 3 entreprises rechargées | Total: +981€ | Moyenne: +327.0€
+[EVENT: INFLATION] [INFLATION] Catégorie ciblée : produit_fini - 5 prix modifiés | Min: +40.0% | Max: +61.0% | Moy: +48.4%
+[EVENT: RECHARGE_BUDGET] [RECHARGE] MagaToys: +465€ (ancien: 5.28€ → nouveau: 470.28€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] BioLogix: +600€ (ancien: 23.16€ → nouveau: 623.16€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] Entreprise_4: +219€ (ancien: 9.85€ → nouveau: 228.85€)
+[EVENT: RECHARGE_BUDGET] [RESUME RECHARGE] 3 entreprises rechargées | Total: +1284€ | Moyenne: +428.0€
+[EVENT: REASSORT] [REASSORT] [PRODUITS] 3 produits réapprovisionnés | [QUANTITE] +84 unités total | [FOURNISSEURS] 3 fournisseurs concernés
+[EVENT: INFLATION] [INFLATION] Catégorie ciblée : produit_fini - 31 prix modifiés | Min: +40.0% | Max: +61.0% | Moy: +59.0%
+[EVENT: VARIATION_DISPONIBILITE] [VARIATION] [DESACTIVE] 1 désactivés (Aspirateur) | [REACTIVE] 1 réactivés (Aspirateur) | Total modifié: 2 produits
+[EVENT: REASSORT] [REASSORT] [PRODUITS] 3 produits réapprovisionnés | [QUANTITE] +94 unités total | [FOURNISSEURS] 3 fournisseurs concernés
+[EVENT: VARIATION_DISPONIBILITE] [VARIATION] [DESACTIVE] 1 désactivés (Bois) | [REACTIVE] 1 réactivés (Bois) | Total modifié: 2 produits
+[EVENT: REASSORT] [REASSORT] [PRODUITS] 3 produits réapprovisionnés | [QUANTITE] +75 unités total | [FOURNISSEURS] 3 fournisseurs concernés

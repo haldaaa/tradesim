@@ -10,6 +10,7 @@ pour permettre une modification rapide et propre.
 NOMBRE_TOURS = 100                     # Nombre total de tours à simuler
 N_ENTREPRISES_PAR_TOUR = 2            # Nombre d'entreprises sélectionnées aléatoirement par tour
 DUREE_PAUSE_ENTRE_TOURS = 0.1         # En secondes (peut servir pour la version crontab/finale)
+PROBABILITE_SELECTION_ENTREPRISE = 0.3 # Probabilité qu'une entreprise soit sélectionnée pour un tour
 
 
 # Mode debug (plus tard si besoin)
@@ -27,8 +28,8 @@ FICHIER_LOG_HUMAIN = os.path.join(LOG_DIR, "simulation_humain.log")
 # Events  
 
 ## Budget (recharge_budget) 
-RECHARGE_BUDGET_MIN = 50
-RECHARGE_BUDGET_MAX = 200
+RECHARGE_BUDGET_MIN = 200
+RECHARGE_BUDGET_MAX = 600
 
 ## Reassort (reassort)
 REASSORT_QUANTITE_MIN = 10

@@ -67,10 +67,10 @@ def evenement_reassort(tick: int):
         fournisseurs_concernes = len(set(p['fournisseur'] for p in produits_concernes))
         
         message_humain = (
-            f"📦 "
-            f"🛒 {len(produits_concernes)} produits réapprovisionnés | "
-            f"📊 +{total_quantite} unités total | "
-            f"🏢 {fournisseurs_concernes} fournisseurs concernés"
+            f"[REASSORT] "
+            f"[PRODUITS] {len(produits_concernes)} produits réapprovisionnés | "
+            f"[QUANTITE] +{total_quantite} unités total | "
+            f"[FOURNISSEURS] {fournisseurs_concernes} fournisseurs concernés"
         )
         
         log_json = {

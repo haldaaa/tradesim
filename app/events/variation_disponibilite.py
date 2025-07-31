@@ -53,10 +53,18 @@ def appliquer_variation_disponibilite(tick: int):
         p.actif = True
         modifications.append({"produit_id": p.id, "nom": p.nom, "ancien_etat": "inactif", "nouvel_etat": "actif"})
 
+    # Récupérer les noms des produits pour l'affichage
+    noms_desactives = [p.nom for p in a_desactiver]
+    noms_reactives = [p.nom for p in a_activer]
+    
+    # Formater les listes de noms
+    str_desactives = ", ".join(noms_desactives) if noms_desactives else "aucun"
+    str_reactives = ", ".join(noms_reactives) if noms_reactives else "aucun"
+
     message_humain = (
-        f"🔄 "
-        f"📉 {len(a_desactiver)} désactivés | "
-        f"📈 {len(a_activer)} réactivés | "
+        f"[VARIATION] "
+        f"[DESACTIVE] {len(a_desactiver)} désactivés ({str_desactives}) | "
+        f"[REACTIVE] {len(a_activer)} réactivés ({str_reactives}) | "
         f"Total modifié: {len(modifications)} produits"
     )
 

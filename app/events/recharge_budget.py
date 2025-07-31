@@ -42,7 +42,7 @@ def appliquer_recharge_budget(tick: int) -> list:
                 "ancien_budget": ancien_budget,
                 "montant_recharge": montant,
                 "nouveau_budget": entreprise.budget,
-                "log_humain": f"💰 {entreprise.nom}: +{montant}€ (ancien: {ancien_budget}€ → nouveau: {entreprise.budget}€)"
+                "log_humain": f"[RECHARGE] {entreprise.nom}: +{montant}€ (ancien: {ancien_budget}€ → nouveau: {entreprise.budget}€)"
             }
 
             logs.append(log_json)
@@ -61,7 +61,7 @@ def appliquer_recharge_budget(tick: int) -> list:
                 "moyenne_recharge": moy_recharge
             },
             "entreprises": entreprises_rechargees,
-            "log_humain": f"💸 {nb_entreprises} entreprises rechargées | Total: +{total_recharge}€ | Moyenne: +{moy_recharge}€"
+            "log_humain": f"[RESUME RECHARGE] {nb_entreprises} entreprises rechargées | Total: +{total_recharge}€ | Moyenne: +{moy_recharge}€"
         }
         
         logs.append(log_resume)

@@ -101,11 +101,26 @@ def appliquer_inflation(tick: int):
         max_pourcentage = max(pourcentages) if pourcentages else 0
         moy_pourcentage = round(sum(pourcentages) / len(pourcentages), 1) if pourcentages else 0
         
-        message_humain = (
-            f"🔴 {description} - "
-            f"{len(inflation_logs)} prix modifiés | "
-            f"Min: +{min_pourcentage}% | Max: +{max_pourcentage}% | Moy: +{moy_pourcentage}%"
-        )
+        # Trouver le produit ciblé pour afficher son pourcentage
+        produit_cible_nom = "Inconnu"
+        pourcentage_produit_cible = 0
+        if cible_type == "produit" and len(inflation_logs) > 0:
+            produit_cible_nom = inflation_logs[0]["produit_nom"]
+            pourcentage_produit_cible = inflation_logs[0]["pourcentage_augmentation"]
+        
+        if len(inflation_logs) == 1:
+            # Un seul prix modifié, afficher directement le pourcentage
+            message_humain = (
+                f"[INFLATION] {description} - "
+                f"Prix modifié: +{pourcentage_produit_cible}%"
+            )
+        else:
+            # Plusieurs prix modifiés, afficher les statistiques
+            message_humain = (
+                f"[INFLATION] {description} - "
+                f"{len(inflation_logs)} prix modifiés | "
+                f"Min: +{min_pourcentage}% | Max: +{max_pourcentage}% | Moy: +{moy_pourcentage}%"
+            )
         
         log_json = {
             "tick": tick,
