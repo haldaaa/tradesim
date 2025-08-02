@@ -40,3 +40,1266 @@
 [30/07/2025 18:11:49] (tick 33) Aucun achat effectué - Tour vide, on continue.
 [30/07/2025 18:11:49] (tick 34) Aucun achat effectué - Tour vide, on continue.
 [30/07/2025 18:11:50] (tick 35) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:30:30] (tick 1) BioLogix a acheté 53x Acier (matiere_premiere) chez ElectroPlus à 45.04€ (total: 2387.12€) [budget restant: 481.88€] [stratégie: moins_cher]
+[30/07/2025 20:30:30] (tick 1) MagaToys a acheté 1x Acier (matiere_premiere) chez NordicTools à 179.23€ (total: 179.23€) [budget restant: 2248.28€] [stratégie: moins_cher]
+[30/07/2025 20:30:30] (tick 2) BioLogix a acheté 10x Acier (matiere_premiere) chez ElectroPlus à 45.04€ (total: 450.40€) [budget restant: 31.48€] [stratégie: moins_cher]
+[30/07/2025 20:30:30] (tick 2) MagaToys a acheté 39x Acier (matiere_premiere) chez ElectroPlus à 45.04€ (total: 1756.56€) [budget restant: 491.72€] [stratégie: moins_cher]
+[30/07/2025 20:30:30] (tick 3) MagaToys a acheté 1x Acier (matiere_premiere) chez NordicTools à 179.23€ (total: 179.23€) [budget restant: 312.49€] [stratégie: moins_cher]
+[30/07/2025 20:30:30] (tick 4) BuildTech a acheté 39x Acier (matiere_premiere) chez ElectroPlus à 45.04€ (total: 1756.56€) [budget restant: 70.55€] [stratégie: par_type]
+[30/07/2025 20:30:30] (tick 5) BuildTech a acheté 1x Acier (matiere_premiere) chez ElectroPlus à 45.04€ (total: 45.04€) [budget restant: 25.51€] [stratégie: par_type]
+[30/07/2025 20:30:30] (tick 5) MagaToys a acheté 1x Acier (matiere_premiere) chez ElectroPlus à 45.04€ (total: 45.04€) [budget restant: 267.45€] [stratégie: moins_cher]
+[30/07/2025 20:30:30] (tick 6) MagaToys a acheté 1x Acier (matiere_premiere) chez NordicTools à 179.23€ (total: 179.23€) [budget restant: 88.22€] [stratégie: moins_cher]
+[30/07/2025 20:30:30] (tick 7) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:30:31] (tick 8) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:30:31] (tick 9) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:30:31] (tick 10) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:30:31] (tick 11) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:30:31] (tick 12) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:30:31] (tick 13) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:30:31] (tick 14) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:30:31] (tick 15) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:30:31] (tick 16) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:30:32] (tick 17) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:30:32] (tick 18) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:30:32] (tick 19) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:30:32] (tick 20) Aucun achat effectué - Tour vide, on continue.
+[EVENT: RECHARGE_BUDGET] [RECHARGE] MagaToys: +66€ (ancien: 88.22000000000023€ → nouveau: 154.22000000000023€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] BuildTech: +158€ (ancien: 25.509999999999955€ → nouveau: 183.50999999999996€)
+[EVENT: RECHARGE_BUDGET] [RESUME RECHARGE] 2 entreprises rechargées | Total: +224€ | Moyenne: +112.0€
+[30/07/2025 20:30:32] (tick 21) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:30:32] (tick 22) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:30:32] (tick 23) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:30:32] (tick 24) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:30:32] (tick 25) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:30:32] (tick 26) BuildTech a acheté 1x Acier (matiere_premiere) chez NordicTools à 179.23€ (total: 179.23€) [budget restant: 4.28€] [stratégie: par_type]
+[30/07/2025 20:30:33] (tick 27) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:30:33] (tick 28) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:30:33] (tick 29) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:30:33] (tick 30) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:30:33] (tick 31) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:30:33] (tick 32) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:30:33] (tick 33) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:30:33] (tick 34) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:30:33] (tick 35) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:32:39] (tick 1) BuildTech a acheté 6x Acier (matiere_premiere) chez ElectroPlus à 182.44€ (total: 1094.64€) [budget restant: 75.53€] [stratégie: moins_cher]
+[30/07/2025 20:32:39] (tick 1) BioLogix a acheté 12x Acier (matiere_premiere) chez ElectroPlus à 182.44€ (total: 2189.28€) [budget restant: 314.26€] [stratégie: moins_cher]
+[30/07/2025 20:32:40] (tick 2) BioLogix a acheté 1x Acier (matiere_premiere) chez ElectroPlus à 182.44€ (total: 182.44€) [budget restant: 131.82€] [stratégie: moins_cher]
+[30/07/2025 20:32:40] (tick 3) MagaToys a acheté 6x Acier (matiere_premiere) chez ElectroPlus à 182.44€ (total: 1094.64€) [budget restant: 1042.05€] [stratégie: par_type]
+[30/07/2025 20:32:40] (tick 4) MagaToys a acheté 2x Planches (matiere_premiere) chez AsieImport à 220.90€ (total: 441.80€) [budget restant: 600.25€] [stratégie: par_type]
+[30/07/2025 20:32:40] (tick 5) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:32:40] (tick 6) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:32:40] (tick 7) MagaToys a acheté 1x Aspirateur (matiere_premiere) chez AsieImport à 183.83€ (total: 183.83€) [budget restant: 416.42€] [stratégie: par_type]
+[30/07/2025 20:32:40] (tick 8) MagaToys a acheté 1x Aspirateur (matiere_premiere) chez AsieImport à 183.83€ (total: 183.83€) [budget restant: 232.59€] [stratégie: par_type]
+[30/07/2025 20:32:40] (tick 9) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:32:40] (tick 10) MagaToys a acheté 1x Planches (matiere_premiere) chez AsieImport à 220.90€ (total: 220.90€) [budget restant: 11.69€] [stratégie: par_type]
+[30/07/2025 20:32:41] (tick 11) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:32:41] (tick 12) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:32:41] (tick 13) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:32:41] (tick 14) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:32:41] (tick 15) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:32:41] (tick 16) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:32:41] (tick 17) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:32:41] (tick 18) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:32:41] (tick 19) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:32:41] (tick 20) Aucun achat effectué - Tour vide, on continue.
+[EVENT: REASSORT] [REASSORT] [PRODUITS] 1 produits réapprovisionnés | [QUANTITE] +38 unités total | [FOURNISSEURS] 1 fournisseurs concernés
+[EVENT: INFLATION] [INFLATION] Produit ciblé : Acier - Prix modifié: +40.0%
+[30/07/2025 20:32:42] (tick 21) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:32:42] (tick 22) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:32:42] (tick 23) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:34:58] (tick 1) MagaToys a acheté 1x Acier (produit_fini) chez NordicTools à 253.39€ (total: 253.39€) [budget restant: 2451.09€] [stratégie: par_type]
+[30/07/2025 20:34:58] (tick 1) BuildTech a acheté 2x Aspirateur (matiere_premiere) chez PlancheCompagnie à 101.77€ (total: 203.54€) [budget restant: 841.68€] [stratégie: moins_cher]
+[30/07/2025 20:34:58] (tick 2) BioLogix a acheté 2x Aspirateur (matiere_premiere) chez PlancheCompagnie à 101.77€ (total: 203.54€) [budget restant: 917.75€] [stratégie: moins_cher]
+[30/07/2025 20:34:58] (tick 2) BuildTech a acheté 4x Aspirateur (matiere_premiere) chez PlancheCompagnie à 101.77€ (total: 407.08€) [budget restant: 434.60€] [stratégie: moins_cher]
+[30/07/2025 20:34:58] (tick 3) BioLogix a acheté 1x Aspirateur (matiere_premiere) chez PlancheCompagnie à 101.77€ (total: 101.77€) [budget restant: 815.98€] [stratégie: moins_cher]
+[30/07/2025 20:34:58] (tick 3) MagaToys a acheté 4x Ours en peluche (produit_fini) chez ElectroPlus à 585.91€ (total: 2343.64€) [budget restant: 107.45€] [stratégie: par_type]
+[30/07/2025 20:34:59] (tick 4) BuildTech a acheté 3x Aspirateur (matiere_premiere) chez PlancheCompagnie à 101.77€ (total: 305.31€) [budget restant: 129.29€] [stratégie: moins_cher]
+[30/07/2025 20:34:59] (tick 5) BioLogix a acheté 5x Aspirateur (matiere_premiere) chez PlancheCompagnie à 101.77€ (total: 508.85€) [budget restant: 307.13€] [stratégie: moins_cher]
+[30/07/2025 20:34:59] (tick 6) BuildTech a acheté 1x Aspirateur (matiere_premiere) chez PlancheCompagnie à 101.77€ (total: 101.77€) [budget restant: 27.52€] [stratégie: moins_cher]
+[30/07/2025 20:34:59] (tick 7) BioLogix a acheté 3x Aspirateur (matiere_premiere) chez PlancheCompagnie à 101.77€ (total: 305.31€) [budget restant: 1.82€] [stratégie: moins_cher]
+[30/07/2025 20:34:59] (tick 8) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:34:59] (tick 9) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:34:59] (tick 10) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:34:59] (tick 11) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:34:59] (tick 12) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:35:00] (tick 13) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:35:00] (tick 14) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:35:00] (tick 15) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:35:00] (tick 16) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:35:00] (tick 17) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:35:00] (tick 18) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:35:00] (tick 19) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:35:00] (tick 20) Aucun achat effectué - Tour vide, on continue.
+[EVENT: RECHARGE_BUDGET] [RECHARGE] BuildTech: +63€ (ancien: 27.52000000000008€ → nouveau: 90.52000000000008€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] BioLogix: +136€ (ancien: 1.8199999999999932€ → nouveau: 137.82€)
+[EVENT: RECHARGE_BUDGET] [RESUME RECHARGE] 2 entreprises rechargées | Total: +199€ | Moyenne: +99.5€
+[EVENT: INFLATION] [INFLATION] Produit ciblé : Planches - 3 prix modifiés | Min: +40.0% | Max: +61.0% | Moy: +54.0%
+[30/07/2025 20:35:00] (tick 21) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:35:00] (tick 22) BioLogix a acheté 1x Aspirateur (matiere_premiere) chez PlancheCompagnie à 101.77€ (total: 101.77€) [budget restant: 36.05€] [stratégie: moins_cher]
+[30/07/2025 20:35:01] (tick 23) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:35:01] (tick 24) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:35:01] (tick 25) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:35:01] (tick 26) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:35:01] (tick 27) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:35:01] (tick 28) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:35:01] (tick 29) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:35:01] (tick 30) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:35:01] (tick 31) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:35:02] (tick 32) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:35:02] (tick 33) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:35:02] (tick 34) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:35:02] (tick 35) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:46:52] (tick 1) BioLogix a acheté 1x Planches (matiere_premiere) chez ElectroPlus à 545.73€ (total: 545.73€) [budget restant: 1874.22€] [stratégie: par_type]
+[30/07/2025 20:46:52] (tick 1) BuildTech a acheté 5x Ours en peluche (produit_fini) chez NordicTools à 305.44€ (total: 1527.20€) [budget restant: 239.31€] [stratégie: par_type]
+[30/07/2025 20:46:52] (tick 2) [ERREUR] BuildTech n'a pas pu acheter Ours en peluche chez PlancheCompagnie : Budget insuffisant pour acheter Ours en peluche (prix unitaire: 470.82€) [stratégie: par_type]
+[30/07/2025 20:46:52] (tick 2) MagaToys a acheté 2x Bois (matiere_premiere) chez NordicTools à 638.86€ (total: 1277.72€) [budget restant: 850.68€] [stratégie: par_type]
+[30/07/2025 20:46:52] (tick 3) [ERREUR] MagaToys n'a pas pu acheter Aspirateur : Produit indisponible : Aspirateur (aucun stock chez les fournisseurs) [stratégie: par_type]
+[30/07/2025 20:46:52] (tick 3) [ERREUR] BuildTech n'a pas pu acheter Aspirateur : Produit indisponible : Aspirateur (aucun stock chez les fournisseurs) [stratégie: par_type]
+[30/07/2025 20:46:52] (tick 3) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:46:52] (tick 4) MagaToys a acheté 1x Planches (matiere_premiere) chez ElectroPlus à 545.73€ (total: 545.73€) [budget restant: 304.95€] [stratégie: par_type]
+[30/07/2025 20:46:52] (tick 4) [ERREUR] BuildTech n'a pas pu acheter Ours en peluche chez PlancheCompagnie : Budget insuffisant pour acheter Ours en peluche (prix unitaire: 470.82€) [stratégie: par_type]
+[30/07/2025 20:46:52] (tick 5) [ERREUR] BuildTech n'a pas pu acheter Ours en peluche chez PlancheCompagnie : Budget insuffisant pour acheter Ours en peluche (prix unitaire: 470.82€) [stratégie: par_type]
+[30/07/2025 20:46:52] (tick 5) [ERREUR] MagaToys n'a pas pu acheter Acier chez PlancheCompagnie : Budget insuffisant pour acheter Acier (prix unitaire: 901.88€) [stratégie: par_type]
+[30/07/2025 20:46:52] (tick 5) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:46:52] (tick 6) [ERREUR] MagaToys n'a pas pu acheter Aspirateur : Produit indisponible : Aspirateur (aucun stock chez les fournisseurs) [stratégie: par_type]
+[30/07/2025 20:46:52] (tick 6) BioLogix a acheté 1x Bois (matiere_premiere) chez NordicTools à 638.86€ (total: 638.86€) [budget restant: 1235.36€] [stratégie: par_type]
+[30/07/2025 20:46:52] (tick 7) [ERREUR] MagaToys n'a pas pu acheter Acier chez PlancheCompagnie : Budget insuffisant pour acheter Acier (prix unitaire: 901.88€) [stratégie: par_type]
+[30/07/2025 20:46:52] (tick 7) BioLogix a acheté 1x Ours en peluche (produit_fini) chez NordicTools à 305.44€ (total: 305.44€) [budget restant: 929.92€] [stratégie: par_type]
+[30/07/2025 20:46:52] (tick 8) MagaToys a acheté 1x Bois (matiere_premiere) chez AsieImport à 198.17€ (total: 198.17€) [budget restant: 106.78€] [stratégie: par_type]
+[30/07/2025 20:46:52] (tick 8) BioLogix a acheté 1x Planches (matiere_premiere) chez ElectroPlus à 545.73€ (total: 545.73€) [budget restant: 384.19€] [stratégie: par_type]
+[30/07/2025 20:46:52] (tick 9) [ERREUR] MagaToys n'a pas pu acheter Bois chez AsieImport : Budget insuffisant pour acheter Bois (prix unitaire: 198.17€) [stratégie: par_type]
+[30/07/2025 20:46:52] (tick 9) [ERREUR] BuildTech n'a pas pu acheter Ours en peluche chez PlancheCompagnie : Budget insuffisant pour acheter Ours en peluche (prix unitaire: 470.82€) [stratégie: par_type]
+[30/07/2025 20:46:52] (tick 9) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:46:52] (tick 10) [ERREUR] BioLogix n'a pas pu acheter Planches chez ElectroPlus : Budget insuffisant pour acheter Planches (prix unitaire: 545.73€) [stratégie: par_type]
+[30/07/2025 20:46:52] (tick 10) [ERREUR] MagaToys n'a pas pu acheter Aspirateur : Produit indisponible : Aspirateur (aucun stock chez les fournisseurs) [stratégie: par_type]
+[30/07/2025 20:46:52] (tick 10) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:46:53] (tick 11) [ERREUR] BuildTech n'a pas pu acheter Acier chez PlancheCompagnie : Budget insuffisant pour acheter Acier (prix unitaire: 901.88€) [stratégie: par_type]
+[30/07/2025 20:46:53] (tick 11) BioLogix a acheté 1x Ours en peluche (produit_fini) chez NordicTools à 305.44€ (total: 305.44€) [budget restant: 78.75€] [stratégie: par_type]
+[30/07/2025 20:46:53] (tick 12) [ERREUR] MagaToys n'a pas pu acheter Acier chez ElectroPlus : Budget insuffisant pour acheter Acier (prix unitaire: 496.04€) [stratégie: par_type]
+[30/07/2025 20:46:53] (tick 12) [ERREUR] BuildTech n'a pas pu acheter Aspirateur : Produit indisponible : Aspirateur (aucun stock chez les fournisseurs) [stratégie: par_type]
+[30/07/2025 20:46:53] (tick 12) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:46:53] (tick 13) [ERREUR] BuildTech n'a pas pu acheter Acier chez ElectroPlus : Budget insuffisant pour acheter Acier (prix unitaire: 496.04€) [stratégie: par_type]
+[30/07/2025 20:46:53] (tick 13) [ERREUR] MagaToys n'a pas pu acheter Bois chez AsieImport : Budget insuffisant pour acheter Bois (prix unitaire: 198.17€) [stratégie: par_type]
+[30/07/2025 20:46:53] (tick 13) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:46:53] (tick 14) [ERREUR] BioLogix n'a pas pu acheter Ours en peluche chez NordicTools : Budget insuffisant pour acheter Ours en peluche (prix unitaire: 305.44€) [stratégie: par_type]
+[30/07/2025 20:46:53] (tick 14) [ERREUR] MagaToys n'a pas pu acheter Aspirateur : Produit indisponible : Aspirateur (aucun stock chez les fournisseurs) [stratégie: par_type]
+[30/07/2025 20:46:53] (tick 14) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:46:53] (tick 15) [ERREUR] BuildTech n'a pas pu acheter Acier chez PlancheCompagnie : Budget insuffisant pour acheter Acier (prix unitaire: 901.88€) [stratégie: par_type]
+[30/07/2025 20:46:53] (tick 15) [ERREUR] MagaToys n'a pas pu acheter Bois chez AsieImport : Budget insuffisant pour acheter Bois (prix unitaire: 198.17€) [stratégie: par_type]
+[30/07/2025 20:46:53] (tick 15) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:46:53] (tick 16) [ERREUR] MagaToys n'a pas pu acheter Acier chez PlancheCompagnie : Budget insuffisant pour acheter Acier (prix unitaire: 901.88€) [stratégie: par_type]
+[30/07/2025 20:46:53] (tick 16) [ERREUR] BuildTech n'a pas pu acheter Acier chez ElectroPlus : Budget insuffisant pour acheter Acier (prix unitaire: 496.04€) [stratégie: par_type]
+[30/07/2025 20:46:53] (tick 16) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:46:53] (tick 17) [ERREUR] MagaToys n'a pas pu acheter Bois chez NordicTools : Budget insuffisant pour acheter Bois (prix unitaire: 638.86€) [stratégie: par_type]
+[30/07/2025 20:46:53] (tick 17) [ERREUR] BuildTech n'a pas pu acheter Ours en peluche chez PlancheCompagnie : Budget insuffisant pour acheter Ours en peluche (prix unitaire: 470.82€) [stratégie: par_type]
+[30/07/2025 20:46:53] (tick 17) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:46:53] (tick 18) [ERREUR] MagaToys n'a pas pu acheter Planches chez ElectroPlus : Budget insuffisant pour acheter Planches (prix unitaire: 545.73€) [stratégie: par_type]
+[30/07/2025 20:46:53] (tick 18) [ERREUR] BioLogix n'a pas pu acheter Ours en peluche chez NordicTools : Budget insuffisant pour acheter Ours en peluche (prix unitaire: 305.44€) [stratégie: par_type]
+[30/07/2025 20:46:53] (tick 18) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:46:53] (tick 19) [ERREUR] BioLogix n'a pas pu acheter Ours en peluche chez PlancheCompagnie : Budget insuffisant pour acheter Ours en peluche (prix unitaire: 470.82€) [stratégie: par_type]
+[30/07/2025 20:46:53] (tick 19) [ERREUR] BuildTech n'a pas pu acheter Ours en peluche chez NordicTools : Budget insuffisant pour acheter Ours en peluche (prix unitaire: 305.44€) [stratégie: par_type]
+[30/07/2025 20:46:53] (tick 19) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:46:54] (tick 20) [ERREUR] MagaToys n'a pas pu acheter Planches chez ElectroPlus : Budget insuffisant pour acheter Planches (prix unitaire: 545.73€) [stratégie: par_type]
+[30/07/2025 20:46:54] (tick 20) [ERREUR] BioLogix n'a pas pu acheter Ours en peluche chez NordicTools : Budget insuffisant pour acheter Ours en peluche (prix unitaire: 305.44€) [stratégie: par_type]
+[30/07/2025 20:46:54] (tick 20) Aucun achat effectué - Tour vide, on continue.
+[EVENT: RECHARGE_BUDGET] [RECHARGE] MagaToys: +142€ (ancien: 106.78000000000006€ → nouveau: 248.78000000000006€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] BuildTech: +194€ (ancien: 239.30999999999995€ → nouveau: 433.30999999999995€)
+[EVENT: RECHARGE_BUDGET] [RESUME RECHARGE] 2 entreprises rechargées | Total: +336€ | Moyenne: +168.0€
+[EVENT: REASSORT] [REASSORT] [PRODUITS] 1 produits réapprovisionnés | [QUANTITE] +26 unités total | [FOURNISSEURS] 1 fournisseurs concernés
+[EVENT: VARIATION_DISPONIBILITE] [VARIATION] [DESACTIVE] 1 désactivés (Planches) | [REACTIVE] 3 réactivés (Lampe, Sac à dos, Vélo) | Total modifié: 4 produits
+[30/07/2025 20:46:54] (tick 21) [ERREUR] MagaToys n'a pas pu acheter Acier chez ElectroPlus : Budget insuffisant pour acheter Acier (prix unitaire: 496.04€) [stratégie: par_type]
+[30/07/2025 20:46:54] (tick 21) BuildTech a acheté 1x Vélo (produit_fini) chez NordicTools à 301.05€ (total: 301.05€) [budget restant: 132.26€] [stratégie: par_type]
+[30/07/2025 20:46:54] (tick 22) [ERREUR] BioLogix n'a pas pu acheter Bois chez AsieImport : Budget insuffisant pour acheter Bois (prix unitaire: 198.17€) [stratégie: par_type]
+[30/07/2025 20:46:54] (tick 22) [ERREUR] BuildTech n'a pas pu acheter Vélo chez NordicTools : Budget insuffisant pour acheter Vélo (prix unitaire: 301.05€) [stratégie: par_type]
+[30/07/2025 20:46:54] (tick 22) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:46:54] (tick 23) [ERREUR] MagaToys n'a pas pu acheter Aspirateur : Produit indisponible : Aspirateur (aucun stock chez les fournisseurs) [stratégie: par_type]
+[30/07/2025 20:46:54] (tick 23) [ERREUR] BioLogix n'a pas pu acheter Vélo chez ElectroPlus : Budget insuffisant pour acheter Vélo (prix unitaire: 179.45€) [stratégie: par_type]
+[30/07/2025 20:46:54] (tick 23) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:46:54] (tick 24) [ERREUR] MagaToys n'a pas pu acheter Bois chez NordicTools : Budget insuffisant pour acheter Bois (prix unitaire: 638.86€) [stratégie: par_type]
+[30/07/2025 20:46:54] (tick 24) [ERREUR] BuildTech n'a pas pu acheter Acier chez PlancheCompagnie : Budget insuffisant pour acheter Acier (prix unitaire: 901.88€) [stratégie: par_type]
+[30/07/2025 20:46:54] (tick 24) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:46:54] (tick 25) [ERREUR] BuildTech n'a pas pu acheter Ours en peluche chez NordicTools : Budget insuffisant pour acheter Ours en peluche (prix unitaire: 305.44€) [stratégie: par_type]
+[30/07/2025 20:46:54] (tick 25) MagaToys a acheté 1x Sac à dos (matiere_premiere) chez ElectroPlus à 141.90€ (total: 141.90€) [budget restant: 106.88€] [stratégie: par_type]
+[30/07/2025 20:46:54] (tick 26) [ERREUR] BuildTech n'a pas pu acheter Ours en peluche chez PlancheCompagnie : Budget insuffisant pour acheter Ours en peluche (prix unitaire: 470.82€) [stratégie: par_type]
+[30/07/2025 20:46:54] (tick 26) [ERREUR] BioLogix n'a pas pu acheter Ours en peluche chez NordicTools : Budget insuffisant pour acheter Ours en peluche (prix unitaire: 305.44€) [stratégie: par_type]
+[30/07/2025 20:46:54] (tick 26) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:46:54] (tick 27) [ERREUR] BuildTech n'a pas pu acheter Aspirateur : Produit indisponible : Aspirateur (aucun stock chez les fournisseurs) [stratégie: par_type]
+[30/07/2025 20:46:54] (tick 27) [ERREUR] MagaToys n'a pas pu acheter Lampe chez AsieImport : Budget insuffisant pour acheter Lampe (prix unitaire: 391.23€) [stratégie: par_type]
+[30/07/2025 20:46:54] (tick 27) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:46:54] (tick 28) [ERREUR] BuildTech n'a pas pu acheter Ours en peluche chez NordicTools : Budget insuffisant pour acheter Ours en peluche (prix unitaire: 305.44€) [stratégie: par_type]
+[30/07/2025 20:46:54] (tick 28) [ERREUR] MagaToys n'a pas pu acheter Acier chez PlancheCompagnie : Budget insuffisant pour acheter Acier (prix unitaire: 901.88€) [stratégie: par_type]
+[30/07/2025 20:46:54] (tick 28) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:46:55] (tick 29) [ERREUR] BioLogix n'a pas pu acheter Ours en peluche chez NordicTools : Budget insuffisant pour acheter Ours en peluche (prix unitaire: 305.44€) [stratégie: par_type]
+[30/07/2025 20:46:55] (tick 29) [ERREUR] BuildTech n'a pas pu acheter Acier chez PlancheCompagnie : Budget insuffisant pour acheter Acier (prix unitaire: 901.88€) [stratégie: par_type]
+[30/07/2025 20:46:55] (tick 29) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:46:55] (tick 30) [ERREUR] BioLogix n'a pas pu acheter Sac à dos chez ElectroPlus : Budget insuffisant pour acheter Sac à dos (prix unitaire: 141.9€) [stratégie: par_type]
+[30/07/2025 20:46:55] (tick 30) [ERREUR] MagaToys n'a pas pu acheter Sac à dos chez ElectroPlus : Budget insuffisant pour acheter Sac à dos (prix unitaire: 141.9€) [stratégie: par_type]
+[30/07/2025 20:46:55] (tick 30) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:46:55] (tick 31) [ERREUR] BioLogix n'a pas pu acheter Bois chez PlancheCompagnie : Produit indisponible : Bois (pas de prix chez PlancheCompagnie) [stratégie: par_type]
+[30/07/2025 20:46:55] (tick 31) [ERREUR] BuildTech n'a pas pu acheter Acier chez ElectroPlus : Budget insuffisant pour acheter Acier (prix unitaire: 496.04€) [stratégie: par_type]
+[30/07/2025 20:46:55] (tick 31) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:46:55] (tick 32) [ERREUR] BioLogix n'a pas pu acheter Sac à dos chez ElectroPlus : Budget insuffisant pour acheter Sac à dos (prix unitaire: 141.9€) [stratégie: par_type]
+[30/07/2025 20:46:55] (tick 32) [ERREUR] MagaToys n'a pas pu acheter Acier chez PlancheCompagnie : Budget insuffisant pour acheter Acier (prix unitaire: 901.88€) [stratégie: par_type]
+[30/07/2025 20:46:55] (tick 32) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:46:55] (tick 33) [ERREUR] BioLogix n'a pas pu acheter Bois chez NordicTools : Budget insuffisant pour acheter Bois (prix unitaire: 638.86€) [stratégie: par_type]
+[30/07/2025 20:46:55] (tick 33) [ERREUR] BuildTech n'a pas pu acheter Aspirateur : Produit indisponible : Aspirateur (aucun stock chez les fournisseurs) [stratégie: par_type]
+[30/07/2025 20:46:55] (tick 33) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:46:55] (tick 34) [ERREUR] BuildTech n'a pas pu acheter Aspirateur : Produit indisponible : Aspirateur (aucun stock chez les fournisseurs) [stratégie: par_type]
+[30/07/2025 20:46:55] (tick 34) [ERREUR] BioLogix n'a pas pu acheter Bois chez NordicTools : Budget insuffisant pour acheter Bois (prix unitaire: 638.86€) [stratégie: par_type]
+[30/07/2025 20:46:55] (tick 34) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:46:55] (tick 35) [ERREUR] BioLogix n'a pas pu acheter Vélo chez ElectroPlus : Budget insuffisant pour acheter Vélo (prix unitaire: 179.45€) [stratégie: par_type]
+[30/07/2025 20:46:55] (tick 35) [ERREUR] MagaToys n'a pas pu acheter Acier chez PlancheCompagnie : Budget insuffisant pour acheter Acier (prix unitaire: 901.88€) [stratégie: par_type]
+[30/07/2025 20:46:55] (tick 35) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:52:00] (tick 1) BuildTech a acheté 3x Ours en peluche (produit_fini) chez ElectroPlus à 196.07€ (total: 588.21€) [budget restant: 1405.81€] [stratégie: par_type]
+[30/07/2025 20:52:00] (tick 2) BioLogix a acheté 12x Ours en peluche (produit_fini) chez ElectroPlus à 196.07€ (total: 2352.84€) [budget restant: 232.86€] [stratégie: par_type]
+[30/07/2025 20:52:00] (tick 3) BioLogix a acheté 1x Ours en peluche (produit_fini) chez ElectroPlus à 196.07€ (total: 196.07€) [budget restant: 36.79€] [stratégie: par_type]
+[30/07/2025 20:52:00] (tick 4) BuildTech a acheté 1x Ours en peluche (produit_fini) chez ElectroPlus à 196.07€ (total: 196.07€) [budget restant: 1209.74€] [stratégie: par_type]
+[30/07/2025 20:52:00] (tick 5) BuildTech a acheté 1x Planches (produit_fini) chez NordicTools à 716.26€ (total: 716.26€) [budget restant: 493.48€] [stratégie: par_type]
+[30/07/2025 20:52:00] (tick 6) [ERREUR] BioLogix n'a pas pu acheter Ours en peluche chez ElectroPlus : Budget insuffisant pour acheter Ours en peluche (prix unitaire: 196.07€) [stratégie: par_type]
+[30/07/2025 20:52:00] (tick 6) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:52:00] (tick 7) [ERREUR] BioLogix n'a pas pu acheter Ours en peluche chez ElectroPlus : Budget insuffisant pour acheter Ours en peluche (prix unitaire: 196.07€) [stratégie: par_type]
+[30/07/2025 20:52:00] (tick 7) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:52:00] (tick 8) [ERREUR] BuildTech n'a pas pu acheter Planches chez NordicTools : Budget insuffisant pour acheter Planches (prix unitaire: 716.26€) [stratégie: par_type]
+[30/07/2025 20:52:00] (tick 8) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:52:01] (tick 9) [ERREUR] BioLogix n'a pas pu acheter Ours en peluche chez ElectroPlus : Budget insuffisant pour acheter Ours en peluche (prix unitaire: 196.07€) [stratégie: par_type]
+[30/07/2025 20:52:01] (tick 9) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:52:01] (tick 10) [ERREUR] BioLogix n'a pas pu acheter Aspirateur chez AsieImport : Budget insuffisant pour acheter Aspirateur (prix unitaire: 897.76€) [stratégie: par_type]
+[30/07/2025 20:52:01] (tick 10) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:52:01] (tick 11) [ERREUR] BuildTech n'a pas pu acheter Planches chez NordicTools : Budget insuffisant pour acheter Planches (prix unitaire: 716.26€) [stratégie: par_type]
+[30/07/2025 20:52:01] (tick 11) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:52:01] (tick 12) [ERREUR] BioLogix n'a pas pu acheter Planches chez NordicTools : Budget insuffisant pour acheter Planches (prix unitaire: 716.26€) [stratégie: par_type]
+[30/07/2025 20:52:01] (tick 12) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:52:01] (tick 13) BuildTech a acheté 2x Ours en peluche (produit_fini) chez ElectroPlus à 196.07€ (total: 392.14€) [budget restant: 101.34€] [stratégie: par_type]
+[30/07/2025 20:52:01] (tick 13) [ERREUR] BioLogix n'a pas pu acheter Planches chez NordicTools : Budget insuffisant pour acheter Planches (prix unitaire: 716.26€) [stratégie: par_type]
+[30/07/2025 20:52:01] (tick 14) [ERREUR] BioLogix n'a pas pu acheter Planches chez NordicTools : Budget insuffisant pour acheter Planches (prix unitaire: 716.26€) [stratégie: par_type]
+[30/07/2025 20:52:01] (tick 14) [ERREUR] BuildTech n'a pas pu acheter Ours en peluche chez ElectroPlus : Budget insuffisant pour acheter Ours en peluche (prix unitaire: 196.07€) [stratégie: par_type]
+[30/07/2025 20:52:01] (tick 14) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:52:01] (tick 15) [ERREUR] BioLogix n'a pas pu acheter Aspirateur chez AsieImport : Budget insuffisant pour acheter Aspirateur (prix unitaire: 897.76€) [stratégie: par_type]
+[30/07/2025 20:52:01] (tick 15) [ERREUR] BuildTech n'a pas pu acheter Planches chez NordicTools : Budget insuffisant pour acheter Planches (prix unitaire: 716.26€) [stratégie: par_type]
+[30/07/2025 20:52:01] (tick 15) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:52:01] (tick 16) [ERREUR] BioLogix n'a pas pu acheter Ours en peluche chez ElectroPlus : Budget insuffisant pour acheter Ours en peluche (prix unitaire: 196.07€) [stratégie: par_type]
+[30/07/2025 20:52:01] (tick 16) [ERREUR] BuildTech n'a pas pu acheter Ours en peluche chez ElectroPlus : Budget insuffisant pour acheter Ours en peluche (prix unitaire: 196.07€) [stratégie: par_type]
+[30/07/2025 20:52:01] (tick 16) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:52:01] (tick 17) [ERREUR] BuildTech n'a pas pu acheter Planches chez NordicTools : Budget insuffisant pour acheter Planches (prix unitaire: 716.26€) [stratégie: par_type]
+[30/07/2025 20:52:01] (tick 17) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:52:02] (tick 18) [ERREUR] BuildTech n'a pas pu acheter Planches chez NordicTools : Budget insuffisant pour acheter Planches (prix unitaire: 716.26€) [stratégie: par_type]
+[30/07/2025 20:52:02] (tick 18) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:52:02] (tick 19) [ERREUR] BuildTech n'a pas pu acheter Aspirateur chez AsieImport : Budget insuffisant pour acheter Aspirateur (prix unitaire: 897.76€) [stratégie: par_type]
+[30/07/2025 20:52:02] (tick 19) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:52:02] (tick 20) [ERREUR] BuildTech n'a pas pu acheter Ours en peluche chez ElectroPlus : Budget insuffisant pour acheter Ours en peluche (prix unitaire: 196.07€) [stratégie: par_type]
+[30/07/2025 20:52:02] (tick 20) Aucun achat effectué - Tour vide, on continue.
+[EVENT: REASSORT] [REASSORT] [PRODUITS] 3 produits réapprovisionnés | [QUANTITE] +69 unités total | [FOURNISSEURS] 3 fournisseurs concernés
+[EVENT: INFLATION] [INFLATION] Produit ciblé : Bois - 2 prix modifiés | Min: +40.0% | Max: +61.0% | Moy: +50.5%
+[30/07/2025 20:52:02] (tick 21) [ERREUR] BuildTech n'a pas pu acheter Planches chez AsieImport : Produit indisponible : Planches (pas de prix chez AsieImport) [stratégie: par_type]
+[30/07/2025 20:52:02] (tick 21) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:52:02] (tick 22) [ERREUR] BuildTech n'a pas pu acheter Planches chez AsieImport : Produit indisponible : Planches (pas de prix chez AsieImport) [stratégie: par_type]
+[30/07/2025 20:52:02] (tick 22) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:52:02] (tick 23) [ERREUR] BuildTech n'a pas pu acheter Ours en peluche chez ElectroPlus : Budget insuffisant pour acheter Ours en peluche (prix unitaire: 196.07€) [stratégie: par_type]
+[30/07/2025 20:52:02] (tick 23) [ERREUR] BioLogix n'a pas pu acheter Planches chez NordicTools : Budget insuffisant pour acheter Planches (prix unitaire: 716.26€) [stratégie: par_type]
+[30/07/2025 20:52:02] (tick 23) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:52:02] (tick 24) [ERREUR] BuildTech n'a pas pu acheter Ours en peluche chez ElectroPlus : Budget insuffisant pour acheter Ours en peluche (prix unitaire: 196.07€) [stratégie: par_type]
+[30/07/2025 20:52:02] (tick 24) [ERREUR] BioLogix n'a pas pu acheter Ours en peluche chez ElectroPlus : Budget insuffisant pour acheter Ours en peluche (prix unitaire: 196.07€) [stratégie: par_type]
+[30/07/2025 20:52:02] (tick 24) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:52:02] (tick 25) [ERREUR] BioLogix n'a pas pu acheter Planches chez AsieImport : Produit indisponible : Planches (pas de prix chez AsieImport) [stratégie: par_type]
+[30/07/2025 20:52:02] (tick 25) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:52:02] (tick 26) [ERREUR] BuildTech n'a pas pu acheter Planches chez AsieImport : Produit indisponible : Planches (pas de prix chez AsieImport) [stratégie: par_type]
+[30/07/2025 20:52:02] (tick 26) [ERREUR] BioLogix n'a pas pu acheter Planches chez AsieImport : Produit indisponible : Planches (pas de prix chez AsieImport) [stratégie: par_type]
+[30/07/2025 20:52:02] (tick 26) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:52:02] (tick 27) [ERREUR] BuildTech n'a pas pu acheter Ours en peluche chez ElectroPlus : Budget insuffisant pour acheter Ours en peluche (prix unitaire: 196.07€) [stratégie: par_type]
+[30/07/2025 20:52:02] (tick 27) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:52:03] (tick 28) [ERREUR] BuildTech n'a pas pu acheter Planches chez NordicTools : Budget insuffisant pour acheter Planches (prix unitaire: 716.26€) [stratégie: par_type]
+[30/07/2025 20:52:03] (tick 28) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:52:03] (tick 29) [ERREUR] BuildTech n'a pas pu acheter Aspirateur chez AsieImport : Budget insuffisant pour acheter Aspirateur (prix unitaire: 897.76€) [stratégie: par_type]
+[30/07/2025 20:52:03] (tick 29) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:52:03] (tick 30) [ERREUR] BioLogix n'a pas pu acheter Ours en peluche chez ElectroPlus : Budget insuffisant pour acheter Ours en peluche (prix unitaire: 196.07€) [stratégie: par_type]
+[30/07/2025 20:52:03] (tick 30) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:52:03] (tick 31) [ERREUR] BioLogix n'a pas pu acheter Ours en peluche chez ElectroPlus : Budget insuffisant pour acheter Ours en peluche (prix unitaire: 196.07€) [stratégie: par_type]
+[30/07/2025 20:52:03] (tick 31) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:52:03] (tick 32) [ERREUR] BioLogix n'a pas pu acheter Aspirateur chez AsieImport : Budget insuffisant pour acheter Aspirateur (prix unitaire: 897.76€) [stratégie: par_type]
+[30/07/2025 20:52:03] (tick 32) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:52:03] (tick 33) [ERREUR] BuildTech n'a pas pu acheter Ours en peluche chez ElectroPlus : Budget insuffisant pour acheter Ours en peluche (prix unitaire: 196.07€) [stratégie: par_type]
+[30/07/2025 20:52:03] (tick 33) [ERREUR] BioLogix n'a pas pu acheter Aspirateur chez AsieImport : Budget insuffisant pour acheter Aspirateur (prix unitaire: 897.76€) [stratégie: par_type]
+[30/07/2025 20:52:03] (tick 33) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:52:03] (tick 34) [ERREUR] BioLogix n'a pas pu acheter Planches chez AsieImport : Produit indisponible : Planches (pas de prix chez AsieImport) [stratégie: par_type]
+[30/07/2025 20:52:03] (tick 34) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:52:03] (tick 35) [ERREUR] BuildTech n'a pas pu acheter Aspirateur chez AsieImport : Budget insuffisant pour acheter Aspirateur (prix unitaire: 897.76€) [stratégie: par_type]
+[30/07/2025 20:52:03] (tick 35) [ERREUR] BioLogix n'a pas pu acheter Ours en peluche chez ElectroPlus : Budget insuffisant pour acheter Ours en peluche (prix unitaire: 196.07€) [stratégie: par_type]
+[30/07/2025 20:52:03] (tick 35) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:53:56] (tick 1) BuildTech a acheté 3x Acier (matiere_premiere) chez AsieImport à 115.77€ (total: 347.31€) [budget restant: 2407.07€] [stratégie: moins_cher]
+[30/07/2025 20:53:56] (tick 1) MagaToys a acheté 5x Acier (matiere_premiere) chez AsieImport à 115.77€ (total: 578.85€) [budget restant: 1729.60€] [stratégie: moins_cher]
+[30/07/2025 20:53:57] (tick 2) BioLogix a acheté 4x Acier (matiere_premiere) chez AsieImport à 115.77€ (total: 463.08€) [budget restant: 2254.93€] [stratégie: moins_cher]
+[30/07/2025 20:53:57] (tick 2) BuildTech a acheté 16x Acier (matiere_premiere) chez AsieImport à 115.77€ (total: 1852.32€) [budget restant: 554.75€] [stratégie: moins_cher]
+[30/07/2025 20:53:57] (tick 3) MagaToys a acheté 4x Acier (matiere_premiere) chez AsieImport à 115.77€ (total: 463.08€) [budget restant: 1266.52€] [stratégie: moins_cher]
+[30/07/2025 20:53:57] (tick 3) BuildTech a acheté 1x Acier (matiere_premiere) chez AsieImport à 115.77€ (total: 115.77€) [budget restant: 438.98€] [stratégie: moins_cher]
+[30/07/2025 20:53:57] (tick 4) MagaToys a acheté 8x Acier (matiere_premiere) chez AsieImport à 115.77€ (total: 926.16€) [budget restant: 340.36€] [stratégie: moins_cher]
+[30/07/2025 20:53:57] (tick 4) BuildTech a acheté 1x Acier (matiere_premiere) chez AsieImport à 115.77€ (total: 115.77€) [budget restant: 323.21€] [stratégie: moins_cher]
+[30/07/2025 20:53:57] (tick 5) BioLogix a acheté 13x Acier (matiere_premiere) chez AsieImport à 115.77€ (total: 1505.01€) [budget restant: 749.92€] [stratégie: moins_cher]
+[30/07/2025 20:53:57] (tick 5) BuildTech a acheté 2x Acier (matiere_premiere) chez AsieImport à 115.77€ (total: 231.54€) [budget restant: 91.67€] [stratégie: moins_cher]
+[30/07/2025 20:53:57] (tick 6) MagaToys a acheté 2x Acier (matiere_premiere) chez AsieImport à 115.77€ (total: 231.54€) [budget restant: 108.82€] [stratégie: moins_cher]
+[30/07/2025 20:53:57] (tick 6) BioLogix a acheté 3x Acier (matiere_premiere) chez AsieImport à 115.77€ (total: 347.31€) [budget restant: 402.61€] [stratégie: moins_cher]
+[30/07/2025 20:53:57] (tick 7) [ERREUR] BuildTech n'a pas pu acheter Acier chez AsieImport : Budget insuffisant pour acheter Acier (prix unitaire: 115.77€, budget disponible: 91.67000000000027€) [stratégie: moins_cher]
+[30/07/2025 20:53:57] (tick 7) [ERREUR] MagaToys n'a pas pu acheter Acier chez AsieImport : Budget insuffisant pour acheter Acier (prix unitaire: 115.77€, budget disponible: 108.82000000000002€) [stratégie: moins_cher]
+[30/07/2025 20:53:57] (tick 7) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:53:57] (tick 8) BioLogix a acheté 2x Acier (matiere_premiere) chez AsieImport à 115.77€ (total: 231.54€) [budget restant: 171.07€] [stratégie: moins_cher]
+[30/07/2025 20:53:57] (tick 8) [ERREUR] MagaToys n'a pas pu acheter Acier chez AsieImport : Budget insuffisant pour acheter Acier (prix unitaire: 115.77€, budget disponible: 108.82000000000002€) [stratégie: moins_cher]
+[30/07/2025 20:53:57] (tick 9) [ERREUR] BuildTech n'a pas pu acheter Acier chez AsieImport : Budget insuffisant pour acheter Acier (prix unitaire: 115.77€, budget disponible: 91.67000000000027€) [stratégie: moins_cher]
+[30/07/2025 20:53:57] (tick 9) BioLogix a acheté 1x Acier (matiere_premiere) chez AsieImport à 115.77€ (total: 115.77€) [budget restant: 55.30€] [stratégie: moins_cher]
+[30/07/2025 20:53:57] (tick 10) [ERREUR] BioLogix n'a pas pu acheter Acier chez AsieImport : Budget insuffisant pour acheter Acier (prix unitaire: 115.77€, budget disponible: 55.30000000000031€) [stratégie: moins_cher]
+[30/07/2025 20:53:57] (tick 10) [ERREUR] MagaToys n'a pas pu acheter Acier chez AsieImport : Budget insuffisant pour acheter Acier (prix unitaire: 115.77€, budget disponible: 108.82000000000002€) [stratégie: moins_cher]
+[30/07/2025 20:53:57] (tick 10) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:53:57] (tick 11) [ERREUR] MagaToys n'a pas pu acheter Acier chez AsieImport : Budget insuffisant pour acheter Acier (prix unitaire: 115.77€, budget disponible: 108.82000000000002€) [stratégie: moins_cher]
+[30/07/2025 20:53:57] (tick 11) [ERREUR] BuildTech n'a pas pu acheter Acier chez AsieImport : Budget insuffisant pour acheter Acier (prix unitaire: 115.77€, budget disponible: 91.67000000000027€) [stratégie: moins_cher]
+[30/07/2025 20:53:57] (tick 11) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:53:58] (tick 12) [ERREUR] BuildTech n'a pas pu acheter Acier chez AsieImport : Budget insuffisant pour acheter Acier (prix unitaire: 115.77€, budget disponible: 91.67000000000027€) [stratégie: moins_cher]
+[30/07/2025 20:53:58] (tick 12) [ERREUR] BioLogix n'a pas pu acheter Acier chez AsieImport : Budget insuffisant pour acheter Acier (prix unitaire: 115.77€, budget disponible: 55.30000000000031€) [stratégie: moins_cher]
+[30/07/2025 20:53:58] (tick 12) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:53:58] (tick 13) [ERREUR] MagaToys n'a pas pu acheter Acier chez AsieImport : Budget insuffisant pour acheter Acier (prix unitaire: 115.77€, budget disponible: 108.82000000000002€) [stratégie: moins_cher]
+[30/07/2025 20:53:58] (tick 13) [ERREUR] BuildTech n'a pas pu acheter Acier chez AsieImport : Budget insuffisant pour acheter Acier (prix unitaire: 115.77€, budget disponible: 91.67000000000027€) [stratégie: moins_cher]
+[30/07/2025 20:53:58] (tick 13) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:53:58] (tick 14) [ERREUR] BioLogix n'a pas pu acheter Acier chez AsieImport : Budget insuffisant pour acheter Acier (prix unitaire: 115.77€, budget disponible: 55.30000000000031€) [stratégie: moins_cher]
+[30/07/2025 20:53:58] (tick 14) [ERREUR] MagaToys n'a pas pu acheter Acier chez AsieImport : Budget insuffisant pour acheter Acier (prix unitaire: 115.77€, budget disponible: 108.82000000000002€) [stratégie: moins_cher]
+[30/07/2025 20:53:58] (tick 14) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:53:58] (tick 15) [ERREUR] BuildTech n'a pas pu acheter Acier chez AsieImport : Budget insuffisant pour acheter Acier (prix unitaire: 115.77€, budget disponible: 91.67000000000027€) [stratégie: moins_cher]
+[30/07/2025 20:53:58] (tick 15) [ERREUR] BioLogix n'a pas pu acheter Acier chez AsieImport : Budget insuffisant pour acheter Acier (prix unitaire: 115.77€, budget disponible: 55.30000000000031€) [stratégie: moins_cher]
+[30/07/2025 20:53:58] (tick 15) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:53:58] (tick 16) [ERREUR] BioLogix n'a pas pu acheter Acier chez AsieImport : Budget insuffisant pour acheter Acier (prix unitaire: 115.77€, budget disponible: 55.30000000000031€) [stratégie: moins_cher]
+[30/07/2025 20:53:58] (tick 16) [ERREUR] BuildTech n'a pas pu acheter Acier chez AsieImport : Budget insuffisant pour acheter Acier (prix unitaire: 115.77€, budget disponible: 91.67000000000027€) [stratégie: moins_cher]
+[30/07/2025 20:53:58] (tick 16) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:53:58] (tick 17) [ERREUR] BuildTech n'a pas pu acheter Acier chez AsieImport : Budget insuffisant pour acheter Acier (prix unitaire: 115.77€, budget disponible: 91.67000000000027€) [stratégie: moins_cher]
+[30/07/2025 20:53:58] (tick 17) [ERREUR] BioLogix n'a pas pu acheter Acier chez AsieImport : Budget insuffisant pour acheter Acier (prix unitaire: 115.77€, budget disponible: 55.30000000000031€) [stratégie: moins_cher]
+[30/07/2025 20:53:58] (tick 17) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:53:58] (tick 18) [ERREUR] BuildTech n'a pas pu acheter Acier chez AsieImport : Budget insuffisant pour acheter Acier (prix unitaire: 115.77€, budget disponible: 91.67000000000027€) [stratégie: moins_cher]
+[30/07/2025 20:53:58] (tick 18) [ERREUR] MagaToys n'a pas pu acheter Acier chez AsieImport : Budget insuffisant pour acheter Acier (prix unitaire: 115.77€, budget disponible: 108.82000000000002€) [stratégie: moins_cher]
+[30/07/2025 20:53:58] (tick 18) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:53:58] (tick 19) [ERREUR] MagaToys n'a pas pu acheter Acier chez AsieImport : Budget insuffisant pour acheter Acier (prix unitaire: 115.77€, budget disponible: 108.82000000000002€) [stratégie: moins_cher]
+[30/07/2025 20:53:58] (tick 19) [ERREUR] BuildTech n'a pas pu acheter Acier chez AsieImport : Budget insuffisant pour acheter Acier (prix unitaire: 115.77€, budget disponible: 91.67000000000027€) [stratégie: moins_cher]
+[30/07/2025 20:53:58] (tick 19) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:53:58] (tick 20) [ERREUR] MagaToys n'a pas pu acheter Acier chez AsieImport : Budget insuffisant pour acheter Acier (prix unitaire: 115.77€, budget disponible: 108.82000000000002€) [stratégie: moins_cher]
+[30/07/2025 20:53:58] (tick 20) [ERREUR] BuildTech n'a pas pu acheter Acier chez AsieImport : Budget insuffisant pour acheter Acier (prix unitaire: 115.77€, budget disponible: 91.67000000000027€) [stratégie: moins_cher]
+[30/07/2025 20:53:58] (tick 20) Aucun achat effectué - Tour vide, on continue.
+[EVENT: RECHARGE_BUDGET] [RECHARGE] MagaToys: +121€ (ancien: 108.82000000000002€ → nouveau: 229.82000000000002€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] BioLogix: +96€ (ancien: 55.30000000000031€ → nouveau: 151.3000000000003€)
+[EVENT: RECHARGE_BUDGET] [RESUME RECHARGE] 2 entreprises rechargées | Total: +217€ | Moyenne: +108.5€
+[30/07/2025 20:53:59] (tick 21) MagaToys a acheté 1x Acier (matiere_premiere) chez AsieImport à 115.77€ (total: 115.77€) [budget restant: 114.05€] [stratégie: moins_cher]
+[30/07/2025 20:53:59] (tick 21) [ERREUR] BuildTech n'a pas pu acheter Acier chez AsieImport : Budget insuffisant pour acheter Acier (prix unitaire: 115.77€, budget disponible: 91.67000000000027€) [stratégie: moins_cher]
+[30/07/2025 20:53:59] (tick 22) BioLogix a acheté 1x Acier (matiere_premiere) chez AsieImport à 115.77€ (total: 115.77€) [budget restant: 35.53€] [stratégie: moins_cher]
+[30/07/2025 20:53:59] (tick 22) [ERREUR] BuildTech n'a pas pu acheter Acier chez AsieImport : Budget insuffisant pour acheter Acier (prix unitaire: 115.77€, budget disponible: 91.67000000000027€) [stratégie: moins_cher]
+[30/07/2025 20:53:59] (tick 23) [ERREUR] MagaToys n'a pas pu acheter Acier chez AsieImport : Budget insuffisant pour acheter Acier (prix unitaire: 115.77€, budget disponible: 114.05000000000003€) [stratégie: moins_cher]
+[30/07/2025 20:53:59] (tick 23) [ERREUR] BuildTech n'a pas pu acheter Acier chez AsieImport : Budget insuffisant pour acheter Acier (prix unitaire: 115.77€, budget disponible: 91.67000000000027€) [stratégie: moins_cher]
+[30/07/2025 20:53:59] (tick 23) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:53:59] (tick 24) [ERREUR] BioLogix n'a pas pu acheter Acier chez AsieImport : Budget insuffisant pour acheter Acier (prix unitaire: 115.77€, budget disponible: 35.5300000000003€) [stratégie: moins_cher]
+[30/07/2025 20:53:59] (tick 24) [ERREUR] BuildTech n'a pas pu acheter Acier chez AsieImport : Budget insuffisant pour acheter Acier (prix unitaire: 115.77€, budget disponible: 91.67000000000027€) [stratégie: moins_cher]
+[30/07/2025 20:53:59] (tick 24) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:53:59] (tick 25) [ERREUR] BuildTech n'a pas pu acheter Acier chez AsieImport : Budget insuffisant pour acheter Acier (prix unitaire: 115.77€, budget disponible: 91.67000000000027€) [stratégie: moins_cher]
+[30/07/2025 20:53:59] (tick 25) [ERREUR] BioLogix n'a pas pu acheter Acier chez AsieImport : Budget insuffisant pour acheter Acier (prix unitaire: 115.77€, budget disponible: 35.5300000000003€) [stratégie: moins_cher]
+[30/07/2025 20:53:59] (tick 25) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:53:59] (tick 26) [ERREUR] BuildTech n'a pas pu acheter Acier chez AsieImport : Budget insuffisant pour acheter Acier (prix unitaire: 115.77€, budget disponible: 91.67000000000027€) [stratégie: moins_cher]
+[30/07/2025 20:53:59] (tick 26) [ERREUR] MagaToys n'a pas pu acheter Acier chez AsieImport : Budget insuffisant pour acheter Acier (prix unitaire: 115.77€, budget disponible: 114.05000000000003€) [stratégie: moins_cher]
+[30/07/2025 20:53:59] (tick 26) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:53:59] (tick 27) [ERREUR] BioLogix n'a pas pu acheter Acier chez AsieImport : Budget insuffisant pour acheter Acier (prix unitaire: 115.77€, budget disponible: 35.5300000000003€) [stratégie: moins_cher]
+[30/07/2025 20:53:59] (tick 27) [ERREUR] MagaToys n'a pas pu acheter Acier chez AsieImport : Budget insuffisant pour acheter Acier (prix unitaire: 115.77€, budget disponible: 114.05000000000003€) [stratégie: moins_cher]
+[30/07/2025 20:53:59] (tick 27) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:53:59] (tick 28) [ERREUR] BioLogix n'a pas pu acheter Acier chez AsieImport : Budget insuffisant pour acheter Acier (prix unitaire: 115.77€, budget disponible: 35.5300000000003€) [stratégie: moins_cher]
+[30/07/2025 20:53:59] (tick 28) [ERREUR] MagaToys n'a pas pu acheter Acier chez AsieImport : Budget insuffisant pour acheter Acier (prix unitaire: 115.77€, budget disponible: 114.05000000000003€) [stratégie: moins_cher]
+[30/07/2025 20:53:59] (tick 28) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:53:59] (tick 29) [ERREUR] MagaToys n'a pas pu acheter Acier chez AsieImport : Budget insuffisant pour acheter Acier (prix unitaire: 115.77€, budget disponible: 114.05000000000003€) [stratégie: moins_cher]
+[30/07/2025 20:53:59] (tick 29) [ERREUR] BuildTech n'a pas pu acheter Acier chez AsieImport : Budget insuffisant pour acheter Acier (prix unitaire: 115.77€, budget disponible: 91.67000000000027€) [stratégie: moins_cher]
+[30/07/2025 20:53:59] (tick 29) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:53:59] (tick 30) [ERREUR] BuildTech n'a pas pu acheter Acier chez AsieImport : Budget insuffisant pour acheter Acier (prix unitaire: 115.77€, budget disponible: 91.67000000000027€) [stratégie: moins_cher]
+[30/07/2025 20:53:59] (tick 30) [ERREUR] BioLogix n'a pas pu acheter Acier chez AsieImport : Budget insuffisant pour acheter Acier (prix unitaire: 115.77€, budget disponible: 35.5300000000003€) [stratégie: moins_cher]
+[30/07/2025 20:53:59] (tick 30) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:54:00] (tick 31) [ERREUR] BioLogix n'a pas pu acheter Acier chez AsieImport : Budget insuffisant pour acheter Acier (prix unitaire: 115.77€, budget disponible: 35.5300000000003€) [stratégie: moins_cher]
+[30/07/2025 20:54:00] (tick 31) [ERREUR] BuildTech n'a pas pu acheter Acier chez AsieImport : Budget insuffisant pour acheter Acier (prix unitaire: 115.77€, budget disponible: 91.67000000000027€) [stratégie: moins_cher]
+[30/07/2025 20:54:00] (tick 31) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:54:00] (tick 32) [ERREUR] BuildTech n'a pas pu acheter Acier chez AsieImport : Budget insuffisant pour acheter Acier (prix unitaire: 115.77€, budget disponible: 91.67000000000027€) [stratégie: moins_cher]
+[30/07/2025 20:54:00] (tick 32) [ERREUR] BioLogix n'a pas pu acheter Acier chez AsieImport : Budget insuffisant pour acheter Acier (prix unitaire: 115.77€, budget disponible: 35.5300000000003€) [stratégie: moins_cher]
+[30/07/2025 20:54:00] (tick 32) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:54:00] (tick 33) [ERREUR] BioLogix n'a pas pu acheter Acier chez AsieImport : Budget insuffisant pour acheter Acier (prix unitaire: 115.77€, budget disponible: 35.5300000000003€) [stratégie: moins_cher]
+[30/07/2025 20:54:00] (tick 33) [ERREUR] BuildTech n'a pas pu acheter Acier chez AsieImport : Budget insuffisant pour acheter Acier (prix unitaire: 115.77€, budget disponible: 91.67000000000027€) [stratégie: moins_cher]
+[30/07/2025 20:54:00] (tick 33) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:54:00] (tick 34) [ERREUR] BioLogix n'a pas pu acheter Acier chez AsieImport : Budget insuffisant pour acheter Acier (prix unitaire: 115.77€, budget disponible: 35.5300000000003€) [stratégie: moins_cher]
+[30/07/2025 20:54:00] (tick 34) [ERREUR] BuildTech n'a pas pu acheter Acier chez AsieImport : Budget insuffisant pour acheter Acier (prix unitaire: 115.77€, budget disponible: 91.67000000000027€) [stratégie: moins_cher]
+[30/07/2025 20:54:00] (tick 34) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:54:00] (tick 35) [ERREUR] BioLogix n'a pas pu acheter Acier chez AsieImport : Budget insuffisant pour acheter Acier (prix unitaire: 115.77€, budget disponible: 35.5300000000003€) [stratégie: moins_cher]
+[30/07/2025 20:54:00] (tick 35) [ERREUR] MagaToys n'a pas pu acheter Acier chez AsieImport : Budget insuffisant pour acheter Acier (prix unitaire: 115.77€, budget disponible: 114.05000000000003€) [stratégie: moins_cher]
+[30/07/2025 20:54:00] (tick 35) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:56:03] (tick 1) BioLogix a acheté 7x Aspirateur (consommable) chez NordicTools à 8.86€ (total: 62.02€) [budget restant: 1700.38€] [stratégie: par_type]
+[30/07/2025 20:56:03] (tick 1) BuildTech a acheté 6x Aspirateur (consommable) chez NordicTools à 8.86€ (total: 53.16€) [budget restant: 1622.57€] [stratégie: moins_cher]
+[30/07/2025 20:56:03] (tick 2) BuildTech a acheté 51x Aspirateur (consommable) chez NordicTools à 8.86€ (total: 451.86€) [budget restant: 1170.71€] [stratégie: moins_cher]
+[30/07/2025 20:56:03] (tick 2) BioLogix a acheté 8x Aspirateur (consommable) chez PlancheCompagnie à 24.84€ (total: 198.72€) [budget restant: 1501.66€] [stratégie: par_type]
+[30/07/2025 20:56:03] (tick 3) BuildTech a acheté 30x Aspirateur (consommable) chez NordicTools à 8.86€ (total: 265.80€) [budget restant: 904.91€] [stratégie: moins_cher]
+[30/07/2025 20:56:03] (tick 3) MagaToys a acheté 6x Acier (produit_fini) chez AsieImport à 208.03€ (total: 1248.18€) [budget restant: 85.68€] [stratégie: par_type]
+[30/07/2025 20:56:03] (tick 4) BuildTech a acheté 32x Aspirateur (consommable) chez ElectroPlus à 4.30€ (total: 137.60€) [budget restant: 767.31€] [stratégie: moins_cher]
+[30/07/2025 20:56:04] (tick 5) BuildTech a acheté 9x Aspirateur (consommable) chez NordicTools à 8.86€ (total: 79.74€) [budget restant: 687.57€] [stratégie: moins_cher]
+[30/07/2025 20:56:04] (tick 6) BioLogix a acheté 15x Aspirateur (consommable) chez PlancheCompagnie à 24.84€ (total: 372.60€) [budget restant: 1129.06€] [stratégie: par_type]
+[30/07/2025 20:56:04] (tick 7) BioLogix a acheté 2x Aspirateur (consommable) chez NordicTools à 8.86€ (total: 17.72€) [budget restant: 1111.34€] [stratégie: par_type]
+[30/07/2025 20:56:04] (tick 7) BuildTech a acheté 1x Aspirateur (consommable) chez NordicTools à 8.86€ (total: 8.86€) [budget restant: 678.71€] [stratégie: moins_cher]
+[30/07/2025 20:56:04] (tick 8) BuildTech a acheté 110x Aspirateur (consommable) chez ElectroPlus à 4.30€ (total: 473.00€) [budget restant: 205.71€] [stratégie: moins_cher]
+[30/07/2025 20:56:04] (tick 9) BioLogix a acheté 16x Aspirateur (consommable) chez PlancheCompagnie à 24.84€ (total: 397.44€) [budget restant: 713.90€] [stratégie: par_type]
+[30/07/2025 20:56:04] (tick 10) BuildTech a acheté 29x Aspirateur (consommable) chez ElectroPlus à 4.30€ (total: 124.70€) [budget restant: 81.01€] [stratégie: moins_cher]
+[30/07/2025 20:56:04] (tick 11) BuildTech a acheté 2x Aspirateur (consommable) chez ElectroPlus à 4.30€ (total: 8.60€) [budget restant: 72.41€] [stratégie: moins_cher]
+[30/07/2025 20:56:04] (tick 12) BuildTech a acheté 2x Aspirateur (consommable) chez ElectroPlus à 4.30€ (total: 8.60€) [budget restant: 63.81€] [stratégie: moins_cher]
+[30/07/2025 20:56:04] (tick 13) BuildTech a acheté 3x Aspirateur (consommable) chez ElectroPlus à 4.30€ (total: 12.90€) [budget restant: 50.91€] [stratégie: moins_cher]
+[30/07/2025 20:56:04] (tick 13) BioLogix a acheté 1x Aspirateur (consommable) chez ElectroPlus à 4.30€ (total: 4.30€) [budget restant: 709.60€] [stratégie: par_type]
+[30/07/2025 20:56:05] (tick 14) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:56:05] (tick 15) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:56:05] (tick 16) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:56:05] (tick 17) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:56:05] (tick 18) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:56:05] (tick 19) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:56:05] (tick 20) Aucun achat effectué - Tour vide, on continue.
+[EVENT: RECHARGE_BUDGET] [RECHARGE] MagaToys: +94€ (ancien: 85.68€ → nouveau: 179.68€)
+[EVENT: RECHARGE_BUDGET] [RESUME RECHARGE] 1 entreprises rechargées | Total: +94€ | Moyenne: +94.0€
+[EVENT: REASSORT] [REASSORT] [PRODUITS] 2 produits réapprovisionnés | [QUANTITE] +44 unités total | [FOURNISSEURS] 1 fournisseurs concernés
+[30/07/2025 20:56:05] (tick 21) MagaToys a acheté 2x Acier (produit_fini) chez TechDistrib à 87.73€ (total: 175.46€) [budget restant: 4.22€] [stratégie: par_type]
+[30/07/2025 20:56:05] (tick 22) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:56:05] (tick 23) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:56:06] (tick 24) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:56:06] (tick 25) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:56:06] (tick 26) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:56:06] (tick 27) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:56:06] (tick 28) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:56:06] (tick 29) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:56:06] (tick 30) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:56:06] (tick 31) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:56:06] (tick 32) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:56:07] (tick 33) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:56:07] (tick 34) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 20:56:07] (tick 35) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 21:05:08] (tick 1) BuildTech a acheté 1x Aspirateur (matiere_premiere) chez PlancheCompagnie à 615.15€ (total: 615.15€) [budget restant: 545.77€] [stratégie: par_type]
+[30/07/2025 21:05:08] (tick 1) [ERREUR] MagaToys n'a pas pu acheter Bois chez PlancheCompagnie : Budget insuffisant pour acheter Bois (prix unitaire: 2176.86€, budget disponible: 1410.85€) [stratégie: par_type]
+[30/07/2025 21:05:08] (tick 2) MagaToys a acheté 6x Ours en peluche (produit_fini) chez ElectroPlus à 213.44€ (total: 1280.64€) [budget restant: 130.21€] [stratégie: par_type]
+[30/07/2025 21:05:08] (tick 3) BioLogix a acheté 3x Ours en peluche (produit_fini) chez AsieImport à 171.21€ (total: 513.63€) [budget restant: 884.59€] [stratégie: par_type]
+[30/07/2025 21:05:08] (tick 4) BioLogix a acheté 2x Ours en peluche (produit_fini) chez ElectroPlus à 213.44€ (total: 426.88€) [budget restant: 457.71€] [stratégie: par_type]
+[30/07/2025 21:05:09] (tick 5) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 21:05:09] (tick 6) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 21:05:09] (tick 7) [ERREUR] BioLogix n'a pas pu acheter Bois chez PlancheCompagnie : Budget insuffisant pour acheter Bois (prix unitaire: 2176.86€, budget disponible: 457.71€) [stratégie: par_type]
+[30/07/2025 21:05:09] (tick 7) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 21:05:09] (tick 8) BioLogix a acheté 1x Ours en peluche (produit_fini) chez ElectroPlus à 213.44€ (total: 213.44€) [budget restant: 244.27€] [stratégie: par_type]
+[30/07/2025 21:05:09] (tick 9) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 21:05:09] (tick 10) BioLogix a acheté 1x Ours en peluche (produit_fini) chez ElectroPlus à 213.44€ (total: 213.44€) [budget restant: 30.83€] [stratégie: par_type]
+[30/07/2025 21:05:09] (tick 11) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 21:05:09] (tick 12) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 21:05:09] (tick 13) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 21:05:10] (tick 14) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 21:05:10] (tick 15) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 21:05:10] (tick 16) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 21:05:10] (tick 17) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 21:05:10] (tick 18) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 21:05:10] (tick 19) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 21:05:10] (tick 20) Aucun achat effectué - Tour vide, on continue.
+[EVENT: REASSORT] [REASSORT] [PRODUITS] 1 produits réapprovisionnés | [QUANTITE] +41 unités total | [FOURNISSEURS] 1 fournisseurs concernés
+[30/07/2025 21:05:10] (tick 21) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 21:05:10] (tick 22) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 21:05:10] (tick 23) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 21:05:11] (tick 24) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 21:05:11] (tick 25) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 21:05:11] (tick 26) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 21:05:11] (tick 27) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 21:05:11] (tick 28) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 21:05:11] (tick 29) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 21:05:11] (tick 30) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 21:05:11] (tick 31) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 21:05:11] (tick 32) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 21:05:12] (tick 33) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 21:05:12] (tick 34) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 21:05:12] (tick 35) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 21:08:46] (tick 1) BioLogix a acheté 21x Acier (matiere_premiere) chez TechDistrib à 36.79€ (total: 772.59€) [budget restant: 486.24€] [stratégie: par_type]
+[30/07/2025 21:08:46] (tick 1) MagaToys a acheté 4x Acier (matiere_premiere) chez PlancheCompagnie à 110.27€ (total: 441.08€) [budget restant: 1029.48€] [stratégie: moins_cher]
+[30/07/2025 21:08:47] (tick 2) BioLogix a acheté 2x Planches (consommable) chez AsieImport à 239.24€ (total: 478.48€) [budget restant: 7.76€] [stratégie: par_type]
+[30/07/2025 21:08:47] (tick 2) BuildTech a acheté 12x Acier (matiere_premiere) chez NordicTools à 34.89€ (total: 418.68€) [budget restant: 2246.15€] [stratégie: moins_cher]
+[30/07/2025 21:08:47] (tick 3) BuildTech a acheté 29x Acier (matiere_premiere) chez NordicTools à 34.89€ (total: 1011.81€) [budget restant: 1234.34€] [stratégie: moins_cher]
+[30/07/2025 21:08:47] (tick 4) BuildTech a acheté 23x Acier (matiere_premiere) chez TechDistrib à 36.79€ (total: 846.17€) [budget restant: 388.17€] [stratégie: moins_cher]
+[30/07/2025 21:08:47] (tick 5) MagaToys a acheté 6x Acier (matiere_premiere) chez PlancheCompagnie à 110.27€ (total: 661.62€) [budget restant: 367.86€] [stratégie: moins_cher]
+[30/07/2025 21:08:47] (tick 5) BuildTech a acheté 3x Acier (matiere_premiere) chez PlancheCompagnie à 110.27€ (total: 330.81€) [budget restant: 57.36€] [stratégie: moins_cher]
+[30/07/2025 21:08:47] (tick 6) [ERREUR] BuildTech n'a pas pu acheter Acier chez PlancheCompagnie : Budget insuffisant pour acheter Acier (prix unitaire: 110.27€, budget disponible: 57.36€) [stratégie: moins_cher]
+[30/07/2025 21:08:47] (tick 6) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 21:08:47] (tick 7) [ERREUR] BuildTech n'a pas pu acheter Acier chez PlancheCompagnie : Budget insuffisant pour acheter Acier (prix unitaire: 110.27€, budget disponible: 57.36€) [stratégie: moins_cher]
+[30/07/2025 21:08:47] (tick 7) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 21:08:47] (tick 8) BuildTech a acheté 1x Acier (matiere_premiere) chez TechDistrib à 36.79€ (total: 36.79€) [budget restant: 20.57€] [stratégie: moins_cher]
+[30/07/2025 21:08:47] (tick 9) MagaToys a acheté 1x Acier (matiere_premiere) chez NordicTools à 34.89€ (total: 34.89€) [budget restant: 332.97€] [stratégie: moins_cher]
+[30/07/2025 21:08:47] (tick 10) MagaToys a acheté 1x Acier (matiere_premiere) chez PlancheCompagnie à 110.27€ (total: 110.27€) [budget restant: 222.70€] [stratégie: moins_cher]
+[30/07/2025 21:08:48] (tick 11) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 21:08:48] (tick 12) MagaToys a acheté 3x Acier (matiere_premiere) chez NordicTools à 34.89€ (total: 104.67€) [budget restant: 118.03€] [stratégie: moins_cher]
+[30/07/2025 21:08:48] (tick 13) MagaToys a acheté 2x Acier (matiere_premiere) chez TechDistrib à 36.79€ (total: 73.58€) [budget restant: 44.45€] [stratégie: moins_cher]
+[30/07/2025 21:08:48] (tick 14) MagaToys a acheté 1x Acier (matiere_premiere) chez TechDistrib à 36.79€ (total: 36.79€) [budget restant: 7.66€] [stratégie: moins_cher]
+[30/07/2025 21:08:48] (tick 15) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 21:08:48] (tick 16) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 21:08:48] (tick 17) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 21:08:48] (tick 18) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 21:08:48] (tick 19) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 21:08:49] (tick 20) Aucun achat effectué - Tour vide, on continue.
+[EVENT: REASSORT] [REASSORT] [PRODUITS] 3 produits réapprovisionnés | [QUANTITE] +86 unités total | [FOURNISSEURS] 2 fournisseurs concernés
+[30/07/2025 21:08:49] (tick 21) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 21:08:49] (tick 22) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 21:08:49] (tick 23) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 21:08:49] (tick 24) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 21:08:49] (tick 25) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 21:08:49] (tick 26) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 21:08:49] (tick 27) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 21:08:49] (tick 28) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 21:08:49] (tick 29) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 21:08:50] (tick 30) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 21:08:50] (tick 31) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 21:08:50] (tick 32) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 21:08:50] (tick 33) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 21:08:50] (tick 34) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 21:08:50] (tick 35) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 21:10:54] (tick 1) BuildTech a acheté 3x Ours en peluche (matiere_premiere) chez ElectroPlus à 162.28€ (total: 486.84€) [budget restant: 2488.47€] [stratégie: moins_cher]
+[30/07/2025 21:10:54] (tick 1) BioLogix a acheté 4x Ours en peluche (matiere_premiere) chez AsieImport à 144.78€ (total: 579.12€) [budget restant: 2196.35€] [stratégie: moins_cher]
+[30/07/2025 21:10:55] (tick 2) BioLogix a acheté 9x Ours en peluche (matiere_premiere) chez ElectroPlus à 162.28€ (total: 1460.52€) [budget restant: 735.83€] [stratégie: moins_cher]
+[30/07/2025 21:10:55] (tick 2) BuildTech a acheté 14x Ours en peluche (matiere_premiere) chez AsieImport à 144.78€ (total: 2026.92€) [budget restant: 461.55€] [stratégie: moins_cher]
+[30/07/2025 21:10:55] (tick 3) BuildTech a acheté 2x Ours en peluche (matiere_premiere) chez ElectroPlus à 162.28€ (total: 324.56€) [budget restant: 136.99€] [stratégie: moins_cher]
+[30/07/2025 21:10:55] (tick 3) MagaToys a acheté 10x Ours en peluche (matiere_premiere) chez ElectroPlus à 162.28€ (total: 1622.80€) [budget restant: 82.67€] [stratégie: par_type]
+[30/07/2025 21:10:55] (tick 4) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 21:10:55] (tick 5) BioLogix a acheté 2x Ours en peluche (matiere_premiere) chez ElectroPlus à 162.28€ (total: 324.56€) [budget restant: 411.27€] [stratégie: moins_cher]
+[30/07/2025 21:10:55] (tick 6) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 21:10:55] (tick 7) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 21:10:55] (tick 8) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 21:10:55] (tick 9) BioLogix a acheté 1x Ours en peluche (matiere_premiere) chez AsieImport à 144.78€ (total: 144.78€) [budget restant: 266.49€] [stratégie: moins_cher]
+[30/07/2025 21:10:55] (tick 10) BioLogix a acheté 1x Ours en peluche (matiere_premiere) chez ElectroPlus à 162.28€ (total: 162.28€) [budget restant: 104.21€] [stratégie: moins_cher]
+[30/07/2025 21:10:55] (tick 11) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 21:10:56] (tick 12) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 21:10:56] (tick 13) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 21:10:56] (tick 14) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 21:10:56] (tick 15) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 21:10:56] (tick 16) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 21:10:56] (tick 17) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 21:10:56] (tick 18) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 21:10:56] (tick 19) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 21:10:56] (tick 20) Aucun achat effectué - Tour vide, on continue.
+[EVENT: REASSORT] [REASSORT] [PRODUITS] 1 produits réapprovisionnés | [QUANTITE] +12 unités total | [FOURNISSEURS] 1 fournisseurs concernés
+[30/07/2025 21:10:57] (tick 21) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 21:10:57] (tick 22) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 21:10:57] (tick 23) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 21:10:57] (tick 24) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 21:10:57] (tick 25) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 21:10:57] (tick 26) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 21:10:57] (tick 27) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 21:10:57] (tick 28) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 21:10:57] (tick 29) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 21:10:57] (tick 30) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 21:10:58] (tick 31) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 21:10:58] (tick 32) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 21:10:58] (tick 33) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 21:10:58] (tick 34) Aucun achat effectué - Tour vide, on continue.
+[30/07/2025 21:10:58] (tick 35) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:23:57] (tick 1) BuildTech a acheté 46x Planches (produit_fini) chez PlancheCompagnie à 9.70€ (total: 446.20€) [budget restant: 1156.28€] [stratégie: moins_cher]
+[31/07/2025 12:23:57] (tick 1) BioLogix a acheté 43x Planches (produit_fini) chez PlancheCompagnie à 9.70€ (total: 417.10€) [budget restant: 1119.42€] [stratégie: moins_cher]
+[31/07/2025 12:23:57] (tick 2) MagaToys a acheté 1x Aspirateur (matiere_premiere) chez AsieImport à 439.05€ (total: 439.05€) [budget restant: 849.86€] [stratégie: par_type]
+[31/07/2025 12:23:57] (tick 2) BuildTech a acheté 25x Planches (produit_fini) chez PlancheCompagnie à 9.70€ (total: 242.50€) [budget restant: 913.78€] [stratégie: moins_cher]
+[31/07/2025 12:23:57] (tick 3) BioLogix a acheté 8x Planches (produit_fini) chez PlancheCompagnie à 9.70€ (total: 77.60€) [budget restant: 1041.82€] [stratégie: moins_cher]
+[31/07/2025 12:23:57] (tick 3) MagaToys a acheté 1x Aspirateur (matiere_premiere) chez AsieImport à 439.05€ (total: 439.05€) [budget restant: 410.81€] [stratégie: par_type]
+[31/07/2025 12:23:57] (tick 4) MagaToys a acheté 13x Bois (consommable) chez TechDistrib à 21.20€ (total: 275.60€) [budget restant: 135.21€] [stratégie: par_type]
+[31/07/2025 12:23:57] (tick 4) BuildTech a acheté 42x Planches (produit_fini) chez ElectroPlus à 18.97€ (total: 796.74€) [budget restant: 117.04€] [stratégie: moins_cher]
+[31/07/2025 12:23:57] (tick 5) BuildTech a acheté 1x Planches (produit_fini) chez PlancheCompagnie à 9.70€ (total: 9.70€) [budget restant: 107.34€] [stratégie: moins_cher]
+[31/07/2025 12:23:57] (tick 5) MagaToys a acheté 1x Bois (consommable) chez TechDistrib à 21.20€ (total: 21.20€) [budget restant: 114.01€] [stratégie: par_type]
+[31/07/2025 12:23:57] (tick 6) BioLogix a acheté 24x Planches (produit_fini) chez ElectroPlus à 18.97€ (total: 455.28€) [budget restant: 586.54€] [stratégie: moins_cher]
+[31/07/2025 12:23:57] (tick 6) BuildTech a acheté 1x Planches (produit_fini) chez PlancheCompagnie à 9.70€ (total: 9.70€) [budget restant: 97.64€] [stratégie: moins_cher]
+[31/07/2025 12:23:57] (tick 7) MagaToys a acheté 5x Bois (consommable) chez TechDistrib à 21.20€ (total: 106.00€) [budget restant: 8.01€] [stratégie: par_type]
+[31/07/2025 12:23:57] (tick 7) BioLogix a acheté 26x Bois (consommable) chez TechDistrib à 21.20€ (total: 551.20€) [budget restant: 35.34€] [stratégie: moins_cher]
+[31/07/2025 12:23:58] (tick 8) BioLogix a acheté 1x Bois (consommable) chez TechDistrib à 21.20€ (total: 21.20€) [budget restant: 14.14€] [stratégie: moins_cher]
+[31/07/2025 12:23:58] (tick 8) BuildTech a acheté 3x Bois (consommable) chez TechDistrib à 21.20€ (total: 63.60€) [budget restant: 34.04€] [stratégie: moins_cher]
+[31/07/2025 12:23:58] (tick 9) BuildTech a acheté 1x Bois (consommable) chez TechDistrib à 21.20€ (total: 21.20€) [budget restant: 12.84€] [stratégie: moins_cher]
+[31/07/2025 12:23:58] (tick 10) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:23:58] (tick 11) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:23:58] (tick 12) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:23:58] (tick 13) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:23:58] (tick 14) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:23:58] (tick 15) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:23:58] (tick 16) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:23:58] (tick 17) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:23:59] (tick 18) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:23:59] (tick 19) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:23:59] (tick 20) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:23:59] (tick 21) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:23:59] (tick 22) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:23:59] (tick 23) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:23:59] (tick 24) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:23:59] (tick 25) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:23:59] (tick 26) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:24:00] (tick 27) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:24:00] (tick 28) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:24:00] (tick 29) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:24:00] (tick 30) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:24:00] (tick 31) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:24:00] (tick 32) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:24:00] (tick 33) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:24:00] (tick 34) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:24:00] (tick 35) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:39:46] (tick 1) BuildTech a acheté 25x Aspirateur (produit_fini) chez PlancheCompagnie à 90.80€ (total: 2270.00€) [budget restant: 423.62€] [stratégie: par_type]
+[31/07/2025 12:39:46] (tick 1) MagaToys a acheté 16x Aspirateur (produit_fini) chez PlancheCompagnie à 90.80€ (total: 1452.80€) [budget restant: 647.52€] [stratégie: moins_cher]
+[31/07/2025 12:39:46] (tick 2) BioLogix a acheté 1x Aspirateur (produit_fini) chez PlancheCompagnie à 90.80€ (total: 90.80€) [budget restant: 2318.79€] [stratégie: moins_cher]
+[31/07/2025 12:39:46] (tick 2) MagaToys a acheté 6x Aspirateur (produit_fini) chez NordicTools à 77.76€ (total: 466.56€) [budget restant: 180.96€] [stratégie: moins_cher]
+[31/07/2025 12:39:47] (tick 3) MagaToys a acheté 1x Aspirateur (produit_fini) chez NordicTools à 77.76€ (total: 77.76€) [budget restant: 103.20€] [stratégie: moins_cher]
+[31/07/2025 12:39:47] (tick 3) BuildTech a acheté 1x Acier (produit_fini) chez TechDistrib à 204.60€ (total: 204.60€) [budget restant: 219.02€] [stratégie: par_type]
+[31/07/2025 12:39:47] (tick 4) MagaToys a acheté 1x Aspirateur (produit_fini) chez PlancheCompagnie à 90.80€ (total: 90.80€) [budget restant: 12.40€] [stratégie: moins_cher]
+[31/07/2025 12:39:47] (tick 4) BioLogix a acheté 19x Aspirateur (produit_fini) chez PlancheCompagnie à 90.80€ (total: 1725.20€) [budget restant: 593.59€] [stratégie: moins_cher]
+[31/07/2025 12:39:47] (tick 5) BioLogix a acheté 6x Aspirateur (produit_fini) chez NordicTools à 77.76€ (total: 466.56€) [budget restant: 127.03€] [stratégie: moins_cher]
+[31/07/2025 12:39:47] (tick 5) BuildTech a acheté 1x Aspirateur (produit_fini) chez NordicTools à 77.76€ (total: 77.76€) [budget restant: 141.26€] [stratégie: par_type]
+[31/07/2025 12:39:47] (tick 6) BioLogix a acheté 1x Aspirateur (produit_fini) chez PlancheCompagnie à 90.80€ (total: 90.80€) [budget restant: 36.23€] [stratégie: moins_cher]
+[31/07/2025 12:39:47] (tick 6) BuildTech a acheté 1x Aspirateur (produit_fini) chez PlancheCompagnie à 90.80€ (total: 90.80€) [budget restant: 50.46€] [stratégie: par_type]
+[31/07/2025 12:39:47] (tick 7) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:39:47] (tick 8) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:39:47] (tick 9) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:39:47] (tick 10) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:39:47] (tick 11) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:39:47] (tick 12) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:39:48] (tick 13) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:39:48] (tick 14) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:39:48] (tick 15) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:39:48] (tick 16) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:39:48] (tick 17) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:39:48] (tick 18) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:39:48] (tick 19) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:39:48] (tick 20) Aucun achat effectué - Tour vide, on continue.
+[EVENT: REASSORT] [REASSORT] [PRODUITS] 2 produits réapprovisionnés | [QUANTITE] +46 unités total | [FOURNISSEURS] 1 fournisseurs concernés
+[31/07/2025 12:39:48] (tick 21) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:39:49] (tick 22) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:39:49] (tick 23) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:39:49] (tick 24) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:39:49] (tick 25) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:39:49] (tick 26) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:39:49] (tick 27) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:39:49] (tick 28) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:39:49] (tick 29) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:39:49] (tick 30) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:39:49] (tick 31) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:39:50] (tick 32) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:39:50] (tick 33) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:39:50] (tick 34) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:39:50] (tick 35) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:39:50] (tick 36) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:39:50] (tick 37) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:39:50] (tick 38) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:39:50] (tick 39) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:39:50] (tick 40) Aucun achat effectué - Tour vide, on continue.
+[EVENT: RECHARGE_BUDGET] [RECHARGE] MagaToys: +73€ (ancien: 12.4€ → nouveau: 85.4€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] BuildTech: +59€ (ancien: 50.46€ → nouveau: 109.46000000000001€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] BioLogix: +101€ (ancien: 36.23€ → nouveau: 137.23€)
+[EVENT: RECHARGE_BUDGET] [RESUME RECHARGE] 3 entreprises rechargées | Total: +233€ | Moyenne: +77.67€
+[EVENT: REASSORT] [REASSORT] [PRODUITS] 3 produits réapprovisionnés | [QUANTITE] +70 unités total | [FOURNISSEURS] 3 fournisseurs concernés
+[31/07/2025 12:39:51] (tick 41) BuildTech a acheté 1x Aspirateur (produit_fini) chez NordicTools à 77.76€ (total: 77.76€) [budget restant: 31.70€] [stratégie: par_type]
+[31/07/2025 12:39:51] (tick 41) BioLogix a acheté 1x Aspirateur (produit_fini) chez NordicTools à 77.76€ (total: 77.76€) [budget restant: 59.47€] [stratégie: moins_cher]
+[31/07/2025 12:39:51] (tick 42) [ERREUR] MagaToys n'a pas pu acheter Aspirateur chez PlancheCompagnie : Budget insuffisant pour acheter Aspirateur (prix unitaire: 90.80€, budget disponible: 85.40€) [stratégie: moins_cher]
+[31/07/2025 12:39:51] (tick 42) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:39:51] (tick 43) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:39:51] (tick 44) MagaToys a acheté 1x Aspirateur (produit_fini) chez NordicTools à 77.76€ (total: 77.76€) [budget restant: 7.64€] [stratégie: moins_cher]
+[31/07/2025 12:39:51] (tick 45) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:39:51] (tick 46) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:39:51] (tick 47) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:39:51] (tick 48) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:39:51] (tick 49) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:39:51] (tick 50) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:39:52] (tick 51) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:39:52] (tick 52) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:39:52] (tick 53) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:39:52] (tick 54) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:39:52] (tick 55) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:39:52] (tick 56) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:39:52] (tick 57) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:39:52] (tick 58) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:39:52] (tick 59) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:39:53] (tick 60) Aucun achat effectué - Tour vide, on continue.
+[EVENT: REASSORT] [REASSORT] [PRODUITS] 1 produits réapprovisionnés | [QUANTITE] +48 unités total | [FOURNISSEURS] 1 fournisseurs concernés
+[31/07/2025 12:39:53] (tick 61) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:39:53] (tick 62) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:39:53] (tick 63) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:39:53] (tick 64) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:39:53] (tick 65) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:39:53] (tick 66) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:39:53] (tick 67) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:39:53] (tick 68) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:39:53] (tick 69) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:39:54] (tick 70) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:39:54] (tick 71) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:39:54] (tick 72) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:39:54] (tick 73) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:39:54] (tick 74) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:39:54] (tick 75) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:39:54] (tick 76) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:39:54] (tick 77) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:39:54] (tick 78) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:39:55] (tick 79) Aucun achat effectué - Tour vide, on continue.
+[31/07/2025 12:39:55] (tick 80) Aucun achat effectué - Tour vide, on continue.
+[EVENT: RECHARGE_BUDGET] [RECHARGE] MagaToys: +188€ (ancien: 7.64€ → nouveau: 195.64€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] BuildTech: +63€ (ancien: 31.7€ → nouveau: 94.7€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] BioLogix: +81€ (ancien: 59.47€ → nouveau: 140.47€)
+[EVENT: RECHARGE_BUDGET] [RESUME RECHARGE] 3 entreprises rechargées | Total: +332€ | Moyenne: +110.67€
+[EVENT: REASSORT] [REASSORT] [PRODUITS] 1 produits réapprovisionnés | [QUANTITE] +15 unités total | [FOURNISSEURS] 1 fournisseurs concernés
+BuildTech achète 41 produits (28.82€ prix unitaire Planches) chez le fournisseur TechDistrib pour 1181.62€ (budget restant entreprise: 966.94€)
+Aucun achat effectué ce tick
+BuildTech achète 2 produits (28.82€ prix unitaire Planches) chez le fournisseur TechDistrib pour 57.64€ (budget restant entreprise: 909.30€)
+BuildTech achète 2 produits (28.82€ prix unitaire Planches) chez le fournisseur TechDistrib pour 57.64€ (budget restant entreprise: 851.66€)
+BuildTech achète 20 produits (28.82€ prix unitaire Planches) chez le fournisseur TechDistrib pour 576.40€ (budget restant entreprise: 275.26€)
+BuildTech achète 7 produits (28.82€ prix unitaire Planches) chez le fournisseur TechDistrib pour 201.74€ (budget restant entreprise: 73.52€)
+BuildTech achète 1 produits (28.82€ prix unitaire Planches) chez le fournisseur TechDistrib pour 28.82€ (budget restant entreprise: 44.70€)
+BuildTech achète 1 produits (28.82€ prix unitaire Planches) chez le fournisseur TechDistrib pour 28.82€ (budget restant entreprise: 15.88€)
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+[EVENT: RECHARGE_BUDGET] [RECHARGE] BuildTech: +53€ (ancien: 15.88€ → nouveau: 68.88€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] BioLogix: +53€ (ancien: 2839.39€ → nouveau: 2892.39€)
+[EVENT: RECHARGE_BUDGET] [RESUME RECHARGE] 2 entreprises rechargées | Total: +106€ | Moyenne: +53.0€
+BuildTech achète 1 produits (28.82€ prix unitaire Planches) chez le fournisseur TechDistrib pour 28.82€ (budget restant entreprise: 40.06€)
+BuildTech achète 1 produits (28.82€ prix unitaire Planches) chez le fournisseur TechDistrib pour 28.82€ (budget restant entreprise: 11.24€)
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+[EVENT: RECHARGE_BUDGET] [RECHARGE] MagaToys: +155€ (ancien: 2980.56€ → nouveau: 3135.56€)
+[EVENT: RECHARGE_BUDGET] [RESUME RECHARGE] 1 entreprises rechargées | Total: +155€ | Moyenne: +155.0€
+[EVENT: REASSORT] [REASSORT] [PRODUITS] 1 produits réapprovisionnés | [QUANTITE] +19 unités total | [FOURNISSEURS] 1 fournisseurs concernés
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+[EVENT: RECHARGE_BUDGET] [RECHARGE] MagaToys: +158€ (ancien: 3135.56€ → nouveau: 3293.56€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] BuildTech: +152€ (ancien: 11.24€ → nouveau: 163.24€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] BioLogix: +170€ (ancien: 2892.39€ → nouveau: 3062.39€)
+[EVENT: RECHARGE_BUDGET] [RESUME RECHARGE] 3 entreprises rechargées | Total: +480€ | Moyenne: +160.0€
+BuildTech achète 2 produits (28.82€ prix unitaire Planches) chez le fournisseur TechDistrib pour 57.64€ (budget restant entreprise: 105.60€)
+Aucun achat effectué ce tick
+BuildTech achète 2 produits (28.82€ prix unitaire Planches) chez le fournisseur TechDistrib pour 57.64€ (budget restant entreprise: 47.96€)
+BuildTech achète 1 produits (28.82€ prix unitaire Planches) chez le fournisseur TechDistrib pour 28.82€ (budget restant entreprise: 19.14€)
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+[EVENT: RECHARGE_BUDGET] [RECHARGE] MagaToys: +199€ (ancien: 3293.56€ → nouveau: 3492.56€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] BuildTech: +51€ (ancien: 19.14€ → nouveau: 70.14€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] BioLogix: +198€ (ancien: 3062.39€ → nouveau: 3260.39€)
+[EVENT: RECHARGE_BUDGET] [RESUME RECHARGE] 3 entreprises rechargées | Total: +448€ | Moyenne: +149.33€
+BioLogix achète 32 produits (49.95€ prix unitaire Bois) chez le fournisseur AsieImport pour 1598.40€ (budget restant entreprise: 669.31€)
+MagaToys achète 7 produits (49.95€ prix unitaire Bois) chez le fournisseur AsieImport pour 349.65€ (budget restant entreprise: 1484.53€)
+MagaToys achète 1 produits (49.95€ prix unitaire Bois) chez le fournisseur AsieImport pour 49.95€ (budget restant entreprise: 1434.58€)
+BioLogix achète 10 produits (49.95€ prix unitaire Bois) chez le fournisseur AsieImport pour 499.50€ (budget restant entreprise: 169.81€)
+BuildTech achète 11 produits (105.27€ prix unitaire Acier) chez le fournisseur PlancheCompagnie pour 1157.97€ (budget restant entreprise: 666.90€)
+MagaToys achète 11 produits (49.95€ prix unitaire Bois) chez le fournisseur AsieImport pour 549.45€ (budget restant entreprise: 885.13€)
+BioLogix achète 2 produits (49.95€ prix unitaire Bois) chez le fournisseur AsieImport pour 99.90€ (budget restant entreprise: 69.91€)
+MagaToys achète 5 produits (49.95€ prix unitaire Bois) chez le fournisseur AsieImport pour 249.75€ (budget restant entreprise: 635.38€)
+BioLogix achète 1 produits (49.95€ prix unitaire Bois) chez le fournisseur AsieImport pour 49.95€ (budget restant entreprise: 19.96€)
+MagaToys achète 2 produits (167.16€ prix unitaire Acier) chez le fournisseur NordicTools pour 334.32€ (budget restant entreprise: 301.06€)
+MagaToys achète 1 produits (167.16€ prix unitaire Acier) chez le fournisseur NordicTools pour 167.16€ (budget restant entreprise: 133.90€)
+BuildTech achète 2 produits (167.16€ prix unitaire Acier) chez le fournisseur NordicTools pour 334.32€ (budget restant entreprise: 332.58€)
+MagaToys ne peut pas acheter 1 Acier (167.16€ prix unitaire Acier) pour un total de 167.16€ car budget insuffisant (budget entreprise: 133.90€)
+BuildTech achète 3 produits (105.27€ prix unitaire Acier) chez le fournisseur PlancheCompagnie pour 315.81€ (budget restant entreprise: 16.77€)
+MagaToys achète 1 produits (49.95€ prix unitaire Bois) chez le fournisseur AsieImport pour 49.95€ (budget restant entreprise: 83.95€)
+MagaToys ne peut pas acheter 1 Acier (105.27€ prix unitaire Acier) pour un total de 105.27€ car budget insuffisant (budget entreprise: 83.95€)
+Aucun achat effectué ce tick
+MagaToys ne peut pas acheter 1 Acier (167.16€ prix unitaire Acier) pour un total de 167.16€ car budget insuffisant (budget entreprise: 83.95€)
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+MagaToys ne peut pas acheter 1 Acier (167.16€ prix unitaire Acier) pour un total de 167.16€ car budget insuffisant (budget entreprise: 83.95€)
+Aucun achat effectué ce tick
+MagaToys ne peut pas acheter 1 Acier (105.27€ prix unitaire Acier) pour un total de 105.27€ car budget insuffisant (budget entreprise: 83.95€)
+Aucun achat effectué ce tick
+MagaToys ne peut pas acheter 1 Acier (167.16€ prix unitaire Acier) pour un total de 167.16€ car budget insuffisant (budget entreprise: 83.95€)
+Aucun achat effectué ce tick
+MagaToys ne peut pas acheter 1 Acier (105.27€ prix unitaire Acier) pour un total de 105.27€ car budget insuffisant (budget entreprise: 83.95€)
+Aucun achat effectué ce tick
+MagaToys achète 1 produits (72.04€ prix unitaire Acier) chez le fournisseur ElectroPlus pour 72.04€ (budget restant entreprise: 11.91€)
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+[EVENT: RECHARGE_BUDGET] [RECHARGE] MagaToys: +71€ (ancien: 11.91€ → nouveau: 82.91€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] BuildTech: +96€ (ancien: 16.77€ → nouveau: 112.77€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] BioLogix: +191€ (ancien: 19.96€ → nouveau: 210.96€)
+[EVENT: RECHARGE_BUDGET] [RESUME RECHARGE] 3 entreprises rechargées | Total: +358€ | Moyenne: +119.33€
+[EVENT: VARIATION_DISPONIBILITE] [VARIATION] [DESACTIVE] 1 désactivés (Aspirateur) | [REACTIVE] 3 réactivés (Table, Lampe, Câble USB) | Total modifié: 4 produits
+BioLogix achète 2 produits (72.04€ prix unitaire Acier) chez le fournisseur ElectroPlus pour 144.08€ (budget restant entreprise: 66.88€)
+BuildTech achète 1 produits (105.27€ prix unitaire Acier) chez le fournisseur PlancheCompagnie pour 105.27€ (budget restant entreprise: 7.50€)
+MagaToys ne peut pas acheter 1 Acier (105.27€ prix unitaire Acier) pour un total de 105.27€ car budget insuffisant (budget entreprise: 82.91€)
+Aucun achat effectué ce tick
+MagaToys achète 1 produits (72.04€ prix unitaire Acier) chez le fournisseur ElectroPlus pour 72.04€ (budget restant entreprise: 10.87€)
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+[EVENT: RECHARGE_BUDGET] [RECHARGE] MagaToys: +182€ (ancien: 10.87€ → nouveau: 192.87€)
+[EVENT: RECHARGE_BUDGET] [RESUME RECHARGE] 1 entreprises rechargées | Total: +182€ | Moyenne: +182.0€
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+MagaToys achète 1 produits (105.27€ prix unitaire Acier) chez le fournisseur PlancheCompagnie pour 105.27€ (budget restant entreprise: 87.60€)
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+MagaToys ne peut pas acheter 1 Acier (167.16€ prix unitaire Acier) pour un total de 167.16€ car budget insuffisant (budget entreprise: 87.60€)
+Aucun achat effectué ce tick
+MagaToys achète 1 produits (72.04€ prix unitaire Acier) chez le fournisseur ElectroPlus pour 72.04€ (budget restant entreprise: 15.56€)
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+[EVENT: RECHARGE_BUDGET] [RECHARGE] BuildTech: +88€ (ancien: 7.5€ → nouveau: 95.5€)
+[EVENT: RECHARGE_BUDGET] [RESUME RECHARGE] 1 entreprises rechargées | Total: +88€ | Moyenne: +88.0€
+BuildTech ne peut pas acheter 1 Acier (105.27€ prix unitaire Acier) pour un total de 105.27€ car budget insuffisant (budget entreprise: 95.50€)
+Aucun achat effectué ce tick
+BuildTech achète 1 produits (72.04€ prix unitaire Acier) chez le fournisseur ElectroPlus pour 72.04€ (budget restant entreprise: 23.46€)
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+BioLogix achète 145 produits (12.08€ prix unitaire Bois) chez le fournisseur AsieImport pour 1751.60€ (budget restant entreprise: 1233.92€)
+MagaToys achète 3 produits (12.08€ prix unitaire Bois) chez le fournisseur AsieImport pour 36.24€ (budget restant entreprise: 1763.41€)
+MagaToys achète 4 produits (12.08€ prix unitaire Bois) chez le fournisseur AsieImport pour 48.32€ (budget restant entreprise: 1715.09€)
+BioLogix achète 1 produits (12.08€ prix unitaire Bois) chez le fournisseur AsieImport pour 12.08€ (budget restant entreprise: 1221.84€)
+MagaToys achète 16 produits (10.42€ prix unitaire Bois) chez le fournisseur NordicTools pour 166.72€ (budget restant entreprise: 1548.37€)
+BuildTech achète 32 produits (10.42€ prix unitaire Bois) chez le fournisseur NordicTools pour 333.44€ (budget restant entreprise: 1681.86€)
+BioLogix achète 42 produits (10.42€ prix unitaire Bois) chez le fournisseur NordicTools pour 437.64€ (budget restant entreprise: 784.20€)
+BuildTech achète 32 produits (44.12€ prix unitaire Ours en peluche) chez le fournisseur NordicTools pour 1411.84€ (budget restant entreprise: 270.02€)
+MagaToys achète 75 produits (10.42€ prix unitaire Bois) chez le fournisseur NordicTools pour 781.50€ (budget restant entreprise: 766.87€)
+BioLogix achète 7 produits (10.42€ prix unitaire Bois) chez le fournisseur NordicTools pour 72.94€ (budget restant entreprise: 711.26€)
+BuildTech achète 1 produits (10.42€ prix unitaire Bois) chez le fournisseur NordicTools pour 10.42€ (budget restant entreprise: 259.60€)
+MagaToys achète 1 produits (10.42€ prix unitaire Bois) chez le fournisseur NordicTools pour 10.42€ (budget restant entreprise: 756.45€)
+MagaToys achète 6 produits (78.07€ prix unitaire Ours en peluche) chez le fournisseur ElectroPlus pour 468.42€ (budget restant entreprise: 288.03€)
+BuildTech achète 3 produits (44.12€ prix unitaire Ours en peluche) chez le fournisseur NordicTools pour 132.36€ (budget restant entreprise: 127.24€)
+BuildTech achète 1 produits (44.12€ prix unitaire Ours en peluche) chez le fournisseur NordicTools pour 44.12€ (budget restant entreprise: 83.12€)
+BioLogix achète 15 produits (44.12€ prix unitaire Ours en peluche) chez le fournisseur NordicTools pour 661.80€ (budget restant entreprise: 49.46€)
+MagaToys achète 4 produits (44.12€ prix unitaire Ours en peluche) chez le fournisseur NordicTools pour 176.48€ (budget restant entreprise: 111.55€)
+BuildTech achète 1 produits (44.12€ prix unitaire Ours en peluche) chez le fournisseur NordicTools pour 44.12€ (budget restant entreprise: 39.00€)
+BioLogix ne peut pas acheter 1 Ours en peluche (78.07€ prix unitaire Ours en peluche) pour un total de 78.07€ car budget insuffisant (budget entreprise: 49.46€)
+Aucun achat effectué ce tick
+MagaToys achète 1 produits (78.07€ prix unitaire Ours en peluche) chez le fournisseur ElectroPlus pour 78.07€ (budget restant entreprise: 33.48€)
+BioLogix achète 1 produits (44.12€ prix unitaire Ours en peluche) chez le fournisseur NordicTools pour 44.12€ (budget restant entreprise: 5.34€)
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+[EVENT: RECHARGE_BUDGET] [RECHARGE] BuildTech: +198€ (ancien: 39.0€ → nouveau: 237.0€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] BioLogix: +93€ (ancien: 5.34€ → nouveau: 98.34€)
+[EVENT: RECHARGE_BUDGET] [RESUME RECHARGE] 2 entreprises rechargées | Total: +291€ | Moyenne: +145.5€
+[EVENT: REASSORT] [REASSORT] [PRODUITS] 3 produits réapprovisionnés | [QUANTITE] +94 unités total | [FOURNISSEURS] 3 fournisseurs concernés
+BuildTech achète 3 produits (44.12€ prix unitaire Ours en peluche) chez le fournisseur NordicTools pour 132.36€ (budget restant entreprise: 104.64€)
+MagaToys achète 1 produits (10.42€ prix unitaire Bois) chez le fournisseur NordicTools pour 10.42€ (budget restant entreprise: 23.06€)
+BioLogix achète 5 produits (10.42€ prix unitaire Bois) chez le fournisseur NordicTools pour 52.10€ (budget restant entreprise: 46.24€)
+MagaToys achète 2 produits (10.42€ prix unitaire Bois) chez le fournisseur NordicTools pour 20.84€ (budget restant entreprise: 2.22€)
+BioLogix achète 1 produits (10.42€ prix unitaire Bois) chez le fournisseur NordicTools pour 10.42€ (budget restant entreprise: 35.82€)
+BioLogix achète 1 produits (10.42€ prix unitaire Bois) chez le fournisseur NordicTools pour 10.42€ (budget restant entreprise: 25.40€)
+BuildTech achète 2 produits (10.42€ prix unitaire Bois) chez le fournisseur NordicTools pour 20.84€ (budget restant entreprise: 83.80€)
+BuildTech achète 1 produits (44.12€ prix unitaire Ours en peluche) chez le fournisseur NordicTools pour 44.12€ (budget restant entreprise: 39.68€)
+BioLogix achète 1 produits (10.42€ prix unitaire Bois) chez le fournisseur NordicTools pour 10.42€ (budget restant entreprise: 14.98€)
+BioLogix achète 1 produits (10.42€ prix unitaire Bois) chez le fournisseur NordicTools pour 10.42€ (budget restant entreprise: 4.56€)
+BuildTech achète 2 produits (10.42€ prix unitaire Bois) chez le fournisseur NordicTools pour 20.84€ (budget restant entreprise: 18.84€)
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+[EVENT: INFLATION] [INFLATION] Produit ciblé : Bois - 2 prix modifiés | Min: +40.0% | Max: +61.0% | Moy: +50.5%
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+[EVENT: INFLATION] [INFLATION] Catégorie ciblée : matiere_premiere - 4 prix modifiés | Min: +40.0% | Max: +61.0% | Moy: +55.8%
+MagaToys achète 4 produits (16.65€ prix unitaire Aspirateur) chez le fournisseur PlancheCompagnie pour 66.60€ (budget restant entreprise: 2489.96€)
+BuildTech achète 10 produits (226.90€ prix unitaire Planches) chez le fournisseur NordicTools pour 2269.00€ (budget restant entreprise: 601.76€)
+BioLogix achète 42 produits (16.65€ prix unitaire Aspirateur) chez le fournisseur PlancheCompagnie pour 699.30€ (budget restant entreprise: 580.02€)
+MagaToys achète 73 produits (16.65€ prix unitaire Aspirateur) chez le fournisseur PlancheCompagnie pour 1215.45€ (budget restant entreprise: 1274.51€)
+BuildTech achète 1 produits (226.90€ prix unitaire Planches) chez le fournisseur NordicTools pour 226.90€ (budget restant entreprise: 374.86€)
+MagaToys achète 5 produits (138.38€ prix unitaire Acier) chez le fournisseur PlancheCompagnie pour 691.90€ (budget restant entreprise: 582.61€)
+MagaToys achète 2 produits (178.39€ prix unitaire Ours en peluche) chez le fournisseur ElectroPlus pour 356.78€ (budget restant entreprise: 225.83€)
+BuildTech achète 1 produits (226.90€ prix unitaire Planches) chez le fournisseur NordicTools pour 226.90€ (budget restant entreprise: 147.96€)
+MagaToys achète 11 produits (16.65€ prix unitaire Aspirateur) chez le fournisseur PlancheCompagnie pour 183.15€ (budget restant entreprise: 42.68€)
+BioLogix achète 1 produits (16.65€ prix unitaire Aspirateur) chez le fournisseur PlancheCompagnie pour 16.65€ (budget restant entreprise: 563.37€)
+Aucun achat effectué ce tick
+BioLogix achète 2 produits (120.51€ prix unitaire Acier) chez le fournisseur AsieImport pour 241.02€ (budget restant entreprise: 322.35€)
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+BioLogix achète 1 produits (138.38€ prix unitaire Acier) chez le fournisseur PlancheCompagnie pour 138.38€ (budget restant entreprise: 183.97€)
+BioLogix ne peut pas acheter 1 Acier (468.48€ prix unitaire Acier) pour un total de 468.48€ car budget insuffisant (budget entreprise: 183.97€)
+Aucun achat effectué ce tick
+BioLogix achète 1 produits (138.38€ prix unitaire Acier) chez le fournisseur PlancheCompagnie pour 138.38€ (budget restant entreprise: 45.59€)
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+[EVENT: RECHARGE_BUDGET] [RECHARGE] MagaToys: +78€ (ancien: 42.68€ → nouveau: 120.68€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] BioLogix: +131€ (ancien: 45.59€ → nouveau: 176.59€)
+[EVENT: RECHARGE_BUDGET] [RESUME RECHARGE] 2 entreprises rechargées | Total: +209€ | Moyenne: +104.5€
+BioLogix ne peut pas acheter 1 Acier (468.48€ prix unitaire Acier) pour un total de 468.48€ car budget insuffisant (budget entreprise: 176.59€)
+Aucun achat effectué ce tick
+MagaToys ne peut pas acheter 1 Acier (138.38€ prix unitaire Acier) pour un total de 138.38€ car budget insuffisant (budget entreprise: 120.68€)
+Aucun achat effectué ce tick
+BioLogix ne peut pas acheter 1 Acier (468.48€ prix unitaire Acier) pour un total de 468.48€ car budget insuffisant (budget entreprise: 176.59€)
+MagaToys achète 1 produits (120.51€ prix unitaire Acier) chez le fournisseur AsieImport pour 120.51€ (budget restant entreprise: 0.17€)
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+BioLogix ne peut pas acheter 1 Acier (468.48€ prix unitaire Acier) pour un total de 468.48€ car budget insuffisant (budget entreprise: 176.59€)
+Aucun achat effectué ce tick
+BioLogix achète 1 produits (120.51€ prix unitaire Acier) chez le fournisseur AsieImport pour 120.51€ (budget restant entreprise: 56.08€)
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+[EVENT: RECHARGE_BUDGET] [RECHARGE] MagaToys: +71€ (ancien: 0.17€ → nouveau: 71.17€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] BuildTech: +86€ (ancien: 147.96€ → nouveau: 233.96€)
+[EVENT: RECHARGE_BUDGET] [RESUME RECHARGE] 2 entreprises rechargées | Total: +157€ | Moyenne: +78.5€
+Aucun achat effectué ce tick
+BuildTech ne peut pas acheter 1 Planches (276.00€ prix unitaire Planches) pour un total de 276.00€ car budget insuffisant (budget entreprise: 233.96€)
+Aucun achat effectué ce tick
+BuildTech achète 1 produits (226.90€ prix unitaire Planches) chez le fournisseur NordicTools pour 226.90€ (budget restant entreprise: 7.06€)
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+[EVENT: VARIATION_DISPONIBILITE] [VARIATION] [DESACTIVE] 1 désactivés (Planches) | [REACTIVE] 3 réactivés (Planches, Moniteur, Écouteurs) | Total modifié: 4 produits
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+MagaToys achète 21 produits (75.23€ prix unitaire Planches) chez le fournisseur TechDistrib pour 1579.83€ (budget restant entreprise: 171.49€)
+MagaToys achète 3 produits (56.52€ prix unitaire Planches) chez le fournisseur PlancheCompagnie pour 169.56€ (budget restant entreprise: 1.93€)
+BuildTech achète 1 produits (357.62€ prix unitaire Ours en peluche) chez le fournisseur AsieImport pour 357.62€ (budget restant entreprise: 2393.19€)
+Aucun achat effectué ce tick
+BioLogix achète 13 produits (56.52€ prix unitaire Planches) chez le fournisseur PlancheCompagnie pour 734.76€ (budget restant entreprise: 1880.56€)
+Aucun achat effectué ce tick
+BioLogix achète 3 produits (75.23€ prix unitaire Planches) chez le fournisseur TechDistrib pour 225.69€ (budget restant entreprise: 1654.87€)
+BioLogix achète 27 produits (56.52€ prix unitaire Planches) chez le fournisseur PlancheCompagnie pour 1526.04€ (budget restant entreprise: 128.83€)
+Aucun achat effectué ce tick
+BuildTech achète 2 produits (821.28€ prix unitaire Ours en peluche) chez le fournisseur PlancheCompagnie pour 1642.56€ (budget restant entreprise: 750.63€)
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+BioLogix achète 2 produits (56.52€ prix unitaire Planches) chez le fournisseur PlancheCompagnie pour 113.04€ (budget restant entreprise: 15.79€)
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+[EVENT: RECHARGE_BUDGET] [RECHARGE] MagaToys: +221€ (ancien: 1.93€ → nouveau: 222.93€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] BuildTech: +313€ (ancien: 750.63€ → nouveau: 1063.63€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] BioLogix: +447€ (ancien: 15.79€ → nouveau: 462.79€)
+[EVENT: RECHARGE_BUDGET] [RESUME RECHARGE] 3 entreprises rechargées | Total: +981€ | Moyenne: +327.0€
+[EVENT: INFLATION] [INFLATION] Catégorie ciblée : produit_fini - 5 prix modifiés | Min: +40.0% | Max: +61.0% | Moy: +48.4%
+BioLogix achète 390 produits (13.52€ prix unitaire Aspirateur) chez le fournisseur Fournisseur_7 pour 5272.80€ (budget restant entreprise: 2888.75€)
+Entreprise_4 achète 136 produits (39.67€ prix unitaire Bois) chez le fournisseur AsieImport pour 5395.12€ (budget restant entreprise: 2434.88€)
+MagaToys achète 260 produits (29.15€ prix unitaire Aspirateur) chez le fournisseur ElectroPlus pour 7579.00€ (budget restant entreprise: 587.99€)
+BioLogix achète 88 produits (15.08€ prix unitaire Aspirateur) chez le fournisseur Fournisseur_12 pour 1327.04€ (budget restant entreprise: 1561.71€)
+Entreprise_4 achète 57 produits (24.83€ prix unitaire Bois) chez le fournisseur Fournisseur_8 pour 1415.31€ (budget restant entreprise: 1019.57€)
+BuildTech achète 116 produits (37.16€ prix unitaire Planches) chez le fournisseur Fournisseur_8 pour 4310.56€ (budget restant entreprise: 4330.63€)
+BuildTech achète 33 produits (41.43€ prix unitaire Lampe) chez le fournisseur Fournisseur_15 pour 1367.19€ (budget restant entreprise: 2963.44€)
+BioLogix achète 41 produits (20.30€ prix unitaire Acier) chez le fournisseur Fournisseur_10 pour 832.30€ (budget restant entreprise: 729.41€)
+Entreprise_4 achète 55 produits (12.64€ prix unitaire Bois) chez le fournisseur Fournisseur_12 pour 695.20€ (budget restant entreprise: 324.37€)
+MagaToys achète 14 produits (29.15€ prix unitaire Aspirateur) chez le fournisseur ElectroPlus pour 408.10€ (budget restant entreprise: 179.89€)
+BuildTech achète 5 produits (17.78€ prix unitaire Planches) chez le fournisseur Fournisseur_7 pour 88.90€ (budget restant entreprise: 2874.54€)
+Entreprise_4 achète 12 produits (18.73€ prix unitaire Bois) chez le fournisseur Fournisseur_14 pour 224.76€ (budget restant entreprise: 99.61€)
+MagaToys achète 2 produits (29.93€ prix unitaire Lampe) chez le fournisseur Fournisseur_13 pour 59.86€ (budget restant entreprise: 120.03€)
+BioLogix achète 24 produits (20.30€ prix unitaire Acier) chez le fournisseur Fournisseur_10 pour 487.20€ (budget restant entreprise: 242.21€)
+Entreprise_4 achète 2 produits (25.73€ prix unitaire Bois) chez le fournisseur NordicTools pour 51.46€ (budget restant entreprise: 48.15€)
+Entreprise_4 achète 1 produits (12.57€ prix unitaire Bois) chez le fournisseur Fournisseur_10 pour 12.57€ (budget restant entreprise: 35.58€)
+Aucun achat effectué ce tick
+Entreprise_4 achète 1 produits (25.73€ prix unitaire Bois) chez le fournisseur NordicTools pour 25.73€ (budget restant entreprise: 9.85€)
+Aucun achat effectué ce tick
+BuildTech achète 5 produits (40.81€ prix unitaire Planches) chez le fournisseur TechDistrib pour 204.05€ (budget restant entreprise: 2670.49€)
+MagaToys achète 4 produits (13.52€ prix unitaire Aspirateur) chez le fournisseur Fournisseur_7 pour 54.08€ (budget restant entreprise: 65.95€)
+BioLogix achète 10 produits (18.99€ prix unitaire Aspirateur) chez le fournisseur Fournisseur_10 pour 189.90€ (budget restant entreprise: 52.31€)
+Aucun achat effectué ce tick
+MagaToys achète 1 produits (39.62€ prix unitaire Acier) chez le fournisseur ElectroPlus pour 39.62€ (budget restant entreprise: 26.33€)
+BioLogix achète 1 produits (29.15€ prix unitaire Aspirateur) chez le fournisseur ElectroPlus pour 29.15€ (budget restant entreprise: 23.16€)
+MagaToys achète 1 produits (21.05€ prix unitaire Ours en peluche) chez le fournisseur PlancheCompagnie pour 21.05€ (budget restant entreprise: 5.28€)
+BuildTech achète 61 produits (21.59€ prix unitaire Lampe) chez le fournisseur Fournisseur_14 pour 1316.99€ (budget restant entreprise: 1353.50€)
+BuildTech achète 61 produits (17.78€ prix unitaire Planches) chez le fournisseur Fournisseur_7 pour 1084.58€ (budget restant entreprise: 268.92€)
+Aucun achat effectué ce tick
+[EVENT: RECHARGE_BUDGET] [RECHARGE] MagaToys: +465€ (ancien: 5.28€ → nouveau: 470.28€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] BioLogix: +600€ (ancien: 23.16€ → nouveau: 623.16€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] Entreprise_4: +219€ (ancien: 9.85€ → nouveau: 228.85€)
+[EVENT: RECHARGE_BUDGET] [RESUME RECHARGE] 3 entreprises rechargées | Total: +1284€ | Moyenne: +428.0€
+[EVENT: REASSORT] [REASSORT] [PRODUITS] 3 produits réapprovisionnés | [QUANTITE] +84 unités total | [FOURNISSEURS] 3 fournisseurs concernés
+[EVENT: INFLATION] [INFLATION] Catégorie ciblée : produit_fini - 31 prix modifiés | Min: +40.0% | Max: +61.0% | Moy: +59.0%
+MagaToys achète 1 produits (49.65€ prix unitaire Acier) chez le fournisseur Fournisseur_8 pour 49.65€ (budget restant entreprise: 420.63€)
+BuildTech achète 2 produits (19.08€ prix unitaire Planches) chez le fournisseur NordicTools pour 38.16€ (budget restant entreprise: 230.76€)
+Aucun achat effectué ce tick
+Entreprise_4 achète 4 produits (25.73€ prix unitaire Bois) chez le fournisseur NordicTools pour 102.92€ (budget restant entreprise: 125.93€)
+BuildTech achète 3 produits (41.43€ prix unitaire Lampe) chez le fournisseur Fournisseur_15 pour 124.29€ (budget restant entreprise: 106.47€)
+Aucun achat effectué ce tick
+Entreprise_4 ne peut pas acheter Bois chez Fournisseur_15 : pas de prix défini
+Aucun achat effectué ce tick
+MagaToys achète 17 produits (24.28€ prix unitaire Aspirateur) chez le fournisseur Fournisseur_12 pour 412.76€ (budget restant entreprise: 7.87€)
+BioLogix ne peut pas acheter Bois chez Fournisseur_15 : pas de prix défini
+BuildTech achète 1 produits (49.07€ prix unitaire Planches) chez le fournisseur Fournisseur_15 pour 49.07€ (budget restant entreprise: 57.40€)
+Entreprise_4 achète 3 produits (39.67€ prix unitaire Bois) chez le fournisseur AsieImport pour 119.01€ (budget restant entreprise: 6.92€)
+BioLogix achète 13 produits (12.57€ prix unitaire Bois) chez le fournisseur Fournisseur_10 pour 163.41€ (budget restant entreprise: 459.75€)
+BuildTech achète 1 produits (29.41€ prix unitaire Planches) chez le fournisseur Fournisseur_6 pour 29.41€ (budget restant entreprise: 27.99€)
+BioLogix achète 14 produits (31.33€ prix unitaire Ours en peluche) chez le fournisseur Fournisseur_7 pour 438.62€ (budget restant entreprise: 21.13€)
+BuildTech ne peut pas acheter 1 Planches (37.16€ prix unitaire Planches) pour un total de 37.16€ car budget insuffisant (budget entreprise: 27.99€)
+BioLogix ne peut pas acheter 1 Bois (25.84€ prix unitaire Bois) pour un total de 25.84€ car budget insuffisant (budget entreprise: 21.13€)
+Aucun achat effectué ce tick
+BuildTech ne peut pas acheter 1 Planches (37.16€ prix unitaire Planches) pour un total de 37.16€ car budget insuffisant (budget entreprise: 27.99€)
+Aucun achat effectué ce tick
+BuildTech achète 1 produits (20.95€ prix unitaire Lampe) chez le fournisseur TechDistrib pour 20.95€ (budget restant entreprise: 7.04€)
+BioLogix ne peut pas acheter 1 Bois (28.09€ prix unitaire Bois) pour un total de 28.09€ car budget insuffisant (budget entreprise: 21.13€)
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+BioLogix ne peut pas acheter Bois chez Fournisseur_15 : pas de prix défini
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+[EVENT: VARIATION_DISPONIBILITE] [VARIATION] [DESACTIVE] 1 désactivés (Aspirateur) | [REACTIVE] 1 réactivés (Aspirateur) | Total modifié: 2 produits
+BioLogix achète 1 produits (12.57€ prix unitaire Bois) chez le fournisseur Fournisseur_10 pour 12.57€ (budget restant entreprise: 8.56€)
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+[EVENT: REASSORT] [REASSORT] [PRODUITS] 3 produits réapprovisionnés | [QUANTITE] +94 unités total | [FOURNISSEURS] 3 fournisseurs concernés
+[EVENT: VARIATION_DISPONIBILITE] [VARIATION] [DESACTIVE] 1 désactivés (Bois) | [REACTIVE] 1 réactivés (Bois) | Total modifié: 2 produits
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+BioLogix achète 57 produits (8.25€ prix unitaire Acier) chez le fournisseur PlancheCompagnie pour 470.25€ (budget restant entreprise: 1599.97€)
+MagaToys achète 37 produits (10.21€ prix unitaire Acier) chez le fournisseur ElectroPlus pour 377.77€ (budget restant entreprise: 1987.85€)
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+BioLogix achète 39 produits (10.21€ prix unitaire Acier) chez le fournisseur ElectroPlus pour 398.19€ (budget restant entreprise: 1201.78€)
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+BioLogix achète 16 produits (8.25€ prix unitaire Acier) chez le fournisseur PlancheCompagnie pour 132.00€ (budget restant entreprise: 1069.78€)
+Aucun achat effectué ce tick
+BioLogix achète 102 produits (8.55€ prix unitaire Acier) chez le fournisseur TechDistrib pour 872.10€ (budget restant entreprise: 197.68€)
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+BioLogix achète 6 produits (8.25€ prix unitaire Acier) chez le fournisseur PlancheCompagnie pour 49.50€ (budget restant entreprise: 148.18€)
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+BioLogix achète 11 produits (8.25€ prix unitaire Acier) chez le fournisseur PlancheCompagnie pour 90.75€ (budget restant entreprise: 57.43€)
+BioLogix achète 2 produits (10.21€ prix unitaire Acier) chez le fournisseur ElectroPlus pour 20.42€ (budget restant entreprise: 37.01€)
+Aucun achat effectué ce tick
+MagaToys achète 18 produits (8.55€ prix unitaire Acier) chez le fournisseur TechDistrib pour 153.90€ (budget restant entreprise: 1833.95€)
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+BioLogix achète 3 produits (10.21€ prix unitaire Acier) chez le fournisseur ElectroPlus pour 30.63€ (budget restant entreprise: 6.38€)
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+MagaToys achète 29 produits (8.25€ prix unitaire Acier) chez le fournisseur PlancheCompagnie pour 239.25€ (budget restant entreprise: 1594.70€)
+MagaToys achète 2 produits (8.55€ prix unitaire Acier) chez le fournisseur TechDistrib pour 17.10€ (budget restant entreprise: 1577.60€)
+Aucun achat effectué ce tick
+MagaToys achète 13 produits (8.55€ prix unitaire Acier) chez le fournisseur TechDistrib pour 111.15€ (budget restant entreprise: 1466.45€)
+MagaToys achète 28 produits (10.21€ prix unitaire Acier) chez le fournisseur ElectroPlus pour 285.88€ (budget restant entreprise: 1180.57€)
+MagaToys achète 7 produits (8.55€ prix unitaire Acier) chez le fournisseur TechDistrib pour 59.85€ (budget restant entreprise: 1120.72€)
+MagaToys achète 20 produits (8.25€ prix unitaire Acier) chez le fournisseur PlancheCompagnie pour 165.00€ (budget restant entreprise: 955.72€)
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+MagaToys achète 4 produits (10.21€ prix unitaire Acier) chez le fournisseur ElectroPlus pour 40.84€ (budget restant entreprise: 914.88€)
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+MagaToys achète 1 produits (10.21€ prix unitaire Acier) chez le fournisseur ElectroPlus pour 10.21€ (budget restant entreprise: 904.67€)
+MagaToys achète 1 produits (10.21€ prix unitaire Acier) chez le fournisseur ElectroPlus pour 10.21€ (budget restant entreprise: 894.46€)
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+MagaToys achète 28 produits (29.25€ prix unitaire Moniteur) chez le fournisseur PlancheCompagnie pour 819.00€ (budget restant entreprise: 75.46€)
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+MagaToys ne peut pas acheter 1 Moniteur (202.60€ prix unitaire Moniteur) pour un total de 202.60€ car budget insuffisant (budget entreprise: 75.46€)
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+[EVENT: REASSORT] [REASSORT] [PRODUITS] 3 produits réapprovisionnés | [QUANTITE] +75 unités total | [FOURNISSEURS] 3 fournisseurs concernés

@@ -1,4 +1,4 @@
-from .models import Produit, TypeProduit, Fournisseur, Entreprise
+from models import Produit, TypeProduit, Fournisseur, Entreprise
 import random
 from typing import List, Dict, Tuple
 # from app.data import fake_produits_db  # LIGNE À SUPPRIMER OU COMMENTER
@@ -22,12 +22,15 @@ types_possibles = [
 
 fake_produits_db: List[Produit] = []
 
+# Nombre de produits actifs au début (entre 3 et 8)
+nb_produits_actifs = random.randint(3, 8)
+
 for i, nom in enumerate(noms_produits):
     produit = Produit(
         id=i + 1,
         nom=nom,
         prix=round(random.uniform(5.0, 500.0), 2),
-        actif=(i < 5),
+        actif=(i < nb_produits_actifs),
         type=random.choice(types_possibles)
     )
     fake_produits_db.append(produit)
@@ -56,7 +59,7 @@ for fid, (nom, pays) in enumerate(noms_fournisseurs, start=1):
         stock = random.randint(10, 200)
         stock_produit[produit.id] = stock
 
-        # Calcul d’un prix fournisseur spécifique
+        # Calcul d'un prix fournisseur spécifique
         prix_base = produit.prix
         facteur = random.uniform(0.9, 1.2) * (100 / (stock + 1))
         prix_fournisseur = round(prix_base * facteur, 2)
@@ -71,6 +74,10 @@ for fid, (nom, pays) in enumerate(noms_fournisseurs, start=1):
 
     fake_fournisseurs_db.append(fournisseur)
 
+# Vérification que tous les prix sont bien définis
+# print(f"DEBUG: {len(prix_par_fournisseur)} prix définis")
+# print(f"DEBUG: Fournisseurs: {len(fake_fournisseurs_db)}")
+# print(f"DEBUG: Produits: {len(fake_produits_db)}")
 
 
 # -------------------------

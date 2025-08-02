@@ -1,15 +1,15 @@
 # app/events/cycle.py
 
 import random
-from app.config import (
+from config import (
     TICK_INTERVAL_EVENT,
     PROBABILITE_EVENEMENT,
 )
-from app.events.recharge_budget import appliquer_recharge_budget
-from app.events.reassort import appliquer_reassort
-from app.events.inflation import appliquer_inflation
-from app.events.variation_disponibilite import appliquer_variation_disponibilite
-from app.utils.logger import log_humain, log_json  # On logue aussi dans simulation + tag [EVENT]
+from events.recharge_budget import appliquer_recharge_budget
+from events.reassort import appliquer_reassort
+from events.inflation import appliquer_inflation
+from events.variation_disponibilite import appliquer_variation_disponibilite
+from utils.logger import log_humain, log_json  # On logue aussi dans simulation + tag [EVENT]
 
 def gerer_evenements(tick: int):
     """
