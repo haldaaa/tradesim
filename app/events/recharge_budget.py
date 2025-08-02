@@ -3,22 +3,45 @@
 """
 Recharge de budget pour les entreprises à intervalles réguliers.
 Ce module est appelé depuis cycle.py tous les X ticks.
+
+Refactorisation (02/08/2025) :
+- Utilise les Repository au lieu d'accès directs aux données
+- Code plus modulaire et testable
+- Interface commune pour CLI et API
 """
 
 import random
-from app.data import fake_entreprises_db
-from app.config import RECHARGE_BUDGET_MIN, RECHARGE_BUDGET_MAX
+from typing import List, Dict, Any
 
-def appliquer_recharge_budget(tick: int) -> list:
+# Imports des Repository (nouvelle architecture)
+from repositories import EntrepriseRepository
+from config import RECHARGE_BUDGET_MIN, RECHARGE_BUDGET_MAX
+
+def appliquer_recharge_budget(tick: int) -> List[Dict[str, Any]]:
     """
     Recharge aléatoirement le budget de certaines entreprises.
-    Retourne une liste de dictionnaires (logs JSON) avec éventuellement une clé "log_humain".
+    
+    Args:
+        tick (int): Numéro du tick actuel
+        
+    Returns:
+        List[Dict[str, Any]]: Liste de logs pour jsonl + log_humain
+        
+    Refactorisation (02/08/2025) :
+    - Utilise EntrepriseRepository au lieu de fake_entreprises_db
+    - Code plus modulaire et testable
     """
+    # Initialiser le Repository
+    entreprise_repo = EntrepriseRepository()
+    
     logs = []
     entreprises_rechargees = []
     total_recharge = 0
 
-    for entreprise in fake_entreprises_db:
+    # Récupérer toutes les entreprises via le Repository
+    entreprises = entreprise_repo.get_all()
+    
+    for entreprise in entreprises:
         # 70% de chance de recharge
         if random.random() < 0.7:
             montant = random.randint(RECHARGE_BUDGET_MIN, RECHARGE_BUDGET_MAX)

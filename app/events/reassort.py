@@ -13,20 +13,42 @@ Fonctionnalités :
 
 Ce module est appelé par cycle.py tous les X ticks selon les règles configurées.
 
+Refactorisation (02/08/2025) :
+- Utilise les Repository au lieu d'accès directs aux données
+- Code plus modulaire et testable
+- Interface commune pour CLI et API
+
 Auteur : Fares & GPT
 """
 
 import random
 from datetime import datetime
-from app.data import fake_produits_db
-from app.events.event_logger import log_evenement_json, log_evenement_humain
-from app.config import REASSORT_QUANTITE_MIN, REASSORT_QUANTITE_MAX
+from typing import List, Dict, Any
 
-def evenement_reassort(tick: int):
+# Imports des Repository (nouvelle architecture)
+from repositories import ProduitRepository, FournisseurRepository
+from events.event_logger import log_evenement_json, log_evenement_humain
+from config import REASSORT_QUANTITE_MIN, REASSORT_QUANTITE_MAX
+
+def evenement_reassort(tick: int) -> List[Dict[str, Any]]:
     """
     Événement de réassort de stock. Réapprovisionne certains produits actifs aléatoirement.
-    Retourne une liste de logs (dictionnaires) pour jsonl + log_humain.
+    
+    Args:
+        tick (int): Numéro du tick actuel
+        
+    Returns:
+        List[Dict[str, Any]]: Liste de logs pour jsonl + log_humain
+        
+    Refactorisation (02/08/2025) :
+    - Utilise ProduitRepository au lieu de fake_produits_db
+    - Utilise FournisseurRepository au lieu de fake_fournisseurs_db
+    - Code plus modulaire et testable
     """
+
+    # Initialiser les Repository
+    produit_repo = ProduitRepository()
+    fournisseur_repo = FournisseurRepository()
 
     horodatage = datetime.utcnow()
     horodatage_iso = horodatage.isoformat()
@@ -34,13 +56,17 @@ def evenement_reassort(tick: int):
 
     produits_concernes = []
 
-    for produit in fake_produits_db:
-        if produit.actif and random.random() < 0.3:  # 30% de chance par produit actif
+    # Récupérer tous les produits actifs via le Repository
+    produits_actifs = produit_repo.get_actifs()
+    
+    for produit in produits_actifs:
+        if random.random() < 0.3:  # 30% de chance par produit actif
             quantite = random.randint(REASSORT_QUANTITE_MIN, REASSORT_QUANTITE_MAX)
-            # Note: Les produits n'ont pas de stock, c'est géré par les fournisseurs
-            # On va plutôt ajouter du stock chez un fournisseur aléatoire
-            from app.data import fake_fournisseurs_db
-            fournisseur = random.choice(fake_fournisseurs_db)
+            
+            # Récupérer tous les fournisseurs via le Repository
+            fournisseurs = fournisseur_repo.get_all()
+            fournisseur = random.choice(fournisseurs)
+            
             if produit.id in fournisseur.stock_produit:
                 fournisseur.stock_produit[produit.id] += quantite
                 stock_apres = fournisseur.stock_produit[produit.id]

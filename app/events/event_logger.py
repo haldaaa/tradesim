@@ -3,7 +3,7 @@
 import json
 import os
 from datetime import datetime
-from app.config import (
+from config import (
     FICHIER_LOG,
     FICHIER_LOG_HUMAIN,
 )

@@ -1,4 +1,4 @@
-from .models import Produit, TypeProduit, Fournisseur, Entreprise
+from models import Produit, TypeProduit, Fournisseur, Entreprise
 import random
 from typing import List, Dict, Tuple
 # from app.data import fake_produits_db  # LIGNE À SUPPRIMER OU COMMENTER
