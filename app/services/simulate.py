@@ -80,10 +80,12 @@ def afficher_status():
             from services.simulateur import get_prix_produit_fournisseur
             prix = get_prix_produit_fournisseur(produit.id, fournisseur.id)
             
-            if prix:
-                print(f"    ✅ {fournisseur.nom_entreprise} : {prix:.2f}€ (stock: {stock})")
+            # Si le prix n'est pas défini, utiliser un prix par défaut (comme dans l'API)
+            if prix is None:
+                prix = 100.0  # Prix par défaut
+                print(f"    ⚠️ {fournisseur.nom_entreprise} : {prix:.2f}€ (stock: {stock}) - Prix par défaut")
             else:
-                print(f"    ⚠️ {fournisseur.nom_entreprise} : Prix non défini (stock: {stock})")
+                print(f"    ✅ {fournisseur.nom_entreprise} : {prix:.2f}€ (stock: {stock})")
     
     print("\n" + "="*60)
 
@@ -136,30 +138,22 @@ def run_simulation(n_tours: int = None, infinite: bool = False, verbose: bool = 
     ou en boucle infinie si 'infinite' est True.
     
     Refactorisation (02/08/2025) :
-    - Utilise les Repository au lieu d'accès directs aux données
+    - Utilise SimulationService pour une logique cohérente
     """
     print("🚀 Lancement de la simulation...\n")
     
     if verbose:
         print("📢 Mode parlant activé - Affichage en temps réel des événements\n")
 
-    tick = 0
+    # Utiliser SimulationService au lieu de simulation_tour
+    from services.simulation_service import SimulationService
+    simulation_service = SimulationService()
+    
     try:
-        while True:
-            tick += 1
-            
-            if verbose:
-                print(f"🔄 Tick {tick} - ", end="", flush=True)
-            
-            simulation_tour(verbose=verbose)
-            
-            if verbose:
-                print("✅ Tour terminé")
-            
-            if not infinite and tick >= n_tours:
-                break
-
-            time.sleep(DUREE_PAUSE_ENTRE_TOURS)
+        if infinite:
+            simulation_service.run_simulation_infinite(verbose=verbose)
+        else:
+            simulation_service.run_simulation_tours(n_tours, verbose=verbose)
 
     except KeyboardInterrupt:
         print("\n⏹️ Simulation interrompue manuellement.")

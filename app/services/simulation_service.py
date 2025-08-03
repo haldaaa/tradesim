@@ -106,7 +106,7 @@ class SimulationService:
         evenements_appliques = []
         
         # Vérifier si un événement doit être appliqué
-        if tick % TICK_INTERVAL_EVENT == 0 and random.random() < PROBABILITE_EVENEMENT:
+        if tick % TICK_INTERVAL_EVENT == 0 and random.random() < 0.5:  # 50% de chance d'événement
             # Choisir un événement aléatoire
             evenements_disponibles = [
                 ("inflation", appliquer_inflation),
@@ -153,18 +153,46 @@ class SimulationService:
             if random.random() < PROBABILITE_SELECTION_ENTREPRISE:
                 entreprises_selectionnees.append(entreprise)
         
-        # Simuler les achats des entreprises sélectionnées
+        # Effectuer les achats des entreprises sélectionnées
         transactions_effectuees = 0
+        from datetime import datetime
+        
         for entreprise in entreprises_selectionnees:
             if verbose:
                 print(f"💰 {entreprise.nom} (Budget: {entreprise.budget:.2f}€)")
             
-            # TODO: Implémenter la logique d'achat
-            # Pour l'instant, on simule juste une transaction
-            transactions_effectuees += 1
+            # Récupérer les produits disponibles pour cette entreprise
+            produits_disponibles = self.get_produits_disponibles_pour_entreprise(entreprise)
             
-            if verbose:
-                print(f"  ✅ Transaction simulée")
+            if produits_disponibles:
+                # Choisir un produit aléatoire
+                produit_choisi = random.choice(produits_disponibles)
+                
+                # Horodatages pour les logs
+                horodatage_iso = datetime.utcnow().isoformat()
+                horodatage_humain = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
+                
+                # Utiliser la vraie logique d'achat de simulateur.py
+                from services.simulateur import acheter_produit
+                succes_achat = acheter_produit(
+                    entreprise=entreprise,
+                    produit=produit_choisi,
+                    horodatage_iso=horodatage_iso,
+                    horodatage_humain=horodatage_humain,
+                    strategie=entreprise.strategie,
+                    verbose=verbose
+                )
+                
+                if succes_achat:
+                    transactions_effectuees += 1
+                    if verbose:
+                        print(f"  ✅ Achat réussi: {produit_choisi.nom}")
+                else:
+                    if verbose:
+                        print(f"  ❌ Achat échoué: {produit_choisi.nom}")
+            else:
+                if verbose:
+                    print(f"  ⚠️ Aucun produit disponible pour {entreprise.nom}")
         
         # Mettre à jour les statistiques
         self.tours_completes += 1
@@ -248,6 +276,44 @@ class SimulationService:
             "statistiques": stats,
             "derniers_evenements": self.evenements_appliques[-10:] if self.evenements_appliques else []
         }
+    
+    def get_produits_disponibles_pour_entreprise(self, entreprise: Entreprise) -> List[Produit]:
+        """
+        Récupère les produits disponibles pour une entreprise.
+        
+        Args:
+            entreprise: L'entreprise qui veut acheter
+            
+        Returns:
+            Liste des produits disponibles
+        """
+        from repositories import ProduitRepository, FournisseurRepository
+        
+        produit_repo = ProduitRepository()
+        fournisseur_repo = FournisseurRepository()
+        
+        # Récupérer tous les produits actifs
+        produits_actifs = produit_repo.get_actifs()
+        
+        # Filtrer les produits disponibles (avec stock chez les fournisseurs)
+        produits_disponibles = []
+        
+        for produit in produits_actifs:
+            # Vérifier si au moins un fournisseur a ce produit en stock
+            fournisseurs_avec_stock = [
+                f for f in fournisseur_repo.get_all()
+                if produit.id in f.stock_produit and f.stock_produit[produit.id] > 0
+            ]
+            
+            if fournisseurs_avec_stock:
+                # Vérifier si l'entreprise peut se le permettre (prix minimum)
+                from services.simulateur import get_prix_minimum
+                prix_min = get_prix_minimum(produit.id)
+                
+                if prix_min is not None and entreprise.budget >= prix_min:
+                    produits_disponibles.append(produit)
+        
+        return produits_disponibles
     
     def afficher_etat(self):
         """Affiche l'état actuel de la simulation"""

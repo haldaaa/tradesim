@@ -213,10 +213,9 @@ def generate_fournisseurs(config_fournisseurs: Dict[str, Any]):
             facteur = random.uniform(0.9, 1.2) * (100 / (stock + 1))
             prix_fournisseur = round(prix_base * facteur, 2)
             
-            # TODO: Migrer vers un service de gestion des prix
-            # Pour l'instant, on utilise une variable globale
-            # from simulateur import set_prix_produit_fournisseur
-            # set_prix_produit_fournisseur(produit.id, fid, prix_fournisseur)
+            # Utilise le service centralisé de gestion des prix
+            from services.price_service import price_service
+            price_service.set_prix_produit_fournisseur(produit.id, fid, prix_fournisseur)
         
         fournisseur = Fournisseur(
             id=fid,

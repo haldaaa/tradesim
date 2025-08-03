@@ -13,6 +13,11 @@ Auteur: Assistant IA
 Date: 2024-08-02
 """
 
+import sys
+import os
+# Ajouter le dossier parent au path Python pour les imports
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
+
 import pytest
 from fastapi.testclient import TestClient
 from api.main import app

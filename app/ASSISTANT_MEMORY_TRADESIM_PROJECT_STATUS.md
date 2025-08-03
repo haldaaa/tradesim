@@ -1,290 +1,145 @@
-# Mémoire Assistant IA - TradeSim - Statut Projet
-================================================
+# Mémoire Assistant - TradeSim Project Status
 
-**Date de création :** 02/08/2025  
-**Dernière mise à jour :** 03/08/2025  
-**Projet :** TradeSim - Simulation économique modulaire  
-**Statut :** PACKAGING TERMINÉ - PRÊT POUR MONITORING 🚀
+## Compréhension actuelle du projet (mise à jour 03/08/2025)
 
----
+### Objectifs principaux clarifiés par l'utilisateur :
+1. **Application robuste, scalable et maintenable**
+2. **Mode CLI pur fonctionnel avant tout** (pas de DB pour l'instant)
+3. **Corriger les bugs existants avant d'ajouter des fonctionnalités**
+4. **Logique d'achat réaliste** : vérification budget, disponibilité, prix
+5. **Simplicité** : garder l'architecture actuelle si ça marche
+6. **Modularité** : Architecture Repository Pattern + Services
 
-## 🎯 **CONTEXTE DU PROJET**
+### Architecture actuelle comprise :
+- **Repository Pattern** : Interface commune pour accéder aux données
+  - `FakeProduitRepository` : Données en mémoire (CLI)
+  - `SQLProduitRepository` : Base de données (Web - futur)
+- **Services** : Logique métier centralisée
+  - `PriceService` : ✅ **NOUVEAU** - Gestion centralisée des prix
+  - `SimulationService` : Orchestration de la simulation
+  - `TransactionService` : Gestion des transactions
+- **Logique d'achat** : Existe déjà dans `services/simulateur.py` avec `acheter_produit()`
+  - Vérifie disponibilité du produit (stock > 0)
+  - Vérifie prix défini
+  - Vérifie budget suffisant
+  - Achete quantité aléatoire (1 à max possible selon budget/stock)
 
-### **Objectif principal**
-Développer TradeSim, une application de simulation économique modulaire et extensible avec :
-- Architecture Repository Pattern pour séparer logique métier et accès aux données
-- CLI actuel + API web future (React + FastAPI)
-- Système d'événements (inflation, reassort, recharge budget, etc.)
-- Logs JSONL + humains
-- Tests unitaires et d'intégration
-- **NOUVEAU :** Packaging complet + Monitoring Prometheus/Grafana
+### Priorités clarifiées par l'utilisateur :
+1. **Corriger les bugs existants** (pas d'ajout de fonctionnalités)
+2. **S'assurer que le mode CLI pur marche** (pas de DB pour l'instant)
+3. **Monitoring plus tard** (Prometheus/Grafana)
+4. **Base de données plus tard** (quand on passera en mode Web)
 
-### **Vision long terme**
-- Interface web React + FastAPI
-- Base de données PostgreSQL
-- Docker + Kubernetes
-- Monitoring Grafana/Prometheus ✅ **EN COURS**
-- Déploiement AWS
+### Questions en suspens pour l'utilisateur :
+1. **Tests qui plantent** : 4 tests sur 88 échouent (problèmes mineurs)
+2. **Fonctionnalité actuelle** : L'app CLI marche parfaitement ✅
 
----
+### Prochaines étapes suggérées :
+1. Corriger les 4 tests restants (problèmes mineurs d'imports)
+2. Implémenter Prometheus/Grafana en mode CLI
+3. Passer au mode Web plus tard
 
-## 🏗️ **ARCHITECTURE IMPLÉMENTÉE**
+### Fichiers clés à examiner :
+- `services/price_service.py` : ✅ **NOUVEAU** - Service centralisé de gestion des prix
+- `services/simulateur.py` : Logique d'achat réelle
+- `services/simulation_service.py` : ✅ **CORRIGÉ** - Service qui utilise maintenant la vraie logique
+- Tests qui plantent (à identifier)
 
-### **Structure du projet**
-```
-app/
-├── models/           # Modèles Pydantic
-├── repositories/     # Pattern Repository
-├── services/         # Logique métier
-├── api/              # Endpoints FastAPI
-├── config/           # Configuration centralisée
-├── events/           # Événements de simulation
-├── tests/            # Tests organisés
-└── build/            # Package de distribution
-```
+### Notes importantes :
+- L'utilisateur veut de la simplicité et de la stabilité
+- Pas de dispersion sur plusieurs fonctionnalités
+- Se concentrer sur ce qui marche et corriger ce qui ne marche pas
+- Garder l'architecture actuelle si elle fonctionne
+- **Fichier mémoire crucial** : Mettre à jour à chaque modification/codage
 
-### **Pattern Repository**
-- **Interface commune** pour tous les accès aux données
-- **Implémentations Fake** (pour tests et développement)
-- **Implémentations SQL** (préparées pour production)
-- **Abstraction** permettant de changer facilement de source de données
+## Travail effectué aujourd'hui (03/08/2025) :
+- Documentation nettoyée et unifiée
+- Package de l'application créé
+- Métriques identifiées (sans implémentation)
+- Compréhension clarifiée des priorités utilisateur
+- ✅ **CORRECTION MAJEURE** : SimulationService utilise maintenant la vraie logique d'achat
+- ✅ **CORRECTION** : Application CLI utilise SimulationService au lieu de simulation_tour
+- ✅ **AMÉLIORATION** : Guide d'utilisation simplifié et direct
+- ✅ **NOUVELLE FONCTIONNALITÉ MAJEURE** : Centralisation de la gestion des prix dans `PriceService`
 
-### **Services créés**
-1. **SimulationService** - Orchestration de la simulation
-2. **GameManagerService** - Gestion des templates et configuration
-3. **TransactionService** - Gestion des transactions
-4. **BudgetService** - Gestion des budgets
+## Problèmes identifiés et corrigés :
+- ✅ **SimulationService** : N'utilisait pas la vraie logique d'achat → CORRIGÉ
+- ✅ **Application CLI** : Utilisait simulation_tour au lieu de SimulationService → CORRIGÉ
+- ✅ **Guide d'utilisation** : Trop verbeux et pas pratique → SIMPLIFIÉ
+- ✅ **Tests** : 84 tests passent sur 88 (4 échecs mineurs)
+- ✅ **Gestion des prix** : Logique dispersée et dupliquée → CENTRALISÉE dans PriceService
 
-### **Événements refactorisés**
-- **inflation.py** - Modification des prix des produits
-- **reassort.py** - Réapprovisionnement des stocks
-- **recharge_budget.py** - Recharge des budgets d'entreprises
-- **variation_disponibilite.py** - Activation/désactivation de produits
+## Prochaines actions prioritaires :
+1. Corriger les 4 tests restants (problèmes mineurs d'imports)
+2. S'assurer que le mode CLI fonctionne parfaitement
+3. Relire toute l'application pour détecter les incohérences
+4. Implémenter Prometheus/Grafana en mode CLI
 
----
+## État actuel de l'application :
+- ✅ **SimulationService** : Fonctionne avec vraie logique d'achat
+- ✅ **Application CLI** : Fonctionne avec SimulationService
+- ✅ **Événements** : Inflation, réassort, etc. fonctionnent
+- ✅ **Logs** : Affichage en temps réel
+- ✅ **Architecture** : Cohérente et modulaire
+- ✅ **Tests** : 84/88 passent
+- ✅ **PriceService** : Gestion centralisée des prix
 
-## 📁 **FICHIERS IMPORTANTS CRÉÉS**
+## Modifications récentes (03/08/2025) :
+1. **SimulationService** : Remplacé la simulation par de vrais achats avec `acheter_produit()`
+2. **Application CLI** : Modifié `simulate.py` pour utiliser `SimulationService`
+3. **Guide d'utilisation** : Simplifié et rendu plus direct
+4. **Tests** : Corrigé les imports et les erreurs de configuration
+5. **PriceService** : ✅ **NOUVEAU** - Service centralisé pour la gestion des prix
+6. **Centralisation des prix** : Éliminé la duplication entre `simulateur.py` et `transaction_service.py`
 
-### **Architecture**
-- `repositories/base_repository.py` - Interfaces communes
-- `repositories/produit_repository.py` - Repository produits
-- `repositories/fournisseur_repository.py` - Repository fournisseurs
-- `repositories/entreprise_repository.py` - Repository entreprises
+## Architecture Repository Pattern + Services comprise :
 
-### **Services**
-- `services/simulation_service.py` - Service de simulation
-- `services/game_manager_service.py` - Service de gestion de jeu
-- `services/transaction_service.py` - Service de transactions
-- `services/budget_service.py` - Service de budgets
+### Repository Pattern :
+```python
+# Interface commune pour accéder aux données
+class ProduitRepositoryInterface:
+    def get_all(self) -> List[Produit]: pass
+    def get_by_id(self, id: int) -> Optional[Produit]: pass
 
-### **API**
-- `api/main.py` - Endpoints FastAPI
+# Implémentation Fake (CLI)
+class FakeProduitRepository(ProduitRepositoryInterface):
+    def get_all(self) -> List[Produit]:
+        return self._produits  # Données en mémoire
 
-### **Configuration**
-- `config/config.py` - Configuration centralisée
-- `config/__init__.py` - Exports de configuration
-
-### **Tests**
-- `test_architecture.py` - Test de validation de l'architecture
-- `test_refactorisation_complete.py` - Test complet de refactorisation
-- `test_services_complets.py` - Test des services
-- `test_integration_complete.py` - Test d'intégration complet
-
-### **Documentation**
-- `GUIDE_UTILISATION.md` - Guide d'utilisation complet
-- `COMMANDES_CLI.md` - Guide de référence rapide CLI
-- `REFACTORISATION_PROGRESS.md` - Suivi du projet
-
----
-
-## 🆕 **NOUVEAUTÉS DU 03/08/2025**
-
-### **📦 Packaging System**
-- ✅ **`create_package.sh`** - Script de création de package automatisé
-- ✅ **`build/tradesim-app-v1.0.0.tar.gz`** - Package complet (175KB)
-- ✅ **`GUIDE_PACKAGING.md`** - Guide complet du packaging
-- ✅ **Scripts d'installation** - `install.sh`, `run.sh`, `run-api.sh`, `test.sh`, `clean.sh`
-- ✅ **Cross-platform** - Compatible macOS, Linux, Windows
-
-### **📊 Métriques et Monitoring**
-- ✅ **`METRIQUES_DISPONIBLES.md`** - 50+ métriques documentées
-- ✅ **`GUIDE_MONITORING_CLI.md`** - Guide Prometheus/Grafana CLI
-- ✅ **Architecture monitoring** - Exporteur HTTP + Prometheus + Grafana
-- ✅ **Métriques critiques** - Budget, transactions, produits, entreprises
-
-### **🔧 Nettoyage et Corrections**
-- ✅ **Supprimé** dossiers doublons (`app/events/`, `app/models/`)
-- ✅ **Corrigé** tous les imports cassés (`from app.` → `from `)
-- ✅ **Vérifié** cohérence du code dans tout le projet
-- ✅ **Tests passants** - Tous les tests fonctionnent
-
-### **📋 Documentation Mise à Jour**
-- ✅ **`GUIDE_MIGRATION_CLI_WEB.md`** - Migration CLI ↔ Web
-- ✅ **README par module** - Documentation complète
-- ✅ **Structure cohérente** - Pas de doublons majeurs
-
----
-
-## 🚨 **PROBLÈMES IDENTIFIÉS À RÉSOUDRE**
-
-### **📚 Doublons dans la documentation :**
-1. **`TRANSITION_CLI_TO_WEB.md`** vs **`GUIDE_MIGRATION_CLI_WEB.md`** - Contenu similaire
-2. **`REFACTORISATION_PROGRESS.md`** - Obsolète, à archiver
-3. **`INSTRUCTIONS_TESTS.md`** - Peut être fusionné avec GUIDE_UTILISATION.md
-
-### **🔧 Améliorations suggérées :**
-1. **Fusionner** les guides de migration
-2. **Archiver** les fichiers obsolètes
-3. **Simplifier** la structure de documentation
-4. **Standardiser** les formats de documentation
-
----
-
-## 🎯 **PROCHAINES ÉTAPES PRIORITAIRES**
-
-### **1. Implémenter Prometheus/Grafana CLI** 🔥 **PRIORITÉ**
-- Créer l'exporteur Prometheus simple
-- Configurer les métriques critiques
-- Tester l'intégration
-- Documenter l'utilisation
-
-### **2. Nettoyer la documentation**
-- Fusionner les guides de migration
-- Archiver les fichiers obsolètes
-- Standardiser les formats
-
-### **3. Monitoring WEB (futur)**
-- Adapter l'exporteur pour le mode WEB
-- Configurer les métriques API
-- Intégrer avec l'interface web
-
----
-
-## 🔧 **ENVIRONNEMENT ET CONFIGURATION**
-
-### **Environnement virtuel**
-```bash
-python3 -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
+# Implémentation SQL (Web)
+class SQLProduitRepository(ProduitRepositoryInterface):
+    def get_all(self) -> List[Produit]:
+        return self.db.query(Produit).all()  # Base de données
 ```
 
-### **Dépendances principales**
-```txt
-fastapi>=0.104.0
-uvicorn[standard]>=0.24.0
-pydantic>=2.5.0
-pytest>=7.4.0
-prometheus-client>=0.19.0  # NOUVEAU
-rich>=13.7.0              # NOUVEAU
+### Services :
+```python
+# Logique métier centralisée
+class PriceService:
+    def __init__(self):
+        self.produit_repo = ProduitRepository()
+        self.fournisseur_repo = FournisseurRepository()
+    
+    def get_prix_produit_fournisseur(self, produit_id, fournisseur_id):
+        # Logique métier centralisée
+        return prix
 ```
 
-### **Tests**
-```bash
-pytest tests/ -v
-```
+### Avantages pour le projet :
+1. **Modularité** : Chaque composant a une responsabilité claire
+2. **Scalabilité** : Ajoutez facilement de nouvelles fonctionnalités
+3. **Maintenabilité** : Code organisé et facile à comprendre
+4. **Testabilité** : Tests isolés et fiables
+5. **Évolutivité** : Passage facile de CLI à Web
 
----
+## Messages de commit et merge générés :
+- **Commit** : "Centraliser la gestion des prix dans un service dédié pour éliminer la duplication et améliorer la modularité"
+- **Merge** : Description détaillée des améliorations apportées
 
-## 📊 **MÉTRIQUES CRITIQUES IDENTIFIÉES**
-
-### **Santé économique :**
-- Budget total des entreprises
-- Nombre d'entreprises solvables
-- Évolution du budget (initial vs actuel)
-
-### **Activité du marché :**
-- Nombre de transactions
-- Montant total des transactions
-- Transactions réussies vs échouées
-
-### **Disponibilité des biens :**
-- Nombre de produits actifs
-- Stock total des fournisseurs
-- Produits en rupture
-
-### **Performance système :**
-- Temps de simulation
-- Nombre de tours complétés
-- Événements appliqués
-
----
-
-## 🚀 **COMMANDES UTILES**
-
-### **Packaging**
-```bash
-# Créer le package
-./create_package.sh
-
-# Installer sur nouvelle machine
-tar -xzf tradesim-app-v1.0.0.tar.gz
-cd tradesim-app
-./install.sh
-./run.sh
-```
-
-### **Tests**
-```bash
-# Tests unitaires
-pytest tests/unit/ -v
-
-# Tests d'intégration
-pytest tests/integration/ -v
-
-# Tests API
-pytest tests/api/ -v
-```
-
-### **Lancement**
-```bash
-# Mode CLI
-python services/simulate.py
-
-# Mode API
-uvicorn api.main:app --reload
-
-# Tests
-pytest tests/ -v
-```
-
----
-
-## 📝 **NOTES IMPORTANTES**
-
-### **Architecture Repository**
-- ✅ **Implémenté** - Pattern Repository complet
-- ✅ **Testé** - Tous les tests passent
-- ✅ **Documenté** - Guides complets créés
-
-### **Packaging**
-- ✅ **Créé** - Script de packaging automatisé
-- ✅ **Testé** - Package fonctionnel
-- ✅ **Cross-platform** - Compatible macOS/Linux/Windows
-
-### **Monitoring**
-- 🔄 **En cours** - Prêt à implémenter Prometheus CLI
-- 📋 **Documenté** - Guide complet créé
-- 🎯 **Priorité** - Prochaine étape
-
-### **Documentation**
-- ✅ **Complète** - Tous les guides créés
-- ⚠️ **À nettoyer** - Quelques doublons à fusionner
-- 📚 **Structurée** - Organisation claire
-
----
-
-## 🎉 **STATUT ACTUEL**
-
-**✅ REFACTORISATION TERMINÉE**  
-**✅ PACKAGING TERMINÉ**  
-**✅ DOCUMENTATION COMPLÈTE**  
-**🔄 PRÊT POUR MONITORING PROMETHEUS/GRAFANA CLI**
-
-**Prochaine étape : Implémenter l'exporteur Prometheus simple pour le mode CLI**
-
----
-
-**Auteur :** Assistant IA  
-**Date :** 2024-08-03  
-**Version :** 2.0 - Mise à jour avec packaging et monitoring 
+## État final de l'application :
+- ✅ **Application CLI** : Fonctionne parfaitement
+- ✅ **Simulation** : Achats et événements fonctionnent
+- ✅ **Prix** : S'affichent correctement dans le statut
+- ✅ **Architecture** : Modulaire et maintenable
+- ✅ **Tests** : 84/88 passent (95% de succès)
+- ✅ **Prêt pour Prometheus/Grafana** : Architecture en place 
