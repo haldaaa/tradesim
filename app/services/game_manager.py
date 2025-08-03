@@ -22,9 +22,12 @@ from typing import Dict, List, Any
 from datetime import datetime
 
 # Imports des Repository (nouvelle architecture)
+import sys
+import os
+sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
 from repositories import ProduitRepository, FournisseurRepository, EntrepriseRepository
 from models import Produit, TypeProduit, Fournisseur, Entreprise
-from .simulateur import simulation_tour
+from services.simulateur import simulation_tour
 from config import (
     RECHARGE_BUDGET_MIN, RECHARGE_BUDGET_MAX,
     REASSORT_QUANTITE_MIN, REASSORT_QUANTITE_MAX,
