@@ -1,0 +1,67 @@
+{
+  "nom": "mon_template_test",
+  "date_creation": "2025-08-03T16:50:37.388901",
+  "config": {
+    "entreprises": {
+      "nombre": 3,
+      "budget_min": 1294.3,
+      "budget_max": 2447.63,
+      "strategies": [
+        "moins_cher"
+      ],
+      "types_preferes": [
+        "produit_fini",
+        "consommable",
+        "matiere_premiere"
+      ]
+    },
+    "produits": {
+      "nombre": 20,
+      "prix_min": 5.3,
+      "prix_max": 485.08,
+      "actifs_min": 3,
+      "actifs_max": 8,
+      "types": [
+        "produit_fini",
+        "consommable",
+        "matiere_premiere"
+      ]
+    },
+    "fournisseurs": {
+      "nombre": 5,
+      "produits_min": 5,
+      "produits_max": 8,
+      "stock_min": 22,
+      "stock_max": 200
+    },
+    "simulation": {
+      "probabilite_selection": 0.3,
+      "pause_entre_tours": 0.1
+    },
+    "evenements": {
+      "intervalle": 20,
+      "probabilites": {
+        "recharge_budget": 0.5,
+        "reassort": 0.5,
+        "inflation": 0.4,
+        "variation_disponibilite": 0.3
+      },
+      "recharge_budget": {
+        "min": 200,
+        "max": 600
+      },
+      "reassort": {
+        "min": 10,
+        "max": 50
+      },
+      "inflation": {
+        "min": 30,
+        "max": 60
+      },
+      "variation_disponibilite": {
+        "desactivation": 0.1,
+        "reactivation": 0.2
+      }
+    }
+  }
+}
