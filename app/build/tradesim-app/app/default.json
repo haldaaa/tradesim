@@ -1,0 +1,57 @@
+{
+  "nom": "default",
+  "date_creation": "2024-01-01T00:00:00",
+  "config": {
+    "entreprises": {
+      "nombre": 3,
+      "budget_min": 1000,
+      "budget_max": 3000,
+      "strategies": ["moins_cher", "par_type"],
+      "types_preferes": ["matiere_premiere", "consommable", "produit_fini"]
+    },
+    "produits": {
+      "nombre": 20,
+      "prix_min": 5.0,
+      "prix_max": 500.0,
+      "actifs_min": 3,
+      "actifs_max": 8,
+      "types": ["matiere_premiere", "consommable", "produit_fini"]
+    },
+    "fournisseurs": {
+      "nombre": 5,
+      "produits_min": 3,
+      "produits_max": 8,
+      "stock_min": 10,
+      "stock_max": 200
+    },
+    "simulation": {
+      "probabilite_selection": 0.3,
+      "pause_entre_tours": 0.1
+    },
+    "evenements": {
+      "intervalle": 20,
+      "probabilites": {
+        "recharge_budget": 0.5,
+        "reassort": 0.5,
+        "inflation": 0.4,
+        "variation_disponibilite": 0.3
+      },
+      "recharge_budget": {
+        "min": 200,
+        "max": 600
+      },
+      "reassort": {
+        "min": 10,
+        "max": 50
+      },
+      "inflation": {
+        "min": 30,
+        "max": 60
+      },
+      "variation_disponibilite": {
+        "desactivation": 0.1,
+        "reactivation": 0.2
+      }
+    }
+  }
+} 

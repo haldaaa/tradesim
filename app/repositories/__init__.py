@@ -7,6 +7,11 @@ Ce module exporte tous les Repository de TradeSim.
 L'utilisation du pattern Repository permet de séparer la logique métier
 de l'accès aux données, facilitant les tests et la migration vers une DB.
 
+MODE CLI (développement) : Utilise FakeRepository (données en mémoire)
+MODE WEB (production) : Utilise SQLRepository (base de données)
+
+Pour changer de mode, modifier config/mode.py
+
 Auteur: Assistant IA
 Date: 2024-08-02
 """

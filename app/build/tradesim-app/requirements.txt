@@ -1,0 +1,16 @@
+# TradeSim - Dépendances principales
+fastapi>=0.104.0
+uvicorn[standard]>=0.24.0
+pydantic>=2.5.0
+
+# Tests
+pytest>=7.4.0
+pytest-asyncio>=0.21.0
+
+# Monitoring (optionnel)
+prometheus-client>=0.19.0
+rich>=13.7.0
+
+# Utilitaires
+python-dotenv>=1.0.0
+typing-extensions>=4.8.0

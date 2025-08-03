@@ -1,272 +1,213 @@
-# Services - Logique métier
-============================
+# Services - Logique métier TradeSim
+====================================
 
 ## 📋 **Vue d'ensemble**
 
-Le module `services` contient toute la logique métier de TradeSim.
-Cette couche sépare la logique de simulation de l'accès aux données (Repository)
-et des événements (Events).
+Le dossier `services/` contient toute la logique métier de TradeSim, organisée en services spécialisés. Chaque service a une responsabilité précise et utilise les Repository pour accéder aux données.
+
+**MODE CLI (développement) :** Utilise les Repository Fake (données en mémoire)
+**MODE WEB (production) :** Utilise les Repository SQL (base de données)
 
 ## 🏗️ **Architecture**
 
-### **Services disponibles :**
-- `SimulationService` - Orchestration de la simulation
-- `GameManagerService` - Gestion du jeu et des templates
-- `TransactionService` - Gestion des transactions
-- `BudgetService` - Gestion des budgets des entreprises
+### **Pattern Service :**
+- **Séparation des responsabilités** : Chaque service a un rôle précis
+- **Réutilisabilité** : Services utilisables par CLI et API
+- **Maintenabilité** : Code modulaire et organisé
+- **Extensibilité** : Ajout facile de nouveaux services
 
-### **Avantages de cette architecture :**
-- ✅ **Séparation des responsabilités** : Logique métier isolée
-- ✅ **Testabilité** : Services facilement mockables
-- ✅ **Réutilisabilité** : Services utilisables par CLI et API
-- ✅ **Maintenabilité** : Code organisé et modulaire
-
-## 📁 **Structure**
-
+### **Structure :**
 ```
 services/
 ├── __init__.py              # Exports des services
-├── simulation_service.py    # Orchestration de la simulation
-├── game_manager_service.py  # Gestion du jeu
-├── transaction_service.py   # Gestion des transactions
+├── game_manager.py          # Gestion du jeu et templates
+├── simulateur.py            # Orchestration de la simulation
+├── simulate.py              # Interface de simulation
+├── transaction_service.py    # Gestion des transactions
 ├── budget_service.py        # Gestion des budgets
+├── game_manager_service.py  # Service de gestion de jeu
+├── simulation_service.py    # Service de simulation
+├── templates/               # Templates de configuration
 └── README.md               # Cette documentation
 ```
 
+## 📁 **Services détaillés**
+
+### **`game_manager.py` - Gestion du jeu**
+**Responsabilité :** Gestion des templates, configuration et orchestration générale.
+
+**Fonctions principales :**
+- `reset_game()` : Remet le jeu à zéro
+- `generate_game_data(config)` : Génère les données de jeu
+- `save_template(nom)` : Sauvegarde un template
+- `load_template(nom)` : Charge un template
+- `get_current_config()` : Récupère la configuration actuelle
+
+**MODE CLI :** Utilise les Repository Fake pour les données en mémoire
+**MODE WEB :** Utilise les Repository SQL pour la persistance
+
+### **`simulateur.py` - Orchestration de simulation**
+**Responsabilité :** Orchestration des tours de simulation et événements.
+
+**Fonctions principales :**
+- `simulation_tour(tick)` : Exécute un tour de simulation
+- `appliquer_evenements(tick)` : Applique les événements aléatoires
+- `selectionner_entreprises()` : Sélectionne les entreprises actives
+
+**MODE CLI :** Logs vers fichiers locaux
+**MODE WEB :** Logs vers base de données + API
+
+### **`transaction_service.py` - Gestion des transactions**
+**Responsabilité :** Gestion des achats, ventes et transactions entre entreprises.
+
+**Fonctions principales :**
+- `effectuer_achat(entreprise, produit_id, quantite)` : Effectue un achat
+- `get_statistiques_transactions()` : Récupère les statistiques
+- `calculer_prix_final(produit, fournisseur)` : Calcule le prix final
+
+**MODE CLI :** Transactions en mémoire
+**MODE WEB :** Transactions persistées en base
+
+### **`budget_service.py` - Gestion des budgets**
+**Responsabilité :** Gestion des budgets des entreprises et recharges.
+
+**Fonctions principales :**
+- `ajouter_budget(entreprise_id, montant)` : Ajoute du budget
+- `recharge_budget_aleatoire(entreprise_id)` : Recharge aléatoire
+- `get_entreprises_en_difficulte(seuil)` : Détecte les entreprises en difficulté
+
+**MODE CLI :** Budgets en mémoire
+**MODE WEB :** Budgets persistés en base
+
+### **`simulation_service.py` - Service de simulation**
+**Responsabilité :** Interface de haut niveau pour la simulation.
+
+**Fonctions principales :**
+- `run_simulation_tours(n_tours)` : Lance une simulation de N tours
+- `run_simulation_infinite()` : Lance une simulation infinie
+- `reset_simulation()` : Remet la simulation à zéro
+
+**MODE CLI :** Interface console
+**MODE WEB :** Interface API REST
+
 ## 🔧 **Utilisation**
 
-### **Import des services :**
+### **Mode CLI (développement) :**
 ```python
-from services import SimulationService, GameManagerService
-```
+from services import game_manager, simulation_service
 
-### **Utilisation du SimulationService :**
-```python
-# Créer le service
-simulation_service = SimulationService()
+# Initialiser le jeu
+game_manager.reset_game()
 
 # Lancer une simulation
-resultat = simulation_service.run_simulation(tours=10, verbose=True)
-
-# Obtenir l'état actuel
-etat = simulation_service.get_current_state()
+simulation_service.run_simulation_tours(10, verbose=True)
 ```
 
-### **Utilisation du GameManagerService :**
+### **Mode Web (production) :**
 ```python
-# Créer le service
-game_service = GameManagerService()
+from services import transaction_service, budget_service
 
-# Générer de nouvelles données de jeu
-game_service.generate_new_game()
+# Effectuer une transaction via API
+transaction = transaction_service.effectuer_achat(entreprise_id=1, produit_id=2, quantite=5)
 
-# Sauvegarder un template
-game_service.save_template("mon_template")
-
-# Charger un template
-game_service.load_template("mon_template")
+# Gérer les budgets
+budget_service.ajouter_budget(entreprise_id=1, montant=500)
 ```
 
-## 📝 **Services détaillés**
+## 🎯 **Avantages de cette architecture**
 
-### **SimulationService**
+### **Séparation des responsabilités :**
+- ✅ Chaque service a un rôle précis
+- ✅ Code modulaire et maintenable
+- ✅ Tests unitaires facilités
+
+### **Réutilisabilité :**
+- ✅ Services utilisables par CLI et API
+- ✅ Interface commune pour tous les modes
+- ✅ Code partagé entre les interfaces
+
+### **Extensibilité :**
+- ✅ Ajout facile de nouveaux services
+- ✅ Modification sans impact sur les autres services
+- ✅ Configuration centralisée
+
+## 📝 **Exemples d'utilisation**
+
+### **Dans les événements :**
 ```python
-class SimulationService:
-    """
-    Service principal pour orchestrer la simulation.
-    
-    Ce service coordonne :
-    - La sélection des entreprises
-    - Les achats de produits
-    - Le déclenchement des événements
-    - La génération des logs
-    """
-    
-    def __init__(self):
-        self.produit_repo = ProduitRepository()
-        self.fournisseur_repo = FournisseurRepository()
-        self.entreprise_repo = EntrepriseRepository()
-        self.tick = 0
-    
-    def run_simulation(self, tours: int, verbose: bool = False):
-        """Lance une simulation complète."""
-        pass
-    
-    def run_single_tick(self, verbose: bool = False):
-        """Exécute un seul tick de simulation."""
-        pass
-    
-    def get_current_state(self):
-        """Retourne l'état actuel de la simulation."""
-        pass
-```
+from services import transaction_service
 
-### **GameManagerService**
-```python
-class GameManagerService:
-    """
-    Service pour gérer les configurations de jeu.
-    
-    Ce service gère :
-    - La génération de nouvelles parties
-    - La sauvegarde/chargement de templates
-    - La configuration des paramètres
-    """
-    
-    def generate_new_game(self, config: Dict[str, Any]):
-        """Génère une nouvelle partie avec la configuration donnée."""
-        pass
-    
-    def save_template(self, nom: str):
-        """Sauvegarde la configuration actuelle comme template."""
-        pass
-    
-    def load_template(self, nom: str):
-        """Charge un template de configuration."""
-        pass
-```
-
-### **TransactionService**
-```python
-class TransactionService:
-    """
-    Service pour gérer les transactions entre entreprises et fournisseurs.
-    
-    Ce service gère :
-    - La validation des achats
-    - Le calcul des prix
-    - La mise à jour des stocks
-    - La génération des logs de transaction
-    """
-    
-    def process_purchase(self, entreprise: Entreprise, 
-                        produit: Produit, fournisseur: Fournisseur):
-        """Traite un achat entre une entreprise et un fournisseur."""
-        pass
-    
-    def validate_purchase(self, entreprise: Entreprise, 
-                         produit: Produit, fournisseur: Fournisseur):
-        """Valide si un achat est possible."""
-        pass
-```
-
-### **BudgetService**
-```python
-class BudgetService:
-    """
-    Service pour gérer les budgets des entreprises.
-    
-    Ce service gère :
-    - La recharge de budget
-    - La validation des achats
-    - Le suivi des dépenses
-    """
-    
-    def recharge_budget(self, entreprise: Entreprise, montant: float):
-        """Recharge le budget d'une entreprise."""
-        pass
-    
-    def can_afford(self, entreprise: Entreprise, montant: float):
-        """Vérifie si une entreprise peut se permettre un achat."""
-        pass
-```
-
-## 🧪 **Tests**
-
-### **Tests unitaires :**
-```bash
-pytest tests/unit/test_services.py -v
-```
-
-### **Tests d'intégration :**
-```bash
-pytest tests/integration/test_services_integration.py -v
-```
-
-### **Exemple de test :**
-```python
-def test_simulation_service():
-    # Arrange
-    service = SimulationService()
-    
-    # Act
-    resultat = service.run_single_tick()
-    
-    # Assert
-    assert resultat is not None
-    assert service.tick == 1
-```
-
-## 🔄 **Migration vers base de données**
-
-### **Avec Repository :**
-```python
-class SimulationService:
-    def __init__(self):
-        # Utilise les Repository au lieu d'accès directs
-        self.produit_repo = ProduitRepository()
-        self.fournisseur_repo = FournisseurRepository()
-        self.entreprise_repo = EntrepriseRepository()
-    
-    def get_produits_disponibles(self):
-        # Utilise le Repository
-        return self.produit_repo.get_actifs()
-```
-
-### **Avantages :**
-- ✅ **Code identique** pour CLI et Web
-- ✅ **Facilité de test** avec des Repository Fake
-- ✅ **Migration transparente** vers SQL
-
-## 📚 **Exemples d'utilisation**
-
-### **Dans le CLI :**
-```python
-from services import SimulationService
-
-def main():
-    service = SimulationService()
-    service.run_simulation(tours=100, verbose=True)
+def appliquer_inflation(tick: int):
+    # Logique d'inflation...
+    # Utilise transaction_service pour les mises à jour
+    pass
 ```
 
 ### **Dans l'API :**
 ```python
-from fastapi import FastAPI
-from services import SimulationService
+from services import game_manager, transaction_service
 
-app = FastAPI()
-simulation_service = SimulationService()
+@app.get("/entreprises")
+def get_entreprises():
+    return game_manager.get_current_config()["entreprises"]
 
-@app.post("/simulation/start")
-def start_simulation(tours: int):
-    return simulation_service.run_simulation(tours=tours)
+@app.post("/transactions")
+def create_transaction(transaction_data):
+    return transaction_service.effectuer_achat(**transaction_data)
 ```
 
-### **Dans les événements :**
+### **Dans les tests :**
 ```python
-from services import BudgetService
+from services import game_manager, simulation_service
 
-def appliquer_recharge_budget():
-    budget_service = BudgetService()
-    entreprises = entreprise_repo.get_all()
-    
-    for entreprise in entreprises:
-        budget_service.recharge_budget(entreprise, 200.0)
+def test_simulation():
+    game_manager.reset_game()
+    resultats = simulation_service.run_simulation_tours(5)
+    assert len(resultats) == 5
 ```
 
-## 🔧 **Configuration**
+## 🔄 **Migration CLI → Web**
 
-### **Mode de développement :**
+### **Étape 1 : Vérifier le mode**
 ```python
-# Utilise les Repository Fake
-SIMULATION_MODE = "development"
+from config.mode import is_web_mode
+
+if is_web_mode():
+    # Utiliser les Repository SQL
+    pass
+else:
+    # Utiliser les Repository Fake
+    pass
 ```
 
-### **Mode de production :**
+### **Étape 2 : Adapter les services**
 ```python
-# Utilise les Repository SQL
-SIMULATION_MODE = "production"
+# Les services utilisent déjà les Repository
+# Pas de modification nécessaire !
 ```
+
+### **Étape 3 : Tester**
+```bash
+# Tests des services
+pytest tests/unit/test_services.py -v
+
+# Tests d'intégration
+pytest tests/integration/test_services_integration.py -v
+```
+
+## 📚 **Documentation technique**
+
+### **Pattern Service :**
+- **Interface commune** : Tous les services ont la même structure
+- **Dépendances injectées** : Repository passés en paramètre
+- **Tests unitaires** : Services testables indépendamment
+- **Documentation** : Commentaires détaillés pour chaque fonction
+
+### **Gestion des modes :**
+- **Repository pattern** : Abstraction de l'accès aux données
+- **Configuration centralisée** : Mode défini dans config/mode.py
+- **Tests automatisés** : Validation du bon fonctionnement
+- **Migration transparente** : Pas de refactorisation nécessaire
 
 ## 📝 **Auteur**
 Assistant IA - 2024-08-02 
