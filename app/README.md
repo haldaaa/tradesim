@@ -104,5 +104,7 @@ CURRENT_MODE = ExecutionMode.WEB  # Base de données
 2. Le reste du code reste identique
 3. Tests et production utilisent la même interface
 
+**Guide détaillé :** `GUIDE_MIGRATION_CLI_WEB_UNIFIED.md`
+
 ## 📝 **Auteur**
 Assistant IA - 2024-08-02 

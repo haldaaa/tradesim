@@ -83,7 +83,7 @@ pip install -r requirements.txt
 Pour toutes les commandes CLI disponibles, consultez : **`COMMANDES_CLI.md`**
 
 ### **🌐 Transition vers l'interface web**
-Pour migrer du CLI vers l'interface web, consultez : **`TRANSITION_CLI_TO_WEB.md`**
+Pour migrer du CLI vers l'interface web, consultez : **`GUIDE_MIGRATION_CLI_WEB_UNIFIED.md`**
 
 ### **1. Initialisation du jeu**
 ```python
