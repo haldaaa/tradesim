@@ -274,7 +274,7 @@ def acheter_produit(entreprise: Entreprise, produit: Produit, horodatage_iso: st
     """Effectue un achat si possible. Log les résultats. Retourne True si succès."""
     fournisseurs_possibles = get_fournisseurs_avec_stock(produit.id)
     if not fournisseurs_possibles:
-        msg = f"{entreprise.nom} ne peut pas acheter {produit.nom} : produit indisponible (aucun stock chez les fournisseurs)"
+        msg = f"❌ {entreprise.nom} ne peut pas acheter {produit.nom} : produit indisponible\n\t- 📊 Budget {entreprise.nom}: {entreprise.budget:.2f}€ | Produit: {produit.nom} | Type: {produit.type.value}\n❌ Achat échoué !"
         log_json = {
             "tick": tick,
             "timestamp": horodatage_iso,
@@ -285,6 +285,7 @@ def acheter_produit(entreprise: Entreprise, produit: Produit, horodatage_iso: st
             "produit_id": produit.id,
             "produit_nom": produit.nom,
             "produit_type": produit.type.value,
+            "status": "failed",
             "erreur": "produit_indisponible"
         }
         with open(FICHIER_LOG, "a", encoding="utf-8") as f:
@@ -292,14 +293,15 @@ def acheter_produit(entreprise: Entreprise, produit: Produit, horodatage_iso: st
         with open(FICHIER_LOG_HUMAIN, "a", encoding="utf-8") as f:
             f.write(msg + "\n")
         if verbose:
-            print(f"❌ {msg}")
-            print(f"   📊 Budget {entreprise.nom}: {entreprise.budget:.2f}€ | Produit: {produit.nom} | Type: {produit.type.value}")
+            print(f"❌ {entreprise.nom} ne peut pas acheter {produit.nom} : produit indisponible")
+            print(f"\t- 📊 Budget {entreprise.nom}: {entreprise.budget:.2f}€ | Produit: {produit.nom} | Type: {produit.type.value}")
+            print("❌ Achat échoué !")
         return False
 
     fournisseur = random.choice(fournisseurs_possibles)
     prix = get_prix_produit_fournisseur(produit.id, fournisseur.id)
     if prix is None:
-        msg = f"{entreprise.nom} ne peut pas acheter {produit.nom} chez {fournisseur.nom_entreprise} : pas de prix défini"
+        msg = f"❌ {entreprise.nom} ne peut pas acheter {produit.nom} chez {fournisseur.nom_entreprise} : pas de prix défini\n\t- 📊 Budget {entreprise.nom}: {entreprise.budget:.2f}€ | Produit: {produit.nom} | Fournisseur: {fournisseur.nom_entreprise}\n❌ Achat échoué !"
         log_json = {
             "tick": tick,
             "timestamp": horodatage_iso,
@@ -312,6 +314,7 @@ def acheter_produit(entreprise: Entreprise, produit: Produit, horodatage_iso: st
             "produit_type": produit.type.value,
             "fournisseur_id": fournisseur.id,
             "fournisseur_nom": fournisseur.nom_entreprise,
+            "status": "failed",
             "erreur": "pas_de_prix_defini"
         }
         with open(FICHIER_LOG, "a", encoding="utf-8") as f:
@@ -319,8 +322,9 @@ def acheter_produit(entreprise: Entreprise, produit: Produit, horodatage_iso: st
         with open(FICHIER_LOG_HUMAIN, "a", encoding="utf-8") as f:
             f.write(msg + "\n")
         if verbose:
-            print(f"❌ {msg}")
-            print(f"   📊 Budget {entreprise.nom}: {entreprise.budget:.2f}€ | Produit: {produit.nom} | Fournisseur: {fournisseur.nom_entreprise}")
+            print(f"❌ {entreprise.nom} ne peut pas acheter {produit.nom} chez {fournisseur.nom_entreprise} : pas de prix défini")
+            print(f"\t- 📊 Budget {entreprise.nom}: {entreprise.budget:.2f}€ | Produit: {produit.nom} | Fournisseur: {fournisseur.nom_entreprise}")
+            print("❌ Achat échoué !")
         return False
 
     quantite_max_possible = int(entreprise.budget // prix)
@@ -329,7 +333,7 @@ def acheter_produit(entreprise: Entreprise, produit: Produit, horodatage_iso: st
         quantite_voulue = 1
         prix_total_voulu = prix * quantite_voulue
         
-        msg = f"{entreprise.nom} ne peut pas acheter {quantite_voulue} {produit.nom} ({prix:.2f}€ prix unitaire {produit.nom}) pour un total de {prix_total_voulu:.2f}€ car budget insuffisant (budget entreprise: {entreprise.budget:.2f}€)"
+        msg = f"❌ {entreprise.nom} ne peut pas acheter {quantite_voulue} {produit.nom} : budget insuffisant\n\t- 💰 Prix unitaire: {prix:.2f}€ | Total voulu: {prix_total_voulu:.2f}€ | Budget disponible: {entreprise.budget:.2f}€\n❌ Achat échoué !"
         log_json = {
             "tick": tick,
             "timestamp": horodatage_iso,
@@ -346,6 +350,7 @@ def acheter_produit(entreprise: Entreprise, produit: Produit, horodatage_iso: st
             "quantite_voulue": quantite_voulue,
             "prix_total_voulu": prix_total_voulu,
             "budget_disponible": round(entreprise.budget, 2),
+            "status": "failed",
             "erreur": "budget_insuffisant"
         }
         with open(FICHIER_LOG, "a", encoding="utf-8") as f:
@@ -353,8 +358,9 @@ def acheter_produit(entreprise: Entreprise, produit: Produit, horodatage_iso: st
         with open(FICHIER_LOG_HUMAIN, "a", encoding="utf-8") as f:
             f.write(msg + "\n")
         if verbose:
-            print(f"❌ {msg}")
-            print(f"   📊 Budget {entreprise.nom}: {entreprise.budget:.2f}€ | Prix unitaire: {prix:.2f}€ | Total voulu: {prix_total_voulu:.2f}€")
+            print(f"❌ {entreprise.nom} ne peut pas acheter {quantite_voulue} {produit.nom} : budget insuffisant")
+            print(f"\t- 💰 Prix unitaire: {prix:.2f}€ | Total voulu: {prix_total_voulu:.2f}€ | Budget disponible: {entreprise.budget:.2f}€")
+            print("❌ Achat échoué !")
         return False
 
     quantite_achat = random.randint(1, min(quantite_max_possible, fournisseur.stock_produit[produit.id]))
@@ -363,7 +369,7 @@ def acheter_produit(entreprise: Entreprise, produit: Produit, horodatage_iso: st
     entreprise.budget = round(entreprise.budget - montant_total, 2)
     fournisseur.stock_produit[produit.id] -= quantite_achat
 
-    # Log JSON
+    # Log JSON - Données pures pour monitoring
     log_entry = {
         "tick": tick,
         "timestamp": horodatage_iso,
@@ -379,23 +385,25 @@ def acheter_produit(entreprise: Entreprise, produit: Produit, horodatage_iso: st
         "quantite": quantite_achat,
         "prix_unitaire": prix,
         "montant_total": montant_total,
-        "budget_restant": round(entreprise.budget, 2)
+        "budget_restant": round(entreprise.budget, 2),
+        "status": "success"
     }
     with open(FICHIER_LOG, "a", encoding="utf-8") as f:
         f.write(json.dumps(log_entry) + "\n")
 
-    # Log humain lisible
+    # Log humain lisible avec le nouveau format structuré
     log_humain = (
-        f"{entreprise.nom} achète {quantite_achat} produits ({prix:.2f}€ prix unitaire {produit.nom}) "
-        f"chez le fournisseur {fournisseur.nom_entreprise} pour {montant_total:.2f}€ "
-        f"(budget restant entreprise: {entreprise.budget:.2f}€)"
+        f"🎯 {entreprise.nom} achète {quantite_achat} {produit.nom} chez {fournisseur.nom_entreprise} (stratégie: {strategie}) :\n"
+        f"\t- 💰 Prix unitaire: {prix:.2f}€ | Total: {montant_total:.2f}€ | Budget restant: {entreprise.budget:.2f}€\n"
+        f"✅ Achat réussi !"
     )
     with open(FICHIER_LOG_HUMAIN, "a", encoding="utf-8") as f:
         f.write(log_humain + "\n")
 
     # Log verbose détaillé pour l'achat réussi
     if verbose:
-        print(f"🎯 {entreprise.nom} achète {quantite_achat} {produit.nom} chez {fournisseur.nom_entreprise}")
-        print(f"   💰 Prix unitaire: {prix:.2f}€ | Total: {montant_total:.2f}€ | Budget restant: {entreprise.budget:.2f}€")
+        print(f"🎯 {entreprise.nom} achète {quantite_achat} {produit.nom} chez {fournisseur.nom_entreprise} (stratégie: {strategie}) :")
+        print(f"\t- 💰 Prix unitaire: {prix:.2f}€ | Total: {montant_total:.2f}€ | Budget restant: {entreprise.budget:.2f}€")
+        print("✅ Achat réussi !")
 
     return True

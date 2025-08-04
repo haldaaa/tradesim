@@ -185,11 +185,7 @@ class SimulationService:
                 
                 if succes_achat:
                     transactions_effectuees += 1
-                    if verbose:
-                        print(f"  ✅ Achat réussi: {produit_choisi.nom}")
-                else:
-                    if verbose:
-                        print(f"  ❌ Achat échoué: {produit_choisi.nom}")
+                # Les messages détaillés sont déjà affichés par acheter_produit()
             else:
                 if verbose:
                     print(f"  ⚠️ Aucun produit disponible pour {entreprise.nom}")

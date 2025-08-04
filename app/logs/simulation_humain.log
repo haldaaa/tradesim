@@ -1063,3 +1063,169 @@ Entreprise_13 achète 1 produits (14.77€ prix unitaire Produit_22) chez le fou
 Entreprise_14 achète 1 produits (188.51€ prix unitaire Produit_40) chez le fournisseur PlancheCompagnie pour 188.51€ (budget restant entreprise: 135.02€)
 Entreprise_16 achète 1 produits (18.87€ prix unitaire Produit_22) chez le fournisseur PlancheCompagnie pour 18.87€ (budget restant entreprise: 7.19€)
 Entreprise_19 achète 136 produits (11.38€ prix unitaire Produit_22) chez le fournisseur ElectroPlus pour 1547.68€ (budget restant entreprise: 1312.66€)
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+MagaToys achète 4 produits (262.55€ prix unitaire Bois) chez le fournisseur NordicTools pour 1050.20€ (budget restant entreprise: 1065.37€)
+Aucun achat effectué ce tick
+MagaToys ne peut pas acheter 1 Bois (3768.64€ prix unitaire Bois) pour un total de 3768.64€ car budget insuffisant (budget entreprise: 1065.37€)
+BioLogix achète 7 produits (196.95€ prix unitaire Acier) chez le fournisseur PlancheCompagnie pour 1378.65€ (budget restant entreprise: 507.72€)
+MagaToys achète 4 produits (262.55€ prix unitaire Bois) chez le fournisseur NordicTools pour 1050.20€ (budget restant entreprise: 15.17€)
+Aucun achat effectué ce tick
+BuildTech achète 6 produits (196.95€ prix unitaire Acier) chez le fournisseur PlancheCompagnie pour 1181.70€ (budget restant entreprise: 1462.33€)
+BioLogix achète 1 produits (196.95€ prix unitaire Acier) chez le fournisseur PlancheCompagnie pour 196.95€ (budget restant entreprise: 310.77€)
+BuildTech achète 2 produits (196.95€ prix unitaire Acier) chez le fournisseur PlancheCompagnie pour 393.90€ (budget restant entreprise: 1068.43€)
+BuildTech achète 3 produits (196.95€ prix unitaire Acier) chez le fournisseur PlancheCompagnie pour 590.85€ (budget restant entreprise: 477.58€)
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+BuildTech achète 2 produits (196.95€ prix unitaire Acier) chez le fournisseur PlancheCompagnie pour 393.90€ (budget restant entreprise: 83.68€)
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+BioLogix achète 1 produits (196.95€ prix unitaire Acier) chez le fournisseur PlancheCompagnie pour 196.95€ (budget restant entreprise: 113.82€)
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+[EVENT: RECHARGE_BUDGET] [RECHARGE] BuildTech: +494€ (ancien: 83.68€ → nouveau: 577.6800000000001€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] BioLogix: +300€ (ancien: 113.82€ → nouveau: 413.82€)
+[EVENT: RECHARGE_BUDGET] [RESUME RECHARGE] 2 entreprises rechargées | Total: +794€ | Moyenne: +397.0€
+[EVENT: REASSORT] [REASSORT] [PRODUITS] 1 produits réapprovisionnés | [QUANTITE] +24 unités total | [FOURNISSEURS] 1 fournisseurs concernés
+[EVENT: INFLATION] [INFLATION] Catégorie ciblée : produit_fini - 2 prix modifiés | Min: +40.0% | Max: +61.0% | Moy: +50.5%
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+BioLogix achète 1 produits (161.00€ prix unitaire Acier) chez le fournisseur TechDistrib pour 161.00€ (budget restant entreprise: 252.82€)
+BuildTech achète 2 produits (140.00€ prix unitaire Acier) chez le fournisseur PlancheCompagnie pour 280.00€ (budget restant entreprise: 297.68€)
+BioLogix achète 1 produits (140.00€ prix unitaire Acier) chez le fournisseur PlancheCompagnie pour 140.00€ (budget restant entreprise: 112.82€)
+Aucun achat effectué ce tick
+BuildTech achète 1 produits (161.00€ prix unitaire Acier) chez le fournisseur TechDistrib pour 161.00€ (budget restant entreprise: 136.68€)
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+[EVENT: RECHARGE_BUDGET] [RECHARGE] MagaToys: +560€ (ancien: 15.17€ → nouveau: 575.17€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] BuildTech: +595€ (ancien: 136.68€ → nouveau: 731.6800000000001€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] BioLogix: +386€ (ancien: 112.82€ → nouveau: 498.82€)
+[EVENT: RECHARGE_BUDGET] [RESUME RECHARGE] 3 entreprises rechargées | Total: +1541€ | Moyenne: +513.67€
+[EVENT: INFLATION] [INFLATION] Catégorie ciblée : matiere_premiere - 4 prix modifiés | Min: +40.0% | Max: +61.0% | Moy: +55.8%
+Aucun achat effectué ce tick
+BuildTech achète 1 produits (371.74€ prix unitaire Acier) chez le fournisseur PlancheCompagnie pour 371.74€ (budget restant entreprise: 1803.66€)
+BioLogix achète 2 produits (371.74€ prix unitaire Acier) chez le fournisseur PlancheCompagnie pour 743.48€ (budget restant entreprise: 1271.26€)
+MagaToys achète 2 produits (371.74€ prix unitaire Acier) chez le fournisseur PlancheCompagnie pour 743.48€ (budget restant entreprise: 1036.74€)
+BioLogix achète 3 produits (140.00€ prix unitaire Bois) chez le fournisseur NordicTools pour 420.00€ (budget restant entreprise: 851.26€)
+BuildTech achète 29 produits (37.42€ prix unitaire Planches) chez le fournisseur NordicTools pour 1085.18€ (budget restant entreprise: 718.48€)
+BuildTech achète 1 produits (2223.51€ prix unitaire Ours en peluche) chez le fournisseur PlancheCompagnie pour 2223.51€ (budget restant entreprise: 621.27€)
+Aucun achat effectué ce tick
+MagaToys achète 2 produits (184.89€ prix unitaire Aspirateur) chez le fournisseur PlancheCompagnie pour 369.78€ (budget restant entreprise: 2134.40€)
+BioLogix achète 8 produits (184.89€ prix unitaire Aspirateur) chez le fournisseur PlancheCompagnie pour 1479.12€ (budget restant entreprise: 471.28€)
+MagaToys achète 8 produits (184.89€ prix unitaire Aspirateur) chez le fournisseur PlancheCompagnie pour 1479.12€ (budget restant entreprise: 655.28€)
+BuildTech achète 1 produits (184.89€ prix unitaire Aspirateur) chez le fournisseur PlancheCompagnie pour 184.89€ (budget restant entreprise: 436.38€)
+MagaToys achète 1 produits (184.89€ prix unitaire Aspirateur) chez le fournisseur PlancheCompagnie pour 184.89€ (budget restant entreprise: 470.39€)
+BuildTech achète 1 produits (184.89€ prix unitaire Aspirateur) chez le fournisseur PlancheCompagnie pour 184.89€ (budget restant entreprise: 251.49€)
+MagaToys achète 2 produits (184.89€ prix unitaire Aspirateur) chez le fournisseur PlancheCompagnie pour 369.78€ (budget restant entreprise: 100.61€)
+BuildTech achète 1 produits (184.89€ prix unitaire Aspirateur) chez le fournisseur PlancheCompagnie pour 184.89€ (budget restant entreprise: 66.60€)
+Aucun achat effectué ce tick
+BioLogix achète 1 produits (184.89€ prix unitaire Aspirateur) chez le fournisseur PlancheCompagnie pour 184.89€ (budget restant entreprise: 286.39€)
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+BioLogix achète 1 produits (184.89€ prix unitaire Aspirateur) chez le fournisseur PlancheCompagnie pour 184.89€ (budget restant entreprise: 101.50€)
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+[EVENT: RECHARGE_BUDGET] [RECHARGE] MagaToys: +570€ (ancien: 100.61€ → nouveau: 670.61€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] BioLogix: +492€ (ancien: 101.5€ → nouveau: 593.5€)
+[EVENT: RECHARGE_BUDGET] [RESUME RECHARGE] 2 entreprises rechargées | Total: +1062€ | Moyenne: +531.0€
+[EVENT: VARIATION_DISPONIBILITE] [VARIATION] [DESACTIVE] 1 désactivés (Ours en peluche) | [REACTIVE] 3 réactivés (Téléphone, Clavier, Lampe) | Total modifié: 4 produits
+BioLogix achète 13 produits (33.31€ prix unitaire Téléphone) chez le fournisseur NordicTools pour 433.03€ (budget restant entreprise: 160.47€)
+Aucun achat effectué ce tick
+MagaToys achète 15 produits (17.19€ prix unitaire Téléphone) chez le fournisseur TechDistrib pour 257.85€ (budget restant entreprise: 412.76€)
+BuildTech achète 1 produits (33.31€ prix unitaire Téléphone) chez le fournisseur NordicTools pour 33.31€ (budget restant entreprise: 33.29€)
+MagaToys achète 23 produits (17.19€ prix unitaire Téléphone) chez le fournisseur TechDistrib pour 395.37€ (budget restant entreprise: 17.39€)
+BioLogix achète 4 produits (33.31€ prix unitaire Téléphone) chez le fournisseur NordicTools pour 133.24€ (budget restant entreprise: 27.23€)
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+BioLogix achète 1 produits (17.19€ prix unitaire Téléphone) chez le fournisseur TechDistrib pour 17.19€ (budget restant entreprise: 10.04€)
+MagaToys achète 1 produits (17.19€ prix unitaire Téléphone) chez le fournisseur TechDistrib pour 17.19€ (budget restant entreprise: 0.20€)
+BuildTech achète 1 produits (17.19€ prix unitaire Téléphone) chez le fournisseur TechDistrib pour 17.19€ (budget restant entreprise: 16.10€)
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+[EVENT: RECHARGE_BUDGET] [RECHARGE] BuildTech: +476€ (ancien: 16.1€ → nouveau: 492.1€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] BioLogix: +420€ (ancien: 10.04€ → nouveau: 430.04€)
+[EVENT: RECHARGE_BUDGET] [RESUME RECHARGE] 2 entreprises rechargées | Total: +896€ | Moyenne: +448.0€
+[EVENT: REASSORT] [REASSORT] [PRODUITS] 1 produits réapprovisionnés | [QUANTITE] +10 unités total | [FOURNISSEURS] 1 fournisseurs concernés
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+BioLogix achète 15 produits (17.19€ prix unitaire Téléphone) chez le fournisseur TechDistrib pour 257.85€ (budget restant entreprise: 172.19€)
+Aucun achat effectué ce tick
+BioLogix achète 3 produits (17.19€ prix unitaire Téléphone) chez le fournisseur TechDistrib pour 51.57€ (budget restant entreprise: 120.62€)
+BioLogix achète 2 produits (17.19€ prix unitaire Téléphone) chez le fournisseur TechDistrib pour 34.38€ (budget restant entreprise: 86.24€)
+Aucun achat effectué ce tick
+BuildTech achète 2 produits (184.89€ prix unitaire Aspirateur) chez le fournisseur PlancheCompagnie pour 369.78€ (budget restant entreprise: 122.32€)
+Aucun achat effectué ce tick
+BioLogix achète 1 produits (17.19€ prix unitaire Téléphone) chez le fournisseur TechDistrib pour 17.19€ (budget restant entreprise: 69.05€)
+BuildTech achète 2 produits (33.31€ prix unitaire Téléphone) chez le fournisseur NordicTools pour 66.62€ (budget restant entreprise: 55.70€)
+BuildTech achète 1 produits (33.31€ prix unitaire Téléphone) chez le fournisseur NordicTools pour 33.31€ (budget restant entreprise: 22.39€)
+Aucun achat effectué ce tick
+BuildTech ne peut pas acheter 1 Téléphone (33.31€ prix unitaire Téléphone) pour un total de 33.31€ car budget insuffisant (budget entreprise: 22.39€)
+Aucun achat effectué ce tick
+BioLogix achète 1 produits (33.31€ prix unitaire Téléphone) chez le fournisseur NordicTools pour 33.31€ (budget restant entreprise: 35.74€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] MagaToys: +524€ (ancien: 0.2€ → nouveau: 524.2€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] BuildTech: +554€ (ancien: 22.39€ → nouveau: 576.39€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] BioLogix: +290€ (ancien: 35.74€ → nouveau: 325.74€)
+[EVENT: RECHARGE_BUDGET] [RESUME RECHARGE] 3 entreprises rechargées | Total: +1368€ | Moyenne: +456.0€
+[EVENT: REASSORT] [REASSORT] [PRODUITS] 3 produits réapprovisionnés | [QUANTITE] +124 unités total | [FOURNISSEURS] 2 fournisseurs concernés
+Aucun achat effectué ce tick
+🎯 MagaToys achète 1 Ours en peluche chez PlancheCompagnie (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 2223.51€ | Total: 2223.51€ | Budget restant: 280.67€
+✅ Achat réussi !
+🎯 MagaToys achète 1 Aspirateur chez PlancheCompagnie (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 184.89€ | Total: 184.89€ | Budget restant: 95.78€
+✅ Achat réussi !
+🎯 BuildTech achète 5 Aspirateur chez PlancheCompagnie (stratégie: par_type) :
+	- 💰 Prix unitaire: 184.89€ | Total: 924.45€ | Budget restant: 1920.33€
+✅ Achat réussi !
