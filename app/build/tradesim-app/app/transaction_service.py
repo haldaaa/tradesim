@@ -58,7 +58,8 @@ class TransactionService:
         Returns:
             Prix du produit chez le fournisseur, ou None si non disponible
         """
-        return self.prix_fournisseurs.get((produit_id, fournisseur_id))
+        from services.price_service import price_service
+        return price_service.get_prix_produit_fournisseur(produit_id, fournisseur_id)
     
     def set_prix_produit_fournisseur(self, produit_id: int, fournisseur_id: int, prix: float):
         """
@@ -69,7 +70,8 @@ class TransactionService:
             fournisseur_id: ID du fournisseur
             prix: Prix du produit
         """
-        self.prix_fournisseurs[(produit_id, fournisseur_id)] = prix
+        from services.price_service import price_service
+        price_service.set_prix_produit_fournisseur(produit_id, fournisseur_id, prix)
     
     def calculer_prix_fournisseur(self, produit: Produit, fournisseur: Fournisseur, stock: int) -> float:
         """

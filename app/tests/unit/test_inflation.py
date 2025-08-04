@@ -21,7 +21,8 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
 
 from events.inflation import appliquer_inflation
 from models import Produit, TypeProduit
-from data import fake_produits_db, produits_ayant_subi_inflation
+from repositories import ProduitRepository, FournisseurRepository
+from data import produits_ayant_subi_inflation
 
 class TestInflation:
     """
@@ -43,8 +44,15 @@ class TestInflation:
         - S'assurer que chaque test part d'un état connu
         """
         # Réinitialiser les données de test pour éviter les interférences
-        fake_produits_db.clear()
         produits_ayant_subi_inflation.clear()
+        
+        # Initialiser les repositories
+        self.produit_repo = ProduitRepository()
+        self.fournisseur_repo = FournisseurRepository()
+        
+        # Vider les repositories pour éviter les conflits
+        self.produit_repo.clear()
+        self.fournisseur_repo.clear()
         
         # Créer des produits de test avec des caractéristiques différentes
         self.produit1 = Produit(
@@ -62,15 +70,16 @@ class TestInflation:
             type=TypeProduit.consommable
         )
         
-        # Ajouter les produits à la base de données de test
-        fake_produits_db.extend([self.produit1, self.produit2])
+        # Ajouter les produits aux repositories
+        self.produit_repo.add(self.produit1)
+        self.produit_repo.add(self.produit2)
     
     def test_appliquer_inflation_produit_actif(self):
         """
         Test que l'inflation s'applique correctement sur un produit actif.
         
         Vérifie que :
-        - Le prix augmente après application de l'inflation
+        - Le prix augmente après application de l'inflation (si appliquée)
         - Le produit est marqué comme affecté
         - La fonction retourne un résultat valide
         """
@@ -83,13 +92,15 @@ class TestInflation:
         # Vérifications des effets de l'inflation
         assert resultat is not None, "La fonction doit retourner un résultat"
         
-        # L'inflation peut ne pas s'appliquer selon la probabilité
+        # L'inflation est probabiliste, on accepte les deux cas
         if resultat:  # Si l'inflation s'est appliquée
-            assert self.produit1.prix > prix_initial, "Le prix doit avoir augmenté"
+            assert self.produit1.prix > prix_initial, "Le prix doit avoir augmenté si l'inflation s'applique"
             assert self.produit1.id in produits_ayant_subi_inflation, "Le produit doit être marqué comme affecté"
             print(f"✅ Test inflation - Prix initial: {prix_initial}, Prix après: {self.produit1.prix}")
         else:
-            print(f"⏭️ Test inflation - Aucune inflation appliquée (probabilité)")
+            # Si l'inflation ne s'est pas appliquée, le prix doit rester inchangé
+            assert self.produit1.prix == prix_initial, "Le prix doit rester inchangé si l'inflation ne s'applique pas"
+            print(f"⏭️ Test inflation - Aucune inflation appliquée (probabilité), prix inchangé: {self.produit1.prix}")
     
     def test_inflation_ne_sapplique_pas_sur_produit_inactif(self):
         """

@@ -2,3 +2,18 @@
 [EVENT: RECHARGE_BUDGET] [RECHARGE] BioLogix: +443€ (ancien: 1130.0€ → nouveau: 1573.0€)
 [EVENT: RECHARGE_BUDGET] [RESUME RECHARGE] 2 entreprises rechargées | Total: +1011€ | Moyenne: +505.5€
 [EVENT: INFLATION] [INFLATION] Catégorie ciblée : matiere_premiere - 5 prix modifiés | Min: +40.0% | Max: +61.0% | Moy: +48.4%
+[EVENT: RECHARGE_BUDGET] [RECHARGE] MagaToys: +445€ (ancien: 38.36€ → nouveau: 483.36€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] BioLogix: +484€ (ancien: 11116.43€ → nouveau: 11600.43€)
+[EVENT: RECHARGE_BUDGET] [RESUME RECHARGE] 2 entreprises rechargées | Total: +929€ | Moyenne: +464.5€
+[EVENT: REASSORT] [REASSORT] [PRODUITS] 1 produits réapprovisionnés | [QUANTITE] +36 unités total | [FOURNISSEURS] 1 fournisseurs concernés
+[EVENT: INFLATION] [INFLATION] Produit ciblé : Aspirateur - 3 prix modifiés | Min: +40.0% | Max: +61.0% | Moy: +54.0%
+[EVENT: VARIATION_DISPONIBILITE] [VARIATION] [DESACTIVE] 1 désactivés (Acier) | [REACTIVE] 3 réactivés (Clavier, Tapis de souris, Sac à dos) | Total modifié: 4 produits
+[EVENT: REASSORT] [REASSORT] [PRODUITS] 1 produits réapprovisionnés | [QUANTITE] +23 unités total | [FOURNISSEURS] 1 fournisseurs concernés
+[EVENT: REASSORT] [REASSORT] [PRODUITS] 1 produits réapprovisionnés | [QUANTITE] +48 unités total | [FOURNISSEURS] 1 fournisseurs concernés
+[EVENT: VARIATION_DISPONIBILITE] [VARIATION] [DESACTIVE] 1 désactivés (Tapis de souris) | [REACTIVE] 2 réactivés (Téléphone, Chocolat) | Total modifié: 3 produits
+[EVENT: REASSORT] [REASSORT] [PRODUITS] 1 produits réapprovisionnés | [QUANTITE] +28 unités total | [FOURNISSEURS] 1 fournisseurs concernés
+[EVENT: VARIATION_DISPONIBILITE] [VARIATION] [DESACTIVE] 1 désactivés (Chocolat) | [REACTIVE] 2 réactivés (Chaise, Câble USB) | Total modifié: 3 produits
+[EVENT: REASSORT] [REASSORT] [PRODUITS] 4 produits réapprovisionnés | [QUANTITE] +113 unités total | [FOURNISSEURS] 4 fournisseurs concernés
+[EVENT: INFLATION] [INFLATION] Catégorie ciblée : matiere_premiere - 4 prix modifiés | Min: +40.0% | Max: +61.0% | Moy: +50.5%
+[EVENT: RECHARGE_BUDGET] [RECHARGE] MagaToys: +480€ (ancien: 2420.95€ → nouveau: 2900.95€)
+[EVENT: RECHARGE_BUDGET] [RESUME RECHARGE] 1 entreprises rechargées | Total: +480€ | Moyenne: +480.0€

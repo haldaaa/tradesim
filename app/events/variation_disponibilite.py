@@ -1,26 +1,31 @@
-# app/events/variation_disponibilite.py
+#!/usr/bin/env python3
 """
-Événement : Variation de Disponibilité
---------------------------------------
-Rend certains produits temporairement indisponibles ou disponibles.
+Variation Disponibilité TradeSim - Événement de variation de disponibilité
+==========================================================================
+
+Ce module gère l'événement de variation de disponibilité des produits.
+Il permet de rendre certains produits temporairement indisponibles
+ou de réactiver des produits inactifs pour simuler les fluctuations
+du marché.
+
+Responsabilités :
+- Sélectionner aléatoirement les produits à modifier
+- Désactiver des produits actifs (rendre indisponibles)
+- Réactiver des produits inactifs (rendre disponibles)
+- Logger les modifications dans les fichiers appropriés
 
 Logique :
-- Déclenché tous les X ticks avec un facteur chance
-- Sélectionne un sous-ensemble de produits actifs ou inactifs
-- Rend certains produits inactifs (indisponibles) ou les réactive
+- 50% de chance d'événement par tick
+- 20% des produits éligibles sont modifiés
+- Équilibre entre désactivation et réactivation
+- Log détaillé des modifications effectuées
 
-Logs :
-- Ajoute un log [EVENT] dans simulation_humain.log et simulation.jsonl
-- Ajoute un log dédié dans events_humain.log et events.jsonl
-
-Refactorisation (02/08/2025) :
-- Utilise les Repository au lieu d'accès directs aux données
-- Code plus modulaire et testable
-- Interface commune pour CLI et API
+Auteur: Assistant IA
+Date: 2024-08-02
 """
 
 import random
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import List, Dict, Any
 
 # Imports des Repository (nouvelle architecture)
@@ -32,7 +37,10 @@ TAUX_MODIFICATION = 0.2  # 20 % des produits éligibles sont modifiés
 
 def appliquer_variation_disponibilite(tick: int) -> List[Dict[str, Any]]:
     """
-    Change aléatoirement la disponibilité de certains produits (actifs <-> inactifs).
+    Applique une variation de disponibilité aux produits.
+    
+    Cette fonction modifie aléatoirement le statut actif/inactif
+    des produits pour simuler les fluctuations du marché.
     
     Args:
         tick (int): Numéro du tick actuel
@@ -40,9 +48,12 @@ def appliquer_variation_disponibilite(tick: int) -> List[Dict[str, Any]]:
     Returns:
         List[Dict[str, Any]]: Liste de logs pour jsonl + log_humain
         
-    Refactorisation (02/08/2025) :
-    - Utilise ProduitRepository au lieu de fake_produits_db
-    - Code plus modulaire et testable
+    Logique :
+    - 50% de chance d'événement par tick
+    - Sélectionne 20% des produits actifs pour désactivation
+    - Sélectionne 20% des produits inactifs pour réactivation
+    - Met à jour le statut des produits sélectionnés
+    - Génère des logs détaillés des modifications
     """
     if random.random() > CHANCE_VARIATION:
         return []  # Pas d'événement ce tick
@@ -50,7 +61,7 @@ def appliquer_variation_disponibilite(tick: int) -> List[Dict[str, Any]]:
     # Initialiser le Repository
     produit_repo = ProduitRepository()
 
-    horodatage = datetime.utcnow().isoformat()
+    horodatage = datetime.now(timezone.utc).isoformat()
     horodatage_humain = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
 
     modifications = []

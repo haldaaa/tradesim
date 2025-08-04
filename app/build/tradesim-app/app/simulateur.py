@@ -52,8 +52,8 @@ produit_repo = ProduitRepository()
 fournisseur_repo = FournisseurRepository()
 entreprise_repo = EntrepriseRepository()
 
-# Gestion des prix (à migrer vers un service plus tard)
-prix_par_fournisseur = {}
+# Utiliser le service centralisé de prix
+from services.price_service import price_service
 
 def get_prix_produit_fournisseur(produit_id: int, fournisseur_id: int) -> float | None:
     """
@@ -66,7 +66,7 @@ def get_prix_produit_fournisseur(produit_id: int, fournisseur_id: int) -> float 
     Returns:
         float | None: Prix du produit ou None si non défini
     """
-    return prix_par_fournisseur.get((produit_id, fournisseur_id))
+    return price_service.get_prix_produit_fournisseur(produit_id, fournisseur_id)
 
 def set_prix_produit_fournisseur(produit_id: int, fournisseur_id: int, prix: float):
     """
@@ -77,7 +77,7 @@ def set_prix_produit_fournisseur(produit_id: int, fournisseur_id: int, prix: flo
         fournisseur_id (int): ID du fournisseur
         prix (float): Prix du produit
     """
-    prix_par_fournisseur[(produit_id, fournisseur_id)] = prix
+    price_service.set_prix_produit_fournisseur(produit_id, fournisseur_id, prix)
 
 # Fonction utilitaire pour logguer les events dans tous les fichiers
 def log_event(logs: List[Dict[str, Any]], event_type: str):
@@ -268,13 +268,7 @@ def get_fournisseurs_avec_stock(produit_id):
 
 def get_prix_minimum(produit_id):
     """Retourne le prix le plus bas d’un produit chez les fournisseurs disponibles"""
-    prix = [
-        prix_par_fournisseur.get((produit_id, f.id))
-        for f in fournisseur_repo.get_all()
-        if produit_id in f.stock_produit and f.stock_produit[produit_id] > 0
-        and prix_par_fournisseur.get((produit_id, f.id)) is not None
-    ]
-    return min(prix) if prix else float('inf')
+    return price_service.get_prix_minimum(produit_id) or float('inf')
 
 def acheter_produit(entreprise: Entreprise, produit: Produit, horodatage_iso: str, horodatage_humain: str, strategie: str, verbose: bool = False) -> bool:
     """Effectue un achat si possible. Log les résultats. Retourne True si succès."""

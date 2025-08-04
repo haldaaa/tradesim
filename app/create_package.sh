@@ -14,7 +14,7 @@ set -e  # Arrêter en cas d'erreur
 
 # Configuration
 PACKAGE_NAME="tradesim-app"
-VERSION="1.0.0"
+VERSION="0.1.0"
 BUILD_DIR="build"
 PACKAGE_DIR="$BUILD_DIR/$PACKAGE_NAME"
 
@@ -52,11 +52,11 @@ cp pytest.ini "$PACKAGE_DIR/"
 # Documentation
 cp README.md "$PACKAGE_DIR/"
 cp GUIDE_UTILISATION.md "$PACKAGE_DIR/docs/"
-cp GUIDE_MIGRATION_CLI_WEB.md "$PACKAGE_DIR/docs/"
+cp GUIDE_MIGRATION_CLI_WEB_UNIFIED.md "$PACKAGE_DIR/docs/"
 cp GUIDE_MONITORING_CLI.md "$PACKAGE_DIR/docs/"
 cp METRIQUES_DISPONIBLES.md "$PACKAGE_DIR/docs/"
 cp COMMANDES_CLI.md "$PACKAGE_DIR/docs/"
-cp INSTRUCTIONS_TESTS.md "$PACKAGE_DIR/docs/"
+cp DOCUMENTATION_STATUS.md "$PACKAGE_DIR/docs/"
 
 # Créer requirements.txt
 echo "📦 Création du fichier requirements.txt..."

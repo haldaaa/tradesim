@@ -18,7 +18,7 @@ Date: 2024-08-02
 import random
 import json
 import os
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import List, Dict, Any
 
 # Imports des Repository (nouvelle architecture)
@@ -119,7 +119,7 @@ def simulation_tour(verbose: bool = False):
     """
     global tick
     tick += 1
-    horodatage_iso = datetime.utcnow().isoformat()
+    horodatage_iso = datetime.now(timezone.utc).isoformat()
     horodatage_humain = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
 
     # Récupérer toutes les entreprises via le Repository

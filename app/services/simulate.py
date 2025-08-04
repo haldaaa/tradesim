@@ -33,6 +33,7 @@ from services.game_manager import (
     reset_game, interactive_new_game, save_template, 
     load_template, list_templates
 )
+from services.game_state_service import game_state_service
 
 # Initialisation des Repository
 produit_repo = ProduitRepository()
@@ -77,8 +78,15 @@ def afficher_status():
             stock = fournisseur.stock_produit[produit.id]
             
             # Utiliser le service de gestion des prix
-            from services.simulateur import get_prix_produit_fournisseur
-            prix = get_prix_produit_fournisseur(produit.id, fournisseur.id)
+            import services.price_service
+            prix = services.price_service.price_service.get_prix_produit_fournisseur(produit.id, fournisseur.id)
+            
+            # Debug: voir pourquoi prix est None
+            if prix is None:
+                print(f"    🔍 DEBUG: Prix None pour produit {produit.id}, fournisseur {fournisseur.id}")
+                # Vérifier si le prix existe dans le stockage
+                print(f"    🔍 DEBUG: Stockage contient {len(services.price_service.price_service._prix_stockage)} prix")
+                print(f"    🔍 DEBUG: Clé ({produit.id}, {fournisseur.id}) dans stockage: {((produit.id, fournisseur.id)) in services.price_service.price_service._prix_stockage}")
             
             # Si le prix n'est pas défini, utiliser un prix par défaut (comme dans l'API)
             if prix is None:
@@ -175,6 +183,14 @@ if __name__ == "__main__":
     parser.add_argument("--list-templates", action="store_true", help="Lister tous les templates disponibles")
 
     args = parser.parse_args()
+    
+    # Essayer de charger l'état du jeu au démarrage
+    try:
+        latest_file = game_state_service.get_latest_game_file()
+        if latest_file:
+            game_state_service.load_game_state(latest_file)
+    except Exception as e:
+        print(f"⚠️ Impossible de charger l'état du jeu: {e}")
 
     # Gestion des modes spéciaux
     if args.status:

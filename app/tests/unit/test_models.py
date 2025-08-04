@@ -21,7 +21,7 @@ from models import (
     Produit, TypeProduit, Fournisseur, Entreprise,
     ProduitChezFournisseur, FournisseurComplet, Transaction
 )
-from datetime import datetime
+from datetime import datetime, timezone
 
 
 class TestTypeProduit:
@@ -287,7 +287,7 @@ class TestTransaction:
     
     def test_transaction_creation_valide(self):
         """Test création d'une transaction valide"""
-        timestamp = datetime.utcnow()
+        timestamp = datetime.now(timezone.utc)
         transaction = Transaction(
             timestamp=timestamp,
             entreprise_id=1,
@@ -314,7 +314,7 @@ class TestTransaction:
     
     def test_transaction_echec(self):
         """Test création d'une transaction échouée"""
-        timestamp = datetime.utcnow()
+        timestamp = datetime.now(timezone.utc)
         transaction = Transaction(
             timestamp=timestamp,
             entreprise_id=1,

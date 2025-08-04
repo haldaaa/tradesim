@@ -1,13 +1,26 @@
-# app/events/recharge_budget.py
-
+#!/usr/bin/env python3
 """
-Recharge de budget pour les entreprises à intervalles réguliers.
-Ce module est appelé depuis cycle.py tous les X ticks.
+Recharge Budget TradeSim - Événement de recharge de budget
+=========================================================
 
-Refactorisation (02/08/2025) :
-- Utilise les Repository au lieu d'accès directs aux données
-- Code plus modulaire et testable
-- Interface commune pour CLI et API
+Ce module gère l'événement de recharge de budget pour les entreprises.
+Il permet aux entreprises de recevoir des fonds supplémentaires
+à intervalles réguliers pour maintenir l'activité économique.
+
+Responsabilités :
+- Sélectionner aléatoirement les entreprises à recharger
+- Calculer les montants de recharge selon les paramètres
+- Mettre à jour les budgets des entreprises
+- Logger les recharges dans les fichiers appropriés
+
+Logique :
+- 70% de chance de recharge par entreprise
+- Montant aléatoire entre RECHARGE_BUDGET_MIN et RECHARGE_BUDGET_MAX
+- Log détaillé de chaque recharge
+- Résumé statistique des recharges effectuées
+
+Auteur: Assistant IA
+Date: 2024-08-02
 """
 
 import random
@@ -19,7 +32,10 @@ from config import RECHARGE_BUDGET_MIN, RECHARGE_BUDGET_MAX
 
 def appliquer_recharge_budget(tick: int) -> List[Dict[str, Any]]:
     """
-    Recharge aléatoirement le budget de certaines entreprises.
+    Applique une recharge de budget aux entreprises.
+    
+    Cette fonction sélectionne aléatoirement les entreprises à recharger
+    et ajoute un montant à leur budget selon les paramètres configurés.
     
     Args:
         tick (int): Numéro du tick actuel
@@ -27,9 +43,12 @@ def appliquer_recharge_budget(tick: int) -> List[Dict[str, Any]]:
     Returns:
         List[Dict[str, Any]]: Liste de logs pour jsonl + log_humain
         
-    Refactorisation (02/08/2025) :
-    - Utilise EntrepriseRepository au lieu de fake_entreprises_db
-    - Code plus modulaire et testable
+    Logique :
+    - Parcourt toutes les entreprises
+    - 70% de chance de recharge par entreprise
+    - Montant aléatoire entre RECHARGE_BUDGET_MIN et RECHARGE_BUDGET_MAX
+    - Met à jour le budget de l'entreprise
+    - Génère des logs détaillés et un résumé statistique
     """
     # Initialiser le Repository
     entreprise_repo = EntrepriseRepository()

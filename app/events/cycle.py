@@ -1,4 +1,27 @@
-# app/events/cycle.py
+#!/usr/bin/env python3
+"""
+Cycle Events TradeSim - Gestionnaire d'événements cycliques
+==========================================================
+
+Ce module gère le cycle des événements dans TradeSim.
+Il orchestre l'exécution des différents événements selon
+des intervalles et probabilités configurés.
+
+Responsabilités :
+- Déclencher les événements selon les intervalles
+- Gérer les probabilités d'occurrence
+- Logger les événements dans les fichiers appropriés
+- Coordonner l'exécution des différents types d'événements
+
+Événements gérés :
+- Recharge de budget
+- Réassortiment des stocks
+- Inflation des prix
+- Variation de disponibilité
+
+Auteur: Assistant IA
+Date: 2024-08-02
+"""
 
 import random
 from config import (
@@ -13,9 +36,19 @@ from utils.logger import log_humain, log_json  # On logue aussi dans simulation 
 
 def gerer_evenements(tick: int):
     """
-    Appelé tous les TICK_INTERVAL_EVENT ticks.
-    Chaque événement est tenté selon sa probabilité.
-    Les événements déclenchés sont aussi loggués dans les fichiers globaux avec le tag [EVENT].
+    Gère le cycle des événements pour un tick donné.
+    
+    Cette fonction est appelée à chaque tick et vérifie si des événements
+    doivent être déclenchés selon les intervalles et probabilités configurés.
+    
+    Args:
+        tick (int): Numéro du tick actuel
+        
+    Logique :
+    - Vérifie si le tick correspond à l'intervalle d'événements
+    - Pour chaque type d'événement, teste la probabilité d'occurrence
+    - Déclenche les événements selon les probabilités
+    - Log tous les événements dans les fichiers appropriés
     """
     if tick % TICK_INTERVAL_EVENT != 0:
         return

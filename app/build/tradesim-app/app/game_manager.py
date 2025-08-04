@@ -22,9 +22,12 @@ from typing import Dict, List, Any
 from datetime import datetime
 
 # Imports des Repository (nouvelle architecture)
+import sys
+import os
+sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
 from repositories import ProduitRepository, FournisseurRepository, EntrepriseRepository
 from models import Produit, TypeProduit, Fournisseur, Entreprise
-from .simulateur import simulation_tour
+from services.simulateur import simulation_tour
 from config import (
     RECHARGE_BUDGET_MIN, RECHARGE_BUDGET_MAX,
     REASSORT_QUANTITE_MIN, REASSORT_QUANTITE_MAX,
@@ -213,10 +216,9 @@ def generate_fournisseurs(config_fournisseurs: Dict[str, Any]):
             facteur = random.uniform(0.9, 1.2) * (100 / (stock + 1))
             prix_fournisseur = round(prix_base * facteur, 2)
             
-            # TODO: Migrer vers un service de gestion des prix
-            # Pour l'instant, on utilise une variable globale
-            # from simulateur import set_prix_produit_fournisseur
-            # set_prix_produit_fournisseur(produit.id, fid, prix_fournisseur)
+            # Utilise le service centralisé de gestion des prix
+            from services.price_service import price_service
+            price_service.set_prix_produit_fournisseur(produit.id, fid, prix_fournisseur)
         
         fournisseur = Fournisseur(
             id=fid,

@@ -64,16 +64,24 @@ class TestGameManager:
     
     def test_reset_game(self):
         """Test de la fonction reset_game() avec Repository"""
+        # Appeler reset_game d'abord pour s'assurer que les repositories sont vides
+        reset_game()
+        
+        # Vérifier que les Repository sont vides
+        assert len(self.produit_repo.get_all()) == 0
+        assert len(self.fournisseur_repo.get_all()) == 0
+        assert len(self.entreprise_repo.get_all()) == 0
+        
         # Modifier l'état pour tester le reset
         produit_test = Produit(
             id=999, nom="Test", prix=100.0, actif=True, type=TypeProduit.matiere_premiere
         )
         self.produit_repo.add(produit_test)
         
-        # Appeler reset_game
+        # Appeler reset_game à nouveau
         reset_game()
         
-        # Vérifier que les Repository sont vides
+        # Vérifier que les Repository sont vides après le reset
         assert len(self.produit_repo.get_all()) == 0
         assert len(self.fournisseur_repo.get_all()) == 0
         assert len(self.entreprise_repo.get_all()) == 0
@@ -116,6 +124,17 @@ class TestGameManager:
     
     def test_generate_fournisseurs(self):
         """Test de la fonction generate_fournisseurs() avec Repository"""
+        # D'abord générer des produits pour que les fournisseurs puissent les utiliser
+        config_produits = {
+            "nombre": 5,
+            "prix_min": 10.0,
+            "prix_max": 100.0,
+            "actifs_min": 2,
+            "actifs_max": 4,
+            "types": ["matiere_premiere", "consommable", "produit_fini"]
+        }
+        generate_produits(config_produits)
+        
         config_fournisseurs = {
             "nombre": 3,
             "produits_min": 2,
