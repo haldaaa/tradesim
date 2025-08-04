@@ -22,7 +22,7 @@ Auteur : Fares & GPT
 """
 
 import random
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import List, Dict, Any
 
 # Imports des Repository (nouvelle architecture)
@@ -50,7 +50,7 @@ def evenement_reassort(tick: int) -> List[Dict[str, Any]]:
     produit_repo = ProduitRepository()
     fournisseur_repo = FournisseurRepository()
 
-    horodatage = datetime.utcnow()
+    horodatage = datetime.now(timezone.utc)
     horodatage_iso = horodatage.isoformat()
     horodatage_humain = horodatage.strftime("%Y-%m-%d %H:%M:%S")
 

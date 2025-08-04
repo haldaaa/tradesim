@@ -1,3 +1,26 @@
+#!/usr/bin/env python3
+"""
+Data Generator TradeSim - Générateur de données de test
+======================================================
+
+Ce module génère les données initiales pour TradeSim :
+- Produits avec types, prix et statut actif/inactif
+- Fournisseurs avec stocks et prix spécifiques
+- Entreprises avec budgets et stratégies
+- Prix par fournisseur pour chaque produit
+
+Responsabilités :
+- Génération aléatoire de données cohérentes
+- Création de l'écosystème commercial initial
+- Configuration des prix et stocks réalistes
+
+Note : Ce module est utilisé pour les tests et le développement.
+En production, les données viendront de la base de données.
+
+Auteur: Assistant IA
+Date: 2024-08-02
+"""
+
 from models import Produit, TypeProduit, Fournisseur, Entreprise
 import random
 from typing import List, Dict, Tuple

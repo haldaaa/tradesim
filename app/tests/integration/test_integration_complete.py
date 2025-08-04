@@ -29,10 +29,10 @@ def test_initialisation_complete():
         from events import inflation, reassort, recharge_budget, variation_disponibilite
         
         print("✅ Tous les composants importés avec succès")
-        return True
+        assert True, "Import réussi"
     except Exception as e:
         print(f"❌ Erreur import composants: {e}")
-        return False
+        assert False, f"Import échoué: {e}"
 
 def test_initialisation_jeu():
     """Test l'initialisation complète du jeu"""
@@ -52,10 +52,10 @@ def test_initialisation_jeu():
         assert len(fournisseurs) > 0, "Aucun fournisseur créé"
         
         print(f"✅ Jeu initialisé: {len(entreprises)} entreprises, {len(produits)} produits, {len(fournisseurs)} fournisseurs")
-        return True
+        assert True, "Initialisation réussie"
     except Exception as e:
         print(f"❌ Erreur initialisation jeu: {e}")
-        return False
+        assert False, f"Initialisation échouée: {e}"
 
 def test_simulation_complete():
     """Test une simulation complète"""
@@ -92,10 +92,10 @@ def test_simulation_complete():
         assert isinstance(stats_transactions, dict)
         
         print(f"✅ Simulation complète: {stats_simulation['tours_completes']} tours, {stats_budget['nombre_entreprises']} entreprises")
-        return True
+        assert True, "Simulation réussie"
     except Exception as e:
         print(f"❌ Erreur simulation complète: {e}")
-        return False
+        assert False, f"Simulation échouée: {e}"
 
 def test_api_endpoints():
     """Test les endpoints de l'API"""
@@ -136,10 +136,10 @@ def test_api_endpoints():
         assert isinstance(fournisseurs, list)
         
         print(f"✅ API fonctionne: {len(produits)} produits, {len(entreprises)} entreprises, {len(fournisseurs)} fournisseurs")
-        return True
+        assert True, "API fonctionne"
     except Exception as e:
         print(f"❌ Erreur API endpoints: {e}")
-        return False
+        assert False, f"API échouée: {e}"
 
 def test_events_integration():
     """Test l'intégration des événements"""
@@ -167,10 +167,10 @@ def test_events_integration():
                 print(f"  ⚠️ Événement {nom}: {e}")
         
         print("✅ Intégration des événements réussie")
-        return True
+        assert True, "Événements intégrés"
     except Exception as e:
         print(f"❌ Erreur intégration événements: {e}")
-        return False
+        assert False, f"Événements échoués: {e}"
 
 def test_services_integration():
     """Test l'intégration entre tous les services"""
@@ -205,10 +205,10 @@ def test_services_integration():
             assert isinstance(transactions, list)
         
         print("✅ Intégration des services réussie")
-        return True
+        assert True, "Services intégrés"
     except Exception as e:
         print(f"❌ Erreur intégration services: {e}")
-        return False
+        assert False, f"Services échoués: {e}"
 
 def test_performance_basique():
     """Test de performance basique"""
@@ -231,10 +231,10 @@ def test_performance_basique():
         temps_simulation = time.time() - debut
         
         print(f"✅ Performance: initialisation {temps_init:.3f}s, simulation {temps_simulation:.3f}s")
-        return True
+        assert True, "Performance OK"
     except Exception as e:
         print(f"❌ Erreur performance: {e}")
-        return False
+        assert False, f"Performance échouée: {e}"
 
 def main():
     """Test principal d'intégration complète"""

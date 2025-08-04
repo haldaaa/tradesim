@@ -131,6 +131,10 @@ def reset_game():
     fournisseur_repo.clear()
     entreprise_repo.clear()
     
+    # Vider le service de prix
+    from services.price_service import price_service
+    price_service.reset()
+    
     print("✅ Jeu remis à zéro avec succès")
 
 def generate_game_data(config: Dict[str, Any]):
@@ -140,6 +144,15 @@ def generate_game_data(config: Dict[str, Any]):
     Refactorisation (02/08/2025) :
     - Utilise les Repository au lieu d'accès directs aux données
     """
+    # Vider les repositories et le price_service
+    produit_repo.clear()
+    fournisseur_repo.clear()
+    entreprise_repo.clear()
+    
+    # Vider le service de prix
+    from services.price_service import price_service
+    price_service.reset()
+    
     # Génération des produits
     generate_produits(config["produits"])
     
@@ -148,6 +161,13 @@ def generate_game_data(config: Dict[str, Any]):
     
     # Génération des entreprises
     generate_entreprises(config["entreprises"])
+    
+    # Sauvegarder l'état du jeu après génération
+    try:
+        from services.game_state_service import game_state_service
+        game_state_service.save_game_state()
+    except Exception as e:
+        print(f"⚠️ Erreur lors de la sauvegarde de l'état: {e}")
 
 def generate_produits(config_produits: Dict[str, Any]):
     """
@@ -210,15 +230,6 @@ def generate_fournisseurs(config_fournisseurs: Dict[str, Any]):
         for produit in produits_attribués:
             stock = random.randint(stock_min, stock_max)
             stock_produit[produit.id] = stock
-            
-            # Calcul d'un prix fournisseur spécifique
-            prix_base = produit.prix
-            facteur = random.uniform(0.9, 1.2) * (100 / (stock + 1))
-            prix_fournisseur = round(prix_base * facteur, 2)
-            
-            # Utilise le service centralisé de gestion des prix
-            from services.price_service import price_service
-            price_service.set_prix_produit_fournisseur(produit.id, fid, prix_fournisseur)
         
         fournisseur = Fournisseur(
             id=fid,
@@ -227,6 +238,22 @@ def generate_fournisseurs(config_fournisseurs: Dict[str, Any]):
             stock_produit=stock_produit
         )
         fournisseur_repo.add(fournisseur)
+        
+        # Définir les prix APRÈS avoir ajouté le fournisseur
+        for produit in produits_attribués:
+            # Calcul d'un prix fournisseur spécifique
+            prix_base = produit.prix
+            facteur = random.uniform(0.9, 1.2) * (100 / (stock_produit[produit.id] + 1))
+            prix_fournisseur = round(prix_base * facteur, 2)
+            
+            # Utilise le service centralisé de gestion des prix (version force)
+            from services.price_service import price_service
+            success = price_service.set_prix_produit_fournisseur_force(produit.id, fid, prix_fournisseur)
+            if not success:
+                print(f"⚠️ Échec définition prix: produit {produit.id}, fournisseur {fid}, prix {prix_fournisseur}")
+            else:
+                print(f"✅ Prix défini: produit {produit.id}, fournisseur {fid}, prix {prix_fournisseur}")
+                print(f"    📊 Stockage contient maintenant {len(price_service._prix_stockage)} prix")
 
 def generate_entreprises(config_entreprises: Dict[str, Any]):
     """

@@ -155,7 +155,7 @@ class SimulationService:
         
         # Effectuer les achats des entreprises sélectionnées
         transactions_effectuees = 0
-        from datetime import datetime
+        from datetime import datetime, timezone
         
         for entreprise in entreprises_selectionnees:
             if verbose:
@@ -169,7 +169,7 @@ class SimulationService:
                 produit_choisi = random.choice(produits_disponibles)
                 
                 # Horodatages pour les logs
-                horodatage_iso = datetime.utcnow().isoformat()
+                horodatage_iso = datetime.now(timezone.utc).isoformat()
                 horodatage_humain = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
                 
                 # Utiliser la vraie logique d'achat de simulateur.py
@@ -201,6 +201,13 @@ class SimulationService:
         
         # Calculer les nouvelles statistiques
         stats = self.calculer_statistiques()
+        
+        # Sauvegarder l'état après chaque tour
+        try:
+            from services.game_state_service import game_state_service
+            game_state_service.save_game_state()
+        except Exception as e:
+            print(f"⚠️ Erreur lors de la sauvegarde de l'état: {e}")
         
         resultat_tour = {
             "tour": self.tours_completes,

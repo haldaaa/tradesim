@@ -24,7 +24,7 @@ Refactorisation (02/08/2025) :
 
 import random
 import json
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import List, Dict, Any
 
 # Imports des Repository (nouvelle architecture)
@@ -62,7 +62,7 @@ def appliquer_inflation(tick: int) -> List[Dict[str, Any]]:
     produit_repo = ProduitRepository()
     fournisseur_repo = FournisseurRepository()
 
-    horodatage = datetime.utcnow().isoformat()
+    horodatage = datetime.now(timezone.utc).isoformat()
     horodatage_humain = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
 
     inflation_logs = []
@@ -109,6 +109,15 @@ def appliquer_inflation(tick: int) -> List[Dict[str, Any]]:
 
                 # Trouver le produit pour les informations
                 produit = produit_repo.get_by_id(produit_id)
+                
+                # Mettre à jour le prix du produit dans le repository ET dans le PriceService
+                if produit:
+                    produit.prix = nouveau_prix
+                    produit_repo.update(produit)
+                
+                # Mettre à jour le prix dans le PriceService
+                from services.price_service import price_service
+                price_service.set_prix_produit_fournisseur_force(produit_id, fournisseur.id, nouveau_prix)
                 
                 pourcentage = round(((nouveau_prix - ancien_prix) / ancien_prix) * 100, 1)
                 pourcentages.append(pourcentage)

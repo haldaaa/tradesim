@@ -76,10 +76,13 @@ def get_fournisseurs_enrichis():
             produit = produit_repo.get_by_id(produit_id)
             nom_produit = produit.nom if produit else "???"
             
-            # TODO: Migrer vers un service de gestion des prix
-            # Pour l'instant, on utilise une fonction temporaire
-            from services.simulateur import get_prix_produit_fournisseur
-            prix = get_prix_produit_fournisseur(produit_id, fournisseur.id)
+            # Utilise le service centralisé de gestion des prix
+            from services.price_service import price_service
+            prix = price_service.get_prix_produit_fournisseur(produit_id, fournisseur.id)
+            
+            # Si le prix n'est pas défini, utiliser un prix par défaut
+            if prix is None:
+                prix = 100.0  # Prix par défaut
 
             produits.append(ProduitChezFournisseur(
                 produit_id=produit_id,
