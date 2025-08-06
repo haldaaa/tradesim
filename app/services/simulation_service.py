@@ -22,7 +22,7 @@ from datetime import datetime
 
 from repositories import ProduitRepository, FournisseurRepository, EntrepriseRepository
 from models import Produit, Fournisseur, Entreprise, TypeProduit
-from events.inflation import appliquer_inflation
+from events.inflation import appliquer_inflation_et_retour
 from events.reassort import evenement_reassort
 from events.recharge_budget import appliquer_recharge_budget
 from events.variation_disponibilite import appliquer_variation_disponibilite
@@ -109,7 +109,7 @@ class SimulationService:
         if tick % TICK_INTERVAL_EVENT == 0 and random.random() < 0.5:  # 50% de chance d'événement
             # Choisir un événement aléatoire
             evenements_disponibles = [
-                ("inflation", appliquer_inflation),
+                ("inflation", appliquer_inflation_et_retour),
                 ("reassort", evenement_reassort),
                 ("recharge_budget", appliquer_recharge_budget),
                 ("variation_disponibilite", appliquer_variation_disponibilite)

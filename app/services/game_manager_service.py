@@ -29,7 +29,9 @@ from config import (
     INFLATION_POURCENTAGE_MIN, INFLATION_POURCENTAGE_MAX,
     PROBABILITE_DESACTIVATION, PROBABILITE_REACTIVATION,
     TICK_INTERVAL_EVENT, PROBABILITE_EVENEMENT,
-    PROBABILITE_SELECTION_ENTREPRISE, DUREE_PAUSE_ENTRE_TOURS
+    PROBABILITE_SELECTION_ENTREPRISE, DUREE_PAUSE_ENTRE_TOURS,
+    TYPES_PRODUITS_PREFERES_MIN, TYPES_PRODUITS_PREFERES_MAX,
+    BUDGET_ENTREPRISE_MIN, BUDGET_ENTREPRISE_MAX
 )
 
 
@@ -268,10 +270,11 @@ class GameManagerService:
                 id=i + 1,
                 nom=nom,
                 pays=pays,
-                budget=random.randint(budget_min, budget_max),
-                budget_initial=random.randint(budget_min, budget_max),
-                types_preferes=random.sample([TypeProduit(t) for t in types_preferes], 
-                                           min(2, len(types_preferes))),
+                continent="Europe",  # Valeur par défaut
+                budget=round(random.uniform(BUDGET_ENTREPRISE_MIN, BUDGET_ENTREPRISE_MAX), 2),
+                budget_initial=round(random.uniform(BUDGET_ENTREPRISE_MIN, BUDGET_ENTREPRISE_MAX), 2),
+                types_preferes=random.sample([TypeProduit(t) for t in types_preferes],
+                    random.randint(TYPES_PRODUITS_PREFERES_MIN, min(TYPES_PRODUITS_PREFERES_MAX, len(types_preferes)))),
                 strategie=random.choice(strategies)
             )
             self.entreprise_repo.add(entreprise)

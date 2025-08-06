@@ -18,7 +18,8 @@ from models import Entreprise, TypeProduit
 from repositories.base_repository import EntrepriseRepositoryInterface
 
 # Import des données en mémoire (pour l'implémentation Fake)
-from data import fake_entreprises_db
+# Import différé pour éviter les imports circulaires
+fake_entreprises_db = None
 
 
 class FakeEntrepriseRepository(EntrepriseRepositoryInterface):
@@ -37,6 +38,17 @@ class FakeEntrepriseRepository(EntrepriseRepositoryInterface):
         """
         Initialise le repository avec les données en mémoire.
         """
+        global fake_entreprises_db
+        if fake_entreprises_db is None:
+            # Import direct depuis data.py
+            import sys
+            import os
+            sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
+            import importlib.util
+            spec = importlib.util.spec_from_file_location("data", os.path.join(os.path.dirname(os.path.dirname(__file__)), "data.py"))
+            data_module = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(data_module)
+            fake_entreprises_db = data_module.fake_entreprises_db
         self._data = fake_entreprises_db
     
     def get_all(self) -> List[Entreprise]:

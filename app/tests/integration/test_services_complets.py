@@ -23,10 +23,10 @@ def test_imports_services():
             BudgetService, budget_service
         )
         print("✅ Import de tous les services réussi")
-        return True
+        assert True, "Import de tous les services réussi"
     except Exception as e:
         print(f"❌ Erreur import services: {e}")
-        return False
+        assert False, f"Erreur import services: {e}"
 
 def test_simulation_service():
     """Test le SimulationService"""
@@ -42,10 +42,10 @@ def test_simulation_service():
         assert "evenements_appliques" in stats
         
         print("✅ SimulationService fonctionne")
-        return True
+        assert True, "SimulationService fonctionne"
     except Exception as e:
         print(f"❌ Erreur SimulationService: {e}")
-        return False
+        assert False, f"Erreur SimulationService: {e}"
 
 def test_game_manager_service():
     """Test le GameManagerService"""
@@ -68,10 +68,10 @@ def test_game_manager_service():
         assert isinstance(summary, dict)
         
         print("✅ GameManagerService fonctionne")
-        return True
+        assert True, "GameManagerService fonctionne"
     except Exception as e:
         print(f"❌ Erreur GameManagerService: {e}")
-        return False
+        assert False, f"Erreur GameManagerService: {e}"
 
 def test_transaction_service():
     """Test le TransactionService"""
@@ -84,7 +84,7 @@ def test_transaction_service():
         # Test de calcul de prix
         from models import Produit, Fournisseur, TypeProduit
         produit = Produit(id=999, nom="Test", prix=100.0, actif=True, type=TypeProduit.matiere_premiere)
-        fournisseur = Fournisseur(id=999, nom_entreprise="Test", pays="France", stock_produit={999: 50})
+        fournisseur = Fournisseur(id=999, nom_entreprise="Test", pays="France", continent="Europe", stock_produit={999: 50})
         
         prix = transaction_service.calculer_prix_fournisseur(produit, fournisseur, 50)
         assert isinstance(prix, float)
@@ -96,10 +96,10 @@ def test_transaction_service():
         assert "nombre_transactions" in stats
         
         print("✅ TransactionService fonctionne")
-        return True
+        assert True, "TransactionService fonctionne"
     except Exception as e:
         print(f"❌ Erreur TransactionService: {e}")
-        return False
+        assert False, f"Erreur TransactionService: {e}"
 
 def test_budget_service():
     """Test le BudgetService"""
@@ -123,10 +123,10 @@ def test_budget_service():
         assert isinstance(entreprises_prosperes, list)
         
         print("✅ BudgetService fonctionne")
-        return True
+        assert True, "BudgetService fonctionne"
     except Exception as e:
         print(f"❌ Erreur BudgetService: {e}")
-        return False
+        assert False, f"Erreur BudgetService: {e}"
 
 def test_integration_services():
     """Test l'intégration entre les services"""
@@ -157,10 +157,10 @@ def test_integration_services():
                 assert nouveau_budget == ancien_budget + 1000
         
         print("✅ Intégration des services réussie")
-        return True
+        assert True, "Intégration des services réussie"
     except Exception as e:
         print(f"❌ Erreur intégration services: {e}")
-        return False
+        assert False, f"Erreur intégration services: {e}"
 
 def test_utilisation_avancee():
     """Test d'utilisation avancée des services"""
@@ -197,10 +197,10 @@ def test_utilisation_avancee():
         assert isinstance(stats_transactions, dict)
         
         print("✅ Utilisation avancée des services réussie")
-        return True
+        assert True, "Utilisation avancée des services réussie"
     except Exception as e:
         print(f"❌ Erreur utilisation avancée: {e}")
-        return False
+        assert False, f"Erreur utilisation avancée: {e}"
 
 def main():
     """Test principal des services complets"""

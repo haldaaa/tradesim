@@ -1,231 +1,650 @@
 {
   "metadata": {
-    "date_creation": "2025-08-04T09:12:56.763945+00:00",
+    "date_creation": "2025-08-06T10:07:55.250912+00:00",
     "version": "0.1"
   },
   "produits": [
     {
       "id": 1,
       "nom": "Bois",
-      "prix": 381.71,
-      "actif": true,
-      "type": "consommable"
-    },
-    {
-      "id": 2,
-      "nom": "Acier",
-      "prix": 87.26,
-      "actif": true,
-      "type": "produit_fini"
-    },
-    {
-      "id": 3,
-      "nom": "Planches",
-      "prix": 495.25,
+      "prix": 41.3,
       "actif": true,
       "type": "matiere_premiere"
     },
     {
-      "id": 4,
-      "nom": "Ours en peluche",
-      "prix": 439.53,
+      "id": 2,
+      "nom": "Ciment",
+      "prix": 677.64,
+      "actif": true,
+      "type": "matiere_premiere"
+    },
+    {
+      "id": 3,
+      "nom": "Électricité",
+      "prix": 869.32,
       "actif": true,
       "type": "consommable"
+    },
+    {
+      "id": 4,
+      "nom": "Argile",
+      "prix": 828.69,
+      "actif": true,
+      "type": "matiere_premiere"
     },
     {
       "id": 5,
-      "nom": "Aspirateur",
-      "prix": 330.69,
+      "nom": "Coton",
+      "prix": 896.55,
+      "actif": true,
+      "type": "matiere_premiere"
+    },
+    {
+      "id": 6,
+      "nom": "Instrument de musique",
+      "prix": 796.34,
+      "actif": true,
+      "type": "produit_fini"
+    },
+    {
+      "id": 7,
+      "nom": "Acide",
+      "prix": 507.65,
       "actif": true,
       "type": "consommable"
     },
     {
-      "id": 6,
-      "nom": "Lampe",
-      "prix": 256.49,
-      "actif": false,
-      "type": "consommable"
-    },
-    {
-      "id": 7,
-      "nom": "Clavier",
-      "prix": 237.03,
-      "actif": false,
-      "type": "produit_fini"
-    },
-    {
       "id": 8,
-      "nom": "Moniteur",
-      "prix": 179.69,
-      "actif": false,
-      "type": "produit_fini"
+      "nom": "Inhibiteur",
+      "prix": 598.9,
+      "actif": true,
+      "type": "consommable"
     },
     {
       "id": 9,
-      "nom": "Chocolat",
-      "prix": 182.6,
-      "actif": false,
-      "type": "consommable"
+      "nom": "Tissu",
+      "prix": 309.92,
+      "actif": true,
+      "type": "matiere_premiere"
     },
     {
       "id": 10,
-      "nom": "Téléphone",
-      "prix": 31.03,
-      "actif": false,
+      "nom": "Solvant",
+      "prix": 490.9,
+      "actif": true,
       "type": "consommable"
     },
     {
       "id": 11,
-      "nom": "Vélo",
-      "prix": 139.37,
-      "actif": false,
-      "type": "matiere_premiere"
+      "nom": "Lunettes",
+      "prix": 870.06,
+      "actif": true,
+      "type": "produit_fini"
     },
     {
       "id": 12,
-      "nom": "Chaise",
-      "prix": 470.61,
-      "actif": false,
-      "type": "matiere_premiere"
+      "nom": "Meuble",
+      "prix": 780.98,
+      "actif": true,
+      "type": "produit_fini"
     },
     {
       "id": 13,
-      "nom": "Table",
-      "prix": 248.55,
-      "actif": false,
-      "type": "matiere_premiere"
+      "nom": "Outillage",
+      "prix": 185.23,
+      "actif": true,
+      "type": "produit_fini"
     },
     {
       "id": 14,
-      "nom": "Sac à dos",
-      "prix": 108.64,
-      "actif": false,
-      "type": "consommable"
+      "nom": "Cosmétique",
+      "prix": 884.79,
+      "actif": true,
+      "type": "produit_fini"
     },
     {
       "id": 15,
-      "nom": "Batterie externe",
-      "prix": 58.51,
-      "actif": false,
-      "type": "consommable"
+      "nom": "Parfum",
+      "prix": 525.1,
+      "actif": true,
+      "type": "produit_fini"
     },
     {
       "id": 16,
-      "nom": "Câble USB",
-      "prix": 362.96,
+      "nom": "Appareil électroménager",
+      "prix": 447.0,
+      "actif": true,
+      "type": "produit_fini"
+    },
+    {
+      "id": 17,
+      "nom": "Vernis",
+      "prix": 222.59,
+      "actif": true,
+      "type": "consommable"
+    },
+    {
+      "id": 18,
+      "nom": "Antioxydant",
+      "prix": 857.3,
+      "actif": true,
+      "type": "consommable"
+    },
+    {
+      "id": 19,
+      "nom": "Aliment",
+      "prix": 46.67,
+      "actif": true,
+      "type": "produit_fini"
+    },
+    {
+      "id": 20,
+      "nom": "Ordinateur",
+      "prix": 982.8,
+      "actif": true,
+      "type": "produit_fini"
+    },
+    {
+      "id": 21,
+      "nom": "Additif",
+      "prix": 467.75,
+      "actif": true,
+      "type": "consommable"
+    },
+    {
+      "id": 22,
+      "nom": "Acier",
+      "prix": 26.8,
+      "actif": true,
+      "type": "matiere_premiere"
+    },
+    {
+      "id": 23,
+      "nom": "Vêtement",
+      "prix": 629.52,
+      "actif": true,
+      "type": "produit_fini"
+    },
+    {
+      "id": 24,
+      "nom": "Colle",
+      "prix": 319.56,
+      "actif": true,
+      "type": "consommable"
+    },
+    {
+      "id": 25,
+      "nom": "Voiture",
+      "prix": 888.45,
+      "actif": true,
+      "type": "produit_fini"
+    },
+    {
+      "id": 26,
+      "nom": "Marbre",
+      "prix": 145.73,
+      "actif": true,
+      "type": "matiere_premiere"
+    },
+    {
+      "id": 27,
+      "nom": "Plastique",
+      "prix": 302.75,
       "actif": false,
       "type": "matiere_premiere"
     },
     {
-      "id": 17,
-      "nom": "Tapis de souris",
-      "prix": 497.56,
+      "id": 28,
+      "nom": "Granit",
+      "prix": 53.01,
+      "actif": false,
+      "type": "matiere_premiere"
+    },
+    {
+      "id": 29,
+      "nom": "Soie",
+      "prix": 303.88,
+      "actif": false,
+      "type": "matiere_premiere"
+    },
+    {
+      "id": 30,
+      "nom": "Chaussure",
+      "prix": 32.33,
       "actif": false,
       "type": "produit_fini"
     },
     {
-      "id": 18,
-      "nom": "Tente",
-      "prix": 33.52,
-      "actif": false,
-      "type": "matiere_premiere"
-    },
-    {
-      "id": 19,
-      "nom": "Bureau",
-      "prix": 322.12,
+      "id": 31,
+      "nom": "Huile",
+      "prix": 343.03,
       "actif": false,
       "type": "consommable"
     },
     {
-      "id": 20,
-      "nom": "Écouteurs",
-      "prix": 285.81,
+      "id": 32,
+      "nom": "Sac",
+      "prix": 413.03,
       "actif": false,
       "type": "produit_fini"
+    },
+    {
+      "id": 33,
+      "nom": "Montre",
+      "prix": 565.21,
+      "actif": false,
+      "type": "produit_fini"
+    },
+    {
+      "id": 34,
+      "nom": "Peinture",
+      "prix": 224.59,
+      "actif": false,
+      "type": "consommable"
+    },
+    {
+      "id": 35,
+      "nom": "Eau",
+      "prix": 354.76,
+      "actif": false,
+      "type": "consommable"
+    },
+    {
+      "id": 36,
+      "nom": "Stabilisant",
+      "prix": 314.89,
+      "actif": false,
+      "type": "consommable"
+    },
+    {
+      "id": 37,
+      "nom": "Plastifiant",
+      "prix": 820.7,
+      "actif": false,
+      "type": "consommable"
+    },
+    {
+      "id": 38,
+      "nom": "Laine",
+      "prix": 142.71,
+      "actif": false,
+      "type": "matiere_premiere"
+    },
+    {
+      "id": 39,
+      "nom": "Livre",
+      "prix": 258.81,
+      "actif": false,
+      "type": "produit_fini"
+    },
+    {
+      "id": 40,
+      "nom": "Béton",
+      "prix": 245.34,
+      "actif": false,
+      "type": "matiere_premiere"
+    },
+    {
+      "id": 41,
+      "nom": "Caoutchouc",
+      "prix": 496.21,
+      "actif": false,
+      "type": "matiere_premiere"
+    },
+    {
+      "id": 42,
+      "nom": "Médicament",
+      "prix": 621.82,
+      "actif": false,
+      "type": "produit_fini"
+    },
+    {
+      "id": 43,
+      "nom": "Pigment",
+      "prix": 336.71,
+      "actif": false,
+      "type": "consommable"
+    },
+    {
+      "id": 44,
+      "nom": "Métal",
+      "prix": 527.16,
+      "actif": false,
+      "type": "matiere_premiere"
+    },
+    {
+      "id": 45,
+      "nom": "Gaz",
+      "prix": 294.41,
+      "actif": false,
+      "type": "consommable"
+    },
+    {
+      "id": 46,
+      "nom": "Bijou",
+      "prix": 945.7,
+      "actif": false,
+      "type": "produit_fini"
+    },
+    {
+      "id": 47,
+      "nom": "Aluminium",
+      "prix": 945.32,
+      "actif": false,
+      "type": "matiere_premiere"
+    },
+    {
+      "id": 48,
+      "nom": "Lubrifiant",
+      "prix": 459.56,
+      "actif": false,
+      "type": "consommable"
+    },
+    {
+      "id": 49,
+      "nom": "Produits chimiques",
+      "prix": 161.21,
+      "actif": false,
+      "type": "consommable"
+    },
+    {
+      "id": 50,
+      "nom": "Base",
+      "prix": 937.38,
+      "actif": false,
+      "type": "consommable"
     }
   ],
   "fournisseurs": [
     {
       "id": 1,
-      "nom_entreprise": "PlancheCompagnie",
-      "pays": "France",
+      "nom_entreprise": "USSupply",
+      "pays": "États-Unis",
+      "continent": "Amérique du Nord",
       "stock_produit": {
-        "3": 185,
-        "18": 74,
-        "19": 108,
-        "6": 158,
-        "12": 92,
-        "17": 54,
-        "5": 171,
-        "4": 19
+        "27": 424,
+        "3": 15,
+        "41": 405,
+        "30": 125,
+        "10": 31,
+        "42": 324,
+        "35": 449,
+        "12": 135,
+        "19": 398,
+        "26": 75,
+        "44": 364,
+        "28": 417,
+        "20": 202,
+        "5": 306
       }
     },
     {
       "id": 2,
-      "nom_entreprise": "TechDistrib",
-      "pays": "Allemagne",
+      "nom_entreprise": "MalaysianSupply",
+      "pays": "Malaisie",
+      "continent": "Asie",
       "stock_produit": {
-        "12": 103,
-        "18": 77,
-        "10": 178,
-        "9": 15,
-        "11": 112
+        "31": 194,
+        "40": 319,
+        "26": 74,
+        "11": 360,
+        "16": 348,
+        "39": 451,
+        "12": 147,
+        "29": 137,
+        "13": 97,
+        "42": 224,
+        "35": 150,
+        "21": 268,
+        "46": 285,
+        "47": 405,
+        "48": 330,
+        "44": 91,
+        "36": 277,
+        "22": 70,
+        "3": 327,
+        "27": 395,
+        "24": 219,
+        "1": 478,
+        "45": 23,
+        "41": 341,
+        "7": 417,
+        "19": 146,
+        "6": 413,
+        "37": 132,
+        "38": 237,
+        "17": 391
       }
     },
     {
       "id": 3,
-      "nom_entreprise": "AsieImport",
-      "pays": "Chine",
+      "nom_entreprise": "GermanDistrib",
+      "pays": "Allemagne",
+      "continent": "Europe",
       "stock_produit": {
-        "8": 111,
-        "6": 122,
-        "18": 91,
-        "7": 139
+        "23": 259,
+        "3": 117,
+        "10": 35,
+        "13": 87,
+        "36": 124,
+        "29": 251,
+        "24": 475,
+        "11": 180,
+        "35": 311,
+        "15": 89,
+        "1": 220,
+        "2": 189,
+        "22": 189,
+        "44": 119
       }
     },
     {
       "id": 4,
-      "nom_entreprise": "NordicTools",
-      "pays": "Suède",
+      "nom_entreprise": "AmericanTools",
+      "pays": "États-Unis",
+      "continent": "Amérique du Nord",
       "stock_produit": {
-        "6": 39,
-        "10": 96,
-        "9": 55,
-        "8": 21,
-        "20": 18
+        "6": 169,
+        "27": 306,
+        "30": 248,
+        "7": 221,
+        "1": 255,
+        "11": 207,
+        "29": 31,
+        "47": 168,
+        "8": 31,
+        "50": 101,
+        "3": 484,
+        "4": 228,
+        "23": 481,
+        "36": 120,
+        "34": 38,
+        "37": 416,
+        "49": 322,
+        "31": 404,
+        "44": 484
       }
     },
     {
       "id": 5,
-      "nom_entreprise": "ElectroPlus",
-      "pays": "Corée du Sud",
+      "nom_entreprise": "PacificSupply",
+      "pays": "Japon",
+      "continent": "Asie",
       "stock_produit": {
-        "7": 84,
-        "8": 187,
-        "11": 154
+        "3": 168,
+        "5": 319,
+        "41": 25,
+        "11": 389,
+        "43": 472,
+        "34": 121,
+        "24": 296,
+        "22": 67,
+        "27": 445,
+        "12": 52,
+        "26": 292,
+        "29": 473,
+        "38": 361,
+        "14": 193,
+        "39": 20,
+        "25": 388,
+        "7": 97,
+        "49": 481,
+        "40": 129,
+        "50": 104,
+        "8": 233,
+        "15": 352,
+        "6": 110,
+        "31": 173,
+        "23": 418
+      }
+    },
+    {
+      "id": 6,
+      "nom_entreprise": "TaiwanImport",
+      "pays": "Taïwan",
+      "continent": "Asie",
+      "stock_produit": {
+        "6": 500,
+        "1": 179,
+        "9": 157,
+        "44": 37,
+        "13": 175,
+        "2": 358,
+        "20": 285,
+        "41": 196,
+        "16": 155,
+        "4": 317,
+        "38": 54,
+        "29": 251,
+        "32": 221,
+        "39": 453,
+        "21": 430,
+        "12": 18,
+        "19": 314
+      }
+    },
+    {
+      "id": 7,
+      "nom_entreprise": "DanishSupply",
+      "pays": "Danemark",
+      "continent": "Europe",
+      "stock_produit": {
+        "44": 403,
+        "29": 419,
+        "37": 384,
+        "34": 251,
+        "24": 146,
+        "39": 201,
+        "19": 95,
+        "40": 217,
+        "25": 497,
+        "9": 53,
+        "20": 266,
+        "42": 67,
+        "30": 110,
+        "1": 338
+      }
+    },
+    {
+      "id": 8,
+      "nom_entreprise": "KenyanSupply",
+      "pays": "Kenya",
+      "continent": "Afrique",
+      "stock_produit": {
+        "38": 331,
+        "50": 412,
+        "35": 392,
+        "6": 389,
+        "39": 408,
+        "49": 421,
+        "14": 100,
+        "29": 102,
+        "3": 265,
+        "16": 404,
+        "17": 392,
+        "26": 248,
+        "2": 51,
+        "46": 114,
+        "1": 143,
+        "43": 252,
+        "31": 372,
+        "20": 173,
+        "42": 493,
+        "32": 98,
+        "37": 141,
+        "5": 376,
+        "27": 355,
+        "44": 400,
+        "36": 442,
+        "34": 444,
+        "40": 130
+      }
+    },
+    {
+      "id": 9,
+      "nom_entreprise": "ItalianSupply",
+      "pays": "Italie",
+      "continent": "Europe",
+      "stock_produit": {
+        "7": 190,
+        "31": 93,
+        "3": 108,
+        "11": 450,
+        "41": 343,
+        "35": 160,
+        "44": 313,
+        "25": 270,
+        "21": 411,
+        "49": 143,
+        "19": 220
+      }
+    },
+    {
+      "id": 10,
+      "nom_entreprise": "SingaporeSupply",
+      "pays": "Singapour",
+      "continent": "Asie",
+      "stock_produit": {
+        "25": 161,
+        "22": 213,
+        "5": 37,
+        "38": 207,
+        "27": 427,
+        "41": 68,
+        "42": 87,
+        "33": 258,
+        "23": 439,
+        "40": 254,
+        "16": 143,
+        "32": 187,
+        "9": 222,
+        "14": 344,
+        "35": 292,
+        "21": 379,
+        "50": 77,
+        "1": 349,
+        "46": 466,
+        "47": 118,
+        "19": 444,
+        "44": 111,
+        "8": 396,
+        "2": 74,
+        "15": 189,
+        "11": 140,
+        "28": 205,
+        "39": 32,
+        "18": 434
       }
     }
   ],
   "entreprises": [
     {
       "id": 1,
-      "nom": "MagaToys",
-      "pays": "France",
-      "budget": 95.78,
-      "budget_initial": 2869.81,
-      "types_preferes": [
-        "produit_fini",
-        "matiere_premiere"
-      ],
-      "strategie": "moins_cher"
-    },
-    {
-      "id": 2,
-      "nom": "BuildTech",
-      "pays": "Allemagne",
-      "budget": 1920.33,
-      "budget_initial": 1946.52,
+      "nom": "NewZealandCorp",
+      "pays": "Nouvelle-Zélande",
+      "continent": "Océanie",
+      "budget": 8170.41,
+      "budget_initial": 13274.15,
       "types_preferes": [
         "consommable",
         "produit_fini"
@@ -233,43 +652,446 @@
       "strategie": "par_type"
     },
     {
+      "id": 2,
+      "nom": "ThaiTech",
+      "pays": "Thaïlande",
+      "continent": "Asie",
+      "budget": 12194.51,
+      "budget_initial": 13965.64,
+      "types_preferes": [
+        "produit_fini"
+      ],
+      "strategie": "moins_cher"
+    },
+    {
       "id": 3,
-      "nom": "BioLogix",
-      "pays": "Canada",
-      "budget": 1950.4,
-      "budget_initial": 1270.23,
+      "nom": "SingaporeCorp",
+      "pays": "Singapour",
+      "continent": "Asie",
+      "budget": 16258.88,
+      "budget_initial": 12996.88,
+      "types_preferes": [
+        "matiere_premiere",
+        "produit_fini"
+      ],
+      "strategie": "par_type"
+    },
+    {
+      "id": 4,
+      "nom": "ItalianDesign",
+      "pays": "Italie",
+      "continent": "Europe",
+      "budget": 6824.46,
+      "budget_initial": 11663.87,
       "types_preferes": [
         "produit_fini",
+        "matiere_premiere"
+      ],
+      "strategie": "par_type"
+    },
+    {
+      "id": 5,
+      "nom": "AlpineCorp",
+      "pays": "Suisse",
+      "continent": "Europe",
+      "budget": 16233.03,
+      "budget_initial": 14375.54,
+      "types_preferes": [
+        "matiere_premiere"
+      ],
+      "strategie": "moins_cher"
+    },
+    {
+      "id": 6,
+      "nom": "MediterraneanTech",
+      "pays": "Espagne",
+      "continent": "Europe",
+      "budget": 12972.35,
+      "budget_initial": 13924.46,
+      "types_preferes": [
+        "matiere_premiere",
+        "consommable"
+      ],
+      "strategie": "moins_cher"
+    },
+    {
+      "id": 7,
+      "nom": "IndonesianCorp",
+      "pays": "Indonésie",
+      "continent": "Asie",
+      "budget": 13028.56,
+      "budget_initial": 15038.98,
+      "types_preferes": [
+        "produit_fini"
+      ],
+      "strategie": "par_type"
+    },
+    {
+      "id": 8,
+      "nom": "IndianTech",
+      "pays": "Inde",
+      "continent": "Asie",
+      "budget": 19643.53,
+      "budget_initial": 17249.11,
+      "types_preferes": [
+        "consommable"
+      ],
+      "strategie": "moins_cher"
+    },
+    {
+      "id": 9,
+      "nom": "ColombianCorp",
+      "pays": "Colombie",
+      "continent": "Amérique du Sud",
+      "budget": 6329.94,
+      "budget_initial": 16331.92,
+      "types_preferes": [
+        "consommable",
+        "matiere_premiere"
+      ],
+      "strategie": "moins_cher"
+    },
+    {
+      "id": 10,
+      "nom": "CzechTech",
+      "pays": "République tchèque",
+      "continent": "Europe",
+      "budget": 10040.59,
+      "budget_initial": 15243.09,
+      "types_preferes": [
+        "produit_fini",
+        "matiere_premiere"
+      ],
+      "strategie": "par_type"
+    },
+    {
+      "id": 11,
+      "nom": "SouthAfricanCorp",
+      "pays": "Afrique du Sud",
+      "continent": "Afrique",
+      "budget": 8485.8,
+      "budget_initial": 14793.64,
+      "types_preferes": [
+        "matiere_premiere",
         "consommable"
       ],
       "strategie": "par_type"
+    },
+    {
+      "id": 12,
+      "nom": "AustrianTech",
+      "pays": "Autriche",
+      "continent": "Europe",
+      "budget": 19912.43,
+      "budget_initial": 7635.73,
+      "types_preferes": [
+        "produit_fini",
+        "matiere_premiere"
+      ],
+      "strategie": "par_type"
+    },
+    {
+      "id": 13,
+      "nom": "PolishCorp",
+      "pays": "Pologne",
+      "continent": "Europe",
+      "budget": 19362.41,
+      "budget_initial": 8297.07,
+      "types_preferes": [
+        "produit_fini",
+        "matiere_premiere"
+      ],
+      "strategie": "moins_cher"
+    },
+    {
+      "id": 14,
+      "nom": "AmericanInnovation",
+      "pays": "États-Unis",
+      "continent": "Amérique du Nord",
+      "budget": 17419.14,
+      "budget_initial": 16727.89,
+      "types_preferes": [
+        "consommable",
+        "matiere_premiere"
+      ],
+      "strategie": "moins_cher"
+    },
+    {
+      "id": 15,
+      "nom": "BelgianTech",
+      "pays": "Belgique",
+      "continent": "Europe",
+      "budget": 7977.83,
+      "budget_initial": 19746.82,
+      "types_preferes": [
+        "produit_fini"
+      ],
+      "strategie": "moins_cher"
+    },
+    {
+      "id": 16,
+      "nom": "PhilippineCorp",
+      "pays": "Philippines",
+      "continent": "Asie",
+      "budget": 18296.74,
+      "budget_initial": 7819.27,
+      "types_preferes": [
+        "matiere_premiere",
+        "produit_fini"
+      ],
+      "strategie": "moins_cher"
+    },
+    {
+      "id": 17,
+      "nom": "TaiwanTech",
+      "pays": "Taïwan",
+      "continent": "Asie",
+      "budget": 18160.26,
+      "budget_initial": 13944.98,
+      "types_preferes": [
+        "consommable",
+        "produit_fini"
+      ],
+      "strategie": "moins_cher"
+    },
+    {
+      "id": 18,
+      "nom": "DanishDesign",
+      "pays": "Danemark",
+      "continent": "Europe",
+      "budget": 17725.66,
+      "budget_initial": 18017.77,
+      "types_preferes": [
+        "matiere_premiere",
+        "consommable"
+      ],
+      "strategie": "par_type"
+    },
+    {
+      "id": 19,
+      "nom": "PeruvianTech",
+      "pays": "Pérou",
+      "continent": "Amérique du Sud",
+      "budget": 12460.73,
+      "budget_initial": 19645.54,
+      "types_preferes": [
+        "produit_fini"
+      ],
+      "strategie": "par_type"
+    },
+    {
+      "id": 20,
+      "nom": "MoroccanCorp",
+      "pays": "Maroc",
+      "continent": "Afrique",
+      "budget": 13401.91,
+      "budget_initial": 11044.38,
+      "types_preferes": [
+        "produit_fini"
+      ],
+      "strategie": "moins_cher"
     }
   ],
   "prix": {
-    "3_1": 254.3,
-    "4_1": 2223.51,
-    "5_1": 184.89,
-    "6_1": 191.65,
-    "6_3": 220.75,
-    "6_4": 630.49,
-    "7_3": 197.81,
-    "7_5": 307.85,
-    "8_3": 164.64,
-    "8_4": 754.32,
-    "8_5": 99.43,
-    "9_2": 1266.41,
-    "9_4": 365.5,
-    "10_2": 17.19,
-    "10_4": 33.31,
-    "11_2": 129.11,
-    "11_5": 93.61,
-    "12_1": 563.23,
-    "12_2": 425.21,
-    "17_1": 839.57,
-    "18_1": 41.56,
-    "18_2": 48.19,
-    "18_3": 38.72,
-    "19_1": 333.38,
-    "20_4": 1511.36
+    "1_2": 8.78,
+    "1_3": 18.57,
+    "1_4": 16.33,
+    "1_6": 26.63,
+    "1_7": 11.91,
+    "1_8": 30.17,
+    "1_10": 13.57,
+    "2_3": 420.76,
+    "2_6": 202.6,
+    "2_8": 1517.69,
+    "2_10": 958.99,
+    "3_1": 5252.19,
+    "3_2": 240.03,
+    "3_3": 864.57,
+    "3_4": 202.37,
+    "3_5": 571.73,
+    "3_8": 356.67,
+    "3_9": 936.97,
+    "4_4": 380.58,
+    "4_6": 264.95,
+    "5_1": 303.71,
+    "5_5": 311.9,
+    "5_8": 250.51,
+    "5_10": 2163.72,
+    "6_2": 173.81,
+    "6_4": 472.98,
+    "6_5": 646.44,
+    "6_6": 186.86,
+    "6_8": 239.75,
+    "7_2": 142.57,
+    "7_4": 274.16,
+    "7_5": 602.91,
+    "7_9": 293.55,
+    "8_4": 1963.26,
+    "8_5": 287.42,
+    "8_10": 159.96,
+    "9_6": 189.33,
+    "9_7": 683.41,
+    "9_10": 128.32,
+    "10_1": 1505.49,
+    "10_3": 1590.35,
+    "11_2": 262.62,
+    "11_3": 546.81,
+    "11_4": 484.18,
+    "11_5": 244.82,
+    "11_9": 189.38,
+    "11_10": 682.15,
+    "12_1": 544.77,
+    "12_2": 486.38,
+    "12_5": 1428.11,
+    "12_6": 3999.05,
+    "13_2": 210.33,
+    "13_3": 245.44,
+    "13_6": 116.7,
+    "14_5": 525.81,
+    "14_8": 1028.09,
+    "14_10": 288.56,
+    "15_3": 549.01,
+    "15_5": 146.74,
+    "15_10": 317.78,
+    "16_2": 125.12,
+    "16_6": 285.82,
+    "16_8": 128.44,
+    "16_10": 304.59,
+    "17_2": 67.86,
+    "17_8": 55.26,
+    "18_10": 179.05,
+    "19_1": 11.71,
+    "19_2": 37.38,
+    "19_6": 16.62,
+    "19_7": 57.06,
+    "19_9": 25.2,
+    "19_10": 12.31,
+    "20_1": 572.03,
+    "20_6": 367.03,
+    "20_7": 397.09,
+    "20_8": 557.96,
+    "21_2": 156.9,
+    "21_6": 122.24,
+    "21_9": 104.46,
+    "21_10": 124.97,
+    "22_2": 36.35,
+    "22_3": 13.48,
+    "22_5": 43.49,
+    "22_10": 11.83,
+    "23_3": 289.05,
+    "23_4": 154.34,
+    "23_5": 144.6,
+    "23_10": 148.36,
+    "24_2": 170.12,
+    "24_3": 75.22,
+    "24_5": 128.02,
+    "24_7": 217.12,
+    "25_5": 229.24,
+    "25_7": 170.49,
+    "25_9": 327.35,
+    "25_10": 585.91,
+    "26_1": 227.6,
+    "26_2": 216.32,
+    "26_5": 58.09,
+    "26_8": 66.49,
+    "27_1": 66.98,
+    "27_2": 88.01,
+    "27_4": 90.55,
+    "27_5": 65.5,
+    "27_8": 84.91,
+    "27_10": 71.9,
+    "28_1": 11.41,
+    "28_10": 27.02,
+    "29_2": 231.78,
+    "29_3": 136.54,
+    "29_4": 1007.87,
+    "29_5": 65.23,
+    "29_6": 117.25,
+    "29_7": 69.36,
+    "29_8": 328.7,
+    "30_1": 23.47,
+    "30_4": 13.15,
+    "30_7": 31.83,
+    "31_2": 179.01,
+    "31_4": 92.69,
+    "31_5": 188.79,
+    "31_8": 91.36,
+    "31_9": 402.27,
+    "32_6": 211.45,
+    "32_8": 454.06,
+    "32_10": 237.3,
+    "33_10": 258.61,
+    "34_4": 550.89,
+    "34_5": 220.9,
+    "34_7": 102.63,
+    "34_8": 54.51,
+    "35_1": 89.13,
+    "35_2": 220.71,
+    "35_3": 135.16,
+    "35_8": 85.67,
+    "35_9": 200.06,
+    "35_10": 115.2,
+    "36_2": 117.81,
+    "36_3": 236.31,
+    "36_4": 263.74,
+    "36_8": 74.57,
+    "37_2": 617.14,
+    "37_4": 180.37,
+    "37_7": 234.14,
+    "37_8": 654.27,
+    "38_2": 71.77,
+    "38_5": 42.42,
+    "38_6": 271.71,
+    "38_8": 47.1,
+    "38_10": 77.97,
+    "39_2": 59.7,
+    "39_5": 1307.58,
+    "39_6": 58.44,
+    "39_7": 131.22,
+    "39_8": 72.04,
+    "39_10": 815.69,
+    "40_2": 71.46,
+    "40_5": 222.43,
+    "40_7": 111.8,
+    "40_8": 198.31,
+    "40_10": 93.02,
+    "41_1": 141.15,
+    "41_2": 164.92,
+    "41_5": 2140.23,
+    "41_6": 245.95,
+    "41_9": 136.26,
+    "41_10": 681.69,
+    "42_1": 178.64,
+    "42_2": 306.5,
+    "42_7": 932.73,
+    "42_8": 143.78,
+    "42_10": 752.55,
+    "43_5": 68.37,
+    "43_8": 158.07,
+    "44_1": 165.01,
+    "44_2": 591.63,
+    "44_3": 443.22,
+    "44_4": 105.45,
+    "44_6": 1393.42,
+    "44_7": 120.45,
+    "44_8": 155.72,
+    "44_9": 181.86,
+    "44_10": 452.71,
+    "45_2": 1289.69,
+    "46_2": 371.89,
+    "46_8": 955.45,
+    "46_10": 223.36,
+    "47_2": 238.39,
+    "47_4": 546.18,
+    "47_10": 815.57,
+    "48_2": 133.3,
+    "49_4": 53.53,
+    "49_5": 39.9,
+    "49_8": 35.46,
+    "49_9": 104.52,
+    "50_4": 990.3,
+    "50_5": 1049.02,
+    "50_8": 261.81,
+    "50_10": 1127.81
   }
 }

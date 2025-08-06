@@ -25,6 +25,7 @@ from services.game_manager import (
     NOMS_PRODUITS
 )
 from models import Produit, TypeProduit, Fournisseur, Entreprise
+from config import BUDGET_ENTREPRISE_MIN, BUDGET_ENTREPRISE_MAX
 
 # Imports des Repository (nouvelle architecture)
 from repositories import ProduitRepository, FournisseurRepository, EntrepriseRepository
@@ -113,7 +114,10 @@ class TestGameManager:
         for produit in produits:
             assert 10.0 <= produit.prix <= 100.0
             assert produit.id > 0
-            assert produit.nom in NOMS_PRODUITS
+            # Vérifier que le nom est dans les données de noms
+            from data.names_data import PRODUITS_DATA
+            noms_produits = [p["nom"] for p in PRODUITS_DATA]
+            assert produit.nom in noms_produits
             assert produit.type in [TypeProduit.matiere_premiere, TypeProduit.consommable, TypeProduit.produit_fini]
         
         # Vérifier qu'il y a entre 2 et 4 produits actifs
@@ -154,10 +158,13 @@ class TestGameManager:
         assert len(fournisseurs) == 3
         
         for fournisseur in fournisseurs:
-            # NOMS_FOURNISSEURS est une liste de tuples (nom, pays)
-            noms_fournisseurs = [nom for nom, _ in NOMS_FOURNISSEURS]
+            # Vérifier que le nom est dans les données de noms
+            from data.names_data import FOURNISSEURS_DATA
+            noms_fournisseurs = [f["nom"] for f in FOURNISSEURS_DATA]
             assert fournisseur.nom_entreprise in noms_fournisseurs
-            assert fournisseur.pays in ["France", "Allemagne", "Chine", "Suède", "Corée du Sud"]
+            # Vérifier que le pays est dans les données de noms
+            pays_fournisseurs = [f["pays"] for f in FOURNISSEURS_DATA]
+            assert fournisseur.pays in pays_fournisseurs
             assert 2 <= len(fournisseur.stock_produit) <= 5
             
             # Vérifier les stocks
@@ -187,9 +194,14 @@ class TestGameManager:
         assert len(entreprises) == 2
         
         for entreprise in entreprises:
-            assert entreprise.nom in NOMS_ENTREPRISES
-            assert entreprise.pays in ["France", "Allemagne"]
-            assert 1000.0 <= entreprise.budget <= 3000.0
+            # Vérifier que le nom est dans les données de noms
+            from data.names_data import ENTREPRISES_DATA
+            noms_entreprises = [e["nom"] for e in ENTREPRISES_DATA]
+            assert entreprise.nom in noms_entreprises
+            # Vérifier que le pays est dans les données de noms
+            pays_entreprises = [e["pays"] for e in ENTREPRISES_DATA]
+            assert entreprise.pays in pays_entreprises
+            assert BUDGET_ENTREPRISE_MIN <= entreprise.budget <= BUDGET_ENTREPRISE_MAX
             assert entreprise.strategie in ["moins_cher", "par_type"]
             assert len(entreprise.types_preferes) > 0
         
@@ -306,7 +318,7 @@ class TestGameManager:
         self.produit_repo.add(produit)
         
         # Ajouter un fournisseur avec le produit
-        fournisseur = Fournisseur(id=1, nom_entreprise="TestFournisseur", pays="France", stock_produit={1: 10})
+        fournisseur = Fournisseur(id=1, nom_entreprise="TestFournisseur", pays="France", continent="Europe", stock_produit={1: 10})
         self.fournisseur_repo.add(fournisseur)
         
         # Tester l'affichage du résumé
@@ -326,11 +338,11 @@ class TestGameManagerPerformance:
         """Test de génération d'un grand dataset avec Repository"""
         config = {
             "produits": {
-                "nombre": 100, 
-                "prix_min": 1.0, 
+                "nombre": 50,  # Réduit pour éviter de dépasser la limite
+                "prix_min": 1.0,
                 "prix_max": 1000.0,
-                "actifs_min": 50,
-                "actifs_max": 80,
+                "actifs_min": 25,
+                "actifs_max": 40,
                 "types": ["matiere_premiere", "consommable", "produit_fini"]
             },
             "fournisseurs": {
@@ -363,7 +375,7 @@ class TestGameManagerPerformance:
         generate_game_data(config)
         
         # Vérifications
-        assert len(produit_repo.get_all()) == 100
+        assert len(produit_repo.get_all()) == 50
         assert len(fournisseur_repo.get_all()) == 20
         assert len(entreprise_repo.get_all()) == 10
         

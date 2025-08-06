@@ -30,7 +30,7 @@ from config import (
 )
 from events.recharge_budget import appliquer_recharge_budget
 from events.reassort import appliquer_reassort
-from events.inflation import appliquer_inflation
+from events.inflation import appliquer_inflation_et_retour
 from events.variation_disponibilite import appliquer_variation_disponibilite
 from utils.logger import log_humain, log_json  # On logue aussi dans simulation + tag [EVENT]
 
@@ -63,7 +63,7 @@ def gerer_evenements(tick: int):
         appliquer_reassort(tick)
 
     if random.random() < PROBABILITE_EVENEMENT.get("inflation", 0):
-        appliquer_inflation(tick)
+        appliquer_inflation_et_retour(tick)
 
     if random.random() < PROBABILITE_EVENEMENT.get("variation_disponibilite", 0):
         appliquer_variation_disponibilite(tick)

@@ -15,20 +15,20 @@ def test_repository_imports():
     try:
         from repositories import ProduitRepository, FournisseurRepository, EntrepriseRepository
         print("✅ Import des Repository réussi")
-        return True
+        assert True, "Import des Repository réussi"
     except Exception as e:
         print(f"❌ Erreur import Repository: {e}")
-        return False
+        assert False, f"Erreur import Repository: {e}"
 
 def test_models_imports():
     """Test que les modèles peuvent être importés."""
     try:
         from models import Produit, Fournisseur, Entreprise, TypeProduit
         print("✅ Import des modèles réussi")
-        return True
+        assert True, "Import des modèles réussi"
     except Exception as e:
         print(f"❌ Erreur import modèles: {e}")
-        return False
+        assert False, f"Erreur import modèles: {e}"
 
 def test_repository_usage():
     """Test l'utilisation des Repository."""
@@ -62,21 +62,21 @@ def test_repository_usage():
         assert produits[0].nom == "Test Produit Repository"
         
         print("✅ Utilisation des Repository réussie")
-        return True
+        assert True, "Utilisation des Repository réussie"
         
     except Exception as e:
         print(f"❌ Erreur utilisation Repository: {e}")
-        return False
+        assert False, f"Erreur utilisation Repository: {e}"
 
 def test_config_imports():
     """Test que la configuration peut être importée."""
     try:
         from config import NOMBRE_TOURS, DEBUG_MODE
         print("✅ Import de la configuration réussi")
-        return True
+        assert True, "Import de la configuration réussi"
     except Exception as e:
         print(f"❌ Erreur import configuration: {e}")
-        return False
+        assert False, f"Erreur import configuration: {e}"
 
 def main():
     """Fonction principale de test."""

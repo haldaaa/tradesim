@@ -18,20 +18,20 @@ def test_imports_repositories():
     try:
         from repositories import ProduitRepository, FournisseurRepository, EntrepriseRepository
         print("✅ Import des Repository réussi")
-        return True
+        assert True, "Import des Repository réussi"
     except Exception as e:
         print(f"❌ Erreur import Repository: {e}")
-        return False
+        assert False, f"Erreur import Repository: {e}"
 
 def test_imports_models():
     """Test l'import des modèles"""
     try:
         from models import Produit, Fournisseur, Entreprise, TypeProduit
         print("✅ Import des modèles réussi")
-        return True
+        assert True, "Import des modèles réussi"
     except Exception as e:
         print(f"❌ Erreur import modèles: {e}")
-        return False
+        assert False, f"Erreur import modèles: {e}"
 
 def test_imports_config():
     """Test l'import de la configuration"""
@@ -45,40 +45,40 @@ def test_imports_config():
             PROBABILITE_SELECTION_ENTREPRISE, DUREE_PAUSE_ENTRE_TOURS
         )
         print("✅ Import de la configuration réussi")
-        return True
+        assert True, "Import de la configuration réussi"
     except Exception as e:
         print(f"❌ Erreur import configuration: {e}")
-        return False
+        assert False, f"Erreur import configuration: {e}"
 
 def test_imports_events():
     """Test l'import des événements"""
     try:
         from events import inflation, reassort, recharge_budget, variation_disponibilite
         print("✅ Import des événements réussi")
-        return True
+        assert True, "Import des événements réussi"
     except Exception as e:
         print(f"❌ Erreur import événements: {e}")
-        return False
+        assert False, f"Erreur import événements: {e}"
 
 def test_imports_services():
     """Test l'import des services"""
     try:
         from services import game_manager, simulate, simulateur
         print("✅ Import des services réussi")
-        return True
+        assert True, "Import des services réussi"
     except Exception as e:
         print(f"❌ Erreur import services: {e}")
-        return False
+        assert False, f"Erreur import services: {e}"
 
 def test_imports_api():
     """Test l'import de l'API"""
     try:
         from api.main import app
         print("✅ Import de l'API réussi")
-        return True
+        assert True, "Import de l'API réussi"
     except Exception as e:
         print(f"❌ Erreur import API: {e}")
-        return False
+        assert False, f"Erreur import API: {e}"
 
 def test_repository_usage():
     """Test l'utilisation des Repository"""
@@ -104,10 +104,10 @@ def test_repository_usage():
         assert produits[0].nom == "Test Produit Repository"
         
         print("✅ Utilisation des Repository réussie")
-        return True
+        assert True, "Utilisation des Repository réussie"
     except Exception as e:
         print(f"❌ Erreur utilisation Repository: {e}")
-        return False
+        assert False, f"Erreur utilisation Repository: {e}"
 
 def test_services_refactorises():
     """Test que les services refactorisés fonctionnent"""
@@ -126,10 +126,10 @@ def test_services_refactorises():
         from api.main import app
         print("✅ API refactorisée fonctionne")
         
-        return True
+        assert True, "Services refactorisés fonctionnent"
     except Exception as e:
         print(f"❌ Erreur services refactorisés: {e}")
-        return False
+        assert False, f"Erreur services refactorisés: {e}"
 
 def test_events_refactorises():
     """Test que les événements refactorisés fonctionnent"""
@@ -140,10 +140,10 @@ def test_events_refactorises():
         from events.variation_disponibilite import appliquer_variation_disponibilite
         
         print("✅ Tous les événements refactorisés fonctionnent")
-        return True
+        assert True, "Tous les événements refactorisés fonctionnent"
     except Exception as e:
         print(f"❌ Erreur événements refactorisés: {e}")
-        return False
+        assert False, f"Erreur événements refactorisés: {e}"
 
 def main():
     """Test principal de la refactorisation complète"""

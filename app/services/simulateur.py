@@ -31,8 +31,10 @@ from config import (
     TICK_INTERVAL_EVENT,
     PROBABILITE_EVENEMENT,
     PROBABILITE_SELECTION_ENTREPRISE,
+    QUANTITE_ACHAT_MIN,
+    QUANTITE_ACHAT_MAX,
 )
-from events.inflation import appliquer_inflation
+from events.inflation import appliquer_inflation_et_retour
 from events.variation_disponibilite import appliquer_variation_disponibilite
 from events.reassort import evenement_reassort
 from events.recharge_budget import appliquer_recharge_budget
@@ -233,7 +235,7 @@ def simulation_tour(verbose: bool = False):
         
         # Inflation
         if random.random() < PROBABILITE_EVENEMENT["inflation"]:
-            logs = appliquer_inflation(tick)
+            logs = appliquer_inflation_et_retour(tick)
             log_event(logs, "inflation")
             if verbose:
                 proba = PROBABILITE_EVENEMENT["inflation"] * 100
@@ -363,7 +365,9 @@ def acheter_produit(entreprise: Entreprise, produit: Produit, horodatage_iso: st
             print("❌ Achat échoué !")
         return False
 
-    quantite_achat = random.randint(1, min(quantite_max_possible, fournisseur.stock_produit[produit.id]))
+    # Utiliser les constantes de configuration pour la quantité d'achat
+    quantite_voulue = random.randint(QUANTITE_ACHAT_MIN, min(QUANTITE_ACHAT_MAX, quantite_max_possible, fournisseur.stock_produit[produit.id]))
+    quantite_achat = quantite_voulue
     montant_total = round(prix * quantite_achat, 2)
 
     entreprise.budget = round(entreprise.budget - montant_total, 2)

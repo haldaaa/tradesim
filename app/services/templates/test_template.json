@@ -1,19 +1,19 @@
 {
   "nom": "test_template",
-  "date_creation": "2025-08-04T15:38:28.205257",
+  "date_creation": "2025-08-06T17:02:51.387530",
   "config": {
     "entreprises": {
       "nombre": 20,
-      "budget_min": 614.5,
-      "budget_max": 4877.6,
+      "budget_min": 6688.31,
+      "budget_max": 19638.1,
       "strategies": [
-        "moins_cher",
-        "par_type"
+        "par_type",
+        "moins_cher"
       ],
       "types_preferes": [
-        "consommable",
+        "produit_fini",
         "matiere_premiere",
-        "produit_fini"
+        "consommable"
       ]
     },
     "produits": {
@@ -28,10 +28,10 @@
     },
     "fournisseurs": {
       "nombre": 10,
-      "produits_min": 10,
-      "produits_max": 30,
-      "stock_min": 1,
-      "stock_max": 499
+      "produits_min": 11,
+      "produits_max": 31,
+      "stock_min": 6,
+      "stock_max": 500
     },
     "simulation": {
       "probabilite_selection": 0.3,
@@ -46,8 +46,8 @@
         "variation_disponibilite": 0.3
       },
       "recharge_budget": {
-        "min": 200,
-        "max": 600
+        "min": 4000,
+        "max": 8000
       },
       "reassort": {
         "min": 10,
