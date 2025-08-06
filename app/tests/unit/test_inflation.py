@@ -19,7 +19,7 @@ import os
 # Configuration du path pour les imports
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
 
-from events.inflation import appliquer_inflation
+from events.inflation import appliquer_inflation_et_retour
 from models import Produit, TypeProduit
 from repositories import ProduitRepository, FournisseurRepository
 from data import produits_ayant_subi_inflation
@@ -87,7 +87,7 @@ class TestInflation:
         prix_initial = self.produit1.prix
         
         # Appliquer l'inflation sur le produit (peut ne pas s'appliquer selon la probabilité)
-        resultat = appliquer_inflation(tick=1)
+        resultat = appliquer_inflation_et_retour(tick=1)
         
         # Vérifications des effets de l'inflation
         assert resultat is not None, "La fonction doit retourner un résultat"
@@ -116,7 +116,7 @@ class TestInflation:
         prix_initial = self.produit1.prix
         
         # Tenter d'appliquer l'inflation
-        resultat = appliquer_inflation(tick=1)
+        resultat = appliquer_inflation_et_retour(tick=1)
         
         # Vérifier que le prix n'a pas changé pour le produit inactif
         assert self.produit1.prix == prix_initial, "Le prix d'un produit inactif ne doit pas changer"
@@ -135,7 +135,7 @@ class TestInflation:
         NOTE: Fonctionnalité non implémentée pour le moment
         """
         # Appliquer une inflation d'abord
-        appliquer_inflation(tick=1)
+        appliquer_inflation_et_retour(tick=1)
         prix_apres_inflation = self.produit1.prix
         
         # TODO: Implémenter reduire_inflation_progressive() plus tard

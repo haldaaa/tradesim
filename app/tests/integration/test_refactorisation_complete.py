@@ -134,7 +134,7 @@ def test_services_refactorises():
 def test_events_refactorises():
     """Test que les événements refactorisés fonctionnent"""
     try:
-        from events.inflation import appliquer_inflation
+        from events.inflation import appliquer_inflation_et_retour
         from events.reassort import evenement_reassort
         from events.recharge_budget import appliquer_recharge_budget
         from events.variation_disponibilite import appliquer_variation_disponibilite

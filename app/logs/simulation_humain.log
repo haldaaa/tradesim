@@ -2333,3 +2333,367 @@ Aucun achat effectué ce tick
 🎯 TestCorp achète 3 TestProduit chez TestFournisseur (stratégie: moins_cher) :
 	- 💰 Prix unitaire: 10.00€ | Total: 30.00€ | Budget restant: 970.00€
 ✅ Achat réussi !
+🎯 CzechTech achète 17 Jouet chez NorwegianTools (stratégie: par_type) :
+	- 💰 Prix unitaire: 52.66€ | Total: 895.22€ | Budget restant: 13756.52€
+✅ Achat réussi !
+🎯 AsiaTech achète 30 Jouet chez CanadaDistrib (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 210.64€ | Total: 6319.20€ | Budget restant: 9223.46€
+✅ Achat réussi !
+🎯 SouthAfricanCorp achète 21 Jouet chez NorwegianTools (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 52.66€ | Total: 1105.86€ | Budget restant: 10504.24€
+✅ Achat réussi !
+🎯 ThaiTech achète 11 Pierre chez NorwegianTools (stratégie: par_type) :
+	- 💰 Prix unitaire: 618.29€ | Total: 6801.19€ | Budget restant: 10941.46€
+✅ Achat réussi !
+🎯 KoreanInnovation achète 22 Jouet chez ItalianSupply (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 84.28€ | Total: 1854.16€ | Budget restant: 14220.44€
+✅ Achat réussi !
+🎯 EgyptianTech achète 16 Parfum chez AsiaImport (stratégie: par_type) :
+	- 💰 Prix unitaire: 233.51€ | Total: 3736.16€ | Budget restant: 3312.55€
+✅ Achat réussi !
+🎯 PeruvianTech achète 86 Jouet chez NorwegianTools (stratégie: par_type) :
+	- 💰 Prix unitaire: 52.66€ | Total: 4528.76€ | Budget restant: 14977.87€
+✅ Achat réussi !
+🎯 KoreanInnovation achète 28 Jouet chez ItalianSupply (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 84.28€ | Total: 2359.84€ | Budget restant: 11860.60€
+✅ Achat réussi !
+🎯 SouthAfricanCorp achète 39 Jouet chez CanadaDistrib (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 210.64€ | Total: 8214.96€ | Budget restant: 2289.28€
+✅ Achat réussi !
+🎯 CzechTech achète 40 Parfum chez AsiaImport (stratégie: par_type) :
+	- 💰 Prix unitaire: 233.51€ | Total: 9340.40€ | Budget restant: 4416.12€
+✅ Achat réussi !
+🎯 PacificCorp achète 28 Jouet chez CanadaDistrib (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 210.64€ | Total: 5897.92€ | Budget restant: 6567.55€
+✅ Achat réussi !
+🎯 SouthAfricanCorp achète 22 Jouet chez ItalianSupply (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 84.28€ | Total: 1854.16€ | Budget restant: 435.12€
+✅ Achat réussi !
+🎯 EgyptianTech achète 24 Jouet chez NorwegianTools (stratégie: par_type) :
+	- 💰 Prix unitaire: 52.66€ | Total: 1263.84€ | Budget restant: 2048.71€
+✅ Achat réussi !
+🎯 CzechTech achète 16 Parfum chez AsiaImport (stratégie: par_type) :
+	- 💰 Prix unitaire: 233.51€ | Total: 3736.16€ | Budget restant: 679.96€
+✅ Achat réussi !
+🎯 PacificCorp achète 1 Jouet chez ItalianSupply (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 84.28€ | Total: 84.28€ | Budget restant: 6483.27€
+✅ Achat réussi !
+🎯 SouthAfricanCorp achète 2 Jouet chez CanadaDistrib (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 210.64€ | Total: 421.28€ | Budget restant: 13.84€
+✅ Achat réussi !
+🎯 ThaiTech achète 22 Pierre chez SwedishTools (stratégie: par_type) :
+	- 💰 Prix unitaire: 190.24€ | Total: 4185.28€ | Budget restant: 6756.18€
+✅ Achat réussi !
+🎯 KoreanInnovation achète 30 Jouet chez CanadaDistrib (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 210.64€ | Total: 6319.20€ | Budget restant: 5541.40€
+✅ Achat réussi !
+🎯 ThaiTech achète 11 Pierre chez SwedishTools (stratégie: par_type) :
+	- 💰 Prix unitaire: 190.24€ | Total: 2092.64€ | Budget restant: 4663.54€
+✅ Achat réussi !
+🎯 AsiaTech achète 74 Jouet chez NorwegianTools (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 52.66€ | Total: 3896.84€ | Budget restant: 5326.62€
+✅ Achat réussi !
+🎯 PeruvianTech achète 9 Jouet chez NorwegianTools (stratégie: par_type) :
+	- 💰 Prix unitaire: 52.66€ | Total: 473.94€ | Budget restant: 14503.93€
+✅ Achat réussi !
+🎯 AsiaTech achète 16 Jouet chez CanadaDistrib (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 210.64€ | Total: 3370.24€ | Budget restant: 1956.38€
+✅ Achat réussi !
+🎯 CzechTech achète 1 Parfum chez ItalianSupply (stratégie: par_type) :
+	- 💰 Prix unitaire: 294.29€ | Total: 294.29€ | Budget restant: 385.67€
+✅ Achat réussi !
+🎯 KoreanInnovation achète 26 Jouet chez CanadaDistrib (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 210.64€ | Total: 5476.64€ | Budget restant: 64.76€
+✅ Achat réussi !
+🎯 PacificCorp achète 7 Jouet chez CanadaDistrib (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 210.64€ | Total: 1474.48€ | Budget restant: 5008.79€
+✅ Achat réussi !
+🎯 PeruvianTech achète 36 Parfum chez ItalianSupply (stratégie: par_type) :
+	- 💰 Prix unitaire: 294.29€ | Total: 10594.44€ | Budget restant: 3909.49€
+✅ Achat réussi !
+🎯 ThaiTech achète 7 Pierre chez NorwegianTools (stratégie: par_type) :
+	- 💰 Prix unitaire: 618.29€ | Total: 4328.03€ | Budget restant: 335.51€
+✅ Achat réussi !
+🎯 KoreanInnovation achète 1 Jouet chez NorwegianTools (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 52.66€ | Total: 52.66€ | Budget restant: 12.10€
+✅ Achat réussi !
+❌ ThaiTech ne peut pas acheter 1 Pierre : budget insuffisant
+	- 💰 Prix unitaire: 618.29€ | Total voulu: 618.29€ | Budget disponible: 335.51€
+❌ Achat échoué !
+🎯 PacificCorp achète 5 Jouet chez CanadaDistrib (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 210.64€ | Total: 1053.20€ | Budget restant: 3955.59€
+✅ Achat réussi !
+🎯 EgyptianTech achète 2 Carburant chez NorwegianTools (stratégie: par_type) :
+	- 💰 Prix unitaire: 265.74€ | Total: 531.48€ | Budget restant: 1517.23€
+✅ Achat réussi !
+🎯 CzechTech achète 1 Jouet chez CanadaDistrib (stratégie: par_type) :
+	- 💰 Prix unitaire: 210.64€ | Total: 210.64€ | Budget restant: 175.03€
+✅ Achat réussi !
+🎯 PeruvianTech achète 6 Parfum chez AsiaImport (stratégie: par_type) :
+	- 💰 Prix unitaire: 233.51€ | Total: 1401.06€ | Budget restant: 2508.43€
+✅ Achat réussi !
+🎯 ThaiTech achète 1 Pierre chez PacificSupply (stratégie: par_type) :
+	- 💰 Prix unitaire: 306.41€ | Total: 306.41€ | Budget restant: 29.10€
+✅ Achat réussi !
+🎯 EgyptianTech achète 13 Additif chez NorwegianTools (stratégie: par_type) :
+	- 💰 Prix unitaire: 88.12€ | Total: 1145.56€ | Budget restant: 371.67€
+✅ Achat réussi !
+🎯 CzechTech achète 1 Additif chez ItalianSupply (stratégie: par_type) :
+	- 💰 Prix unitaire: 117.56€ | Total: 117.56€ | Budget restant: 57.47€
+✅ Achat réussi !
+Aucun achat effectué ce tick
+🎯 PacificCorp achète 18 Jouet chez CanadaDistrib (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 210.64€ | Total: 3791.52€ | Budget restant: 164.07€
+✅ Achat réussi !
+🎯 AsiaTech achète 1 Jouet chez NorwegianTools (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 52.66€ | Total: 52.66€ | Budget restant: 1903.72€
+✅ Achat réussi !
+❌ CzechTech ne peut pas acheter 1 Jouet : budget insuffisant
+	- 💰 Prix unitaire: 210.64€ | Total voulu: 210.64€ | Budget disponible: 57.47€
+❌ Achat échoué !
+🎯 PeruvianTech achète 8 Parfum chez ItalianSupply (stratégie: par_type) :
+	- 💰 Prix unitaire: 294.29€ | Total: 2354.32€ | Budget restant: 154.11€
+✅ Achat réussi !
+Aucun achat effectué ce tick
+[EVENT: RECHARGE_BUDGET] [RECHARGE] KoreanInnovation: +5991€ (ancien: 12.1€ → nouveau: 6003.1€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] EgyptianTech: +4735€ (ancien: 371.67€ → nouveau: 5106.67€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] CzechTech: +6402€ (ancien: 57.47€ → nouveau: 6459.47€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] PacificCorp: +6243€ (ancien: 164.07€ → nouveau: 6407.07€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] SouthAfricanCorp: +5854€ (ancien: 13.84€ → nouveau: 5867.84€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] ThaiTech: +7232€ (ancien: 29.1€ → nouveau: 7261.1€)
+[EVENT: RECHARGE_BUDGET] [RESUME RECHARGE] 6 entreprises rechargées | Total: +36457€ | Moyenne: +6076.17€
+[EVENT: VARIATION_DISPONIBILITE] [VARIATION] [DESACTIVE] 1 désactivés (Parfum) | [REACTIVE] 2 réactivés (Outillage, Plastique) | Total modifié: 3 produits
+🎯 EgyptianTech achète 8 Ordinateur chez CanadaDistrib (stratégie: par_type) :
+	- 💰 Prix unitaire: 427.36€ | Total: 3418.88€ | Budget restant: 1687.79€
+✅ Achat réussi !
+🎯 SouthAfricanCorp achète 2 Jouet chez NorwegianTools (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 52.66€ | Total: 105.32€ | Budget restant: 5762.52€
+✅ Achat réussi !
+🎯 CzechTech achète 9 Ordinateur chez CanadaDistrib (stratégie: par_type) :
+	- 💰 Prix unitaire: 427.36€ | Total: 3846.24€ | Budget restant: 2613.23€
+✅ Achat réussi !
+🎯 SouthAfricanCorp achète 28 Jouet chez ItalianSupply (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 84.28€ | Total: 2359.84€ | Budget restant: 3402.68€
+✅ Achat réussi !
+🎯 KoreanInnovation achète 16 Jouet chez CanadaDistrib (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 210.64€ | Total: 3370.24€ | Budget restant: 2632.86€
+✅ Achat réussi !
+🎯 EgyptianTech achète 2 Carburant chez CanadaDistrib (stratégie: par_type) :
+	- 💰 Prix unitaire: 345.54€ | Total: 691.08€ | Budget restant: 996.71€
+✅ Achat réussi !
+🎯 EgyptianTech achète 3 Outillage chez NorwegianTools (stratégie: par_type) :
+	- 💰 Prix unitaire: 145.00€ | Total: 435.00€ | Budget restant: 561.71€
+✅ Achat réussi !
+🎯 CzechTech achète 5 Outillage chez PacificSupply (stratégie: par_type) :
+	- 💰 Prix unitaire: 103.91€ | Total: 519.55€ | Budget restant: 2093.68€
+✅ Achat réussi !
+🎯 PacificCorp achète 9 Jouet chez ItalianSupply (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 84.28€ | Total: 758.52€ | Budget restant: 5648.55€
+✅ Achat réussi !
+❌ PeruvianTech ne peut pas acheter 1 Additif : budget insuffisant
+	- 💰 Prix unitaire: 347.41€ | Total voulu: 347.41€ | Budget disponible: 154.11€
+❌ Achat échoué !
+🎯 PacificCorp achète 40 Jouet chez ItalianSupply (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 84.28€ | Total: 3371.20€ | Budget restant: 2277.35€
+✅ Achat réussi !
+🎯 PeruvianTech achète 2 Jouet chez NorwegianTools (stratégie: par_type) :
+	- 💰 Prix unitaire: 52.66€ | Total: 105.32€ | Budget restant: 48.79€
+✅ Achat réussi !
+🎯 SouthAfricanCorp achète 1 Jouet chez ItalianSupply (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 84.28€ | Total: 84.28€ | Budget restant: 3318.40€
+✅ Achat réussi !
+🎯 ThaiTech achète 9 Pierre chez SwedishTools (stratégie: par_type) :
+	- 💰 Prix unitaire: 190.24€ | Total: 1712.16€ | Budget restant: 5548.94€
+✅ Achat réussi !
+🎯 AsiaTech achète 14 Jouet chez ItalianSupply (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 84.28€ | Total: 1179.92€ | Budget restant: 723.80€
+✅ Achat réussi !
+🎯 EgyptianTech achète 3 Outillage chez NorwegianTools (stratégie: par_type) :
+	- 💰 Prix unitaire: 145.00€ | Total: 435.00€ | Budget restant: 126.71€
+✅ Achat réussi !
+🎯 SouthAfricanCorp achète 2 Jouet chez ItalianSupply (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 84.28€ | Total: 168.56€ | Budget restant: 3149.84€
+✅ Achat réussi !
+🎯 CzechTech achète 4 Outillage chez NorwegianTools (stratégie: par_type) :
+	- 💰 Prix unitaire: 145.00€ | Total: 580.00€ | Budget restant: 1513.68€
+✅ Achat réussi !
+🎯 SouthAfricanCorp achète 46 Jouet chez NorwegianTools (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 52.66€ | Total: 2422.36€ | Budget restant: 727.48€
+✅ Achat réussi !
+🎯 AsiaTech achète 6 Jouet chez ItalianSupply (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 84.28€ | Total: 505.68€ | Budget restant: 218.12€
+✅ Achat réussi !
+🎯 ThaiTech achète 2 Plastique chez AsiaImport (stratégie: par_type) :
+	- 💰 Prix unitaire: 435.09€ | Total: 870.18€ | Budget restant: 4678.76€
+✅ Achat réussi !
+🎯 AsiaTech achète 1 Jouet chez CanadaDistrib (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 210.64€ | Total: 210.64€ | Budget restant: 7.48€
+✅ Achat réussi !
+🎯 EgyptianTech achète 1 Jouet chez ItalianSupply (stratégie: par_type) :
+	- 💰 Prix unitaire: 84.28€ | Total: 84.28€ | Budget restant: 42.43€
+✅ Achat réussi !
+🎯 CzechTech achète 5 Carburant chez NorwegianTools (stratégie: par_type) :
+	- 💰 Prix unitaire: 265.74€ | Total: 1328.70€ | Budget restant: 184.98€
+✅ Achat réussi !
+🎯 KoreanInnovation achète 33 Jouet chez NorwegianTools (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 52.66€ | Total: 1737.78€ | Budget restant: 895.08€
+✅ Achat réussi !
+🎯 CzechTech achète 2 Jouet chez ItalianSupply (stratégie: par_type) :
+	- 💰 Prix unitaire: 84.28€ | Total: 168.56€ | Budget restant: 16.42€
+✅ Achat réussi !
+🎯 PacificCorp achète 41 Jouet chez NorwegianTools (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 52.66€ | Total: 2159.06€ | Budget restant: 118.29€
+✅ Achat réussi !
+🎯 SouthAfricanCorp achète 8 Jouet chez ItalianSupply (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 84.28€ | Total: 674.24€ | Budget restant: 53.24€
+✅ Achat réussi !
+❌ PacificCorp ne peut pas acheter 1 Jouet : budget insuffisant
+	- 💰 Prix unitaire: 210.64€ | Total voulu: 210.64€ | Budget disponible: 118.29€
+❌ Achat échoué !
+🎯 ThaiTech achète 12 Pierre chez SwedishTools (stratégie: par_type) :
+	- 💰 Prix unitaire: 190.24€ | Total: 2282.88€ | Budget restant: 2395.88€
+✅ Achat réussi !
+🎯 PacificCorp achète 1 Jouet chez ItalianSupply (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 84.28€ | Total: 84.28€ | Budget restant: 34.01€
+✅ Achat réussi !
+🎯 KoreanInnovation achète 5 Jouet chez ItalianSupply (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 84.28€ | Total: 421.40€ | Budget restant: 473.68€
+✅ Achat réussi !
+🎯 KoreanInnovation achète 3 Jouet chez NorwegianTools (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 52.66€ | Total: 157.98€ | Budget restant: 315.70€
+✅ Achat réussi !
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+🎯 ThaiTech achète 1 Pierre chez NorwegianTools (stratégie: par_type) :
+	- 💰 Prix unitaire: 618.29€ | Total: 618.29€ | Budget restant: 1777.59€
+✅ Achat réussi !
+🎯 ThaiTech achète 2 Pierre chez PacificSupply (stratégie: par_type) :
+	- 💰 Prix unitaire: 306.41€ | Total: 612.82€ | Budget restant: 1164.77€
+✅ Achat réussi !
+❌ SouthAfricanCorp ne peut pas acheter 1 Jouet : budget insuffisant
+	- 💰 Prix unitaire: 210.64€ | Total voulu: 210.64€ | Budget disponible: 53.24€
+❌ Achat échoué !
+Aucun achat effectué ce tick
+[EVENT: RECHARGE_BUDGET] [RECHARGE] KoreanInnovation: +5796€ (ancien: 315.7€ → nouveau: 6111.7€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] EgyptianTech: +7225€ (ancien: 42.43€ → nouveau: 7267.43€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] CzechTech: +5403€ (ancien: 16.42€ → nouveau: 5419.42€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] PacificCorp: +4302€ (ancien: 34.01€ → nouveau: 4336.01€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] PeruvianTech: +6295€ (ancien: 48.79€ → nouveau: 6343.79€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] SouthAfricanCorp: +6338€ (ancien: 53.24€ → nouveau: 6391.24€)
+[EVENT: RECHARGE_BUDGET] [RESUME RECHARGE] 6 entreprises rechargées | Total: +35359€ | Moyenne: +5893.17€
+[EVENT: REASSORT] [REASSORT] [PRODUITS] 1 produits réapprovisionnés | [QUANTITE] +27 unités total | [FOURNISSEURS] 1 fournisseurs concernés
+🎯 KoreanInnovation achète 17 Jouet chez NorwegianTools (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 52.66€ | Total: 895.22€ | Budget restant: 5216.48€
+✅ Achat réussi !
+🎯 EgyptianTech achète 14 Ordinateur chez CanadaDistrib (stratégie: par_type) :
+	- 💰 Prix unitaire: 427.36€ | Total: 5983.04€ | Budget restant: 1284.39€
+✅ Achat réussi !
+🎯 CzechTech achète 47 Additif chez NorwegianTools (stratégie: par_type) :
+	- 💰 Prix unitaire: 88.12€ | Total: 4141.64€ | Budget restant: 1277.78€
+✅ Achat réussi !
+🎯 PeruvianTech achète 2 Carburant chez CanadaDistrib (stratégie: par_type) :
+	- 💰 Prix unitaire: 345.54€ | Total: 691.08€ | Budget restant: 5652.71€
+✅ Achat réussi !
+🎯 SouthAfricanCorp achète 44 Jouet chez NorwegianTools (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 52.66€ | Total: 2317.04€ | Budget restant: 4074.20€
+✅ Achat réussi !
+🎯 KoreanInnovation achète 13 Jouet chez CanadaDistrib (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 210.64€ | Total: 2738.32€ | Budget restant: 2478.16€
+✅ Achat réussi !
+🎯 CzechTech achète 4 Additif chez ItalianSupply (stratégie: par_type) :
+	- 💰 Prix unitaire: 117.56€ | Total: 470.24€ | Budget restant: 807.54€
+✅ Achat réussi !
+🎯 ThaiTech achète 2 Plastique chez AsiaImport (stratégie: par_type) :
+	- 💰 Prix unitaire: 435.09€ | Total: 870.18€ | Budget restant: 294.59€
+✅ Achat réussi !
+Aucun achat effectué ce tick
+🎯 PacificCorp achète 72 Jouet chez NorwegianTools (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 52.66€ | Total: 3791.52€ | Budget restant: 544.49€
+✅ Achat réussi !
+❌ ThaiTech ne peut pas acheter 1 Pierre : budget insuffisant
+	- 💰 Prix unitaire: 306.41€ | Total voulu: 306.41€ | Budget disponible: 294.59€
+❌ Achat échoué !
+🎯 SouthAfricanCorp achète 9 Jouet chez CanadaDistrib (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 210.64€ | Total: 1895.76€ | Budget restant: 2178.44€
+✅ Achat réussi !
+🎯 KoreanInnovation achète 15 Jouet chez ItalianSupply (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 84.28€ | Total: 1264.20€ | Budget restant: 1213.96€
+✅ Achat réussi !
+🎯 ThaiTech achète 1 Pierre chez SwedishTools (stratégie: par_type) :
+	- 💰 Prix unitaire: 190.24€ | Total: 190.24€ | Budget restant: 104.35€
+✅ Achat réussi !
+🎯 KoreanInnovation achète 10 Jouet chez ItalianSupply (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 84.28€ | Total: 842.80€ | Budget restant: 371.16€
+✅ Achat réussi !
+🎯 EgyptianTech achète 4 Additif chez SwedishTools (stratégie: par_type) :
+	- 💰 Prix unitaire: 173.89€ | Total: 695.56€ | Budget restant: 588.83€
+✅ Achat réussi !
+🎯 CzechTech achète 4 Additif chez SwedishTools (stratégie: par_type) :
+	- 💰 Prix unitaire: 173.89€ | Total: 695.56€ | Budget restant: 111.98€
+✅ Achat réussi !
+🎯 PeruvianTech achète 35 Outillage chez NorwegianTools (stratégie: par_type) :
+	- 💰 Prix unitaire: 145.00€ | Total: 5075.00€ | Budget restant: 577.71€
+✅ Achat réussi !
+🎯 SouthAfricanCorp achète 9 Jouet chez CanadaDistrib (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 210.64€ | Total: 1895.76€ | Budget restant: 282.68€
+✅ Achat réussi !
+Aucun achat effectué ce tick
+🎯 PacificCorp achète 9 Jouet chez NorwegianTools (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 52.66€ | Total: 473.94€ | Budget restant: 70.55€
+✅ Achat réussi !
+🎯 KoreanInnovation achète 5 Jouet chez NorwegianTools (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 52.66€ | Total: 263.30€ | Budget restant: 107.86€
+✅ Achat réussi !
+🎯 EgyptianTech achète 2 Carburant chez NorwegianTools (stratégie: par_type) :
+	- 💰 Prix unitaire: 265.74€ | Total: 531.48€ | Budget restant: 57.35€
+✅ Achat réussi !
+🎯 PeruvianTech achète 1 Carburant chez SwedishTools (stratégie: par_type) :
+	- 💰 Prix unitaire: 310.48€ | Total: 310.48€ | Budget restant: 267.23€
+✅ Achat réussi !
+Aucun achat effectué ce tick
+🎯 KoreanInnovation achète 2 Jouet chez NorwegianTools (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 52.66€ | Total: 105.32€ | Budget restant: 2.54€
+✅ Achat réussi !
+🎯 PacificCorp achète 1 Jouet chez NorwegianTools (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 52.66€ | Total: 52.66€ | Budget restant: 17.89€
+✅ Achat réussi !
+Aucun achat effectué ce tick
+🎯 CzechTech achète 1 Outillage chez PacificSupply (stratégie: par_type) :
+	- 💰 Prix unitaire: 103.91€ | Total: 103.91€ | Budget restant: 8.07€
+✅ Achat réussi !
+🎯 PeruvianTech achète 1 Jouet chez ItalianSupply (stratégie: par_type) :
+	- 💰 Prix unitaire: 84.28€ | Total: 84.28€ | Budget restant: 182.95€
+✅ Achat réussi !
+🎯 SouthAfricanCorp achète 1 Jouet chez CanadaDistrib (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 210.64€ | Total: 210.64€ | Budget restant: 72.04€
+✅ Achat réussi !
+❌ EgyptianTech ne peut pas acheter 1 Jouet : budget insuffisant
+	- 💰 Prix unitaire: 84.28€ | Total voulu: 84.28€ | Budget disponible: 57.35€
+❌ Achat échoué !
+Aucun achat effectué ce tick
+Aucun achat effectué ce tick
+🎯 EgyptianTech achète 1 Jouet chez NorwegianTools (stratégie: par_type) :
+	- 💰 Prix unitaire: 52.66€ | Total: 52.66€ | Budget restant: 4.69€
+✅ Achat réussi !
+❌ PeruvianTech ne peut pas acheter 1 Jouet : budget insuffisant
+	- 💰 Prix unitaire: 210.64€ | Total voulu: 210.64€ | Budget disponible: 182.95€
+❌ Achat échoué !
+🎯 SouthAfricanCorp achète 1 Jouet chez NorwegianTools (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 52.66€ | Total: 52.66€ | Budget restant: 19.38€
+✅ Achat réussi !
+Aucun achat effectué ce tick
+🎯 PeruvianTech achète 2 Jouet chez ItalianSupply (stratégie: par_type) :
+	- 💰 Prix unitaire: 84.28€ | Total: 168.56€ | Budget restant: 14.39€
+✅ Achat réussi !
+[EVENT: RECHARGE_BUDGET] [RECHARGE] KoreanInnovation: +7843€ (ancien: 2.54€ → nouveau: 7845.54€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] CzechTech: +4141€ (ancien: 8.07€ → nouveau: 4149.07€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] PacificCorp: +5958€ (ancien: 17.89€ → nouveau: 5975.89€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] PeruvianTech: +7522€ (ancien: 14.39€ → nouveau: 7536.39€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] ThaiTech: +5130€ (ancien: 104.35€ → nouveau: 5234.35€)
+[EVENT: RECHARGE_BUDGET] [RESUME RECHARGE] 5 entreprises rechargées | Total: +30594€ | Moyenne: +6118.8€
+🎯 CzechTech achète 12 Carburant chez CanadaDistrib (stratégie: par_type) :
+	- 💰 Prix unitaire: 345.54€ | Total: 4146.48€ | Budget restant: 2.59€
+✅ Achat réussi !
+🎯 PeruvianTech achète 9 Carburant chez SwedishTools (stratégie: par_type) :
+	- 💰 Prix unitaire: 310.48€ | Total: 2794.32€ | Budget restant: 4742.07€
+✅ Achat réussi !

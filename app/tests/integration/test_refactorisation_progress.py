@@ -31,7 +31,7 @@ def test_events_refactorised():
         from events.variation_disponibilite import appliquer_variation_disponibilite
         
         # Test rapide d'exécution
-        logs_inflation = appliquer_inflation(1)
+        logs_inflation = appliquer_inflation_et_retour(1)
         logs_reassort = evenement_reassort(1)
         logs_recharge = appliquer_recharge_budget(1)
         logs_variation = appliquer_variation_disponibilite(1)

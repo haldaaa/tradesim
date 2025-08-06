@@ -38,11 +38,12 @@ TradeSim est un simulateur de trading avec architecture modulaire CLI/Web, utili
 2. ✅ **Stabiliser la version CLI** 
 3. ✅ **Package l'application** (version 0.1.0)
 4. ✅ **Amélioration nommage** (noms réalistes) - **TERMINÉ**
-5. 🔄 **Implémenter Prometheus/Grafana en mode CLI**
-6. 🔄 **Passer en mode Web**
-7. 🔄 **Containerisation Docker**
-8. 🔄 **Orchestration Kubernetes**
-9. 🔄 **Déploiement production 24/7**
+5. ✅ **Logique d'inflation complète** (pénalité + retour progressif) - **TERMINÉ**
+6. 🔄 **Implémenter Prometheus/Grafana en mode CLI**
+7. 🔄 **Passer en mode Web**
+8. 🔄 **Containerisation Docker**
+9. 🔄 **Orchestration Kubernetes**
+10. 🔄 **Déploiement production 24/7**
 
 ## **🏗️ ARCHITECTURE DÉTAILLÉE**
 
@@ -84,8 +85,9 @@ TradeSim est un simulateur de trading avec architecture modulaire CLI/Web, utili
 3. ✅ **Packaging** - Version 0.1.0 créée
 4. ✅ **Amélioration nommage** - **TERMINÉ** (noms réalistes implémentés)
 5. ✅ **Configuration centralisée** - **TERMINÉ** (budgets, quantités, types préférés)
-6. 🔄 **Prometheus/Grafana CLI** - **PROCHAINE SESSION**
-7. 🔄 **Mode Web** - En attente
+6. ✅ **Logique d'inflation complète** - **TERMINÉ** (pénalité -15% + retour progressif)
+7. 🔄 **Prometheus/Grafana CLI** - **PROCHAINE SESSION**
+8. 🔄 **Mode Web** - En attente
 
 ## **🔄 WORKFLOW ET PROCESSUS**
 
@@ -342,7 +344,7 @@ Date: 2025-01-27
 
 ### **📋 PROCHAINES ÉTAPES (Session suivante) :**
 
-#### **1️⃣ Prometheus/Grafana CLI**
+#### **1️⃣ Prometheus/Grafana CLI** - **PROCHAINE SESSION**
 **Objectif** : Implémenter le monitoring temps réel sur CLI
 - **Prometheus** : Collecte de métriques depuis les logs JSONL
 - **Grafana** : Dashboard temps réel avec visualisations
@@ -489,6 +491,9 @@ Date: 2025-01-27
 - `config/__init__.py` : Export des nouvelles constantes
 - `events/inflation.py` : Implémentation complète avec `appliquer_retour_normal()` et `appliquer_inflation_et_retour()`
 - `events/README.md` : Documentation mise à jour avec exemples complets
+- `services/simulateur.py` : Utilisation de `appliquer_inflation_et_retour()`
+- `services/simulation_service.py` : Utilisation de `appliquer_inflation_et_retour()`
+- `events/cycle.py` : Utilisation de `appliquer_inflation_et_retour()`
 - `tests/unit/test_inflation_penalite.py` : Tests de pénalité (7/7 passent)
 - `tests/unit/test_inflation_retour_normal.py` : Tests de retour à la normale (9/9 passent)
 - `tests/README.md` : Ajout des nouveaux fichiers de test
@@ -522,6 +527,7 @@ Date: 2025-01-27
 - ✅ **Respect des dogmes** : Simplicité, maintenabilité, modularité
 - ✅ **Logique complète** : Inflation → Pénalité → Retour progressif
 - ✅ **Logs automatiques** : Format .log et .jsonl implémentés
+- ✅ **Intégration** : Fonction utilisée dans tous les services
 
 ### **🆕 Modification : Types de produits préférés configurables**
 **Problème identifié** : Chaque entreprise avait exactement 2 types de produits préférés (fixe)
