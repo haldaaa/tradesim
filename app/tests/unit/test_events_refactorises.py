@@ -19,10 +19,10 @@ def test_events_imports():
         from events.variation_disponibilite import appliquer_variation_disponibilite
         
         print("✅ Import de tous les événements réussi")
-        return True
+        assert True, "Import de tous les événements réussi"
     except Exception as e:
         print(f"❌ Erreur import événements: {e}")
-        return False
+        assert False, f"Erreur import événements: {e}"
 
 def test_events_execution():
     """Test l'exécution des événements."""
@@ -48,10 +48,10 @@ def test_events_execution():
         logs_variation = appliquer_variation_disponibilite(1)
         print(f"✅ Variation disponibilité: {len(logs_variation)} logs générés")
         
-        return True
+        assert True, "Exécution des événements réussie"
     except Exception as e:
         print(f"❌ Erreur exécution événements: {e}")
-        return False
+        assert False, f"Erreur exécution événements: {e}"
 
 def test_repository_integration():
     """Test que les événements utilisent bien les Repository."""
@@ -71,10 +71,10 @@ def test_repository_integration():
         
         print(f"✅ Repository intégration: {len(produits)} produits, {len(fournisseurs)} fournisseurs, {len(entreprises)} entreprises")
         
-        return True
+        assert True, "Repository intégration réussie"
     except Exception as e:
         print(f"❌ Erreur intégration Repository: {e}")
-        return False
+        assert False, f"Erreur intégration Repository: {e}"
 
 def main():
     """Fonction principale de test."""

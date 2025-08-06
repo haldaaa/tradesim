@@ -17,10 +17,10 @@ def test_architecture_complete():
         from config import NOMBRE_TOURS, DEBUG_MODE, TICK_INTERVAL_EVENT
         
         print("✅ Architecture de base fonctionnelle")
-        return True
+        assert True, "Architecture de base fonctionnelle"
     except Exception as e:
         print(f"❌ Erreur architecture: {e}")
-        return False
+        assert False, f"Erreur architecture: {e}"
 
 def test_events_refactorised():
     """Test que tous les événements sont refactorisés."""
@@ -37,10 +37,10 @@ def test_events_refactorised():
         logs_variation = appliquer_variation_disponibilite(1)
         
         print(f"✅ Événements refactorisés: {len(logs_inflation)} + {len(logs_reassort)} + {len(logs_recharge)} + {len(logs_variation)} logs")
-        return True
+        assert True, "Événements refactorisés"
     except Exception as e:
         print(f"❌ Erreur événements: {e}")
-        return False
+        assert False, f"Erreur événements: {e}"
 
 def test_services_partial():
     """Test que les services commencent à être refactorisés."""
@@ -53,10 +53,10 @@ def test_services_partial():
         entreprises = entreprise_repo.get_all()
         
         print(f"✅ Services partiellement refactorisés: {len(produits)} produits, {len(fournisseurs)} fournisseurs, {len(entreprises)} entreprises")
-        return True
+        assert True, "Services partiellement refactorisés"
     except Exception as e:
         print(f"❌ Erreur services: {e}")
-        return False
+        assert False, f"Erreur services: {e}"
 
 def test_repository_usage():
     """Test que les Repository sont bien utilisés partout."""
@@ -74,10 +74,10 @@ def test_repository_usage():
         entreprises = entreprise_repo.get_all()
         
         print(f"✅ Repository usage: {len(produits)} produits actifs, {len(fournisseurs)} fournisseurs, {len(entreprises)} entreprises")
-        return True
+        assert True, "Repository usage"
     except Exception as e:
         print(f"❌ Erreur Repository usage: {e}")
-        return False
+        assert False, f"Erreur Repository usage: {e}"
 
 def main():
     """Fonction principale de test."""

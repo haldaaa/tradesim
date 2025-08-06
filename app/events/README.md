@@ -37,7 +37,8 @@ events/
 **Comportement :**
 - **Probabilité** : 40% de chance d'être déclenché
 - **Cible** : Produit(s) ou catégorie(s) aléatoire(s)
-- **Effet** : Augmentation du prix de +40% (+15% si déjà affecté)
+- **Effet** : Augmentation du prix de +40% (-15% de pénalité si déjà affecté)
+**Retour** : Après 30 tours, baisse linéaire vers prix original + 10%
 - **Durée** : Temporaire, retour progressif au prix original
 
 **MODE CLI :** Modifie les prix en mémoire
@@ -52,8 +53,13 @@ events/
   "cible": "produit",
   "produit_id": 3,
   "prix_avant": 100.0,
-  "prix_apres": 140.0,
-  "pourcentage": 40
+  "prix_apres": 119.0,
+  "pourcentage": 19,
+  "retour_normal": {
+    "debut_retour": 30,
+    "baisse_tours": 15,
+    "prix_final": 110.0
+  }
 }
 ```
 

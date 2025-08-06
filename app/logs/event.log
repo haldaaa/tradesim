@@ -40,3 +40,22 @@
 [EVENT: RECHARGE_BUDGET] [RECHARGE] BioLogix: +290€ (ancien: 35.74€ → nouveau: 325.74€)
 [EVENT: RECHARGE_BUDGET] [RESUME RECHARGE] 3 entreprises rechargées | Total: +1368€ | Moyenne: +456.0€
 [EVENT: REASSORT] [REASSORT] [PRODUITS] 3 produits réapprovisionnés | [QUANTITE] +124 unités total | [FOURNISSEURS] 2 fournisseurs concernés
+[EVENT: REASSORT] [REASSORT] [PRODUITS] 1 produits réapprovisionnés | [QUANTITE] +31 unités total | [FOURNISSEURS] 1 fournisseurs concernés
+[EVENT: RECHARGE_BUDGET] [RECHARGE] PacificCorp: +376€ (ancien: 50.99€ → nouveau: 426.99€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] KoreanInnovation: +572€ (ancien: 105.73€ → nouveau: 677.73€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] CanadaTech: +340€ (ancien: 16.63€ → nouveau: 356.63€)
+[EVENT: RECHARGE_BUDGET] [RESUME RECHARGE] 3 entreprises rechargées | Total: +1288€ | Moyenne: +429.33€
+[EVENT: RECHARGE_BUDGET] [RECHARGE] PacificCorp: +369€ (ancien: 100.14€ → nouveau: 469.14€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] KoreanInnovation: +245€ (ancien: 99.54€ → nouveau: 344.54€)
+[EVENT: RECHARGE_BUDGET] [RESUME RECHARGE] 2 entreprises rechargées | Total: +614€ | Moyenne: +307.0€
+[EVENT: RECHARGE_BUDGET] [RECHARGE] PacificCorp: +456€ (ancien: 104.76€ → nouveau: 560.76€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] KoreanInnovation: +296€ (ancien: 0.97€ → nouveau: 296.97€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] CanadaTech: +289€ (ancien: 29.78€ → nouveau: 318.78€)
+[EVENT: RECHARGE_BUDGET] [RESUME RECHARGE] 3 entreprises rechargées | Total: +1041€ | Moyenne: +347.0€
+[EVENT: INFLATION] [INFLATION] Catégorie ciblée : consommable - 3 prix modifiés | Min: +40.0% | Max: +61.0% | Moy: +47.0%
+[EVENT: INFLATION] [INFLATION] Catégorie ciblée : produit_fini - 3 prix modifiés | Min: +40.0% | Max: +61.0% | Moy: +47.0%
+[EVENT: REASSORT] [REASSORT] [PRODUITS] 3 produits réapprovisionnés | [QUANTITE] +105 unités total | [FOURNISSEURS] 1 fournisseurs concernés
+[EVENT: INFLATION] [INFLATION] Catégorie ciblée : consommable - 2 prix modifiés | Min: +40.0% | Max: +40.0% | Moy: +40.0%
+[EVENT: REASSORT] [REASSORT] [PRODUITS] 3 produits réapprovisionnés | [QUANTITE] +86 unités total | [FOURNISSEURS] 2 fournisseurs concernés
+[EVENT: INFLATION] [INFLATION] Produit ciblé : Plastique - 2 prix modifiés | Min: +40.0% | Max: +61.0% | Moy: +50.5%
+[EVENT: VARIATION_DISPONIBILITE] [VARIATION] [DESACTIVE] 1 désactivés (Vêtement) | [REACTIVE] 2 réactivés (Vêtement, Pierre) | Total modifié: 3 produits

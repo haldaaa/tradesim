@@ -8,9 +8,18 @@ Logique :
 - Tous les X ticks (intervalle configuré)
 - Une chance Y d'être déclenché
 - Sélection aléatoire : produit(s) ou catégorie(s)
-- L'inflation augmente le prix de +40%
-- Si le produit/catégorie a déjà été affecté(e) : +15% de bonus
-- Après X ticks, retour progressif à un prix proche de l'original (+/- 3 à 15%)
+- L'inflation augmente le prix de 30-60% (configurable)
+- Si le produit a subi une inflation dans les 50 derniers tours : pénalité de -15%
+- La pénalité dure 50 tours et se reset à chaque nouvelle inflation
+- Après 30 tours : début du retour progressif vers prix original + 10%
+- Baisse linéaire sur 15 tours pour atteindre le prix final
+
+Exemple complet :
+- Prix initial : 100€
+- 1ère inflation : +20% → 120€
+- Après 30 tours : début du retour progressif
+- Baisse linéaire sur 15 tours : 120€ → 118€ → 116€ → ... → 110€
+- Prix final : 110€ (prix original + 10%)
 
 Logs :
 - Ajoute un log [EVENT] dans simulation_humain.log et simulation.jsonl
@@ -32,13 +41,140 @@ from repositories import ProduitRepository, FournisseurRepository
 from models import TypeProduit
 from events.event_logger import log_evenement_json, log_evenement_humain
 
+# Configuration centralisée
+from config import (
+    INFLATION_POURCENTAGE_MIN, INFLATION_POURCENTAGE_MAX,
+    PENALITE_INFLATION_PRODUIT_EXISTANT, DUREE_PENALITE_INFLATION,
+    DUREE_RETOUR_INFLATION, DUREE_BAISSE_INFLATION, POURCENTAGE_FINAL_INFLATION
+)
+
 # Configuration (à déplacer vers config.py plus tard)
 INFLATION_CHANCE = 0.5  # 50% de chance d'inflation
 INFLATION_MULTIPLIER = 1.4
-BONUS_MULTIPLIER = 1.15
 
-# État global pour l'inflation (à migrer vers un service plus tard)
-produits_ayant_subi_inflation = set()
+# État global pour l'inflation avec compteurs de pénalité et retour à la normale
+# Structure : {produit_id: {
+#     "derniere_inflation_tick": tick,
+#     "tours_restants_penalite": 50,
+#     "prix_origine": 100.0,
+#     "prix_apres_inflation": 120.0,
+#     "phase_retour": False,
+#     "tick_debut_retour": None
+# }}
+produits_inflation_timers = {}
+
+def appliquer_retour_normal(tick: int) -> List[Dict[str, Any]]:
+    """
+    Applique le retour à la normale pour les produits en phase de retour.
+    
+    Args:
+        tick (int): Numéro du tick actuel
+        
+    Returns:
+        List[Dict[str, Any]]: Liste de logs pour jsonl + log_humain
+    """
+    retour_logs = []
+    
+    # Initialiser les Repository
+    produit_repo = ProduitRepository()
+    fournisseur_repo = FournisseurRepository()
+    
+    for produit_id, timer in list(produits_inflation_timers.items()):
+        if not timer["phase_retour"]:
+            # Vérifier si on doit commencer la phase de retour
+            tours_ecoules = tick - timer["derniere_inflation_tick"]
+            if tours_ecoules >= DUREE_RETOUR_INFLATION:
+                timer["phase_retour"] = True
+                timer["tick_debut_retour"] = tick
+        
+        if timer["phase_retour"]:
+            # Calculer le prix actuel selon la phase de retour
+            tours_retour = tick - timer["tick_debut_retour"]
+            
+            if tours_retour >= DUREE_BAISSE_INFLATION:
+                # Retour terminé, prix final
+                prix_final = timer["prix_origine"] * (1 + POURCENTAGE_FINAL_INFLATION / 100)
+                nouveau_prix = round(prix_final, 2)
+                
+                # Supprimer l'entrée car retour terminé
+                del produits_inflation_timers[produit_id]
+            else:
+                # Calculer le prix selon la baisse linéaire
+                prix_depart = timer["prix_apres_inflation"]
+                prix_final = timer["prix_origine"] * (1 + POURCENTAGE_FINAL_INFLATION / 100)
+                
+                # Baisse linéaire
+                progression = tours_retour / DUREE_BAISSE_INFLATION
+                nouveau_prix = round(prix_depart - (prix_depart - prix_final) * progression, 2)
+            
+            # Mettre à jour le prix dans le repository
+            produit = produit_repo.get_by_id(produit_id)
+            if produit:
+                produit.prix = nouveau_prix
+                produit_repo.update(produit)
+            
+            # Mettre à jour le prix dans le PriceService
+            from services.price_service import price_service
+            fournisseurs = fournisseur_repo.get_all()
+            for fournisseur in fournisseurs:
+                if produit_id in fournisseur.stock_produit and fournisseur.stock_produit[produit_id] > 0:
+                    price_service.set_prix_produit_fournisseur_force(produit_id, fournisseur.id, nouveau_prix)
+            
+            # Logs détaillés pour le retour à la normale
+            log_retour = {
+                "timestamp": datetime.now(timezone.utc).isoformat(),
+                "event": "retour_normal_inflation",
+                "tick": tick,
+                "produit_id": produit_id,
+                "produit_nom": produit.nom if produit else "Inconnu",
+                "ancien_prix": timer["prix_apres_inflation"],
+                "nouveau_prix": nouveau_prix,
+                "prix_origine": timer["prix_origine"],
+                "phase_retour": True,
+                "tours_retour": tours_retour,
+                "retour_termine": tours_retour >= DUREE_BAISSE_INFLATION,
+                "pourcentage_baisse": round(((timer["prix_apres_inflation"] - nouveau_prix) / timer["prix_apres_inflation"]) * 100, 1)
+            }
+            
+            # Log humain
+            if tours_retour >= DUREE_BAISSE_INFLATION:
+                message_humain = f"[RETOUR NORMAL] {produit.nom if produit else 'Produit'} - Retour terminé: {nouveau_prix}€ (prix original + {POURCENTAGE_FINAL_INFLATION}%)"
+            else:
+                message_humain = f"[RETOUR NORMAL] {produit.nom if produit else 'Produit'} - Baisse: {log_retour['pourcentage_baisse']}% → {nouveau_prix}€ (tour {tours_retour}/{DUREE_BAISSE_INFLATION})"
+            
+            # Ajouter aux logs
+            retour_logs.append(log_retour)
+            
+            # Logs automatiques (comme l'inflation)
+            from events.event_logger import log_evenement_json, log_evenement_humain
+            log_evenement_json(log_retour)
+            log_evenement_humain(message_humain)
+    
+    return retour_logs
+
+
+def appliquer_inflation_et_retour(tick: int) -> List[Dict[str, Any]]:
+    """
+    Applique l'inflation ET le retour à la normale pour les produits.
+    
+    Args:
+        tick (int): Numéro du tick actuel
+        
+    Returns:
+        List[Dict[str, Any]]: Liste de logs pour jsonl + log_humain
+    """
+    logs = []
+    
+    # 1. Appliquer l'inflation (si déclenchée)
+    logs_inflation = appliquer_inflation(tick)
+    logs.extend(logs_inflation)
+    
+    # 2. Appliquer le retour à la normale (toujours)
+    logs_retour = appliquer_retour_normal(tick)
+    logs.extend(logs_retour)
+    
+    return logs
+
 
 def appliquer_inflation(tick: int) -> List[Dict[str, Any]]:
     """
@@ -97,15 +233,43 @@ def appliquer_inflation(tick: int) -> List[Dict[str, Any]]:
                 # Calculer le prix (simulation - à améliorer avec un vrai système de prix)
                 prix_base = 100.0  # Prix de base (à améliorer)
                 
-                multiplicateur = INFLATION_MULTIPLIER
-                if produit_id in produits_ayant_subi_inflation:
-                    multiplicateur *= BONUS_MULTIPLIER
+                # Vérifier si le produit a subi une inflation récemment (pénalité active)
+                penalite_active = False
+                if produit_id in produits_inflation_timers:
+                    timer = produits_inflation_timers[produit_id]
+                    tours_ecoules = tick - timer["derniere_inflation_tick"]
+                    
+                    if tours_ecoules <= DUREE_PENALITE_INFLATION:
+                        penalite_active = True
+                        # Reset du compteur à 50 tours
+                        timer["tours_restants_penalite"] = DUREE_PENALITE_INFLATION
+                    else:
+                        # Pénalité expirée, supprimer l'entrée
+                        del produits_inflation_timers[produit_id]
+                
+                # Calculer le pourcentage d'inflation
+                pourcentage_inflation = random.uniform(INFLATION_POURCENTAGE_MIN, INFLATION_POURCENTAGE_MAX)
+                
+                # Appliquer la pénalité si nécessaire
+                if penalite_active:
+                    pourcentage_inflation -= PENALITE_INFLATION_PRODUIT_EXISTANT
+                    pourcentage_inflation = max(pourcentage_inflation, 5)  # Minimum 5% d'inflation
+                
+                multiplicateur = 1 + (pourcentage_inflation / 100)
                 
                 ancien_prix = prix_base
                 nouveau_prix = round(prix_base * multiplicateur, 2)
                 
-                # Marquer le produit comme affecté
-                produits_ayant_subi_inflation.add(produit_id)
+                # Marquer le produit comme affecté et enregistrer les informations
+                # Si le produit était en phase de retour, on l'arrête et on reset la pénalité
+                produits_inflation_timers[produit_id] = {
+                    "derniere_inflation_tick": tick,
+                    "tours_restants_penalite": DUREE_PENALITE_INFLATION,
+                    "prix_origine": ancien_prix,
+                    "prix_apres_inflation": nouveau_prix,
+                    "phase_retour": False,  # Nouvelle inflation arrête le retour
+                    "tick_debut_retour": None
+                }
 
                 # Trouver le produit pour les informations
                 produit = produit_repo.get_by_id(produit_id)
@@ -132,7 +296,8 @@ def appliquer_inflation(tick: int) -> List[Dict[str, Any]]:
                     "nouveau_prix": nouveau_prix,
                     "pourcentage_augmentation": pourcentage,
                     "multiplicateur_applique": multiplicateur,
-                    "bonus_inflation": produit_id in produits_ayant_subi_inflation
+                    "penalite_active": penalite_active,
+                    "pourcentage_inflation_original": pourcentage_inflation + PENALITE_INFLATION_PRODUIT_EXISTANT if penalite_active else pourcentage_inflation
                 })
 
     if inflation_logs:

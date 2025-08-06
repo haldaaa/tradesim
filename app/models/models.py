@@ -70,11 +70,13 @@ class Fournisseur(BaseModel):
     - id : Identifiant unique du fournisseur
     - nom_entreprise : Nom de l'entreprise fournisseur
     - pays : Pays d'origine du fournisseur
+    - continent : Continent d'origine du fournisseur
     - stock_produit : Dictionnaire {produit_id → quantité en stock}
     """
     id: int
     nom_entreprise: str
     pays: str
+    continent: str
     stock_produit: Dict[int, int]  # produit_id → stock possédé
 
 
@@ -106,11 +108,13 @@ class FournisseurComplet(BaseModel):
     - id : Identifiant unique du fournisseur
     - nom_entreprise : Nom de l'entreprise fournisseur
     - pays : Pays d'origine du fournisseur
+    - continent : Continent d'origine du fournisseur
     - produits : Liste des produits disponibles chez ce fournisseur
     """
     id: int
     nom_entreprise: str
     pays: str
+    continent: str
     produits: List[ProduitChezFournisseur]
 
 
@@ -122,6 +126,7 @@ class Entreprise(BaseModel):
     - id : Identifiant unique de l'entreprise
     - nom : Nom de l'entreprise
     - pays : Pays d'origine de l'entreprise
+    - continent : Continent d'origine de l'entreprise
     - budget : Budget actuel de l'entreprise
     - budget_initial : Budget initial de l'entreprise
     - types_preferes : Types de produits préférés par l'entreprise
@@ -130,6 +135,7 @@ class Entreprise(BaseModel):
     id: int
     nom: str
     pays: str
+    continent: str
     budget: float
     budget_initial: float
     types_preferes: List[TypeProduit]

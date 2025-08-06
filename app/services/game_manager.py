@@ -28,13 +28,16 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
 from repositories import ProduitRepository, FournisseurRepository, EntrepriseRepository
 from models import Produit, TypeProduit, Fournisseur, Entreprise
 from services.simulateur import simulation_tour
+from services.name_manager import name_manager
 from config import (
     RECHARGE_BUDGET_MIN, RECHARGE_BUDGET_MAX,
     REASSORT_QUANTITE_MIN, REASSORT_QUANTITE_MAX,
     INFLATION_POURCENTAGE_MIN, INFLATION_POURCENTAGE_MAX,
     PROBABILITE_DESACTIVATION, PROBABILITE_REACTIVATION,
     TICK_INTERVAL_EVENT, PROBABILITE_EVENEMENT,
-    PROBABILITE_SELECTION_ENTREPRISE, DUREE_PAUSE_ENTRE_TOURS
+    PROBABILITE_SELECTION_ENTREPRISE, DUREE_PAUSE_ENTRE_TOURS,
+    TYPES_PRODUITS_PREFERES_MIN, TYPES_PRODUITS_PREFERES_MAX,
+    BUDGET_ENTREPRISE_MIN, BUDGET_ENTREPRISE_MAX
 )
 
 # Initialisation des Repository
@@ -125,6 +128,7 @@ def reset_game():
     
     Refactorisation (02/08/2025) :
     - Utilise les Repository au lieu d'accès directs aux données
+    - Réinitialise le NameManager pour nouvelle partie
     """
     # Vider tous les Repository
     produit_repo.clear()
@@ -135,6 +139,9 @@ def reset_game():
     from services.price_service import price_service
     price_service.reset()
     
+    # Réinitialiser le NameManager pour nouvelle partie
+    name_manager.reset()
+    
     print("✅ Jeu remis à zéro avec succès")
 
 def generate_game_data(config: Dict[str, Any]):
@@ -143,6 +150,7 @@ def generate_game_data(config: Dict[str, Any]):
     
     Refactorisation (02/08/2025) :
     - Utilise les Repository au lieu d'accès directs aux données
+    - Utilise le NameManager pour les noms uniques
     """
     # Vider les repositories et le price_service
     produit_repo.clear()
@@ -152,6 +160,9 @@ def generate_game_data(config: Dict[str, Any]):
     # Vider le service de prix
     from services.price_service import price_service
     price_service.reset()
+    
+    # Réinitialiser le NameManager pour nouvelle partie
+    name_manager.reset()
     
     # Génération des produits
     generate_produits(config["produits"])
@@ -175,6 +186,7 @@ def generate_produits(config_produits: Dict[str, Any]):
     
     Refactorisation (02/08/2025) :
     - Utilise ProduitRepository au lieu de fake_produits_db
+    - Utilise le NameManager pour les noms uniques
     """
     nombre_produits = config_produits["nombre"]
     prix_min = config_produits["prix_min"]
@@ -188,14 +200,16 @@ def generate_produits(config_produits: Dict[str, Any]):
     # Vider le repository
     produit_repo.clear()
     
-    for i in range(nombre_produits):
-        nom = NOMS_PRODUITS[i] if i < len(NOMS_PRODUITS) else f"Produit_{i+1}"
+    # Sélectionner des produits uniques via le NameManager
+    produits_selectionnes = name_manager.get_multiple_produits(nombre_produits)
+    
+    for i, produit_data in enumerate(produits_selectionnes):
         produit = Produit(
             id=i + 1,
-            nom=nom,
+            nom=produit_data["nom"],
             prix=round(random.uniform(prix_min, prix_max), 2),
             actif=(i < nb_produits_actifs),
-            type=random.choice([TypeProduit.matiere_premiere, TypeProduit.consommable, TypeProduit.produit_fini])
+            type=TypeProduit(produit_data["type"])
         )
         produit_repo.add(produit)
 
@@ -205,6 +219,7 @@ def generate_fournisseurs(config_fournisseurs: Dict[str, Any]):
     
     Refactorisation (02/08/2025) :
     - Utilise FournisseurRepository au lieu de fake_fournisseurs_db
+    - Utilise le NameManager pour les noms uniques
     - Gestion des prix à migrer vers un service plus tard
     """
     nombre_fournisseurs = config_fournisseurs["nombre"]
@@ -219,9 +234,10 @@ def generate_fournisseurs(config_fournisseurs: Dict[str, Any]):
     # Récupérer tous les produits disponibles
     produits_disponibles = produit_repo.get_all()
     
-    for fid in range(1, nombre_fournisseurs + 1):
-        nom, pays = NOMS_FOURNISSEURS[fid-1] if fid-1 < len(NOMS_FOURNISSEURS) else (f"Fournisseur_{fid}", "France")
-        
+    # Sélectionner des fournisseurs uniques via le NameManager
+    fournisseurs_selectionnes = name_manager.get_multiple_fournisseurs(nombre_fournisseurs)
+    
+    for fid, fournisseur_data in enumerate(fournisseurs_selectionnes, start=1):
         stock_produit = {}
         nb_produits = random.randint(produits_min, produits_max)
         
@@ -233,8 +249,9 @@ def generate_fournisseurs(config_fournisseurs: Dict[str, Any]):
         
         fournisseur = Fournisseur(
             id=fid,
-            nom_entreprise=nom,
-            pays=pays,
+            nom_entreprise=fournisseur_data["nom"],
+            pays=fournisseur_data["pays"],
+            continent=fournisseur_data["continent"],
             stock_produit=stock_produit
         )
         fournisseur_repo.add(fournisseur)
@@ -261,6 +278,7 @@ def generate_entreprises(config_entreprises: Dict[str, Any]):
     
     Refactorisation (02/08/2025) :
     - Utilise EntrepriseRepository au lieu de fake_entreprises_db
+    - Utilise le NameManager pour les noms uniques
     """
     nombre_entreprises = config_entreprises["nombre"]
     budget_min = config_entreprises["budget_min"]
@@ -271,18 +289,19 @@ def generate_entreprises(config_entreprises: Dict[str, Any]):
     # Vider le repository
     entreprise_repo.clear()
     
-    for i in range(nombre_entreprises):
-        nom = NOMS_ENTREPRISES[i] if i < len(NOMS_ENTREPRISES) else f"Entreprise_{i+1}"
-        pays = PAYS_ENTREPRISES[i] if i < len(PAYS_ENTREPRISES) else "France"
-        
+    # Sélectionner des entreprises uniques via le NameManager
+    entreprises_selectionnees = name_manager.get_multiple_entreprises(nombre_entreprises)
+    
+    for i, entreprise_data in enumerate(entreprises_selectionnees):
         entreprise = Entreprise(
             id=i + 1,
-            nom=nom,
-            pays=pays,
-            budget=round(random.uniform(budget_min, budget_max), 2),
-            budget_initial=round(random.uniform(budget_min, budget_max), 2),
-            types_preferes=random.sample([TypeProduit(t) for t in types_preferes], 
-                                       min(2, len(types_preferes))),
+            nom=entreprise_data["nom"],
+            pays=entreprise_data["pays"],
+            continent=entreprise_data["continent"],
+            budget=round(random.uniform(BUDGET_ENTREPRISE_MIN, BUDGET_ENTREPRISE_MAX), 2),
+            budget_initial=round(random.uniform(BUDGET_ENTREPRISE_MIN, BUDGET_ENTREPRISE_MAX), 2),
+                        types_preferes=random.sample([TypeProduit(t) for t in types_preferes],
+random.randint(TYPES_PRODUITS_PREFERES_MIN, min(TYPES_PRODUITS_PREFERES_MAX, len(types_preferes)))),
             strategie=random.choice(strategies)
         )
         entreprise_repo.add(entreprise)

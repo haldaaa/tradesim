@@ -13,66 +13,55 @@ Responsabilités :
 - Génération aléatoire de données cohérentes
 - Création de l'écosystème commercial initial
 - Configuration des prix et stocks réalistes
+- Utilisation du NameManager pour les noms uniques
 
 Note : Ce module est utilisé pour les tests et le développement.
 En production, les données viendront de la base de données.
 
 Auteur: Assistant IA
 Date: 2024-08-02
+Mise à jour: 2025-01-27 - Intégration du NameManager
 """
 
 from models import Produit, TypeProduit, Fournisseur, Entreprise
 import random
 from typing import List, Dict, Tuple
-# from app.data import fake_produits_db  # LIGNE À SUPPRIMER OU COMMENTER
+# Import des données de noms directement
+from data.names_data import ENTREPRISES_DATA, FOURNISSEURS_DATA, PRODUITS_DATA
+from config import BUDGET_ENTREPRISE_MIN, BUDGET_ENTREPRISE_MAX
 
 
 # -------------------------
 # Produits
 # -------------------------
-noms_produits = [
-    "Bois", "Acier", "Planches", "Ours en peluche", "Aspirateur",
-    "Lampe", "Clavier", "Moniteur", "Chocolat", "Téléphone",
-    "Vélo", "Chaise", "Table", "Sac à dos", "Batterie externe",
-    "Câble USB", "Tapis de souris", "Tente", "Bureau", "Écouteurs"
-]
-
-types_possibles = [
-    TypeProduit.matiere_premiere,
-    TypeProduit.consommable,
-    TypeProduit.produit_fini
-]
-
 fake_produits_db: List[Produit] = []
 
 # Nombre de produits actifs au début (entre 3 et 8)
 nb_produits_actifs = random.randint(3, 8)
 
-for i, nom in enumerate(noms_produits):
+# Sélectionner des produits aléatoirement
+produits_selectionnes = random.sample(PRODUITS_DATA, 20)  # 20 produits pour commencer
+
+for i, produit_data in enumerate(produits_selectionnes):
     produit = Produit(
         id=i + 1,
-        nom=nom,
+        nom=produit_data["nom"],
         prix=round(random.uniform(5.0, 500.0), 2),
         actif=(i < nb_produits_actifs),
-        type=random.choice(types_possibles)
+        type=TypeProduit(produit_data["type"])
     )
     fake_produits_db.append(produit)
 
 # -------------------------
 # Fournisseurs
 # -------------------------
-noms_fournisseurs = [
-    ("PlancheCompagnie", "France"),
-    ("TechDistrib", "Allemagne"),
-    ("AsieImport", "Chine"),
-    ("NordicTools", "Suède"),
-    ("ElectroPlus", "Corée du Sud")
-]
-
 fake_fournisseurs_db: List[Fournisseur] = []
 prix_par_fournisseur: Dict[Tuple[int, int], float] = {}  # (produit_id, fournisseur_id) → prix
 
-for fid, (nom, pays) in enumerate(noms_fournisseurs, start=1):
+# Sélectionner des fournisseurs aléatoirement
+fournisseurs_selectionnes = random.sample(FOURNISSEURS_DATA, 5)  # 5 fournisseurs pour commencer
+
+for fid, fournisseur_data in enumerate(fournisseurs_selectionnes, start=1):
     stock_produit = {}
     nb_produits = random.randint(3, 8)  # chaque fournisseur propose entre 3 et 8 produits
 
@@ -90,8 +79,9 @@ for fid, (nom, pays) in enumerate(noms_fournisseurs, start=1):
 
     fournisseur = Fournisseur(
         id=fid,
-        nom_entreprise=nom,
-        pays=pays,
+        nom_entreprise=fournisseur_data["nom"],
+        pays=fournisseur_data["pays"],
+        continent=fournisseur_data["continent"],
         stock_produit=stock_produit
     )
 
@@ -106,15 +96,15 @@ for fid, (nom, pays) in enumerate(noms_fournisseurs, start=1):
 # -------------------------
 # Entreprises
 # -------------------------
-
-noms_entreprises = ["MagaToys", "BuildTech", "BioLogix"]
-pays_possibles = ["France", "Allemagne", "Canada"]
 strategies_possibles = ["moins_cher", "par_type"]
 
 fake_entreprises_db: List[Entreprise] = []
 
-for i in range(3):
-    budget_initial = round(random.uniform(1000, 3000), 2)
+# Sélectionner des entreprises aléatoirement
+entreprises_selectionnees = random.sample(ENTREPRISES_DATA, 3)  # 3 entreprises pour commencer
+
+for i, entreprise_data in enumerate(entreprises_selectionnees):
+    budget_initial = round(random.uniform(BUDGET_ENTREPRISE_MIN, BUDGET_ENTREPRISE_MAX), 2)
     types_pref = random.sample(
         [TypeProduit.matiere_premiere, TypeProduit.consommable, TypeProduit.produit_fini],
         k=random.randint(1, 2)
@@ -122,8 +112,9 @@ for i in range(3):
 
     entreprise = Entreprise(
         id=i + 1,
-        nom=noms_entreprises[i],
-        pays=pays_possibles[i],
+        nom=entreprise_data["nom"],
+        pays=entreprise_data["pays"],
+        continent=entreprise_data["continent"],
         budget=budget_initial,
         budget_initial=budget_initial,
         types_preferes=types_pref,
