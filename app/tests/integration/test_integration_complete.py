@@ -152,7 +152,7 @@ def test_events_integration():
         
         # Tester chaque événement
         evenements = [
-            ("inflation", inflation.appliquer_inflation),
+                            ("inflation", inflation.appliquer_inflation_et_retour),
             ("reassort", reassort.evenement_reassort),
             ("recharge_budget", recharge_budget.appliquer_recharge_budget),
             ("variation_disponibilite", variation_disponibilite.appliquer_variation_disponibilite)

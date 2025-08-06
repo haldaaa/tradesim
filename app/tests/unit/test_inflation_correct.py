@@ -17,7 +17,7 @@ def test_inflation_basic():
     - La fonction appliquer_inflation existe et peut être appelée
     - Elle fonctionne avec les données de test
     """
-    from events.inflation import appliquer_inflation
+    from events.inflation import appliquer_inflation_et_retour
     from models import Produit, TypeProduit
     from data import fake_produits_db, produits_ayant_subi_inflation
     
@@ -40,7 +40,7 @@ def test_inflation_basic():
     print(f"💰 Prix initial: {prix_initial}")
     
     # Test 2: Appliquer l'inflation (tick=1)
-    resultat = appliquer_inflation(tick=1)
+    resultat = appliquer_inflation_et_retour(tick=1)
     print(f"📈 Prix après inflation: {produit.prix}")
     
     # Vérifications

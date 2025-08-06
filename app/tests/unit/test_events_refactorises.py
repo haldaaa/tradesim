@@ -13,7 +13,7 @@ Date: 2024-08-02
 def test_events_imports():
     """Test que tous les événements peuvent être importés."""
     try:
-        from events.inflation import appliquer_inflation
+        from events.inflation import appliquer_inflation_et_retour
         from events.reassort import evenement_reassort
         from events.recharge_budget import appliquer_recharge_budget
         from events.variation_disponibilite import appliquer_variation_disponibilite
@@ -27,13 +27,13 @@ def test_events_imports():
 def test_events_execution():
     """Test l'exécution des événements."""
     try:
-        from events.inflation import appliquer_inflation
+        from events.inflation import appliquer_inflation_et_retour
         from events.reassort import evenement_reassort
         from events.recharge_budget import appliquer_recharge_budget
         from events.variation_disponibilite import appliquer_variation_disponibilite
         
         # Test inflation
-        logs_inflation = appliquer_inflation(1)
+        logs_inflation = appliquer_inflation_et_retour(1)
         print(f"✅ Inflation: {len(logs_inflation)} logs générés")
         
         # Test reassort
@@ -57,7 +57,7 @@ def test_repository_integration():
     """Test que les événements utilisent bien les Repository."""
     try:
         from repositories import ProduitRepository, FournisseurRepository, EntrepriseRepository
-        from events.inflation import appliquer_inflation
+        from events.inflation import appliquer_inflation_et_retour
         
         # Vérifier que les Repository sont utilisés
         produit_repo = ProduitRepository()

@@ -59,3 +59,25 @@
 [EVENT: REASSORT] [REASSORT] [PRODUITS] 3 produits réapprovisionnés | [QUANTITE] +86 unités total | [FOURNISSEURS] 2 fournisseurs concernés
 [EVENT: INFLATION] [INFLATION] Produit ciblé : Plastique - 2 prix modifiés | Min: +40.0% | Max: +61.0% | Moy: +50.5%
 [EVENT: VARIATION_DISPONIBILITE] [VARIATION] [DESACTIVE] 1 désactivés (Vêtement) | [REACTIVE] 2 réactivés (Vêtement, Pierre) | Total modifié: 3 produits
+[EVENT: RECHARGE_BUDGET] [RECHARGE] KoreanInnovation: +5991€ (ancien: 12.1€ → nouveau: 6003.1€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] EgyptianTech: +4735€ (ancien: 371.67€ → nouveau: 5106.67€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] CzechTech: +6402€ (ancien: 57.47€ → nouveau: 6459.47€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] PacificCorp: +6243€ (ancien: 164.07€ → nouveau: 6407.07€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] SouthAfricanCorp: +5854€ (ancien: 13.84€ → nouveau: 5867.84€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] ThaiTech: +7232€ (ancien: 29.1€ → nouveau: 7261.1€)
+[EVENT: RECHARGE_BUDGET] [RESUME RECHARGE] 6 entreprises rechargées | Total: +36457€ | Moyenne: +6076.17€
+[EVENT: VARIATION_DISPONIBILITE] [VARIATION] [DESACTIVE] 1 désactivés (Parfum) | [REACTIVE] 2 réactivés (Outillage, Plastique) | Total modifié: 3 produits
+[EVENT: RECHARGE_BUDGET] [RECHARGE] KoreanInnovation: +5796€ (ancien: 315.7€ → nouveau: 6111.7€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] EgyptianTech: +7225€ (ancien: 42.43€ → nouveau: 7267.43€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] CzechTech: +5403€ (ancien: 16.42€ → nouveau: 5419.42€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] PacificCorp: +4302€ (ancien: 34.01€ → nouveau: 4336.01€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] PeruvianTech: +6295€ (ancien: 48.79€ → nouveau: 6343.79€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] SouthAfricanCorp: +6338€ (ancien: 53.24€ → nouveau: 6391.24€)
+[EVENT: RECHARGE_BUDGET] [RESUME RECHARGE] 6 entreprises rechargées | Total: +35359€ | Moyenne: +5893.17€
+[EVENT: REASSORT] [REASSORT] [PRODUITS] 1 produits réapprovisionnés | [QUANTITE] +27 unités total | [FOURNISSEURS] 1 fournisseurs concernés
+[EVENT: RECHARGE_BUDGET] [RECHARGE] KoreanInnovation: +7843€ (ancien: 2.54€ → nouveau: 7845.54€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] CzechTech: +4141€ (ancien: 8.07€ → nouveau: 4149.07€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] PacificCorp: +5958€ (ancien: 17.89€ → nouveau: 5975.89€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] PeruvianTech: +7522€ (ancien: 14.39€ → nouveau: 7536.39€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] ThaiTech: +5130€ (ancien: 104.35€ → nouveau: 5234.35€)
+[EVENT: RECHARGE_BUDGET] [RESUME RECHARGE] 5 entreprises rechargées | Total: +30594€ | Moyenne: +6118.8€
