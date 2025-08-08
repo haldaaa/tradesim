@@ -16,7 +16,8 @@ Implémentation complète du monitoring Prometheus/Grafana pour TradeSim CLI ave
 - ✅ **Tests des modes de lancement** : Mode interactif et direct validés
 - ✅ **Corrections bugs** : Précision flottante, Docker setup
 - ✅ **Prometheus/Grafana opérationnels** : Containers Docker fonctionnels
-- 🔄 **Dashboards Grafana** : En cours (Phase 2)
+- 🔄 **Unification des modes** : En cours (FIN DE SESSION)
+- ⏳ **Dashboards Grafana** : Phase 2
 - ⏳ **Labels** : Phase 2
 - ⏳ **Alertes** : Phase 3
 
@@ -167,6 +168,14 @@ python services/simulate.py --new-game
 
 ### **📋 Prochaines Étapes**
 
+#### **Phase 1 : Unification des modes (EN COURS - FIN DE SESSION)**
+- [ ] **Problème identifié** : Deux systèmes séparés (simulate.py vs game_manager.py)
+- [ ] **Mode interactif** : Pas de monitoring intégré
+- [ ] **Architecture** : Unifier tout dans simulate.py
+- [ ] **Docker automatique** : Démarrer si --with-metrics
+- [ ] **Gestion d'erreurs** : Continuer sans monitoring + message + log
+- [ ] **Choix par défaut** : Monitoring activé
+
 #### **Phase 2 : Dashboards Grafana**
 - [ ] Créer 4 dashboards JSON
   - TradeSim Overview
@@ -195,6 +204,12 @@ python services/simulate.py --new-game
 6. **Précision flottante** : Corrigé avec round() à 2 décimales pour budget_total
 7. **Docker setup** : Corrigé configuration prometheus.yml (duplication job_name)
 8. **Docker Desktop** : Résolu avec containers individuels au lieu de docker-compose
+
+### **🔍 Problèmes Identifiés (À RÉSOUDRE)**
+1. **Deux systèmes séparés** : simulate.py vs game_manager.py
+2. **Mode interactif sans monitoring** : game_manager.py n'a pas de monitoring
+3. **Architecture non unifiée** : Confusion entre les modes
+4. **Dogmes non respectés** : Modularité, simplicité, maintenabilité
 
 ### **✅ Validation**
 - **69 tests unitaires** : ✅ Tous passent
@@ -232,3 +247,46 @@ python services/simulate.py --new-game
 - **Multi-mode** : CLI + Web unifiés
 - **Observabilité** : Monitoring complet de l'écosystème
 - **Scalabilité** : Support de multiples instances
+
+---
+
+## 🚨 **QUESTIONS EN SUSPENS (PROCHAINE SESSION)**
+
+### **1. Migration des fonctionnalités**
+- **Déplacer** toutes les fonctions de `game_manager.py` vers `simulate.py` ?
+- **Ou garder** `game_manager.py` comme module importé par `simulate.py` ?
+
+### **2. Interface utilisateur**
+Dans le mode interactif, ajouter :
+- **Option monitoring** dans le menu principal ?
+- **Ou question automatique** après configuration ?
+
+### **3. Gestion des templates**
+Les fonctions `save_template`, `load_template` :
+- **Garder** dans `game_manager.py` ?
+- **Déplacer** vers `simulate.py` ?
+
+### **4. Logs d'erreur Docker**
+Où logger les erreurs Docker :
+- **logs/simulation.log** ?
+- **logs/monitoring.log** ?
+- **logs/errors.log** ?
+
+### **5. Architecture finale**
+- **Un seul point d'entrée** : `simulate.py`
+- **Mode direct** : `--tours 5 --with-metrics`
+- **Mode interactif** : `--new-game --with-metrics`
+- **Docker automatique** : Démarré si `--with-metrics`
+
+### **6. Gestion Docker**
+- **Démarrage automatique** : Prometheus + Grafana
+- **Gestion d'erreurs** : Continuer sans monitoring + message + log
+- **Choix par défaut** : Monitoring activé
+
+---
+
+## 📅 **FIN DE SESSION - 08/08/2025**
+
+**Statut** : Unification des modes en cours
+**Prochaine session** : Implémentation de l'architecture unifiée
+**Objectif** : Un seul système simple, modulaire et maintenable
