@@ -1,0 +1,79 @@
+# Configuration Prometheus pour TradeSim
+# ====================================
+#
+# Ce fichier configure Prometheus pour collecter les métriques
+# depuis l'exporter Python de TradeSim.
+#
+# Configuration:
+# - Scrape interval: 15s (collecte toutes les 15 secondes)
+# - Evaluation interval: 15s (évaluation des règles)
+# - Target: exporter Python sur localhost:8000
+#
+# Métriques collectées:
+# - tradesim_budget_total
+# - tradesim_transactions_total
+# - tradesim_produits_actifs
+# - tradesim_tours_completes
+# - tradesim_temps_simulation_tour_seconds
+# - Métriques système (CPU, mémoire, etc.)
+
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+# ============================================================================
+# RÈGLES D'ALERTE (optionnelles pour phase 1)
+# ============================================================================
+rule_files:
+  # - "alert_rules.yml"  # À activer plus tard
+
+# ============================================================================
+# CONFIGURATION DES ALERTES (optionnelle pour phase 1)
+# ============================================================================
+alerting:
+  alertmanagers:
+    # - static_configs:
+    #     - targets:
+    #       # - alertmanager:9093
+
+# ============================================================================
+# CONFIGURATION DU SCRAPING
+# ============================================================================
+scrape_configs:
+  # ============================================================================
+  # EXPORTER TRADESIM - Métriques de l'application
+  # ============================================================================
+  - job_name: 'tradesim-exporter'
+    static_configs:
+      - targets: ['host.docker.internal:8000']  # Accès depuis Docker vers host
+    scrape_interval: 15s
+    metrics_path: '/metrics'
+    
+    # Labels pour identifier la source
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: instance
+        regex: '(.+)'
+        replacement: 'tradesim-cli'
+    
+    # Métadonnées sur le job
+    honor_labels: true
+    
+  # ============================================================================
+  # PROMETHEUS LUI-MÊME - Métriques internes
+  # ============================================================================
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+    scrape_interval: 15s
+    metrics_path: '/metrics'
+    
+  # ============================================================================
+  # GRAFANA - Métriques internes (optionnel)
+  # ============================================================================
+  - job_name: 'grafana'
+    static_configs:
+      - targets: ['grafana:3000']
+    scrape_interval: 30s
+    metrics_path: '/metrics'
+    scrape_timeout: 10s 
