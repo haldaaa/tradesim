@@ -1,0 +1,51 @@
+# Docker Compose pour TradeSim Monitoring
+# ======================================
+#
+# Ce fichier définit la stack Docker pour le monitoring TradeSim
+# avec Prometheus (collecte) et Grafana (visualisation).
+#
+# Architecture:
+# - Prometheus: collecte les métriques depuis l'exporter Python
+# - Grafana: visualisation et dashboards
+# - Pas de volumes persistants (phase 1)
+#
+# Ports:
+# - Prometheus: 9090
+# - Grafana: 3000
+# - Exporter Python: 8000 (externe)
+
+services:
+  # ============================================================================
+  # PROMETHEUS - Collecte des métriques
+  # ============================================================================
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: tradesim-prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--storage.tsdb.retention.time=200h'
+      - '--web.enable-lifecycle'
+    restart: unless-stopped
+
+  # ============================================================================
+  # GRAFANA - Visualisation et dashboards
+  # ============================================================================
+  grafana:
+    image: grafana/grafana:latest
+    container_name: tradesim-grafana
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_USERS_ALLOW_SIGN_UP=false
+      - GF_INSTALL_PLUGINS=grafana-clock-panel,grafana-simple-json-datasource
+    restart: unless-stopped
+    depends_on:
+      - prometheus 

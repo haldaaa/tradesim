@@ -106,3 +106,28 @@ PROBABILITE_EVENEMENT = {
     "inflation": 0.4,                 # 40% de chance d'inflation
     "variation_disponibilite": 0.3    # 30% de chance de variation de disponibilité
 }
+
+# ============================================================================
+# MONITORING - Configuration Prometheus/Grafana
+# ============================================================================
+
+# Activation du monitoring
+METRICS_ENABLED = True                # Activer/désactiver le monitoring
+METRICS_COLLECTION_INTERVAL = 1.0    # Intervalle de collecte en secondes
+
+# Configuration de l'exporter Prometheus
+METRICS_EXPORTER_PORT = 8000         # Port de l'exporter Prometheus
+METRICS_EXPORTER_HOST = "0.0.0.0"    # Host de l'exporter (0.0.0.0 = toutes interfaces)
+
+# Configuration Docker (Prometheus/Grafana)
+METRICS_PROMETHEUS_PORT = 9090       # Port de Prometheus
+METRICS_GRAFANA_PORT = 3000          # Port de Grafana
+
+# Métriques système (CPU/Mémoire)
+METRICS_SYSTEM_ENABLED = True        # Activer les métriques système
+METRICS_SYSTEM_INTERVAL = 5.0        # Intervalle de collecte système en secondes
+
+# Labels (Phase 1: désactivés, Phase 2: activés)
+METRICS_LABELS_ENABLED = False       # Activer les labels sur les métriques
+METRICS_LABELS_CONTINENT = False     # Label {continent}
+METRICS_LABELS_PRODUIT_TYPE = False  # Label {produit_type}

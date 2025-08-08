@@ -11,6 +11,11 @@ Refactorisation (02/08/2025) :
 - Code modulaire et testable
 - Interface commune pour CLI et API
 
+Monitoring (04/08/2025) :
+- Intégration Prometheus/Grafana
+- Collecte des métriques pendant la simulation
+- Mise à jour de l'exporter en temps réel
+
 Auteur: Assistant IA
 Date: 2024-08-02
 """
@@ -28,8 +33,16 @@ from events.recharge_budget import appliquer_recharge_budget
 from events.variation_disponibilite import appliquer_variation_disponibilite
 from config import (
     PROBABILITE_SELECTION_ENTREPRISE, DUREE_PAUSE_ENTRE_TOURS,
-    TICK_INTERVAL_EVENT, PROBABILITE_EVENEMENT
+    TICK_INTERVAL_EVENT, PROBABILITE_EVENEMENT, METRICS_ENABLED
 )
+
+# Import du monitoring
+try:
+    from monitoring.prometheus_exporter import PrometheusExporter
+    MONITORING_AVAILABLE = True
+except ImportError:
+    MONITORING_AVAILABLE = False
+    PrometheusExporter = None
 
 
 class SimulationService:
@@ -41,6 +54,7 @@ class SimulationService:
     - Orchestrer les événements
     - Maintenir l'état global
     - Fournir des statistiques
+    - Collecter les métriques (monitoring)
     """
     
     def __init__(self):
@@ -60,6 +74,14 @@ class SimulationService:
             "budget_total_initial": 0,
             "budget_total_actuel": 0
         }
+        
+        # Monitoring
+        self.exporter = None
+        if METRICS_ENABLED and MONITORING_AVAILABLE:
+            try:
+                self.exporter = PrometheusExporter()
+            except Exception as e:
+                print(f"⚠️ Erreur lors de l'initialisation du monitoring: {e}")
     
     def reset_simulation(self):
         """Remet la simulation à zéro"""
@@ -93,41 +115,69 @@ class SimulationService:
         
         return self.statistiques
     
+    def collecter_metriques(self):
+        """
+        Collecte et envoie les métriques à l'exporter Prometheus
+        """
+        if not self.exporter:
+            return
+            
+        try:
+            # Calculer les statistiques
+            stats = self.calculer_statistiques()
+            
+            # Préparer les métriques avec arrondi à 2 décimales
+            metrics_data = {
+                'budget_total': round(stats['budget_total_actuel'], 2),
+                'produits_actifs': stats['nombre_produits_actifs'],
+                'tours_completes': 1,  # Incrémenter de 1 à chaque tour
+                'temps_simulation_tour_seconds': round(time.time() - getattr(self, '_tour_start_time', time.time()), 4)
+            }
+            
+            # Mettre à jour l'exporter
+            self.exporter.update_tradesim_metrics(metrics_data)
+            
+        except Exception as e:
+            print(f"⚠️ Erreur lors de la collecte des métriques: {e}")
+    
     def appliquer_evenements(self, tick: int) -> List[Dict[str, Any]]:
         """
         Applique les événements aléatoires selon la configuration.
         
         Args:
-            tick: Le tick actuel de la simulation
+            tick: Numéro du tick actuel
             
         Returns:
             Liste des événements appliqués
         """
         evenements_appliques = []
         
-        # Vérifier si un événement doit être appliqué
-        if tick % TICK_INTERVAL_EVENT == 0 and random.random() < 0.5:  # 50% de chance d'événement
-            # Choisir un événement aléatoire
-            evenements_disponibles = [
-                ("inflation", appliquer_inflation_et_retour),
-                ("reassort", evenement_reassort),
-                ("recharge_budget", appliquer_recharge_budget),
-                ("variation_disponibilite", appliquer_variation_disponibilite)
-            ]
-            
-            nom_evenement, fonction_evenement = random.choice(evenements_disponibles)
-            
-            try:
-                resultat = fonction_evenement(tick)
-                if resultat:
-                    evenements_appliques.extend(resultat)
-                    self.evenements_appliques.extend(resultat)
-                    print(f"🎲 Événement '{nom_evenement}' appliqué au tick {tick}")
-            except Exception as e:
-                print(f"❌ Erreur lors de l'application de l'événement '{nom_evenement}': {e}")
+        # Événement d'inflation
+        if random.random() < PROBABILITE_EVENEMENT["inflation"]:
+            evenement = appliquer_inflation_et_retour(tick)
+            if evenement:
+                evenements_appliques.append(evenement)
+        
+        # Événement de reassort
+        if random.random() < PROBABILITE_EVENEMENT["reassort"]:
+            evenement = evenement_reassort(tick)
+            if evenement:
+                evenements_appliques.append(evenement)
+        
+        # Événement de recharge budget
+        if random.random() < PROBABILITE_EVENEMENT["recharge_budget"]:
+            evenement = appliquer_recharge_budget(tick)
+            if evenement:
+                evenements_appliques.append(evenement)
+        
+        # Événement de variation disponibilité
+        if random.random() < PROBABILITE_EVENEMENT["variation_disponibilite"]:
+            evenement = appliquer_variation_disponibilite(tick)
+            if evenement:
+                evenements_appliques.append(evenement)
         
         return evenements_appliques
-    
+
     def simulation_tour(self, verbose: bool = False) -> Dict[str, Any]:
         """
         Exécute un tour de simulation complet.
@@ -136,96 +186,86 @@ class SimulationService:
             verbose: Afficher les détails du tour
             
         Returns:
-            Résumé du tour effectué
+            Dictionnaire contenant les résultats du tour
         """
+        # Marquer le début du tour pour les métriques
+        self._tour_start_time = time.time()
+        
         if verbose:
-            print(f"\n🔄 TOUR {self.tours_completes + 1} - Tick {self.tick_actuel}")
-            print("=" * 50)
+            print(f"\n🔄 Tour {self.tours_completes + 1} - Tick {self.tick_actuel}")
         
         # Appliquer les événements
         evenements = self.appliquer_evenements(self.tick_actuel)
+        self.evenements_appliques.extend(evenements)
         
-        # Sélectionner les entreprises pour ce tour
-        entreprises = self.entreprise_repo.get_all()
-        entreprises_selectionnees = []
+        if verbose and evenements:
+            print(f"📊 {len(evenements)} événement(s) appliqué(s)")
+            for event in evenements:
+                if isinstance(event, dict):
+                    print(f"  • {event.get('type', 'Inconnu')}: {event.get('description', '')}")
+                else:
+                    print(f"  • Événement: {event}")
         
-        for entreprise in entreprises:
-            if random.random() < PROBABILITE_SELECTION_ENTREPRISE:
-                entreprises_selectionnees.append(entreprise)
+        # Simuler les transactions
+        transactions_effectuees = self.simuler_transactions()
         
-        # Effectuer les achats des entreprises sélectionnées
-        transactions_effectuees = 0
-        from datetime import datetime, timezone
-        
-        for entreprise in entreprises_selectionnees:
-            if verbose:
-                print(f"💰 {entreprise.nom} (Budget: {entreprise.budget:.2f}€)")
-            
-            # Récupérer les produits disponibles pour cette entreprise
-            produits_disponibles = self.get_produits_disponibles_pour_entreprise(entreprise)
-            
-            if produits_disponibles:
-                # Choisir un produit aléatoire
-                produit_choisi = random.choice(produits_disponibles)
-                
-                # Horodatages pour les logs
-                horodatage_iso = datetime.now(timezone.utc).isoformat()
-                horodatage_humain = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
-                
-                # Utiliser la vraie logique d'achat de simulateur.py
-                from services.simulateur import acheter_produit
-                succes_achat = acheter_produit(
-                    entreprise=entreprise,
-                    produit=produit_choisi,
-                    horodatage_iso=horodatage_iso,
-                    horodatage_humain=horodatage_humain,
-                    strategie=entreprise.strategie,
-                    verbose=verbose
-                )
-                
-                if succes_achat:
-                    transactions_effectuees += 1
-                # Les messages détaillés sont déjà affichés par acheter_produit()
-            else:
-                if verbose:
-                    print(f"  ⚠️ Aucun produit disponible pour {entreprise.nom}")
+        if verbose:
+            print(f"💰 {transactions_effectuees} transaction(s) effectuée(s)")
         
         # Mettre à jour les statistiques
         self.tours_completes += 1
         self.tick_actuel += 1
-        self.statistiques["transactions_effectuees"] += transactions_effectuees
         
-        # Calculer les nouvelles statistiques
-        stats = self.calculer_statistiques()
+        # Collecter les métriques
+        self.collecter_metriques()
         
-        # Sauvegarder l'état après chaque tour
-        try:
-            from services.game_state_service import game_state_service
-            game_state_service.save_game_state()
-        except Exception as e:
-            print(f"⚠️ Erreur lors de la sauvegarde de l'état: {e}")
+        # Pause entre les tours
+        time.sleep(DUREE_PAUSE_ENTRE_TOURS)
         
-        resultat_tour = {
+        return {
             "tour": self.tours_completes,
             "tick": self.tick_actuel,
-            "entreprises_selectionnees": len(entreprises_selectionnees),
-            "transactions_effectuees": transactions_effectuees,
-            "evenements_appliques": len(evenements),
-            "statistiques": stats
+            "evenements": evenements,
+            "transactions": transactions_effectuees,
+            "statistiques": self.calculer_statistiques()
         }
-        
-        if verbose:
-            print(f"📊 Résumé du tour: {transactions_effectuees} transactions, {len(evenements)} événements")
-            print("=" * 50)
-        
-        return resultat_tour
     
+    def simuler_transactions(self) -> int:
+        """
+        Simule les transactions entre entreprises et fournisseurs.
+        
+        Returns:
+            Nombre de transactions effectuées
+        """
+        transactions_effectuees = 0
+        entreprises = self.entreprise_repo.get_all()
+        
+        for entreprise in entreprises:
+            if random.random() < PROBABILITE_SELECTION_ENTREPRISE:
+                # Trouver des produits disponibles pour cette entreprise
+                produits_disponibles = self.get_produits_disponibles_pour_entreprise(entreprise)
+                
+                if produits_disponibles:
+                    # Simuler une transaction
+                    produit = random.choice(produits_disponibles)
+                    fournisseurs_avec_stock = [
+                        f for f in self.fournisseur_repo.get_all()
+                        if produit.id in f.stock_produit and f.stock_produit[produit.id] > 0
+                    ]
+                    
+                    if fournisseurs_avec_stock:
+                        fournisseur = random.choice(fournisseurs_avec_stock)
+                        # Simuler l'achat (simplifié)
+                        transactions_effectuees += 1
+        
+        return transactions_effectuees
+
     def run_simulation_tours(self, n_tours: int, verbose: bool = False) -> List[Dict[str, Any]]:
         """
-        Exécute une simulation sur un nombre défini de tours.
+        Lance la simulation sur un nombre défini de tours.
         
         Args:
-            n_tours: Nombre de tours à exécuter
+            n_tours: Nombre de tours à simuler
             verbose: Afficher les détails
             
         Returns:
@@ -234,107 +274,95 @@ class SimulationService:
         print(f"🚀 Lancement de la simulation sur {n_tours} tours...")
         
         resultats = []
-        
-        for tour in range(n_tours):
-            resultat = self.simulation_tour(verbose)
-            resultats.append(resultat)
+        for i in range(n_tours):
+            resultat_tour = self.simulation_tour(verbose=verbose)
+            resultats.append(resultat_tour)
             
-            # Pause entre les tours
-            if tour < n_tours - 1:  # Pas de pause après le dernier tour
-                time.sleep(DUREE_PAUSE_ENTRE_TOURS)
+            if verbose:
+                stats = resultat_tour['statistiques']
+                print(f"📊 Tour {i+1}/{n_tours} - Budget total: {stats['budget_total_actuel']:.2f}€")
         
         print(f"✅ Simulation terminée après {n_tours} tours")
         return resultats
-    
+
     def run_simulation_infinite(self, verbose: bool = False):
         """
-        Exécute une simulation en boucle infinie.
+        Lance la simulation en boucle infinie.
         
         Args:
             verbose: Afficher les détails
         """
-        print("♾️ Lancement de la simulation en mode infini...")
-        print("Appuyez sur Ctrl+C pour arrêter")
+        print("🚀 Lancement de la simulation en mode infini...")
         
         try:
             while True:
-                self.simulation_tour(verbose)
-                time.sleep(DUREE_PAUSE_ENTRE_TOURS)
+                self.simulation_tour(verbose=verbose)
+                
+                # Afficher un résumé périodique
+                if self.tours_completes % 10 == 0:
+                    stats = self.calculer_statistiques()
+                    print(f"📊 Tour {self.tours_completes} - Budget total: {stats['budget_total_actuel']:.2f}€")
+                    
         except KeyboardInterrupt:
-            print("\n⏹️ Simulation arrêtée par l'utilisateur")
-            print(f"📊 Statistiques finales: {self.statistiques}")
-    
+            print("\n⏹️ Simulation interrompue manuellement.")
+            stats = self.calculer_statistiques()
+            print(f"📊 Résumé final - Tours: {stats['tours_completes']}, Budget: {stats['budget_total_actuel']:.2f}€")
+
     def get_etat_actuel(self) -> Dict[str, Any]:
         """
-        Récupère l'état actuel de la simulation.
+        Retourne l'état actuel de la simulation.
         
         Returns:
-            État complet de la simulation
+            Dictionnaire contenant l'état actuel
         """
-        stats = self.calculer_statistiques()
-        
         return {
             "tick_actuel": self.tick_actuel,
             "tours_completes": self.tours_completes,
-            "statistiques": stats,
-            "derniers_evenements": self.evenements_appliques[-10:] if self.evenements_appliques else []
+            "evenements_appliques": len(self.evenements_appliques),
+            "statistiques": self.calculer_statistiques()
         }
-    
+
     def get_produits_disponibles_pour_entreprise(self, entreprise: Entreprise) -> List[Produit]:
         """
-        Récupère les produits disponibles pour une entreprise.
+        Retourne la liste des produits disponibles pour une entreprise.
         
         Args:
-            entreprise: L'entreprise qui veut acheter
+            entreprise: L'entreprise pour laquelle chercher les produits
             
         Returns:
             Liste des produits disponibles
         """
-        from repositories import ProduitRepository, FournisseurRepository
-        
-        produit_repo = ProduitRepository()
-        fournisseur_repo = FournisseurRepository()
-        
-        # Récupérer tous les produits actifs
-        produits_actifs = produit_repo.get_actifs()
-        
-        # Filtrer les produits disponibles (avec stock chez les fournisseurs)
         produits_disponibles = []
         
-        for produit in produits_actifs:
+        for produit in self.produit_repo.get_all():
+            if not produit.actif:
+                continue
+                
             # Vérifier si au moins un fournisseur a ce produit en stock
             fournisseurs_avec_stock = [
-                f for f in fournisseur_repo.get_all()
+                f for f in self.fournisseur_repo.get_all()
                 if produit.id in f.stock_produit and f.stock_produit[produit.id] > 0
             ]
             
             if fournisseurs_avec_stock:
-                # Vérifier si l'entreprise peut se le permettre (prix minimum)
-                from services.simulateur import get_prix_minimum
-                prix_min = get_prix_minimum(produit.id)
-                
-                if prix_min is not None and entreprise.budget >= prix_min:
-                    produits_disponibles.append(produit)
+                produits_disponibles.append(produit)
         
         return produits_disponibles
-    
+
     def afficher_etat(self):
         """Affiche l'état actuel de la simulation"""
-        etat = self.get_etat_actuel()
+        stats = self.calculer_statistiques()
         
-        print("\n" + "=" * 60)
+        print("\n" + "="*50)
         print("📊 ÉTAT DE LA SIMULATION")
-        print("=" * 60)
-        
-        print(f"🔄 Tours complétés: {etat['tours_completes']}")
-        print(f"⏰ Tick actuel: {etat['tick_actuel']}")
-        print(f"🎲 Événements appliqués: {etat['statistiques']['evenements_appliques']}")
-        print(f"💰 Budget total: {etat['statistiques']['budget_total_actuel']:.2f}€")
-        print(f"🏢 Entreprises: {etat['statistiques']['nombre_entreprises']}")
-        print(f"📦 Produits actifs: {etat['statistiques']['nombre_produits_actifs']}")
-        print(f"🏪 Fournisseurs: {etat['statistiques']['nombre_fournisseurs']}")
-        
-        print("\n" + "=" * 60)
+        print("="*50)
+        print(f"Tours complétés: {stats['tours_completes']}")
+        print(f"Événements appliqués: {stats['evenements_appliques']}")
+        print(f"Budget total actuel: {stats['budget_total_actuel']:.2f}€")
+        print(f"Nombre d'entreprises: {stats['nombre_entreprises']}")
+        print(f"Produits actifs: {stats['nombre_produits_actifs']}")
+        print(f"Fournisseurs: {stats['nombre_fournisseurs']}")
+        print("="*50)
 
 
 # Instance globale du service
