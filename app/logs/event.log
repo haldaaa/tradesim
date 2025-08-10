@@ -81,3 +81,7 @@
 [EVENT: RECHARGE_BUDGET] [RECHARGE] PeruvianTech: +7522€ (ancien: 14.39€ → nouveau: 7536.39€)
 [EVENT: RECHARGE_BUDGET] [RECHARGE] ThaiTech: +5130€ (ancien: 104.35€ → nouveau: 5234.35€)
 [EVENT: RECHARGE_BUDGET] [RESUME RECHARGE] 5 entreprises rechargées | Total: +30594€ | Moyenne: +6118.8€
+[EVENT: VARIATION_DISPONIBILITE] [VARIATION] [DESACTIVE] 1 désactivés (Téléphone) | [REACTIVE] 3 réactivés (Carburant, Stabilisant, Livre) | Total modifié: 4 produits
+[EVENT: RECHARGE_BUDGET] [RECHARGE] NigerianTech: +6564€ (ancien: 19703.25€ → nouveau: 26267.25€)
+[EVENT: RECHARGE_BUDGET] [RECHARGE] ThaiTech: +6755€ (ancien: 17766.74€ → nouveau: 24521.74€)
+[EVENT: RECHARGE_BUDGET] [RESUME RECHARGE] 2 entreprises rechargées | Total: +13319€ | Moyenne: +6659.5€

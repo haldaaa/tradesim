@@ -1,0 +1,15 @@
+[2025-08-10 09:49:53] [INFO] Tentative de lancement des containers Docker
+[2025-08-10 09:49:53] [ERROR] Erreur Prometheus: docker: Cannot connect to the Docker daemon at unix:///Users/fares/.docker/run/docker.sock. Is the docker daemon running?
+
+Run 'docker run --help' for more information
+
+[2025-08-10 09:51:55] [INFO] Tentative de lancement des containers Docker
+[2025-08-10 09:51:55] [ERROR] Erreur Prometheus: docker: Cannot connect to the Docker daemon at unix:///Users/fares/.docker/run/docker.sock. Is the docker daemon running?
+
+Run 'docker run --help' for more information
+
+[2025-08-10 10:00:40] [INFO] Tentative de lancement des containers Docker
+[2025-08-10 10:00:40] [ERROR] Erreur Prometheus: docker: Cannot connect to the Docker daemon at unix:///Users/fares/.docker/run/docker.sock. Is the docker daemon running?
+
+Run 'docker run --help' for more information
+

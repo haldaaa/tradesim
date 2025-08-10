@@ -1,11 +1,23 @@
 #!/usr/bin/env python3
 """
-Simulate TradeSim - Interface de simulation
-==========================================
+Simulate TradeSim - Point d'entrée principal CLI
+================================================
 
-Ce module fournit l'interface de simulation pour TradeSim.
-Il gère l'affichage du statut, le mode cheat et l'exécution
-des simulations.
+ROLE : Interface utilisateur et point d'entrée unique de l'application CLI
+- Gère tous les arguments de ligne de commande (--tours, --new-game, etc.)
+- Interface utilisateur pour les modes direct et interactif
+- Orchestration du monitoring Prometheus/Grafana
+- Point d'entrée unifié pour toute l'application
+
+DIFFÉRENCE AVEC game_manager.py :
+- simulate.py = Interface utilisateur (CLI, arguments, menus)
+- game_manager.py = Logique métier (configuration, templates, génération données)
+
+ARCHITECTURE :
+simulate.py (point d'entrée)
+├── game_manager.py (logique de configuration)
+├── simulateur.py (logique de simulation)
+└── monitoring/ (Prometheus/Grafana)
 
 Refactorisation (02/08/2025) :
 - Utilise les Repository au lieu d'accès directs aux données

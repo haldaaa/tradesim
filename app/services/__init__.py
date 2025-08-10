@@ -18,7 +18,7 @@ Date: 2024-08-02
 """
 
 # Services principaux
-from .simulation_service import SimulationService, simulation_service
+from .simulation_service import SimulationService
 from .game_manager_service import GameManagerService, game_manager_service
 from .transaction_service import TransactionService, transaction_service
 from .budget_service import BudgetService, budget_service
@@ -31,7 +31,7 @@ from .simulate import afficher_status, mode_cheat, run_simulation
 __all__ = [
     # Nouveaux services
     "SimulationService",
-    "simulation_service",
+
     "GameManagerService", 
     "game_manager_service",
     "TransactionService",
