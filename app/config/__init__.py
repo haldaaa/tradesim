@@ -26,6 +26,8 @@ from .config import (
     LOG_DIR,
     FICHIER_LOG,
     FICHIER_LOG_HUMAIN,
+    EVENT_LOG_JSON,
+    EVENT_LOG_HUMAIN,
     
     # Événements
     RECHARGE_BUDGET_MIN,
@@ -63,7 +65,41 @@ from .config import (
     METRICS_SYSTEM_INTERVAL,
     METRICS_LABELS_ENABLED,
     METRICS_LABELS_CONTINENT,
-    METRICS_LABELS_PRODUIT_TYPE
+    METRICS_LABELS_PRODUIT_TYPE,
+    
+    # Configuration des IDs uniques
+    ID_FORMAT,
+    ID_SESSION_FORMAT,
+    MAX_COUNTER,
+    VALID_ACTION_TYPES,
+    
+    # Configuration des optimisations
+    BATCH_LOG_SIZE,
+    CACHE_MAX_SIZE,
+    COMPRESSION_DAYS,
+    INDEX_ENABLED,
+    VALIDATION_ENABLED,
+    REALTIME_MONITORING,
+    PERFORMANCE_THRESHOLD,
+    
+    # Seuils d'alerte temps réel
+    ALERT_BUDGET_CRITIQUE,
+    ALERT_STOCK_CRITIQUE,
+    ALERT_ERROR_RATE,
+    
+    # Configuration des métriques
+    METRICS_COLLECTION_INTERVAL,
+    METRICS_RETENTION_DAYS,
+    
+    # Configuration Latency & Throughput
+    LATENCY_COLLECTION_INTERVAL,
+    LATENCY_HISTOGRAM_BUCKETS,
+    LATENCY_HISTORY_SIZE,
+    THROUGHPUT_WINDOW_SIZE,
+    THROUGHPUT_MIN_INTERVAL,
+    LATENCY_WARNING_THRESHOLD,
+    LATENCY_CRITICAL_THRESHOLD,
+    THROUGHPUT_MIN_RATE,
 )
 
 # Exports publics
@@ -82,6 +118,8 @@ __all__ = [
     'LOG_DIR',
     'FICHIER_LOG',
     'FICHIER_LOG_HUMAIN',
+    'EVENT_LOG_JSON',
+    'EVENT_LOG_HUMAIN',
     
     # Événements
     'RECHARGE_BUDGET_MIN',
@@ -119,5 +157,39 @@ __all__ = [
     'METRICS_SYSTEM_INTERVAL',
     'METRICS_LABELS_ENABLED',
     'METRICS_LABELS_CONTINENT',
-    'METRICS_LABELS_PRODUIT_TYPE'
+    'METRICS_LABELS_PRODUIT_TYPE',
+    
+    # Configuration des IDs uniques
+    'ID_FORMAT',
+    'ID_SESSION_FORMAT',
+    'MAX_COUNTER',
+    'VALID_ACTION_TYPES',
+    
+    # Configuration des optimisations
+    'BATCH_LOG_SIZE',
+    'CACHE_MAX_SIZE',
+    'COMPRESSION_DAYS',
+    'INDEX_ENABLED',
+    'VALIDATION_ENABLED',
+    'REALTIME_MONITORING',
+    'PERFORMANCE_THRESHOLD',
+    
+    # Seuils d'alerte temps réel
+    'ALERT_BUDGET_CRITIQUE',
+    'ALERT_STOCK_CRITIQUE',
+    'ALERT_ERROR_RATE',
+    
+    # Configuration des métriques
+    'METRICS_COLLECTION_INTERVAL',
+    'METRICS_RETENTION_DAYS',
+    
+    # Configuration Latency & Throughput
+    'LATENCY_COLLECTION_INTERVAL',
+    'LATENCY_HISTOGRAM_BUCKETS',
+    'LATENCY_HISTORY_SIZE',
+    'THROUGHPUT_WINDOW_SIZE',
+    'THROUGHPUT_MIN_INTERVAL',
+    'LATENCY_WARNING_THRESHOLD',
+    'LATENCY_CRITICAL_THRESHOLD',
+    'THROUGHPUT_MIN_RATE',
 ] 

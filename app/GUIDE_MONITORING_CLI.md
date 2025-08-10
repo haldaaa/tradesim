@@ -54,6 +54,18 @@ METRICS_SYSTEM_INTERVAL = 5.0        # Intervalle collecte système (secondes)
 METRICS_LABELS_ENABLED = False       # Activer les labels
 METRICS_LABELS_CONTINENT = True      # Label continent
 METRICS_LABELS_PRODUIT_TYPE = True   # Label type de produit
+
+# Configuration Latency & Throughput
+LATENCY_COLLECTION_INTERVAL = 0.1    # Intervalle de collecte des latences (100ms)
+LATENCY_HISTOGRAM_BUCKETS = [0.1, 0.5, 1.0, 2.0, 5.0, 10.0, 20.0, 50.0, 100.0]  # Buckets pour histogrammes
+LATENCY_HISTORY_SIZE = 1000          # Nombre de mesures à conserver en historique
+THROUGHPUT_WINDOW_SIZE = 60          # Fenêtre de calcul du throughput (60 secondes)
+THROUGHPUT_MIN_INTERVAL = 0.01       # Intervalle minimum entre mesures (10ms)
+
+# Seuils de performance pour les alertes
+LATENCY_WARNING_THRESHOLD = 100.0    # Seuil d'avertissement latence (100ms)
+LATENCY_CRITICAL_THRESHOLD = 500.0   # Seuil critique latence (500ms)
+THROUGHPUT_MIN_RATE = 0.1            # Taux minimum de throughput (0.1 op/s)
 ```
 
 ## 📊 Métriques disponibles
@@ -64,6 +76,20 @@ METRICS_LABELS_PRODUIT_TYPE = True   # Label type de produit
 - `tradesim_produits_actifs` (Gauge) - Nombre de produits actifs
 - `tradesim_tours_completes` (Counter) - Nombre de tours effectués
 - `tradesim_temps_simulation_tour_seconds` (Histogram) - Durée d'un tour
+
+### **⚡ NOUVELLES MÉTRIQUES - Latence et Throughput (12 métriques)**
+- `tradesim_latency_achat_produit_ms` (Histogram) - Temps de réponse pour un achat
+- `tradesim_latency_calcul_statistiques_ms` (Histogram) - Temps de calcul des statistiques
+- `tradesim_latency_application_evenement_ms` (Histogram) - Temps d'application d'un événement
+- `tradesim_latency_collecte_metriques_ms` (Histogram) - Temps de collecte des métriques
+- `tradesim_latency_validation_donnees_ms` (Histogram) - Temps de validation des données
+- `tradesim_latency_generation_id_ms` (Histogram) - Temps de génération d'un ID unique
+- `tradesim_transactions_par_seconde` (Counter) - Nombre de transactions par seconde
+- `tradesim_evenements_par_seconde` (Counter) - Nombre d'événements appliqués par seconde
+- `tradesim_metriques_collectees_par_seconde` (Counter) - Nombre de métriques collectées par seconde
+- `tradesim_logs_ecrits_par_seconde` (Counter) - Nombre de logs écrits par seconde
+- `tradesim_actions_validees_par_seconde` (Counter) - Nombre d'actions validées par seconde
+- `tradesim_ids_generes_par_seconde` (Counter) - Nombre d'IDs générés par seconde
 
 ### Métriques Système
 - `tradesim_cpu_usage_percent` (Gauge) - Utilisation CPU (%)

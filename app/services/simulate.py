@@ -1,11 +1,23 @@
 #!/usr/bin/env python3
 """
-Simulate TradeSim - Interface de simulation
-==========================================
+Simulate TradeSim - Point d'entrée principal CLI
+================================================
 
-Ce module fournit l'interface de simulation pour TradeSim.
-Il gère l'affichage du statut, le mode cheat et l'exécution
-des simulations.
+ROLE : Interface utilisateur et point d'entrée unique de l'application CLI
+- Gère tous les arguments de ligne de commande (--tours, --new-game, etc.)
+- Interface utilisateur pour les modes direct et interactif
+- Orchestration du monitoring Prometheus/Grafana
+- Point d'entrée unifié pour toute l'application
+
+DIFFÉRENCE AVEC game_manager.py :
+- simulate.py = Interface utilisateur (CLI, arguments, menus)
+- game_manager.py = Logique métier (configuration, templates, génération données)
+
+ARCHITECTURE :
+simulate.py (point d'entrée)
+├── game_manager.py (logique de configuration)
+├── simulateur.py (logique de simulation)
+└── monitoring/ (Prometheus/Grafana)
 
 Refactorisation (02/08/2025) :
 - Utilise les Repository au lieu d'accès directs aux données
@@ -222,15 +234,30 @@ def run_simulation(n_tours: int = None, infinite: bool = False, verbose: bool = 
         demarrer_monitoring()
         afficher_configuration_actuelle()
 
-    # Utiliser SimulationService au lieu de simulation_tour
+    # Récupérer les données depuis les Repository
+    entreprises = entreprise_repo.get_all()
+    fournisseurs = fournisseur_repo.get_all()
+    produits = produit_repo.get_all()
+    
+    # Utiliser SimulationService avec les données
     from services.simulation_service import SimulationService
-    simulation_service = SimulationService()
+    simulation_service = SimulationService(entreprises, fournisseurs, produits, verbose=verbose)
     
     try:
         if infinite:
-            simulation_service.run_simulation_infinite(verbose=verbose)
+            # Simulation infinie
+            while True:
+                result = simulation_service.simulation_tour()
+                if verbose:
+                    print(f"Tour {result.get('tour', 'N/A')} - Transactions: {result.get('transactions_effectuees', 0)}")
+                time.sleep(DUREE_PAUSE_ENTRE_TOURS)
         else:
-            simulation_service.run_simulation_tours(n_tours, verbose=verbose)
+            # Simulation avec nombre de tours défini
+            for tour in range(n_tours):
+                result = simulation_service.simulation_tour()
+                if verbose:
+                    print(f"Tour {result.get('tour', 'N/A')} - Transactions: {result.get('transactions_effectuees', 0)}")
+                time.sleep(DUREE_PAUSE_ENTRE_TOURS)
 
     except KeyboardInterrupt:
         print("\n⏹️ Simulation interrompue manuellement.")

@@ -62,6 +62,46 @@ temps_simulation_tour_seconds = Histogram(
     buckets=[0.1, 0.5, 1.0, 2.0, 5.0, 10.0]
 )
 
+# Métriques de latence et throughput
+latency_achat_produit_ms = Histogram(
+    'tradesim_latency_achat_produit_ms',
+    'Temps de réponse pour un achat (millisecondes)',
+    buckets=[0.1, 0.5, 1.0, 2.0, 5.0, 10.0, 20.0, 50.0, 100.0]
+)
+latency_calcul_statistiques_ms = Histogram(
+    'tradesim_latency_calcul_statistiques_ms',
+    'Temps de calcul des statistiques (millisecondes)',
+    buckets=[0.1, 0.5, 1.0, 2.0, 5.0, 10.0, 20.0, 50.0, 100.0]
+)
+latency_application_evenement_ms = Histogram(
+    'tradesim_latency_application_evenement_ms',
+    'Temps d\'application d\'un événement (millisecondes)',
+    buckets=[0.1, 0.5, 1.0, 2.0, 5.0, 10.0, 20.0, 50.0, 100.0]
+)
+latency_collecte_metriques_ms = Histogram(
+    'tradesim_latency_collecte_metriques_ms',
+    'Temps de collecte des métriques (millisecondes)',
+    buckets=[0.1, 0.5, 1.0, 2.0, 5.0, 10.0, 20.0, 50.0, 100.0]
+)
+latency_validation_donnees_ms = Histogram(
+    'tradesim_latency_validation_donnees_ms',
+    'Temps de validation des données (millisecondes)',
+    buckets=[0.1, 0.5, 1.0, 2.0, 5.0, 10.0, 20.0, 50.0, 100.0]
+)
+latency_generation_id_ms = Histogram(
+    'tradesim_latency_generation_id_ms',
+    'Temps de génération d\'un ID unique (millisecondes)',
+    buckets=[0.1, 0.5, 1.0, 2.0, 5.0, 10.0, 20.0, 50.0, 100.0]
+)
+
+# Métriques de throughput
+transactions_par_seconde = Counter('tradesim_transactions_par_seconde', 'Nombre de transactions par seconde')
+evenements_par_seconde = Counter('tradesim_evenements_par_seconde', 'Nombre d\'événements appliqués par seconde')
+metriques_collectees_par_seconde = Counter('tradesim_metriques_collectees_par_seconde', 'Nombre de métriques collectées par seconde')
+logs_ecrits_par_seconde = Counter('tradesim_logs_ecrits_par_seconde', 'Nombre de logs écrits par seconde')
+actions_validees_par_seconde = Counter('tradesim_actions_validees_par_seconde', 'Nombre d\'actions validées par seconde')
+ids_generes_par_seconde = Counter('tradesim_ids_generes_par_seconde', 'Nombre d\'IDs générés par seconde')
+
 # Métriques système
 cpu_usage_percent = Gauge('tradesim_cpu_usage_percent', 'Utilisation CPU (%)')
 memory_usage_bytes = Gauge('tradesim_memory_usage_bytes', 'Utilisation mémoire (bytes)')
@@ -193,7 +233,7 @@ class PrometheusExporter:
             metrics_data: Dictionnaire contenant les métriques à mettre à jour
         """
         try:
-            # Mise à jour des métriques selon les données reçues
+            # Mise à jour des métriques de base
             if 'budget_total' in metrics_data:
                 budget_total.set(metrics_data['budget_total'])
             
@@ -208,6 +248,42 @@ class PrometheusExporter:
             
             if 'temps_simulation_tour_seconds' in metrics_data:
                 temps_simulation_tour_seconds.observe(metrics_data['temps_simulation_tour_seconds'])
+            
+            # Mise à jour des métriques de latence
+            if 'latency' in metrics_data:
+                latency_data = metrics_data['latency']
+                for action_name, stats in latency_data.items():
+                    if 'mean' in stats and stats['mean'] > 0:
+                        # Mappe les noms d'actions aux métriques Prometheus
+                        metric_mapping = {
+                            'achat_produit': latency_achat_produit_ms,
+                            'calcul_statistiques': latency_calcul_statistiques_ms,
+                            'application_evenement': latency_application_evenement_ms,
+                            'collecte_metriques': latency_collecte_metriques_ms,
+                            'validation_donnees': latency_validation_donnees_ms,
+                            'generation_id': latency_generation_id_ms
+                        }
+                        
+                        if action_name in metric_mapping:
+                            metric_mapping[action_name].observe(stats['mean'])
+            
+            # Mise à jour des métriques de throughput
+            if 'throughput' in metrics_data:
+                throughput_data = metrics_data['throughput']
+                for operation_type, rate in throughput_data.items():
+                    if rate > 0:
+                        # Mappe les types d'opérations aux métriques Prometheus
+                        metric_mapping = {
+                            'transactions': transactions_par_seconde,
+                            'evenements': evenements_par_seconde,
+                            'metriques': metriques_collectees_par_seconde,
+                            'logs': logs_ecrits_par_seconde,
+                            'actions_validees': actions_validees_par_seconde,
+                            'ids_generes': ids_generes_par_seconde
+                        }
+                        
+                        if operation_type in metric_mapping:
+                            metric_mapping[operation_type].inc(int(rate))
             
             # Stockage en JSONL
             self._store_metrics_jsonl(metrics_data)

@@ -46,6 +46,10 @@ LOG_DIR = os.path.join(BASE_DIR, "logs")
 FICHIER_LOG = os.path.join(LOG_DIR, "simulation.jsonl")
 FICHIER_LOG_HUMAIN = os.path.join(LOG_DIR, "simulation_humain.log")
 
+# Fichiers de log des événements
+EVENT_LOG_JSON = os.path.join(LOG_DIR, "event.jsonl")
+EVENT_LOG_HUMAIN = os.path.join(LOG_DIR, "event.log")
+
 
 # ============================================================================
 # ENTREPRISES - Configuration des entreprises
@@ -131,3 +135,45 @@ METRICS_SYSTEM_INTERVAL = 5.0        # Intervalle de collecte système en second
 METRICS_LABELS_ENABLED = False       # Activer les labels sur les métriques
 METRICS_LABELS_CONTINENT = False     # Label {continent}
 METRICS_LABELS_PRODUIT_TYPE = False  # Label {produit_type}
+
+# Configuration des IDs uniques
+ID_FORMAT = "DATE_HHMMSS_TYPE_COUNTER"
+ID_SESSION_FORMAT = "%Y%m%d_%H%M%S"
+MAX_COUNTER = 999
+VALID_ACTION_TYPES = ['TXN', 'EVT', 'METRIC', 'TICK', 'ALERT', 'TEMPLATE']
+
+# Configuration des optimisations
+BATCH_LOG_SIZE = 10  # Nombre de logs avant écriture en batch
+CACHE_MAX_SIZE = 100  # Taille max du cache LRU
+COMPRESSION_DAYS = 7  # Compresser les logs de plus de X jours
+INDEX_ENABLED = True  # Activer l'index pour recherche rapide
+VALIDATION_ENABLED = True  # Activer la validation des données
+REALTIME_MONITORING = True  # Alertes temps réel
+PERFORMANCE_THRESHOLD = 1.0  # Seuil performance en secondes
+
+# Seuils d'alerte temps réel
+ALERT_BUDGET_CRITIQUE = 1000  # Budget critique en euros
+ALERT_STOCK_CRITIQUE = 10  # Stock critique en unités
+ALERT_ERROR_RATE = 0.1  # Taux d'erreur critique (10%)
+
+# Configuration des métriques
+METRICS_COLLECTION_INTERVAL = 1  # Collecte toutes les X secondes
+METRICS_RETENTION_DAYS = 30  # Rétention des métriques en jours
+
+# ============================================================================
+# LATENCY & THROUGHPUT - Configuration des métriques de performance
+# ============================================================================
+
+# Configuration des métriques de latence
+LATENCY_COLLECTION_INTERVAL = 0.1  # Intervalle de collecte des latences (100ms)
+LATENCY_HISTOGRAM_BUCKETS = [0.1, 0.5, 1.0, 2.0, 5.0, 10.0, 20.0, 50.0, 100.0]  # Buckets pour histogrammes
+LATENCY_HISTORY_SIZE = 1000  # Nombre de mesures à conserver en historique
+
+# Configuration du throughput
+THROUGHPUT_WINDOW_SIZE = 60  # Fenêtre de calcul du throughput (60 secondes)
+THROUGHPUT_MIN_INTERVAL = 0.01  # Intervalle minimum entre mesures (10ms)
+
+# Seuils de performance pour les alertes
+LATENCY_WARNING_THRESHOLD = 100.0  # Seuil d'avertissement latence (100ms)
+LATENCY_CRITICAL_THRESHOLD = 500.0  # Seuil critique latence (500ms)
+THROUGHPUT_MIN_RATE = 0.1  # Taux minimum de throughput (0.1 op/s)

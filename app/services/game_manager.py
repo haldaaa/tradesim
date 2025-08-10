@@ -1,10 +1,28 @@
 #!/usr/bin/env python3
 """
-Game Manager TradeSim - Gestion du jeu et des templates
+Game Manager TradeSim - Logique métier de configuration
 =======================================================
 
-Ce module gère la génération des données de jeu, les templates
-et l'orchestration de la simulation.
+ROLE : Logique métier pour la gestion des parties et configuration
+- Génération des données de jeu (entreprises, produits, fournisseurs)
+- Gestion des templates (sauvegarde, chargement, liste)
+- Configuration interactive des parties
+- Logique de création et réinitialisation des parties
+
+DIFFÉRENCE AVEC simulate.py :
+- game_manager.py = Logique métier (configuration, templates, génération données)
+- simulate.py = Interface utilisateur (CLI, arguments, menus)
+
+ARCHITECTURE :
+game_manager.py (logique métier)
+├── simulate.py (interface utilisateur) - IMPORTE game_manager.py
+├── repositories/ (accès aux données)
+└── models/ (entités métier)
+
+UTILISATION :
+- Importé par simulate.py pour le mode interactif (--new-game)
+- Fonctions appelées par l'interface utilisateur
+- Réutilisable pour l'API web (même logique métier)
 
 Refactorisation (02/08/2025) :
 - Utilise les Repository au lieu d'accès directs aux données
@@ -18,8 +36,11 @@ Date: 2024-08-02
 import json
 import os
 import random
+import subprocess
+import sys
 from typing import Dict, List, Any
 from datetime import datetime
+import threading
 
 # Imports des Repository (nouvelle architecture)
 import sys
@@ -44,6 +65,67 @@ from config import (
 produit_repo = ProduitRepository()
 fournisseur_repo = FournisseurRepository()
 entreprise_repo = EntrepriseRepository()
+
+def log_monitoring(message: str, level: str = "INFO"):
+    """Log un message dans le fichier monitoring.log"""
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    log_entry = f"[{timestamp}] [{level}] {message}"
+    
+    # Créer le dossier logs s'il n'existe pas
+    os.makedirs("logs", exist_ok=True)
+    
+    with open("logs/monitoring.log", "a", encoding="utf-8") as f:
+        f.write(log_entry + "\n")
+
+def lancer_docker_monitoring() -> bool:
+    """Lance les containers Docker pour Prometheus et Grafana"""
+    print("🐳 Lancement de Docker...")
+    log_monitoring("Tentative de lancement des containers Docker")
+    
+    try:
+        # Lancer Prometheus
+        print("  📊 Lancement de Prometheus...")
+        result_prometheus = subprocess.run([
+            "docker", "run", "-d", "--name", "tradesim-prometheus",
+            "-p", "9090:9090", "-v", f"{os.getcwd()}/monitoring/prometheus.yml:/etc/prometheus/prometheus.yml",
+            "prom/prometheus:latest"
+        ], capture_output=True, text=True)
+        
+        if result_prometheus.returncode != 0:
+            print(f"❌ Erreur Prometheus: {result_prometheus.stderr}")
+            log_monitoring(f"Erreur Prometheus: {result_prometheus.stderr}", "ERROR")
+            return False
+        
+        print("  ✅ Prometheus lancé avec succès")
+        log_monitoring("Prometheus lancé avec succès")
+        
+        # Lancer Grafana
+        print("  📈 Lancement de Grafana...")
+        result_grafana = subprocess.run([
+            "docker", "run", "-d", "--name", "tradesim-grafana",
+            "-p", "3000:3000", "-e", "GF_SECURITY_ADMIN_PASSWORD=admin",
+            "grafana/grafana:latest"
+        ], capture_output=True, text=True)
+        
+        if result_grafana.returncode != 0:
+            print(f"❌ Erreur Grafana: {result_grafana.stderr}")
+            log_monitoring(f"Erreur Grafana: {result_grafana.stderr}", "ERROR")
+            return False
+        
+        print("  ✅ Grafana lancé avec succès")
+        log_monitoring("Grafana lancé avec succès")
+        
+        print("✅ Docker lancé avec succès !")
+        print("📊 Prometheus: http://localhost:9090")
+        print("📈 Grafana: http://localhost:3000 (admin/admin)")
+        log_monitoring("Tous les containers Docker lancés avec succès")
+        return True
+        
+    except Exception as e:
+        error_msg = f"Erreur lors du lancement Docker: {str(e)}"
+        print(f"❌ {error_msg}")
+        log_monitoring(error_msg, "ERROR")
+        return False
 
 # Configuration par défaut
 DEFAULT_CONFIG = {
@@ -429,8 +511,9 @@ def interactive_new_game():
             # Jouer avec la config par défaut
             generate_game_data(DEFAULT_CONFIG)
             print("✅ Configuration par défaut chargée !")
-            if ask_launch_game():
-                launch_simulation()
+            with_monitoring = ask_launch_game()
+            if with_monitoring is not None:  # None = retour au menu
+                launch_simulation(with_monitoring)
             return
         elif choix == '2':
             # Créer une nouvelle config interactive
@@ -509,8 +592,9 @@ def create_interactive_config():
             save_template(nom.strip())
     
     # Demander si lancer la partie
-    if ask_launch_game():
-        launch_simulation()
+    with_monitoring = ask_launch_game()
+    if with_monitoring is not None:  # None = retour au menu
+        launch_simulation(with_monitoring)
 
 def load_existing_config():
     """Charge une config existante"""
@@ -546,8 +630,9 @@ def load_existing_config():
                 nom_template = templates[choix_int - 1]
                 if load_template(nom_template):
                     print("✅ Configuration chargée !")
-                    if ask_launch_game():
-                        launch_simulation()
+                    with_monitoring = ask_launch_game()
+                    if with_monitoring is not None:  # None = retour au menu
+                        launch_simulation(with_monitoring)
                     return
                 else:
                     print("❌ Erreur lors du chargement.")
@@ -589,7 +674,7 @@ def ask_number(question: str, default: float, min_val: float, max_val: float, is
         else:
             print("❌ Veuillez choisir [D], [R], [C] ou [Q]") 
 
-def ask_launch_game() -> bool:
+def ask_launch_game() -> bool | None:
     """Demande si l'utilisateur veut lancer la simulation"""
     print("\n🚀 Voulez-vous lancer la simulation maintenant ?")
     print("  [1] Lancer la simulation")
@@ -599,18 +684,44 @@ def ask_launch_game() -> bool:
         choix = input("Votre choix [1/2]: ").strip()
         
         if choix == '1':
-            return True
+            # Demander si l'utilisateur veut le monitoring
+            print("\n📊 MONITORING PROMETHEUS/GRAFANA")
+            print("=" * 40)
+            print("Voulez-vous activer le monitoring ?")
+            print("  [1] Oui - Activer le monitoring (Docker se lancera automatiquement)")
+            print("  [2] Non - Simulation sans monitoring")
+            
+            while True:
+                monitoring_choix = input("Votre choix [1/2]: ").strip()
+                
+                if monitoring_choix == '1':
+                    print("✅ Monitoring activé - Docker se lancera automatiquement")
+                    return True  # True = avec monitoring
+                elif monitoring_choix == '2':
+                    print("✅ Simulation sans monitoring")
+                    return False  # False = sans monitoring
+                else:
+                    print("❌ Veuillez choisir 1 ou 2")
+                    
         elif choix == '2':
             print("✅ Configuration sauvegardée. Vous pouvez lancer la simulation plus tard avec --tours ou --infinite")
-            return False
+            return None  # None = retour au menu
         else:
             print("❌ Veuillez choisir 1 ou 2")
 
-def launch_simulation():
+def launch_simulation(with_monitoring: bool = False):
     """Lance la simulation interactive"""
     print("\n🎮 LANCEMENT DE LA SIMULATION")
     print("=" * 60)
-    print("Choisissez le mode de simulation :")
+    
+    # Afficher le statut du monitoring
+    if with_monitoring:
+        print("📊 Monitoring Prometheus/Grafana : ACTIVÉ")
+        print("🐳 Docker se lancera automatiquement")
+    else:
+        print("📊 Monitoring Prometheus/Grafana : DÉSACTIVÉ")
+    
+    print("\nChoisissez le mode de simulation :")
     print("  [1] Nombre de tours spécifique (mode verbose)")
     print("  [2] Simulation infinie (mode verbose)")
     print("  [3] Mode silencieux (sans affichage détaillé)")
@@ -628,7 +739,7 @@ def launch_simulation():
                 if tours > 0:
                     show_game_summary(n_tours=tours)
                     print(f"\n🚀 Lancement de la simulation verbose pour {tours} tours...")
-                    run_simulation_tours(tours, verbose=True)
+                    run_simulation_tours(tours, verbose=True, with_monitoring=with_monitoring)
                     return
                 else:
                     print("❌ Le nombre de tours doit être positif")
@@ -638,7 +749,7 @@ def launch_simulation():
             show_game_summary()
             print("\n🚀 Lancement de la simulation infinie (mode verbose)...")
             print("💡 Appuyez sur Ctrl+C pour arrêter")
-            run_simulation_infinite(verbose=True)
+            run_simulation_infinite(verbose=True, with_monitoring=with_monitoring)
             return
         elif choix == '3':
             print("\n🔇 Mode silencieux activé !")
@@ -648,11 +759,11 @@ def launch_simulation():
                     if tours == 0:
                         show_game_summary()
                         print(f"\n🚀 Lancement de la simulation silencieuse infinie...")
-                        run_simulation_infinite(verbose=False)
+                        run_simulation_infinite(verbose=False, with_monitoring=with_monitoring)
                     else:
                         show_game_summary(n_tours=tours)
                         print(f"\n🚀 Lancement de la simulation silencieuse pour {tours} tours...")
-                        run_simulation_tours(tours, verbose=False)
+                        run_simulation_tours(tours, verbose=False, with_monitoring=with_monitoring)
                     return
                 else:
                     print("❌ Le nombre de tours doit être positif ou 0")
@@ -661,64 +772,99 @@ def launch_simulation():
         else:
             print("❌ Veuillez choisir 1, 2, 3 ou Q") 
 
-def run_simulation_tours(n_tours: int, verbose: bool = False):
+def run_simulation_tours(n_tours: int, verbose: bool = False, with_monitoring: bool = False):
     """Lance la simulation pour un nombre défini de tours"""
     import time
     
     print("🚀 Lancement de la simulation...\n")
     
+    # Gestion du monitoring
+    docker_success = True
+    if with_monitoring:
+        docker_success = lancer_docker_monitoring()
+        if not docker_success:
+            print("⚠️ L'application continuera sans monitoring")
+            print("📋 Consultez logs/monitoring.log pour plus de détails")
+    
     if verbose:
         print("📢 Mode parlant activé - Affichage en temps réel des événements\n")
 
-    tick = 0
+    # Utiliser SimulationService pour la cohérence avec le mode direct
+    from services.simulation_service import SimulationService
+    simulation_service = SimulationService()
+    
     try:
-        while tick < n_tours:
-            tick += 1
-            
-            if verbose:
-                print(f"🔄 Tick {tick} - ", end="", flush=True)
-            
-            simulation_tour(verbose=verbose)
-            
-            if verbose:
-                print("✅ Tour terminé")
-            
-            if tick < n_tours:  # Ne pas faire de pause après le dernier tour
-                time.sleep(DUREE_PAUSE_ENTRE_TOURS)
-
+        # Démarrer le monitoring si Docker a réussi
+        if with_monitoring and docker_success:
+            from monitoring.prometheus_exporter import PrometheusExporter
+            exporter = PrometheusExporter()
+            exporter_thread = threading.Thread(target=exporter.start, daemon=True)
+            exporter_thread.start()
+            time.sleep(2)  # Attendre que l'exporter démarre
+            print("✅ Monitoring démarré sur port 8000")
+        
+        # Lancer la simulation
+        simulation_service.run_simulation_tours(n_tours, verbose=verbose)
+        
     except KeyboardInterrupt:
         print("\n⏹️ Simulation interrompue manuellement.")
+    except Exception as e:
+        error_msg = f"Erreur lors de la simulation: {str(e)}"
+        print(f"❌ {error_msg}")
+        if with_monitoring:
+            log_monitoring(error_msg, "ERROR")
+    finally:
+        # Arrêter le monitoring si il était actif
+        if with_monitoring and docker_success:
+            print("🛑 Arrêt du monitoring...")
+            log_monitoring("Arrêt du monitoring")
 
-    print("✅ Simulation terminée.")
-
-def run_simulation_infinite(verbose: bool = False):
-    """Lance la simulation en boucle infinie"""
+def run_simulation_infinite(verbose: bool = False, with_monitoring: bool = False):
+    """Lance la simulation indéfiniment"""
     import time
     
     print("🚀 Lancement de la simulation infinie...\n")
     
+    # Gestion du monitoring
+    docker_success = True
+    if with_monitoring:
+        docker_success = lancer_docker_monitoring()
+        if not docker_success:
+            print("⚠️ L'application continuera sans monitoring")
+            print("📋 Consultez logs/monitoring.log pour plus de détails")
+    
     if verbose:
         print("📢 Mode parlant activé - Affichage en temps réel des événements\n")
 
-    tick = 0
+    # Utiliser SimulationService pour la cohérence avec le mode direct
+    from services.simulation_service import SimulationService
+    simulation_service = SimulationService()
+    
     try:
-        while True:
-            tick += 1
-            
-            if verbose:
-                print(f"🔄 Tick {tick} - ", end="", flush=True)
-            
-            simulation_tour(verbose=verbose)
-            
-            if verbose:
-                print("✅ Tour terminé")
-            
-            time.sleep(DUREE_PAUSE_ENTRE_TOURS)
-
+        # Démarrer le monitoring si Docker a réussi
+        if with_monitoring and docker_success:
+            from monitoring.prometheus_exporter import PrometheusExporter
+            exporter = PrometheusExporter()
+            exporter_thread = threading.Thread(target=exporter.start, daemon=True)
+            exporter_thread.start()
+            time.sleep(2)  # Attendre que l'exporter démarre
+            print("✅ Monitoring démarré sur port 8000")
+        
+        # Lancer la simulation infinie
+        simulation_service.run_simulation_infinite(verbose=verbose)
+        
     except KeyboardInterrupt:
         print("\n⏹️ Simulation interrompue manuellement.")
-
-    print("✅ Simulation terminée.") 
+    except Exception as e:
+        error_msg = f"Erreur lors de la simulation: {str(e)}"
+        print(f"❌ {error_msg}")
+        if with_monitoring:
+            log_monitoring(error_msg, "ERROR")
+    finally:
+        # Arrêter le monitoring si il était actif
+        if with_monitoring and docker_success:
+            print("🛑 Arrêt du monitoring...")
+            log_monitoring("Arrêt du monitoring")
 
 def show_game_summary(n_tours: int = None):
     """Affiche un résumé complet de la configuration du jeu"""
