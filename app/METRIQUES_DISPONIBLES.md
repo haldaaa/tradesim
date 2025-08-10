@@ -15,8 +15,9 @@
 - Techniques: 11
 - Calculées: 4
 - Système: 8
+- **NOUVELLES MÉTRIQUES** : 45
 
-Total global (document actuel): 112
+Total global (document actuel): 157
 
 ## 📊 **Métriques de simulation** — Total: 8
 
@@ -214,6 +215,93 @@ Total global (document actuel): 112
 - **tendance_prix** -- Tendance des prix -- events/inflation.py:appliquer_inflation()
 - **tendance_achats_par_type** -- Évolution des achats par type de produit -- services/transaction_service.py:TransactionService.get_statistiques_transactions()
 
+## ⚡ **NOUVELLES MÉTRIQUES - Latence et Throughput** — Total: 12
+
+### **Latence des actions** — Total: 6
+- **latence_achat_produit_ms** -- Temps de réponse pour un achat (millisecondes) -- services/simulation_service.py:SimulationService.acheter_produit_detaille()
+- **latence_calcul_statistiques_ms** -- Temps de calcul des statistiques (millisecondes) -- services/simulation_service.py:SimulationService.calculer_statistiques()
+- **latence_application_evenement_ms** -- Temps d'application d'un événement (millisecondes) -- services/simulation_service.py:SimulationService.appliquer_evenements()
+- **latence_collecte_metriques_ms** -- Temps de collecte des métriques (millisecondes) -- services/simulation_service.py:SimulationService.collecter_metriques()
+- **latence_validation_donnees_ms** -- Temps de validation des données (millisecondes) -- services/simulation_service.py:SimulationService._validate_data()
+- **latence_generation_id_ms** -- Temps de génération d'un ID unique (millisecondes) -- services/simulation_service.py:IDGenerator.get_id()
+
+### **Throughput et débit** — Total: 6
+- **transactions_par_seconde** -- Nombre de transactions par seconde -- services/simulation_service.py:SimulationService.simuler_transactions()
+- **evenements_par_seconde** -- Nombre d'événements appliqués par seconde -- services/simulation_service.py:SimulationService.appliquer_evenements()
+- **metriques_collectees_par_seconde** -- Nombre de métriques collectées par seconde -- services/simulation_service.py:SimulationService.collecter_metriques()
+- **logs_ecrits_par_seconde** -- Nombre de logs écrits par seconde -- services/simulation_service.py:IDGenerator.flush_buffer()
+- **actions_validees_par_seconde** -- Nombre d'actions validées par seconde -- services/simulation_service.py:SimulationService._validate_data()
+- **ids_generes_par_seconde** -- Nombre d'IDs générés par seconde -- services/simulation_service.py:IDGenerator.get_id()
+
+## 📊 **NOUVELLES MÉTRIQUES - Distribution et Histogrammes** — Total: 15
+
+### **Distribution des prix** — Total: 5
+- **distribution_prix_produits** -- Histogramme des prix par produit -- services/price_service.py:PriceService.get_distribution_prix()
+- **distribution_prix_par_continent** -- Histogramme des prix par continent -- services/price_service.py:PriceService.get_distribution_prix_continent()
+- **distribution_prix_par_type** -- Histogramme des prix par type de produit -- services/price_service.py:PriceService.get_distribution_prix_type()
+- **evolution_distribution_prix** -- Évolution de la distribution des prix -- events/inflation.py:get_evolution_distribution_prix()
+- **volatilite_distribution_prix** -- Volatilité de la distribution des prix -- services/price_service.py:PriceService.get_volatilite_distribution()
+
+### **Distribution des quantités** — Total: 5
+- **distribution_quantites_achat** -- Histogramme des quantités achetées -- services/transaction_service.py:TransactionService.get_distribution_quantites()
+- **distribution_quantites_stock** -- Histogramme des quantités en stock -- services/game_manager.py:get_distribution_stocks()
+- **distribution_quantites_reassort** -- Histogramme des quantités de réassort -- events/reassort.py:get_distribution_reassort()
+- **distribution_quantites_par_entreprise** -- Histogramme des quantités par entreprise -- services/transaction_service.py:TransactionService.get_distribution_quantites_entreprise()
+- **distribution_quantites_par_produit** -- Histogramme des quantités par produit -- services/transaction_service.py:TransactionService.get_distribution_quantites_produit()
+
+### **Distribution des budgets** — Total: 5
+- **distribution_budgets_entreprises** -- Histogramme des budgets par entreprise -- services/budget_service.py:BudgetService.get_distribution_budgets()
+- **distribution_budgets_par_continent** -- Histogramme des budgets par continent -- services/budget_service.py:BudgetService.get_distribution_budgets_continent()
+- **distribution_budgets_par_strategie** -- Histogramme des budgets par stratégie -- services/budget_service.py:BudgetService.get_distribution_budgets_strategie()
+- **evolution_distribution_budgets** -- Évolution de la distribution des budgets -- services/budget_service.py:BudgetService.get_evolution_distribution()
+- **volatilite_distribution_budgets** -- Volatilité de la distribution des budgets -- services/budget_service.py:BudgetService.get_volatilite_distribution()
+
+## 🔗 **NOUVELLES MÉTRIQUES - Corrélation et Impact** — Total: 8
+
+### **Corrélations événements-transactions** — Total: 4
+- **correlation_inflation_transactions** -- Corrélation entre inflation et volume de transactions -- services/correlation_service.py:CorrelationService.get_correlation_inflation_transactions()
+- **correlation_reassort_disponibilite** -- Corrélation entre réassort et disponibilité -- services/correlation_service.py:CorrelationService.get_correlation_reassort_disponibilite()
+- **correlation_recharge_budget_achats** -- Corrélation entre recharge budget et achats -- services/correlation_service.py:CorrelationService.get_correlation_recharge_achats()
+- **correlation_variation_disponibilite_prix** -- Corrélation entre variation disponibilité et prix -- services/correlation_service.py:CorrelationService.get_correlation_disponibilite_prix()
+
+### **Impact des événements** — Total: 4
+- **impact_inflation_prix_moyen** -- Impact de l'inflation sur le prix moyen -- events/inflation.py:get_impact_prix_moyen()
+- **impact_reassort_stock_moyen** -- Impact du réassort sur le stock moyen -- events/reassort.py:get_impact_stock_moyen()
+- **impact_recharge_budget_volume_achats** -- Impact de la recharge sur le volume d'achats -- events/recharge_budget.py:get_impact_volume_achats()
+- **impact_variation_disponibilite_transactions** -- Impact de la variation sur les transactions -- events/variation_disponibilite.py:get_impact_transactions()
+
+## 📈 **NOUVELLES MÉTRIQUES - Tendances et Évolution** — Total: 10
+
+### **Tendances multi-tours** — Total: 5
+- **tendance_budget_5_tours** -- Tendance du budget sur 5 tours -- services/trend_service.py:TrendService.get_tendance_budget_5_tours()
+- **tendance_transactions_5_tours** -- Tendance des transactions sur 5 tours -- services/trend_service.py:TrendService.get_tendance_transactions_5_tours()
+- **tendance_prix_5_tours** -- Tendance des prix sur 5 tours -- services/trend_service.py:TrendService.get_tendance_prix_5_tours()
+- **tendance_evenements_5_tours** -- Tendance des événements sur 5 tours -- services/trend_service.py:TrendService.get_tendance_evenements_5_tours()
+- **tendance_performance_5_tours** -- Tendance de la performance sur 5 tours -- services/trend_service.py:TrendService.get_tendance_performance_5_tours()
+
+### **Évolution temporelle** — Total: 5
+- **evolution_budget_par_tour** -- Évolution du budget par tour -- services/trend_service.py:TrendService.get_evolution_budget_par_tour()
+- **evolution_transactions_par_tour** -- Évolution des transactions par tour -- services/trend_service.py:TrendService.get_evolution_transactions_par_tour()
+- **evolution_prix_par_tour** -- Évolution des prix par tour -- services/trend_service.py:TrendService.get_evolution_prix_par_tour()
+- **evolution_evenements_par_tour** -- Évolution des événements par tour -- services/trend_service.py:TrendService.get_evolution_evenements_par_tour()
+- **evolution_performance_par_tour** -- Évolution de la performance par tour -- services/trend_service.py:TrendService.get_evolution_performance_par_tour()
+
+## 🖥️ **NOUVELLES MÉTRIQUES - Système Avancé** — Total: 10
+
+### **Ressources système détaillées** — Total: 5
+- **cpu_usage_per_process** -- Utilisation CPU par processus -- psutil.Process().cpu_percent()
+- **memory_usage_per_process** -- Utilisation mémoire par processus -- psutil.Process().memory_info()
+- **disk_io_read_bytes** -- Octets lus sur le disque -- psutil.disk_io_counters().read_bytes
+- **disk_io_write_bytes** -- Octets écrits sur le disque -- psutil.disk_io_counters().write_bytes
+- **network_connections** -- Nombre de connexions réseau -- len(psutil.net_connections())
+
+### **Performance Python** — Total: 5
+- **python_gc_collections** -- Nombre de collections du garbage collector -- gc.get_stats()
+- **python_memory_allocated** -- Mémoire allouée par Python -- sys.getsizeof()
+- **python_threads_active** -- Nombre de threads actifs -- threading.active_count()
+- **python_exceptions_raised** -- Nombre d'exceptions levées -- sys.exc_info()
+- **python_imports_total** -- Nombre total d'imports -- len(sys.modules)
+
 ---
 
 ## 📝 **Notes d'implémentation**
@@ -224,6 +312,8 @@ Total global (document actuel): 112
 tradesim_budget_total = Gauge('tradesim_budget_total', 'Budget total des entreprises')
 tradesim_transactions_total = Counter('tradesim_transactions_total', 'Nombre total de transactions')
 tradesim_simulation_duration = Histogram('tradesim_simulation_duration', 'Durée de simulation')
+tradesim_latency_achat = Histogram('tradesim_latency_achat_ms', 'Latence des achats en ms')
+tradesim_throughput_transactions = Gauge('tradesim_throughput_transactions_per_sec', 'Transactions par seconde')
 ```
 
 ### **Métriques critiques pour le monitoring :**
@@ -233,8 +323,10 @@ tradesim_simulation_duration = Histogram('tradesim_simulation_duration', 'Durée
 4. **Entreprises solvables** - Stabilité du système
 5. **Temps de simulation** - Performance du système
 6. **CPU/Mémoire** - Ressources système
-7. **Pénalités d'inflation** - Santé économique avancée
-8. **Transactions intercontinentales** - Activité géographique
+7. **Latence des actions** - Performance des opérations
+8. **Throughput** - Capacité de traitement
+9. **Corrélations** - Compréhension des impacts
+10. **Tendances** - Évolution du système
 
 ### **Alertes recommandées :**
 - Budget total < 1000€
@@ -244,14 +336,16 @@ tradesim_simulation_duration = Histogram('tradesim_simulation_duration', 'Durée
 - Temps de simulation > 10 secondes
 - CPU usage > 80%
 - Mémoire usage > 90%
-- Aucune transaction intercontinentale
-- Trop de pénalités d'inflation (> 50% des produits)
+- Latence achat > 100ms
+- Throughput < 1 transaction/seconde
+- Corrélation inflation-transactions > 0.8
+- Tendance budget décroissante sur 5 tours
 
 ---
 
 **Auteur :** Assistant IA  
-**Date :** 2024-08-02  
-**Version :** 2.0 (ajout de 25 nouvelles métriques) 
+**Date :** 2024-08-10  
+**Version :** 3.0 (ajout de 45 nouvelles métriques avancées) 
 
 ---
 

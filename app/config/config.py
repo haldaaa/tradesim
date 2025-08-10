@@ -159,3 +159,21 @@ ALERT_ERROR_RATE = 0.1  # Taux d'erreur critique (10%)
 # Configuration des métriques
 METRICS_COLLECTION_INTERVAL = 1  # Collecte toutes les X secondes
 METRICS_RETENTION_DAYS = 30  # Rétention des métriques en jours
+
+# ============================================================================
+# LATENCY & THROUGHPUT - Configuration des métriques de performance
+# ============================================================================
+
+# Configuration des métriques de latence
+LATENCY_COLLECTION_INTERVAL = 0.1  # Intervalle de collecte des latences (100ms)
+LATENCY_HISTOGRAM_BUCKETS = [0.1, 0.5, 1.0, 2.0, 5.0, 10.0, 20.0, 50.0, 100.0]  # Buckets pour histogrammes
+LATENCY_HISTORY_SIZE = 1000  # Nombre de mesures à conserver en historique
+
+# Configuration du throughput
+THROUGHPUT_WINDOW_SIZE = 60  # Fenêtre de calcul du throughput (60 secondes)
+THROUGHPUT_MIN_INTERVAL = 0.01  # Intervalle minimum entre mesures (10ms)
+
+# Seuils de performance pour les alertes
+LATENCY_WARNING_THRESHOLD = 100.0  # Seuil d'avertissement latence (100ms)
+LATENCY_CRITICAL_THRESHOLD = 500.0  # Seuil critique latence (500ms)
+THROUGHPUT_MIN_RATE = 0.1  # Taux minimum de throughput (0.1 op/s)

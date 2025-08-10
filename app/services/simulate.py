@@ -234,15 +234,30 @@ def run_simulation(n_tours: int = None, infinite: bool = False, verbose: bool = 
         demarrer_monitoring()
         afficher_configuration_actuelle()
 
-    # Utiliser SimulationService au lieu de simulation_tour
+    # Récupérer les données depuis les Repository
+    entreprises = entreprise_repo.get_all()
+    fournisseurs = fournisseur_repo.get_all()
+    produits = produit_repo.get_all()
+    
+    # Utiliser SimulationService avec les données
     from services.simulation_service import SimulationService
-    simulation_service = SimulationService()
+    simulation_service = SimulationService(entreprises, fournisseurs, produits, verbose=verbose)
     
     try:
         if infinite:
-            simulation_service.run_simulation_infinite(verbose=verbose)
+            # Simulation infinie
+            while True:
+                result = simulation_service.simulation_tour()
+                if verbose:
+                    print(f"Tour {result.get('tour', 'N/A')} - Transactions: {result.get('transactions_effectuees', 0)}")
+                time.sleep(DUREE_PAUSE_ENTRE_TOURS)
         else:
-            simulation_service.run_simulation_tours(n_tours, verbose=verbose)
+            # Simulation avec nombre de tours défini
+            for tour in range(n_tours):
+                result = simulation_service.simulation_tour()
+                if verbose:
+                    print(f"Tour {result.get('tour', 'N/A')} - Transactions: {result.get('transactions_effectuees', 0)}")
+                time.sleep(DUREE_PAUSE_ENTRE_TOURS)
 
     except KeyboardInterrupt:
         print("\n⏹️ Simulation interrompue manuellement.")

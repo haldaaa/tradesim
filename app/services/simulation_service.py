@@ -36,6 +36,14 @@ from events.recharge_budget import appliquer_recharge_budget
 from events.reassort import evenement_reassort
 from events.variation_disponibilite import appliquer_variation_disponibilite
 
+# Import du service de latence
+try:
+    from services.latency_service import LatencyService
+    LATENCY_SERVICE_AVAILABLE = True
+except ImportError:
+    LATENCY_SERVICE_AVAILABLE = False
+    print("⚠️ Service de latence non disponible")
+
 # Import conditionnel du monitoring
 try:
     from monitoring.prometheus_exporter import PrometheusExporter
@@ -125,6 +133,15 @@ class SimulationService:
         # Monitoring temps réel
         self.error_count = 0
         self.total_actions = 0
+        
+        # Service de latence
+        self.latency_service = None
+        if LATENCY_SERVICE_AVAILABLE:
+            try:
+                self.latency_service = LatencyService()
+                print("⚡ Service de latence activé")
+            except Exception as e:
+                self._log_error("latency_service_init", str(e))
         
         # Prometheus exporter
         self.prometheus_exporter = None
@@ -246,6 +263,11 @@ class SimulationService:
         if duration > PERFORMANCE_THRESHOLD:
             self._send_alert("performance_slow", f"Calcul statistiques lent: {duration:.3f}s")
         
+        # Fin du timer et enregistrement des métriques
+        if self.latency_service:
+            self.latency_service.end_timer("calcul_statistiques")
+            self.latency_service.record_throughput("metriques")
+        
         return {
             "budget_total_actuel": round(budget_total_actuel, 2),
             "stock_total_actuel": stock_total_actuel,
@@ -259,6 +281,10 @@ class SimulationService:
         """Achat détaillé avec validation et monitoring"""
         self.total_actions += 1
         transaction_id = self.id_generator.get_id("TXN")
+        
+        # Démarrage du timer de latence
+        if self.latency_service:
+            self.latency_service.start_timer("achat_produit")
         
         try:
             # Validation des données d'entrée
@@ -341,10 +367,20 @@ class SimulationService:
             with open(FICHIER_LOG_HUMAIN, "a", encoding="utf-8") as f:
                 f.write(f"[TXN] {transaction_id} - {entreprise.nom} achète {quantite_achat} {produit.nom} chez {fournisseur.nom_entreprise} pour {montant_total:.2f}€\n")
             
+            # Fin du timer et enregistrement des métriques
+            if self.latency_service:
+                self.latency_service.end_timer("achat_produit")
+                self.latency_service.record_throughput("transactions")
+            
             return True
             
         except Exception as e:
             self._log_error("transaction", str(e))
+            
+            # Fin du timer même en cas d'erreur
+            if self.latency_service:
+                self.latency_service.end_timer("achat_produit")
+            
             return False
 
     def simuler_transactions(self) -> int:
@@ -370,6 +406,10 @@ class SimulationService:
     def appliquer_evenements(self, tick: int) -> List[Dict[str, Any]]:
         """Application des événements avec validation"""
         evenements_appliques = []
+        
+        # Démarrage du timer de latence
+        if self.latency_service:
+            self.latency_service.start_timer("application_evenement")
         
         if tick % TICK_INTERVAL_EVENT == 0:
             # Inflation
@@ -399,6 +439,12 @@ class SimulationService:
                 if logs:
                     evenements_appliques.extend(logs)
                     self.evenements_appliques += 1
+        
+        # Fin du timer et enregistrement des métriques
+        if self.latency_service:
+            self.latency_service.end_timer("application_evenement")
+            if evenements_appliques:
+                self.latency_service.record_throughput("evenements", len(evenements_appliques))
         
         return evenements_appliques
 
@@ -450,6 +496,10 @@ class SimulationService:
         """Collecte des métriques avec validation et monitoring"""
         metric_id = self.id_generator.get_id("METRIC")
         
+        # Démarrage du timer de latence
+        if self.latency_service:
+            self.latency_service.start_timer("collecte_metriques")
+        
         try:
             stats = self.calculer_statistiques()
             
@@ -478,8 +528,17 @@ class SimulationService:
             with open("logs/metrics.jsonl", "a", encoding="utf-8") as f:
                 f.write(json.dumps(metrics_data) + "\n")
             
-            # Prometheus exporter
+            # Ajout des métriques de latence et throughput
+            if self.latency_service:
+                latency_metrics = self.latency_service.get_all_latency_metrics()
+                throughput_metrics = self.latency_service.get_all_throughput_metrics()
+                
+                metrics_data["latency"] = latency_metrics
+                metrics_data["throughput"] = throughput_metrics
+            
+            # Prometheus exporter avec métriques de latence
             if self.prometheus_exporter:
+                # Métriques de base
                 self.prometheus_exporter.update_metrics(
                     budget_total=stats.get("budget_total_actuel", 0),
                     stock_total=stats.get("stock_total_actuel", 0),
@@ -488,8 +547,21 @@ class SimulationService:
                     temps_simulation_tour_seconds=stats.get("duree_simulation", 0)
                 )
                 
+                # Métriques de latence et throughput
+                if self.latency_service:
+                    self.prometheus_exporter.update_tradesim_metrics(metrics_data)
+            
+            # Fin du timer et enregistrement des métriques
+            if self.latency_service:
+                self.latency_service.end_timer("collecte_metriques")
+                self.latency_service.record_throughput("metriques")
+                
         except Exception as e:
             self._log_error("prometheus_metrics", str(e))
+            
+            # Fin du timer même en cas d'erreur
+            if self.latency_service:
+                self.latency_service.end_timer("collecte_metriques")
 
     def simulation_tour(self) -> Dict[str, Any]:
         """Tour de simulation avec monitoring et validation"""

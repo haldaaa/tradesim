@@ -13,3 +13,10 @@ Run 'docker run --help' for more information
 
 Run 'docker run --help' for more information
 
+[ERROR] simulation_tour: 'Fournisseur' object has no attribute 'prix_produits'
+[ERROR] simulation_tour: 'Fournisseur' object has no attribute 'prix_produits'
+[ERROR] simulation_tour: 'Fournisseur' object has no attribute 'prix_produits'
+[ERROR] simulation_tour: 'Fournisseur' object has no attribute 'prix_produits'
+[ERROR] simulation_tour: 'Fournisseur' object has no attribute 'prix_produits'
+[ERROR] simulation_tour: 'Fournisseur' object has no attribute 'prix_produits'
+[ERROR] simulation_tour: 'Fournisseur' object has no attribute 'prix_produits'

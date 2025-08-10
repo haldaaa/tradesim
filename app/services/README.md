@@ -29,6 +29,12 @@
 
 ### **🔄 Services spécialisés**
 - **`simulation_service.py`** - Orchestration de simulation
+- **`latency_service.py`** - **NOUVEAU** Métriques de latence et throughput
+  - Mesure des temps de réponse des actions
+  - Calcul des statistiques de performance (moyenne, médiane, percentiles)
+  - Gestion du throughput (opérations par seconde)
+  - Intégration avec Prometheus
+  - Cache LRU pour optimisations
 - **`price_service.py`** - Gestion des prix
 - **`budget_service.py`** - Gestion des budgets
 - **`transaction_service.py`** - Gestion des transactions
