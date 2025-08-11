@@ -85,3 +85,90 @@
 [EVENT: RECHARGE_BUDGET] [RECHARGE] NigerianTech: +6564€ (ancien: 19703.25€ → nouveau: 26267.25€)
 [EVENT: RECHARGE_BUDGET] [RECHARGE] ThaiTech: +6755€ (ancien: 17766.74€ → nouveau: 24521.74€)
 [EVENT: RECHARGE_BUDGET] [RESUME RECHARGE] 2 entreprises rechargées | Total: +13319€ | Moyenne: +6659.5€
+[EVENEMENTS_TOUR] [REASSORT] [PRODUITS] 3 produits réapprovisionnés | [QUANTITE] +110 unités total | [FOURNISSEURS] 2 fournisseurs concernés
+[EVENEMENTS_TOUR] [REASSORT] [PRODUITS] 4 produits réapprovisionnés | [QUANTITE] +94 unités total | [FOURNISSEURS] 4 fournisseurs concernés
+[EVENEMENTS_TOUR] [RECHARGE] ThaiTech: +6479€ (ancien: 12.23000000000161€ → nouveau: 6491.230000000001€)
+[EVENEMENTS_TOUR] [RESUME RECHARGE] 1 entreprises rechargées | Total: +6479€ | Moyenne: +6479.0€
+[EVENEMENTS_TOUR] [VARIATION] [DESACTIVE] 1 désactivés (Pigment) | [REACTIVE] 2 réactivés (Vernis, Coton) | Total modifié: 3 produits
+[EVENEMENTS_TOUR] [RECHARGE] DutchInnovation: +7359€ (ancien: 18451.28€ → nouveau: 25810.28€)
+[EVENEMENTS_TOUR] [RECHARGE] ArgentineCorp: +4255€ (ancien: 15440.44€ → nouveau: 19695.440000000002€)
+[EVENEMENTS_TOUR] [RECHARGE] ChileanTech: +5681€ (ancien: 18112.08€ → nouveau: 23793.08€)
+[EVENEMENTS_TOUR] [RESUME RECHARGE] 3 entreprises rechargées | Total: +17295€ | Moyenne: +5765.0€
+[EVENEMENTS_TOUR] [REASSORT] [PRODUITS] 1 produits réapprovisionnés | [QUANTITE] +50 unités total | [FOURNISSEURS] 1 fournisseurs concernés
+[EVENEMENTS_TOUR] [VARIATION] [DESACTIVE] 1 désactivés (Pigment) | [REACTIVE] 2 réactivés (Coton, Aluminium) | Total modifié: 3 produits
+[EVENEMENTS_TOUR] [RECHARGE] NigerianTech: +7528€ (ancien: 27.070000000001755€ → nouveau: 7555.0700000000015€)
+[EVENEMENTS_TOUR] [RESUME RECHARGE] 1 entreprises rechargées | Total: +7528€ | Moyenne: +7528.0€
+[EVENEMENTS_TOUR] [REASSORT] [PRODUITS] 3 produits réapprovisionnés | [QUANTITE] +89 unités total | [FOURNISSEURS] 2 fournisseurs concernés
+[EVENEMENTS_TOUR] [RECHARGE] NigerianTech: +5481€ (ancien: 27.070000000001755€ → nouveau: 5508.0700000000015€)
+[EVENEMENTS_TOUR] [RECHARGE] ThaiTech: +4591€ (ancien: 12.23000000000161€ → nouveau: 4603.230000000001€)
+[EVENEMENTS_TOUR] [RECHARGE] MalaysianTech: +5336€ (ancien: 39.699999999999136€ → nouveau: 5375.699999999999€)
+[EVENEMENTS_TOUR] [RESUME RECHARGE] 3 entreprises rechargées | Total: +15408€ | Moyenne: +5136.0€
+[EVENEMENTS_TOUR] [RECHARGE] ThaiTech: +7608€ (ancien: 12.23000000000161€ → nouveau: 7620.230000000001€)
+[EVENEMENTS_TOUR] [RECHARGE] MalaysianTech: +4221€ (ancien: 39.699999999999136€ → nouveau: 4260.699999999999€)
+[EVENEMENTS_TOUR] [RESUME RECHARGE] 2 entreprises rechargées | Total: +11829€ | Moyenne: +5914.5€
+[EVENEMENTS_TOUR] [VARIATION] [DESACTIVE] 1 désactivés (Béton) | [REACTIVE] 2 réactivés (Vernis, Peinture) | Total modifié: 3 produits
+[EVENEMENTS_TOUR] [RECHARGE] DutchInnovation: +4448€ (ancien: 18510.01€ → nouveau: 22958.01€)
+[EVENEMENTS_TOUR] [RECHARGE] TaiwanTech: +6591€ (ancien: 6445.55€ → nouveau: 13036.55€)
+[EVENEMENTS_TOUR] [RESUME RECHARGE] 2 entreprises rechargées | Total: +11039€ | Moyenne: +5519.5€
+[EVENEMENTS_TOUR] [RECHARGE] DutchInnovation: +6101€ (ancien: 22958.01€ → nouveau: 29059.01€)
+[EVENEMENTS_TOUR] [RECHARGE] TaiwanTech: +4958€ (ancien: 13036.55€ → nouveau: 17994.55€)
+[EVENEMENTS_TOUR] [RECHARGE] MoroccanCorp: +4431€ (ancien: 7438.97€ → nouveau: 11869.970000000001€)
+[EVENEMENTS_TOUR] [RESUME RECHARGE] 3 entreprises rechargées | Total: +15490€ | Moyenne: +5163.33€
+[EVENEMENTS_TOUR] [RECHARGE] TaiwanTech: +5761€ (ancien: 17994.55€ → nouveau: 23755.55€)
+[EVENEMENTS_TOUR] [RECHARGE] MoroccanCorp: +4337€ (ancien: 11869.970000000001€ → nouveau: 16206.970000000001€)
+[EVENEMENTS_TOUR] [RESUME RECHARGE] 2 entreprises rechargées | Total: +10098€ | Moyenne: +5049.0€
+[EVENEMENTS_TOUR] [RECHARGE] PhilippineCorp: +5877€ (ancien: 53.72999999999956€ → nouveau: 5930.73€)
+[EVENEMENTS_TOUR] [RECHARGE] CzechTech: +4721€ (ancien: 13263.38€ → nouveau: 17984.379999999997€)
+[EVENEMENTS_TOUR] [RESUME RECHARGE] 2 entreprises rechargées | Total: +10598€ | Moyenne: +5299.0€
+[EVENEMENTS_TOUR] [REASSORT] [PRODUITS] 2 produits réapprovisionnés | [QUANTITE] +35 unités total | [FOURNISSEURS] 2 fournisseurs concernés
+[EVENEMENTS_TOUR] [REASSORT] [PRODUITS] 2 produits réapprovisionnés | [QUANTITE] +66 unités total | [FOURNISSEURS] 1 fournisseurs concernés
+[EVENEMENTS_TOUR] [REASSORT] [PRODUITS] 1 produits réapprovisionnés | [QUANTITE] +25 unités total | [FOURNISSEURS] 1 fournisseurs concernés
+[EVENEMENTS_TOUR] [VARIATION] [DESACTIVE] 1 désactivés (Cuivre) | [REACTIVE] 3 réactivés (Eau, Instrument de musique, Vêtement) | Total modifié: 4 produits
+[EVENEMENTS_TOUR] [REASSORT] [PRODUITS] 2 produits réapprovisionnés | [QUANTITE] +62 unités total | [FOURNISSEURS] 1 fournisseurs concernés
+[EVENEMENTS_TOUR] [RECHARGE] CzechTech: +7885€ (ancien: 16817.05€ → nouveau: 24702.05€)
+[EVENEMENTS_TOUR] [RECHARGE] FinnishCorp: +4131€ (ancien: 18352.27€ → nouveau: 22483.27€)
+[EVENEMENTS_TOUR] [RECHARGE] CanadianDesign: +4182€ (ancien: 19672.21€ → nouveau: 23854.21€)
+[EVENEMENTS_TOUR] [RESUME RECHARGE] 3 entreprises rechargées | Total: +16198€ | Moyenne: +5399.33€
+[EVENEMENTS_TOUR] [REASSORT] [PRODUITS] 3 produits réapprovisionnés | [QUANTITE] +83 unités total | [FOURNISSEURS] 3 fournisseurs concernés
+[EVENEMENTS_TOUR] [REASSORT] [PRODUITS] 1 produits réapprovisionnés | [QUANTITE] +19 unités total | [FOURNISSEURS] 1 fournisseurs concernés
+[EVENEMENTS_TOUR] [INFLATION] Produit ciblé : Eau - Prix modifié: +50.2%
+[EVENEMENTS_TOUR] [RECHARGE] SouthAfricanCorp: +7798€ (ancien: 61.090000000000146€ → nouveau: 7859.09€)
+[EVENEMENTS_TOUR] [RECHARGE] FinnishCorp: +7959€ (ancien: 1707.7700000000004€ → nouveau: 9666.77€)
+[EVENEMENTS_TOUR] [RECHARGE] BrazilianTech: +7378€ (ancien: 12272.449999999999€ → nouveau: 19650.449999999997€)
+[EVENEMENTS_TOUR] [RESUME RECHARGE] 3 entreprises rechargées | Total: +23135€ | Moyenne: +7711.67€
+[EVENEMENTS_TOUR] [REASSORT] [PRODUITS] 4 produits réapprovisionnés | [QUANTITE] +126 unités total | [FOURNISSEURS] 3 fournisseurs concernés
+[EVENEMENTS_TOUR] [REASSORT] [PRODUITS] 2 produits réapprovisionnés | [QUANTITE] +88 unités total | [FOURNISSEURS] 2 fournisseurs concernés
+[EVENEMENTS_TOUR] [REASSORT] [PRODUITS] 3 produits réapprovisionnés | [QUANTITE] +134 unités total | [FOURNISSEURS] 3 fournisseurs concernés
+[EVENEMENTS_TOUR] [VARIATION] [DESACTIVE] 1 désactivés (Carburant) | [REACTIVE] 3 réactivés (Appareil électroménager, Marbre, Ciment) | Total modifié: 4 produits
+[EVENEMENTS_TOUR] [RECHARGE] PacificCorp: +4484€ (ancien: 18064.94€ → nouveau: 22548.94€)
+[EVENEMENTS_TOUR] [RECHARGE] DutchInnovation: +6014€ (ancien: 9930.87€ → nouveau: 15944.87€)
+[EVENEMENTS_TOUR] [RESUME RECHARGE] 2 entreprises rechargées | Total: +10498€ | Moyenne: +5249.0€
+[EVENEMENTS_TOUR] [RECHARGE] PacificCorp: +6531€ (ancien: 22548.94€ → nouveau: 29079.94€)
+[EVENEMENTS_TOUR] [RECHARGE] MoroccanCorp: +6771€ (ancien: 18279.59€ → nouveau: 25050.59€)
+[EVENEMENTS_TOUR] [RECHARGE] DutchInnovation: +6332€ (ancien: 15944.87€ → nouveau: 22276.870000000003€)
+[EVENEMENTS_TOUR] [RESUME RECHARGE] 3 entreprises rechargées | Total: +19634€ | Moyenne: +6544.67€
+[EVENEMENTS_TOUR] [RECHARGE] NigerianTech: +7917€ (ancien: 27.070000000001755€ → nouveau: 7944.0700000000015€)
+[EVENEMENTS_TOUR] [RECHARGE] ThaiTech: +5170€ (ancien: 12.23000000000161€ → nouveau: 5182.230000000001€)
+[EVENEMENTS_TOUR] [RECHARGE] MalaysianTech: +4215€ (ancien: 39.699999999999136€ → nouveau: 4254.699999999999€)
+[EVENEMENTS_TOUR] [RESUME RECHARGE] 3 entreprises rechargées | Total: +17302€ | Moyenne: +5767.33€
+[EVENEMENTS_TOUR] [VARIATION] [DESACTIVE] 1 désactivés (Bijou) | [REACTIVE] 2 réactivés (Aliment, Vernis) | Total modifié: 3 produits
+[EVENEMENTS_TOUR] [REASSORT] [PRODUITS] 4 produits réapprovisionnés | [QUANTITE] +134 unités total | [FOURNISSEURS] 3 fournisseurs concernés
+[EVENEMENTS_TOUR] [REASSORT] [PRODUITS] 5 produits réapprovisionnés | [QUANTITE] +137 unités total | [FOURNISSEURS] 3 fournisseurs concernés
+[EVENEMENTS_TOUR] [RECHARGE] NigerianTech: +4474€ (ancien: 27.070000000001755€ → nouveau: 4501.0700000000015€)
+[EVENEMENTS_TOUR] [RECHARGE] ThaiTech: +6659€ (ancien: 12.23000000000161€ → nouveau: 6671.230000000001€)
+[EVENEMENTS_TOUR] [RECHARGE] MalaysianTech: +4193€ (ancien: 39.699999999999136€ → nouveau: 4232.699999999999€)
+[EVENEMENTS_TOUR] [RESUME RECHARGE] 3 entreprises rechargées | Total: +15326€ | Moyenne: +5108.67€
+[EVENEMENTS_TOUR] [RECHARGE] NigerianTech: +5809€ (ancien: 27.070000000001755€ → nouveau: 5836.0700000000015€)
+[EVENEMENTS_TOUR] [RECHARGE] MalaysianTech: +4596€ (ancien: 39.699999999999136€ → nouveau: 4635.699999999999€)
+[EVENEMENTS_TOUR] [RESUME RECHARGE] 2 entreprises rechargées | Total: +10405€ | Moyenne: +5202.5€
+[EVENEMENTS_TOUR] [REASSORT] [PRODUITS] 2 produits réapprovisionnés | [QUANTITE] +78 unités total | [FOURNISSEURS] 2 fournisseurs concernés
+[EVENEMENTS_TOUR] [RECHARGE] NigerianTech: +5940€ (ancien: 27.070000000001755€ → nouveau: 5967.0700000000015€)
+[EVENEMENTS_TOUR] [RECHARGE] ThaiTech: +6822€ (ancien: 12.23000000000161€ → nouveau: 6834.230000000001€)
+[EVENEMENTS_TOUR] [RECHARGE] MalaysianTech: +4230€ (ancien: 39.699999999999136€ → nouveau: 4269.699999999999€)
+[EVENEMENTS_TOUR] [RESUME RECHARGE] 3 entreprises rechargées | Total: +16992€ | Moyenne: +5664.0€
+[EVENEMENTS_TOUR] [REASSORT] [PRODUITS] 1 produits réapprovisionnés | [QUANTITE] +28 unités total | [FOURNISSEURS] 1 fournisseurs concernés
+[EVENEMENTS_TOUR] [RECHARGE] NigerianTech: +6670€ (ancien: 27.070000000001755€ → nouveau: 6697.0700000000015€)
+[EVENEMENTS_TOUR] [RECHARGE] ThaiTech: +5640€ (ancien: 12.23000000000161€ → nouveau: 5652.230000000001€)
+[EVENEMENTS_TOUR] [RESUME RECHARGE] 2 entreprises rechargées | Total: +12310€ | Moyenne: +6155.0€
+[EVENEMENTS_TOUR] [REASSORT] [PRODUITS] 5 produits réapprovisionnés | [QUANTITE] +181 unités total | [FOURNISSEURS] 3 fournisseurs concernés
+[EVENEMENTS_TOUR] [REASSORT] [PRODUITS] 1 produits réapprovisionnés | [QUANTITE] +14 unités total | [FOURNISSEURS] 1 fournisseurs concernés

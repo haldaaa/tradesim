@@ -20,3 +20,125 @@ Run 'docker run --help' for more information
 [ERROR] simulation_tour: 'Fournisseur' object has no attribute 'prix_produits'
 [ERROR] simulation_tour: 'Fournisseur' object has no attribute 'prix_produits'
 [ERROR] simulation_tour: 'Fournisseur' object has no attribute 'prix_produits'
+[ERROR] prometheus_metrics: 'Entreprise' object has no attribute 'stocks'
+[ERROR] prometheus_metrics: 'Entreprise' object has no attribute 'stocks'
+[ERROR] prometheus_metrics: 'Entreprise' object has no attribute 'stocks'
+[ERROR] prometheus_metrics: 'Entreprise' object has no attribute 'stocks'
+[ERROR] prometheus_metrics: 'Entreprise' object has no attribute 'stocks'
+[ERROR] simulation_tour: 'Fournisseur' object has no attribute 'prix_produits'
+[ERROR] simulation_tour: 'Fournisseur' object has no attribute 'prix_produits'
+[ERROR] simulation_tour: 'Fournisseur' object has no attribute 'prix_produits'
+[ERROR] simulation_tour: 'Fournisseur' object has no attribute 'prix_produits'
+[ERROR] simulation_tour: 'Fournisseur' object has no attribute 'prix_produits'
+[ERROR] simulation_tour: 'Fournisseur' object has no attribute 'prix_produits'
+[ERROR] simulation_tour: 'Fournisseur' object has no attribute 'prix_produits'
+[ERROR] simulation_tour: 'Fournisseur' object has no attribute 'prix_produits'
+[ERROR] simulation_tour: 'Fournisseur' object has no attribute 'prix_produits'
+[ERROR] simulation_tour: 'Fournisseur' object has no attribute 'prix_produits'
+[ERROR] prometheus_metrics: 'Entreprise' object has no attribute 'stocks'
+[ERROR] prometheus_metrics: 'Entreprise' object has no attribute 'stocks'
+[ERROR] simulation_tour: 'Fournisseur' object has no attribute 'prix_produits'
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] transaction: '<=' not supported between instances of 'NoneType' and 'int'
+[ALERT] error_rate_critical: Taux d'erreur critique: 100.00%
+[ERROR] transaction: '<=' not supported between instances of 'NoneType' and 'int'
+[ALERT] error_rate_critical: Taux d'erreur critique: 100.00%
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] prometheus_metrics: 'PrometheusExporter' object has no attribute 'update_metrics'
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] validation: Prix négatif dans test: -100
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] transaction: '<=' not supported between instances of 'NoneType' and 'int'
+[ALERT] error_rate_critical: Taux d'erreur critique: 100.00%
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] transaction: '<=' not supported between instances of 'NoneType' and 'int'
+[ALERT] error_rate_critical: Taux d'erreur critique: 100.00%
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] prometheus_metrics: 'PrometheusExporter' object has no attribute 'update_metrics'
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] validation: Prix négatif dans test: -100
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] transaction: '<=' not supported between instances of 'NoneType' and 'int'
+[ALERT] error_rate_critical: Taux d'erreur critique: 100.00%
+[ALERT] budget_critical: Budget total critique: 79.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] prometheus_metrics: 'PrometheusExporter' object has no attribute 'update_metrics'
+[ERROR] prometheus_metrics: 'PrometheusExporter' object has no attribute 'update_metrics'
+[ERROR] prometheus_metrics: 'PrometheusExporter' object has no attribute 'update_metrics'
+[ERROR] simulation_tour: appliquer_variation_disponibilite() takes 1 positional argument but 2 were given
+[ERROR] simulation_tour: appliquer_variation_disponibilite() takes 1 positional argument but 2 were given
+[ALERT] budget_critical: Budget total critique: 79.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 79.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] transaction: '<=' not supported between instances of 'NoneType' and 'int'
+[ALERT] error_rate_critical: Taux d'erreur critique: 100.00%
+[ERROR] transaction: '<=' not supported between instances of 'NoneType' and 'int'
+[ALERT] error_rate_critical: Taux d'erreur critique: 100.00%
+[ERROR] validation: Prix négatif dans test_transaction: -100.0
+[ALERT] budget_critical: Budget total critique: 79.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] simulation_tour: unsupported operand type(s) for -: 'list' and 'list'
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 79.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] simulation_tour: unsupported operand type(s) for -: 'list' and 'list'
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] simulation_tour: unsupported operand type(s) for -: 'list' and 'list'
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] transaction: '<=' not supported between instances of 'NoneType' and 'int'
+[ALERT] error_rate_critical: Taux d'erreur critique: 100.00%
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] validation: Prix négatif dans test: -100
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] transaction: '<=' not supported between instances of 'NoneType' and 'int'
+[ALERT] error_rate_critical: Taux d'erreur critique: 100.00%
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] transaction: '<=' not supported between instances of 'NoneType' and 'int'
+[ALERT] error_rate_critical: Taux d'erreur critique: 100.00%
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] validation: Prix négatif dans test: -100
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] transaction: '<=' not supported between instances of 'NoneType' and 'int'
+[ALERT] error_rate_critical: Taux d'erreur critique: 100.00%
+[ALERT] budget_critical: Budget total critique: 79.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 79.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 79.00€
+[ALERT] stock_critical: Stock total critique: 0
