@@ -12,12 +12,13 @@ CORRECTION BUG (10/08/2025) :
 
 import json
 import time
+import random
 from datetime import datetime, timezone
 from collections import defaultdict
 from functools import lru_cache
 from typing import List, Dict, Any, Optional
 
-from config import (
+from config.config import (
     # Configuration existante
     FICHIER_LOG, FICHIER_LOG_HUMAIN, EVENT_LOG_JSON, EVENT_LOG_HUMAIN,
     TICK_INTERVAL_EVENT, PROBABILITE_EVENEMENT,
@@ -33,10 +34,13 @@ from config import (
     ALERT_BUDGET_CRITIQUE, ALERT_STOCK_CRITIQUE, ALERT_ERROR_RATE,
     
     # Configuration des métriques
-    METRICS_COLLECTION_INTERVAL, METRICS_RETENTION_DAYS,
+    METRICS_COLLECTION_INTERVAL, METRICS_RETENTION_DAYS, METRICS_ENABLED,
     
     # Configuration de simulation pour métriques
-    PROBABILITE_SELECTION_ENTREPRISE, DUREE_PAUSE_ENTRE_TOURS
+    PROBABILITE_SELECTION_ENTREPRISE, DUREE_PAUSE_ENTRE_TOURS,
+    
+    # Configuration des quantités
+    QUANTITE_ACHAT_MIN, QUANTITE_ACHAT_MAX
 )
 
 from models.models import Entreprise, Fournisseur, Produit, TypeProduit
@@ -184,11 +188,41 @@ class IDGenerator:
 class SimulationService:
     """Service de simulation principal avec optimisations et monitoring"""
     
-    def __init__(self, entreprises: List[Entreprise], fournisseurs: List[Fournisseur], 
-                 produits: List[Produit], verbose: bool = False):
-        self.entreprises = entreprises
-        self.fournisseurs = fournisseurs
-        self.produits = produits
+    def __init__(self, entreprises: List[Entreprise] = None, fournisseurs: List[Fournisseur] = None, 
+                 produits: List[Produit] = None, verbose: bool = False):
+        # Charger les données depuis les repositories si non fournies
+        if entreprises is None:
+            try:
+                from repositories import EntrepriseRepository
+                repo = EntrepriseRepository()
+                self.entreprises = repo.get_all()
+            except Exception as e:
+                self.entreprises = []
+                print(f"⚠️ Impossible de charger les entreprises: {e}")
+        else:
+            self.entreprises = entreprises
+            
+        if fournisseurs is None:
+            try:
+                from repositories import FournisseurRepository
+                repo = FournisseurRepository()
+                self.fournisseurs = repo.get_all()
+            except Exception as e:
+                self.fournisseurs = []
+                print(f"⚠️ Impossible de charger les fournisseurs: {e}")
+        else:
+            self.fournisseurs = fournisseurs
+            
+        if produits is None:
+            try:
+                from repositories import ProduitRepository
+                repo = ProduitRepository()
+                self.produits = repo.get_all()
+            except Exception as e:
+                self.produits = []
+                print(f"⚠️ Impossible de charger les produits: {e}")
+        else:
+            self.produits = produits
         self.verbose = verbose
         
         # État de simulation
@@ -218,9 +252,11 @@ class SimulationService:
         
         # Prometheus exporter
         self.prometheus_exporter = None
+        self.exporter = None  # Alias pour compatibilité tests
         if MONITORING_AVAILABLE:
             try:
                 self.prometheus_exporter = PrometheusExporter()
+                self.exporter = self.prometheus_exporter  # Alias
                 print("📊 Monitoring Prometheus activé")
             except Exception as e:
                 self._log_error("prometheus_init", str(e))
@@ -461,10 +497,11 @@ class SimulationService:
                     print(f"\t- Stock disponible: {stock_disponible} | Prix: {prix}€")
                 return False
             
-            # Calcul de la quantité d'achat
+            # Calcul de la quantité d'achat (aléatoire entre min et max)
             quantite_max_budget = int(entreprise.budget / prix)
             quantite_max_stock = stock_disponible
-            quantite_achat = min(quantite_max_budget, quantite_max_stock, 99)
+            quantite_souhaitee = random.randint(QUANTITE_ACHAT_MIN, QUANTITE_ACHAT_MAX)
+            quantite_achat = min(quantite_max_budget, quantite_max_stock, quantite_souhaitee)
             
             if quantite_achat <= 0:
                 # Enregistrer la transaction échouée
@@ -611,7 +648,7 @@ class SimulationService:
         transactions_effectuees = 0
         
         for entreprise in self.entreprises:
-            for produit in self.produits:
+            for produit in [p for p in self.produits if p.actif]:
                 # Trouver le fournisseur le moins cher (CORRECTION BUG)
                 fournisseur_moins_cher = None
                 prix_min = float('inf')
@@ -837,7 +874,7 @@ class SimulationService:
             if self.latency_service:
                 self.latency_service.end_timer("collecte_metriques")
 
-    def simulation_tour(self) -> Dict[str, Any]:
+    def simulation_tour(self, verbose: bool = None) -> Dict[str, Any]:
         """Tour de simulation avec monitoring et validation"""
         start_time = time.time()
         
@@ -888,7 +925,8 @@ class SimulationService:
             self.collecter_metriques()
             
             # Affichage verbose
-            if self.verbose:
+            verbose_to_use = verbose if verbose is not None else self.verbose
+            if verbose_to_use:
                 print(f"\n🔄 Tour {self.tours_completes + 1} - Tick {self.tick_actuel}")
                 print(f"📊 Transactions effectuées: {transactions_effectuees}")
                 
@@ -897,10 +935,22 @@ class SimulationService:
                     for event in evenements:
                         if isinstance(event, dict):
                             log_humain = event.get('log_humain', str(event))
-                            probabilite = event.get('probabilite', 'N/A')
-                            print(f"• {log_humain} (probabilité: {probabilite})")
+                            # Nettoyer le log_humain si il contient des données d'entreprise
+                            if 'Entreprise(id=' in str(log_humain):
+                                # Extraire juste la partie utile du message
+                                if 'reçoit +' in str(log_humain):
+                                    # Pour les recharges individuelles
+                                    parts = str(log_humain).split(' - ')
+                                    if len(parts) > 1:
+                                        log_humain = parts[1]
+                                elif 'RECHARGE -' in str(log_humain):
+                                    # Pour les résumés de recharge
+                                    parts = str(log_humain).split(' - ')
+                                    if len(parts) > 1:
+                                        log_humain = parts[1]
+                            print(f"• [EVENT] {log_humain}")
                         else:
-                            print(f"• Événement: {event}")
+                            print(f"• [EVENT] {event}")
             
             # Mise à jour des compteurs
             self.tick_actuel += 1
@@ -997,6 +1047,116 @@ class SimulationService:
         except Exception as e:
             self._log_error("calcul_stabilite_prix", str(e))
             return 0.0
+
+    def reset_simulation(self) -> None:
+        """Réinitialise la simulation"""
+        try:
+            self.tick_actuel = 0
+            self.tours_completes = 0
+            self.evenements_appliques = 0
+            self.debut_simulation = time.time()
+            self.error_count = 0
+            self.total_actions = 0
+            self._cache_stats.clear()
+            
+            # Réinitialiser les services de métriques
+            if self.budget_metrics_service:
+                self.budget_metrics_service.reset_metrics()
+            if self.enterprise_metrics_service:
+                self.enterprise_metrics_service.reset_metrics()
+            if self.supplier_metrics_service:
+                self.supplier_metrics_service.reset_metrics()
+            if self.transaction_metrics_service:
+                self.transaction_metrics_service.reset_metrics()
+            if self.event_metrics_service:
+                self.event_metrics_service.reset_metrics()
+            if self.performance_metrics_service:
+                self.performance_metrics_service.reset_metrics()
+            if self.product_metrics_service:
+                self.product_metrics_service.reset_metrics()
+            
+            if self.verbose:
+                print("🔄 Simulation réinitialisée")
+                
+        except Exception as e:
+            self._log_error("reset_simulation", str(e))
+    
+    def run_simulation_tours(self, nombre_tours: int, verbose: bool = False) -> Dict[str, Any]:
+        """Exécute une simulation pour un nombre de tours donné"""
+        try:
+            if verbose:
+                print(f"🚀 Lancement de la simulation pour {nombre_tours} tours...")
+            
+            for tour in range(nombre_tours):
+                resultat = self.simulation_tour()
+                if "error" in resultat:
+                    print(f"❌ Erreur tour {tour}: {resultat['error']}")
+                    break
+                
+                if verbose and tour % 10 == 0:
+                    print(f"📊 Tour {tour}/{nombre_tours} - Transactions: {resultat.get('transactions_effectuees', 0)}")
+            
+            if verbose:
+                print("✅ Simulation terminée.")
+            
+            return self.calculer_statistiques()
+            
+        except Exception as e:
+            self._log_error("run_simulation_tours", str(e))
+            return {"error": str(e)}
+    
+    def run_simulation_infinite(self, verbose: bool = False) -> None:
+        """Exécute une simulation infinie (pour CLI interactif)"""
+        try:
+            if verbose:
+                print("🚀 Lancement de la simulation infinie...")
+            
+            # Simulation vraiment infinie
+            tour = 0
+            while True:
+                resultat = self.simulation_tour()
+                if "error" in resultat:
+                    print(f"❌ Erreur tour {tour}: {resultat['error']}")
+                    break
+                
+                if verbose and tour % 10 == 0:
+                    print(f"📊 Tour {tour} - Transactions: {resultat.get('transactions_effectuees', 0)}")
+                
+                tour += 1
+                time.sleep(0.1)  # Pause courte
+                
+        except Exception as e:
+            self._log_error("run_simulation_infinite", str(e))
+    
+    @property
+    def entreprise_repo(self):
+        """Propriété pour accéder aux entreprises (compatibilité tests)"""
+        class MockRepo:
+            def get_all(self):
+                return self.entreprises
+        repo = MockRepo()
+        repo.entreprises = self.entreprises
+        return repo
+    
+    @property
+    def produit_repo(self):
+        """Propriété pour accéder aux produits (compatibilité tests)"""
+        class MockRepo:
+            def get_all(self):
+                return self.produits
+        repo = MockRepo()
+        repo.produits = self.produits
+        return repo
+    
+    @property
+    def fournisseur_repo(self):
+        """Propriété pour accéder aux fournisseurs (compatibilité tests)"""
+        class MockRepo:
+            def get_all(self):
+                return self.fournisseurs
+        repo = MockRepo()
+        repo.fournisseurs = self.fournisseurs
+        return repo
 
 # Instance globale du générateur d'IDs
 id_generator = IDGenerator() 

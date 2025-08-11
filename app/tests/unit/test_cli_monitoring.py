@@ -29,7 +29,7 @@ from services.simulate import (
     afficher_configuration_actuelle,
     format_monitoring_status
 )
-from config import METRICS_ENABLED, METRICS_EXPORTER_PORT
+from config.config import METRICS_ENABLED, METRICS_EXPORTER_PORT
 
 
 class TestCLIMonitoring:
@@ -252,11 +252,11 @@ class TestCLIMonitoringUtils:
     
     def test_metrics_enabled_import(self):
         """Test que METRICS_ENABLED est importable"""
-        from config import METRICS_ENABLED
+        from config.config import METRICS_ENABLED
         assert isinstance(METRICS_ENABLED, bool)
     
     def test_metrics_exporter_port_import(self):
         """Test que METRICS_EXPORTER_PORT est importable"""
-        from config import METRICS_EXPORTER_PORT
+        from config.config import METRICS_EXPORTER_PORT
         assert isinstance(METRICS_EXPORTER_PORT, int)
         assert METRICS_EXPORTER_PORT > 0 

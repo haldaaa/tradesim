@@ -37,10 +37,14 @@ def test_initialisation_complete():
 def test_initialisation_jeu():
     """Test l'initialisation complète du jeu"""
     try:
-        from services import game_manager_service, simulation_service
+        from services import game_manager_service
+        from services.simulation_service import SimulationService
         
         # Initialiser le jeu
         game_manager_service.reset_game()
+        
+        # Créer une instance de SimulationService pour accéder aux repositories
+        simulation_service = SimulationService()
         
         # Vérifier que les données sont créées
         entreprises = simulation_service.entreprise_repo.get_all()
@@ -61,9 +65,12 @@ def test_simulation_complete():
     """Test une simulation complète"""
     try:
         from services import (
-            simulation_service, game_manager_service,
-            transaction_service, budget_service
+            game_manager_service, transaction_service, budget_service
         )
+        from services.simulation_service import SimulationService
+        
+        # Créer une instance de SimulationService
+        simulation_service = SimulationService()
         
         # Réinitialiser tout
         game_manager_service.reset_game()
@@ -83,7 +90,7 @@ def test_simulation_complete():
                 # Continuer même si un tour échoue
         
         # Vérifier les statistiques
-        stats_simulation = simulation_service.get_etat_actuel()
+        stats_simulation = simulation_service.calculer_statistiques()
         stats_budget = budget_service.get_statistiques_budgets()
         stats_transactions = transaction_service.get_statistiques_transactions()
         
@@ -176,9 +183,12 @@ def test_services_integration():
     """Test l'intégration entre tous les services"""
     try:
         from services import (
-            simulation_service, game_manager_service,
-            transaction_service, budget_service
+            game_manager_service, transaction_service, budget_service
         )
+        from services.simulation_service import SimulationService
+        
+        # Créer une instance de SimulationService
+        simulation_service = SimulationService()
         
         # Initialiser tout
         game_manager_service.reset_game()
@@ -213,8 +223,12 @@ def test_services_integration():
 def test_performance_basique():
     """Test de performance basique"""
     try:
-        from services import game_manager_service, simulation_service
+        from services import game_manager_service
+        from services.simulation_service import SimulationService
         import time
+        
+        # Créer une instance de SimulationService
+        simulation_service = SimulationService()
         
         # Mesurer le temps d'initialisation
         debut = time.time()

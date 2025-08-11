@@ -32,7 +32,7 @@ Date: 2025-01-27
 import pytest
 import random
 from unittest.mock import Mock, patch
-from config import BUDGET_ENTREPRISE_MIN, BUDGET_ENTREPRISE_MAX
+from config.config import BUDGET_ENTREPRISE_MIN, BUDGET_ENTREPRISE_MAX
 from models import Entreprise, TypeProduit
 from services.game_manager import generate_entreprises
 from services.game_manager_service import GameManagerService
@@ -96,7 +96,7 @@ class TestBudgetsEntreprises:
     def test_coherence_services(self):
         """Test la cohérence entre les différents services"""
         # Vérifier que les constantes sont cohérentes avec les recharges
-        from config import RECHARGE_BUDGET_MIN, RECHARGE_BUDGET_MAX
+        from config.config import RECHARGE_BUDGET_MIN, RECHARGE_BUDGET_MAX
         
         # Les recharges doivent être proportionnelles aux budgets
         assert RECHARGE_BUDGET_MAX <= BUDGET_ENTREPRISE_MAX * 0.5, "Recharge trop élevée par rapport au budget"
@@ -124,7 +124,7 @@ class TestConfigurationBudgets:
     
     def test_configuration_import(self):
         """Test que les constantes sont correctement importées"""
-        from config import BUDGET_ENTREPRISE_MIN, BUDGET_ENTREPRISE_MAX
+        from config.config import BUDGET_ENTREPRISE_MIN, BUDGET_ENTREPRISE_MAX
         
         assert isinstance(BUDGET_ENTREPRISE_MIN, int)
         assert isinstance(BUDGET_ENTREPRISE_MAX, int)

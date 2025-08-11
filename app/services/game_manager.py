@@ -50,7 +50,7 @@ from repositories import ProduitRepository, FournisseurRepository, EntrepriseRep
 from models import Produit, TypeProduit, Fournisseur, Entreprise
 from services.simulateur import simulation_tour
 from services.name_manager import name_manager
-from config import (
+from config.config import (
     RECHARGE_BUDGET_MIN, RECHARGE_BUDGET_MAX,
     REASSORT_QUANTITE_MIN, REASSORT_QUANTITE_MAX,
     INFLATION_POURCENTAGE_MIN, INFLATION_POURCENTAGE_MAX,
@@ -791,7 +791,20 @@ def run_simulation_tours(n_tours: int, verbose: bool = False, with_monitoring: b
 
     # Utiliser SimulationService pour la cohérence avec le mode direct
     from services.simulation_service import SimulationService
-    simulation_service = SimulationService()
+    from repositories.entreprise_repository import EntrepriseRepository
+    from repositories.fournisseur_repository import FournisseurRepository
+    from repositories.produit_repository import ProduitRepository
+    
+    # Récupérer les données depuis les Repository
+    entreprise_repo = EntrepriseRepository()
+    fournisseur_repo = FournisseurRepository()
+    produit_repo = ProduitRepository()
+    
+    entreprises = entreprise_repo.get_all()
+    fournisseurs = fournisseur_repo.get_all()
+    produits = produit_repo.get_all()
+    
+    simulation_service = SimulationService(entreprises, fournisseurs, produits, verbose=verbose)
     
     try:
         # Démarrer le monitoring si Docker a réussi
@@ -804,7 +817,11 @@ def run_simulation_tours(n_tours: int, verbose: bool = False, with_monitoring: b
             print("✅ Monitoring démarré sur port 8000")
         
         # Lancer la simulation
-        simulation_service.run_simulation_tours(n_tours, verbose=verbose)
+        for tour in range(n_tours):
+            result = simulation_service.simulation_tour()
+            if verbose:
+                print(f"Tour {result.get('tour', 'N/A')} - Transactions: {result.get('transactions_effectuees', 0)}")
+            time.sleep(DUREE_PAUSE_ENTRE_TOURS)
         
     except KeyboardInterrupt:
         print("\n⏹️ Simulation interrompue manuellement.")
@@ -838,7 +855,20 @@ def run_simulation_infinite(verbose: bool = False, with_monitoring: bool = False
 
     # Utiliser SimulationService pour la cohérence avec le mode direct
     from services.simulation_service import SimulationService
-    simulation_service = SimulationService()
+    from repositories.entreprise_repository import EntrepriseRepository
+    from repositories.fournisseur_repository import FournisseurRepository
+    from repositories.produit_repository import ProduitRepository
+    
+    # Récupérer les données depuis les Repository
+    entreprise_repo = EntrepriseRepository()
+    fournisseur_repo = FournisseurRepository()
+    produit_repo = ProduitRepository()
+    
+    entreprises = entreprise_repo.get_all()
+    fournisseurs = fournisseur_repo.get_all()
+    produits = produit_repo.get_all()
+    
+    simulation_service = SimulationService(entreprises, fournisseurs, produits, verbose=verbose)
     
     try:
         # Démarrer le monitoring si Docker a réussi
@@ -851,7 +881,11 @@ def run_simulation_infinite(verbose: bool = False, with_monitoring: bool = False
             print("✅ Monitoring démarré sur port 8000")
         
         # Lancer la simulation infinie
-        simulation_service.run_simulation_infinite(verbose=verbose)
+        while True:
+            result = simulation_service.simulation_tour()
+            if verbose:
+                print(f"Tour {result.get('tour', 'N/A')} - Transactions: {result.get('transactions_effectuees', 0)}")
+            time.sleep(DUREE_PAUSE_ENTRE_TOURS)
         
     except KeyboardInterrupt:
         print("\n⏹️ Simulation interrompue manuellement.")

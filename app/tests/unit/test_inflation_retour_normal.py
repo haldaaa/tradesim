@@ -16,7 +16,7 @@ Lancement automatique :
 """
 
 import pytest
-from config import (
+from config.config import (
     DUREE_RETOUR_INFLATION, DUREE_BAISSE_INFLATION, POURCENTAGE_FINAL_INFLATION
 )
 
@@ -110,7 +110,7 @@ class TestConfigurationRetourNormal:
     
     def test_configuration_import(self):
         """Test que les constantes sont correctement importées"""
-        from config import (
+        from config.config import (
             DUREE_RETOUR_INFLATION, DUREE_BAISSE_INFLATION, POURCENTAGE_FINAL_INFLATION
         )
         

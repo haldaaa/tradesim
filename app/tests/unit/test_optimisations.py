@@ -13,7 +13,7 @@ from datetime import datetime
 
 from services.simulation_service import IDGenerator, SimulationService
 from models.models import Entreprise, Fournisseur, Produit, TypeProduit
-from config import (
+from config.config import (
     VALID_ACTION_TYPES, MAX_COUNTER, BATCH_LOG_SIZE, CACHE_MAX_SIZE,
     VALIDATION_ENABLED, REALTIME_MONITORING, PERFORMANCE_THRESHOLD,
     ALERT_BUDGET_CRITIQUE, ALERT_STOCK_CRITIQUE, ALERT_ERROR_RATE
@@ -246,7 +246,7 @@ class TestConfigurationOptimisations(unittest.TestCase):
     
     def test_configuration_imports(self):
         """Test que toutes les configurations sont importables"""
-        from config import (
+        from config.config import (
             ID_FORMAT, ID_SESSION_FORMAT, MAX_COUNTER, VALID_ACTION_TYPES,
             BATCH_LOG_SIZE, CACHE_MAX_SIZE, COMPRESSION_DAYS, INDEX_ENABLED,
             VALIDATION_ENABLED, REALTIME_MONITORING, PERFORMANCE_THRESHOLD,
@@ -266,7 +266,7 @@ class TestConfigurationOptimisations(unittest.TestCase):
     
     def test_configuration_values(self):
         """Test des valeurs de configuration"""
-        from config import (
+        from config.config import (
             MAX_COUNTER, BATCH_LOG_SIZE, CACHE_MAX_SIZE,
             VALIDATION_ENABLED, REALTIME_MONITORING, PERFORMANCE_THRESHOLD
         )

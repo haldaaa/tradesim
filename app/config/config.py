@@ -79,6 +79,10 @@ RECHARGE_BUDGET_MAX = 8000             # Montant maximum de recharge de budget
 REASSORT_QUANTITE_MIN = 10            # Quantité minimum de réassortiment
 REASSORT_QUANTITE_MAX = 50            # Quantité maximum de réassortiment
 
+# Quantité d'achat (utilisée pour les transactions aléatoires)
+QUANTITE_ACHAT_MIN = 1                # Quantité minimum d'achat par transaction
+QUANTITE_ACHAT_MAX = 100              # Quantité maximum d'achat par transaction
+
 # Inflation (inflation)
 INFLATION_POURCENTAGE_MIN = 30        # Pourcentage minimum d'inflation
 INFLATION_POURCENTAGE_MAX = 60        # Pourcentage maximum d'inflation
@@ -102,7 +106,7 @@ PROBABILITE_DESACTIVATION = 0.1       # 10% de chance de désactiver un produit 
 PROBABILITE_REACTIVATION = 0.2        # 20% de chance de réactiver un produit inactif
 
 # Intervalles et probabilités
-TICK_INTERVAL_EVENT = 20              # Tous les 20 ticks, on tente des événements
+TICK_INTERVAL_EVENT = 2               # Tous les 2 tours, on tente des événements
 
 PROBABILITE_EVENEMENT = {
     "recharge_budget": 0.5,           # 50% de chance de recharge de budget
@@ -157,7 +161,7 @@ ALERT_STOCK_CRITIQUE = 10  # Stock critique en unités
 ALERT_ERROR_RATE = 0.1  # Taux d'erreur critique (10%)
 
 # Configuration des métriques
-METRICS_COLLECTION_INTERVAL = 1  # Collecte toutes les X secondes
+# METRICS_COLLECTION_INTERVAL déjà défini plus haut = 1.0
 METRICS_RETENTION_DAYS = 30  # Rétention des métriques en jours
 
 # ============================================================================

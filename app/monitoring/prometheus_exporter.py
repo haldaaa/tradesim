@@ -55,7 +55,7 @@ from flask import Flask, Response
 import psutil
 
 # Configuration
-from config import (
+from config.config import (
     METRICS_ENABLED,
     METRICS_EXPORTER_PORT,
     METRICS_EXPORTER_HOST,

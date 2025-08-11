@@ -28,7 +28,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
 
 from services.simulate import run_simulation
 from monitoring.prometheus_exporter import PrometheusExporter
-from config import METRICS_ENABLED, METRICS_EXPORTER_PORT
+from config.config import METRICS_ENABLED, METRICS_EXPORTER_PORT
 
 
 class TestMonitoringIntegration:

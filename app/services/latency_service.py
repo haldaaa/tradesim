@@ -51,7 +51,7 @@ try:
 except ImportError:
     PROMETHEUS_AVAILABLE = False
 
-from config import (
+from config.config import (
     CACHE_MAX_SIZE, 
     LATENCY_COLLECTION_INTERVAL,
     LATENCY_HISTOGRAM_BUCKETS,

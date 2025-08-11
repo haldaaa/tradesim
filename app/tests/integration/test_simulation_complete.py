@@ -27,7 +27,7 @@ from data import (
     prix_par_fournisseur, produits_ayant_subi_inflation
 )
 from models import Produit, TypeProduit, Fournisseur, Entreprise
-from config import (
+from config.config import (
     TICK_INTERVAL_EVENT, PROBABILITE_EVENEMENT,
     PROBABILITE_SELECTION_ENTREPRISE, BUDGET_ENTREPRISE_MIN, BUDGET_ENTREPRISE_MAX
 )

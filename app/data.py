@@ -28,7 +28,7 @@ import random
 from typing import List, Dict, Tuple
 # Import des données de noms directement
 from data.names_data import ENTREPRISES_DATA, FOURNISSEURS_DATA, PRODUITS_DATA
-from config import BUDGET_ENTREPRISE_MIN, BUDGET_ENTREPRISE_MAX
+from config.config import BUDGET_ENTREPRISE_MIN, BUDGET_ENTREPRISE_MAX
 
 
 # -------------------------

@@ -35,7 +35,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
 
 from services.simulation_service import SimulationService
 from models.models import Entreprise, Fournisseur, Produit, TypeProduit
-from config import (
+from config.config import (
     PROBABILITE_SELECTION_ENTREPRISE, 
     DUREE_PAUSE_ENTRE_TOURS,
     TICK_INTERVAL_EVENT,

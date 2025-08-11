@@ -24,7 +24,7 @@ from typing import List, Dict, Any
 # Imports des Repository (nouvelle architecture)
 from repositories import ProduitRepository, FournisseurRepository, EntrepriseRepository
 from models import Produit, Fournisseur, Entreprise, TypeProduit
-from config import (
+from config.config import (
     N_ENTREPRISES_PAR_TOUR,
     FICHIER_LOG,
     FICHIER_LOG_HUMAIN,

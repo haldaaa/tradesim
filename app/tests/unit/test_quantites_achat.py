@@ -32,7 +32,7 @@ Date: 2025-01-27
 import pytest
 import random
 from unittest.mock import Mock, patch
-from config import QUANTITE_ACHAT_MIN, QUANTITE_ACHAT_MAX
+from config.config import QUANTITE_ACHAT_MIN, QUANTITE_ACHAT_MAX
 from models import Entreprise, Produit, Fournisseur, TypeProduit
 from services.simulateur import acheter_produit
 from services.transaction_service import TransactionService
@@ -182,7 +182,7 @@ class TestConfigurationQuantites:
     
     def test_configuration_import(self):
         """Test que les constantes sont correctement importées"""
-        from config import QUANTITE_ACHAT_MIN, QUANTITE_ACHAT_MAX
+        from config.config import QUANTITE_ACHAT_MIN, QUANTITE_ACHAT_MAX
         
         assert isinstance(QUANTITE_ACHAT_MIN, int)
         assert isinstance(QUANTITE_ACHAT_MAX, int)

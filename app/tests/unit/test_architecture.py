@@ -71,7 +71,7 @@ def test_repository_usage():
 def test_config_imports():
     """Test que la configuration peut être importée."""
     try:
-        from config import NOMBRE_TOURS, DEBUG_MODE
+        from config.config import NOMBRE_TOURS, DEBUG_MODE
         print("✅ Import de la configuration réussi")
         assert True, "Import de la configuration réussi"
     except Exception as e:

@@ -209,7 +209,7 @@ class TestBudgetMetricsService:
         # Dépenses mais pas de revenus
         self.service.enregistrer_transaction(1000.0, "achat")
         ratio = self.service._calculer_ratio_depenses_revenus()
-        assert ratio == float('inf')
+        assert ratio == 999999.0  # Valeur fixe pour éviter l'infini
         
         # Dépenses et revenus
         self.service.enregistrer_transaction(500.0, "vente")

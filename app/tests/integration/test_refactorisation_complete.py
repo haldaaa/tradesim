@@ -36,7 +36,7 @@ def test_imports_models():
 def test_imports_config():
     """Test l'import de la configuration"""
     try:
-        from config import (
+        from config.config import (
             RECHARGE_BUDGET_MIN, RECHARGE_BUDGET_MAX,
             REASSORT_QUANTITE_MIN, REASSORT_QUANTITE_MAX,
             INFLATION_POURCENTAGE_MIN, INFLATION_POURCENTAGE_MAX,

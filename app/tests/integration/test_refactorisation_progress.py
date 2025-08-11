@@ -14,7 +14,7 @@ def test_architecture_complete():
     try:
         from repositories import ProduitRepository, FournisseurRepository, EntrepriseRepository
         from models import Produit, Fournisseur, Entreprise, TypeProduit
-        from config import NOMBRE_TOURS, DEBUG_MODE, TICK_INTERVAL_EVENT
+        from config.config import NOMBRE_TOURS, DEBUG_MODE, TICK_INTERVAL_EVENT
         
         print("✅ Architecture de base fonctionnelle")
         assert True, "Architecture de base fonctionnelle"
