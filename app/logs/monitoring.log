@@ -1337,3 +1337,4 @@ Run 'docker run --help' for more information
 [ALERT] stock_critical: Stock total critique: 0
 [ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
 [ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0

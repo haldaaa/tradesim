@@ -31,7 +31,8 @@ from config.config import (
     TICK_INTERVAL_EVENT, PROBABILITE_EVENEMENT,
     PROBABILITE_SELECTION_ENTREPRISE, DUREE_PAUSE_ENTRE_TOURS,
     TYPES_PRODUITS_PREFERES_MIN, TYPES_PRODUITS_PREFERES_MAX,
-    BUDGET_ENTREPRISE_MIN, BUDGET_ENTREPRISE_MAX
+    BUDGET_ENTREPRISE_MIN, BUDGET_ENTREPRISE_MAX,
+    DEFAULT_CONTINENT, validate_continent
 )
 
 
@@ -238,11 +239,14 @@ class GameManagerService:
                 from .price_service import price_service
                 price_service.set_prix_produit_fournisseur(produit.id, fid, prix_fournisseur)
             
+            # Validation du continent avec fallback
+            continent_valide = DEFAULT_CONTINENT if validate_continent(DEFAULT_CONTINENT) else "Europe"
+            
             fournisseur = Fournisseur(
                 id=fid,
                 nom_entreprise=nom,
                 pays=pays,
-                continent="Europe",  # Valeur par défaut
+                continent=continent_valide,
                 stock_produit=stock_produit
             )
             self.fournisseur_repo.add(fournisseur)

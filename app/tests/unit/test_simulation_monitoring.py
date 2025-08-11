@@ -150,10 +150,8 @@ class TestSimulationServiceMonitoring:
 
         # Vérifier le résultat
         assert isinstance(result, dict)
-        assert 'tour' in result
-        assert 'tick' in result
-        assert 'evenements_appliques' in result
-        assert 'transactions_effectuees' in result
+        required_keys = {'tour', 'tick', 'evenements_appliques', 'transactions_effectuees'}
+        assert required_keys.issubset(result.keys()), f"Missing keys: {required_keys - result.keys()}"
     
     def test_simulation_tour_without_monitoring(self):
         """Test simulation_tour sans monitoring"""
@@ -165,10 +163,8 @@ class TestSimulationServiceMonitoring:
         
         # Vérifier le résultat
         assert isinstance(result, dict)
-        assert 'tour' in result
-        assert 'tick' in result
-        assert 'evenements_appliques' in result
-        assert 'transactions_effectuees' in result
+        required_keys = {'tour', 'tick', 'evenements_appliques', 'transactions_effectuees'}
+        assert required_keys.issubset(result.keys()), f"Missing keys: {required_keys - result.keys()}"
     
     def test_run_simulation_tours_with_monitoring(self):
         """Test run_simulation_tours avec monitoring"""
