@@ -25,7 +25,7 @@ from services.game_manager import (
     NOMS_PRODUITS
 )
 from models import Produit, TypeProduit, Fournisseur, Entreprise
-from config import BUDGET_ENTREPRISE_MIN, BUDGET_ENTREPRISE_MAX
+from config.config import BUDGET_ENTREPRISE_MIN, BUDGET_ENTREPRISE_MAX
 
 # Imports des Repository (nouvelle architecture)
 from repositories import ProduitRepository, FournisseurRepository, EntrepriseRepository

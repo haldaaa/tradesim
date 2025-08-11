@@ -21,7 +21,7 @@ from datetime import datetime
 
 from repositories import ProduitRepository, FournisseurRepository, EntrepriseRepository
 from models import Produit, Fournisseur, Entreprise, TypeProduit, Transaction
-from config import QUANTITE_ACHAT_MIN, QUANTITE_ACHAT_MAX
+from config.config import QUANTITE_ACHAT_MIN, QUANTITE_ACHAT_MAX
 
 
 class TransactionService:

@@ -20,3 +20,1320 @@ Run 'docker run --help' for more information
 [ERROR] simulation_tour: 'Fournisseur' object has no attribute 'prix_produits'
 [ERROR] simulation_tour: 'Fournisseur' object has no attribute 'prix_produits'
 [ERROR] simulation_tour: 'Fournisseur' object has no attribute 'prix_produits'
+[ERROR] prometheus_metrics: 'Entreprise' object has no attribute 'stocks'
+[ERROR] prometheus_metrics: 'Entreprise' object has no attribute 'stocks'
+[ERROR] prometheus_metrics: 'Entreprise' object has no attribute 'stocks'
+[ERROR] prometheus_metrics: 'Entreprise' object has no attribute 'stocks'
+[ERROR] prometheus_metrics: 'Entreprise' object has no attribute 'stocks'
+[ERROR] simulation_tour: 'Fournisseur' object has no attribute 'prix_produits'
+[ERROR] simulation_tour: 'Fournisseur' object has no attribute 'prix_produits'
+[ERROR] simulation_tour: 'Fournisseur' object has no attribute 'prix_produits'
+[ERROR] simulation_tour: 'Fournisseur' object has no attribute 'prix_produits'
+[ERROR] simulation_tour: 'Fournisseur' object has no attribute 'prix_produits'
+[ERROR] simulation_tour: 'Fournisseur' object has no attribute 'prix_produits'
+[ERROR] simulation_tour: 'Fournisseur' object has no attribute 'prix_produits'
+[ERROR] simulation_tour: 'Fournisseur' object has no attribute 'prix_produits'
+[ERROR] simulation_tour: 'Fournisseur' object has no attribute 'prix_produits'
+[ERROR] simulation_tour: 'Fournisseur' object has no attribute 'prix_produits'
+[ERROR] prometheus_metrics: 'Entreprise' object has no attribute 'stocks'
+[ERROR] prometheus_metrics: 'Entreprise' object has no attribute 'stocks'
+[ERROR] simulation_tour: 'Fournisseur' object has no attribute 'prix_produits'
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] transaction: '<=' not supported between instances of 'NoneType' and 'int'
+[ALERT] error_rate_critical: Taux d'erreur critique: 100.00%
+[ERROR] transaction: '<=' not supported between instances of 'NoneType' and 'int'
+[ALERT] error_rate_critical: Taux d'erreur critique: 100.00%
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] prometheus_metrics: 'PrometheusExporter' object has no attribute 'update_metrics'
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] validation: Prix négatif dans test: -100
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] transaction: '<=' not supported between instances of 'NoneType' and 'int'
+[ALERT] error_rate_critical: Taux d'erreur critique: 100.00%
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] transaction: '<=' not supported between instances of 'NoneType' and 'int'
+[ALERT] error_rate_critical: Taux d'erreur critique: 100.00%
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] prometheus_metrics: 'PrometheusExporter' object has no attribute 'update_metrics'
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] validation: Prix négatif dans test: -100
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] transaction: '<=' not supported between instances of 'NoneType' and 'int'
+[ALERT] error_rate_critical: Taux d'erreur critique: 100.00%
+[ALERT] budget_critical: Budget total critique: 79.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] prometheus_metrics: 'PrometheusExporter' object has no attribute 'update_metrics'
+[ERROR] prometheus_metrics: 'PrometheusExporter' object has no attribute 'update_metrics'
+[ERROR] prometheus_metrics: 'PrometheusExporter' object has no attribute 'update_metrics'
+[ERROR] simulation_tour: appliquer_variation_disponibilite() takes 1 positional argument but 2 were given
+[ERROR] simulation_tour: appliquer_variation_disponibilite() takes 1 positional argument but 2 were given
+[ALERT] budget_critical: Budget total critique: 79.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 79.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] transaction: '<=' not supported between instances of 'NoneType' and 'int'
+[ALERT] error_rate_critical: Taux d'erreur critique: 100.00%
+[ERROR] transaction: '<=' not supported between instances of 'NoneType' and 'int'
+[ALERT] error_rate_critical: Taux d'erreur critique: 100.00%
+[ERROR] validation: Prix négatif dans test_transaction: -100.0
+[ALERT] budget_critical: Budget total critique: 79.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] simulation_tour: unsupported operand type(s) for -: 'list' and 'list'
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 79.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] simulation_tour: unsupported operand type(s) for -: 'list' and 'list'
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] simulation_tour: unsupported operand type(s) for -: 'list' and 'list'
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] transaction: '<=' not supported between instances of 'NoneType' and 'int'
+[ALERT] error_rate_critical: Taux d'erreur critique: 100.00%
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] validation: Prix négatif dans test: -100
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] transaction: '<=' not supported between instances of 'NoneType' and 'int'
+[ALERT] error_rate_critical: Taux d'erreur critique: 100.00%
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] transaction: '<=' not supported between instances of 'NoneType' and 'int'
+[ALERT] error_rate_critical: Taux d'erreur critique: 100.00%
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] validation: Prix négatif dans test: -100
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] transaction: '<=' not supported between instances of 'NoneType' and 'int'
+[ALERT] error_rate_critical: Taux d'erreur critique: 100.00%
+[ALERT] budget_critical: Budget total critique: 79.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 79.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 79.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 79.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 10.07%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 10.15%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 10.23%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 10.31%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 10.39%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 10.47%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 10.55%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 10.63%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 10.71%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 10.79%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 10.87%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 10.95%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 11.03%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 11.11%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 11.19%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 11.27%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 11.35%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 11.43%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 11.50%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 11.58%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 11.66%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 11.74%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 11.82%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 11.89%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 11.97%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 12.05%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 12.13%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 12.20%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 12.28%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 12.36%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 12.43%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 12.51%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 12.59%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 12.66%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 12.74%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 12.82%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 12.89%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 12.97%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 13.04%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 13.12%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 13.19%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 13.27%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 13.34%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 13.42%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 13.49%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 13.57%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 13.64%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 13.72%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 13.79%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 13.87%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 13.94%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 14.02%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 14.09%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 14.16%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 14.24%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 14.31%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 14.38%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 14.46%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 14.53%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 14.60%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 14.68%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 14.75%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 14.82%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 14.89%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 14.97%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 15.04%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 15.11%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 15.18%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 15.25%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 15.33%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 15.40%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 15.47%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 15.54%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 15.61%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 15.68%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 15.75%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 15.82%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 15.90%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 15.97%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 16.04%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 16.11%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 16.18%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 16.25%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 16.32%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 16.39%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 16.46%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 16.53%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 16.60%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 16.67%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 16.74%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 16.81%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 16.87%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 16.94%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 17.01%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 17.08%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 17.15%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 17.22%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 17.29%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 17.36%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 17.42%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 17.49%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 17.56%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 17.63%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 17.70%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 17.76%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 17.83%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 17.90%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 17.97%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 18.03%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 18.10%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 18.17%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 18.23%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 18.30%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 18.37%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 18.43%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 18.50%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 18.57%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 18.63%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 18.70%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 18.77%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 18.83%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 18.90%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 18.96%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 19.03%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 19.09%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 19.16%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 19.22%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 19.29%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 19.35%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 19.42%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 19.48%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 19.55%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 19.61%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 19.68%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 19.74%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 19.81%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 19.87%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 19.94%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 20.00%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 20.06%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 20.13%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 20.19%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 20.26%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 20.32%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 20.38%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 20.45%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 20.51%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 20.57%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 20.63%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 20.70%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 20.76%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 20.82%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 20.89%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 20.95%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 21.01%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 21.07%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 21.14%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 21.20%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 21.26%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 21.32%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 21.38%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 21.45%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 21.51%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 21.57%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 21.63%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 21.69%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 21.75%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 21.81%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 21.88%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 21.94%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 22.00%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 22.06%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 22.12%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 22.18%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 22.24%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 22.30%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 22.36%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 22.42%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 22.48%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 22.54%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 22.60%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 22.66%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 22.72%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 22.78%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 22.84%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 22.90%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 22.96%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 23.02%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 23.08%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 23.14%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 23.20%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 23.25%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 23.31%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 23.37%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 23.43%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 23.49%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 23.55%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 23.61%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 23.66%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 23.72%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 23.78%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 23.84%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 23.90%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 23.95%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 24.01%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 24.07%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 24.13%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 24.18%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 24.24%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 24.30%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 24.36%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 24.41%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 24.47%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 24.53%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 24.59%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 24.64%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 24.70%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 24.76%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 24.81%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 24.87%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 24.92%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 24.98%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 25.04%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 25.09%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 25.15%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 25.21%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 25.26%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 25.32%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 25.37%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 25.43%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 25.48%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 25.54%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 25.60%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 25.65%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 25.71%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 25.76%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 25.82%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 25.87%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 25.93%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 25.98%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 26.04%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 26.09%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 26.14%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 26.20%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 26.25%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 26.31%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 26.36%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 26.42%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 26.47%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 26.52%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 26.58%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 26.63%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 26.69%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 26.74%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 26.79%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 26.85%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 26.90%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 26.95%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 27.01%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 27.06%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 27.11%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 27.17%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 27.22%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 27.27%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 27.33%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 27.38%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 27.43%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 27.48%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 27.54%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 27.59%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 27.64%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 27.69%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 27.75%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 27.80%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 27.85%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 27.90%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 27.95%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 28.01%
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] error_rate_critical: Taux d'erreur critique: 28.06%
+[ERROR] transaction: '<=' not supported between instances of 'NoneType' and 'int'
+[ALERT] error_rate_critical: Taux d'erreur critique: 100.00%
+[ERROR] transaction: '<=' not supported between instances of 'NoneType' and 'int'
+[ALERT] error_rate_critical: Taux d'erreur critique: 100.00%
+[ERROR] transaction: '<=' not supported between instances of 'NoneType' and 'int'
+[ALERT] error_rate_critical: Taux d'erreur critique: 100.00%
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] validation: Prix négatif dans test: -5.0
+[ERROR] validation: Quantité invalide dans test: 0
+[ERROR] validation: Budget négatif dans test: -100.0
+[ERROR] test_error: Test error message
+[ALERT] error_rate_critical: Taux d'erreur critique: 20.00%
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] performance_slow: Calcul statistiques lent: 1.100s
+[ALERT] budget_critical: Budget total critique: 900.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] validation: Prix négatif dans test_transaction: -100.0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] transaction: '<=' not supported between instances of 'NoneType' and 'int'
+[ALERT] error_rate_critical: Taux d'erreur critique: 100.00%
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] validation: Prix négatif dans test: -100
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] transaction: '<=' not supported between instances of 'NoneType' and 'int'
+[ALERT] error_rate_critical: Taux d'erreur critique: 100.00%
+[ERROR] simulation_tour: Cannot choose from an empty sequence
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] simulation_tour: Cannot choose from an empty sequence
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] transaction: '<=' not supported between instances of 'NoneType' and 'int'
+[ALERT] error_rate_critical: Taux d'erreur critique: 100.00%
+[ERROR] transaction: '<=' not supported between instances of 'NoneType' and 'int'
+[ALERT] error_rate_critical: Taux d'erreur critique: 100.00%
+[ERROR] transaction: '<=' not supported between instances of 'NoneType' and 'int'
+[ALERT] error_rate_critical: Taux d'erreur critique: 100.00%
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] validation: Prix négatif dans test: -5.0
+[ERROR] validation: Quantité invalide dans test: 0
+[ERROR] validation: Budget négatif dans test: -100.0
+[ERROR] test_error: Test error message
+[ALERT] error_rate_critical: Taux d'erreur critique: 20.00%
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] performance_slow: Calcul statistiques lent: 1.100s
+[ALERT] budget_critical: Budget total critique: 900.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] validation: Prix négatif dans test_transaction: -100.0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] transaction: '<=' not supported between instances of 'NoneType' and 'int'
+[ALERT] error_rate_critical: Taux d'erreur critique: 100.00%
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] validation: Prix négatif dans test: -100
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] transaction: '<=' not supported between instances of 'NoneType' and 'int'
+[ALERT] error_rate_critical: Taux d'erreur critique: 100.00%
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] validation: Prix négatif dans test: -5.0
+[ERROR] validation: Quantité invalide dans test: 0
+[ERROR] validation: Budget négatif dans test: -100.0
+[ERROR] test_error: Test error message
+[ALERT] error_rate_critical: Taux d'erreur critique: 20.00%
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] performance_slow: Calcul statistiques lent: 1.100s
+[ALERT] budget_critical: Budget total critique: 900.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] validation: Prix négatif dans test_transaction: -100.0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] simulation_tour: Cannot choose from an empty sequence
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ERROR] prometheus_init: Exporter error
+[ERROR] prometheus_metrics: Calculation error
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] validation: Prix négatif dans test: -100
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] transaction: '<=' not supported between instances of 'NoneType' and 'int'
+[ALERT] error_rate_critical: Taux d'erreur critique: 100.00%
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] validation: Prix négatif dans test: -5.0
+[ERROR] validation: Quantité invalide dans test: 0
+[ERROR] validation: Budget négatif dans test: -100.0
+[ERROR] test_error: Test error message
+[ALERT] error_rate_critical: Taux d'erreur critique: 20.00%
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] performance_slow: Calcul statistiques lent: 1.100s
+[ALERT] budget_critical: Budget total critique: 900.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] validation: Prix négatif dans test_transaction: -100.0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ERROR] prometheus_init: Exporter error
+[ERROR] prometheus_metrics: Calculation error
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] validation: Prix négatif dans test: -100
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] transaction: '<=' not supported between instances of 'NoneType' and 'int'
+[ALERT] error_rate_critical: Taux d'erreur critique: 100.00%
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] simulation_tour: Cannot choose from an empty sequence
+[2025-08-11 11:36:33] [INFO] Tentative de lancement des containers Docker
+[2025-08-11 11:36:33] [ERROR] Erreur Prometheus: docker: Cannot connect to the Docker daemon at unix:///Users/fares/.docker/run/docker.sock. Is the docker daemon running?
+
+Run 'docker run --help' for more information
+
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 74.90€
+[ALERT] stock_critical: Stock total critique: 0
+[2025-08-11 11:39:21] [INFO] Tentative de lancement des containers Docker
+[2025-08-11 11:39:22] [ERROR] Erreur Prometheus: docker: Cannot connect to the Docker daemon at unix:///Users/fares/.docker/run/docker.sock. Is the docker daemon running?
+
+Run 'docker run --help' for more information
+
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[2025-08-11 11:41:21] [INFO] Tentative de lancement des containers Docker
+[2025-08-11 11:41:21] [ERROR] Erreur Prometheus: docker: Cannot connect to the Docker daemon at unix:///Users/fares/.docker/run/docker.sock. Is the docker daemon running?
+
+Run 'docker run --help' for more information
+
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 26.39€
+[ALERT] stock_critical: Stock total critique: 0
+[2025-08-11 11:43:02] [INFO] Tentative de lancement des containers Docker
+[2025-08-11 11:43:02] [ERROR] Erreur Prometheus: docker: Cannot connect to the Docker daemon at unix:///Users/fares/.docker/run/docker.sock. Is the docker daemon running?
+
+Run 'docker run --help' for more information
+
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[2025-08-11 11:44:14] [INFO] Tentative de lancement des containers Docker
+[2025-08-11 11:44:15] [ERROR] Erreur Prometheus: docker: Cannot connect to the Docker daemon at unix:///Users/fares/.docker/run/docker.sock. Is the docker daemon running?
+
+Run 'docker run --help' for more information
+
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[2025-08-11 11:45:56] [INFO] Tentative de lancement des containers Docker
+[2025-08-11 11:45:56] [ERROR] Erreur Prometheus: docker: Cannot connect to the Docker daemon at unix:///Users/fares/.docker/run/docker.sock. Is the docker daemon running?
+
+Run 'docker run --help' for more information
+
+[ALERT] budget_critical: Budget total critique: 65.42€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[2025-08-11 11:47:56] [INFO] Tentative de lancement des containers Docker
+[2025-08-11 11:47:57] [ERROR] Erreur Prometheus: docker: Cannot connect to the Docker daemon at unix:///Users/fares/.docker/run/docker.sock. Is the docker daemon running?
+
+Run 'docker run --help' for more information
+
+[ALERT] budget_critical: Budget total critique: 93.74€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] transaction: '<=' not supported between instances of 'NoneType' and 'int'
+[ALERT] error_rate_critical: Taux d'erreur critique: 100.00%
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] validation: Prix négatif dans test: -100
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] transaction: '<=' not supported between instances of 'NoneType' and 'int'
+[ALERT] error_rate_critical: Taux d'erreur critique: 100.00%
+[ALERT] budget_critical: Budget total critique: 298.48€
+[ALERT] stock_critical: Stock total critique: 0
+[2025-08-11 11:51:20] [INFO] Tentative de lancement des containers Docker
+[2025-08-11 11:51:21] [ERROR] Erreur Prometheus: docker: Cannot connect to the Docker daemon at unix:///Users/fares/.docker/run/docker.sock. Is the docker daemon running?
+
+Run 'docker run --help' for more information
+
+[ALERT] budget_critical: Budget total critique: 15.49€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[2025-08-11 11:58:31] [INFO] Tentative de lancement des containers Docker
+[2025-08-11 11:58:32] [ERROR] Erreur Prometheus: docker: Cannot connect to the Docker daemon at unix:///Users/fares/.docker/run/docker.sock. Is the docker daemon running?
+
+Run 'docker run --help' for more information
+
+[ERROR] simulation_tour: unsupported operand type(s) for -: 'list' and 'list'
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] simulation_tour: unsupported operand type(s) for -: 'list' and 'list'
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[2025-08-11 12:03:48] [INFO] Tentative de lancement des containers Docker
+[2025-08-11 12:03:48] [ERROR] Erreur Prometheus: docker: Cannot connect to the Docker daemon at unix:///Users/fares/.docker/run/docker.sock. Is the docker daemon running?
+
+Run 'docker run --help' for more information
+
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[2025-08-11 12:06:27] [INFO] Tentative de lancement des containers Docker
+[2025-08-11 12:06:27] [ERROR] Erreur Prometheus: docker: Cannot connect to the Docker daemon at unix:///Users/fares/.docker/run/docker.sock. Is the docker daemon running?
+
+Run 'docker run --help' for more information
+
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] simulation_tour: unsupported operand type(s) for -: 'list' and 'list'
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] validation: Prix négatif dans test: -5.0
+[ERROR] validation: Quantité invalide dans test: 0
+[ERROR] validation: Budget négatif dans test: -100.0
+[ERROR] test_error: Test error message
+[ALERT] error_rate_critical: Taux d'erreur critique: 20.00%
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] performance_slow: Calcul statistiques lent: 1.100s
+[ALERT] budget_critical: Budget total critique: 900.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] validation: Prix négatif dans test_transaction: -100.0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ERROR] prometheus_init: Exporter error
+[ERROR] prometheus_metrics: Calculation error
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] validation: Prix négatif dans test: -100
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] transaction: '<=' not supported between instances of 'NoneType' and 'int'
+[ALERT] error_rate_critical: Taux d'erreur critique: 100.00%
+[2025-08-11 12:25:15] [INFO] Tentative de lancement des containers Docker
+[2025-08-11 12:25:15] [ERROR] Erreur Prometheus: docker: Cannot connect to the Docker daemon at unix:///Users/fares/.docker/run/docker.sock. Is the docker daemon running?
+
+Run 'docker run --help' for more information
+
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] validation: Prix négatif dans test: -5.0
+[ERROR] validation: Quantité invalide dans test: 0
+[ERROR] validation: Budget négatif dans test: -100.0
+[ERROR] test_error: Test error message
+[ALERT] error_rate_critical: Taux d'erreur critique: 20.00%
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] performance_slow: Calcul statistiques lent: 1.100s
+[ALERT] budget_critical: Budget total critique: 900.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] validation: Prix négatif dans test_transaction: -100.0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ERROR] prometheus_init: Exporter error
+[ERROR] prometheus_metrics: Calculation error
+[ERROR] simulation_tour: Cannot choose from an empty sequence
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] validation: Prix négatif dans test: -100
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] transaction: '<=' not supported between instances of 'NoneType' and 'int'
+[ALERT] error_rate_critical: Taux d'erreur critique: 100.00%
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ALERT] stock_critical: Stock total critique: 0

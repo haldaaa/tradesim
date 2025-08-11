@@ -31,7 +31,10 @@ def test_imports_services():
 def test_simulation_service():
     """Test le SimulationService"""
     try:
-        from services import simulation_service
+        from services.simulation_service import SimulationService
+        
+        # Créer une instance de SimulationService
+        simulation_service = SimulationService()
         
         # Test de base
         simulation_service.reset_simulation()
@@ -132,9 +135,12 @@ def test_integration_services():
     """Test l'intégration entre les services"""
     try:
         from services import (
-            simulation_service, game_manager_service,
-            transaction_service, budget_service
+            game_manager_service, transaction_service, budget_service
         )
+        from services.simulation_service import SimulationService
+        
+        # Créer une instance de SimulationService
+        simulation_service = SimulationService()
         
         # Initialiser le jeu
         game_manager_service.reset_game()
@@ -166,9 +172,12 @@ def test_utilisation_avancee():
     """Test d'utilisation avancée des services"""
     try:
         from services import (
-            simulation_service, game_manager_service,
-            transaction_service, budget_service
+            game_manager_service, transaction_service, budget_service
         )
+        from services.simulation_service import SimulationService
+        
+        # Créer une instance de SimulationService
+        simulation_service = SimulationService()
         
         # Simuler une session complète
         game_manager_service.reset_game()

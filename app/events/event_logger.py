@@ -26,7 +26,7 @@ Date: 2024-08-02
 import json
 import os
 from datetime import datetime
-from config import (
+from config.config import (
     FICHIER_LOG,
     FICHIER_LOG_HUMAIN,
 )

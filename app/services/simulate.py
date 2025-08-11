@@ -46,7 +46,7 @@ if __name__ == "__main__" and __package__ is None:
 # Imports des Repository (nouvelle architecture)
 from repositories import ProduitRepository, FournisseurRepository, EntrepriseRepository
 from services.simulateur import simulation_tour
-from config import DUREE_PAUSE_ENTRE_TOURS, METRICS_ENABLED, METRICS_EXPORTER_PORT
+from config.config import DUREE_PAUSE_ENTRE_TOURS, METRICS_ENABLED, METRICS_EXPORTER_PORT
 from services.game_manager import (
     reset_game, interactive_new_game, save_template, 
     load_template, list_templates
@@ -246,18 +246,10 @@ def run_simulation(n_tours: int = None, infinite: bool = False, verbose: bool = 
     try:
         if infinite:
             # Simulation infinie
-            while True:
-                result = simulation_service.simulation_tour()
-                if verbose:
-                    print(f"Tour {result.get('tour', 'N/A')} - Transactions: {result.get('transactions_effectuees', 0)}")
-                time.sleep(DUREE_PAUSE_ENTRE_TOURS)
+            simulation_service.run_simulation_infinite(verbose=verbose)
         else:
             # Simulation avec nombre de tours défini
-            for tour in range(n_tours):
-                result = simulation_service.simulation_tour()
-                if verbose:
-                    print(f"Tour {result.get('tour', 'N/A')} - Transactions: {result.get('transactions_effectuees', 0)}")
-                time.sleep(DUREE_PAUSE_ENTRE_TOURS)
+            simulation_service.run_simulation_tours(n_tours, verbose=verbose)
 
     except KeyboardInterrupt:
         print("\n⏹️ Simulation interrompue manuellement.")

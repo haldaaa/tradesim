@@ -20,7 +20,7 @@ import os
 # Ajouter le chemin parent pour les imports
 sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
 
-from config import (
+from config.config import (
     METRICS_ENABLED,
     METRICS_COLLECTION_INTERVAL,
     METRICS_EXPORTER_PORT,
@@ -152,7 +152,7 @@ class TestMonitoringConfigIntegration:
     
     def test_all_metrics_vars_importable(self):
         """Test que toutes les variables METRICS_* sont importables"""
-        from config import (
+        from config.config import (
             METRICS_ENABLED,
             METRICS_COLLECTION_INTERVAL,
             METRICS_EXPORTER_PORT,

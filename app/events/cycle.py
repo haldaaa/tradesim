@@ -24,7 +24,7 @@ Date: 2024-08-02
 """
 
 import random
-from config import (
+from config.config import (
     TICK_INTERVAL_EVENT,
     PROBABILITE_EVENEMENT,
 )

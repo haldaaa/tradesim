@@ -24,7 +24,7 @@ from unittest.mock import patch, MagicMock
 sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
 
 from services.simulation_service import SimulationService
-from config import METRICS_ENABLED
+from config.config import METRICS_ENABLED
 
 
 class TestSimulationServiceMonitoring:
@@ -132,34 +132,33 @@ class TestSimulationServiceMonitoring:
     def test_simulation_tour_with_monitoring(self):
         """Test simulation_tour avec monitoring"""
         service = SimulationService()
-        
+
         # Mock l'exporter
-        service.exporter = MagicMock()
-        
+        service.prometheus_exporter = MagicMock()
+
         # Simuler des statistiques
         service.statistiques = {
             'budget_total_actuel': 100000.0,
             'nombre_produits_actifs': 5
         }
-        
+
         # Exécuter un tour
         result = service.simulation_tour(verbose=False)
-        
+
         # Vérifier que collecter_metriques a été appelé
-        service.exporter.update_tradesim_metrics.assert_called_once()
-        
+        service.prometheus_exporter.update_tradesim_metrics.assert_called_once()
+
         # Vérifier le résultat
         assert isinstance(result, dict)
         assert 'tour' in result
         assert 'tick' in result
-        assert 'evenements' in result
-        assert 'transactions' in result
-        assert 'statistiques' in result
+        assert 'evenements_appliques' in result
+        assert 'transactions_effectuees' in result
     
     def test_simulation_tour_without_monitoring(self):
         """Test simulation_tour sans monitoring"""
         service = SimulationService()
-        service.exporter = None
+        service.prometheus_exporter = None
         
         # Exécuter un tour
         result = service.simulation_tour(verbose=False)
@@ -168,20 +167,19 @@ class TestSimulationServiceMonitoring:
         assert isinstance(result, dict)
         assert 'tour' in result
         assert 'tick' in result
-        assert 'evenements' in result
-        assert 'transactions' in result
-        assert 'statistiques' in result
+        assert 'evenements_appliques' in result
+        assert 'transactions_effectuees' in result
     
     def test_run_simulation_tours_with_monitoring(self):
         """Test run_simulation_tours avec monitoring"""
         service = SimulationService()
-        service.exporter = MagicMock()
+        service.prometheus_exporter = MagicMock()
         
         # Exécuter 2 tours
         results = service.run_simulation_tours(2, verbose=False)
         
         # Vérifier que collecter_metriques a été appelé 2 fois
-        assert service.exporter.update_tradesim_metrics.call_count == 2
+        assert service.prometheus_exporter.update_tradesim_metrics.call_count == 2
         
         # Vérifier les résultats
         assert len(results) == 2
@@ -193,7 +191,7 @@ class TestSimulationServiceMonitoring:
     def test_run_simulation_tours_without_monitoring(self):
         """Test run_simulation_tours sans monitoring"""
         service = SimulationService()
-        service.exporter = None
+        service.prometheus_exporter = None
         
         # Exécuter 2 tours
         results = service.run_simulation_tours(2, verbose=False)
@@ -208,7 +206,7 @@ class TestSimulationServiceMonitoring:
     def test_calculer_statistiques_with_monitoring(self):
         """Test calculer_statistiques avec monitoring"""
         service = SimulationService()
-        service.exporter = MagicMock()
+        service.prometheus_exporter = MagicMock()
         
         # Simuler des données
         service.tours_completes = 5
@@ -230,7 +228,7 @@ class TestSimulationServiceMonitoring:
     def test_reset_simulation_with_monitoring(self):
         """Test reset_simulation avec monitoring"""
         service = SimulationService()
-        service.exporter = MagicMock()
+        service.prometheus_exporter = MagicMock()
         
         # Simuler des données
         service.tours_completes = 10

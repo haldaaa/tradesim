@@ -47,6 +47,7 @@ class TestGameStateService:
             id=1,
             nom_entreprise="Test Fournisseur",
             pays="France",
+            continent="Europe",
             stock_produit={1: 50}
         )
         
@@ -54,6 +55,7 @@ class TestGameStateService:
             id=1,
             nom="Test Entreprise",
             pays="France",
+            continent="Europe",
             budget=1000.0,
             budget_initial=1000.0,
             types_preferes=[TypeProduit.consommable],

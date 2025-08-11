@@ -79,6 +79,10 @@ RECHARGE_BUDGET_MAX = 8000             # Montant maximum de recharge de budget
 REASSORT_QUANTITE_MIN = 10            # Quantité minimum de réassortiment
 REASSORT_QUANTITE_MAX = 50            # Quantité maximum de réassortiment
 
+# Quantité d'achat (utilisée pour les transactions aléatoires)
+QUANTITE_ACHAT_MIN = 1                # Quantité minimum d'achat par transaction
+QUANTITE_ACHAT_MAX = 100              # Quantité maximum d'achat par transaction
+
 # Inflation (inflation)
 INFLATION_POURCENTAGE_MIN = 30        # Pourcentage minimum d'inflation
 INFLATION_POURCENTAGE_MAX = 60        # Pourcentage maximum d'inflation
@@ -102,7 +106,7 @@ PROBABILITE_DESACTIVATION = 0.1       # 10% de chance de désactiver un produit 
 PROBABILITE_REACTIVATION = 0.2        # 20% de chance de réactiver un produit inactif
 
 # Intervalles et probabilités
-TICK_INTERVAL_EVENT = 20              # Tous les 20 ticks, on tente des événements
+TICK_INTERVAL_EVENT = 2               # Tous les 2 tours, on tente des événements
 
 PROBABILITE_EVENEMENT = {
     "recharge_budget": 0.5,           # 50% de chance de recharge de budget
@@ -157,8 +161,177 @@ ALERT_STOCK_CRITIQUE = 10  # Stock critique en unités
 ALERT_ERROR_RATE = 0.1  # Taux d'erreur critique (10%)
 
 # Configuration des métriques
-METRICS_COLLECTION_INTERVAL = 1  # Collecte toutes les X secondes
+# METRICS_COLLECTION_INTERVAL déjà défini plus haut = 1.0
 METRICS_RETENTION_DAYS = 30  # Rétention des métriques en jours
+
+# ============================================================================
+# BUDGET METRICS - Configuration des métriques de budget
+# ============================================================================
+
+# Fréquence de calcul des métriques de budget
+BUDGET_METRICS_FREQUENCY = "tour"  # "tour" | "transaction" | "both"
+
+# Historique des budgets (nombre maximum de tours à conserver)
+BUDGET_HISTORY_MAX_TOURS = 200  # Historique maximum en tours
+
+# Cache pour les calculs complexes de budget
+BUDGET_CACHE_ENABLED = True  # Activer le cache LRU pour les calculs
+BUDGET_CACHE_SIZE = 50  # Taille du cache LRU
+
+# Seuils d'alerte pour les budgets
+BUDGET_CRITIQUE_SEUIL = 1000  # Budget critique en euros
+BUDGET_FAIBLE_SEUIL = 3000    # Budget faible en euros
+BUDGET_ELEVE_SEUIL = 15000    # Budget élevé en euros
+
+# Configuration des labels pour les métriques de budget
+BUDGET_LABELS_ENABLED = False  # Activer les labels par entreprise
+BUDGET_LABELS_CONTINENT = False  # Label {continent}
+BUDGET_LABELS_STRATEGIE = False  # Label {strategie}
+
+# ============================================================================
+# ENTERPRISE METRICS - Configuration des métriques d'entreprises
+# ============================================================================
+
+# Fréquence de calcul des métriques d'entreprises
+ENTERPRISE_METRICS_FREQUENCY = "tour"  # "tour" | "transaction" | "both"
+
+# Historique des entreprises (nombre maximum de tours à conserver)
+ENTERPRISE_HISTORY_MAX_TOURS = 200  # Historique maximum en tours
+
+# Cache pour les calculs complexes d'entreprises
+ENTERPRISE_CACHE_ENABLED = True  # Activer le cache LRU pour les calculs
+ENTERPRISE_CACHE_SIZE = 50  # Taille du cache LRU
+
+# Seuils d'alerte pour les entreprises
+ENTERPRISE_CRITIQUE_BUDGET = 1000  # Budget critique en euros
+ENTERPRISE_CRITIQUE_STOCK = 10     # Stock critique en unités
+ENTERPRISE_CRITIQUE_TRANSACTIONS = 0  # Nombre de transactions critique
+
+# Configuration des labels pour les métriques d'entreprises
+ENTERPRISE_LABELS_ENABLED = False  # Activer les labels par entreprise
+ENTERPRISE_LABELS_PAYS = False     # Label {pays}
+ENTERPRISE_LABELS_CONTINENT = False # Label {continent}
+ENTERPRISE_LABELS_STRATEGIE = False # Label {strategie}
+
+# ============================================================================
+# PRODUCT METRICS - Configuration des métriques de produits
+# ============================================================================
+
+# Fréquence de calcul des métriques de produits
+PRODUCT_METRICS_FREQUENCY = "tour"  # "tour" | "transaction" | "both"
+
+# Historique des produits (nombre maximum de tours à conserver)
+PRODUCT_HISTORY_MAX_TOURS = 200  # Historique maximum en tours
+
+# Cache pour les calculs complexes de produits
+PRODUCT_CACHE_ENABLED = True  # Activer le cache LRU pour les calculs
+PRODUCT_CACHE_SIZE = 50  # Taille du cache LRU
+
+# Seuils d'alerte pour les produits
+PRODUCT_CRITIQUE_PRIX = 0  # Prix critique en euros
+PRODUCT_CRITIQUE_STOCK = 5  # Stock critique en unités
+PRODUCT_CRITIQUE_DEMANDE = 0  # Demande critique
+
+# Configuration des labels pour les métriques de produits
+PRODUCT_LABELS_ENABLED = False  # Activer les labels par produit
+PRODUCT_LABELS_TYPE = False     # Label {type}
+PRODUCT_LABELS_CONTINENT = False # Label {continent}
+
+# ============================================================================
+# SUPPLIER METRICS - Configuration des métriques de fournisseurs
+# ============================================================================
+
+# Fréquence de calcul des métriques de fournisseurs
+SUPPLIER_METRICS_FREQUENCY = "tour"  # "tour" | "transaction" | "both"
+
+# Historique des fournisseurs (nombre maximum de tours à conserver)
+SUPPLIER_HISTORY_MAX_TOURS = 200  # Historique maximum en tours
+
+# Cache pour les calculs complexes de fournisseurs
+SUPPLIER_CACHE_ENABLED = True  # Activer le cache LRU pour les calculs
+SUPPLIER_CACHE_SIZE = 50  # Taille du cache LRU
+
+# Seuils d'alerte pour les fournisseurs
+SUPPLIER_CRITIQUE_STOCK = 10  # Stock critique en unités
+SUPPLIER_CRITIQUE_VENTES = 0  # Ventes critiques
+SUPPLIER_CRITIQUE_PRODUITS = 1  # Nombre de produits critique
+
+# Configuration des labels pour les métriques de fournisseurs
+SUPPLIER_LABELS_ENABLED = False  # Activer les labels par fournisseur
+SUPPLIER_LABELS_PAYS = False     # Label {pays}
+SUPPLIER_LABELS_CONTINENT = False # Label {continent}
+
+# ============================================================================
+# TRANSACTION METRICS - Configuration des métriques de transactions
+# ============================================================================
+
+# Fréquence de calcul des métriques de transactions
+TRANSACTION_METRICS_FREQUENCY = "tour"  # "tour" | "transaction" | "both"
+
+# Historique des transactions (nombre maximum de tours à conserver)
+TRANSACTION_HISTORY_MAX_TOURS = 200  # Historique maximum en tours
+
+# Cache pour les calculs complexes de transactions
+TRANSACTION_CACHE_ENABLED = True  # Activer le cache LRU pour les calculs
+TRANSACTION_CACHE_SIZE = 50  # Taille du cache LRU
+
+# Seuils d'alerte pour les transactions
+TRANSACTION_CRITIQUE_VOLUME = 0  # Volume critique par transaction
+TRANSACTION_CRITIQUE_PRIX = 0  # Prix critique par transaction
+TRANSACTION_CRITIQUE_TAUX_REUSSITE = 0.5  # Taux de réussite critique
+
+# Configuration des labels pour les métriques de transactions
+TRANSACTION_LABELS_ENABLED = False  # Activer les labels par transaction
+TRANSACTION_LABELS_STRATEGIE = False # Label {strategie}
+TRANSACTION_LABELS_PRODUIT = False   # Label {produit}
+
+# ============================================================================
+# EVENT METRICS - Configuration des métriques d'événements
+# ============================================================================
+
+# Fréquence de calcul des métriques d'événements
+EVENT_METRICS_FREQUENCY = "tour"  # "tour" | "evenement" | "both"
+
+# Historique des événements (nombre maximum de tours à conserver)
+EVENT_HISTORY_MAX_TOURS = 200  # Historique maximum en tours
+
+# Cache pour les calculs complexes d'événements
+EVENT_CACHE_ENABLED = True  # Activer le cache LRU pour les calculs
+EVENT_CACHE_SIZE = 50  # Taille du cache LRU
+
+# Seuils d'alerte pour les événements
+EVENT_CRITIQUE_FREQUENCE = 5  # Fréquence critique d'événements par tour
+EVENT_CRITIQUE_IMPACT = 0.5  # Impact critique (ratio)
+EVENT_CRITIQUE_INTENSITE = 0.8  # Intensité critique
+
+# Configuration des labels pour les métriques d'événements
+EVENT_LABELS_ENABLED = False  # Activer les labels par événement
+EVENT_LABELS_TYPE = False     # Label {type}
+EVENT_LABELS_IMPACT = False   # Label {impact}
+
+# ============================================================================
+# PERFORMANCE METRICS - Configuration des métriques de performance
+# ============================================================================
+
+# Fréquence de calcul des métriques de performance
+PERFORMANCE_METRICS_FREQUENCY = "tour"  # "tour" | "transaction" | "both"
+
+# Historique des performances (nombre maximum de tours à conserver)
+PERFORMANCE_HISTORY_MAX_TOURS = 200  # Historique maximum en tours
+
+# Cache pour les calculs complexes de performance
+PERFORMANCE_CACHE_ENABLED = True  # Activer le cache LRU pour les calculs
+PERFORMANCE_CACHE_SIZE = 50  # Taille du cache LRU
+
+# Seuils d'alerte pour les performances
+PERFORMANCE_CRITIQUE_TEMPS = 5.0  # Temps d'exécution critique (secondes)
+PERFORMANCE_CRITIQUE_MEMOIRE = 0.8  # Utilisation mémoire critique (ratio)
+PERFORMANCE_CRITIQUE_CPU = 0.9  # Utilisation CPU critique (ratio)
+
+# Configuration des labels pour les métriques de performance
+PERFORMANCE_LABELS_ENABLED = False  # Activer les labels par performance
+PERFORMANCE_LABELS_COMPOSANT = False # Label {composant}
+PERFORMANCE_LABELS_NIVEAU = False    # Label {niveau}
 
 # ============================================================================
 # LATENCY & THROUGHPUT - Configuration des métriques de performance

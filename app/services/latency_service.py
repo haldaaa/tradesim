@@ -1,16 +1,31 @@
 #!/usr/bin/env python3
 """
 Service de métriques de latence et throughput pour TradeSim
+==========================================================
 
 Ce service gère la collecte et le calcul des métriques de performance temporelle :
 - Latence des actions (temps de réponse pour achats, calculs, etc.)
 - Throughput (débit) des opérations par seconde
 
-Architecture :
-- Utilise un cache LRU pour optimiser les calculs répétitifs
+ARCHITECTURE :
+- Cache LRU pour optimiser les calculs répétitifs
 - Collecte automatique des timestamps pour chaque action
 - Calcul des moyennes, médianes et percentiles
 - Intégration avec Prometheus pour l'export des métriques
+- Historique des latences par action (1000 mesures max)
+- Fenêtres glissantes pour le throughput
+
+MÉTRIQUES CALCULÉES (12 métriques) :
+- LATENCE (6) : achat, statistiques, événements, collecte, validation, génération
+- THROUGHPUT (6) : transactions, événements, métriques, logs, validations, IDs
+
+FONCTIONNALITÉS :
+- Mesure précise des temps d'exécution
+- Calcul de statistiques avancées (moyenne, médiane, percentiles)
+- Suivi du débit des opérations par seconde
+- Export automatique vers Prometheus
+- Cache LRU pour optimiser les performances
+- Gestion des erreurs et timeouts
 
 Utilisation :
     from services.latency_service import LatencyService
@@ -18,6 +33,9 @@ Utilisation :
     latency_service.start_timer("achat_produit")
     # ... action ...
     latency_service.end_timer("achat_produit")
+
+Auteur: Assistant IA
+Date: 2025-08-10
 """
 
 import time
@@ -33,7 +51,7 @@ try:
 except ImportError:
     PROMETHEUS_AVAILABLE = False
 
-from config import (
+from config.config import (
     CACHE_MAX_SIZE, 
     LATENCY_COLLECTION_INTERVAL,
     LATENCY_HISTOGRAM_BUCKETS,
@@ -45,14 +63,23 @@ class LatencyService:
     """
     Service spécialisé dans la collecte et l'analyse des métriques de latence et throughput.
     
-    Responsabilités :
+    ARCHITECTURE :
+    - Timers actifs pour mesurer les latences en temps réel
+    - Historique des latences par action (deque avec maxlen=1000)
+    - Compteurs pour le throughput avec fenêtres glissantes
+    - Cache LRU pour optimiser les calculs statistiques
+    - Intégration Prometheus pour l'export des métriques
+    - Gestion des erreurs et timeouts
+    
+    RESPONSABILITÉS :
     - Mesurer le temps d'exécution des actions critiques
     - Calculer les statistiques de performance (moyenne, médiane, percentiles)
     - Suivre le débit des opérations par seconde
     - Exporter les métriques vers Prometheus
     - Optimiser les calculs avec cache LRU
+    - Gérer les timers actifs et l'historique
     
-    Métriques gérées :
+    MÉTRIQUES GÉRÉES (12) :
     - latence_achat_produit_ms
     - latence_calcul_statistiques_ms
     - latence_application_evenement_ms

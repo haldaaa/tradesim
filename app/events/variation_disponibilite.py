@@ -95,11 +95,12 @@ def appliquer_variation_disponibilite(tick: int) -> List[Dict[str, Any]]:
     str_desactives = ", ".join(noms_desactives) if noms_desactives else "aucun"
     str_reactives = ", ".join(noms_reactives) if noms_reactives else "aucun"
 
+    # Créer les listes simplifiées
+    desactives_liste = ", ".join(noms_desactives) if noms_desactives else "aucun"
+    reactives_liste = ", ".join(noms_reactives) if noms_reactives else "aucun"
+    
     message_humain = (
-        f"[VARIATION] "
-        f"[DESACTIVE] {len(a_desactiver)} désactivés ({str_desactives}) | "
-        f"[REACTIVE] {len(a_activer)} réactivés ({str_reactives}) | "
-        f"Total modifié: {len(modifications)} produits"
+        f"🔄 Tour {tick} - DISPONIBILITÉ: {desactives_liste} désactivé, {reactives_liste} réactivé"
     )
 
     log_json = {

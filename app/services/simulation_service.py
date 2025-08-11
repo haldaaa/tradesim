@@ -2,16 +2,23 @@
 """
 Service de simulation principal avec monitoring Prometheus et optimisations
 Système principal de production avec IDs uniques et traçabilité complète
+
+CORRECTION BUG (10/08/2025) :
+- Correction des références incorrectes aux attributs inexistants
+- Utilisation de PriceService pour la gestion des prix
+- Correction de l'accès aux stocks des fournisseurs
+- Unification de l'architecture avec le reste de l'application
 """
 
 import json
 import time
+import random
 from datetime import datetime, timezone
 from collections import defaultdict
 from functools import lru_cache
 from typing import List, Dict, Any, Optional
 
-from config import (
+from config.config import (
     # Configuration existante
     FICHIER_LOG, FICHIER_LOG_HUMAIN, EVENT_LOG_JSON, EVENT_LOG_HUMAIN,
     TICK_INTERVAL_EVENT, PROBABILITE_EVENEMENT,
@@ -27,7 +34,13 @@ from config import (
     ALERT_BUDGET_CRITIQUE, ALERT_STOCK_CRITIQUE, ALERT_ERROR_RATE,
     
     # Configuration des métriques
-    METRICS_COLLECTION_INTERVAL, METRICS_RETENTION_DAYS
+    METRICS_COLLECTION_INTERVAL, METRICS_RETENTION_DAYS, METRICS_ENABLED,
+    
+    # Configuration de simulation pour métriques
+    PROBABILITE_SELECTION_ENTREPRISE, DUREE_PAUSE_ENTRE_TOURS,
+    
+    # Configuration des quantités
+    QUANTITE_ACHAT_MIN, QUANTITE_ACHAT_MAX
 )
 
 from models.models import Entreprise, Fournisseur, Produit, TypeProduit
@@ -35,6 +48,14 @@ from events.inflation import appliquer_inflation
 from events.recharge_budget import appliquer_recharge_budget
 from events.reassort import evenement_reassort
 from events.variation_disponibilite import appliquer_variation_disponibilite
+
+# Import du service de prix (CORRECTION BUG)
+try:
+    from services.price_service import price_service
+    PRICE_SERVICE_AVAILABLE = True
+except ImportError:
+    PRICE_SERVICE_AVAILABLE = False
+    print("⚠️ Service de prix non disponible")
 
 # Import du service de latence
 try:
@@ -51,6 +72,62 @@ try:
 except ImportError:
     MONITORING_AVAILABLE = False
     print("⚠️ Monitoring Prometheus non disponible")
+
+# Import du service de métriques de budget
+try:
+    from services.budget_metrics_service import BudgetMetricsService
+    BUDGET_METRICS_AVAILABLE = True
+except ImportError:
+    BUDGET_METRICS_AVAILABLE = False
+    print("⚠️ Service de métriques de budget non disponible")
+
+# Import du service de métriques d'entreprises
+try:
+    from services.enterprise_metrics_service import EnterpriseMetricsService
+    ENTERPRISE_METRICS_AVAILABLE = True
+except ImportError:
+    ENTERPRISE_METRICS_AVAILABLE = False
+    print("⚠️ Service de métriques d'entreprises non disponible")
+
+# Import du service de métriques de produits
+try:
+    from services.product_metrics_service import ProductMetricsService
+    PRODUCT_METRICS_AVAILABLE = True
+except ImportError:
+    PRODUCT_METRICS_AVAILABLE = False
+    print("⚠️ Service de métriques de produits non disponible")
+
+# Import du service de métriques de fournisseurs
+try:
+    from services.supplier_metrics_service import SupplierMetricsService
+    SUPPLIER_METRICS_AVAILABLE = True
+except ImportError:
+    SUPPLIER_METRICS_AVAILABLE = False
+    print("⚠️ Service de métriques de fournisseurs non disponible")
+
+# Import du service de métriques de transactions
+try:
+    from services.transaction_metrics_service import TransactionMetricsService
+    TRANSACTION_METRICS_AVAILABLE = True
+except ImportError:
+    TRANSACTION_METRICS_AVAILABLE = False
+    print("⚠️ Service de métriques de transactions non disponible")
+
+# Import du service de métriques d'événements
+try:
+    from services.event_metrics_service import EventMetricsService
+    EVENT_METRICS_AVAILABLE = True
+except ImportError:
+    EVENT_METRICS_AVAILABLE = False
+    print("⚠️ Service de métriques d'événements non disponible")
+
+# Import du service de métriques de performance
+try:
+    from services.performance_metrics_service import PerformanceMetricsService
+    PERFORMANCE_METRICS_AVAILABLE = True
+except ImportError:
+    PERFORMANCE_METRICS_AVAILABLE = False
+    print("⚠️ Service de métriques de performance non disponible")
 
 class IDGenerator:
     """Générateur d'IDs uniques avec validation et configuration centralisée"""
@@ -111,11 +188,41 @@ class IDGenerator:
 class SimulationService:
     """Service de simulation principal avec optimisations et monitoring"""
     
-    def __init__(self, entreprises: List[Entreprise], fournisseurs: List[Fournisseur], 
-                 produits: List[Produit], verbose: bool = False):
-        self.entreprises = entreprises
-        self.fournisseurs = fournisseurs
-        self.produits = produits
+    def __init__(self, entreprises: List[Entreprise] = None, fournisseurs: List[Fournisseur] = None, 
+                 produits: List[Produit] = None, verbose: bool = False):
+        # Charger les données depuis les repositories si non fournies
+        if entreprises is None:
+            try:
+                from repositories import EntrepriseRepository
+                repo = EntrepriseRepository()
+                self.entreprises = repo.get_all()
+            except Exception as e:
+                self.entreprises = []
+                print(f"⚠️ Impossible de charger les entreprises: {e}")
+        else:
+            self.entreprises = entreprises
+            
+        if fournisseurs is None:
+            try:
+                from repositories import FournisseurRepository
+                repo = FournisseurRepository()
+                self.fournisseurs = repo.get_all()
+            except Exception as e:
+                self.fournisseurs = []
+                print(f"⚠️ Impossible de charger les fournisseurs: {e}")
+        else:
+            self.fournisseurs = fournisseurs
+            
+        if produits is None:
+            try:
+                from repositories import ProduitRepository
+                repo = ProduitRepository()
+                self.produits = repo.get_all()
+            except Exception as e:
+                self.produits = []
+                print(f"⚠️ Impossible de charger les produits: {e}")
+        else:
+            self.produits = produits
         self.verbose = verbose
         
         # État de simulation
@@ -145,12 +252,77 @@ class SimulationService:
         
         # Prometheus exporter
         self.prometheus_exporter = None
+        self.exporter = None  # Alias pour compatibilité tests
         if MONITORING_AVAILABLE:
             try:
                 self.prometheus_exporter = PrometheusExporter()
+                self.exporter = self.prometheus_exporter  # Alias
                 print("📊 Monitoring Prometheus activé")
             except Exception as e:
                 self._log_error("prometheus_init", str(e))
+        
+        # Service de métriques de budget
+        self.budget_metrics_service = None
+        if BUDGET_METRICS_AVAILABLE:
+            try:
+                self.budget_metrics_service = BudgetMetricsService()
+                print("💰 Service de métriques de budget activé")
+            except Exception as e:
+                self._log_error("budget_metrics_init", str(e))
+        
+        # Service de métriques d'entreprises
+        self.enterprise_metrics_service = None
+        if ENTERPRISE_METRICS_AVAILABLE:
+            try:
+                self.enterprise_metrics_service = EnterpriseMetricsService()
+                print("🏢 Service de métriques d'entreprises activé")
+            except Exception as e:
+                self._log_error("enterprise_metrics_init", str(e))
+
+        # Service de métriques de fournisseurs
+        self.supplier_metrics_service = None
+        if SUPPLIER_METRICS_AVAILABLE:
+            try:
+                self.supplier_metrics_service = SupplierMetricsService()
+                print("🏭 Service de métriques de fournisseurs activé")
+            except Exception as e:
+                self._log_error("supplier_metrics_init", str(e))
+
+        # Service de métriques de transactions
+        self.transaction_metrics_service = None
+        if TRANSACTION_METRICS_AVAILABLE:
+            try:
+                self.transaction_metrics_service = TransactionMetricsService()
+                print("💳 Service de métriques de transactions activé")
+            except Exception as e:
+                self._log_error("transaction_metrics_init", str(e))
+
+        # Service de métriques d'événements
+        self.event_metrics_service = None
+        if EVENT_METRICS_AVAILABLE:
+            try:
+                self.event_metrics_service = EventMetricsService()
+                print("🎯 Service de métriques d'événements activé")
+            except Exception as e:
+                self._log_error("event_metrics_init", str(e))
+
+        # Service de métriques de performance
+        self.performance_metrics_service = None
+        if PERFORMANCE_METRICS_AVAILABLE:
+            try:
+                self.performance_metrics_service = PerformanceMetricsService()
+                print("⚡ Service de métriques de performance activé")
+            except Exception as e:
+                self._log_error("performance_metrics_init", str(e))
+        
+        # Service de métriques de produits
+        self.product_metrics_service = None
+        if PRODUCT_METRICS_AVAILABLE:
+            try:
+                self.product_metrics_service = ProductMetricsService()
+                print("📦 Service de métriques de produits activé")
+            except Exception as e:
+                self._log_error("product_metrics_init", str(e))
 
     def _validate_data(self, data: Dict[str, Any], context: str) -> bool:
         """Validation des données métier"""
@@ -235,7 +407,7 @@ class SimulationService:
         
         budget_total_actuel = sum(entreprise.budget for entreprise in self.entreprises)
         stock_total_actuel = sum(
-            sum(entreprise.stocks.get(produit.nom, 0) for produit in self.produits)
+            sum(entreprise.stocks.get(produit.nom, 0) for produit in self.produits if hasattr(entreprise, 'stocks'))
             for entreprise in self.entreprises
         )
         
@@ -287,49 +459,137 @@ class SimulationService:
             self.latency_service.start_timer("achat_produit")
         
         try:
-            # Validation des données d'entrée
+            # Validation des données d'entrée (CORRECTION BUG)
+            prix = price_service.get_prix_produit_fournisseur(produit.id, fournisseur.id) if PRICE_SERVICE_AVAILABLE else 0
+            stock_disponible = fournisseur.stock_produit.get(produit.id, 0)
+            
             input_data = {
                 'budget': entreprise.budget,
-                'prix': fournisseur.prix_produits.get(produit.nom, 0),
-                'stock_disponible': fournisseur.stocks.get(produit.nom, 0)
+                'prix': prix or 0,
+                'stock_disponible': stock_disponible
             }
             
             if not self._validate_data(input_data, "acheter_produit"):
                 return False
             
-            # Logique d'achat existante
-            stock_actuel = entreprise.stocks.get(produit.nom, 0)
-            prix = fournisseur.prix_produits.get(produit.nom, 0)
-            stock_disponible = fournisseur.stocks.get(produit.nom, 0)
+            # Logique d'achat existante (CORRECTION BUG)
+            stock_actuel = entreprise.stocks.get(produit.nom, 0) if hasattr(entreprise, 'stocks') else 0
+            prix = price_service.get_prix_produit_fournisseur(produit.id, fournisseur.id) if PRICE_SERVICE_AVAILABLE else 0
+            stock_disponible = fournisseur.stock_produit.get(produit.id, 0)
             
             if stock_disponible <= 0 or prix <= 0:
+                # Enregistrer la transaction échouée
+                if self.transaction_metrics_service:
+                    transaction_data = {
+                        'entreprise': entreprise.nom,
+                        'produit': produit.nom,
+                        'fournisseur': fournisseur.nom_entreprise,
+                        'quantite': 0,
+                        'prix_unitaire': prix,
+                        'montant_total': 0,
+                        'strategie': strategie,
+                        'raison_echec': 'stock_insuffisant' if stock_disponible <= 0 else 'prix_invalide'
+                    }
+                    self.transaction_metrics_service.enregistrer_transaction(transaction_data, reussie=False)
+                
                 if self.verbose:
                     print(f"❌ {entreprise.nom} ne peut pas acheter {produit.nom} chez {fournisseur.nom_entreprise}")
                     print(f"\t- Stock disponible: {stock_disponible} | Prix: {prix}€")
                 return False
             
-            # Calcul de la quantité d'achat
+            # Calcul de la quantité d'achat (aléatoire entre min et max)
             quantite_max_budget = int(entreprise.budget / prix)
             quantite_max_stock = stock_disponible
-            quantite_achat = min(quantite_max_budget, quantite_max_stock, 99)
+            quantite_souhaitee = random.randint(QUANTITE_ACHAT_MIN, QUANTITE_ACHAT_MAX)
+            quantite_achat = min(quantite_max_budget, quantite_max_stock, quantite_souhaitee)
             
             if quantite_achat <= 0:
+                # Enregistrer la transaction échouée
+                if self.transaction_metrics_service:
+                    transaction_data = {
+                        'entreprise': entreprise.nom,
+                        'produit': produit.nom,
+                        'fournisseur': fournisseur.nom_entreprise,
+                        'quantite': 0,
+                        'prix_unitaire': prix,
+                        'montant_total': 0,
+                        'strategie': strategie,
+                        'raison_echec': 'budget_insuffisant'
+                    }
+                    self.transaction_metrics_service.enregistrer_transaction(transaction_data, reussie=False)
+                
                 if self.verbose:
                     print(f"❌ {entreprise.nom} ne peut pas acheter {produit.nom} chez {fournisseur.nom_entreprise}")
                     print(f"\t- Budget insuffisant ou stock épuisé")
                 return False
             
-            # Mise à jour des données
+            # Mise à jour des données (CORRECTION BUG)
             montant_total = quantite_achat * prix
             entreprise.budget -= montant_total
-            entreprise.stocks[produit.nom] = stock_actuel + quantite_achat
-            fournisseur.stocks[produit.nom] = stock_disponible - quantite_achat
             
-            # Validation des données après modification
+            # Enregistrer la transaction dans le service de budget
+            if self.budget_metrics_service:
+                self.budget_metrics_service.enregistrer_transaction(montant_total, "achat")
+            
+            # Enregistrer la transaction dans le service d'entreprises
+            if self.enterprise_metrics_service:
+                transaction_data = {
+                    'produit': produit.nom,
+                    'fournisseur': fournisseur.nom_entreprise,
+                    'quantite': quantite_achat,
+                    'prix_unitaire': prix,
+                    'montant_total': montant_total,
+                    'strategie': strategie
+                }
+                self.enterprise_metrics_service.enregistrer_transaction(entreprise.id, transaction_data)
+            
+            # Enregistrer la vente dans le service de fournisseurs
+            if self.supplier_metrics_service:
+                vente_data = {
+                    'entreprise': entreprise.nom,
+                    'produit': produit.nom,
+                    'quantite': quantite_achat,
+                    'prix_unitaire': prix,
+                    'montant_total': montant_total,
+                    'strategie': strategie
+                }
+                self.supplier_metrics_service.enregistrer_vente(fournisseur.id, vente_data)
+            
+            # Enregistrer l'achat dans le service de produits
+            if self.product_metrics_service:
+                achat_data = {
+                    'entreprise': entreprise.nom,
+                    'fournisseur': fournisseur.nom_entreprise,
+                    'quantite': quantite_achat,
+                    'prix_unitaire': prix,
+                    'montant_total': montant_total,
+                    'strategie': strategie
+                }
+                self.product_metrics_service.enregistrer_achat(produit.id, achat_data)
+            
+            # Enregistrer la transaction
+            if self.transaction_metrics_service:
+                transaction_data = {
+                    'entreprise': entreprise.nom,
+                    'produit': produit.nom,
+                    'fournisseur': fournisseur.nom_entreprise,
+                    'quantite': quantite_achat,
+                    'prix_unitaire': prix,
+                    'montant_total': montant_total,
+                    'strategie': strategie
+                }
+                self.transaction_metrics_service.enregistrer_transaction(transaction_data, reussie=True)
+            
+            # Mise à jour des stocks (avec vérification d'attributs)
+            if hasattr(entreprise, 'stocks'):
+                entreprise.stocks[produit.nom] = stock_actuel + quantite_achat
+            fournisseur.stock_produit[produit.id] = stock_disponible - quantite_achat
+            
+            # Validation des données après modification (CORRECTION BUG)
             output_data = {
                 'budget': entreprise.budget,
-                'stock_entreprise': entreprise.stocks[produit.nom],
-                'stock_fournisseur': fournisseur.stocks[produit.nom]
+                'stock_entreprise': entreprise.stocks.get(produit.nom, 0) if hasattr(entreprise, 'stocks') else 0,
+                'stock_fournisseur': fournisseur.stock_produit.get(produit.id, 0)
             }
             
             if not self._validate_data(output_data, "apres_achat"):
@@ -384,18 +644,23 @@ class SimulationService:
             return False
 
     def simuler_transactions(self) -> int:
-        """Simulation des transactions avec monitoring"""
+        """Simulation des transactions avec monitoring (CORRECTION BUG)"""
         transactions_effectuees = 0
         
         for entreprise in self.entreprises:
-            for produit in self.produits:
-                # Trouver le fournisseur le moins cher
-                fournisseur_moins_cher = min(
-                    self.fournisseurs,
-                    key=lambda f: f.prix_produits.get(produit.nom, float('inf'))
-                )
+            for produit in [p for p in self.produits if p.actif]:
+                # Trouver le fournisseur le moins cher (CORRECTION BUG)
+                fournisseur_moins_cher = None
+                prix_min = float('inf')
                 
-                if self.acheter_produit_detaille(entreprise, produit, fournisseur_moins_cher, "moins_cher"):
+                for fournisseur in self.fournisseurs:
+                    if produit.id in fournisseur.stock_produit and fournisseur.stock_produit[produit.id] > 0:
+                        prix = price_service.get_prix_produit_fournisseur(produit.id, fournisseur.id) if PRICE_SERVICE_AVAILABLE else float('inf')
+                        if prix and prix < prix_min:
+                            prix_min = prix
+                            fournisseur_moins_cher = fournisseur
+                
+                if fournisseur_moins_cher and self.acheter_produit_detaille(entreprise, produit, fournisseur_moins_cher, "moins_cher"):
                     transactions_effectuees += 1
         
         # Écriture du buffer en fin de simulation
@@ -433,12 +698,17 @@ class SimulationService:
                     evenements_appliques.extend(logs)
                     self.evenements_appliques += 1
             
-            # Variation disponibilité
+            # Variation disponibilité (CORRECTION BUG)
             if self._valider_probabilite(PROBABILITE_EVENEMENT.get('variation_disponibilite', 0)):
-                logs = appliquer_variation_disponibilite(self.fournisseurs, self.produits)
+                logs = appliquer_variation_disponibilite(self.tick_actuel)
                 if logs:
                     evenements_appliques.extend(logs)
                     self.evenements_appliques += 1
+        
+        # Enregistrement des événements dans le service de métriques
+        if self.event_metrics_service and evenements_appliques:
+            for evenement in evenements_appliques:
+                self.event_metrics_service.enregistrer_evenement(evenement)
         
         # Fin du timer et enregistrement des métriques
         if self.latency_service:
@@ -503,6 +773,9 @@ class SimulationService:
         try:
             stats = self.calculer_statistiques()
             
+            # Calcul des métriques de simulation
+            simulation_metrics = self._calculer_metriques_simulation(stats)
+            
             metrics_data = {
                 "action_id": metric_id,
                 "session_id": self.id_generator.get_session_id(),
@@ -517,7 +790,20 @@ class SimulationService:
                 "duree_simulation": stats.get("duree_simulation", 0),
                 "error_count": self.error_count,
                 "total_actions": self.total_actions,
-                "error_rate": self.error_count / max(self.total_actions, 1)
+                "error_rate": self.error_count / max(self.total_actions, 1),
+                
+                # ============================================================================
+                # MÉTRIQUES DE SIMULATION (8 métriques)
+                # ============================================================================
+                "tick_actuel": self.tick_actuel,
+                "probabilite_selection_entreprise": PROBABILITE_SELECTION_ENTREPRISE,
+                "duree_pause_entre_tours": DUREE_PAUSE_ENTRE_TOURS,
+                "tick_interval_event": TICK_INTERVAL_EVENT,
+                "probabilite_evenement": PROBABILITE_EVENEMENT.get("inflation", 0.4),  # Probabilité moyenne
+                "frequence_evenements": simulation_metrics["frequence_evenements"],
+                "taux_succes_transactions": simulation_metrics["taux_succes_transactions"],
+                "vitesse_simulation": simulation_metrics["vitesse_simulation"],
+                "stabilite_prix": simulation_metrics["stabilite_prix"]
             }
             
             # Validation des métriques
@@ -536,20 +822,45 @@ class SimulationService:
                 metrics_data["latency"] = latency_metrics
                 metrics_data["throughput"] = throughput_metrics
             
-            # Prometheus exporter avec métriques de latence
+            # Ajout des métriques de budget
+            if self.budget_metrics_service:
+                budget_metrics = self.budget_metrics_service.calculer_metriques_budget(self.entreprises)
+                metrics_data.update(budget_metrics)
+            
+            # Ajout des métriques d'entreprises
+            if self.enterprise_metrics_service:
+                enterprise_metrics = self.enterprise_metrics_service.calculer_metriques_entreprises(self.entreprises)
+                metrics_data.update(enterprise_metrics)
+            
+            # Ajout des métriques de fournisseurs
+            if self.supplier_metrics_service:
+                supplier_metrics = self.supplier_metrics_service.calculer_metriques_fournisseurs(self.fournisseurs, self.produits)
+                metrics_data.update(supplier_metrics)
+            
+            # Ajout des métriques de transactions
+            if self.transaction_metrics_service:
+                transaction_metrics = self.transaction_metrics_service.calculer_metriques_transactions()
+                metrics_data.update(transaction_metrics)
+            
+            # Ajout des métriques d'événements
+            if self.event_metrics_service:
+                event_metrics = self.event_metrics_service.calculer_metriques_evenements()
+                metrics_data.update(event_metrics)
+            
+            # Ajout des métriques de performance
+            if self.performance_metrics_service:
+                performance_metrics = self.performance_metrics_service.calculer_metriques_performance()
+                metrics_data.update(performance_metrics)
+            
+            # Ajout des métriques de produits
+            if self.product_metrics_service:
+                product_metrics = self.product_metrics_service.calculer_metriques_produits(self.produits, self.fournisseurs)
+                metrics_data.update(product_metrics)
+            
+            # Prometheus exporter avec métriques de latence (CORRECTION BUG)
             if self.prometheus_exporter:
-                # Métriques de base
-                self.prometheus_exporter.update_metrics(
-                    budget_total=stats.get("budget_total_actuel", 0),
-                    stock_total=stats.get("stock_total_actuel", 0),
-                    tours_completes=stats.get("tours_completes", 0),
-                    evenements_appliques=stats.get("evenements_appliques", 0),
-                    temps_simulation_tour_seconds=stats.get("duree_simulation", 0)
-                )
-                
-                # Métriques de latence et throughput
-                if self.latency_service:
-                    self.prometheus_exporter.update_tradesim_metrics(metrics_data)
+                # Métriques de base et de simulation
+                self.prometheus_exporter.update_tradesim_metrics(metrics_data)
             
             # Fin du timer et enregistrement des métriques
             if self.latency_service:
@@ -563,9 +874,13 @@ class SimulationService:
             if self.latency_service:
                 self.latency_service.end_timer("collecte_metriques")
 
-    def simulation_tour(self) -> Dict[str, Any]:
+    def simulation_tour(self, verbose: bool = None) -> Dict[str, Any]:
         """Tour de simulation avec monitoring et validation"""
         start_time = time.time()
+        
+        # Début de la mesure de performance
+        if self.performance_metrics_service:
+            self.performance_metrics_service.debut_mesure()
         
         try:
             # Simulation des transactions
@@ -578,11 +893,40 @@ class SimulationService:
             if evenements:
                 self.log_event(evenements, "evenements_tour")
             
+            # Ajouter le tour au service de budget
+            if self.budget_metrics_service:
+                self.budget_metrics_service.ajouter_tour(self.entreprises, self.tick_actuel)
+            
+            # Ajouter le tour au service d'entreprises
+            if self.enterprise_metrics_service:
+                self.enterprise_metrics_service.ajouter_tour(self.entreprises, self.tick_actuel)
+            
+            # Ajouter le tour au service de fournisseurs
+            if self.supplier_metrics_service:
+                self.supplier_metrics_service.ajouter_tour(self.fournisseurs, self.produits, self.tick_actuel)
+            
+            # Ajouter le tour au service de produits
+            if self.product_metrics_service:
+                self.product_metrics_service.ajouter_tour(self.produits, self.fournisseurs, self.tick_actuel)
+            
+            # Ajouter le tour au service de transactions
+            if self.transaction_metrics_service:
+                self.transaction_metrics_service.ajouter_tour(self.tick_actuel)
+            
+            # Ajouter le tour au service d'événements
+            if self.event_metrics_service:
+                self.event_metrics_service.ajouter_tour(self.tick_actuel)
+            
+            # Finir la mesure de performance
+            if self.performance_metrics_service:
+                self.performance_metrics_service.fin_mesure(self.tick_actuel)
+            
             # Collecte des métriques
             self.collecter_metriques()
             
             # Affichage verbose
-            if self.verbose:
+            verbose_to_use = verbose if verbose is not None else self.verbose
+            if verbose_to_use:
                 print(f"\n🔄 Tour {self.tours_completes + 1} - Tick {self.tick_actuel}")
                 print(f"📊 Transactions effectuées: {transactions_effectuees}")
                 
@@ -591,10 +935,22 @@ class SimulationService:
                     for event in evenements:
                         if isinstance(event, dict):
                             log_humain = event.get('log_humain', str(event))
-                            probabilite = event.get('probabilite', 'N/A')
-                            print(f"• {log_humain} (probabilité: {probabilite})")
+                            # Nettoyer le log_humain si il contient des données d'entreprise
+                            if 'Entreprise(id=' in str(log_humain):
+                                # Extraire juste la partie utile du message
+                                if 'reçoit +' in str(log_humain):
+                                    # Pour les recharges individuelles
+                                    parts = str(log_humain).split(' - ')
+                                    if len(parts) > 1:
+                                        log_humain = parts[1]
+                                elif 'RECHARGE -' in str(log_humain):
+                                    # Pour les résumés de recharge
+                                    parts = str(log_humain).split(' - ')
+                                    if len(parts) > 1:
+                                        log_humain = parts[1]
+                            print(f"• [EVENT] {log_humain}")
                         else:
-                            print(f"• Événement: {event}")
+                            print(f"• [EVENT] {event}")
             
             # Mise à jour des compteurs
             self.tick_actuel += 1
@@ -616,6 +972,191 @@ class SimulationService:
         except Exception as e:
             self._log_error("simulation_tour", str(e))
             return {"error": str(e)}
+
+    def _calculer_metriques_simulation(self, stats: Dict[str, Any]) -> Dict[str, Any]:
+        """Calcul des métriques de simulation basées sur les statistiques"""
+        try:
+            # Récupération des données de base
+            tours_completes = stats.get("tours_completes", 0)
+            evenements_appliques = stats.get("evenements_appliques", 0)
+            duree_simulation = stats.get("duree_simulation", 0)
+            transactions_reussies = stats.get("transactions_reussies", 0)
+            transactions_total = stats.get("transactions_total", 0)
+            
+            # 1. Fréquence des événements (événements par tour)
+            frequence_evenements = 0
+            if tours_completes > 0:
+                frequence_evenements = evenements_appliques / tours_completes
+            
+            # 2. Taux de succès des transactions (0-1)
+            taux_succes_transactions = 0
+            if transactions_total > 0:
+                taux_succes_transactions = transactions_reussies / transactions_total
+            
+            # 3. Vitesse de simulation (tours par seconde)
+            vitesse_simulation = 0
+            if duree_simulation > 0:
+                vitesse_simulation = tours_completes / duree_simulation
+            
+            # 4. Stabilité des prix (coefficient de variation)
+            # Calcul basé sur la variation des prix des produits
+            stabilite_prix = self._calculer_stabilite_prix()
+            
+            return {
+                "frequence_evenements": round(frequence_evenements, 4),
+                "taux_succes_transactions": round(taux_succes_transactions, 4),
+                "vitesse_simulation": round(vitesse_simulation, 4),
+                "stabilite_prix": round(stabilite_prix, 4)
+            }
+            
+        except Exception as e:
+            self._log_error("calcul_metriques_simulation", str(e))
+            return {
+                "frequence_evenements": 0,
+                "taux_succes_transactions": 0,
+                "vitesse_simulation": 0,
+                "stabilite_prix": 0
+            }
+    
+    def _calculer_stabilite_prix(self) -> float:
+        """Calcule la stabilité des prix (coefficient de variation)"""
+        try:
+            if not hasattr(self, 'produits') or not self.produits:
+                return 0.0
+            
+            # Récupération des prix actuels
+            prix_actuels = []
+            for produit in self.produits:
+                if hasattr(produit, 'prix') and produit.prix > 0:
+                    prix_actuels.append(produit.prix)
+            
+            if len(prix_actuels) < 2:
+                return 0.0
+            
+            # Calcul du coefficient de variation (écart-type / moyenne)
+            import statistics
+            moyenne = statistics.mean(prix_actuels)
+            ecart_type = statistics.stdev(prix_actuels)
+            
+            if moyenne == 0:
+                return 0.0
+            
+            coefficient_variation = ecart_type / moyenne
+            return coefficient_variation
+            
+        except Exception as e:
+            self._log_error("calcul_stabilite_prix", str(e))
+            return 0.0
+
+    def reset_simulation(self) -> None:
+        """Réinitialise la simulation"""
+        try:
+            self.tick_actuel = 0
+            self.tours_completes = 0
+            self.evenements_appliques = 0
+            self.debut_simulation = time.time()
+            self.error_count = 0
+            self.total_actions = 0
+            self._cache_stats.clear()
+            
+            # Réinitialiser les services de métriques
+            if self.budget_metrics_service:
+                self.budget_metrics_service.reset_metrics()
+            if self.enterprise_metrics_service:
+                self.enterprise_metrics_service.reset_metrics()
+            if self.supplier_metrics_service:
+                self.supplier_metrics_service.reset_metrics()
+            if self.transaction_metrics_service:
+                self.transaction_metrics_service.reset_metrics()
+            if self.event_metrics_service:
+                self.event_metrics_service.reset_metrics()
+            if self.performance_metrics_service:
+                self.performance_metrics_service.reset_metrics()
+            if self.product_metrics_service:
+                self.product_metrics_service.reset_metrics()
+            
+            if self.verbose:
+                print("🔄 Simulation réinitialisée")
+                
+        except Exception as e:
+            self._log_error("reset_simulation", str(e))
+    
+    def run_simulation_tours(self, nombre_tours: int, verbose: bool = False) -> Dict[str, Any]:
+        """Exécute une simulation pour un nombre de tours donné"""
+        try:
+            if verbose:
+                print(f"🚀 Lancement de la simulation pour {nombre_tours} tours...")
+            
+            for tour in range(nombre_tours):
+                resultat = self.simulation_tour()
+                if "error" in resultat:
+                    print(f"❌ Erreur tour {tour}: {resultat['error']}")
+                    break
+                
+                if verbose and tour % 10 == 0:
+                    print(f"📊 Tour {tour}/{nombre_tours} - Transactions: {resultat.get('transactions_effectuees', 0)}")
+            
+            if verbose:
+                print("✅ Simulation terminée.")
+            
+            return self.calculer_statistiques()
+            
+        except Exception as e:
+            self._log_error("run_simulation_tours", str(e))
+            return {"error": str(e)}
+    
+    def run_simulation_infinite(self, verbose: bool = False) -> None:
+        """Exécute une simulation infinie (pour CLI interactif)"""
+        try:
+            if verbose:
+                print("🚀 Lancement de la simulation infinie...")
+            
+            # Simulation vraiment infinie
+            tour = 0
+            while True:
+                resultat = self.simulation_tour()
+                if "error" in resultat:
+                    print(f"❌ Erreur tour {tour}: {resultat['error']}")
+                    break
+                
+                if verbose and tour % 10 == 0:
+                    print(f"📊 Tour {tour} - Transactions: {resultat.get('transactions_effectuees', 0)}")
+                
+                tour += 1
+                time.sleep(0.1)  # Pause courte
+                
+        except Exception as e:
+            self._log_error("run_simulation_infinite", str(e))
+    
+    @property
+    def entreprise_repo(self):
+        """Propriété pour accéder aux entreprises (compatibilité tests)"""
+        class MockRepo:
+            def get_all(self):
+                return self.entreprises
+        repo = MockRepo()
+        repo.entreprises = self.entreprises
+        return repo
+    
+    @property
+    def produit_repo(self):
+        """Propriété pour accéder aux produits (compatibilité tests)"""
+        class MockRepo:
+            def get_all(self):
+                return self.produits
+        repo = MockRepo()
+        repo.produits = self.produits
+        return repo
+    
+    @property
+    def fournisseur_repo(self):
+        """Propriété pour accéder aux fournisseurs (compatibilité tests)"""
+        class MockRepo:
+            def get_all(self):
+                return self.fournisseurs
+        repo = MockRepo()
+        repo.fournisseurs = self.fournisseurs
+        return repo
 
 # Instance globale du générateur d'IDs
 id_generator = IDGenerator() 

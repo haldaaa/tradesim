@@ -42,7 +42,7 @@ from models import TypeProduit
 from events.event_logger import log_evenement_json, log_evenement_humain
 
 # Configuration centralisée
-from config import (
+from config.config import (
     INFLATION_POURCENTAGE_MIN, INFLATION_POURCENTAGE_MAX,
     PENALITE_INFLATION_PRODUIT_EXISTANT, DUREE_PENALITE_INFLATION,
     DUREE_RETOUR_INFLATION, DUREE_BAISSE_INFLATION, POURCENTAGE_FINAL_INFLATION
@@ -316,15 +316,12 @@ def appliquer_inflation(tick: int) -> List[Dict[str, Any]]:
         if len(inflation_logs) == 1:
             # Un seul prix modifié, afficher directement le pourcentage
             message_humain = (
-                f"[INFLATION] {description} - "
-                f"Prix modifié: +{pourcentage_produit_cible}%"
+                f"💰 Tour {tick} - INFLATION {produit_cible_nom}: {ancien_prix}€ → {nouveau_prix}€ (+{pourcentage_produit_cible}%)"
             )
         else:
             # Plusieurs prix modifiés, afficher les statistiques
             message_humain = (
-                f"[INFLATION] {description} - "
-                f"{len(inflation_logs)} prix modifiés | "
-                f"Min: +{min_pourcentage}% | Max: +{max_pourcentage}% | Moy: +{moy_pourcentage}%"
+                f"💰 Tour {tick} - INFLATION {type_cible.value}: {len(inflation_logs)} produits affectés (prix +{min_pourcentage}% à +{max_pourcentage}%)"
             )
         
         log_json = {

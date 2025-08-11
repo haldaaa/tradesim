@@ -28,7 +28,7 @@ from typing import List, Dict, Any
 
 # Imports des Repository (nouvelle architecture)
 from repositories import EntrepriseRepository
-from config import RECHARGE_BUDGET_MIN, RECHARGE_BUDGET_MAX
+from config.config import RECHARGE_BUDGET_MIN, RECHARGE_BUDGET_MAX
 
 def appliquer_recharge_budget(tick: int) -> List[Dict[str, Any]]:
     """
@@ -84,7 +84,7 @@ def appliquer_recharge_budget(tick: int) -> List[Dict[str, Any]]:
                 "ancien_budget": ancien_budget,
                 "montant_recharge": montant,
                 "nouveau_budget": entreprise.budget,
-                "log_humain": f"[RECHARGE] {entreprise.nom}: +{montant}€ (ancien: {ancien_budget}€ → nouveau: {entreprise.budget}€)"
+                "log_humain": f"💰 Tour {tick} - {entreprise.nom} reçoit +{montant}€ (budget: {int(ancien_budget)}€ → {int(entreprise.budget)}€)"
             }
 
             logs.append(log_json)
@@ -93,6 +93,9 @@ def appliquer_recharge_budget(tick: int) -> List[Dict[str, Any]]:
     if entreprises_rechargees:
         nb_entreprises = len(entreprises_rechargees)
         moy_recharge = round(total_recharge / nb_entreprises, 2)
+        
+        # Créer la liste des entreprises avec leurs montants
+        entreprises_liste = ", ".join([f"{e['entreprise_nom']}(+{e['montant_recharge']}€)" for e in entreprises_rechargees])
         
         log_resume = {
             "tick": tick,
@@ -103,7 +106,7 @@ def appliquer_recharge_budget(tick: int) -> List[Dict[str, Any]]:
                 "moyenne_recharge": moy_recharge
             },
             "entreprises": entreprises_rechargees,
-            "log_humain": f"[RESUME RECHARGE] {nb_entreprises} entreprises rechargées | Total: +{total_recharge}€ | Moyenne: +{moy_recharge}€"
+            "log_humain": f"📊 RECHARGE - {nb_entreprises} entreprises: {entreprises_liste}"
         }
         
         logs.append(log_resume)

@@ -18,7 +18,7 @@ Lancement automatique :
 import pytest
 import random
 from unittest.mock import Mock, patch
-from config import (
+from config.config import (
     INFLATION_POURCENTAGE_MIN, INFLATION_POURCENTAGE_MAX,
     PENALITE_INFLATION_PRODUIT_EXISTANT, DUREE_PENALITE_INFLATION
 )
@@ -93,7 +93,7 @@ class TestConfigurationInflation:
     
     def test_configuration_import(self):
         """Test que les constantes sont correctement importées"""
-        from config import (
+        from config.config import (
             INFLATION_POURCENTAGE_MIN, INFLATION_POURCENTAGE_MAX,
             PENALITE_INFLATION_PRODUIT_EXISTANT, DUREE_PENALITE_INFLATION
         )

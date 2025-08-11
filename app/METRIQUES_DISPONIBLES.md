@@ -19,19 +19,25 @@
 
 Total global (document actuel): 157
 
-## 📊 **Métriques de simulation** — Total: 8
+## 📊 **Métriques de simulation** — Total: 8 ✅ IMPLÉMENTÉES (10/08/2025)
 
 ### **Temps et tours** — Total: 4
-- **tick_actuel** -- Numéro du tick actuel de simulation -- services/simulation_service.py:SimulationService.tick_actuel
-- **tours_completes** -- Nombre de tours de simulation complétés -- services/simulation_service.py:SimulationService.tours_completes
-- **evenements_appliques** -- Nombre d'événements appliqués -- services/simulation_service.py:SimulationService.evenements_appliques
-- **duree_simulation** -- Durée totale de la simulation en secondes -- services/simulation_service.py:SimulationService.calculer_statistiques()
+- **tick_actuel** ✅ -- Numéro du tick actuel de simulation -- services/simulation_service.py:SimulationService.tick_actuel
+- **tours_completes** ✅ -- Nombre de tours de simulation complétés -- services/simulation_service.py:SimulationService.tours_completes
+- **evenements_appliques** ✅ -- Nombre d'événements appliqués -- services/simulation_service.py:SimulationService.evenements_appliques
+- **duree_simulation** ✅ -- Durée totale de la simulation en secondes -- services/simulation_service.py:SimulationService.calculer_statistiques()
 
 ### **Configuration** — Total: 4
-- **probabilite_selection_entreprise** -- Probabilité de sélection d'une entreprise par tour -- config/config.py:PROBABILITE_SELECTION_ENTREPRISE
-- **duree_pause_entre_tours** -- Pause entre les tours en secondes -- config/config.py:DUREE_PAUSE_ENTRE_TOURS
-- **tick_interval_event** -- Intervalle entre les événements -- config/config.py:TICK_INTERVAL_EVENT
-- **probabilite_evenement** -- Probabilité d'occurrence des événements -- config/config.py:PROBABILITE_EVENEMENT
+- **probabilite_selection_entreprise** ✅ -- Probabilité de sélection d'une entreprise par tour -- config/config.py:PROBABILITE_SELECTION_ENTREPRISE
+- **duree_pause_entre_tours** ✅ -- Pause entre les tours en secondes -- config/config.py:DUREE_PAUSE_ENTRE_TOURS
+- **tick_interval_event** ✅ -- Intervalle entre les événements -- config/config.py:TICK_INTERVAL_EVENT
+- **probabilite_evenement** ✅ -- Probabilité d'occurrence des événements -- config/config.py:PROBABILITE_EVENEMENT
+
+### **Métriques calculées** — Total: 4
+- **frequence_evenements** ✅ -- Fréquence des événements (événements/tour) -- services/simulation_service.py:SimulationService._calculer_metriques_simulation()
+- **taux_succes_transactions** ✅ -- Taux de succès des transactions (0-1) -- services/simulation_service.py:SimulationService._calculer_metriques_simulation()
+- **vitesse_simulation** ✅ -- Vitesse de simulation (tours/seconde) -- services/simulation_service.py:SimulationService._calculer_metriques_simulation()
+- **stabilite_prix** ✅ -- Stabilité des prix (coefficient de variation) -- services/simulation_service.py:SimulationService._calculer_stabilite_prix()
 
 ## 💰 **Métriques de budget** — Total: 14
 

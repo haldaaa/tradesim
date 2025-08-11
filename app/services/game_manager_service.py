@@ -23,7 +23,7 @@ from datetime import datetime
 
 from repositories import ProduitRepository, FournisseurRepository, EntrepriseRepository
 from models import Produit, TypeProduit, Fournisseur, Entreprise
-from config import (
+from config.config import (
     RECHARGE_BUDGET_MIN, RECHARGE_BUDGET_MAX,
     REASSORT_QUANTITE_MIN, REASSORT_QUANTITE_MAX,
     INFLATION_POURCENTAGE_MIN, INFLATION_POURCENTAGE_MAX,
@@ -242,6 +242,7 @@ class GameManagerService:
                 id=fid,
                 nom_entreprise=nom,
                 pays=pays,
+                continent="Europe",  # Valeur par défaut
                 stock_produit=stock_produit
             )
             self.fournisseur_repo.add(fournisseur)
