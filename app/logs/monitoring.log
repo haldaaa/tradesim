@@ -1338,3 +1338,553 @@ Run 'docker run --help' for more information
 [ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
 [ALERT] stock_critical: Stock total critique: 0
 [ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] budget_critical: Budget total critique: 11.83€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] prometheus_init: 'status'
+[ERROR] simulation_tour: unsupported operand type(s) for -: 'list' and 'list'
+[ALERT] budget_critical: Budget total critique: 12.25€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] prometheus_init: 'status'
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] simulation_tour: unsupported operand type(s) for -: 'list' and 'list'
+[ALERT] budget_critical: Budget total critique: 8.44€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 16.89€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] simulation_tour: unsupported operand type(s) for -: 'list' and 'list'
+[ALERT] budget_critical: Budget total critique: 7.73€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 10.70€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ALERT] budget_critical: Budget total critique: 85.81€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 332.95€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 59.03€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 117.30€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] validation: Prix négatif dans test: -5.0
+[ERROR] validation: Quantité invalide dans test: 0
+[ERROR] validation: Budget négatif dans test: -100.0
+[ERROR] test_error: Test error message
+[ALERT] error_rate_critical: Taux d'erreur critique: 20.00%
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] performance_slow: Calcul statistiques lent: 1.100s
+[ALERT] budget_critical: Budget total critique: 900.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] validation: Prix négatif dans test_transaction: -100.0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] simulation_tour: Cannot choose from an empty sequence
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ERROR] prometheus_metrics: Calculation error
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] simulation_tour: Cannot choose from an empty sequence
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ERROR] simulation_tour: unsupported operand type(s) for -: 'list' and 'list'
+[ALERT] error_rate_critical: Taux d'erreur critique: 16.67%
+[ALERT] budget_critical: Budget total critique: 184.72€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] simulation_tour: unsupported operand type(s) for -: 'list' and 'list'
+[ALERT] budget_critical: Budget total critique: 232.77€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] simulation_tour: unsupported operand type(s) for -: 'list' and 'list'
+[ALERT] error_rate_critical: Taux d'erreur critique: 100.00%
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] validation: Prix négatif dans test: -5.0
+[ERROR] validation: Quantité invalide dans test: 0
+[ERROR] validation: Budget négatif dans test: -100.0
+[ERROR] test_error: Test error message
+[ALERT] error_rate_critical: Taux d'erreur critique: 20.00%
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 900.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] validation: Prix négatif dans test_transaction: -100.0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ERROR] prometheus_metrics: Calculation error
+[ERROR] simulation_tour: Cannot choose from an empty sequence
+[ERROR] simulation_tour: Cannot choose from an empty sequence
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ALERT] budget_critical: Budget total critique: 311.97€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ALERT] budget_critical: Budget total critique: 304.48€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 815.09€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] simulation_tour: cannot access local variable 'type_cible' where it is not associated with a value
+[ALERT] error_rate_critical: Taux d'erreur critique: 100.00%
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] validation: Prix négatif dans test: -5.0
+[ERROR] validation: Quantité invalide dans test: 0
+[ERROR] validation: Budget négatif dans test: -100.0
+[ERROR] test_error: Test error message
+[ALERT] error_rate_critical: Taux d'erreur critique: 20.00%
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 900.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] validation: Prix négatif dans test_transaction: -100.0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ERROR] prometheus_metrics: Calculation error
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] simulation_tour: Cannot choose from an empty sequence
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] simulation_tour: Cannot choose from an empty sequence
+[ERROR] simulation_tour: Cannot choose from an empty sequence
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ALERT] budget_critical: Budget total critique: 65.01€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 129.43€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] validation: Prix négatif dans test: -5.0
+[ERROR] validation: Quantité invalide dans test: 0
+[ERROR] validation: Budget négatif dans test: -100.0
+[ERROR] test_error: Test error message
+[ALERT] error_rate_critical: Taux d'erreur critique: 20.00%
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 900.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] validation: Prix négatif dans test_transaction: -100.0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] simulation_tour: Cannot choose from an empty sequence
+[ERROR] simulation_tour: Cannot choose from an empty sequence
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ERROR] prometheus_metrics: Calculation error
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] simulation_tour: Cannot choose from an empty sequence
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ALERT] budget_critical: Budget total critique: 56.37€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 375.53€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] validation: Prix négatif dans test: -5.0
+[ERROR] validation: Quantité invalide dans test: 0
+[ERROR] validation: Budget négatif dans test: -100.0
+[ERROR] test_error: Test error message
+[ALERT] error_rate_critical: Taux d'erreur critique: 20.00%
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 900.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] validation: Prix négatif dans test_transaction: -100.0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] simulation_tour: Cannot choose from an empty sequence
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] simulation_tour: Cannot choose from an empty sequence
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ERROR] prometheus_metrics: Calculation error
+[ERROR] simulation_tour: Cannot choose from an empty sequence
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ALERT] budget_critical: Budget total critique: 857.84€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 117.20€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] validation: Prix négatif dans test: -5.0
+[ERROR] validation: Quantité invalide dans test: 0
+[ERROR] validation: Budget négatif dans test: -100.0
+[ERROR] test_error: Test error message
+[ALERT] error_rate_critical: Taux d'erreur critique: 20.00%
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 900.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] validation: Prix négatif dans test_transaction: -100.0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ERROR] prometheus_metrics: Calculation error
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ALERT] budget_critical: Budget total critique: 150.33€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] validation: Prix négatif dans test: -5.0
+[ERROR] validation: Quantité invalide dans test: 0
+[ERROR] validation: Budget négatif dans test: -100.0
+[ERROR] test_error: Test error message
+[ALERT] error_rate_critical: Taux d'erreur critique: 20.00%
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 900.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] validation: Prix négatif dans test_transaction: -100.0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] simulation_tour: Cannot choose from an empty sequence
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ERROR] prometheus_metrics: Calculation error
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] simulation_tour: Cannot choose from an empty sequence
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] simulation_tour: Cannot choose from an empty sequence
+[ERROR] simulation_tour: Cannot choose from an empty sequence
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] validation: Prix négatif dans test: -5.0
+[ERROR] validation: Quantité invalide dans test: 0
+[ERROR] validation: Budget négatif dans test: -100.0
+[ERROR] test_error: Test error message
+[ALERT] error_rate_critical: Taux d'erreur critique: 20.00%
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 900.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] validation: Prix négatif dans test_transaction: -100.0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] simulation_tour: Cannot choose from an empty sequence
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] simulation_tour: Cannot choose from an empty sequence
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ERROR] prometheus_metrics: Calculation error
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] simulation_tour: Cannot choose from an empty sequence
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ALERT] budget_critical: Budget total critique: 577.17€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] validation: Prix négatif dans test: -5.0
+[ERROR] validation: Quantité invalide dans test: 0
+[ERROR] validation: Budget négatif dans test: -100.0
+[ERROR] test_error: Test error message
+[ALERT] error_rate_critical: Taux d'erreur critique: 20.00%
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 900.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] validation: Prix négatif dans test_transaction: -100.0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] simulation_tour: Cannot choose from an empty sequence
+[ERROR] simulation_tour: Cannot choose from an empty sequence
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ERROR] prometheus_metrics: Calculation error
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] simulation_tour: Cannot choose from an empty sequence
+[ERROR] simulation_tour: Cannot choose from an empty sequence
+[ALERT] budget_critical: Budget total critique: 10.88€
+[ALERT] stock_critical: Stock total critique: 0
+[2025-08-11 20:08:58] [INFO] Tentative de lancement des containers Docker
+[2025-08-11 20:08:58] [ERROR] Erreur Prometheus: docker: Cannot connect to the Docker daemon at unix:///Users/fares/.docker/run/docker.sock. Is the docker daemon running?
+
+Run 'docker run --help' for more information
+
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] validation: Prix négatif dans test: -5.0
+[ERROR] validation: Quantité invalide dans test: 0
+[ERROR] validation: Budget négatif dans test: -100.0
+[ERROR] test_error: Test error message
+[ALERT] error_rate_critical: Taux d'erreur critique: 20.00%
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 900.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] validation: Prix négatif dans test_transaction: -100.0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] simulation_tour: Cannot choose from an empty sequence
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ERROR] prometheus_metrics: Calculation error
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ERROR] simulation_tour: Cannot choose from an empty sequence
+[ERROR] simulation_tour: Cannot choose from an empty sequence
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ERROR] simulation_tour: Cannot choose from an empty sequence
+[ERROR] simulation_tour: Cannot choose from an empty sequence
+[ERROR] simulation_tour: Cannot choose from an empty sequence
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] simulation_tour: Cannot choose from an empty sequence
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] simulation_tour: Cannot choose from an empty sequence
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] simulation_tour: Cannot choose from an empty sequence
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] validation: Prix négatif dans test: -5.0
+[ERROR] validation: Quantité invalide dans test: 0
+[ERROR] validation: Budget négatif dans test: -100.0
+[ERROR] test_error: Test error message
+[ALERT] error_rate_critical: Taux d'erreur critique: 20.00%
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 900.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] validation: Prix négatif dans test_transaction: -100.0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] simulation_tour: Cannot choose from an empty sequence
+[ERROR] simulation_tour: Cannot choose from an empty sequence
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ERROR] prometheus_metrics: Calculation error
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 24.48€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] validation: Prix négatif dans test: -5.0
+[ERROR] validation: Quantité invalide dans test: 0
+[ERROR] validation: Budget négatif dans test: -100.0
+[ERROR] test_error: Test error message
+[ALERT] error_rate_critical: Taux d'erreur critique: 20.00%
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 900.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] validation: Prix négatif dans test_transaction: -100.0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] simulation_tour: Cannot choose from an empty sequence
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ERROR] prometheus_metrics: Calculation error
+[ERROR] simulation_tour: Cannot choose from an empty sequence
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ALERT] budget_critical: Budget total critique: 647.05€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ALERT] stock_critical: Stock total critique: 0

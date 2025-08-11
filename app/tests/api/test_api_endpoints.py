@@ -93,7 +93,11 @@ class TestAPIEndpoints:
         
         # Vérifier que seuls les produits actifs sont retournés
         produits_actifs_api = [p for p in produits if p["actif"]]
-        produits_actifs_db = [p for p in fake_produits_db if p.actif]
+        
+        # Utiliser les vrais repositories pour la comparaison
+        from repositories import ProduitRepository
+        repo = ProduitRepository()
+        produits_actifs_db = [p for p in repo.get_all() if p.actif]
         
         assert len(produits_actifs_api) == len(produits_actifs_db)
         
@@ -127,7 +131,11 @@ class TestAPIEndpoints:
         # Vérifier le contenu de la réponse
         fournisseurs = response.json()
         assert isinstance(fournisseurs, list)
-        assert len(fournisseurs) == len(fake_fournisseurs_db)
+        
+        # Utiliser les vrais repositories pour la comparaison
+        from repositories import FournisseurRepository
+        repo = FournisseurRepository()
+        assert len(fournisseurs) == len(repo.get_all())
         
         # Vérifier la structure des fournisseurs
         for fournisseur in fournisseurs:
@@ -167,7 +175,11 @@ class TestAPIEndpoints:
         # Vérifier le contenu de la réponse
         entreprises = response.json()
         assert isinstance(entreprises, list)
-        assert len(entreprises) == len(fake_entreprises_db)
+        
+        # Utiliser les vrais repositories pour la comparaison
+        from repositories import EntrepriseRepository
+        repo = EntrepriseRepository()
+        assert len(entreprises) == len(repo.get_all())
         
         # Vérifier la structure des entreprises
         for entreprise in entreprises:
@@ -224,8 +236,12 @@ class TestAPIEndpoints:
         fournisseurs_api = response.json()
         
         # Vérifier que les données correspondent à la base
+        from repositories import FournisseurRepository
+        repo = FournisseurRepository()
+        
         for fournisseur_api in fournisseurs_api:
-            fournisseur_db = next(f for f in fake_fournisseurs_db if f.id == fournisseur_api["id"])
+            fournisseur_db = repo.get_by_id(fournisseur_api["id"])
+            assert fournisseur_db is not None, f"Fournisseur {fournisseur_api['id']} non trouvé"
             
             assert fournisseur_api["nom_entreprise"] == fournisseur_db.nom_entreprise
             assert fournisseur_api["pays"] == fournisseur_db.pays
@@ -244,8 +260,12 @@ class TestAPIEndpoints:
         entreprises_api = response.json()
         
         # Vérifier que les données correspondent à la base
+        from repositories import EntrepriseRepository
+        repo = EntrepriseRepository()
+        
         for entreprise_api in entreprises_api:
-            entreprise_db = next(e for e in fake_entreprises_db if e.id == entreprise_api["id"])
+            entreprise_db = repo.get_by_id(entreprise_api["id"])
+            assert entreprise_db is not None, f"Entreprise {entreprise_api['id']} non trouvée"
             
             assert entreprise_api["nom"] == entreprise_db.nom
             assert entreprise_api["pays"] == entreprise_db.pays

@@ -54,6 +54,9 @@ from .config import (
     BUDGET_ENTREPRISE_MIN,
     BUDGET_ENTREPRISE_MAX,
     
+    # Configuration par défaut
+    DEFAULT_CONTINENT, VALID_CONTINENTS, validate_continent,
+    
     # Configuration monitoring
     METRICS_ENABLED,
     METRICS_COLLECTION_INTERVAL,
@@ -145,6 +148,9 @@ __all__ = [
     'QUANTITE_ACHAT_MAX',
     'BUDGET_ENTREPRISE_MIN',
     'BUDGET_ENTREPRISE_MAX',
+    
+    # Configuration par défaut
+    'DEFAULT_CONTINENT', 'VALID_CONTINENTS', 'validate_continent',
     
     # Configuration monitoring
     'METRICS_ENABLED',

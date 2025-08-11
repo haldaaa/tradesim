@@ -480,10 +480,10 @@ def get_current_config() -> Dict[str, Any]:
                 "min": REASSORT_QUANTITE_MIN,
                 "max": REASSORT_QUANTITE_MAX
             },
-            "inflation": {
-                "min": INFLATION_POURCENTAGE_MIN,
-                "max": INFLATION_POURCENTAGE_MAX
-            },
+                    "inflation": {
+            "min": 30,  # INFLATION_POURCENTAGE_MIN
+            "max": 60   # INFLATION_POURCENTAGE_MAX
+        },
             "variation_disponibilite": {
                 "desactivation": PROBABILITE_DESACTIVATION,
                 "reactivation": PROBABILITE_REACTIVATION
@@ -980,7 +980,7 @@ def show_game_summary(n_tours: int = None):
     print("│ {:<35} {:<42} │".format("Intervalle événements", f"{TICK_INTERVAL_EVENT} ticks"))
     print("│ {:<35} {:<42} │".format("Recharge budget range", f"{RECHARGE_BUDGET_MIN}€ - {RECHARGE_BUDGET_MAX}€"))
     print("│ {:<35} {:<42} │".format("Reassort range", f"{REASSORT_QUANTITE_MIN} - {REASSORT_QUANTITE_MAX} unités"))
-    print("│ {:<35} {:<42} │".format("Inflation range", f"{INFLATION_POURCENTAGE_MIN}% - {INFLATION_POURCENTAGE_MAX}%"))
+    print("│ {:<35} {:<42} │".format("Inflation range", "30% - 60%"))
     
     probas_str = f"Recharge:{PROBABILITE_EVENEMENT['recharge_budget']*100:.0f}%, Reassort:{PROBABILITE_EVENEMENT['reassort']*100:.0f}%, Inf:{PROBABILITE_EVENEMENT['inflation']*100:.0f}%, Var:{PROBABILITE_EVENEMENT['variation_disponibilite']*100:.0f}%"
     print("│ {:<35} {:<42} │".format("Probabilités événements", probas_str))

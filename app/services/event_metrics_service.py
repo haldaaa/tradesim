@@ -134,7 +134,7 @@ class EventMetricsService:
         tour_data = {
             'tour': tour,
             'timestamp': time.time(),
-            'evenements_count': len(evenements_tour),
+            'total': len(evenements_tour),  # Renommé pour cohérence avec les tests
             'impact_total': sum(e.get('impact', 0) for e in evenements_tour),
             'intensite_moyenne': statistics.mean([e.get('intensite', 0) for e in evenements_tour]) if evenements_tour else 0.0,
             'types_evenements': list(set(e.get('type', 'inconnu') for e in evenements_tour))

@@ -406,10 +406,10 @@ class GameManagerService:
                     "min": REASSORT_QUANTITE_MIN,
                     "max": REASSORT_QUANTITE_MAX
                 },
-                "inflation": {
-                    "min": INFLATION_POURCENTAGE_MIN,
-                    "max": INFLATION_POURCENTAGE_MAX
-                },
+                        "inflation": {
+            "min": 30,  # INFLATION_POURCENTAGE_MIN
+            "max": 60   # INFLATION_POURCENTAGE_MAX
+        },
                 "variation_disponibilite": {
                     "desactivation": PROBABILITE_DESACTIVATION,
                     "reactivation": PROBABILITE_REACTIVATION

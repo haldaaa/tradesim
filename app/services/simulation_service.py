@@ -41,6 +41,7 @@ import time
 import random
 import logging
 import threading
+import requests
 from datetime import datetime, timezone
 from collections import defaultdict
 from functools import lru_cache
@@ -302,9 +303,13 @@ class SimulationService:
         self.exporter = None  # Alias pour compatibilité tests
         if MONITORING_AVAILABLE:
             try:
-                self.prometheus_exporter = PrometheusExporter()
+                # Utiliser l'exporter permanent via HTTP
+                import requests
+                self.prometheus_exporter = {
+                    'update_tradesim_metrics': lambda data: requests.post('http://localhost:8000/update_metrics', json=data, timeout=1)
+                }
                 self.exporter = self.prometheus_exporter  # Alias
-                print("📊 Monitoring Prometheus activé")
+                print("📊 Monitoring Prometheus connecté à l'exporter permanent")
             except Exception as e:
                 self._log_error("prometheus_init", str(e))
         
@@ -492,6 +497,7 @@ class SimulationService:
             "stock_total_actuel": stock_total_actuel,
             "tours_completes": self.tours_completes,
             "evenements_appliques": self.evenements_appliques,
+            "nombre_produits_actifs": len([p for p in self.produits if p.actif]),
             "duree_simulation": round(time.time() - self.debut_simulation, 4)
         }
 
@@ -904,10 +910,17 @@ class SimulationService:
                 product_metrics = self.product_metrics_service.calculer_metriques_produits(self.produits, self.fournisseurs)
                 metrics_data.update(product_metrics)
             
-            # Prometheus exporter avec métriques de latence (CORRECTION BUG)
-            if self.prometheus_exporter:
-                # Métriques de base et de simulation
-                self.prometheus_exporter.update_tradesim_metrics(metrics_data)
+            # Prometheus exporter avec métriques directes
+            if self.prometheus_exporter and isinstance(self.prometheus_exporter, dict):
+                try:
+                    # Mise à jour des métriques via HTTP
+                    response = self.prometheus_exporter['update_tradesim_metrics'](metrics_data)
+                    print(f"📊 Métriques mises à jour: budget={metrics_data.get('budget_total', 0)}, tours={metrics_data.get('tours_completes', 0)}, events={metrics_data.get('evenements_appliques', 0)}")
+                    print(f"📊 Réponse HTTP: {response.status_code if hasattr(response, 'status_code') else 'N/A'}")
+                except Exception as e:
+                    print(f"⚠️ Erreur mise à jour métriques: {e}")
+            else:
+                print(f"⚠️ Pas d'exporter disponible: {type(self.prometheus_exporter)}")
             
             # Fin du timer et enregistrement des métriques
             if self.latency_service:
@@ -1239,7 +1252,9 @@ class SimulationService:
                 current_time = time.time()
                 with self._lock:
                     if self._cache is None or current_time - self._cache_timestamp > 1.0:
-                        self._cache = self._data.copy()
+                        # Copie profonde pour éviter les mutations
+                        import copy
+                        self._cache = copy.deepcopy(self._data)
                         self._cache_timestamp = current_time
                     return self._cache
         return MockRepo(data_list)

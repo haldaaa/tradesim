@@ -40,7 +40,6 @@ N_ENTREPRISES_PAR_TOUR = 2            # Nombre d'entreprises sélectionnées al�
 DUREE_PAUSE_ENTRE_TOURS = 0.1         # En secondes (peut servir pour la version crontab/finale)
 PROBABILITE_SELECTION_ENTREPRISE = 0.3 # Probabilité qu'une entreprise soit sélectionnée pour un tour
 
-
 # ============================================================================
 # DEBUG - Mode debug et options de développement
 # ============================================================================
@@ -61,7 +60,6 @@ FICHIER_LOG_HUMAIN = os.path.join(LOG_DIR, "simulation_humain.log")
 # Fichiers de log des événements
 EVENT_LOG_JSON = os.path.join(LOG_DIR, "event.jsonl")
 EVENT_LOG_HUMAIN = os.path.join(LOG_DIR, "event.log")
-
 
 # ============================================================================
 # ENTREPRISES - Configuration des entreprises
@@ -90,10 +88,6 @@ RECHARGE_BUDGET_MAX = 8000             # Montant maximum de recharge de budget
 # Reassort (reassort)
 REASSORT_QUANTITE_MIN = 10            # Quantité minimum de réassortiment
 REASSORT_QUANTITE_MAX = 50            # Quantité maximum de réassortiment
-
-# Quantité d'achat (utilisée pour les transactions aléatoires)
-QUANTITE_ACHAT_MIN = 1                # Quantité minimum d'achat par transaction
-QUANTITE_ACHAT_MAX = 100              # Quantité maximum d'achat par transaction
 
 # Configuration par défaut
 DEFAULT_CONTINENT = "Europe"          # Continent par défaut pour les entités
