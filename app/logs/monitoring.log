@@ -1888,3 +1888,20 @@ Run 'docker run --help' for more information
 [ALERT] stock_critical: Stock total critique: 0
 [ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
 [ALERT] stock_critical: Stock total critique: 0
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000

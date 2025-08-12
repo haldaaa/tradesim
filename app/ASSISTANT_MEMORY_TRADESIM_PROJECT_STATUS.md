@@ -2,8 +2,8 @@
 
 ## 📋 **STATUT DU PROJET TRADESIM - WORKFLOW PRINCIPAL**
 
-**Dernière mise à jour : 11/08/2025 20:25**  
-**Session actuelle : SESSION TERMINÉE - Audit complet et restauration réussie**
+**Dernière mise à jour : 12/08/2025 12:50**  
+**Session actuelle : SESSION TERMINÉE - Monitoring Grafana complet avec persistance validée**
 
 ---
 
@@ -126,16 +126,15 @@ app/
 
 ## ✅ **TÂCHES COMPLÉTÉES**
 
-### **Session Actuelle (11/08/2025 19:45) - SESSION EN COURS**
-✅ **VALIDATION CLI ET MONITORING COMPLÈTE**
-- **✅ CLI fonctionnel** : Simulation avec transactions et événements
-- **✅ Exporteur Prometheus** : Port 8000, endpoint /update_metrics
-- **✅ Métriques mises à jour** : budget=10.88, events=1.0, tours=0.0
-- **✅ Correction bug chemin** : logs/metrics.jsonl avec chemin absolu
-- **✅ Métriques de configuration** : Extraction depuis config.py (100, 2, 0.3, 100, 20000, 2)
-- **✅ TESTS D'INTÉGRATION** : 417 tests passent (100% de succès)
-- **✅ CORRECTIONS MAJEURES** : Inflation, API, Monitoring, Métriques, Performance
-- **✅ PROBLÈMES RÉSOLUS** : Tous les tests critiques passent
+### **Session Actuelle (12/08/2025 12:50) - SESSION TERMINÉE**
+✅ **MONITORING GRAFANA COMPLET AVEC PERSISTANCE**
+- **✅ Dashboards Grafana** : 5 dashboards créés (thème sombre, rafraîchissement 5s)
+- **✅ Persistance configurée** : Volume Docker + provisioning automatique
+- **✅ Source de données** : Prometheus configurée automatiquement
+- **✅ Métriques collectées** : 100+ métriques disponibles (budget, événements, performance)
+- **✅ Validation persistance** : 2 redémarrages Docker réussis
+- **✅ Dashboards manuels** : Création et sauvegarde fonctionnelles
+- **✅ Monitoring complet** : Prometheus + Grafana opérationnels
 
 ✅ **VALIDATION COMPLÈTE DU SYSTÈME**
 - **✅ Simulation CLI** : `python services/simulate.py --tours 3 --verbose` fonctionne
@@ -311,13 +310,14 @@ app/
 
 ## 🚀 **PROCHAINES ÉTAPES**
 
-### **Priorité 1 - Création Dashboards Grafana (EN COURS)**
+### **Priorité 1 - Création Dashboards Grafana (TERMINÉ)**
 - [x] Correction des bugs critiques
 - [x] Validation des tests
 - [x] Amélioration de l'affichage
 - [x] **VALIDATION CLI ET MONITORING COMPLÈTE** ✅
-- [ ] **CRÉATION DES DASHBOARDS GRAFANA** (Visualisation des métriques)
-- [ ] **VALIDATION COMPLÈTE DU MONITORING** (Prometheus + Grafana)
+- [x] **CRÉATION DES DASHBOARDS GRAFANA** (Visualisation des métriques) ✅
+- [x] **VALIDATION COMPLÈTE DU MONITORING** (Prometheus + Grafana) ✅
+- [x] **PERSISTANCE GRAFANA** (Volume Docker + Provisioning automatique) ✅
 - [ ] **PASSAGE VERSION WEB** (avec VictoriaMetrics)
 - [ ] **PRÉPARATION CLOUD** (Docker + Kubernetes + CICD)
 
@@ -325,7 +325,9 @@ app/
 - ✅ **Prometheus** : Métriques collectées et fonctionnelles
 - ✅ **Exporteur** : Service Flask opérationnel sur port 8000
 - ✅ **Métriques** : 100+ métriques disponibles et mises à jour
-- ❌ **Grafana** : Aucun dashboard créé, à configurer maintenant
+- ✅ **Grafana** : Persistance configurée, dashboards manuels fonctionnels
+- ✅ **Monitoring complet** : Prometheus + Grafana opérationnels
+- ✅ **Provisioning** : Source de données automatique, volume persistant
 
 **PROCHAINE SESSION (À FAIRE) :**
 1. **Création dashboards Grafana** : Visualisation des métriques collectées
@@ -348,6 +350,13 @@ app/
 - [ ] Ajout de métriques avancées
 - [ ] Amélioration des dashboards Grafana
 - [ ] Tests de charge
+- [ ] **IMPORT DASHBOARDS JSON** (problème de format à résoudre)
+  - Correction format JSON pour import automatique
+  - Provisioning des dashboards pré-créés
+- [ ] **AJOUT SYSTÈME CLIENTS** (évolution majeure identifiée)
+  - Cycle économique complet : Fournisseurs → Entreprises → Clients
+  - Métriques enrichies (demande, prix dynamiques, satisfaction)
+  - Persistance et équilibrage offre/demande
 
 ---
 
