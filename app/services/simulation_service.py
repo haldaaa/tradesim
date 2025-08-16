@@ -1,22 +1,53 @@
 #!/usr/bin/env python3
 """
-Service de simulation principal avec monitoring Prometheus et optimisations
-Système principal de production avec IDs uniques et traçabilité complète
+Service de simulation principal pour TradeSim
+============================================
 
-CORRECTION BUG (10/08/2025) :
-- Correction des références incorrectes aux attributs inexistants
-- Utilisation de PriceService pour la gestion des prix
-- Correction de l'accès aux stocks des fournisseurs
-- Unification de l'architecture avec le reste de l'application
+ARCHITECTURE :
+- Service central orchestrant la simulation complète
+- Gestion des transactions entre entreprises et fournisseurs
+- Application d'événements (inflation, recharge budget, etc.)
+- Collecte de métriques et monitoring Prometheus
+- Cache thread-safe pour les repositories mock
+- Système d'IDs uniques avec traçabilité complète
+
+FONCTIONNEMENT :
+1. Initialisation avec données (entreprises, fournisseurs, produits)
+2. Chargement automatique depuis repositories si données non fournies
+3. Simulation par tours avec transactions et événements
+4. Collecte de métriques en temps réel
+5. Logging structuré pour traçabilité
+6. Cache optimisé avec invalidation thread-safe
+
+UTILISATION :
+- Création : SimulationService(entreprises, fournisseurs, produits, verbose=False)
+- Tour : service.simulation_tour(verbose=True)
+- Statistiques : service.calculer_statistiques()
+- Reset : service.reset_simulation()
+- Simulation complète : service.run_simulation_tours(n_tours, verbose=True)
+
+CORRECTIONS RÉCENTES (11/08/2025) :
+- Cache thread-safe avec verrous
+- Logging structuré complet
+- Validation des configurations
+- Tests de performance complets
+
+AUTEUR : Assistant IA
+DERNIÈRE MISE À JOUR : 11/08/2025
 """
 
 import json
 import time
 import random
+import logging
+import threading
+import requests
 from datetime import datetime, timezone
 from collections import defaultdict
 from functools import lru_cache
 from typing import List, Dict, Any, Optional
+
+logger = logging.getLogger(__name__)
 
 from config.config import (
     # Configuration existante
@@ -196,34 +227,51 @@ class SimulationService:
                 from repositories import EntrepriseRepository
                 repo = EntrepriseRepository()
                 self.entreprises = repo.get_all()
+                logger.info(f"Chargement réussi: {len(self.entreprises)} entreprises")
             except Exception as e:
                 self.entreprises = []
-                print(f"⚠️ Impossible de charger les entreprises: {e}")
+                logger.error(f"Impossible de charger les entreprises: {e}")
+                if verbose:
+                    print(f"⚠️ Impossible de charger les entreprises: {e}")
         else:
             self.entreprises = entreprises
+            logger.info(f"Entreprises fournies: {len(self.entreprises)}")
             
         if fournisseurs is None:
             try:
                 from repositories import FournisseurRepository
                 repo = FournisseurRepository()
                 self.fournisseurs = repo.get_all()
+                logger.info(f"Chargement réussi: {len(self.fournisseurs)} fournisseurs")
             except Exception as e:
                 self.fournisseurs = []
-                print(f"⚠️ Impossible de charger les fournisseurs: {e}")
+                logger.error(f"Impossible de charger les fournisseurs: {e}")
+                if verbose:
+                    print(f"⚠️ Impossible de charger les fournisseurs: {e}")
         else:
             self.fournisseurs = fournisseurs
+            logger.info(f"Fournisseurs fournis: {len(self.fournisseurs)}")
             
         if produits is None:
             try:
                 from repositories import ProduitRepository
                 repo = ProduitRepository()
                 self.produits = repo.get_all()
+                logger.info(f"Chargement réussi: {len(self.produits)} produits")
             except Exception as e:
                 self.produits = []
-                print(f"⚠️ Impossible de charger les produits: {e}")
+                logger.error(f"Impossible de charger les produits: {e}")
+                if verbose:
+                    print(f"⚠️ Impossible de charger les produits: {e}")
         else:
             self.produits = produits
+            logger.info(f"Produits fournis: {len(self.produits)}")
         self.verbose = verbose
+        
+        # Initialiser les repositories mock thread-safe pour compatibilité tests
+        self._entreprise_repo = self._create_mock_repo(self.entreprises)
+        self._produit_repo = self._create_mock_repo(self.produits)
+        self._fournisseur_repo = self._create_mock_repo(self.fournisseurs)
         
         # État de simulation
         self.tick_actuel = 0
@@ -255,9 +303,13 @@ class SimulationService:
         self.exporter = None  # Alias pour compatibilité tests
         if MONITORING_AVAILABLE:
             try:
-                self.prometheus_exporter = PrometheusExporter()
+                # Utiliser l'exporter permanent via HTTP
+                import requests
+                self.prometheus_exporter = {
+                    'update_tradesim_metrics': lambda data: requests.post('http://localhost:8000/update_metrics', json=data, timeout=1)
+                }
                 self.exporter = self.prometheus_exporter  # Alias
-                print("📊 Monitoring Prometheus activé")
+                print("📊 Monitoring Prometheus connecté à l'exporter permanent")
             except Exception as e:
                 self._log_error("prometheus_init", str(e))
         
@@ -406,15 +458,45 @@ class SimulationService:
         start_time = time.time()
         
         budget_total_actuel = sum(entreprise.budget for entreprise in self.entreprises)
-        stock_total_actuel = sum(
-            sum(entreprise.stocks.get(produit.nom, 0) for produit in self.produits if hasattr(entreprise, 'stocks'))
+        # Stock total : fournisseurs + entreprises
+        stock_fournisseurs = sum(
+            sum(fournisseur.stock_produit.values())
+            for fournisseur in self.fournisseurs
+        )
+        
+        stock_entreprises = sum(
+            sum(getattr(entreprise, 'stocks', {}).values())
             for entreprise in self.entreprises
         )
+        
+        stock_total_actuel = stock_fournisseurs + stock_entreprises
+        
+        # Calcul détaillé du stock par produit
+        stock_par_produit = {}
+        for produit in self.produits:
+            # Stock chez les fournisseurs
+            stock_fournisseurs_produit = sum(
+                fournisseur.stock_produit.get(produit.id, 0)
+                for fournisseur in self.fournisseurs
+            )
+            
+            # Stock chez les entreprises
+            stock_entreprises_produit = sum(
+                getattr(entreprise, 'stocks', {}).get(produit.nom, 0)
+                for entreprise in self.entreprises
+            )
+            
+            stock_par_produit[produit.nom] = {
+                'fournisseurs': stock_fournisseurs_produit,
+                'entreprises': stock_entreprises_produit,
+                'total': stock_fournisseurs_produit + stock_entreprises_produit
+            }
         
         # Validation des données calculées
         stats_data = {
             'budget_total': budget_total_actuel,
             'stock_total': stock_total_actuel,
+            'stock_par_produit': stock_par_produit,
             'tours_completes': self.tours_completes,
             'evenements_appliques': self.evenements_appliques
         }
@@ -445,6 +527,7 @@ class SimulationService:
             "stock_total_actuel": stock_total_actuel,
             "tours_completes": self.tours_completes,
             "evenements_appliques": self.evenements_appliques,
+            "nombre_produits_actifs": len([p for p in self.produits if p.actif]),
             "duree_simulation": round(time.time() - self.debut_simulation, 4)
         }
 
@@ -785,7 +868,8 @@ class SimulationService:
                 "type": "metrics",
                 "budget_total": stats.get("budget_total_actuel", 0),
                 "stock_total": stats.get("stock_total_actuel", 0),
-                "tours_completes": stats.get("tours_completes", 0),
+                "stock_par_produit": stats.get("stock_par_produit", {}),
+                "tours_completes": self.tours_completes,  # Utiliser directement l'attribut
                 "evenements_appliques": stats.get("evenements_appliques", 0),
                 "duree_simulation": stats.get("duree_simulation", 0),
                 "error_count": self.error_count,
@@ -806,14 +890,6 @@ class SimulationService:
                 "stabilite_prix": simulation_metrics["stabilite_prix"]
             }
             
-            # Validation des métriques
-            if not self._validate_data(metrics_data, "collecter_metriques"):
-                return
-            
-            # Log des métriques
-            with open("logs/metrics.jsonl", "a", encoding="utf-8") as f:
-                f.write(json.dumps(metrics_data) + "\n")
-            
             # Ajout des métriques de latence et throughput
             if self.latency_service:
                 latency_metrics = self.latency_service.get_all_latency_metrics()
@@ -826,11 +902,15 @@ class SimulationService:
             if self.budget_metrics_service:
                 budget_metrics = self.budget_metrics_service.calculer_metriques_budget(self.entreprises)
                 metrics_data.update(budget_metrics)
+            else:
+                pass
             
             # Ajout des métriques d'entreprises
             if self.enterprise_metrics_service:
                 enterprise_metrics = self.enterprise_metrics_service.calculer_metriques_entreprises(self.entreprises)
                 metrics_data.update(enterprise_metrics)
+            else:
+                pass
             
             # Ajout des métriques de fournisseurs
             if self.supplier_metrics_service:
@@ -857,10 +937,30 @@ class SimulationService:
                 product_metrics = self.product_metrics_service.calculer_metriques_produits(self.produits, self.fournisseurs)
                 metrics_data.update(product_metrics)
             
-            # Prometheus exporter avec métriques de latence (CORRECTION BUG)
-            if self.prometheus_exporter:
-                # Métriques de base et de simulation
-                self.prometheus_exporter.update_tradesim_metrics(metrics_data)
+            # Validation des métriques (APRÈS avoir ajouté toutes les métriques)
+            if not self._validate_data(metrics_data, "collecter_metriques"):
+                return
+            
+            # Validation des métriques (APRÈS avoir ajouté toutes les métriques)
+            if not self._validate_data(metrics_data, "collecter_metriques"):
+                return
+            
+            # Log des métriques (APRÈS avoir ajouté toutes les métriques)
+            with open("logs/metrics.jsonl", "a", encoding="utf-8") as f:
+                json_line = json.dumps(metrics_data)
+                f.write(json_line + "\n")
+            
+            # Prometheus exporter avec métriques directes
+            if self.prometheus_exporter and isinstance(self.prometheus_exporter, dict):
+                try:
+                    # Mise à jour des métriques via HTTP
+                    response = self.prometheus_exporter['update_tradesim_metrics'](metrics_data)
+                    print(f"📊 Métriques mises à jour: budget={metrics_data.get('budget_total', 0)}, tours={metrics_data.get('tours_completes', 0)}, events={metrics_data.get('evenements_appliques', 0)}")
+                    print(f"📊 Réponse HTTP: {response.status_code if hasattr(response, 'status_code') else 'N/A'}")
+                except Exception as e:
+                    print(f"⚠️ Erreur mise à jour métriques: {e}")
+            else:
+                print(f"⚠️ Pas d'exporter disponible: {type(self.prometheus_exporter)}")
             
             # Fin du timer et enregistrement des métriques
             if self.latency_service:
@@ -874,8 +974,33 @@ class SimulationService:
             if self.latency_service:
                 self.latency_service.end_timer("collecte_metriques")
 
-    def simulation_tour(self, verbose: bool = None) -> Dict[str, Any]:
-        """Tour de simulation avec monitoring et validation"""
+    def simulation_tour(self, verbose: Optional[bool] = None) -> Dict[str, Any]:
+        """Tour de simulation avec monitoring et validation
+        
+        ALGORITHME :
+        1. Démarrage du timer de latence
+        2. Simulation des transactions entre entreprises et fournisseurs
+        3. Application des événements selon probabilité
+        4. Collecte des métriques et statistiques
+        5. Logging des résultats et affichage verbose
+        
+        Args:
+            verbose: Afficher les détails du tour (None = utiliser self.verbose)
+            
+        Returns:
+            Dict contenant : tour, tick, transactions_effectuees, evenements_appliques, 
+                           statistiques, duration
+            
+        PERFORMANCE :
+        - Cache LRU pour les statistiques
+        - Monitoring des latences
+        - Logging structuré
+        
+        UTILISATION :
+        - Tour simple : service.simulation_tour()
+        - Avec verbose : service.simulation_tour(verbose=True)
+        - Override verbose : service.simulation_tour(verbose=False)
+        """
         start_time = time.time()
         
         # Début de la mesure de performance
@@ -925,8 +1050,8 @@ class SimulationService:
             self.collecter_metriques()
             
             # Affichage verbose
-            verbose_to_use = verbose if verbose is not None else self.verbose
-            if verbose_to_use:
+            should_display_verbose = verbose if verbose is not None else self.verbose
+            if should_display_verbose:
                 print(f"\n🔄 Tour {self.tours_completes + 1} - Tick {self.tick_actuel}")
                 print(f"📊 Transactions effectuées: {transactions_effectuees}")
                 
@@ -1049,8 +1174,16 @@ class SimulationService:
             return 0.0
 
     def reset_simulation(self) -> None:
-        """Réinitialise la simulation"""
+        """Réinitialise la simulation avec les valeurs de config.py"""
         try:
+            from config.config import (
+                N_ENTREPRISES_PAR_TOUR, PROBABILITE_SELECTION_ENTREPRISE,
+                DUREE_PAUSE_ENTRE_TOURS, QUANTITE_ACHAT_MIN, QUANTITE_ACHAT_MAX,
+                RECHARGE_BUDGET_MIN, RECHARGE_BUDGET_MAX, REASSORT_QUANTITE_MIN,
+                REASSORT_QUANTITE_MAX, INFLATION_POURCENTAGE_MIN, INFLATION_POURCENTAGE_MAX
+            )
+            
+            # Réinitialiser les compteurs
             self.tick_actuel = 0
             self.tours_completes = 0
             self.evenements_appliques = 0
@@ -1058,6 +1191,15 @@ class SimulationService:
             self.error_count = 0
             self.total_actions = 0
             self._cache_stats.clear()
+            
+            # 🔄 RÉINITIALISER LES BUDGETS DES ENTREPRISES
+            for entreprise in self.entreprises:
+                entreprise.budget = entreprise.budget_initial
+            
+            # Réinitialiser les paramètres de simulation avec config.py
+            self.n_entreprises_par_tour = N_ENTREPRISES_PAR_TOUR
+            self.probabilite_selection_entreprise = PROBABILITE_SELECTION_ENTREPRISE
+            self.duree_pause_entre_tours = DUREE_PAUSE_ENTRE_TOURS
             
             # Réinitialiser les services de métriques
             if self.budget_metrics_service:
@@ -1076,7 +1218,7 @@ class SimulationService:
                 self.product_metrics_service.reset_metrics()
             
             if self.verbose:
-                print("🔄 Simulation réinitialisée")
+                print("🔄 Simulation réinitialisée avec les valeurs de config.py")
                 
         except Exception as e:
             self._log_error("reset_simulation", str(e))
@@ -1128,35 +1270,66 @@ class SimulationService:
         except Exception as e:
             self._log_error("run_simulation_infinite", str(e))
     
+    def _create_mock_repo(self, data_list):
+        """Crée un repository mock thread-safe avec cache
+        
+        ALGORITHME :
+        1. Création d'une classe MockRepo encapsulant les données
+        2. Initialisation du cache et du verrou thread-safe
+        3. Méthode get_all() avec cache et invalidation automatique
+        
+        Args:
+            data_list: Liste des données à encapsuler (entreprises, fournisseurs, produits)
+            
+        Returns:
+            MockRepo: Repository mock avec accès thread-safe et cache optimisé
+            
+        PERFORMANCE :
+        - Cache avec invalidation toutes les 1 seconde
+        - Verrou thread-safe pour éviter les race conditions
+        - Copie des données pour isolation
+        
+        UTILISATION :
+        - Accès : repo.get_all() retourne une copie thread-safe
+        - Cache : Automatique avec invalidation
+        - Thread-safety : Garantie par verrou
+        
+        Note:
+            Retourne des copies pour éviter les mutations concurrentes
+            Cache avec invalidation pour optimiser les performances
+        """
+        class MockRepo:
+            def __init__(self, data):
+                self._data = data
+                self._cache = None
+                self._cache_timestamp = 0
+                self._lock = threading.Lock()
+            
+            def get_all(self):
+                current_time = time.time()
+                with self._lock:
+                    if self._cache is None or current_time - self._cache_timestamp > 1.0:
+                        # Copie profonde pour éviter les mutations
+                        import copy
+                        self._cache = copy.deepcopy(self._data)
+                        self._cache_timestamp = current_time
+                    return self._cache
+        return MockRepo(data_list)
+    
     @property
     def entreprise_repo(self):
         """Propriété pour accéder aux entreprises (compatibilité tests)"""
-        class MockRepo:
-            def get_all(self):
-                return self.entreprises
-        repo = MockRepo()
-        repo.entreprises = self.entreprises
-        return repo
+        return self._entreprise_repo
     
     @property
     def produit_repo(self):
         """Propriété pour accéder aux produits (compatibilité tests)"""
-        class MockRepo:
-            def get_all(self):
-                return self.produits
-        repo = MockRepo()
-        repo.produits = self.produits
-        return repo
+        return self._produit_repo
     
     @property
     def fournisseur_repo(self):
         """Propriété pour accéder aux fournisseurs (compatibilité tests)"""
-        class MockRepo:
-            def get_all(self):
-                return self.fournisseurs
-        repo = MockRepo()
-        repo.fournisseurs = self.fournisseurs
-        return repo
+        return self._fournisseur_repo
 
 # Instance globale du générateur d'IDs
 id_generator = IDGenerator() 

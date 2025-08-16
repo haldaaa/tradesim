@@ -19,15 +19,48 @@ Fournir un monitoring temps réel de TradeSim avec :
 cd monitoring
 docker-compose up -d
 
+# Configuration dynamique (optionnel - automatique sur Mac/Windows)
+python configure_prometheus.py
+
 # Lancer la simulation avec monitoring
 python services/simulate.py --tours 10 --with-metrics
 ```
+
+### Configuration automatique
+
+Le monitoring est **portable** et s'adapte automatiquement :
+- **Mac/Windows** : Utilise `host.docker.internal`
+- **Linux** : Détecte automatiquement l'IP du host
+- **Aucune configuration manuelle** requise
 
 ### 2. Accéder aux interfaces
 
 - **Prometheus**: http://localhost:9090
 - **Grafana**: http://localhost:3000 (admin/admin)
 - **Exporter**: http://localhost:8000
+
+### 3. Utilisation de Grafana
+
+#### **Accès depuis le navigateur**
+1. **Ouvrir** : http://localhost:3000
+2. **Se connecter** : `admin` / `admin`
+3. **Source de données** : Prometheus configurée automatiquement
+4. **Dashboards** : Création manuelle ou import JSON
+
+#### **Création de dashboards manuels**
+1. **"+"** → **"Dashboard"**
+2. **"Add panel"**
+3. **Query** : Utiliser les métriques TradeSim (ex: `tradesim_budget_total`)
+4. **Legend** : Nom personnalisé (ex: "Budget Total")
+5. **Visualization** : Stat, Time series, etc.
+
+#### **Métriques principales disponibles**
+- `tradesim_budget_total` - Budget total des entreprises
+- `tradesim_tours_completes` - Tours de simulation
+- `tradesim_evenements_total` - Événements totaux
+- `tradesim_transactions_total` - Transactions totales
+- `tradesim_cpu_usage_percent` - Utilisation CPU
+- `tradesim_memory_usage_percent` - Utilisation mémoire
 
 ## ⚙️ Configuration
 

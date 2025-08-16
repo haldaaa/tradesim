@@ -66,9 +66,14 @@ def get_fournisseurs_enrichis():
     - Utilise FournisseurRepository et ProduitRepository
     - Gestion des prix à migrer vers un service plus tard
     """
+    fournisseurs = fournisseur_repo.get_all()
+    
+    # Validation des données avant sérialisation
+    if not isinstance(fournisseurs, list):
+        raise HTTPException(status_code=500, detail="Données invalides")
+    
     result = []
-
-    for fournisseur in fournisseur_repo.get_all():
+    for fournisseur in fournisseurs:
         produits = []
 
         for produit_id, stock in fournisseur.stock_produit.items():
@@ -95,6 +100,7 @@ def get_fournisseurs_enrichis():
             id=fournisseur.id,
             nom_entreprise=fournisseur.nom_entreprise,
             pays=fournisseur.pays,
+            continent=fournisseur.continent,
             produits=produits
         ))
 

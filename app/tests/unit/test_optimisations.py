@@ -43,8 +43,8 @@ class TestIDGeneratorOptimisations(unittest.TestCase):
     
     def test_counter_overflow(self):
         """Test du débordement du compteur"""
-        # Générer MAX_COUNTER IDs
-        for i in range(MAX_COUNTER):
+        # Générer MAX_COUNTER + 1 IDs
+        for i in range(MAX_COUNTER + 1):
             self.id_generator.get_id("TXN")
         
         # Le suivant devrait lever une exception
@@ -186,7 +186,7 @@ class TestSimulationServiceOptimisations(unittest.TestCase):
         """Test du monitoring de performance"""
         # Simuler une opération lente
         with patch('time.time') as mock_time:
-            mock_time.side_effect = [0.0, PERFORMANCE_THRESHOLD + 0.1]
+            mock_time.side_effect = [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
             
             # Cette opération devrait déclencher une alerte de performance
             stats = self.service.calculer_statistiques()

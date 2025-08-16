@@ -44,7 +44,8 @@ class TestInflation:
         - S'assurer que chaque test part d'un état connu
         """
         # Réinitialiser les données de test pour éviter les interférences
-        produits_ayant_subi_inflation.clear()
+        from events.inflation import reset_inflation_timers
+        reset_inflation_timers()
         
         # Initialiser les repositories
         self.produit_repo = ProduitRepository()
@@ -95,7 +96,8 @@ class TestInflation:
         # L'inflation est probabiliste, on accepte les deux cas
         if resultat:  # Si l'inflation s'est appliquée
             assert self.produit1.prix > prix_initial, "Le prix doit avoir augmenté si l'inflation s'applique"
-            assert self.produit1.id in produits_ayant_subi_inflation, "Le produit doit être marqué comme affecté"
+            from events.inflation import produits_inflation_timers
+            assert self.produit1.id in produits_inflation_timers, "Le produit doit être marqué comme affecté"
             print(f"✅ Test inflation - Prix initial: {prix_initial}, Prix après: {self.produit1.prix}")
         else:
             # Si l'inflation ne s'est pas appliquée, le prix doit rester inchangé

@@ -51,10 +51,14 @@ from prometheus_client import (
     generate_latest,
     CONTENT_TYPE_LATEST
 )
-from flask import Flask, Response
+from flask import Flask, Response, jsonify, request
 import psutil
 
 # Configuration
+import sys
+import os
+sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
+
 from config.config import (
     METRICS_ENABLED,
     METRICS_EXPORTER_PORT,
@@ -77,6 +81,14 @@ temps_simulation_tour_seconds = Histogram(
     'Durée d\'un tour de simulation',
     buckets=[0.1, 0.5, 1.0, 2.0, 5.0, 10.0]
 )
+
+# Métriques de Configuration
+config_nombre_tours = Gauge('tradesim_config_nombre_tours', 'Nombre de tours configuré')
+config_entreprises_par_tour = Gauge('tradesim_config_entreprises_par_tour', 'Nombre d\'entreprises par tour')
+config_probabilite_selection = Gauge('tradesim_config_probabilite_selection', 'Probabilité de sélection d\'entreprise')
+config_quantite_achat_max = Gauge('tradesim_config_quantite_achat_max', 'Quantité d\'achat maximum')
+config_budget_entreprise_max = Gauge('tradesim_config_budget_entreprise_max', 'Budget maximum des entreprises')
+config_tick_interval_event = Gauge('tradesim_config_tick_interval_event', 'Intervalle des événements')
 
 # ============================================================================
 # MÉTRIQUES DE SIMULATION (8 métriques)
@@ -395,8 +407,13 @@ class PrometheusExporter:
         # Configuration des routes Flask
         self._setup_routes()
         
-        # Fichier de stockage JSONL
-        self.metrics_file = "logs/metrics.jsonl"
+                        # Fichier de stockage JSONL
+        logs_dir = os.path.join(os.path.dirname(__file__), '..', 'logs')
+        os.makedirs(logs_dir, exist_ok=True)
+        self.metrics_file = os.path.join(logs_dir, 'metrics.jsonl')
+        
+        # Initialiser les métriques de configuration
+        self._init_config_metrics()
         
     def _setup_routes(self):
         """Configure les routes Flask pour l'exporter"""
@@ -424,6 +441,7 @@ class PrometheusExporter:
                 'endpoints': {
                     '/metrics': 'Métriques Prometheus',
                     '/health': 'Santé du service',
+                    '/update_metrics': 'Mise à jour métriques',
                     '/': 'Cette page'
                 },
                 'configuration': {
@@ -433,6 +451,19 @@ class PrometheusExporter:
                     'collection_interval': METRICS_COLLECTION_INTERVAL
                 }
             }
+        
+        @self.app.route('/update_metrics', methods=['POST'])
+        def update_metrics():
+            """Endpoint pour mettre à jour les métriques via HTTP"""
+            try:
+                data = request.get_json()
+                if data:
+                    self.update_tradesim_metrics(data)
+                    return jsonify({'status': 'success', 'message': 'Métriques mises à jour'})
+                else:
+                    return jsonify({'status': 'error', 'message': 'Données manquantes'}), 400
+            except Exception as e:
+                return jsonify({'status': 'error', 'message': str(e)}), 500
     
     def start(self):
         """Démarre l'exporteur Prometheus"""
@@ -452,6 +483,27 @@ class PrometheusExporter:
             
         except Exception as e:
             print(f"❌ Erreur lors du démarrage de l'exporter: {e}")
+    
+    def _init_config_metrics(self):
+        """Initialise les métriques de configuration depuis config.py"""
+        try:
+            from config.config import (
+                NOMBRE_TOURS, N_ENTREPRISES_PAR_TOUR, PROBABILITE_SELECTION_ENTREPRISE,
+                QUANTITE_ACHAT_MAX, BUDGET_ENTREPRISE_MAX, TICK_INTERVAL_EVENT
+            )
+            
+            # Mise à jour des métriques de configuration
+            config_nombre_tours.set(NOMBRE_TOURS)
+            config_entreprises_par_tour.set(N_ENTREPRISES_PAR_TOUR)
+            config_probabilite_selection.set(PROBABILITE_SELECTION_ENTREPRISE)
+            config_quantite_achat_max.set(QUANTITE_ACHAT_MAX)
+            config_budget_entreprise_max.set(BUDGET_ENTREPRISE_MAX)
+            config_tick_interval_event.set(TICK_INTERVAL_EVENT)
+            
+            print("📊 Métriques de configuration initialisées")
+            
+        except Exception as e:
+            print(f"⚠️ Erreur lors de l'initialisation des métriques de configuration: {e}")
     
     def collect_system_metrics(self):
         """Collecte les métriques système"""

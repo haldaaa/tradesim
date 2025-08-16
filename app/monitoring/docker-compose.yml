@@ -46,6 +46,12 @@ services:
       - GF_SECURITY_ADMIN_PASSWORD=admin
       - GF_USERS_ALLOW_SIGN_UP=false
       - GF_INSTALL_PLUGINS=grafana-clock-panel,grafana-simple-json-datasource
+    volumes:
+      - grafana-storage:/var/lib/grafana
+      - ./grafana/provisioning:/etc/grafana/provisioning
     restart: unless-stopped
     depends_on:
-      - prometheus 
+      - prometheus
+
+volumes:
+  grafana-storage: 

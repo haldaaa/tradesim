@@ -1,20 +1,32 @@
 #!/usr/bin/env python3
 """
-Configuration TradeSim - Paramètres centralisés
-==============================================
+Configuration centralisée pour TradeSim
+======================================
 
-Ce module contient toutes les constantes de configuration de TradeSim.
-Il centralise tous les paramètres pour permettre une modification
-rapide et cohérente de l'application.
+ARCHITECTURE :
+- Fichier de configuration unique pour toute l'application
+- Paramètres de simulation, événements, monitoring
+- Validation des données et constantes
+- Configuration des métriques et alertes
 
-Sections de configuration :
-- Simulation : Paramètres de base de la simulation
-- Logs : Configuration des fichiers de logs
-- Events : Paramètres des différents événements
-- Debug : Mode debug et options de développement
+FONCTIONNEMENT :
+1. Import centralisé dans tous les services
+2. Validation des valeurs critiques
+3. Configuration par environnement
+4. Constantes pour éviter la duplication
 
-Auteur: Assistant IA
-Date: 2024-08-02
+UTILISATION :
+- Import : from config.config import *
+- Validation : validate_continent("Europe")
+- Configuration : QUANTITE_ACHAT_MAX, TICK_INTERVAL_EVENT, etc.
+
+AJOUTS RÉCENTS (11/08/2025) :
+- Validation des continents avec validate_continent()
+- Constante DEFAULT_CONTINENT configurable
+- Liste VALID_CONTINENTS pour validation
+
+AUTEUR : Assistant IA
+DERNIÈRE MISE À JOUR : 11/08/2025
 """
 
 import os
@@ -27,7 +39,6 @@ NOMBRE_TOURS = 100                     # Nombre total de tours à simuler
 N_ENTREPRISES_PAR_TOUR = 2            # Nombre d'entreprises sélectionnées aléatoirement par tour
 DUREE_PAUSE_ENTRE_TOURS = 0.1         # En secondes (peut servir pour la version crontab/finale)
 PROBABILITE_SELECTION_ENTREPRISE = 0.3 # Probabilité qu'une entreprise soit sélectionnée pour un tour
-
 
 # ============================================================================
 # DEBUG - Mode debug et options de développement
@@ -49,7 +60,6 @@ FICHIER_LOG_HUMAIN = os.path.join(LOG_DIR, "simulation_humain.log")
 # Fichiers de log des événements
 EVENT_LOG_JSON = os.path.join(LOG_DIR, "event.jsonl")
 EVENT_LOG_HUMAIN = os.path.join(LOG_DIR, "event.log")
-
 
 # ============================================================================
 # ENTREPRISES - Configuration des entreprises
@@ -79,9 +89,15 @@ RECHARGE_BUDGET_MAX = 8000             # Montant maximum de recharge de budget
 REASSORT_QUANTITE_MIN = 10            # Quantité minimum de réassortiment
 REASSORT_QUANTITE_MAX = 50            # Quantité maximum de réassortiment
 
-# Quantité d'achat (utilisée pour les transactions aléatoires)
-QUANTITE_ACHAT_MIN = 1                # Quantité minimum d'achat par transaction
-QUANTITE_ACHAT_MAX = 100              # Quantité maximum d'achat par transaction
+# Configuration par défaut
+DEFAULT_CONTINENT = "Europe"          # Continent par défaut pour les entités
+
+# Validation des continents
+VALID_CONTINENTS = ["Europe", "Asie", "Amérique", "Afrique", "Océanie"]
+
+def validate_continent(continent: str) -> bool:
+    """Valide qu'un continent est dans la liste autorisée"""
+    return continent in VALID_CONTINENTS
 
 # Inflation (inflation)
 INFLATION_POURCENTAGE_MIN = 30        # Pourcentage minimum d'inflation
@@ -131,6 +147,10 @@ METRICS_EXPORTER_HOST = "0.0.0.0"    # Host de l'exporter (0.0.0.0 = toutes inte
 METRICS_PROMETHEUS_PORT = 9090       # Port de Prometheus
 METRICS_GRAFANA_PORT = 3000          # Port de Grafana
 
+# Configuration de connectivité Docker (modulaire)
+METRICS_DOCKER_HOST = os.getenv('TRADESIM_DOCKER_HOST', 'localhost')  # Host Docker (modifiable par env)
+METRICS_EXPORTER_TARGET = os.getenv('TRADESIM_EXPORTER_TARGET', 'localhost:8000')  # Target de l'exporteur
+
 # Métriques système (CPU/Mémoire)
 METRICS_SYSTEM_ENABLED = True        # Activer les métriques système
 METRICS_SYSTEM_INTERVAL = 5.0        # Intervalle de collecte système en secondes
@@ -143,7 +163,7 @@ METRICS_LABELS_PRODUIT_TYPE = False  # Label {produit_type}
 # Configuration des IDs uniques
 ID_FORMAT = "DATE_HHMMSS_TYPE_COUNTER"
 ID_SESSION_FORMAT = "%Y%m%d_%H%M%S"
-MAX_COUNTER = 999
+MAX_COUNTER = 99999
 VALID_ACTION_TYPES = ['TXN', 'EVT', 'METRIC', 'TICK', 'ALERT', 'TEMPLATE']
 
 # Configuration des optimisations

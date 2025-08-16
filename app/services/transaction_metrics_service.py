@@ -139,7 +139,7 @@ class TransactionMetricsService:
         tour_data = {
             'tour': tour,
             'timestamp': time.time(),
-            'transactions_count': len(transactions_tour),
+            'transactions_total': len(transactions_tour),  # Renommé pour cohérence
             'transactions_reussies': len([t for t in transactions_tour if t.get('reussie', True)]),
             'transactions_echouees': len([t for t in transactions_tour if not t.get('reussie', True)]),
             'volume_total': sum(t.get('quantite', 0) for t in transactions_tour if t.get('reussie', True)),
@@ -178,6 +178,7 @@ class TransactionMetricsService:
             'transactions_par_strategie': metriques_base['par_strategie'],
             'transactions_par_produit': metriques_base['par_produit'],
             'transactions_par_entreprise': metriques_base['par_entreprise'],
+            'transactions_count': len(self.transactions_par_tour.get(self.tour_actuel, [])),
             
             # Métriques de performance (6 métriques)
             'transactions_volume_moyen': metriques_performance['volume_moyen'],
