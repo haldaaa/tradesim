@@ -63,6 +63,21 @@ INFLATION_MULTIPLIER = 1.4
 # }}
 produits_inflation_timers = {}
 
+def reset_inflation_timers():
+    """Réinitialise les timers d'inflation (pour les tests)"""
+    global produits_inflation_timers
+    produits_inflation_timers = {}
+    
+    # Nettoyer aussi les anciennes données corrompues
+    import gc
+    gc.collect()
+    print("🧹 Timers d'inflation réinitialisés")
+    
+    # Nettoyer les anciennes données globales
+    global produits_ayant_subi_inflation
+    if 'produits_ayant_subi_inflation' in globals():
+        produits_ayant_subi_inflation.clear()
+
 def appliquer_retour_normal(tick: int) -> List[Dict[str, Any]]:
     """
     Applique le retour à la normale pour les produits en phase de retour.
@@ -80,9 +95,18 @@ def appliquer_retour_normal(tick: int) -> List[Dict[str, Any]]:
     fournisseur_repo = FournisseurRepository()
     
     for produit_id, timer in list(produits_inflation_timers.items()):
+        # Vérifier que timer est bien un dict avec la structure attendue
+        if not isinstance(timer, dict) or "derniere_inflation_tick" not in timer:
+            print(f"⚠️ Timer invalide pour produit {produit_id}: {timer}")
+            continue
+            
         if not timer["phase_retour"]:
             # Vérifier si on doit commencer la phase de retour
-            tours_ecoules = tick - timer["derniere_inflation_tick"]
+            derniere_tick = timer["derniere_inflation_tick"]
+            if not isinstance(derniere_tick, int):
+                print(f"⚠️ derniere_inflation_tick invalide pour produit {produit_id}: {derniere_tick}")
+                continue
+            tours_ecoules = tick - derniere_tick
             if tours_ecoules >= DUREE_RETOUR_INFLATION:
                 timer["phase_retour"] = True
                 timer["tick_debut_retour"] = tick
@@ -205,6 +229,7 @@ def appliquer_inflation(tick: int) -> List[Dict[str, Any]]:
     pourcentages = []
 
     cible_type = random.choice(["produit", "categorie"])
+    type_cible = None  # Initialiser pour éviter l'erreur
     
     if cible_type == "produit":
         # Utiliser le Repository pour récupérer les produits actifs
@@ -237,15 +262,24 @@ def appliquer_inflation(tick: int) -> List[Dict[str, Any]]:
                 penalite_active = False
                 if produit_id in produits_inflation_timers:
                     timer = produits_inflation_timers[produit_id]
-                    tours_ecoules = tick - timer["derniere_inflation_tick"]
-                    
-                    if tours_ecoules <= DUREE_PENALITE_INFLATION:
-                        penalite_active = True
-                        # Reset du compteur à 50 tours
-                        timer["tours_restants_penalite"] = DUREE_PENALITE_INFLATION
+                    if isinstance(timer, dict) and "derniere_inflation_tick" in timer:
+                        derniere_tick = timer["derniere_inflation_tick"]
+                        if isinstance(derniere_tick, int):
+                            tours_ecoules = tick - derniere_tick
+                            
+                            if tours_ecoules <= DUREE_PENALITE_INFLATION:
+                                penalite_active = True
+                                # Reset du compteur à 50 tours
+                                timer["tours_restants_penalite"] = DUREE_PENALITE_INFLATION
+                            else:
+                                # Pénalité expirée, supprimer l'entrée
+                                del produits_inflation_timers[produit_id]
+                        else:
+                            print(f"⚠️ derniere_inflation_tick invalide pour produit {produit_id}: {derniere_tick}")
+                            tours_ecoules = 0
                     else:
-                        # Pénalité expirée, supprimer l'entrée
-                        del produits_inflation_timers[produit_id]
+                        print(f"⚠️ Timer invalide pour produit {produit_id}: {timer}")
+                        tours_ecoules = 0
                 
                 # Calculer le pourcentage d'inflation
                 pourcentage_inflation = random.uniform(INFLATION_POURCENTAGE_MIN, INFLATION_POURCENTAGE_MAX)
@@ -320,8 +354,9 @@ def appliquer_inflation(tick: int) -> List[Dict[str, Any]]:
             )
         else:
             # Plusieurs prix modifiés, afficher les statistiques
+            type_display = type_cible.value if type_cible else "Catégorie"
             message_humain = (
-                f"💰 Tour {tick} - INFLATION {type_cible.value}: {len(inflation_logs)} produits affectés (prix +{min_pourcentage}% à +{max_pourcentage}%)"
+                f"💰 Tour {tick} - INFLATION {type_display}: {len(inflation_logs)} produits affectés (prix +{min_pourcentage}% à +{max_pourcentage}%)"
             )
         
         log_json = {

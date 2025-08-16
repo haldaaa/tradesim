@@ -1,85 +1,120 @@
-# Services TradeSim
+# 📁 Services - Logique métier TradeSim
 
-## 📁 **Fichiers principaux**
+## 🎯 **BUT DU DOSSIER**
+Ce dossier contient tous les services de logique métier de TradeSim. Chaque service encapsule une fonctionnalité spécifique et peut être utilisé de manière indépendante.
 
-### **🚀 Point d'entrée**
-- **`simulate.py`** - **Point d'entrée principal** de l'application CLI
-  - Gère tous les arguments (`--tours`, `--new-game`, etc.)
-  - Interface utilisateur et configuration
-  - **C'est le fichier à lancer**
+## 🏗️ **ARCHITECTURE**
+- **Services principaux** : Simulation, Game Manager, Price
+- **Services de métriques** : Budget, Enterprise, Product, Supplier, Transaction, Event
+- **Services utilitaires** : Latency, Name Manager
+- **Templates** : Modèles de configuration pour les tests
 
-### **⚙️ Logique métier**
-- **`simulateur.py`** - **ANCIEN SYSTÈME** (maintenu pour compatibilité)
-  - Logique de simulation originale
-  - Logs simples sans IDs
-  - **PLUS UTILISÉ EN PRODUCTION** (gardé pour tests)
-  - Fonctions : `simulation_tour()`, `acheter_produit()`, `log_event()` (sans IDs)
+## 📋 **FICHIERS PRÉSENTS**
 
-- **`simulation_service.py`** - **NOUVEAU SYSTÈME** (système principal)
-  - Service d'orchestration avec monitoring Prometheus
-  - Logs enrichis avec IDs uniques
-  - **SYSTÈME PRINCIPAL ACTUEL**
-  - Classe `SimulationService` avec `IDGenerator`
-  - Logs format : `{"action_id": "20250810_143022_TXN_001", "session_id": "20250810_143022", ...}`
+### **🔄 Services Principaux**
+- **`simulation_service.py`** : Service central de simulation
+  - Gestion des tours de simulation
+  - Transactions entre entreprises et fournisseurs
+  - Application d'événements (inflation, recharge, etc.)
+  - Monitoring et métriques en temps réel
+  - Cache thread-safe pour les repositories
 
-- **`game_manager.py`** - Gestion des parties et templates
-  - Configuration interactive (`--new-game`)
-  - Sauvegarde/chargement de templates
-  - **Importé par `simulate.py`**
+- **`game_manager_service.py`** : Gestionnaire de jeu
+  - Génération des données initiales
+  - Reset et initialisation des parties
+  - Lancement des simulations
 
-### **🔄 Services spécialisés**
-- **`simulation_service.py`** - Orchestration de simulation
-- **`latency_service.py`** - **NOUVEAU** Métriques de latence et throughput
-  - Mesure des temps de réponse des actions
-  - Calcul des statistiques de performance (moyenne, médiane, percentiles)
-  - Gestion du throughput (opérations par seconde)
-  - Intégration avec Prometheus
-  - Cache LRU pour optimisations
-- **`price_service.py`** - Gestion des prix
-- **`budget_service.py`** - Gestion des budgets
-- **`transaction_service.py`** - Gestion des transactions
+- **`price_service.py`** : Service de gestion des prix
+  - Calcul et mise à jour des prix
+  - Gestion des variations de prix
 
-## 🎯 **Comment lancer l'application**
+### **📊 Services de Métriques**
+- **`budget_metrics_service.py`** : Métriques de budget
+- **`enterprise_metrics_service.py`** : Métriques d'entreprises
+- **`product_metrics_service.py`** : Métriques de produits
+- **`supplier_metrics_service.py`** : Métriques de fournisseurs
+- **`transaction_metrics_service.py`** : Métriques de transactions
+- **`event_metrics_service.py`** : Métriques d'événements
+- **`performance_metrics_service.py`** : Métriques de performance
 
-### **Point d'entrée unique**
-```bash
-# Depuis le répertoire app/
-python services/simulate.py [options]
+### **🔧 Services Utilitaires**
+- **`latency_service.py`** : Mesure des latences
+- **`name_manager.py`** : Gestion des noms d'entreprises
+
+### **📁 Templates**
+- **`templates/`** : Modèles de configuration pour les tests
+
+## 🚀 **UTILISATION**
+
+### **Simulation de base**
+```python
+from services.simulation_service import SimulationService
+
+# Créer un service de simulation
+service = SimulationService(verbose=True)
+
+# Exécuter un tour
+result = service.simulation_tour()
+
+# Obtenir les statistiques
+stats = service.calculer_statistiques()
 ```
 
-### **Exemples**
-```bash
-# Mode interactif (nouvelle partie)
-python services/simulate.py --new-game
+### **Nouvelle partie**
+```python
+from services.game_manager_service import reset_game, run_simulation_tours
 
-# Mode direct (simulation rapide)
-python services/simulate.py --tours 10
+# Reset et nouvelle partie
+reset_game()
 
-# Avec monitoring
-python services/simulate.py --tours 5 --with-metrics
+# Lancer une simulation de 10 tours
+run_simulation_tours(10, verbose=True)
 ```
 
-## 📋 **Architecture**
+### **Monitoring des métriques**
+```python
+from services.budget_metrics_service import BudgetMetricsService
 
-```
-simulate.py (point d'entrée)
-├── game_manager.py (mode interactif)
-├── simulation_service.py (logique simulation - NOUVEAU)
-├── simulateur.py (logique simulation - ANCIEN, tests)
-├── simulation_service.py (orchestration)
-└── autres services...
+# Service de métriques de budget
+budget_service = BudgetMetricsService()
+metrics = budget_service.calculer_metriques_budget()
 ```
 
-## 🔄 **Migration et compatibilité**
+## 🔧 **CONFIGURATION**
+Tous les services utilisent la configuration centralisée dans `config/config.py` :
+- Paramètres de simulation
+- Seuils de métriques
+- Configuration des événements
+- Validation des données
 
-### **État actuel :**
-- **Production** : Utilise `simulation_service.py` (avec IDs)
-- **Tests** : Utilisent encore `simulateur.py` (sans IDs)
-- **Logs** : Mélange de formats selon le système utilisé
+## 📈 **MÉTRIQUES DISPONIBLES**
+- **Budget** : Revenus, dépenses, ratios
+- **Entreprises** : Performance, stratégies
+- **Produits** : Prix, stocks, disponibilité
+- **Fournisseurs** : Stocks, prix, performance
+- **Transactions** : Volume, succès, échecs
+- **Événements** : Fréquence, impact
+- **Performance** : Latences, débits
 
-### **Évolution :**
-- `simulation_service.py` : Système principal avec toutes les fonctionnalités
-- `simulateur.py` : Gardé pour compatibilité des tests
-- **Recommandation** : Utiliser `simulation_service.py` pour tout nouveau développement
+## 🧪 **TESTS**
+Chaque service a ses tests unitaires dans `tests/unit/` :
+- Tests de fonctionnalité
+- Tests de performance
+- Tests de thread-safety
+- Tests d'intégration
 
-**Note :** Il n'y a qu**un seul point d'entrée** : `simulate.py` 
+## 📝 **LOGGING**
+Tous les services utilisent un logging structuré :
+- Logs humains dans `logs/simulation_humain.log`
+- Logs JSON dans `logs/simulation.jsonl`
+- Logs d'événements dans `logs/event.log` et `logs/event.jsonl`
+
+## 🔄 **DERNIÈRES MODIFICATIONS**
+- **11/08/2025** : Cache thread-safe dans SimulationService
+- **11/08/2025** : Validation des configurations
+- **11/08/2025** : Tests de performance complets
+- **11/08/2025** : Logging structuré amélioré
+
+---
+**Auteur** : Assistant IA  
+**Dernière mise à jour** : 11/08/2025 

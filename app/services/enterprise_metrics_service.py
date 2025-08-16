@@ -267,6 +267,7 @@ class EnterpriseMetricsService:
         budget_moyen = statistics.mean(budgets) if budgets else 0.0
         
         # Stock moyen
+        # Stock des entreprises (basé sur l'attribut stocks dynamique)
         stocks_totaux = []
         for entreprise in entreprises:
             stocks = getattr(entreprise, 'stocks', {})
@@ -384,6 +385,8 @@ class EnterpriseMetricsService:
             'resilience': resilience_moyenne,
             'innovation': innovation_moyenne
         }
+    
+
     
     def _calculer_statistiques_entreprises_cached(self, entreprises_ids: tuple) -> Dict[str, float]:
         """

@@ -1,0 +1,28 @@
+# Revue de code stricte
+- Toujours appliquer la CHECKLIST Revue de code (imports, logique, erreurs, API/contrats, typage/lint, perf, sécurité, concurrence, état, front, tests, observabilité, config, docs).
+- Pour chaque problème : PROBLÈME→IMPACT→PATCH (diff unifié), puis tests à ajouter.
+- Si incertitude : marquer “À VÉRIFIER” + hypothèse + comment confirmer (commande/outillage).
+- Proposer d’abord un patch minimal (safe), puis une section “Améliorations facultatives”.
+- Respecter les outils du repo si présents (isort/black/flake8, eslint/prettier, mypy/pyright, tsc, jest/pytest).
+- Toujours suggérer commandes de validation (lint/type/test) à la fin.
+- Toujours mettre a jour ton Fichier Workflow avec les dernières implementations, correction de bug et si je te le dis ce qu'on fera a la prochaine session 
+- Toujours relire ton workflow avant chaque session, et chaque grosse manipulation.
+- Dans ton worfklow, chaque session de travail doit etre documenté : heure, bug corrigé, bug trouvé, feature ajouté (impact ), compréhension nouvelles sur le projet ou/et mes envies etc etc, quand je te dis que la sessoin est terminé c'est qu'on a finis.
+- OBLIGATOIRE : Mettre à jour la date et l'heure dans le workflow au début de chaque nouvelle session
+- OBLIGATOIRE : ton workflow est ton journal de bord.
+- OBLIGATOIRE : Vérifier la date du workflow avant de commencer tout travail
+- OBLIGATOIRE : Toujours relire le fichier de règles avant chaque grosse étape et avant chaque session
+- OBLIGATOIRE : Avant de coder une fonction, méthode ou la mise en place d'un pattern, verifier si une solution n'existe pas déja.
+- OBLIGATOIRE : ne code jamais rien sans me demander l'autorisation, quand je te pose une question tu répond le plus techniquement possible en gardant en tête les dogmes, mes besoins et le cahier des charges du projet. Si t'a des questions pour mieux cerner surtout hésite pas.
+- OBLIGATOIRE : dés qu'une feature est fonctionel, un bug corrigé, ou que tu as compris un concept important du projet ou de mes attentes, tu devras mettre ton workflow a jour.
+- Toujours gardé en tête que l'application doit être scalable, modulable, maintenable, optimisé, évolutive et persistante
+- Le point d'or est de collecter le plus de métriques possibles afin de les afficher sur plusieurs dashboard grafana.
+- Chaque fichier aura des commentaires : au début du fichier (explique le but du fichier, l'architecture, le fonctionnement, comment utiliser ), des commentaires pour chaque fonction (qui decrit la fonction, comment l'appeler etc), des commentaires pour chaque algo, et des commentaires la ou tu jugent important. 
+- Chaque dossier aura un README qui recapitulera le but du dossier, comment utiliser tel ou tel truc si besoin, et une description breve de tout les fichiers présents. 
+- Il doit également avoir un README dans le dossier racine de l'application qui décrit l'application, comment l'utiliser, les différentes commandes, que fait chaque dossier etc. Tu ne dois pas te repeter dans les readme.
+- N'implemente pas de nouvelles méthodes avant de verifier si d'ancienne existe déja.
+- Garde en tête également que ce projet a pour but a la fois de me former (je suis devops ingénieur spécialisé monitoring), mais également de le rendre public pour le montrer au recruteur. Il devra intégré toute les composantes de mon métier : Devops, programmation, mvc, object, systeme, monitoring, cloud et CICD.
+- Une fois l'application CLI stable (tout est ok, monitoring ok), on passera a la version Web, et enfin a la version cloud en utilisant Terraform, docker et kubernetes
+- Je souhaite a terme une boucle CICD compléte, fonctionnelle et modulable.
+- Je souhaite me former sur Kubernetes, Docker et m'expertiser sur le monitoring.
+- On utilisera VictoriaMetrics pour la version WEB (en plus de prometheus)

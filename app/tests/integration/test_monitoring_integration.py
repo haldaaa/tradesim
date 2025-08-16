@@ -38,6 +38,12 @@ class TestMonitoringIntegration:
         """Setup avant chaque test"""
         self.test_metrics_file = tempfile.NamedTemporaryFile(mode='w', delete=False, suffix='.jsonl')
         self.test_metrics_file.close()
+        # Nettoyer les processus Prometheus existants
+        import subprocess
+        try:
+            subprocess.run(['pkill', '-f', 'prometheus_exporter'], check=False)
+        except:
+            pass
     
     def teardown_method(self):
         """Cleanup après chaque test"""

@@ -1,0 +1,269 @@
+TUTORIEL COMPLET - CRÉATION DE MÉTRIQUES PROMETHEUS
+
+OBJECTIF DU TUTORIEL
+====================
+Ce tutoriel détaille comment implémenter des métriques Prometheus dans une application Python, basé sur l'expérience du projet TradeSim. Vous apprendrez à créer, calculer et exposer des métriques de manière professionnelle.
+
+ARCHITECTURE GÉNÉRALE
+=====================
+Modèle en 3 Couches :
+
++---------------------------------------------+
+|            PROMETHEUS EXPORTER              |
+|  (monitoring/prometheus_exporter.py)        |
+|  - Définit les métriques Prometheus         |
+|  - Expose l'endpoint /metrics               |
+|  - Collecte les données depuis les services |
++---------------------------------------------+
+                      |
+                      v
++---------------------------------------------+
+|            SERVICES DE MÉTRIQUES            |
+|  (services/*_metrics_service.py)            |
+|  - Calculent les métriques métier           |
+|  - Gèrent l'historique et le cache          |
+|  - Retournent des dictionnaires de données  |
++---------------------------------------------+
+                      |
+                      v
++---------------------------------------------+
+|            SIMULATION SERVICE               |
+|  (services/simulation_service.py)           |
+|  - Appelle les services de métriques        |
+|  - Collecte les données à chaque tour       |
+|  - Stocke en JSONL pour persistance         |
++---------------------------------------------+
+
+Avantages de cette Architecture :
+- Séparation des responsabilités : Chaque couche a un rôle précis
+- Modularité : Services indépendants et réutilisables
+- Testabilité : Chaque composant peut être testé isolément
+- Extensibilité : Ajout facile de nouvelles métriques
+- Performance : Cache et optimisations intégrés
+
+TYPES DE MÉTRIQUES PROMETHEUS
+=============================
+
+1. GAUGE - Valeur qui varie
+
+from prometheus_client import Gauge
+
+# Définition
+budget_total = Gauge('tradesim_budget_total', 'Budget total des entreprises')
+
+# Utilisation
+budget_total.set(15000.50)  # Définir une valeur
+budget_total.inc(100)       # Incrémenter
+budget_total.dec(50)        # Décrémenter
+
+Cas d'usage : Budgets, température, nombre d'utilisateurs actifs, utilisation mémoire
+
+2. COUNTER - Compteur qui monte
+
+from prometheus_client import Counter
+
+# Définition
+transactions_total = Counter('tradesim_transactions_total', 'Nombre total de transactions')
+
+# Utilisation
+transactions_total.inc()        # Incrémenter de 1
+transactions_total.inc(5)       # Incrémenter de 5
+# transactions_total.dec()      # ERREUR : Counter ne peut que monter
+
+Cas d'usage : Nombre de requêtes, erreurs, transactions, événements
+
+3. HISTOGRAM - Distribution de valeurs
+
+from prometheus_client import Histogram
+
+# Définition
+temps_simulation = Histogram(
+    'tradesim_temps_simulation_seconds',
+    'Durée de simulation',
+    buckets=[0.1, 0.5, 1.0, 2.0, 5.0, 10.0]  # Seuils personnalisés
+)
+
+# Utilisation
+with temps_simulation.time():  # Mesure automatique du temps
+    # Code à mesurer
+    pass
+
+# Ou manuellement
+temps_simulation.observe(2.5)  # Observer une valeur
+
+Cas d'usage : Temps de réponse, taille des requêtes, latence
+
+ÉTAPE 1 : CRÉER UNE MÉTRIQUE PROMETHEUS
+=======================================
+
+Fichier : monitoring/prometheus_exporter.py
+
+Ce module expose les métriques au format Prometheus.
+"""
+
+import time
+import json
+from prometheus_client import (
+    start_http_server, 
+    Gauge, 
+    Counter, 
+    Histogram,
+    generate_latest,
+    CONTENT_TYPE_LATEST
+)
+from flask import Flask, Response
+
+# ============================================================================
+# DÉFINITION DES MÉTRIQUES PROMETHEUS
+# ============================================================================
+
+# 1. GAUGE - Valeur qui varie
+ma_metrique_gauge = Gauge('mon_app_ma_metrique', 'Description de ma métrique')
+
+# 2. COUNTER - Compteur qui monte
+mon_compteur = Counter('mon_app_mon_compteur', 'Description du compteur')
+
+# 3. HISTOGRAM - Distribution
+mon_histogram = Histogram(
+    'mon_app_mon_histogram',
+    'Description de l\'histogramme',
+    buckets=[0.1, 0.5, 1.0, 2.0, 5.0, 10.0]
+)
+
+# 4. MÉTRIQUES SYSTÈME
+cpu_usage = Gauge('mon_app_cpu_usage_percent', 'Utilisation CPU (%)')
+memory_usage = Gauge('mon_app_memory_usage_bytes', 'Utilisation mémoire (bytes)')
+
+# ============================================================================
+# FONCTIONS DE COLLECTE
+# ============================================================================
+
+def collecter_mes_metriques():
+    """Collecte mes métriques personnalisées"""
+    try:
+        # Récupérer les données depuis vos services
+        donnees = recuperer_donnees()
+        
+        # Calculer les métriques
+        metriques = mon_service.calculer_ma_metrique(donnees)
+        
+        # Mettre à jour Prometheus
+        ma_metrique_gauge.set(metriques['ma_metrique_valeur'])
+        mon_compteur.inc(metriques['nombre_evenements'])
+        
+        # Stocker en JSONL pour persistance
+        with open('logs/metrics.jsonl', 'a') as f:
+            f.write(json.dumps({
+                'timestamp': time.time(),
+                'metriques': metriques
+            }) + '
+')
+            
+    except Exception as e:
+        print(f"Erreur lors de la collecte des métriques: {e}")
+
+def collecter_metriques_systeme():
+    """Collecte les métriques système"""
+    try:
+        import psutil
+        
+        # CPU
+        cpu_usage.set(psutil.cpu_percent())
+        
+        # Mémoire
+        memory = psutil.virtual_memory()
+        memory_usage.set(memory.used)
+        
+    except Exception as e:
+        print(f"Erreur lors de la collecte des métriques système: {e}")
+
+# ============================================================================
+# SERVEUR FLASK
+# ============================================================================
+
+app = Flask(__name__)
+
+@app.route('/metrics')
+def metrics():
+    """Endpoint Prometheus /metrics"""
+    # Collecter les métriques
+    collecter_mes_metriques()
+    collecter_metriques_systeme()
+    
+    # Générer le format Prometheus
+    return Response(generate_latest(), mimetype=CONTENT_TYPE_LATEST)
+
+@app.route('/health')
+def health():
+    """Endpoint de santé"""
+    return {'status': 'healthy', 'timestamp': time.time()}
+
+if __name__ == '__main__':
+    # Démarrer le serveur
+    start_http_server(8000)
+    print("Serveur Prometheus démarré sur http://localhost:8000")
+    
+    # Démarrer Flask
+    app.run(host='0.0.0.0', port=8001)
+
+ÉTAPE 2 : CRÉER UN SERVICE DE CALCUL
+=====================================
+
+Fichier : services/mon_metrics_service.py
+
+Service de métriques personnalisées
+==================================
+
+Ce service calcule et gère vos métriques métier.
+Il utilise un cache LRU pour optimiser les calculs complexes.
+
+ARCHITECTURE :
+- Historique des données (max 200 entrées)
+- Cache LRU pour les calculs statistiques coûteux
+- Métriques arrondies pour éviter les erreurs de virgule flottante
+- Alertes automatiques sur les seuils critiques
+
+BONNES PRATIQUES
+===============
+
+1. Nommage des métriques
+
+# BON : Préfixe de l'application
+mon_app_metrique = Gauge('mon_app_metrique', 'Description')
+
+# MAUVAIS : Pas de préfixe
+metrique = Gauge('metrique', 'Description')
+
+2. Documentation des métriques
+
+# BON : Description claire
+budget_total = Gauge(
+    'tradesim_budget_total', 
+    'Budget total de toutes les entreprises en euros'
+)
+
+# MAUVAIS : Description vague
+budget = Gauge('budget', 'Budget')
+
+RÉSUMÉ DES ÉTAPES
+=================
+
+1. Définir les métriques Prometheus dans prometheus_exporter.py
+2. Créer un service de calcul dans services/mon_metrics_service.py
+3. Écrire des tests complets dans tests/unit/test_mon_metrics.py
+4. Intégrer dans l'application principale
+5. Configurer Prometheus dans prometheus.yml
+6. Démarrer le monitoring avec le script
+7. Créer des dashboards Grafana
+
+RESSOURCES UTILES
+=================
+
+- Prometheus Client Python : https://github.com/prometheus/client_python
+- Prometheus Documentation : https://prometheus.io/docs/
+- Grafana Dashboards : https://grafana.com/docs/grafana/latest/dashboards/
+- Métriques Prometheus : https://prometheus.io/docs/concepts/metric_types/
+
+Auteur : Assistant IA
+Date : 15/08/2025
+Version : 1.0 - Tutoriel complet

@@ -469,6 +469,8 @@ class ProductMetricsService:
             'produits_demande_critique': produits_demande_critique
         }
     
+
+    
     def _metriques_vides(self) -> Dict[str, Any]:
         """
         Retourne des métriques vides quand il n'y a pas de produits

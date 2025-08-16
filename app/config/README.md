@@ -1,167 +1,139 @@
-# Configuration - TradeSim
-==========================
+# ⚙️ Config - Configuration centralisée TradeSim
 
-## 📋 **Vue d'ensemble**
+## 🎯 **BUT DU DOSSIER**
+Ce dossier contient toute la configuration centralisée de TradeSim. Un seul point de configuration pour éviter la duplication et assurer la cohérence.
 
-Le dossier `config/` centralise toute la configuration de TradeSim, incluant les paramètres de simulation, les modes d'exécution et les constantes de l'application.
+## 🏗️ **ARCHITECTURE**
+- **Configuration unique** : Tous les paramètres dans `config.py`
+- **Validation** : Fonctions de validation pour les données critiques
+- **Constantes** : Valeurs immuables pour éviter la duplication
+- **Environnement** : Support pour différents environnements
 
-## 🏗️ **Structure**
+## 📋 **FICHIERS PRÉSENTS**
 
-```
-config/
-├── __init__.py      # Exports de configuration
-├── config.py        # Paramètres de simulation
-├── mode.py          # Configuration des modes CLI/Web
-└── README.md        # Cette documentation
-```
+### **⚙️ Configuration principale**
+- **`config.py`** : Configuration centralisée
+  - Paramètres de simulation (tours, probabilités, durées)
+  - Configuration des événements (inflation, recharge, reassort)
+  - Paramètres de logging et métriques
+  - Validation des données (continents, quantités)
+  - Constantes pour les budgets et stocks
 
-## 📁 **Fichiers détaillés**
+- **`mode.py`** : Gestion des modes d'exécution
+  - Mode CLI vs Web
+  - Configuration par environnement
 
-### **`config.py` - Paramètres de simulation**
-Contient tous les paramètres configurables de la simulation :
-- **NOMBRE_TOURS** : Nombre de tours de simulation
-- **PROBABILITE_EVENEMENT** : Probabilité d'événements aléatoires
-- **RECHARGE_BUDGET_MIN/MAX** : Plages de recharge de budget
-- **INFLATION_POURCENTAGE_MIN/MAX** : Plages d'inflation
-- **REASSORT_QUANTITE_MIN/MAX** : Plages de réassort
+## 🚀 **UTILISATION**
 
-### **`mode.py` - Configuration des modes d'exécution**
-Gère le basculement entre mode CLI et Web :
-
+### **Import de configuration**
 ```python
-# Mode CLI (développement)
-CURRENT_MODE = ExecutionMode.CLI
+from config.config import *
 
-# Mode Web (production)  
-CURRENT_MODE = ExecutionMode.WEB
+# Paramètres de simulation
+print(f"Nombre de tours: {NOMBRE_TOURS}")
+print(f"Probabilité événement: {PROBABILITE_EVENEMENT}")
+
+# Validation
+if validate_continent("Europe"):
+    print("Continent valide")
 ```
 
-**Fonctions disponibles :**
-- `get_current_mode()` : Récupère le mode actuel
-- `is_cli_mode()` : Vérifie si en mode CLI
-- `is_web_mode()` : Vérifie si en mode Web
-- `set_mode(mode)` : Change le mode d'exécution
-
-### **`__init__.py` - Exports centralisés**
-Exporte toutes les configurations pour faciliter les imports :
+### **Configuration des événements**
 ```python
-from config import NOMBRE_TOURS, PROBABILITE_EVENEMENT
-from config import get_current_mode, is_cli_mode
+from config.config import (
+    RECHARGE_BUDGET_MIN, RECHARGE_BUDGET_MAX,
+    INFLATION_POURCENTAGE_MIN, INFLATION_POURCENTAGE_MAX
+)
+
+# Recharge de budget entre 4000 et 8000
+montant = random.randint(RECHARGE_BUDGET_MIN, RECHARGE_BUDGET_MAX)
 ```
 
-## 🔧 **Utilisation**
-
-### **Changer de mode d'exécution :**
+### **Validation des données**
 ```python
-from config.mode import set_mode, ExecutionMode
+from config.config import validate_continent, VALID_CONTINENTS
 
-# Passer en mode Web
-set_mode(ExecutionMode.WEB)
+# Vérifier un continent
+continent = "Europe"
+if validate_continent(continent):
+    print(f"{continent} est valide")
 
-# Passer en mode CLI
-set_mode(ExecutionMode.CLI)
+# Liste des continents autorisés
+print(f"Continents valides: {VALID_CONTINENTS}")
 ```
 
-### **Vérifier le mode actuel :**
+## 📊 **SECTIONS DE CONFIGURATION**
+
+### **🎮 Simulation**
+- `NOMBRE_TOURS` : Nombre total de tours
+- `N_ENTREPRISES_PAR_TOUR` : Entreprises sélectionnées par tour
+- `DUREE_PAUSE_ENTRE_TOURS` : Pause entre tours
+- `PROBABILITE_SELECTION_ENTREPRISE` : Probabilité de sélection
+
+### **💰 Budgets et quantités**
+- `BUDGET_ENTREPRISE_MIN/MAX` : Budget des entreprises
+- `QUANTITE_ACHAT_MIN/MAX` : Quantités d'achat
+- `TYPES_PRODUITS_PREFERES_MIN/MAX` : Types préférés
+
+### **📈 Événements**
+- `RECHARGE_BUDGET_MIN/MAX` : Recharge de budget
+- `REASSORT_QUANTITE_MIN/MAX` : Réassortiment
+- `INFLATION_POURCENTAGE_MIN/MAX` : Inflation
+- `TICK_INTERVAL_EVENT` : Fréquence des événements
+
+### **📝 Logs et métriques**
+- `FICHIER_LOG` : Fichier de log JSON
+- `FICHIER_LOG_HUMAIN` : Fichier de log lisible
+- `EVENT_LOG_JSON` : Logs d'événements JSON
+- `EVENT_LOG_HUMAIN` : Logs d'événements lisible
+
+### **🌍 Géographie**
+- `DEFAULT_CONTINENT` : Continent par défaut
+- `VALID_CONTINENTS` : Liste des continents autorisés
+- `validate_continent()` : Fonction de validation
+
+## 🔧 **MODIFICATION DE CONFIGURATION**
+
+### **Ajouter un paramètre**
 ```python
-from config.mode import is_cli_mode, is_web_mode
+# Dans config.py
+NOUVEAU_PARAMETRE = 100
 
-if is_cli_mode():
-    print("Mode CLI - Données en mémoire")
-elif is_web_mode():
-    print("Mode Web - Base de données")
+# Validation si nécessaire
+def validate_nouveau_parametre(valeur: int) -> bool:
+    return 0 <= valeur <= 1000
 ```
 
-### **Récupérer la configuration des Repository :**
+### **Modifier un paramètre existant**
 ```python
-from config.mode import get_repository_config
-
-config = get_repository_config()
-print(f"Repository produits: {config['produit_repository']}")
+# Changer la durée de pause
+DUREE_PAUSE_ENTRE_TOURS = 0.5  # Au lieu de 0.1
 ```
 
-## 🎯 **Avantages de cette architecture**
+## 🧪 **TESTS**
+Les tests de configuration se trouvent dans `tests/unit/test_monitoring_config.py` :
+- Validation des paramètres
+- Tests des fonctions de validation
+- Vérification des types et valeurs
 
-### **Centralisation :**
-- ✅ Toute la configuration au même endroit
-- ✅ Facile à maintenir et modifier
-- ✅ Imports simplifiés
+## 📝 **LOGGING**
+La configuration utilise les logs définis dans `config.py` :
+- Logs de configuration dans `logs/simulation_humain.log`
+- Métriques de configuration dans `logs/simulation.jsonl`
 
-### **Flexibilité :**
-- ✅ Changement de mode en une ligne
-- ✅ Configuration par environnement
-- ✅ Tests automatisés
+## 🔄 **DERNIÈRES MODIFICATIONS**
+- **11/08/2025** : Ajout de `validate_continent()` et `VALID_CONTINENTS`
+- **11/08/2025** : Constante `DEFAULT_CONTINENT` configurable
+- **11/08/2025** : Validation des données géographiques
+- **11/08/2025** : Documentation complète des paramètres
 
-### **Scalabilité :**
-- ✅ Ajout facile de nouveaux paramètres
-- ✅ Support de multiples environnements
-- ✅ Migration transparente
+## ⚠️ **BONNES PRATIQUES**
+1. **Toujours utiliser les constantes** au lieu de valeurs en dur
+2. **Valider les données** avec les fonctions de validation
+3. **Documenter les nouveaux paramètres** avec des commentaires
+4. **Tester les modifications** avant déploiement
+5. **Centraliser** toute configuration dans ce dossier
 
-## 📝 **Exemples d'utilisation**
-
-### **Dans les services :**
-```python
-from config import NOMBRE_TOURS, PROBABILITE_EVENEMENT
-from config.mode import is_cli_mode
-
-def run_simulation():
-    if is_cli_mode():
-        print("Simulation en mode CLI")
-    else:
-        print("Simulation en mode Web")
-    
-    for tour in range(NOMBRE_TOURS):
-        # Logique de simulation
-        pass
-```
-
-### **Dans les Repository :**
-```python
-from config.mode import get_current_mode
-
-def get_repository():
-    if get_current_mode() == ExecutionMode.CLI:
-        return FakeProduitRepository()
-    else:
-        return SQLProduitRepository()
-```
-
-## 🔄 **Migration vers production**
-
-### **Étape 1 : Configuration de la base de données**
-```python
-# config/database.py (à créer)
-DATABASE_URL = "postgresql://user:password@localhost/tradesim"
-```
-
-### **Étape 2 : Changement de mode**
-```python
-# config/mode.py
-CURRENT_MODE = ExecutionMode.WEB
-```
-
-### **Étape 3 : Vérification**
-```bash
-# Tests de validation
-pytest tests/ -v
-
-# Test de l'API
-uvicorn api.main:app --reload
-```
-
-## 📚 **Documentation technique**
-
-### **Pattern de configuration :**
-- **Centralisation** : Toute la config dans `config/`
-- **Typage** : Utilisation de types Python pour la sécurité
-- **Validation** : Vérification des valeurs de configuration
-- **Documentation** : Commentaires détaillés pour chaque paramètre
-
-### **Gestion des modes :**
-- **Enum** : Types sûrs pour les modes d'exécution
-- **Fonctions utilitaires** : API simple pour vérifier le mode
-- **Configuration dynamique** : Changement de mode à la volée
-- **Tests automatisés** : Validation du bon fonctionnement
-
-## 📝 **Auteur**
-Assistant IA - 2024-08-02 
+---
+**Auteur** : Assistant IA  
+**Dernière mise à jour** : 11/08/2025 

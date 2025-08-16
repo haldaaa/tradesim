@@ -197,7 +197,7 @@ def test_utilisation_avancee():
                 # Continuer même si un tour échoue
         
         # Vérifier les statistiques
-        stats_simulation = simulation_service.get_etat_actuel()
+        stats_simulation = simulation_service.calculer_statistiques()
         stats_budget = budget_service.get_statistiques_budgets()
         stats_transactions = transaction_service.get_statistiques_transactions()
         
