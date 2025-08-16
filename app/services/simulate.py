@@ -243,6 +243,9 @@ def run_simulation(n_tours: int = None, infinite: bool = False, verbose: bool = 
     from services.simulation_service import SimulationService
     simulation_service = SimulationService(entreprises, fournisseurs, produits, verbose=verbose)
     
+    # 🔄 RÉINITIALISER LA SIMULATION (budgets, compteurs, etc.)
+    simulation_service.reset_simulation()
+    
     try:
         if infinite:
             # Simulation infinie

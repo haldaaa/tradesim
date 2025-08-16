@@ -1,13 +1,9 @@
 # Configuration Prometheus pour TradeSim
 # ====================================
 #
-# Ce fichier configure Prometheus pour collecter les métriques
-# depuis l'exporter Python de TradeSim.
-#
-# Configuration:
-# - Scrape interval: 15s (collecte toutes les 15 secondes)
-# - Evaluation interval: 15s (évaluation des règles)
-# - Target: exporter Python sur localhost:8000
+# Configuration générée automatiquement
+# Host Docker détecté: host.docker.internal
+# Target exporteur: host.docker.internal:8000
 #
 # Métriques collectées:
 # - tradesim_budget_total
@@ -45,7 +41,7 @@ scrape_configs:
   # ============================================================================
   - job_name: 'tradesim-exporter'
     static_configs:
-      - targets: ['192.168.1.61:8000']  # IP du Mac
+      - targets: ['host.docker.internal:8000']  # Exporter détecté automatiquement
     scrape_interval: 15s
     metrics_path: '/metrics'
     
@@ -76,4 +72,4 @@ scrape_configs:
       - targets: ['grafana:3000']
     scrape_interval: 30s
     metrics_path: '/metrics'
-    scrape_timeout: 10s 
+    scrape_timeout: 10s

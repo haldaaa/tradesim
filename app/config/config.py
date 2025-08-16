@@ -147,6 +147,10 @@ METRICS_EXPORTER_HOST = "0.0.0.0"    # Host de l'exporter (0.0.0.0 = toutes inte
 METRICS_PROMETHEUS_PORT = 9090       # Port de Prometheus
 METRICS_GRAFANA_PORT = 3000          # Port de Grafana
 
+# Configuration de connectivité Docker (modulaire)
+METRICS_DOCKER_HOST = os.getenv('TRADESIM_DOCKER_HOST', 'localhost')  # Host Docker (modifiable par env)
+METRICS_EXPORTER_TARGET = os.getenv('TRADESIM_EXPORTER_TARGET', 'localhost:8000')  # Target de l'exporteur
+
 # Métriques système (CPU/Mémoire)
 METRICS_SYSTEM_ENABLED = True        # Activer les métriques système
 METRICS_SYSTEM_INTERVAL = 5.0        # Intervalle de collecte système en secondes
@@ -159,7 +163,7 @@ METRICS_LABELS_PRODUIT_TYPE = False  # Label {produit_type}
 # Configuration des IDs uniques
 ID_FORMAT = "DATE_HHMMSS_TYPE_COUNTER"
 ID_SESSION_FORMAT = "%Y%m%d_%H%M%S"
-MAX_COUNTER = 999
+MAX_COUNTER = 99999
 VALID_ACTION_TYPES = ['TXN', 'EVT', 'METRIC', 'TICK', 'ALERT', 'TEMPLATE']
 
 # Configuration des optimisations

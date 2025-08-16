@@ -4,6 +4,40 @@
 
 Le dossier `monitoring/` contient tous les composants nécessaires au monitoring avancé de TradeSim, incluant l'export Prometheus, la configuration Grafana, et les métriques système.
 
+## 🚀 **DÉMARRAGE RAPIDE**
+
+### **1. Démarrage automatique (RECOMMANDÉ)**
+```bash
+# Démarrer le monitoring complet avec détection automatique
+./monitoring/start_monitoring.sh
+```
+
+### **2. Démarrage manuel**
+```bash
+# Démarrer Prometheus et Grafana
+docker-compose -f monitoring/docker-compose.yml up -d
+
+# Démarrer l'exporteur Prometheus
+python monitoring/prometheus_exporter.py &
+```
+
+### **3. Accès aux services**
+- **Prometheus** : http://localhost:9090
+- **Grafana** : http://localhost:3000 (admin/admin)
+- **Exporteur** : http://localhost:8000
+
+## 🔧 **CONFIGURATION MODULAIRE**
+
+### **Détection automatique de la plateforme**
+Le système détecte automatiquement votre plateforme et configure la connectivité Docker :
+- **macOS/Windows** : `host.docker.internal`
+- **Linux** : IP du bridge Docker ou localhost
+- **Override** : `export TRADESIM_DOCKER_HOST=custom_host`
+
+### **Scripts disponibles**
+- `detect_docker_host.sh` : Détection automatique du host Docker
+- `start_monitoring.sh` : Démarrage complet du monitoring
+
 ## 🏗️ **ARCHITECTURE DU MONITORING**
 
 ### **Composants Principaux**

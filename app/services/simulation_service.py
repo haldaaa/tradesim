@@ -458,15 +458,45 @@ class SimulationService:
         start_time = time.time()
         
         budget_total_actuel = sum(entreprise.budget for entreprise in self.entreprises)
-        stock_total_actuel = sum(
-            sum(entreprise.stocks.get(produit.nom, 0) for produit in self.produits if hasattr(entreprise, 'stocks'))
+        # Stock total : fournisseurs + entreprises
+        stock_fournisseurs = sum(
+            sum(fournisseur.stock_produit.values())
+            for fournisseur in self.fournisseurs
+        )
+        
+        stock_entreprises = sum(
+            sum(getattr(entreprise, 'stocks', {}).values())
             for entreprise in self.entreprises
         )
+        
+        stock_total_actuel = stock_fournisseurs + stock_entreprises
+        
+        # Calcul détaillé du stock par produit
+        stock_par_produit = {}
+        for produit in self.produits:
+            # Stock chez les fournisseurs
+            stock_fournisseurs_produit = sum(
+                fournisseur.stock_produit.get(produit.id, 0)
+                for fournisseur in self.fournisseurs
+            )
+            
+            # Stock chez les entreprises
+            stock_entreprises_produit = sum(
+                getattr(entreprise, 'stocks', {}).get(produit.nom, 0)
+                for entreprise in self.entreprises
+            )
+            
+            stock_par_produit[produit.nom] = {
+                'fournisseurs': stock_fournisseurs_produit,
+                'entreprises': stock_entreprises_produit,
+                'total': stock_fournisseurs_produit + stock_entreprises_produit
+            }
         
         # Validation des données calculées
         stats_data = {
             'budget_total': budget_total_actuel,
             'stock_total': stock_total_actuel,
+            'stock_par_produit': stock_par_produit,
             'tours_completes': self.tours_completes,
             'evenements_appliques': self.evenements_appliques
         }
@@ -838,7 +868,8 @@ class SimulationService:
                 "type": "metrics",
                 "budget_total": stats.get("budget_total_actuel", 0),
                 "stock_total": stats.get("stock_total_actuel", 0),
-                "tours_completes": stats.get("tours_completes", 0),
+                "stock_par_produit": stats.get("stock_par_produit", {}),
+                "tours_completes": self.tours_completes,  # Utiliser directement l'attribut
                 "evenements_appliques": stats.get("evenements_appliques", 0),
                 "duree_simulation": stats.get("duree_simulation", 0),
                 "error_count": self.error_count,
@@ -859,14 +890,6 @@ class SimulationService:
                 "stabilite_prix": simulation_metrics["stabilite_prix"]
             }
             
-            # Validation des métriques
-            if not self._validate_data(metrics_data, "collecter_metriques"):
-                return
-            
-            # Log des métriques
-            with open("logs/metrics.jsonl", "a", encoding="utf-8") as f:
-                f.write(json.dumps(metrics_data) + "\n")
-            
             # Ajout des métriques de latence et throughput
             if self.latency_service:
                 latency_metrics = self.latency_service.get_all_latency_metrics()
@@ -879,11 +902,15 @@ class SimulationService:
             if self.budget_metrics_service:
                 budget_metrics = self.budget_metrics_service.calculer_metriques_budget(self.entreprises)
                 metrics_data.update(budget_metrics)
+            else:
+                pass
             
             # Ajout des métriques d'entreprises
             if self.enterprise_metrics_service:
                 enterprise_metrics = self.enterprise_metrics_service.calculer_metriques_entreprises(self.entreprises)
                 metrics_data.update(enterprise_metrics)
+            else:
+                pass
             
             # Ajout des métriques de fournisseurs
             if self.supplier_metrics_service:
@@ -909,6 +936,19 @@ class SimulationService:
             if self.product_metrics_service:
                 product_metrics = self.product_metrics_service.calculer_metriques_produits(self.produits, self.fournisseurs)
                 metrics_data.update(product_metrics)
+            
+            # Validation des métriques (APRÈS avoir ajouté toutes les métriques)
+            if not self._validate_data(metrics_data, "collecter_metriques"):
+                return
+            
+            # Validation des métriques (APRÈS avoir ajouté toutes les métriques)
+            if not self._validate_data(metrics_data, "collecter_metriques"):
+                return
+            
+            # Log des métriques (APRÈS avoir ajouté toutes les métriques)
+            with open("logs/metrics.jsonl", "a", encoding="utf-8") as f:
+                json_line = json.dumps(metrics_data)
+                f.write(json_line + "\n")
             
             # Prometheus exporter avec métriques directes
             if self.prometheus_exporter and isinstance(self.prometheus_exporter, dict):
@@ -1134,8 +1174,16 @@ class SimulationService:
             return 0.0
 
     def reset_simulation(self) -> None:
-        """Réinitialise la simulation"""
+        """Réinitialise la simulation avec les valeurs de config.py"""
         try:
+            from config.config import (
+                N_ENTREPRISES_PAR_TOUR, PROBABILITE_SELECTION_ENTREPRISE,
+                DUREE_PAUSE_ENTRE_TOURS, QUANTITE_ACHAT_MIN, QUANTITE_ACHAT_MAX,
+                RECHARGE_BUDGET_MIN, RECHARGE_BUDGET_MAX, REASSORT_QUANTITE_MIN,
+                REASSORT_QUANTITE_MAX, INFLATION_POURCENTAGE_MIN, INFLATION_POURCENTAGE_MAX
+            )
+            
+            # Réinitialiser les compteurs
             self.tick_actuel = 0
             self.tours_completes = 0
             self.evenements_appliques = 0
@@ -1143,6 +1191,15 @@ class SimulationService:
             self.error_count = 0
             self.total_actions = 0
             self._cache_stats.clear()
+            
+            # 🔄 RÉINITIALISER LES BUDGETS DES ENTREPRISES
+            for entreprise in self.entreprises:
+                entreprise.budget = entreprise.budget_initial
+            
+            # Réinitialiser les paramètres de simulation avec config.py
+            self.n_entreprises_par_tour = N_ENTREPRISES_PAR_TOUR
+            self.probabilite_selection_entreprise = PROBABILITE_SELECTION_ENTREPRISE
+            self.duree_pause_entre_tours = DUREE_PAUSE_ENTRE_TOURS
             
             # Réinitialiser les services de métriques
             if self.budget_metrics_service:
@@ -1161,7 +1218,7 @@ class SimulationService:
                 self.product_metrics_service.reset_metrics()
             
             if self.verbose:
-                print("🔄 Simulation réinitialisée")
+                print("🔄 Simulation réinitialisée avec les valeurs de config.py")
                 
         except Exception as e:
             self._log_error("reset_simulation", str(e))

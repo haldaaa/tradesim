@@ -1905,3 +1905,184 @@ Run 'docker run --help' for more information
 [ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
 [ALERT] stock_critical: Stock total critique: 0
 [ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] budget_critical: Budget total critique: 66.91€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] budget_critical: Budget total critique: 76.72€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] budget_critical: Budget total critique: 73.78€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 50.22€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 73.42€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 61.96€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 67.83€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 86.36€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 73.64€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 50.71€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 79.12€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 47.63€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 74.17€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 55.79€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 75.39€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 1000
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] tour_slow: Tour de simulation lent: 5.369s
+[ALERT] tour_slow: Tour de simulation lent: 5.252s
+[ALERT] tour_slow: Tour de simulation lent: 5.569s
+[ALERT] tour_slow: Tour de simulation lent: 5.139s
+[ALERT] tour_slow: Tour de simulation lent: 5.678s
+[ALERT] tour_slow: Tour de simulation lent: 5.329s
+[ALERT] tour_slow: Tour de simulation lent: 6.024s
+[ALERT] tour_slow: Tour de simulation lent: 5.181s
+[ALERT] tour_slow: Tour de simulation lent: 5.666s
+[ALERT] tour_slow: Tour de simulation lent: 5.226s
+[ALERT] tour_slow: Tour de simulation lent: 5.734s
+[ERROR] simulation_tour: Compteur dépassé pour TXN: 10000
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] tour_slow: Tour de simulation lent: 5.671s
+[ALERT] tour_slow: Tour de simulation lent: 5.772s
+[ALERT] tour_slow: Tour de simulation lent: 6.480s
+[ALERT] tour_slow: Tour de simulation lent: 3.346s
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ALERT] stock_critical: Stock total critique: 0
+[2025-08-15 11:39:42] [INFO] Tentative de lancement des containers Docker
+[2025-08-15 11:39:42] [ERROR] Erreur Prometheus: docker: Error response from daemon: Conflict. The container name "/tradesim-prometheus" is already in use by container "28b81aa485f8d2c09cf3a42d0d1079814a2e2560b67e867043150ecbfff933a9". You have to remove (or rename) that container to be able to reuse that name.
+
+Run 'docker run --help' for more information
+
+[ALERT] budget_critical: Budget total critique: 52.12€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ALERT] budget_critical: Budget total critique: 204.14€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ALERT] budget_critical: Budget total critique: 138.33€
+[ERROR] prometheus_metrics: 'EnterpriseMetricsService' object has no attribute '_log_error'
+[ERROR] prometheus_metrics: 'EnterpriseMetricsService' object has no attribute '_log_error'
+[ERROR] prometheus_metrics: 'EnterpriseMetricsService' object has no attribute '_log_error'
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ERROR] prometheus_metrics: 'EnterpriseMetricsService' object has no attribute '_log_error'
+[ERROR] prometheus_metrics: 'EnterpriseMetricsService' object has no attribute '_log_error'
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ALERT] budget_critical: Budget total critique: 818.19€
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ALERT] budget_critical: Budget total critique: 261.13€
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ERROR] validation: Prix négatif dans test: -5.0
+[ERROR] validation: Quantité invalide dans test: 0
+[ERROR] validation: Budget négatif dans test: -100.0
+[ERROR] test_error: Test error message
+[ALERT] error_rate_critical: Taux d'erreur critique: 20.00%
+[ALERT] budget_critical: Budget total critique: 900.00€
+[ERROR] validation: Prix négatif dans test_transaction: -100.0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] simulation_tour: Cannot choose from an empty sequence
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ERROR] prometheus_metrics: Calculation error
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[2025-08-16 10:22:02] [INFO] Tentative de lancement des containers Docker
+[2025-08-16 10:22:02] [ERROR] Erreur Prometheus: docker: Error response from daemon: Conflict. The container name "/tradesim-prometheus" is already in use by container "28b81aa485f8d2c09cf3a42d0d1079814a2e2560b67e867043150ecbfff933a9". You have to remove (or rename) that container to be able to reuse that name.
+
+Run 'docker run --help' for more information
+
+[ALERT] budget_critical: Budget total critique: 223.59€
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ALERT] budget_critical: Budget total critique: 203.22€
+[2025-08-16 10:53:58] [SCRIPT] detect_docker_host : Démarrage de la détection du host Docker
+[2025-08-16 10:53:58] [SCRIPT] detect_docker_host : Plateforme détectée : macos
+[2025-08-16 10:53:58] [SCRIPT] detect_docker_host : Host Docker détecté : host.docker.internal
+[2025-08-16 10:53:58] [SCRIPT] detect_docker_host : ATTENTION : Connectivité non validée vers host.docker.internal:8000 (l'exporteur peut ne pas être démarré)
+[2025-08-16 10:53:58] [SCRIPT] detect_docker_host : script OK host détecté : host.docker.internal
+[2025-08-16 10:55:24] [MONITORING] Démarrage du monitoring TradeSim
+[2025-08-16 10:55:24] [MONITORING] Configuration du host Docker
+[2025-08-16 10:55:24] [SCRIPT] detect_docker_host : Démarrage de la détection du host Docker
+[2025-08-16 10:55:24] [SCRIPT] detect_docker_host : Plateforme détectée : macos
+[2025-08-16 10:55:24] [SCRIPT] detect_docker_host : Host Docker détecté : host.docker.internal
+[2025-08-16 10:55:24] [SCRIPT] detect_docker_host : ATTENTION : Connectivité non validée vers host.docker.internal:8000 (l'exporteur peut ne pas être démarré)
+[2025-08-16 10:55:24] [SCRIPT] detect_docker_host : script OK host détecté : host.docker.internal
+[2025-08-16 10:55:24] [SCRIPT] detect_docker_host : Host Docker configuré : host.docker.internal
+[2025-08-16 10:55:24] [SCRIPT] detect_docker_host : Configuration de Prometheus avec host : host.docker.internal
+[2025-08-16 10:55:24] [SCRIPT] detect_docker_host : Configuration Prometheus mise à jour : target=host.docker.internal:8000
+[2025-08-16 10:55:24] [SCRIPT] detect_docker_host : Démarrage des services Docker
+[2025-08-16 10:55:24] [SCRIPT] detect_docker_host : ERREUR : Impossible de démarrer les services Docker
+[2025-08-16 10:55:24] [SCRIPT] detect_docker_host : ERREUR : Échec du démarrage des services
+[2025-08-16 10:55:56] [MONITORING] Démarrage du monitoring TradeSim
+[2025-08-16 10:55:56] [MONITORING] Configuration du host Docker
+[2025-08-16 10:55:56] [SCRIPT] detect_docker_host : Démarrage de la détection du host Docker
+[2025-08-16 10:55:56] [SCRIPT] detect_docker_host : Plateforme détectée : macos
+[2025-08-16 10:55:56] [SCRIPT] detect_docker_host : Host Docker détecté : host.docker.internal
+[2025-08-16 10:55:56] [SCRIPT] detect_docker_host : ATTENTION : Connectivité non validée vers host.docker.internal:8000 (l'exporteur peut ne pas être démarré)
+[2025-08-16 10:55:56] [SCRIPT] detect_docker_host : script OK host détecté : host.docker.internal
+[2025-08-16 10:55:56] [SCRIPT] detect_docker_host : Host Docker configuré : host.docker.internal
+[2025-08-16 10:55:56] [SCRIPT] detect_docker_host : Configuration de Prometheus avec host : host.docker.internal
+[2025-08-16 10:55:56] [SCRIPT] detect_docker_host : Configuration Prometheus mise à jour : target=host.docker.internal:8000
+[2025-08-16 10:55:56] [SCRIPT] detect_docker_host : Démarrage des services Docker
+[2025-08-16 10:55:58] [SCRIPT] detect_docker_host : Services Docker démarrés avec succès
+[2025-08-16 10:55:58] [SCRIPT] detect_docker_host : Validation des services
+[2025-08-16 10:56:08] [SCRIPT] detect_docker_host : Prometheus accessible sur http://localhost:9090
+[2025-08-16 10:56:08] [SCRIPT] detect_docker_host : Grafana accessible sur http://localhost:3000
+[2025-08-16 10:56:08] [SCRIPT] detect_docker_host : Exporteur Prometheus accessible sur http://localhost:8000
+[2025-08-16 10:56:08] [SCRIPT] detect_docker_host : Monitoring démarré avec succès
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ALERT] budget_critical: Budget total critique: 111.83€
+[2025-08-16 10:59:08] [SCRIPT] detect_docker_host : Démarrage de la détection du host Docker
+[2025-08-16 10:59:08] [SCRIPT] detect_docker_host : Plateforme détectée : macos
+[2025-08-16 10:59:08] [SCRIPT] detect_docker_host : Host Docker détecté : host.docker.internal
+[2025-08-16 10:59:08] [SCRIPT] detect_docker_host : ATTENTION : Connectivité non validée vers host.docker.internal:8000 (l'exporteur peut ne pas être démarré)
+[2025-08-16 10:59:08] [SCRIPT] detect_docker_host : script OK host détecté : host.docker.internal
+[2025-08-16 10:59:14] [SCRIPT] detect_docker_host : Démarrage de la détection du host Docker
+[2025-08-16 10:59:14] [SCRIPT] detect_docker_host : Plateforme détectée : macos
+[2025-08-16 10:59:14] [SCRIPT] detect_docker_host : Host Docker détecté : host.docker.internal
+[2025-08-16 10:59:14] [SCRIPT] detect_docker_host : ATTENTION : Connectivité non validée vers host.docker.internal:8000 (l'exporteur peut ne pas être démarré)
+[2025-08-16 10:59:14] [SCRIPT] detect_docker_host : script OK host détecté : host.docker.internal
+[2025-08-16 10:59:18] [SCRIPT] detect_docker_host : Démarrage de la détection du host Docker
+[2025-08-16 10:59:18] [SCRIPT] detect_docker_host : Plateforme détectée : macos
+[2025-08-16 10:59:18] [SCRIPT] detect_docker_host : Host Docker détecté : host.docker.internal
+[2025-08-16 10:59:18] [SCRIPT] detect_docker_host : ATTENTION : Connectivité non validée vers host.docker.internal:8000 (l'exporteur peut ne pas être démarré)
+[2025-08-16 10:59:18] [SCRIPT] detect_docker_host : script OK host détecté : host.docker.internal
+[2025-08-16 10:59:22] [SCRIPT] detect_docker_host : Démarrage de la détection du host Docker
+[2025-08-16 10:59:22] [SCRIPT] detect_docker_host : Plateforme détectée : macos
+[2025-08-16 10:59:22] [SCRIPT] detect_docker_host : Variable TRADESIM_DOCKER_HOST déjà définie : test-override
+[2025-08-16 10:59:22] [SCRIPT] detect_docker_host : script OK host détecté : test-override
