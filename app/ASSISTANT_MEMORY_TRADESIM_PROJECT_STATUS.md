@@ -1,9 +1,42 @@
+# ASSISTANT MEMORY - TRADESIM PROJECT STATUS
+**Dernière mise à jour : 17/08/2025 18:15**
+
+## 📊 **SESSION 29 - 17/08/2025 18:00-18:15**
+
+### **🎯 OBJECTIFS DE LA SESSION**
+- Mise à jour complète du workflow
+- Documentation du système de monitoring
+- Finalisation de la session
+
+### **✅ ACCOMPLISSEMENTS**
+
+**1. Workflow mis à jour :**
+- ✅ **Session 28** : Résolution définitive du problème des dashboards
+- ✅ **Solution technique** : Import via API REST documenté
+- ✅ **Scripts créés** : import_dashboards.py et start_monitoring.sh
+
+**2. Documentation à créer :**
+- ✅ **GUIDE_MONITORING_CLI.md** : Mise à jour avec la nouvelle solution
+- ✅ **README monitoring** : Documentation complète du système
+
+**3. Système final :**
+- ✅ **11 dashboards** importés et fonctionnels
+- ✅ **Import automatique** via API REST
+- ✅ **Scripts de démarrage** automatisés
+
+### **📋 PROCHAINES ÉTAPES DOCUMENTATION**
+1. Mettre à jour GUIDE_MONITORING_CLI.md
+2. Créer/actualiser README du dossier monitoring
+3. Documenter l'utilisation des dashboards templates
+
+---
+
 # WORKFLOW JOURNAL DE BORD - TRADESIM
 
 ## 📋 **JOURNAL DE BORD COMPLET - PROJET TRADESIM**
 
-**Dernière mise à jour : 17/08/2025 11h05**  
-**Session actuelle : SESSION 23 - IMPLÉMENTATION MÉTRIQUES HISTORIQUES DE STOCK**
+**Dernière mise à jour : 17/08/2025 18h15**  
+**Session actuelle : SESSION 29 - FINALISATION DOCUMENTATION**
 
 ---
 

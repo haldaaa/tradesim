@@ -113,7 +113,7 @@ class TestPrometheusIntegration:
                 "tick_actuel": 5,
                 "evenements_appliques": 3,
                 "tours_completes": 2,
-                "budget_total": 5000.0,
+                "budget_total_entreprises": 5000.0,
                 "probabilite_selection_entreprise": 0.3,
                 "duree_pause_entre_tours": 0.1,
                 "tick_interval_event": 20,
@@ -138,13 +138,13 @@ class TestPrometheusIntegration:
             assert "tradesim_tick_actuel" in metrics_text
             assert "tradesim_evenements_appliques" in metrics_text
             assert "tradesim_tours_completes" in metrics_text
-            assert "tradesim_budget_total" in metrics_text
+            assert "tradesim_budget_total_entreprises" in metrics_text
             
             # Vérifier les valeurs (les métriques doivent être > 0)
             assert "tradesim_tick_actuel 5.0" in metrics_text
             assert "tradesim_evenements_appliques 3.0" in metrics_text
             assert "tradesim_tours_completes 2.0" in metrics_text
-            assert "tradesim_budget_total 5000.0" in metrics_text
+            assert "tradesim_budget_total_entreprises 5000.0" in metrics_text
             
         finally:
             # Arrêter l'exporter
@@ -228,7 +228,7 @@ class TestPrometheusIntegration:
                 "tick_actuel": 1,
                 "evenements_appliques": 1,
                 "tours_completes": 1,
-                "budget_total": 1000.0
+                "budget_total_entreprises": 1000.0
             }
             exporter.update_tradesim_metrics(metrics1)
             time.sleep(1)
@@ -242,7 +242,7 @@ class TestPrometheusIntegration:
                 "tick_actuel": 2,
                 "evenements_appliques": 2,
                 "tours_completes": 2,
-                "budget_total": 2000.0
+                "budget_total_entreprises": 2000.0
             }
             exporter.update_tradesim_metrics(metrics2)
             time.sleep(1)
@@ -250,7 +250,7 @@ class TestPrometheusIntegration:
             # Vérifier que les métriques ont été mises à jour
             response2 = requests.get(f"http://localhost:{self.test_port}/metrics", timeout=5)
             assert "tradesim_tick_actuel 2.0" in response2.text
-            assert "tradesim_budget_total 2000.0" in response2.text
+            assert "tradesim_budget_total_entreprises 2000.0" in response2.text
             
         finally:
             # Arrêter l'exporter
@@ -282,7 +282,7 @@ class TestPrometheusIntegration:
                 "tick_actuel": 10,
                 "evenements_appliques": 5,
                 "tours_completes": 3,
-                "budget_total": 7500.0
+                "budget_total_entreprises": 7500.0
             }
             
             # Mettre à jour les métriques
@@ -302,7 +302,7 @@ class TestPrometheusIntegration:
                 assert "timestamp" in last_line
                 assert "metrics" in last_line
                 assert last_line["metrics"]["tick_actuel"] == 10
-                assert last_line["metrics"]["budget_total"] == 7500.0
+                assert last_line["metrics"]["budget_total_entreprises"] == 7500.0
                 
         finally:
             # Nettoyer

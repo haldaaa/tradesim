@@ -60,6 +60,7 @@ class TestQuantitesAchat:
         entreprise.budget = 100.0
         entreprise.id = 1
         entreprise.nom = "TestCorp"
+        entreprise.stocks = {}  # Ajouter l'attribut stocks manquant
         
         produit = Mock(spec=Produit)
         produit.id = 1
@@ -99,6 +100,7 @@ class TestQuantitesAchat:
         entreprise.budget = 1000.0  # Budget suffisant
         entreprise.id = 1
         entreprise.nom = "TestCorp"
+        entreprise.stocks = {}  # Ajouter l'attribut stocks manquant
         
         produit = Mock(spec=Produit)
         produit.id = 1
@@ -138,6 +140,7 @@ class TestQuantitesAchat:
         entreprise.id = 1
         entreprise.nom = "TestCorp"
         entreprise.budget = 1000.0
+        entreprise.stocks = {}  # Ajouter l'attribut stocks manquant
         
         # Mock d'un produit
         produit = Mock(spec=Produit)

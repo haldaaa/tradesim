@@ -1,0 +1,44 @@
+{
+  "dashboard": {
+    "id": null,
+    "title": "Test Simple",
+    "tags": ["test"],
+    "style": "dark",
+    "timezone": "browser",
+    "refresh": "5s",
+    "time": {
+      "from": "now-1h",
+      "to": "now"
+    },
+    "panels": [
+      {
+        "id": 1,
+        "title": "Test Panel",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "tradesim_transactions_total",
+            "legendFormat": "Test"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "displayMode": "gradient-gauge"
+            },
+            "mappings": [],
+            "thresholds": {
+              "steps": [
+                {"color": "green", "value": null}
+              ]
+            }
+          }
+        },
+        "gridPos": {"h": 8, "w": 6, "x": 0, "y": 0}
+      }
+    ]
+  }
+}

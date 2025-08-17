@@ -1244,19 +1244,19 @@ class SimulationService:
             
             # Réinitialiser les services de métriques
             if self.budget_metrics_service:
-                self.budget_metrics_service.reset_metrics()
+                self.budget_metrics_service.reset()
             if self.enterprise_metrics_service:
-                self.enterprise_metrics_service.reset_metrics()
+                self.enterprise_metrics_service.reset()
             if self.supplier_metrics_service:
-                self.supplier_metrics_service.reset_metrics()
+                self.supplier_metrics_service.reset()
             if self.transaction_metrics_service:
-                self.transaction_metrics_service.reset_metrics()
+                self.transaction_metrics_service.reset()
             if self.event_metrics_service:
-                self.event_metrics_service.reset_metrics()
+                self.event_metrics_service.reset()
             if self.performance_metrics_service:
-                self.performance_metrics_service.reset_metrics()
+                self.performance_metrics_service.reset()
             if self.product_metrics_service:
-                self.product_metrics_service.reset_metrics()
+                self.product_metrics_service.reset()
             
             if self.verbose:
                 print("🔄 Simulation réinitialisée avec les valeurs de config.py")

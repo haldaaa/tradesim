@@ -9,58 +9,59 @@ Fournir un monitoring temps réel de TradeSim avec :
 - **Prometheus** : Collecte et stockage des métriques
 - **Grafana** : Visualisation et dashboards
 - **Exporter Python** : Exposition des métriques depuis l'application
+- **Import automatique** : Dashboards pré-configurés via API REST
 
 ## 🚀 Démarrage rapide
 
-### 1. Démarrer le monitoring
+### 1. Démarrage automatique complet
+
+```bash
+# Démarrage complet avec import automatique des dashboards
+./monitoring/start_monitoring.sh
+```
+
+**Ce script fait automatiquement :**
+- Démarre Prometheus et Grafana
+- Attend que Grafana soit prêt
+- Importe automatiquement tous les dashboards
+- Affiche les URLs d'accès
+
+### 2. Démarrage manuel (ancienne méthode)
 
 ```bash
 # Démarrer Prometheus et Grafana
 cd monitoring
 docker-compose up -d
 
-# Configuration dynamique (optionnel - automatique sur Mac/Windows)
-python configure_prometheus.py
-
-# Lancer la simulation avec monitoring
-python services/simulate.py --tours 10 --with-metrics
+# Importer les dashboards manuellement
+cd ..
+python monitoring/import_dashboards.py
 ```
 
-### Configuration automatique
-
-Le monitoring est **portable** et s'adapte automatiquement :
-- **Mac/Windows** : Utilise `host.docker.internal`
-- **Linux** : Détecte automatiquement l'IP du host
-- **Aucune configuration manuelle** requise
-
-### 2. Accéder aux interfaces
+### 3. Accéder aux interfaces
 
 - **Prometheus**: http://localhost:9090
 - **Grafana**: http://localhost:3000 (admin/admin)
 - **Exporter**: http://localhost:8000
 
-### 3. Utilisation de Grafana
+## 📊 Dashboards disponibles
 
-#### **Accès depuis le navigateur**
-1. **Ouvrir** : http://localhost:3000
-2. **Se connecter** : `admin` / `admin`
-3. **Source de données** : Prometheus configurée automatiquement
-4. **Dashboards** : Création manuelle ou import JSON
+### **Dashboards de base**
+- **TradeSim - Simulation Overview** : Vue d'ensemble de la simulation
+- **TradeSim - Finances & Budgets** : Métriques financières
+- **TradeSim - Entreprises & Stratégies** : Performance des entreprises
+- **TradeSim - Produits & Fournisseurs** : Gestion des produits
+- **TradeSim - Événements & Métriques Avancées** : Événements système
 
-#### **Création de dashboards manuels**
-1. **"+"** → **"Dashboard"**
-2. **"Add panel"**
-3. **Query** : Utiliser les métriques TradeSim (ex: `tradesim_budget_total`)
-4. **Legend** : Nom personnalisé (ex: "Budget Total")
-5. **Visualization** : Stat, Time series, etc.
+### **Dashboards templates (avec variables)**
+- **TradeSim - Produit: $produit** : Métriques par produit spécifique
+- **TradeSim - Entreprise: $entreprise** : Métriques par entreprise spécifique
+- **TradeSim - Fournisseur: $fournisseur** : Métriques par fournisseur spécifique
 
-#### **Métriques principales disponibles**
-- `tradesim_budget_total` - Budget total des entreprises
-- `tradesim_tours_completes` - Tours de simulation
-- `tradesim_evenements_total` - Événements totaux
-- `tradesim_transactions_total` - Transactions totales
-- `tradesim_cpu_usage_percent` - Utilisation CPU
-- `tradesim_memory_usage_percent` - Utilisation mémoire
+### **Utilisation des dashboards templates**
+1. **Ouvrir** le dashboard template (ex: "TradeSim - Produit: $produit")
+2. **Sélectionner** la variable en haut (ex: choisir "Ordinateur")
+3. **Tous les panels** se mettent à jour automatiquement
 
 ## ⚙️ Configuration
 
@@ -98,180 +99,139 @@ THROUGHPUT_MIN_INTERVAL = 0.01       # Intervalle minimum entre mesures (10ms)
 # Seuils de performance pour les alertes
 LATENCY_WARNING_THRESHOLD = 100.0    # Seuil d'avertissement latence (100ms)
 LATENCY_CRITICAL_THRESHOLD = 500.0   # Seuil critique latence (500ms)
-THROUGHPUT_MIN_RATE = 0.1            # Taux minimum de throughput (0.1 op/s)
 ```
 
-## 📊 Métriques disponibles
+## 🔧 Scripts disponibles
 
-### Métriques TradeSim (5 métriques de base)
-- `tradesim_budget_total` (Gauge) - Budget total des entreprises
-- `tradesim_transactions_total` (Counter) - Nombre total de transactions
-- `tradesim_produits_actifs` (Gauge) - Nombre de produits actifs
-- `tradesim_tours_completes` (Counter) - Nombre de tours effectués
-- `tradesim_temps_simulation_tour_seconds` (Histogram) - Durée d'un tour
-
-### **⚡ NOUVELLES MÉTRIQUES - Latence et Throughput (12 métriques)**
-- `tradesim_latency_achat_produit_ms` (Histogram) - Temps de réponse pour un achat
-- `tradesim_latency_calcul_statistiques_ms` (Histogram) - Temps de calcul des statistiques
-- `tradesim_latency_application_evenement_ms` (Histogram) - Temps d'application d'un événement
-- `tradesim_latency_collecte_metriques_ms` (Histogram) - Temps de collecte des métriques
-- `tradesim_latency_validation_donnees_ms` (Histogram) - Temps de validation des données
-- `tradesim_latency_generation_id_ms` (Histogram) - Temps de génération d'un ID unique
-- `tradesim_transactions_par_seconde` (Counter) - Nombre de transactions par seconde
-- `tradesim_evenements_par_seconde` (Counter) - Nombre d'événements appliqués par seconde
-- `tradesim_metriques_collectees_par_seconde` (Counter) - Nombre de métriques collectées par seconde
-- `tradesim_logs_ecrits_par_seconde` (Counter) - Nombre de logs écrits par seconde
-- `tradesim_actions_validees_par_seconde` (Counter) - Nombre d'actions validées par seconde
-- `tradesim_ids_generes_par_seconde` (Counter) - Nombre d'IDs générés par seconde
-
-### Métriques Système
-- `tradesim_cpu_usage_percent` (Gauge) - Utilisation CPU (%)
-- `tradesim_memory_usage_bytes` (Gauge) - Utilisation mémoire (bytes)
-- `tradesim_memory_usage_percent` (Gauge) - Utilisation mémoire (%)
-- `tradesim_disk_usage_percent` (Gauge) - Utilisation disque (%)
-- `tradesim_process_uptime_seconds` (Gauge) - Temps de fonctionnement
-
-## 🔧 Utilisation
-
-### Activer le monitoring
-
+### **Script de démarrage automatique**
 ```bash
-# Simulation avec monitoring
-python services/simulate.py --tours 10 --with-metrics
-
-# Simulation infinie avec monitoring
-python services/simulate.py --infinite --with-metrics
-
-# Mode verbose avec monitoring
-python services/simulate.py --tours 5 --verbose --with-metrics
+./monitoring/start_monitoring.sh
 ```
+- Démarre tous les services
+- Importe automatiquement les dashboards
+- Affiche les URLs d'accès
 
-### Désactiver le monitoring
-
-```python
-# Dans config/config.py
-METRICS_ENABLED = False
-```
-
-### Modifier l'intervalle de collecte
-
-```python
-# Dans config/config.py
-METRICS_COLLECTION_INTERVAL = 2.0  # Collecte toutes les 2 secondes
-```
-
-## 📁 Fichiers de stockage
-
-### Métriques JSONL
-- **Fichier**: `logs/metrics.jsonl`
-- **Format**: Une ligne JSON par collecte
-- **Contenu**: Timestamp + métriques
-
-### Logs de monitoring
-- **Fichier**: `logs/event.log`
-- **Contenu**: Événements de monitoring (démarrage, erreurs, etc.)
-
-## 🐳 Docker
-
-### Démarrer la stack
+### **Script d'import des dashboards**
 ```bash
-cd monitoring
-docker-compose up -d
+python monitoring/import_dashboards.py
+```
+- Importe tous les dashboards JSON
+- Gestion des erreurs automatique
+- Affiche le statut de chaque import
+
+### **Script de configuration Prometheus**
+```bash
+python monitoring/configure_prometheus.py
+```
+- Configure automatiquement Prometheus
+- Détecte l'environnement (Mac/Windows/Linux)
+- Met à jour les targets automatiquement
+
+## 📈 Métriques principales disponibles
+
+### **Métriques de base**
+- `tradesim_budget_total_entreprises` - Budget total des entreprises
+- `tradesim_tours_completes` - Tours de simulation
+- `tradesim_evenements_total` - Événements totaux
+- `tradesim_transactions_total` - Transactions totales
+- `tradesim_produits_actifs` - Nombre de produits actifs
+- `tradesim_entreprises_nombre_total` - Nombre d'entreprises
+- `tradesim_fournisseurs_nombre_total` - Nombre de fournisseurs
+
+### **Métriques avec labels**
+- `tradesim_entreprise_budget{nom="VietnameseCorp"}` - Budget par entreprise
+- `tradesim_produits_prix_moyen{produit="Ordinateur"}` - Prix moyen par produit
+- `tradesim_transactions_reussies{type="achat"}` - Transactions réussies par type
+- `tradesim_transactions_echouees{raison="budget_insuffisant"}` - Transactions échouées par raison
+
+### **Métriques système**
+- `tradesim_cpu_usage_percent` - Utilisation CPU
+- `tradesim_memory_usage_percent` - Utilisation mémoire
+- `tradesim_latency_average_ms` - Latence moyenne
+- `tradesim_throughput_requests_per_second` - Throughput
+
+## 🛠️ Dépannage
+
+### **Problème : Dashboards ne s'affichent pas**
+```bash
+# Vérifier que Grafana est démarré
+curl http://localhost:3000/api/health
+
+# Réimporter les dashboards
+python monitoring/import_dashboards.py
 ```
 
-### Arrêter la stack
+### **Problème : Métriques à zéro**
 ```bash
-docker-compose down
-```
-
-### Voir les logs
-```bash
-docker-compose logs -f prometheus
-docker-compose logs -f grafana
-```
-
-### Redémarrer un service
-```bash
-docker-compose restart prometheus
-docker-compose restart grafana
-```
-
-## 🔍 Debug et dépannage
-
-### Vérifier l'exporter
-```bash
-# Test de l'endpoint métriques
+# Vérifier que l'exporteur fonctionne
 curl http://localhost:8000/metrics
 
-# Test de l'endpoint santé
-curl http://localhost:8000/health
-```
-
-### Vérifier Prometheus
-```bash
-# Test de la configuration
-curl http://localhost:9090/-/reload
-
-# Voir les targets
+# Vérifier que Prometheus scrape l'exporteur
 curl http://localhost:9090/api/v1/targets
 ```
 
-### Vérifier Grafana
-```bash
-# Test de l'API
-curl http://localhost:3000/api/health
+### **Problème : Variables de dashboard ne fonctionnent pas**
+1. **Vérifier** que les métriques existent : `curl http://localhost:8000/metrics | grep nom_metrique`
+2. **Relancer** une simulation pour générer des données
+3. **Actualiser** le dashboard dans Grafana
+
+## 📝 Création de nouveaux dashboards
+
+### **Via l'interface Grafana**
+1. **"+"** → **"Dashboard"**
+2. **"Add panel"**
+3. **Query** : Utiliser les métriques TradeSim
+4. **Sauvegarder** le dashboard
+
+### **Via fichier JSON**
+1. **Créer** un fichier JSON dans `monitoring/grafana/provisioning/dashboards/`
+2. **Relancer** l'import : `python monitoring/import_dashboards.py`
+
+### **Structure JSON d'un dashboard**
+```json
+{
+  "dashboard": {
+    "id": null,
+    "title": "Mon Dashboard",
+    "tags": ["tradesim"],
+    "panels": [
+      {
+        "id": 1,
+        "title": "Mon Panel",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "tradesim_transactions_total"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 6, "x": 0, "y": 0}
+      }
+    ]
+  }
+}
 ```
 
-## 🚨 Problèmes courants
+## 🎯 Utilisation avancée
 
-### Port déjà utilisé
-```bash
-# Vérifier les ports utilisés
-lsof -i :8000
-lsof -i :9090
-lsof -i :3000
+### **Requêtes PromQL personnalisées**
+```promql
+# Budget moyen par entreprise
+avg(tradesim_entreprise_budget)
 
-# Tuer le processus
-kill -9 <PID>
+# Transactions par type
+sum(tradesim_transactions_total) by (type)
+
+# Évolution du budget dans le temps
+tradesim_budget_total_entreprises[5m]
 ```
 
-### Exporter ne démarre pas
-```bash
-# Vérifier les dépendances
-pip install -r requirements.txt
+### **Alertes Grafana**
+1. **Créer** une alerte dans un panel
+2. **Condition** : `tradesim_budget_total_entreprises < 1000`
+3. **Notification** : Email, Slack, etc.
 
-# Tester l'exporter seul
-python monitoring/prometheus_exporter.py
-```
-
-### Prometheus ne scrape pas
-```bash
-# Vérifier la configuration
-docker-compose exec prometheus cat /etc/prometheus/prometheus.yml
-
-# Redémarrer Prometheus
-docker-compose restart prometheus
-```
-
-## 📈 Prochaines étapes
-
-### Phase 2 - Labels
-- Activer `METRICS_LABELS_ENABLED = True`
-- Ajouter labels `continent` et `produit_type`
-- Créer dashboards par continent/type
-
-### Phase 3 - Alertes
-- Configurer les règles d'alerte Prometheus
-- Intégrer AlertManager
-- Notifications Slack/Email
-
-### Phase 4 - Volumes persistants
-- Ajouter volumes pour les dashboards
-- Persistance des configurations
-- Sauvegarde automatique
-
-## 📚 Ressources
-
-- [Prometheus Documentation](https://prometheus.io/docs/)
-- [Grafana Documentation](https://grafana.com/docs/)
-- [Prometheus Client Python](https://github.com/prometheus/client_python) 
+### **Variables de dashboard**
+1. **Settings** → **Variables**
+2. **Ajouter** une variable de type "Query"
+3. **Query** : `label_values(tradesim_entreprise_budget, nom)`
+4. **Utiliser** avec `$variable` dans les requêtes 

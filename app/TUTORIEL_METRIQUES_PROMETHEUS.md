@@ -200,3 +200,134 @@ app = Flask(__name__)
 @app.route('/metrics')
 def metrics():
     """Endpoint Prometheus /metrics"""
+    return Response(generate_latest(), mimetype=CONTENT_TYPE_LATEST)
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=8000)
+```
+
+---
+
+## 🎯 **EXEMPLE CONCRET : AJOUTER UNE MÉTRIQUE "NOMBRE D'ENTREPRISES PROSPÈRES"**
+
+### **ÉTAPE 1 : Définir la métrique dans l'exporteur**
+
+**Fichier : `monitoring/prometheus_exporter.py`**
+
+```python
+# Ajouter avec les autres métriques
+entreprises_prosperes = Gauge(
+    'tradesim_entreprises_prosperes', 
+    'Nombre d\'entreprises avec budget > 10000€'
+)
+```
+
+### **ÉTAPE 2 : Créer un service de calcul**
+
+**Fichier : `services/prosperity_metrics_service.py`**
+
+```python
+#!/usr/bin/env python3
+"""
+Service de métriques de prospérité des entreprises
+"""
+
+from typing import List, Dict, Any
+from models.models import Entreprise
+
+class ProsperityMetricsService:
+    """Service pour calculer les métriques de prospérité"""
+    
+    def __init__(self):
+        self.seuil_prosperite = 10000  # Seuil en euros
+    
+    def calculer_metriques_prosperite(self, entreprises: List[Entreprise]) -> Dict[str, Any]:
+        """Calcule les métriques de prospérité des entreprises"""
+        
+        # Compter les entreprises prospères
+        entreprises_prosperes = sum(1 for e in entreprises if e.budget > self.seuil_prosperite)
+        
+        # Calculer le pourcentage
+        pourcentage_prosperes = (entreprises_prosperes / len(entreprises)) * 100 if entreprises else 0
+        
+        return {
+            'entreprises_prosperes': entreprises_prosperes,
+            'pourcentage_prosperes': pourcentage_prosperes,
+            'seuil_prosperite': self.seuil_prosperite
+        }
+```
+
+### **ÉTAPE 3 : Intégrer dans SimulationService**
+
+**Fichier : `services/simulation_service.py`**
+
+```python
+# Ajouter l'import
+from services.prosperity_metrics_service import ProsperityMetricsService
+
+class SimulationService:
+    def __init__(self, ...):
+        # Ajouter le service
+        self.prosperity_metrics_service = ProsperityMetricsService()
+    
+    def collecter_metriques(self):
+        # Ajouter dans la collecte
+        if self.prosperity_metrics_service:
+            prosperity_metrics = self.prosperity_metrics_service.calculer_metriques_prosperite(
+                self.entreprises
+            )
+            metrics_data.update(prosperity_metrics)
+```
+
+### **ÉTAPE 4 : Mettre à jour l'exporteur**
+
+**Fichier : `monitoring/prometheus_exporter.py`**
+
+```python
+def update_tradesim_metrics(self, metrics_data: Dict[str, Any]):
+    """Met à jour les métriques TradeSim"""
+    try:
+        # Ajouter le traitement de la nouvelle métrique
+        if 'entreprises_prosperes' in metrics_data:
+            entreprises_prosperes.set(metrics_data['entreprises_prosperes'])
+        
+        # ... autres métriques existantes
+        
+    except Exception as e:
+        print(f"⚠️ Erreur lors de la mise à jour des métriques: {e}")
+```
+
+### **ÉTAPE 5 : Tester la métrique**
+
+```bash
+# Lancer la simulation
+python services/simulate.py --tours 5 --with-metrics
+
+# Vérifier la métrique
+curl http://localhost:8000/metrics | grep entreprises_prosperes
+```
+
+**Résultat attendu :**
+```
+# HELP tradesim_entreprises_prosperes Nombre d'entreprises avec budget > 10000€
+# TYPE tradesim_entreprises_prosperes gauge
+tradesim_entreprises_prosperes 2.0
+```
+
+---
+
+## 📋 **CHECKLIST POUR AJOUTER UNE MÉTRIQUE**
+
+- [ ] **1. Définir la métrique** dans `monitoring/prometheus_exporter.py`
+- [ ] **2. Créer le service** de calcul dans `services/`
+- [ ] **3. Intégrer** dans `SimulationService.collecter_metriques()`
+- [ ] **4. Traiter** dans `PrometheusExporter.update_tradesim_metrics()`
+- [ ] **5. Tester** avec simulation et vérification Prometheus
+- [ ] **6. Documenter** dans `METRIQUES_DISPONIBLES.md`
+- [ ] **7. Ajouter** dans les tests unitaires
+
+---
+
+**Auteur :** Assistant IA  
+**Date :** 2025-08-17  
+**Version :** 2.0 (ajout d'exemple concret)

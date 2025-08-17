@@ -309,27 +309,27 @@ fournisseurs_resilience = Gauge('tradesim_fournisseurs_resilience', 'Indice de r
 # MÉTRIQUES DE TRANSACTIONS (16 métriques)
 # ============================================================================
 
-# Métriques de base (6 métriques)
-transactions_total = Gauge('tradesim_transactions_total', 'Nombre total de transactions')
-transactions_reussies = Gauge('tradesim_transactions_reussies', 'Nombre de transactions réussies')
-transactions_echouees = Gauge('tradesim_transactions_echouees', 'Nombre de transactions échouées')
-transactions_par_strategie = Gauge('tradesim_transactions_par_strategie', 'Répartition des transactions par stratégie')
-transactions_par_produit = Gauge('tradesim_transactions_par_produit', 'Répartition des transactions par produit')
-transactions_par_entreprise = Gauge('tradesim_transactions_par_entreprise', 'Répartition des transactions par entreprise')
+# Métriques de base (6 métriques) - AVEC LABELS
+transactions_total = Gauge('tradesim_transactions_total', 'Nombre total de transactions', ['type', 'statut'])
+transactions_reussies = Gauge('tradesim_transactions_reussies', 'Nombre de transactions réussies', ['type', 'strategie'])
+transactions_echouees = Gauge('tradesim_transactions_echouees', 'Nombre de transactions échouées', ['type', 'raison'])
+transactions_par_strategie = Gauge('tradesim_transactions_par_strategie', 'Répartition des transactions par stratégie', ['strategie', 'statut'])
+transactions_par_produit = Gauge('tradesim_transactions_par_produit', 'Répartition des transactions par produit', ['produit', 'type_produit', 'statut'])
+transactions_par_entreprise = Gauge('tradesim_transactions_par_entreprise', 'Répartition des transactions par entreprise', ['entreprise', 'continent', 'strategie'])
 
-# Métriques de performance (6 métriques)
-transactions_volume_moyen = Gauge('tradesim_transactions_volume_moyen', 'Volume moyen par transaction')
-transactions_prix_moyen = Gauge('tradesim_transactions_prix_moyen', 'Prix moyen par transaction')
-transactions_frequence = Gauge('tradesim_transactions_frequence', 'Fréquence des transactions (par tour)')
-transactions_taux_reussite = Gauge('tradesim_transactions_taux_reussite', 'Taux de réussite des transactions')
-transactions_efficacite = Gauge('tradesim_transactions_efficacite', 'Efficacité des transactions')
-transactions_rentabilite = Gauge('tradesim_transactions_rentabilite', 'Rentabilité moyenne des transactions')
+# Métriques de performance (6 métriques) - AVEC LABELS
+transactions_volume_moyen = Gauge('tradesim_transactions_volume_moyen', 'Volume moyen par transaction', ['type', 'strategie'])
+transactions_prix_moyen = Gauge('tradesim_transactions_prix_moyen', 'Prix moyen par transaction', ['type', 'produit'])
+transactions_frequence = Gauge('tradesim_transactions_frequence', 'Fréquence des transactions (par tour)', ['type', 'entreprise'])
+transactions_taux_reussite = Gauge('tradesim_transactions_taux_reussite', 'Taux de réussite des transactions', ['type', 'strategie'])
+transactions_efficacite = Gauge('tradesim_transactions_efficacite', 'Efficacité des transactions', ['type', 'entreprise'])
+transactions_rentabilite = Gauge('tradesim_transactions_rentabilite', 'Rentabilité moyenne des transactions', ['type', 'strategie'])
 
-# Métriques de comportement (4 métriques)
-transactions_volatilite_prix = Gauge('tradesim_transactions_volatilite_prix', 'Volatilité des prix de transaction')
-transactions_tendance_volume = Gauge('tradesim_transactions_tendance_volume', 'Tendance des volumes de transaction')
-transactions_preference_strategie = Gauge('tradesim_transactions_preference_strategie', 'Préférence de stratégie')
-transactions_competitivite = Gauge('tradesim_transactions_competitivite', 'Indice de compétitivité des transactions')
+# Métriques de comportement (4 métriques) - AVEC LABELS
+transactions_volatilite_prix = Gauge('tradesim_transactions_volatilite_prix', 'Volatilité des prix de transaction', ['produit', 'periode'])
+transactions_tendance_volume = Gauge('tradesim_transactions_tendance_volume', 'Tendance des volumes de transaction', ['type', 'periode'])
+transactions_preference_strategie = Gauge('tradesim_transactions_preference_strategie', 'Préférence de stratégie', ['strategie', 'entreprise'])
+transactions_competitivite = Gauge('tradesim_transactions_competitivite', 'Indice de compétitivité des transactions', ['type', 'marche'])
 
 # ============================================================================
 # MÉTRIQUES D'ÉVÉNEMENTS (16 métriques)
@@ -952,63 +952,88 @@ class PrometheusExporter:
                 fournisseurs_resilience.set(metrics_data['fournisseurs_resilience'])
             
             # ============================================================================
-            # MÉTRIQUES DE TRANSACTIONS (16 métriques)
+            # MÉTRIQUES DE TRANSACTIONS (16 métriques) - AVEC LABELS
             # ============================================================================
             
-            # Métriques de base (6 métriques)
+            # Métriques de base (6 métriques) - AVEC LABELS
             if 'transactions_total' in metrics_data:
-                transactions_total.set(metrics_data['transactions_total'])
+                # Utiliser les labels pour différencier les types de transactions
+                transactions_total.labels(type='achat', statut='total').set(metrics_data['transactions_total'])
+                transactions_total.labels(type='vente', statut='total').set(metrics_data.get('transactions_ventes', 0))
             
             if 'transactions_reussies' in metrics_data:
-                transactions_reussies.set(metrics_data['transactions_reussies'])
+                transactions_reussies.labels(type='achat', strategie='moins_cher').set(metrics_data['transactions_reussies'])
+                transactions_reussies.labels(type='vente', strategie='plus_cher').set(metrics_data.get('transactions_ventes_reussies', 0))
             
             if 'transactions_echouees' in metrics_data:
-                transactions_echouees.set(metrics_data['transactions_echouees'])
+                transactions_echouees.labels(type='achat', raison='budget_insuffisant').set(metrics_data['transactions_echouees'])
+                transactions_echouees.labels(type='vente', raison='stock_insuffisant').set(metrics_data.get('transactions_ventes_echouees', 0))
             
             if 'transactions_par_strategie' in metrics_data:
-                # Pour les métriques de répartition, on utilise la somme des valeurs
-                total_par_strategie = sum(metrics_data['transactions_par_strategie'].values()) if isinstance(metrics_data['transactions_par_strategie'], dict) else 0
-                transactions_par_strategie.set(total_par_strategie)
+                # Mettre à jour chaque stratégie avec ses labels
+                if isinstance(metrics_data['transactions_par_strategie'], dict):
+                    for strategie, count in metrics_data['transactions_par_strategie'].items():
+                        transactions_par_strategie.labels(strategie=strategie, statut='reussie').set(count)
+                else:
+                    transactions_par_strategie.labels(strategie='moins_cher', statut='reussie').set(metrics_data['transactions_par_strategie'])
             
             if 'transactions_par_produit' in metrics_data:
-                total_par_produit = sum(metrics_data['transactions_par_produit'].values()) if isinstance(metrics_data['transactions_par_produit'], dict) else 0
-                transactions_par_produit.set(total_par_produit)
+                # Mettre à jour chaque produit avec ses labels
+                if isinstance(metrics_data['transactions_par_produit'], dict):
+                    for produit, count in metrics_data['transactions_par_produit'].items():
+                        transactions_par_produit.labels(produit=produit, type_produit='produit_fini', statut='reussie').set(count)
+                else:
+                    transactions_par_produit.labels(produit='general', type_produit='produit_fini', statut='reussie').set(metrics_data['transactions_par_produit'])
             
             if 'transactions_par_entreprise' in metrics_data:
-                total_par_entreprise = sum(metrics_data['transactions_par_entreprise'].values()) if isinstance(metrics_data['transactions_par_entreprise'], dict) else 0
-                transactions_par_entreprise.set(total_par_entreprise)
+                # Mettre à jour chaque entreprise avec ses labels
+                if isinstance(metrics_data['transactions_par_entreprise'], dict):
+                    for entreprise, count in metrics_data['transactions_par_entreprise'].items():
+                        transactions_par_entreprise.labels(entreprise=entreprise, continent='Europe', strategie='moins_cher').set(count)
+                else:
+                    transactions_par_entreprise.labels(entreprise='general', continent='Europe', strategie='moins_cher').set(metrics_data['transactions_par_entreprise'])
             
-            # Métriques de performance (6 métriques)
+            # Métriques de performance (6 métriques) - AVEC LABELS
             if 'transactions_volume_moyen' in metrics_data:
-                transactions_volume_moyen.set(metrics_data['transactions_volume_moyen'])
+                transactions_volume_moyen.labels(type='achat', strategie='moins_cher').set(metrics_data['transactions_volume_moyen'])
+                transactions_volume_moyen.labels(type='vente', strategie='plus_cher').set(metrics_data.get('transactions_volume_moyen_ventes', 0))
             
             if 'transactions_prix_moyen' in metrics_data:
-                transactions_prix_moyen.set(metrics_data['transactions_prix_moyen'])
+                transactions_prix_moyen.labels(type='achat', produit='general').set(metrics_data['transactions_prix_moyen'])
+                transactions_prix_moyen.labels(type='vente', produit='general').set(metrics_data.get('transactions_prix_moyen_ventes', 0))
             
             if 'transactions_frequence' in metrics_data:
-                transactions_frequence.set(metrics_data['transactions_frequence'])
+                transactions_frequence.labels(type='achat', entreprise='general').set(metrics_data['transactions_frequence'])
+                transactions_frequence.labels(type='vente', entreprise='general').set(metrics_data.get('transactions_frequence_ventes', 0))
             
             if 'transactions_taux_reussite' in metrics_data:
-                transactions_taux_reussite.set(metrics_data['transactions_taux_reussite'])
+                transactions_taux_reussite.labels(type='achat', strategie='moins_cher').set(metrics_data['transactions_taux_reussite'])
+                transactions_taux_reussite.labels(type='vente', strategie='plus_cher').set(metrics_data.get('transactions_taux_reussite_ventes', 0))
             
             if 'transactions_efficacite' in metrics_data:
-                transactions_efficacite.set(metrics_data['transactions_efficacite'])
+                transactions_efficacite.labels(type='achat', entreprise='general').set(metrics_data['transactions_efficacite'])
+                transactions_efficacite.labels(type='vente', entreprise='general').set(metrics_data.get('transactions_efficacite_ventes', 0))
             
             if 'transactions_rentabilite' in metrics_data:
-                transactions_rentabilite.set(metrics_data['transactions_rentabilite'])
+                transactions_rentabilite.labels(type='achat', strategie='moins_cher').set(metrics_data['transactions_rentabilite'])
+                transactions_rentabilite.labels(type='vente', strategie='plus_cher').set(metrics_data.get('transactions_rentabilite_ventes', 0))
             
-            # Métriques de comportement (4 métriques)
+            # Métriques de comportement (4 métriques) - AVEC LABELS
             if 'transactions_volatilite_prix' in metrics_data:
-                transactions_volatilite_prix.set(metrics_data['transactions_volatilite_prix'])
+                transactions_volatilite_prix.labels(produit='general', periode='court_terme').set(metrics_data['transactions_volatilite_prix'])
+                transactions_volatilite_prix.labels(produit='general', periode='long_terme').set(metrics_data.get('transactions_volatilite_prix_long', 0))
             
             if 'transactions_tendance_volume' in metrics_data:
-                transactions_tendance_volume.set(metrics_data['transactions_tendance_volume'])
+                transactions_tendance_volume.labels(type='achat', periode='court_terme').set(metrics_data['transactions_tendance_volume'])
+                transactions_tendance_volume.labels(type='vente', periode='court_terme').set(metrics_data.get('transactions_tendance_volume_ventes', 0))
             
             if 'transactions_preference_strategie' in metrics_data:
-                transactions_preference_strategie.set(metrics_data['transactions_preference_strategie'])
+                transactions_preference_strategie.labels(strategie='moins_cher', entreprise='general').set(metrics_data['transactions_preference_strategie'])
+                transactions_preference_strategie.labels(strategie='plus_cher', entreprise='general').set(metrics_data.get('transactions_preference_strategie_ventes', 0))
             
             if 'transactions_competitivite' in metrics_data:
-                transactions_competitivite.set(metrics_data['transactions_competitivite'])
+                transactions_competitivite.labels(type='achat', marche='local').set(metrics_data['transactions_competitivite'])
+                transactions_competitivite.labels(type='vente', marche='local').set(metrics_data.get('transactions_competitivite_ventes', 0))
             
             # ============================================================================
             # MÉTRIQUES D'ÉVÉNEMENTS (16 métriques)
