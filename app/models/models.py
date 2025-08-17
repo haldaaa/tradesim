@@ -131,6 +131,7 @@ class Entreprise(BaseModel):
     - budget_initial : Budget initial de l'entreprise
     - types_preferes : Types de produits préférés par l'entreprise
     - strategie : Stratégie d'achat ("moins_cher" ou "par_type")
+    - stocks : Dictionnaire {produit_id → quantité en stock}
     """
     id: int
     nom: str
@@ -140,6 +141,7 @@ class Entreprise(BaseModel):
     budget_initial: float
     types_preferes: List[TypeProduit]
     strategie: str  # "moins_cher" ou "par_type"
+    stocks: Dict[int, int] = {}  # produit_id → stock possédé
 
 
 class Transaction(BaseModel):

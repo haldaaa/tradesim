@@ -15,9 +15,11 @@
 - Techniques: 11
 - Calculées: 4
 - Système: 8
+- **MÉTRIQUES INDIVIDUELLES** : 18
 - **NOUVELLES MÉTRIQUES** : 45
+- **MÉTRIQUES HISTORIQUES** : 8
 
-Total global (document actuel): 157
+Total global (document actuel): 175 + 164 métriques de stock par produit + 8 métriques historiques = 347
 
 ## 📊 **Métriques de simulation** — Total: 8 ✅ IMPLÉMENTÉES (10/08/2025)
 
@@ -315,7 +317,7 @@ Total global (document actuel): 157
 ### **Format des métriques pour Prometheus :**
 ```python
 # Exemple de métrique Prometheus
-tradesim_budget_total = Gauge('tradesim_budget_total', 'Budget total des entreprises')
+tradesim_budget_total_entreprises = Gauge('tradesim_budget_total_entreprises', 'Budget total de toutes les entreprises')
 tradesim_transactions_total = Counter('tradesim_transactions_total', 'Nombre total de transactions')
 tradesim_simulation_duration = Histogram('tradesim_simulation_duration', 'Durée de simulation')
 tradesim_latency_achat = Histogram('tradesim_latency_achat_ms', 'Latence des achats en ms')
@@ -323,7 +325,7 @@ tradesim_throughput_transactions = Gauge('tradesim_throughput_transactions_per_s
 ```
 
 ### **Métriques critiques pour le monitoring :**
-1. **Budget total** - Indicateur de santé économique
+1. **Budget total des entreprises** - Indicateur de santé économique
 2. **Nombre de transactions** - Activité du marché
 3. **Produits actifs** - Disponibilité des biens
 4. **Entreprises solvables** - Stabilité du système
@@ -335,7 +337,7 @@ tradesim_throughput_transactions = Gauge('tradesim_throughput_transactions_per_s
 10. **Tendances** - Évolution du système
 
 ### **Alertes recommandées :**
-- Budget total < 1000€
+- Budget total des entreprises < 1000€
 - Aucune transaction pendant 5 tours
 - Aucun produit actif
 - Aucune entreprise solvable
@@ -349,9 +351,100 @@ tradesim_throughput_transactions = Gauge('tradesim_throughput_transactions_per_s
 
 ---
 
-**Auteur :** Assistant IA  
-**Date :** 2024-08-10  
-**Version :** 3.0 (ajout de 45 nouvelles métriques avancées) 
+## 🏷️ **MÉTRIQUES INDIVIDUELLES AVEC LABELS** — Total: 18 ✅ IMPLÉMENTÉES (17/08/2025)
+
+### **Métriques par entreprise** — Total: 6
+- **tradesim_entreprise_budget** -- Budget actuel par entreprise -- Labels: {id, nom, continent, strategie}
+- **tradesim_entreprise_budget_initial** -- Budget initial par entreprise -- Labels: {id, nom}
+- **tradesim_entreprise_budget_evolution** -- Évolution du budget depuis le tour précédent -- Labels: {id, nom}
+- **tradesim_entreprise_budget_tendance** -- Tendance du budget sur 5 tours -- Labels: {id, nom}
+- **tradesim_entreprise_transactions_total** -- Nombre total de transactions par entreprise -- Labels: {id, nom, continent}
+- **tradesim_entreprise_stock_total** -- Stock total par entreprise -- Labels: {id, nom, continent}
+
+### **Métriques par produit** — Total: 6
+- **tradesim_produit_prix** -- Prix actuel par produit -- Labels: {id, nom, type}
+- **tradesim_produit_stock** -- Stock disponible par produit -- Labels: {id, nom, type}
+- **tradesim_produit_prix_evolution** -- Évolution du prix depuis le tour précédent -- Labels: {id, nom, type}
+- **tradesim_produit_prix_tendance** -- Tendance du prix sur 5 tours -- Labels: {id, nom, type}
+- **tradesim_produit_demande** -- Demande actuelle par produit -- Labels: {id, nom, type}
+- **tradesim_produit_offre** -- Offre actuelle par produit -- Labels: {id, nom, type}
+
+### **Métriques par fournisseur** — Total: 6
+- **tradesim_fournisseur_stock** -- Stock total par fournisseur -- Labels: {id, nom, continent}
+- **tradesim_fournisseur_prix_moyen** -- Prix moyen des produits par fournisseur -- Labels: {id, nom, continent}
+- **tradesim_fournisseur_ventes_total** -- Nombre total de ventes par fournisseur -- Labels: {id, nom, continent}
+- **tradesim_fournisseur_disponibilite** -- Taux de disponibilité par fournisseur -- Labels: {id, nom, continent}
+- **tradesim_fournisseur_rotation_stock** -- Rotation de stock par fournisseur -- Labels: {id, nom, continent}
+- **tradesim_fournisseur_rentabilite** -- Rentabilité par fournisseur -- Labels: {id, nom, continent}
+
+### **Exemples d'utilisation des labels :**
+```promql
+# Budget total des entreprises par continent
+sum(tradesim_entreprise_budget) by (continent)
+
+# Prix moyen des produits par type
+avg(tradesim_produit_prix) by (type)
+
+# Stock total des fournisseurs par continent
+sum(tradesim_fournisseur_stock) by (continent)
+
+# Entreprises avec stratégie "moins_cher"
+tradesim_entreprise_budget{strategie="moins_cher"}
+
+# Produits de type "produit_fini"
+tradesim_produit_prix{type="produit_fini"}
+```
 
 ---
+
+---
+
+## 📈 **MÉTRIQUES HISTORIQUES DE STOCK** — Total: 8 ✅ IMPLÉMENTÉES (17/08/2025)
+
+### **Métriques historiques par entité** — Total: 4
+- **tradesim_entreprise_stock_historique** -- Stock historique par produit par entreprise par tour -- Labels: {id_entite, nom_entite, id_produit, nom_produit, tour}
+- **tradesim_fournisseur_stock_historique** -- Stock historique par produit par fournisseur par tour -- Labels: {id_entite, nom_entite, id_produit, nom_produit, tour}
+
+### **Métriques d'évolution de stock** — Total: 4
+- **tradesim_entreprise_stock_evolution** -- Évolution du stock par produit par entreprise sur une période -- Labels: {id_entite, nom_entite, id_produit, nom_produit, periode}
+- **tradesim_fournisseur_stock_evolution** -- Évolution du stock par produit par fournisseur sur une période -- Labels: {id_entite, nom_entite, id_produit, nom_produit, periode}
+
+### **Métriques de performance** — Total: 3
+- **tradesim_metrics_calculation_duration_seconds** -- Temps de calcul des métriques historiques -- Histogram
+- **tradesim_metrics_cardinality** -- Nombre de séries temporelles créées -- Labels: {metric_type, entity_type}
+- **tradesim_metrics_compression_ratio** -- Ratio de compression des données historiques -- Labels: {entity_type}
+
+### **Exemples d'utilisation des métriques historiques :**
+```promql
+# Stock d'une entreprise à un tour spécifique
+tradesim_entreprise_stock_historique{id_entite="1", tour="5"}
+
+# Évolution du stock sur 10 tours
+tradesim_entreprise_stock_evolution{periode="10_tours"}
+
+# Performance des calculs historiques
+histogram_quantile(0.95, tradesim_metrics_calculation_duration_seconds)
+
+# Cardinalité des métriques
+tradesim_metrics_cardinality{metric_type="stock_history"}
+
+# Ratio de compression
+tradesim_metrics_compression_ratio{entity_type="all"}
+```
+
+### **Configuration des métriques historiques :**
+```python
+# config/config.py
+STOCK_HISTORY_MAX_CARDINALITY = 10000  # Limite maximum de séries temporelles
+STOCK_HISTORY_AUTO_COMPRESSION = True   # Compression automatique
+STOCK_HISTORY_PERFORMANCE_MONITORING = True  # Surveillance performance
+STOCK_HISTORY_RETENTION_TOURS = -1  # Rétention illimitée
+STOCK_HISTORY_EVOLUTION_PERIODS = [5, 10, 15, 20]  # Périodes d'évolution
+```
+
+---
+
+**Auteur :** Assistant IA  
+**Date :** 2025-08-17  
+**Version :** 5.0 (ajout de 8 métriques historiques de stock)
 

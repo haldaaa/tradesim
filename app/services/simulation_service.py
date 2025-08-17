@@ -71,7 +71,10 @@ from config.config import (
     PROBABILITE_SELECTION_ENTREPRISE, DUREE_PAUSE_ENTRE_TOURS,
     
     # Configuration des quantités
-    QUANTITE_ACHAT_MIN, QUANTITE_ACHAT_MAX
+    QUANTITE_ACHAT_MIN, QUANTITE_ACHAT_MAX,
+    
+    # Configuration des métriques historiques de stock
+    STOCK_HISTORY_PERFORMANCE_MONITORING
 )
 
 from models.models import Entreprise, Fournisseur, Produit, TypeProduit
@@ -159,6 +162,14 @@ try:
 except ImportError:
     PERFORMANCE_METRICS_AVAILABLE = False
     print("⚠️ Service de métriques de performance non disponible")
+
+# Import du service de métriques individuelles
+try:
+    from services.individual_metrics_service import IndividualMetricsService
+    INDIVIDUAL_METRICS_AVAILABLE = True
+except ImportError:
+    INDIVIDUAL_METRICS_AVAILABLE = False
+    print("⚠️ Service de métriques individuelles non disponible")
 
 class IDGenerator:
     """Générateur d'IDs uniques avec validation et configuration centralisée"""
@@ -376,6 +387,15 @@ class SimulationService:
             except Exception as e:
                 self._log_error("product_metrics_init", str(e))
 
+        # Service de métriques individuelles
+        self.individual_metrics_service = None
+        if INDIVIDUAL_METRICS_AVAILABLE:
+            try:
+                self.individual_metrics_service = IndividualMetricsService()
+                print("🏷️ Service de métriques individuelles avec labels activé")
+            except Exception as e:
+                self._log_error("individual_metrics_init", str(e))
+
     def _validate_data(self, data: Dict[str, Any], context: str) -> bool:
         """Validation des données métier"""
         if not VALIDATION_ENABLED:
@@ -556,7 +576,7 @@ class SimulationService:
                 return False
             
             # Logique d'achat existante (CORRECTION BUG)
-            stock_actuel = entreprise.stocks.get(produit.nom, 0) if hasattr(entreprise, 'stocks') else 0
+            stock_actuel = entreprise.stocks.get(produit.id, 0)
             prix = price_service.get_prix_produit_fournisseur(produit.id, fournisseur.id) if PRICE_SERVICE_AVAILABLE else 0
             stock_disponible = fournisseur.stock_produit.get(produit.id, 0)
             
@@ -663,9 +683,8 @@ class SimulationService:
                 }
                 self.transaction_metrics_service.enregistrer_transaction(transaction_data, reussie=True)
             
-            # Mise à jour des stocks (avec vérification d'attributs)
-            if hasattr(entreprise, 'stocks'):
-                entreprise.stocks[produit.nom] = stock_actuel + quantite_achat
+            # Mise à jour des stocks (CORRECTION : utilisation de l'ID du produit)
+            entreprise.stocks[produit.id] = entreprise.stocks.get(produit.id, 0) + quantite_achat
             fournisseur.stock_produit[produit.id] = stock_disponible - quantite_achat
             
             # Validation des données après modification (CORRECTION BUG)
@@ -936,6 +955,28 @@ class SimulationService:
             if self.product_metrics_service:
                 product_metrics = self.product_metrics_service.calculer_metriques_produits(self.produits, self.fournisseurs)
                 metrics_data.update(product_metrics)
+            
+            # Ajout des métriques individuelles avec labels
+            if self.individual_metrics_service:
+                individual_metrics = self.individual_metrics_service.calculer_metriques_individuales(
+                    self.entreprises, self.produits, self.fournisseurs
+                )
+                metrics_data.update(individual_metrics)
+                
+                # Ajout des métriques historiques de stock
+                stocks_historiques = self.individual_metrics_service._calculer_stocks_historiques(
+                    self.entreprises, self.fournisseurs, self.produits, self.tick_actuel
+                )
+                metrics_data['stocks_historiques'] = stocks_historiques
+                
+                # Compression automatique si activée
+                self.individual_metrics_service._compresser_historique_stocks()
+                
+                # Ajout des statistiques de performance
+                if STOCK_HISTORY_PERFORMANCE_MONITORING:
+                    performance_stats = self.individual_metrics_service.get_performance_stats()
+                    metrics_data['stock_history_performance'] = performance_stats
+
             
             # Validation des métriques (APRÈS avoir ajouté toutes les métriques)
             if not self._validate_data(metrics_data, "collecter_metriques"):

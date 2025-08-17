@@ -73,7 +73,6 @@ from config.config import (
 # ============================================================================
 
 # Métriques TradeSim
-budget_total = Gauge('tradesim_budget_total', 'Budget total des entreprises')
 produits_actifs = Gauge('tradesim_produits_actifs', 'Nombre de produits actifs')
 tours_completes = Gauge('tradesim_tours_completes', 'Nombre de tours effectués')
 temps_simulation_tour_seconds = Histogram(
@@ -148,6 +147,38 @@ latency_validation_donnees_ms = Histogram(
 latency_generation_id_ms = Histogram(
     'tradesim_latency_generation_id_ms',
     'Temps de génération d\'un ID unique (millisecondes)',
+    buckets=[0.1, 0.5, 1.0, 2.0, 5.0, 10.0, 20.0, 50.0, 100.0]
+)
+
+# ============================================================================
+# MÉTRIQUES DE PERFORMANCE ET MONITORING
+# ============================================================================
+
+# Métriques de performance des calculs
+metrics_calculation_duration = Histogram(
+    'tradesim_metrics_calculation_duration_seconds',
+    'Temps de calcul des métriques historiques (secondes)',
+    buckets=[0.01, 0.05, 0.1, 0.5, 1.0, 2.0, 5.0, 10.0]
+)
+
+# Métriques de cardinalité
+metrics_cardinality = Gauge(
+    'tradesim_metrics_cardinality',
+    'Nombre de séries temporelles créées',
+    ['metric_type', 'entity_type']
+)
+
+# Métriques de compression
+metrics_compression_ratio = Gauge(
+    'tradesim_metrics_compression_ratio',
+    'Ratio de compression des données historiques',
+    ['entity_type']
+)
+
+# Métriques de latence d'envoi
+metrics_send_latency_ms = Histogram(
+    'tradesim_metrics_send_latency_ms',
+    'Latence d\'envoi des métriques vers Prometheus (millisecondes)',
     buckets=[0.1, 0.5, 1.0, 2.0, 5.0, 10.0, 20.0, 50.0, 100.0]
 )
 
@@ -353,6 +384,65 @@ performance_bottlenecks = Gauge('tradesim_performance_bottlenecks', 'Nombre de g
 performance_optimisations_disponibles = Gauge('tradesim_performance_optimisations_disponibles', 'Optimisations disponibles')
 
 # ============================================================================
+# MÉTRIQUES INDIVIDUELLES AVEC LABELS (NOUVELLES)
+# ============================================================================
+
+# Métriques par entreprise (avec labels pour filtrage et agrégation)
+entreprise_budget = Gauge('tradesim_entreprise_budget', 'Budget actuel par entreprise', ['id', 'nom', 'continent', 'strategie'])
+entreprise_budget_initial = Gauge('tradesim_entreprise_budget_initial', 'Budget initial par entreprise', ['id', 'nom'])
+entreprise_budget_evolution = Gauge('tradesim_entreprise_budget_evolution', 'Évolution du budget depuis le tour précédent', ['id', 'nom'])
+entreprise_budget_tendance = Gauge('tradesim_entreprise_budget_tendance', 'Tendance du budget sur 5 tours', ['id', 'nom'])
+entreprise_transactions_total = Gauge('tradesim_entreprise_transactions_total', 'Nombre total de transactions par entreprise', ['id', 'nom', 'continent'])
+
+# Métriques de stock par produit par entreprise (granularité complète)
+entreprise_stock_produit = Gauge('tradesim_entreprise_stock_produit', 'Stock par produit par entreprise', ['id_entreprise', 'nom_entreprise', 'id_produit', 'nom_produit', 'type_produit'])
+
+# Métriques par produit (prix et évolution uniquement)
+produit_prix = Gauge('tradesim_produit_prix', 'Prix actuel par produit', ['id', 'nom', 'type'])
+produit_prix_evolution = Gauge('tradesim_produit_prix_evolution', 'Évolution du prix depuis le tour précédent', ['id', 'nom', 'type'])
+produit_prix_tendance = Gauge('tradesim_produit_prix_tendance', 'Tendance du prix sur 5 tours', ['id', 'nom', 'type'])
+
+# Métriques de stock par produit par fournisseur (granularité complète)
+fournisseur_stock_produit = Gauge('tradesim_fournisseur_stock_produit', 'Stock par produit par fournisseur', ['id_fournisseur', 'nom_fournisseur', 'id_produit', 'nom_produit', 'type_produit'])
+
+# ============================================================================
+# MÉTRIQUES HISTORIQUES DE STOCK
+# ============================================================================
+
+# Métriques historiques de stock par entité
+entreprise_stock_historique = Gauge(
+    'tradesim_entreprise_stock_historique',
+    'Stock historique par produit par entreprise par tour',
+    ['id_entite', 'nom_entite', 'id_produit', 'nom_produit', 'tour']
+)
+
+fournisseur_stock_historique = Gauge(
+    'tradesim_fournisseur_stock_historique',
+    'Stock historique par produit par fournisseur par tour',
+    ['id_entite', 'nom_entite', 'id_produit', 'nom_produit', 'tour']
+)
+
+# Métriques d'évolution de stock
+entreprise_stock_evolution = Gauge(
+    'tradesim_entreprise_stock_evolution',
+    'Évolution du stock par produit par entreprise sur une période',
+    ['id_entite', 'nom_entite', 'id_produit', 'nom_produit', 'periode']
+)
+
+fournisseur_stock_evolution = Gauge(
+    'tradesim_fournisseur_stock_evolution',
+    'Évolution du stock par produit par fournisseur sur une période',
+    ['id_entite', 'nom_entite', 'id_produit', 'nom_produit', 'periode']
+)
+
+# Métriques par fournisseur (autres métriques)
+fournisseur_prix_moyen = Gauge('tradesim_fournisseur_prix_moyen', 'Prix moyen des produits par fournisseur', ['id', 'nom', 'continent'])
+fournisseur_ventes_total = Gauge('tradesim_fournisseur_ventes_total', 'Nombre total de ventes par fournisseur', ['id', 'nom', 'continent'])
+fournisseur_disponibilite = Gauge('tradesim_fournisseur_disponibilite', 'Taux de disponibilité par fournisseur', ['id', 'nom', 'continent'])
+fournisseur_rotation_stock = Gauge('tradesim_fournisseur_rotation_stock', 'Rotation de stock par fournisseur', ['id', 'nom', 'continent'])
+fournisseur_rentabilite = Gauge('tradesim_fournisseur_rentabilite', 'Rentabilité par fournisseur', ['id', 'nom', 'continent'])
+
+# ============================================================================
 # CLASSE EXPORTER
 # ============================================================================
 
@@ -458,6 +548,7 @@ class PrometheusExporter:
             try:
                 data = request.get_json()
                 if data:
+
                     self.update_tradesim_metrics(data)
                     return jsonify({'status': 'success', 'message': 'Métriques mises à jour'})
                 else:
@@ -538,10 +629,8 @@ class PrometheusExporter:
             metrics_data: Dictionnaire contenant les métriques à mettre à jour
         """
         try:
+
             # Mise à jour des métriques de base
-            if 'budget_total' in metrics_data:
-                budget_total.set(metrics_data['budget_total'])
-            
             if 'transactions_total' in metrics_data:
                 transactions_total.inc(metrics_data['transactions_total'])
             
@@ -1033,6 +1122,199 @@ class PrometheusExporter:
             
             if 'performance_optimisations_disponibles' in metrics_data:
                 performance_optimisations_disponibles.set(metrics_data['performance_optimisations_disponibles'])
+            
+            # ============================================================================
+            # MÉTRIQUES INDIVIDUELLES AVEC LABELS (NOUVELLES)
+            # ============================================================================
+            
+            # Métriques par entreprise
+            if 'entreprises_individuales' in metrics_data:
+                entreprises_data = metrics_data['entreprises_individuales']
+
+                for entreprise in entreprises_data:
+                    labels = {
+                        'id': str(entreprise.get('id', '')),
+                        'nom': entreprise.get('nom', ''),
+                        'continent': entreprise.get('continent', ''),
+                        'strategie': entreprise.get('strategie', '')
+                    }
+                    
+                    # Budget actuel
+                    if 'budget' in entreprise:
+                        entreprise_budget.labels(**labels).set(entreprise['budget'])
+                    
+                    # Budget initial (labels simplifiés)
+                    if 'budget_initial' in entreprise:
+                        initial_labels = {'id': labels['id'], 'nom': labels['nom']}
+                        entreprise_budget_initial.labels(**initial_labels).set(entreprise['budget_initial'])
+                    
+                    # Évolution du budget
+                    if 'budget_evolution' in entreprise:
+                        evolution_labels = {'id': labels['id'], 'nom': labels['nom']}
+                        entreprise_budget_evolution.labels(**evolution_labels).set(entreprise['budget_evolution'])
+                    
+                    # Tendance du budget
+                    if 'budget_tendance' in entreprise:
+                        tendance_labels = {'id': labels['id'], 'nom': labels['nom']}
+                        entreprise_budget_tendance.labels(**tendance_labels).set(entreprise['budget_tendance'])
+                    
+                    # Transactions totales
+                    if 'transactions_total' in entreprise:
+                        transaction_labels = {'id': labels['id'], 'nom': labels['nom'], 'continent': labels['continent']}
+                        entreprise_transactions_total.labels(**transaction_labels).set(entreprise['transactions_total'])
+                    
+                    # Stocks par produit (granularité complète)
+                    if 'stocks_produits' in entreprise:
+
+                        for produit_stock in entreprise['stocks_produits']:
+                            stock_labels = {
+                                'id_entreprise': str(entreprise['id']),
+                                'nom_entreprise': entreprise['nom'],
+                                'id_produit': str(produit_stock['produit_id']),
+                                'nom_produit': produit_stock['nom_produit'],
+                                'type_produit': produit_stock['type_produit']
+                            }
+                            entreprise_stock_produit.labels(**stock_labels).set(produit_stock['stock'])
+            
+            # Métriques par produit
+            if 'produits_individuales' in metrics_data:
+                produits_data = metrics_data['produits_individuales']
+                for produit in produits_data:
+                    labels = {
+                        'id': str(produit.get('id', '')),
+                        'nom': produit.get('nom', ''),
+                        'type': produit.get('type', '')
+                    }
+                    
+                    # Prix actuel
+                    if 'prix' in produit:
+                        produit_prix.labels(**labels).set(produit['prix'])
+                    
+                    # Évolution du prix
+                    if 'prix_evolution' in produit:
+                        produit_prix_evolution.labels(**labels).set(produit['prix_evolution'])
+                    
+                    # Tendance du prix
+                    if 'prix_tendance' in produit:
+                        produit_prix_tendance.labels(**labels).set(produit['prix_tendance'])
+            
+            # Métriques par fournisseur
+            if 'fournisseurs_individuales' in metrics_data:
+                fournisseurs_data = metrics_data['fournisseurs_individuales']
+                for fournisseur in fournisseurs_data:
+                    labels = {
+                        'id': str(fournisseur.get('id', '')),
+                        'nom': fournisseur.get('nom', ''),
+                        'continent': fournisseur.get('continent', '')
+                    }
+                    
+                    # Stocks par produit (granularité complète)
+                    if 'stocks_produits' in fournisseur:
+
+                        for produit_stock in fournisseur['stocks_produits']:
+                            stock_labels = {
+                                'id_fournisseur': str(fournisseur['id']),
+                                'nom_fournisseur': fournisseur['nom'],
+                                'id_produit': str(produit_stock['produit_id']),
+                                'nom_produit': produit_stock['nom_produit'],
+                                'type_produit': produit_stock['type_produit']
+                            }
+                            fournisseur_stock_produit.labels(**stock_labels).set(produit_stock['stock'])
+                    
+                    # Prix moyen
+                    if 'prix_moyen' in fournisseur:
+                        fournisseur_prix_moyen.labels(**labels).set(fournisseur['prix_moyen'])
+                    
+                    # Ventes totales
+                    if 'ventes_total' in fournisseur:
+                        fournisseur_ventes_total.labels(**labels).set(fournisseur['ventes_total'])
+                    
+                    # Disponibilité
+                    if 'disponibilite' in fournisseur:
+                        fournisseur_disponibilite.labels(**labels).set(fournisseur['disponibilite'])
+                    
+                    # Rotation de stock
+                    if 'rotation_stock' in fournisseur:
+                        fournisseur_rotation_stock.labels(**labels).set(fournisseur['rotation_stock'])
+                    
+                    # Rentabilité
+                    if 'rentabilite' in fournisseur:
+                        fournisseur_rentabilite.labels(**labels).set(fournisseur['rentabilite'])
+            
+            # ============================================================================
+            # MÉTRIQUES HISTORIQUES DE STOCK
+            # ============================================================================
+            
+            # Traitement des métriques historiques de stock
+            if 'stocks_historiques' in metrics_data:
+                stocks_data = metrics_data['stocks_historiques']
+                
+                # Métriques historiques pour entreprises
+                if 'entreprises' in stocks_data:
+                    for stock_hist in stocks_data['entreprises']:
+                        hist_labels = {
+                            'id_entite': str(stock_hist['id_entite']),
+                            'nom_entite': stock_hist['nom_entite'],
+                            'id_produit': str(stock_hist['id_produit']),
+                            'nom_produit': stock_hist['nom_produit'],
+                            'tour': str(stock_hist['tour'])
+                        }
+                        entreprise_stock_historique.labels(**hist_labels).set(stock_hist['stock'])
+                
+                # Métriques historiques pour fournisseurs
+                if 'fournisseurs' in stocks_data:
+                    for stock_hist in stocks_data['fournisseurs']:
+                        hist_labels = {
+                            'id_entite': str(stock_hist['id_entite']),
+                            'nom_entite': stock_hist['nom_entite'],
+                            'id_produit': str(stock_hist['id_produit']),
+                            'nom_produit': stock_hist['nom_produit'],
+                            'tour': str(stock_hist['tour'])
+                        }
+                        fournisseur_stock_historique.labels(**hist_labels).set(stock_hist['stock'])
+                
+                # Métriques d'évolution
+                if 'evolution' in stocks_data:
+                    # Évolution pour entreprises
+                    if 'entreprises' in stocks_data['evolution']:
+                        for evolution in stocks_data['evolution']['entreprises']:
+                            evol_labels = {
+                                'id_entite': str(evolution['id_entite']),
+                                'nom_entite': evolution['nom_entite'],
+                                'id_produit': str(evolution['id_produit']),
+                                'nom_produit': evolution['nom_produit'],
+                                'periode': evolution['periode']
+                            }
+                            entreprise_stock_evolution.labels(**evol_labels).set(evolution['evolution'])
+                    
+                    # Évolution pour fournisseurs
+                    if 'fournisseurs' in stocks_data['evolution']:
+                        for evolution in stocks_data['evolution']['fournisseurs']:
+                            evol_labels = {
+                                'id_entite': str(evolution['id_entite']),
+                                'nom_entite': evolution['nom_entite'],
+                                'id_produit': str(evolution['id_produit']),
+                                'nom_produit': evolution['nom_produit'],
+                                'periode': evolution['periode']
+                            }
+                            fournisseur_stock_evolution.labels(**evol_labels).set(evolution['evolution'])
+            
+            # ============================================================================
+            # MÉTRIQUES DE PERFORMANCE
+            # ============================================================================
+            
+            # Métriques de performance des calculs historiques
+            if 'stock_history_performance' in metrics_data:
+                perf_data = metrics_data['stock_history_performance']
+                
+                if 'calculation_time' in perf_data:
+                    metrics_calculation_duration.observe(perf_data['calculation_time'])
+                
+                if 'cardinality' in perf_data:
+                    metrics_cardinality.labels(metric_type='stock_history', entity_type='all').set(perf_data['cardinality'])
+                
+                if 'compression_ratio' in perf_data:
+                    metrics_compression_ratio.labels(entity_type='all').set(perf_data['compression_ratio'])
             
             # Stockage en JSONL
             self._store_metrics_jsonl(metrics_data)

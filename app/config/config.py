@@ -282,6 +282,48 @@ SUPPLIER_LABELS_PAYS = False     # Label {pays}
 SUPPLIER_LABELS_CONTINENT = False # Label {continent}
 
 # ============================================================================
+# INDIVIDUAL METRICS - Configuration des métriques individuelles avec labels
+# ============================================================================
+
+# Fréquence de calcul des métriques individuelles
+INDIVIDUAL_METRICS_FREQUENCY = "tour"  # "tour" | "transaction" | "both"
+
+# Historique des métriques individuelles (nombre maximum de tours à conserver)
+INDIVIDUAL_METRICS_HISTORY_MAX_TOURS = 200  # Historique maximum en tours
+
+# Cache pour les calculs complexes de métriques individuelles
+INDIVIDUAL_METRICS_CACHE_ENABLED = True  # Activer le cache LRU pour les calculs
+INDIVIDUAL_METRICS_CACHE_SIZE = 50  # Taille du cache LRU
+
+# Configuration des labels pour les métriques individuelles
+INDIVIDUAL_METRICS_LABELS_ENABLED = True  # Activer les labels par défaut
+
+# ============================================================================
+# STOCK HISTORY METRICS - Configuration des métriques historiques de stock
+# ============================================================================
+
+# Configuration de la cardinalité des métriques historiques
+STOCK_HISTORY_MAX_CARDINALITY = 10000  # Limite maximum de séries temporelles
+STOCK_HISTORY_AUTO_COMPRESSION = True   # Compression automatique des anciennes données
+STOCK_HISTORY_PERFORMANCE_MONITORING = True  # Surveillance de la performance
+
+# Configuration de la rétention des données historiques
+STOCK_HISTORY_RETENTION_TOURS = -1  # -1 = illimité, sinon nombre de tours
+STOCK_HISTORY_GRANULARITY = "all"   # "all" | "daily" | "weekly" | "monthly"
+STOCK_HISTORY_PERFORMANCE = "complete"  # "complete" | "sampled" | "compressed"
+
+# Configuration des périodes d'évolution
+STOCK_HISTORY_EVOLUTION_PERIODS = [5, 10, 15, 20]  # Périodes en tours
+STOCK_HISTORY_DEFAULT_PERIOD = 10  # Période par défaut pour l'évolution
+
+# Configuration de la compression automatique
+STOCK_HISTORY_COMPRESSION_THRESHOLD = 50  # Seuil de tours pour activer la compression
+STOCK_HISTORY_COMPRESSION_RATIO = 0.5     # Ratio de compression (0.5 = garder 50% des données)
+INDIVIDUAL_METRICS_LABELS_ENTREPRISE = True  # Labels {id, nom, continent, strategie}
+INDIVIDUAL_METRICS_LABELS_PRODUIT = True     # Labels {id, nom, type}
+INDIVIDUAL_METRICS_LABELS_FOURNISSEUR = True # Labels {id, nom, continent}
+
+# ============================================================================
 # TRANSACTION METRICS - Configuration des métriques de transactions
 # ============================================================================
 

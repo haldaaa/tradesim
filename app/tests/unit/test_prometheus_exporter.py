@@ -29,7 +29,7 @@ from monitoring.prometheus_exporter import (
     PrometheusExporter,
     get_exporter_status,
     format_monitoring_status,
-    budget_total,
+    budget_total_entreprises,
     transactions_total,
     produits_actifs,
     tours_completes,
@@ -68,7 +68,7 @@ class TestPrometheusExporter:
     def test_exporter_metrics_initialization(self):
         """Test que les métriques Prometheus sont initialisées"""
         # Vérifier que les métriques sont créées
-        assert budget_total is not None
+        assert budget_total_entreprises is not None
         assert transactions_total is not None
         assert produits_actifs is not None
         assert tours_completes is not None

@@ -372,6 +372,9 @@ def acheter_produit(entreprise: Entreprise, produit: Produit, horodatage_iso: st
 
     entreprise.budget = round(entreprise.budget - montant_total, 2)
     fournisseur.stock_produit[produit.id] -= quantite_achat
+    
+    # Mise à jour du stock de l'entreprise (ACCUMULATION)
+    entreprise.stocks[produit.id] = entreprise.stocks.get(produit.id, 0) + quantite_achat
 
     # Log JSON - Données pures pour monitoring
     log_entry = {

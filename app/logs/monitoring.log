@@ -2086,3 +2086,105 @@ Run 'docker run --help' for more information
 [2025-08-16 10:59:22] [SCRIPT] detect_docker_host : Plateforme détectée : macos
 [2025-08-16 10:59:22] [SCRIPT] detect_docker_host : Variable TRADESIM_DOCKER_HOST déjà définie : test-override
 [2025-08-16 10:59:22] [SCRIPT] detect_docker_host : script OK host détecté : test-override
+[2025-08-17 08:36:00] [MONITORING] Démarrage du monitoring TradeSim
+[2025-08-17 08:36:00] [MONITORING] Configuration du host Docker
+[2025-08-17 08:36:00] [SCRIPT] detect_docker_host : Démarrage de la détection du host Docker
+[2025-08-17 08:36:00] [SCRIPT] detect_docker_host : Plateforme détectée : macos
+[2025-08-17 08:36:00] [SCRIPT] detect_docker_host : Variable TRADESIM_DOCKER_HOST déjà définie : test-override
+[2025-08-17 08:36:00] [SCRIPT] detect_docker_host : script OK host détecté : test-override
+[2025-08-17 08:36:00] [SCRIPT] detect_docker_host : Host Docker configuré : test-override
+[2025-08-17 08:36:00] [SCRIPT] detect_docker_host : Configuration de Prometheus avec host : test-override
+[2025-08-17 08:36:00] [SCRIPT] detect_docker_host : Configuration Prometheus mise à jour : target=test-override:8000
+[2025-08-17 08:36:00] [SCRIPT] detect_docker_host : Démarrage des services Docker
+[2025-08-17 08:36:02] [SCRIPT] detect_docker_host : Services Docker démarrés avec succès
+[2025-08-17 08:36:02] [SCRIPT] detect_docker_host : Validation des services
+[2025-08-17 08:36:12] [SCRIPT] detect_docker_host : Prometheus accessible sur http://localhost:9090
+[2025-08-17 08:36:12] [SCRIPT] detect_docker_host : Grafana accessible sur http://localhost:3000
+[2025-08-17 08:36:12] [SCRIPT] detect_docker_host : Exporteur Prometheus accessible sur http://localhost:8000
+[2025-08-17 08:36:12] [SCRIPT] detect_docker_host : Monitoring démarré avec succès
+[2025-08-17 08:36:16] [MONITORING] Démarrage du monitoring TradeSim
+[2025-08-17 08:36:16] [MONITORING] Configuration du host Docker
+[2025-08-17 08:36:16] [SCRIPT] detect_docker_host : Démarrage de la détection du host Docker
+[2025-08-17 08:36:16] [SCRIPT] detect_docker_host : Plateforme détectée : macos
+[2025-08-17 08:36:16] [SCRIPT] detect_docker_host : Host Docker détecté : host.docker.internal
+[2025-08-17 08:36:16] [SCRIPT] detect_docker_host : ATTENTION : Connectivité non validée vers host.docker.internal:8000 (l'exporteur peut ne pas être démarré)
+[2025-08-17 08:36:16] [SCRIPT] detect_docker_host : script OK host détecté : host.docker.internal
+[2025-08-17 08:36:16] [SCRIPT] detect_docker_host : Host Docker configuré : host.docker.internal
+[2025-08-17 08:36:16] [SCRIPT] detect_docker_host : Configuration de Prometheus avec host : host.docker.internal
+[2025-08-17 08:36:16] [SCRIPT] detect_docker_host : Configuration Prometheus mise à jour : target=host.docker.internal:8000
+[2025-08-17 08:36:16] [SCRIPT] detect_docker_host : Démarrage des services Docker
+[2025-08-17 08:36:17] [SCRIPT] detect_docker_host : Services Docker démarrés avec succès
+[2025-08-17 08:36:17] [SCRIPT] detect_docker_host : Validation des services
+[2025-08-17 08:36:27] [SCRIPT] detect_docker_host : Prometheus accessible sur http://localhost:9090
+[2025-08-17 08:36:27] [SCRIPT] detect_docker_host : Grafana accessible sur http://localhost:3000
+[2025-08-17 08:36:27] [SCRIPT] detect_docker_host : Exporteur Prometheus accessible sur http://localhost:8000
+[2025-08-17 08:36:27] [SCRIPT] detect_docker_host : Monitoring démarré avec succès
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ALERT] budget_critical: Budget total critique: 106.01€
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ERROR] prometheus_metrics: 'Produit' object has no attribute 'stock'
+[ERROR] prometheus_metrics: 'Produit' object has no attribute 'stock'
+[ERROR] prometheus_metrics: 'Produit' object has no attribute 'stock'
+[ERROR] prometheus_metrics: 'Produit' object has no attribute 'stock'
+[ERROR] prometheus_metrics: 'Produit' object has no attribute 'stock'
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ALERT] budget_critical: Budget total critique: 174.47€
+[ERROR] prometheus_metrics: 'Produit' object has no attribute 'stock'
+[ERROR] prometheus_metrics: 'Produit' object has no attribute 'stock'
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ERROR] prometheus_metrics: 'Produit' object has no attribute 'stock'
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ERROR] prometheus_metrics: 'Produit' object has no attribute 'stock'
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ERROR] prometheus_metrics: name 'produits' is not defined
+[ERROR] prometheus_metrics: name 'produits' is not defined
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ALERT] budget_critical: Budget total critique: 459.82€
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ALERT] budget_critical: Budget total critique: 98.99€
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ALERT] budget_critical: Budget total critique: 159.28€
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ALERT] budget_critical: Budget total critique: 185.26€
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ALERT] budget_critical: Budget total critique: 63.95€
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ERROR] prometheus_metrics: name 'STOCK_HISTORY_PERFORMANCE_MONITORING' is not defined
+[ERROR] prometheus_metrics: name 'STOCK_HISTORY_PERFORMANCE_MONITORING' is not defined
+[ERROR] prometheus_metrics: name 'STOCK_HISTORY_PERFORMANCE_MONITORING' is not defined
+[ERROR] prometheus_metrics: name 'STOCK_HISTORY_PERFORMANCE_MONITORING' is not defined
+[ERROR] prometheus_metrics: name 'STOCK_HISTORY_PERFORMANCE_MONITORING' is not defined
+[ERROR] prometheus_metrics: name 'STOCK_HISTORY_PERFORMANCE_MONITORING' is not defined
+[ERROR] prometheus_metrics: name 'STOCK_HISTORY_PERFORMANCE_MONITORING' is not defined
+[ERROR] prometheus_metrics: name 'STOCK_HISTORY_PERFORMANCE_MONITORING' is not defined
+[ERROR] prometheus_metrics: name 'STOCK_HISTORY_PERFORMANCE_MONITORING' is not defined
+[ERROR] prometheus_metrics: name 'STOCK_HISTORY_PERFORMANCE_MONITORING' is not defined
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
+[ALERT] budget_critical: Budget total critique: 163.71€
+[ERROR] prometheus_metrics: name 'STOCK_HISTORY_PERFORMANCE_MONITORING' is not defined
+[ERROR] prometheus_metrics: name 'STOCK_HISTORY_PERFORMANCE_MONITORING' is not defined
+[ERROR] prometheus_metrics: name 'STOCK_HISTORY_PERFORMANCE_MONITORING' is not defined
+[ERROR] prometheus_metrics: name 'STOCK_HISTORY_PERFORMANCE_MONITORING' is not defined
+[ERROR] prometheus_metrics: name 'STOCK_HISTORY_PERFORMANCE_MONITORING' is not defined
+[ERROR] prometheus_metrics: name 'STOCK_HISTORY_PERFORMANCE_MONITORING' is not defined
+[ERROR] prometheus_metrics: name 'STOCK_HISTORY_PERFORMANCE_MONITORING' is not defined
+[ERROR] prometheus_metrics: name 'STOCK_HISTORY_PERFORMANCE_MONITORING' is not defined
+[ERROR] prometheus_metrics: name 'STOCK_HISTORY_PERFORMANCE_MONITORING' is not defined
+[ERROR] prometheus_metrics: name 'STOCK_HISTORY_PERFORMANCE_MONITORING' is not defined
+[ERROR] prometheus_metrics: name 'STOCK_HISTORY_PERFORMANCE_MONITORING' is not defined
+[ERROR] prometheus_metrics: name 'STOCK_HISTORY_PERFORMANCE_MONITORING' is not defined
+[ERROR] prometheus_metrics: name 'STOCK_HISTORY_PERFORMANCE_MONITORING' is not defined
+[ERROR] prometheus_metrics: name 'STOCK_HISTORY_PERFORMANCE_MONITORING' is not defined
+[ERROR] prometheus_metrics: name 'STOCK_HISTORY_PERFORMANCE_MONITORING' is not defined
+[ERROR] prometheus_metrics: name 'STOCK_HISTORY_PERFORMANCE_MONITORING' is not defined
+[ERROR] prometheus_metrics: name 'STOCK_HISTORY_PERFORMANCE_MONITORING' is not defined
+[ERROR] prometheus_metrics: name 'STOCK_HISTORY_PERFORMANCE_MONITORING' is not defined
+[ERROR] prometheus_metrics: name 'STOCK_HISTORY_PERFORMANCE_MONITORING' is not defined
+[ERROR] prometheus_metrics: name 'STOCK_HISTORY_PERFORMANCE_MONITORING' is not defined
+[ERROR] reset_simulation: 'BudgetMetricsService' object has no attribute 'reset_metrics'
