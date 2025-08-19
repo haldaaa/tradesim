@@ -683,6 +683,270 @@ class PrometheusExporter:
             if 'stabilite_prix' in metrics_data:
                 stabilite_prix.set(metrics_data['stabilite_prix'])
             
+            # ============================================================================
+            # MÉTRIQUES DE BUDGET (14 métriques)
+            # ============================================================================
+            
+            if 'budget_total_entreprises' in metrics_data:
+                budget_total_entreprises.set(metrics_data['budget_total_entreprises'])
+            
+            if 'budget_moyen_entreprises' in metrics_data:
+                budget_moyen_entreprises.set(metrics_data['budget_moyen_entreprises'])
+            
+            if 'budget_median_entreprises' in metrics_data:
+                budget_median_entreprises.set(metrics_data['budget_median_entreprises'])
+            
+            if 'budget_ecart_type_entreprises' in metrics_data:
+                budget_ecart_type_entreprises.set(metrics_data['budget_ecart_type_entreprises'])
+            
+            if 'budget_coefficient_variation' in metrics_data:
+                budget_coefficient_variation.set(metrics_data['budget_coefficient_variation'])
+            
+            if 'budget_variation_totale' in metrics_data:
+                budget_variation_totale.set(metrics_data['budget_variation_totale'])
+            
+            if 'budget_depenses_totales' in metrics_data:
+                budget_depenses_totales.inc(metrics_data['budget_depenses_totales'])
+            
+            if 'budget_gains_totaux' in metrics_data:
+                budget_gains_totaux.inc(metrics_data['budget_gains_totaux'])
+            
+            if 'budget_ratio_depenses_revenus' in metrics_data:
+                budget_ratio_depenses_revenus.set(metrics_data['budget_ratio_depenses_revenus'])
+            
+            if 'budget_entreprises_critiques' in metrics_data:
+                budget_entreprises_critiques.set(metrics_data['budget_entreprises_critiques'])
+            
+            if 'budget_entreprises_faibles' in metrics_data:
+                budget_entreprises_faibles.set(metrics_data['budget_entreprises_faibles'])
+            
+            if 'budget_evolution_tour' in metrics_data:
+                budget_evolution_tour.set(metrics_data['budget_evolution_tour'])
+            
+            if 'budget_tendance_globale' in metrics_data:
+                budget_tendance_globale.set(metrics_data['budget_tendance_globale'])
+            
+            if 'budget_skewness' in metrics_data:
+                budget_skewness.set(metrics_data['budget_skewness'])
+            
+            # ============================================================================
+            # MÉTRIQUES D'ENTREPRISES (18 métriques)
+            # ============================================================================
+            
+            if 'entreprises_total' in metrics_data:
+                entreprises_total.set(metrics_data['entreprises_total'])
+            
+            if 'entreprises_actives' in metrics_data:
+                entreprises_actives.set(metrics_data['entreprises_actives'])
+            
+            if 'entreprises_par_pays' in metrics_data:
+                entreprises_par_pays.set(metrics_data['entreprises_par_pays'])
+            
+            if 'entreprises_par_continent' in metrics_data:
+                entreprises_par_continent.set(metrics_data['entreprises_par_continent'])
+            
+            if 'entreprises_par_strategie' in metrics_data:
+                entreprises_par_strategie.set(metrics_data['entreprises_par_strategie'])
+            
+            if 'entreprises_par_type_prefere' in metrics_data:
+                entreprises_par_type_prefere.set(metrics_data['entreprises_par_type_prefere'])
+            
+            if 'entreprises_transactions_moyennes' in metrics_data:
+                entreprises_transactions_moyennes.set(metrics_data['entreprises_transactions_moyennes'])
+            
+            if 'entreprises_budget_moyen' in metrics_data:
+                entreprises_budget_moyen.set(metrics_data['entreprises_budget_moyen'])
+            
+            if 'entreprises_stock_moyen' in metrics_data:
+                entreprises_stock_moyen.set(metrics_data['entreprises_stock_moyen'])
+            
+            if 'entreprises_rentabilite' in metrics_data:
+                entreprises_rentabilite.set(metrics_data['entreprises_rentabilite'])
+            
+            if 'entreprises_efficacite_achat' in metrics_data:
+                entreprises_efficacite_achat.set(metrics_data['entreprises_efficacite_achat'])
+            
+            if 'entreprises_survie_taux' in metrics_data:
+                entreprises_survie_taux.set(metrics_data['entreprises_survie_taux'])
+            
+            if 'entreprises_frequence_achat' in metrics_data:
+                entreprises_frequence_achat.set(metrics_data['entreprises_frequence_achat'])
+            
+            if 'entreprises_preference_produits' in metrics_data:
+                entreprises_preference_produits.set(metrics_data['entreprises_preference_produits'])
+            
+            if 'entreprises_adaptation_prix' in metrics_data:
+                entreprises_adaptation_prix.set(metrics_data['entreprises_adaptation_prix'])
+            
+            if 'entreprises_competitivite' in metrics_data:
+                entreprises_competitivite.set(metrics_data['entreprises_competitivite'])
+            
+            if 'entreprises_resilience' in metrics_data:
+                entreprises_resilience.set(metrics_data['entreprises_resilience'])
+            
+            if 'entreprises_innovation' in metrics_data:
+                entreprises_innovation.set(metrics_data['entreprises_innovation'])
+            
+            # ============================================================================
+            # MÉTRIQUES DE PRODUITS (16 métriques)
+            # ============================================================================
+            
+            if 'produits_total' in metrics_data:
+                produits_total.set(metrics_data['produits_total'])
+            
+            if 'produits_par_type' in metrics_data:
+                produits_par_type.set(metrics_data['produits_par_type'])
+            
+            if 'produits_par_continent' in metrics_data:
+                produits_par_continent.set(metrics_data['produits_par_continent'])
+            
+            if 'produits_prix_moyen' in metrics_data:
+                produits_prix_moyen.set(metrics_data['produits_prix_moyen'])
+            
+            if 'produits_prix_median' in metrics_data:
+                produits_prix_median.set(metrics_data['produits_prix_median'])
+            
+            if 'produits_demande_moyenne' in metrics_data:
+                produits_demande_moyenne.set(metrics_data['produits_demande_moyenne'])
+            
+            if 'produits_offre_moyenne' in metrics_data:
+                produits_offre_moyenne.set(metrics_data['produits_offre_moyenne'])
+            
+            if 'produits_rotation_stock' in metrics_data:
+                produits_rotation_stock.set(metrics_data['produits_rotation_stock'])
+            
+            if 'produits_rentabilite' in metrics_data:
+                produits_rentabilite.set(metrics_data['produits_rentabilite'])
+            
+            if 'produits_popularite' in metrics_data:
+                produits_popularite.set(metrics_data['produits_popularite'])
+            
+            if 'produits_disponibilite' in metrics_data:
+                produits_disponibilite.set(metrics_data['produits_disponibilite'])
+            
+            if 'produits_volatilite_prix' in metrics_data:
+                produits_volatilite_prix.set(metrics_data['produits_volatilite_prix'])
+            
+            if 'produits_tendance_prix' in metrics_data:
+                produits_tendance_prix.set(metrics_data['produits_tendance_prix'])
+            
+            if 'produits_elasticite_demande' in metrics_data:
+                produits_elasticite_demande.set(metrics_data['produits_elasticite_demande'])
+            
+            if 'produits_competitivite' in metrics_data:
+                produits_competitivite.set(metrics_data['produits_competitivite'])
+            
+            # ============================================================================
+            # MÉTRIQUES DE FOURNISSEURS (16 métriques)
+            # ============================================================================
+            
+            if 'fournisseurs_total' in metrics_data:
+                fournisseurs_total.set(metrics_data['fournisseurs_total'])
+            
+            if 'fournisseurs_actifs' in metrics_data:
+                fournisseurs_actifs.set(metrics_data['fournisseurs_actifs'])
+            
+            if 'fournisseurs_par_pays' in metrics_data:
+                fournisseurs_par_pays.set(metrics_data['fournisseurs_par_pays'])
+            
+            if 'fournisseurs_par_continent' in metrics_data:
+                fournisseurs_par_continent.set(metrics_data['fournisseurs_par_continent'])
+            
+            if 'fournisseurs_stock_moyen' in metrics_data:
+                fournisseurs_stock_moyen.set(metrics_data['fournisseurs_stock_moyen'])
+            
+            if 'fournisseurs_produits_moyen' in metrics_data:
+                fournisseurs_produits_moyen.set(metrics_data['fournisseurs_produits_moyen'])
+            
+            if 'fournisseurs_ventes_moyennes' in metrics_data:
+                fournisseurs_ventes_moyennes.set(metrics_data['fournisseurs_ventes_moyennes'])
+            
+            if 'fournisseurs_rotation_stock' in metrics_data:
+                fournisseurs_rotation_stock.set(metrics_data['fournisseurs_rotation_stock'])
+            
+            if 'fournisseurs_disponibilite' in metrics_data:
+                fournisseurs_disponibilite.set(metrics_data['fournisseurs_disponibilite'])
+            
+            if 'fournisseurs_rentabilite' in metrics_data:
+                fournisseurs_rentabilite.set(metrics_data['fournisseurs_rentabilite'])
+            
+            if 'fournisseurs_popularite' in metrics_data:
+                fournisseurs_popularite.set(metrics_data['fournisseurs_popularite'])
+            
+            # ============================================================================
+            # MÉTRIQUES DE TRANSACTIONS (12 métriques)
+            # ============================================================================
+            
+            if 'transactions_par_seconde' in metrics_data:
+                transactions_par_seconde.inc(metrics_data['transactions_par_seconde'])
+            
+            if 'transactions_moyennes_par_tour' in metrics_data:
+                transactions_moyennes_par_tour.set(metrics_data['transactions_moyennes_par_tour'])
+            
+            if 'transactions_reussies' in metrics_data:
+                transactions_reussies.inc(metrics_data['transactions_reussies'])
+            
+            if 'transactions_echouees' in metrics_data:
+                transactions_echouees.inc(metrics_data['transactions_echouees'])
+            
+            if 'taux_reussite_transactions' in metrics_data:
+                taux_reussite_transactions.set(metrics_data['taux_reussite_transactions'])
+            
+            if 'montant_moyen_transaction' in metrics_data:
+                montant_moyen_transaction.set(metrics_data['montant_moyen_transaction'])
+            
+            if 'volume_total_transactions' in metrics_data:
+                volume_total_transactions.inc(metrics_data['volume_total_transactions'])
+            
+            if 'transactions_par_produit' in metrics_data:
+                transactions_par_produit.set(metrics_data['transactions_par_produit'])
+            
+            if 'transactions_par_entreprise' in metrics_data:
+                transactions_par_entreprise.set(metrics_data['transactions_par_entreprise'])
+            
+            if 'transactions_par_fournisseur' in metrics_data:
+                transactions_par_fournisseur.set(metrics_data['transactions_par_fournisseur'])
+            
+            if 'frequence_transactions' in metrics_data:
+                frequence_transactions.set(metrics_data['frequence_transactions'])
+            
+            if 'efficacite_transactions' in metrics_data:
+                efficacite_transactions.set(metrics_data['efficacite_transactions'])
+            
+            # ============================================================================
+            # MÉTRIQUES D'ÉVÉNEMENTS (10 métriques)
+            # ============================================================================
+            
+            if 'evenements_par_seconde' in metrics_data:
+                evenements_par_seconde.inc(metrics_data['evenements_par_seconde'])
+            
+            if 'evenements_inflation' in metrics_data:
+                evenements_inflation.inc(metrics_data['evenements_inflation'])
+            
+            if 'evenements_reassort' in metrics_data:
+                evenements_reassort.inc(metrics_data['evenements_reassort'])
+            
+            if 'evenements_recharge_budget' in metrics_data:
+                evenements_recharge_budget.inc(metrics_data['evenements_recharge_budget'])
+            
+            if 'evenements_variation_disponibilite' in metrics_data:
+                evenements_variation_disponibilite.inc(metrics_data['evenements_variation_disponibilite'])
+            
+            if 'impact_moyen_evenements' in metrics_data:
+                impact_moyen_evenements.set(metrics_data['impact_moyen_evenements'])
+            
+            if 'frequence_evenements_inflation' in metrics_data:
+                frequence_evenements_inflation.set(metrics_data['frequence_evenements_inflation'])
+            
+            if 'frequence_evenements_reassort' in metrics_data:
+                frequence_evenements_reassort.set(metrics_data['frequence_evenements_reassort'])
+            
+            if 'frequence_evenements_recharge' in metrics_data:
+                frequence_evenements_recharge.set(metrics_data['frequence_evenements_recharge'])
+            
+            if 'frequence_evenements_disponibilite' in metrics_data:
+                frequence_evenements_disponibilite.set(metrics_data['frequence_evenements_disponibilite'])
+            
             # Mise à jour des métriques de latence
             if 'latency' in metrics_data:
                 latency_data = metrics_data['latency']
@@ -718,553 +982,6 @@ class PrometheusExporter:
                         
                         if operation_type in metric_mapping:
                             metric_mapping[operation_type].inc(int(rate))
-            
-            # ============================================================================
-            # MÉTRIQUES DE BUDGET (14 métriques)
-            # ============================================================================
-            
-            # Métriques de base (5 métriques)
-            if 'budget_total_entreprises' in metrics_data:
-                budget_total_entreprises.set(metrics_data['budget_total_entreprises'])
-            
-            if 'budget_moyen_entreprises' in metrics_data:
-                budget_moyen_entreprises.set(metrics_data['budget_moyen_entreprises'])
-            
-            if 'budget_median_entreprises' in metrics_data:
-                budget_median_entreprises.set(metrics_data['budget_median_entreprises'])
-            
-            if 'budget_ecart_type_entreprises' in metrics_data:
-                budget_ecart_type_entreprises.set(metrics_data['budget_ecart_type_entreprises'])
-            
-            if 'budget_coefficient_variation' in metrics_data:
-                budget_coefficient_variation.set(metrics_data['budget_coefficient_variation'])
-            
-            # Métriques de variation (3 métriques)
-            if 'budget_variation_totale' in metrics_data:
-                budget_variation_totale.set(metrics_data['budget_variation_totale'])
-            
-            if 'budget_depenses_totales' in metrics_data:
-                budget_depenses_totales.inc(metrics_data['budget_depenses_totales'])
-            
-            if 'budget_gains_totaux' in metrics_data:
-                budget_gains_totaux.inc(metrics_data['budget_gains_totaux'])
-            
-            # Métriques de santé financière (3 métriques)
-            if 'budget_ratio_depenses_revenus' in metrics_data:
-                budget_ratio_depenses_revenus.set(metrics_data['budget_ratio_depenses_revenus'])
-            
-            if 'budget_entreprises_critiques' in metrics_data:
-                budget_entreprises_critiques.set(metrics_data['budget_entreprises_critiques'])
-            
-            if 'budget_entreprises_faibles' in metrics_data:
-                budget_entreprises_faibles.set(metrics_data['budget_entreprises_faibles'])
-            
-            # Métriques de tendance (2 métriques)
-            if 'budget_evolution_tour' in metrics_data:
-                budget_evolution_tour.set(metrics_data['budget_evolution_tour'])
-            
-            if 'budget_tendance_globale' in metrics_data:
-                budget_tendance_globale.set(metrics_data['budget_tendance_globale'])
-            
-            # Métriques avancées (1 métrique)
-            if 'budget_skewness' in metrics_data:
-                budget_skewness.set(metrics_data['budget_skewness'])
-            
-            # ============================================================================
-            # MÉTRIQUES D'ENTREPRISES (18 métriques)
-            # ============================================================================
-            
-            # Métriques de base (6 métriques)
-            if 'entreprises_total' in metrics_data:
-                entreprises_total.set(metrics_data['entreprises_total'])
-            
-            if 'entreprises_actives' in metrics_data:
-                entreprises_actives.set(metrics_data['entreprises_actives'])
-            
-            if 'entreprises_par_pays' in metrics_data:
-                # Pour les métriques de répartition, on utilise la somme des valeurs
-                total_par_pays = sum(metrics_data['entreprises_par_pays'].values()) if isinstance(metrics_data['entreprises_par_pays'], dict) else 0
-                entreprises_par_pays.set(total_par_pays)
-            
-            if 'entreprises_par_continent' in metrics_data:
-                total_par_continent = sum(metrics_data['entreprises_par_continent'].values()) if isinstance(metrics_data['entreprises_par_continent'], dict) else 0
-                entreprises_par_continent.set(total_par_continent)
-            
-            if 'entreprises_par_strategie' in metrics_data:
-                total_par_strategie = sum(metrics_data['entreprises_par_strategie'].values()) if isinstance(metrics_data['entreprises_par_strategie'], dict) else 0
-                entreprises_par_strategie.set(total_par_strategie)
-            
-            if 'entreprises_par_type_prefere' in metrics_data:
-                total_par_type_prefere = sum(metrics_data['entreprises_par_type_prefere'].values()) if isinstance(metrics_data['entreprises_par_type_prefere'], dict) else 0
-                entreprises_par_type_prefere.set(total_par_type_prefere)
-            
-            # Métriques de performance (6 métriques)
-            if 'entreprises_transactions_moyennes' in metrics_data:
-                entreprises_transactions_moyennes.set(metrics_data['entreprises_transactions_moyennes'])
-            
-            if 'entreprises_budget_moyen' in metrics_data:
-                entreprises_budget_moyen.set(metrics_data['entreprises_budget_moyen'])
-            
-            if 'entreprises_stock_moyen' in metrics_data:
-                entreprises_stock_moyen.set(metrics_data['entreprises_stock_moyen'])
-            
-            if 'entreprises_rentabilite' in metrics_data:
-                entreprises_rentabilite.set(metrics_data['entreprises_rentabilite'])
-            
-            if 'entreprises_efficacite_achat' in metrics_data:
-                entreprises_efficacite_achat.set(metrics_data['entreprises_efficacite_achat'])
-            
-            if 'entreprises_survie_taux' in metrics_data:
-                entreprises_survie_taux.set(metrics_data['entreprises_survie_taux'])
-            
-            # Métriques de comportement (6 métriques)
-            if 'entreprises_frequence_achat' in metrics_data:
-                entreprises_frequence_achat.set(metrics_data['entreprises_frequence_achat'])
-            
-            if 'entreprises_preference_produits' in metrics_data:
-                entreprises_preference_produits.set(metrics_data['entreprises_preference_produits'])
-            
-            if 'entreprises_adaptation_prix' in metrics_data:
-                entreprises_adaptation_prix.set(metrics_data['entreprises_adaptation_prix'])
-            
-            if 'entreprises_competitivite' in metrics_data:
-                entreprises_competitivite.set(metrics_data['entreprises_competitivite'])
-            
-            if 'entreprises_resilience' in metrics_data:
-                entreprises_resilience.set(metrics_data['entreprises_resilience'])
-            
-            if 'entreprises_innovation' in metrics_data:
-                entreprises_innovation.set(metrics_data['entreprises_innovation'])
-            
-            # ============================================================================
-            # MÉTRIQUES DE PRODUITS (16 métriques)
-            # ============================================================================
-            
-            # Métriques de base (6 métriques)
-            if 'produits_total' in metrics_data:
-                produits_total.set(metrics_data['produits_total'])
-            
-            # produits_actifs déjà mis à jour plus haut
-            
-            if 'produits_par_type' in metrics_data:
-                # Pour les métriques de répartition, on utilise la somme des valeurs
-                total_par_type = sum(metrics_data['produits_par_type'].values()) if isinstance(metrics_data['produits_par_type'], dict) else 0
-                produits_par_type.set(total_par_type)
-            
-            if 'produits_par_continent' in metrics_data:
-                total_par_continent = sum(metrics_data['produits_par_continent'].values()) if isinstance(metrics_data['produits_par_continent'], dict) else 0
-                produits_par_continent.set(total_par_continent)
-            
-            if 'produits_prix_moyen' in metrics_data:
-                produits_prix_moyen.set(metrics_data['produits_prix_moyen'])
-            
-            if 'produits_prix_median' in metrics_data:
-                produits_prix_median.set(metrics_data['produits_prix_median'])
-            
-            # Métriques de performance (6 métriques)
-            if 'produits_demande_moyenne' in metrics_data:
-                produits_demande_moyenne.set(metrics_data['produits_demande_moyenne'])
-            
-            if 'produits_offre_moyenne' in metrics_data:
-                produits_offre_moyenne.set(metrics_data['produits_offre_moyenne'])
-            
-            if 'produits_rotation_stock' in metrics_data:
-                produits_rotation_stock.set(metrics_data['produits_rotation_stock'])
-            
-            if 'produits_rentabilite' in metrics_data:
-                produits_rentabilite.set(metrics_data['produits_rentabilite'])
-            
-            if 'produits_popularite' in metrics_data:
-                produits_popularite.set(metrics_data['produits_popularite'])
-            
-            if 'produits_disponibilite' in metrics_data:
-                produits_disponibilite.set(metrics_data['produits_disponibilite'])
-            
-            # Métriques de comportement (4 métriques)
-            if 'produits_volatilite_prix' in metrics_data:
-                produits_volatilite_prix.set(metrics_data['produits_volatilite_prix'])
-            
-            if 'produits_tendance_prix' in metrics_data:
-                produits_tendance_prix.set(metrics_data['produits_tendance_prix'])
-            
-            if 'produits_elasticite_demande' in metrics_data:
-                produits_elasticite_demande.set(metrics_data['produits_elasticite_demande'])
-            
-            if 'produits_competitivite' in metrics_data:
-                produits_competitivite.set(metrics_data['produits_competitivite'])
-            
-            # ============================================================================
-            # MÉTRIQUES DE FOURNISSEURS (16 métriques)
-            # ============================================================================
-            
-            # Métriques de base (6 métriques)
-            if 'fournisseurs_total' in metrics_data:
-                fournisseurs_total.set(metrics_data['fournisseurs_total'])
-            
-            if 'fournisseurs_actifs' in metrics_data:
-                fournisseurs_actifs.set(metrics_data['fournisseurs_actifs'])
-            
-            if 'fournisseurs_par_pays' in metrics_data:
-                # Pour les métriques de répartition, on utilise la somme des valeurs
-                total_par_pays = sum(metrics_data['fournisseurs_par_pays'].values()) if isinstance(metrics_data['fournisseurs_par_pays'], dict) else 0
-                fournisseurs_par_pays.set(total_par_pays)
-            
-            if 'fournisseurs_par_continent' in metrics_data:
-                total_par_continent = sum(metrics_data['fournisseurs_par_continent'].values()) if isinstance(metrics_data['fournisseurs_par_continent'], dict) else 0
-                fournisseurs_par_continent.set(total_par_continent)
-            
-            if 'fournisseurs_stock_moyen' in metrics_data:
-                fournisseurs_stock_moyen.set(metrics_data['fournisseurs_stock_moyen'])
-            
-            if 'fournisseurs_produits_moyen' in metrics_data:
-                fournisseurs_produits_moyen.set(metrics_data['fournisseurs_produits_moyen'])
-            
-            # Métriques de performance (6 métriques)
-            if 'fournisseurs_ventes_moyennes' in metrics_data:
-                fournisseurs_ventes_moyennes.set(metrics_data['fournisseurs_ventes_moyennes'])
-            
-            if 'fournisseurs_rotation_stock' in metrics_data:
-                fournisseurs_rotation_stock.set(metrics_data['fournisseurs_rotation_stock'])
-            
-            if 'fournisseurs_disponibilite' in metrics_data:
-                fournisseurs_disponibilite.set(metrics_data['fournisseurs_disponibilite'])
-            
-            if 'fournisseurs_rentabilite' in metrics_data:
-                fournisseurs_rentabilite.set(metrics_data['fournisseurs_rentabilite'])
-            
-            if 'fournisseurs_popularite' in metrics_data:
-                fournisseurs_popularite.set(metrics_data['fournisseurs_popularite'])
-            
-            if 'fournisseurs_efficacite' in metrics_data:
-                fournisseurs_efficacite.set(metrics_data['fournisseurs_efficacite'])
-            
-            # Métriques de comportement (4 métriques)
-            if 'fournisseurs_volatilite_prix' in metrics_data:
-                fournisseurs_volatilite_prix.set(metrics_data['fournisseurs_volatilite_prix'])
-            
-            if 'fournisseurs_tendance_prix' in metrics_data:
-                fournisseurs_tendance_prix.set(metrics_data['fournisseurs_tendance_prix'])
-            
-            if 'fournisseurs_competitivite' in metrics_data:
-                fournisseurs_competitivite.set(metrics_data['fournisseurs_competitivite'])
-            
-            if 'fournisseurs_resilience' in metrics_data:
-                fournisseurs_resilience.set(metrics_data['fournisseurs_resilience'])
-            
-            # ============================================================================
-            # MÉTRIQUES DE TRANSACTIONS (16 métriques) - AVEC LABELS
-            # ============================================================================
-            
-            # Métriques de base (6 métriques) - AVEC LABELS
-            if 'transactions_total' in metrics_data:
-                # Utiliser les labels pour différencier les types de transactions
-                transactions_total.labels(type='achat', statut='total').set(metrics_data['transactions_total'])
-                transactions_total.labels(type='vente', statut='total').set(metrics_data.get('transactions_ventes', 0))
-            
-            if 'transactions_reussies' in metrics_data:
-                transactions_reussies.labels(type='achat', strategie='moins_cher').set(metrics_data['transactions_reussies'])
-                transactions_reussies.labels(type='vente', strategie='plus_cher').set(metrics_data.get('transactions_ventes_reussies', 0))
-            
-            if 'transactions_echouees' in metrics_data:
-                transactions_echouees.labels(type='achat', raison='budget_insuffisant').set(metrics_data['transactions_echouees'])
-                transactions_echouees.labels(type='vente', raison='stock_insuffisant').set(metrics_data.get('transactions_ventes_echouees', 0))
-            
-            if 'transactions_par_strategie' in metrics_data:
-                # Mettre à jour chaque stratégie avec ses labels
-                if isinstance(metrics_data['transactions_par_strategie'], dict):
-                    for strategie, count in metrics_data['transactions_par_strategie'].items():
-                        transactions_par_strategie.labels(strategie=strategie, statut='reussie').set(count)
-                else:
-                    transactions_par_strategie.labels(strategie='moins_cher', statut='reussie').set(metrics_data['transactions_par_strategie'])
-            
-            if 'transactions_par_produit' in metrics_data:
-                # Mettre à jour chaque produit avec ses labels
-                if isinstance(metrics_data['transactions_par_produit'], dict):
-                    for produit, count in metrics_data['transactions_par_produit'].items():
-                        transactions_par_produit.labels(produit=produit, type_produit='produit_fini', statut='reussie').set(count)
-                else:
-                    transactions_par_produit.labels(produit='general', type_produit='produit_fini', statut='reussie').set(metrics_data['transactions_par_produit'])
-            
-            if 'transactions_par_entreprise' in metrics_data:
-                # Mettre à jour chaque entreprise avec ses labels
-                if isinstance(metrics_data['transactions_par_entreprise'], dict):
-                    for entreprise, count in metrics_data['transactions_par_entreprise'].items():
-                        transactions_par_entreprise.labels(entreprise=entreprise, continent='Europe', strategie='moins_cher').set(count)
-                else:
-                    transactions_par_entreprise.labels(entreprise='general', continent='Europe', strategie='moins_cher').set(metrics_data['transactions_par_entreprise'])
-            
-            # Métriques de performance (6 métriques) - AVEC LABELS
-            if 'transactions_volume_moyen' in metrics_data:
-                transactions_volume_moyen.labels(type='achat', strategie='moins_cher').set(metrics_data['transactions_volume_moyen'])
-                transactions_volume_moyen.labels(type='vente', strategie='plus_cher').set(metrics_data.get('transactions_volume_moyen_ventes', 0))
-            
-            if 'transactions_prix_moyen' in metrics_data:
-                transactions_prix_moyen.labels(type='achat', produit='general').set(metrics_data['transactions_prix_moyen'])
-                transactions_prix_moyen.labels(type='vente', produit='general').set(metrics_data.get('transactions_prix_moyen_ventes', 0))
-            
-            if 'transactions_frequence' in metrics_data:
-                transactions_frequence.labels(type='achat', entreprise='general').set(metrics_data['transactions_frequence'])
-                transactions_frequence.labels(type='vente', entreprise='general').set(metrics_data.get('transactions_frequence_ventes', 0))
-            
-            if 'transactions_taux_reussite' in metrics_data:
-                transactions_taux_reussite.labels(type='achat', strategie='moins_cher').set(metrics_data['transactions_taux_reussite'])
-                transactions_taux_reussite.labels(type='vente', strategie='plus_cher').set(metrics_data.get('transactions_taux_reussite_ventes', 0))
-            
-            if 'transactions_efficacite' in metrics_data:
-                transactions_efficacite.labels(type='achat', entreprise='general').set(metrics_data['transactions_efficacite'])
-                transactions_efficacite.labels(type='vente', entreprise='general').set(metrics_data.get('transactions_efficacite_ventes', 0))
-            
-            if 'transactions_rentabilite' in metrics_data:
-                transactions_rentabilite.labels(type='achat', strategie='moins_cher').set(metrics_data['transactions_rentabilite'])
-                transactions_rentabilite.labels(type='vente', strategie='plus_cher').set(metrics_data.get('transactions_rentabilite_ventes', 0))
-            
-            # Métriques de comportement (4 métriques) - AVEC LABELS
-            if 'transactions_volatilite_prix' in metrics_data:
-                transactions_volatilite_prix.labels(produit='general', periode='court_terme').set(metrics_data['transactions_volatilite_prix'])
-                transactions_volatilite_prix.labels(produit='general', periode='long_terme').set(metrics_data.get('transactions_volatilite_prix_long', 0))
-            
-            if 'transactions_tendance_volume' in metrics_data:
-                transactions_tendance_volume.labels(type='achat', periode='court_terme').set(metrics_data['transactions_tendance_volume'])
-                transactions_tendance_volume.labels(type='vente', periode='court_terme').set(metrics_data.get('transactions_tendance_volume_ventes', 0))
-            
-            if 'transactions_preference_strategie' in metrics_data:
-                transactions_preference_strategie.labels(strategie='moins_cher', entreprise='general').set(metrics_data['transactions_preference_strategie'])
-                transactions_preference_strategie.labels(strategie='plus_cher', entreprise='general').set(metrics_data.get('transactions_preference_strategie_ventes', 0))
-            
-            if 'transactions_competitivite' in metrics_data:
-                transactions_competitivite.labels(type='achat', marche='local').set(metrics_data['transactions_competitivite'])
-                transactions_competitivite.labels(type='vente', marche='local').set(metrics_data.get('transactions_competitivite_ventes', 0))
-            
-            # ============================================================================
-            # MÉTRIQUES D'ÉVÉNEMENTS (16 métriques)
-            # ============================================================================
-            
-            # Métriques de base (6 métriques)
-            if 'evenements_total' in metrics_data:
-                evenements_total.set(metrics_data['evenements_total'])
-            
-            if 'evenements_par_type' in metrics_data:
-                # Pour les métriques de répartition, on utilise la somme des valeurs
-                total_par_type = sum(metrics_data['evenements_par_type'].values()) if isinstance(metrics_data['evenements_par_type'], dict) else 0
-                evenements_par_type.set(total_par_type)
-            
-            if 'evenements_par_impact' in metrics_data:
-                total_par_impact = sum(metrics_data['evenements_par_impact'].values()) if isinstance(metrics_data['evenements_par_impact'], dict) else 0
-                evenements_par_impact.set(total_par_impact)
-            
-            if 'evenements_frequence' in metrics_data:
-                evenements_frequence.set(metrics_data['evenements_frequence'])
-            
-            if 'evenements_duree_moyenne' in metrics_data:
-                evenements_duree_moyenne.set(metrics_data['evenements_duree_moyenne'])
-            
-            if 'evenements_intensite_moyenne' in metrics_data:
-                evenements_intensite_moyenne.set(metrics_data['evenements_intensite_moyenne'])
-            
-            # Métriques de performance (6 métriques)
-            if 'evenements_impact_budget' in metrics_data:
-                evenements_impact_budget.set(metrics_data['evenements_impact_budget'])
-            
-            if 'evenements_impact_prix' in metrics_data:
-                evenements_impact_prix.set(metrics_data['evenements_impact_prix'])
-            
-            if 'evenements_impact_stock' in metrics_data:
-                evenements_impact_stock.set(metrics_data['evenements_impact_stock'])
-            
-            if 'evenements_efficacite' in metrics_data:
-                evenements_efficacite.set(metrics_data['evenements_efficacite'])
-            
-            if 'evenements_rentabilite' in metrics_data:
-                evenements_rentabilite.set(metrics_data['evenements_rentabilite'])
-            
-            if 'evenements_stabilite' in metrics_data:
-                evenements_stabilite.set(metrics_data['evenements_stabilite'])
-            
-            # Métriques de comportement (4 métriques)
-            if 'evenements_volatilite' in metrics_data:
-                evenements_volatilite.set(metrics_data['evenements_volatilite'])
-            
-            if 'evenements_tendance' in metrics_data:
-                evenements_tendance.set(metrics_data['evenements_tendance'])
-            
-            if 'evenements_correlation' in metrics_data:
-                evenements_correlation.set(metrics_data['evenements_correlation'])
-            
-            if 'evenements_predictibilite' in metrics_data:
-                evenements_predictibilite.set(metrics_data['evenements_predictibilite'])
-            
-            # ============================================================================
-            # MÉTRIQUES DE PERFORMANCE (16 métriques)
-            # ============================================================================
-            
-            # Métriques de base (6 métriques)
-            if 'performance_temps_execution' in metrics_data:
-                performance_temps_execution.set(metrics_data['performance_temps_execution'])
-            
-            if 'performance_memoire_utilisee' in metrics_data:
-                performance_memoire_utilisee.set(metrics_data['performance_memoire_utilisee'])
-            
-            if 'performance_cpu_utilisation' in metrics_data:
-                performance_cpu_utilisation.set(metrics_data['performance_cpu_utilisation'])
-            
-            if 'performance_temps_reponse' in metrics_data:
-                performance_temps_reponse.set(metrics_data['performance_temps_reponse'])
-            
-            if 'performance_throughput' in metrics_data:
-                performance_throughput.set(metrics_data['performance_throughput'])
-            
-            if 'performance_latence' in metrics_data:
-                performance_latence.set(metrics_data['performance_latence'])
-            
-            # Métriques de performance (6 métriques)
-            if 'performance_efficacite_cache' in metrics_data:
-                performance_efficacite_cache.set(metrics_data['performance_efficacite_cache'])
-            
-            if 'performance_optimisation' in metrics_data:
-                performance_optimisation.set(metrics_data['performance_optimisation'])
-            
-            if 'performance_charge_systeme' in metrics_data:
-                performance_charge_systeme.set(metrics_data['performance_charge_systeme'])
-            
-            if 'performance_stabilite' in metrics_data:
-                performance_stabilite.set(metrics_data['performance_stabilite'])
-            
-            if 'performance_scalabilite' in metrics_data:
-                performance_scalabilite.set(metrics_data['performance_scalabilite'])
-            
-            if 'performance_qualite' in metrics_data:
-                performance_qualite.set(metrics_data['performance_qualite'])
-            
-            # Métriques de comportement (4 métriques)
-            if 'performance_volatilite' in metrics_data:
-                performance_volatilite.set(metrics_data['performance_volatilite'])
-            
-            if 'performance_tendance' in metrics_data:
-                performance_tendance.set(metrics_data['performance_tendance'])
-            
-            if 'performance_bottlenecks' in metrics_data:
-                performance_bottlenecks.set(metrics_data['performance_bottlenecks'])
-            
-            if 'performance_optimisations_disponibles' in metrics_data:
-                performance_optimisations_disponibles.set(metrics_data['performance_optimisations_disponibles'])
-            
-            # ============================================================================
-            # MÉTRIQUES INDIVIDUELLES AVEC LABELS (NOUVELLES)
-            # ============================================================================
-            
-            # Métriques par entreprise
-            if 'entreprises_individuales' in metrics_data:
-                entreprises_data = metrics_data['entreprises_individuales']
-
-                for entreprise in entreprises_data:
-                    labels = {
-                        'id': str(entreprise.get('id', '')),
-                        'nom': entreprise.get('nom', ''),
-                        'continent': entreprise.get('continent', ''),
-                        'strategie': entreprise.get('strategie', '')
-                    }
-                    
-                    # Budget actuel
-                    if 'budget' in entreprise:
-                        entreprise_budget.labels(**labels).set(entreprise['budget'])
-                    
-                    # Budget initial (labels simplifiés)
-                    if 'budget_initial' in entreprise:
-                        initial_labels = {'id': labels['id'], 'nom': labels['nom']}
-                        entreprise_budget_initial.labels(**initial_labels).set(entreprise['budget_initial'])
-                    
-                    # Évolution du budget
-                    if 'budget_evolution' in entreprise:
-                        evolution_labels = {'id': labels['id'], 'nom': labels['nom']}
-                        entreprise_budget_evolution.labels(**evolution_labels).set(entreprise['budget_evolution'])
-                    
-                    # Tendance du budget
-                    if 'budget_tendance' in entreprise:
-                        tendance_labels = {'id': labels['id'], 'nom': labels['nom']}
-                        entreprise_budget_tendance.labels(**tendance_labels).set(entreprise['budget_tendance'])
-                    
-                    # Transactions totales
-                    if 'transactions_total' in entreprise:
-                        transaction_labels = {'id': labels['id'], 'nom': labels['nom'], 'continent': labels['continent']}
-                        entreprise_transactions_total.labels(**transaction_labels).set(entreprise['transactions_total'])
-                    
-                    # Stocks par produit (granularité complète)
-                    if 'stocks_produits' in entreprise:
-
-                        for produit_stock in entreprise['stocks_produits']:
-                            stock_labels = {
-                                'id_entreprise': str(entreprise['id']),
-                                'nom_entreprise': entreprise['nom'],
-                                'id_produit': str(produit_stock['produit_id']),
-                                'nom_produit': produit_stock['nom_produit'],
-                                'type_produit': produit_stock['type_produit']
-                            }
-                            entreprise_stock_produit.labels(**stock_labels).set(produit_stock['stock'])
-            
-            # Métriques par produit
-            if 'produits_individuales' in metrics_data:
-                produits_data = metrics_data['produits_individuales']
-                for produit in produits_data:
-                    labels = {
-                        'id': str(produit.get('id', '')),
-                        'nom': produit.get('nom', ''),
-                        'type': produit.get('type', '')
-                    }
-                    
-                    # Prix actuel
-                    if 'prix' in produit:
-                        produit_prix.labels(**labels).set(produit['prix'])
-                    
-                    # Évolution du prix
-                    if 'prix_evolution' in produit:
-                        produit_prix_evolution.labels(**labels).set(produit['prix_evolution'])
-                    
-                    # Tendance du prix
-                    if 'prix_tendance' in produit:
-                        produit_prix_tendance.labels(**labels).set(produit['prix_tendance'])
-            
-            # Métriques par fournisseur
-            if 'fournisseurs_individuales' in metrics_data:
-                fournisseurs_data = metrics_data['fournisseurs_individuales']
-                for fournisseur in fournisseurs_data:
-                    labels = {
-                        'id': str(fournisseur.get('id', '')),
-                        'nom': fournisseur.get('nom', ''),
-                        'continent': fournisseur.get('continent', '')
-                    }
-                    
-                    # Stocks par produit (granularité complète)
-                    if 'stocks_produits' in fournisseur:
-
-                        for produit_stock in fournisseur['stocks_produits']:
-                            stock_labels = {
-                                'id_fournisseur': str(fournisseur['id']),
-                                'nom_fournisseur': fournisseur['nom'],
-                                'id_produit': str(produit_stock['produit_id']),
-                                'nom_produit': produit_stock['nom_produit'],
-                                'type_produit': produit_stock['type_produit']
-                            }
-                            fournisseur_stock_produit.labels(**stock_labels).set(produit_stock['stock'])
-                    
-                    # Prix moyen
-                    if 'prix_moyen' in fournisseur:
-                        fournisseur_prix_moyen.labels(**labels).set(fournisseur['prix_moyen'])
-                    
-                    # Ventes totales
-                    if 'ventes_total' in fournisseur:
-                        fournisseur_ventes_total.labels(**labels).set(fournisseur['ventes_total'])
-                    
-                    # Disponibilité
-                    if 'disponibilite' in fournisseur:
-                        fournisseur_disponibilite.labels(**labels).set(fournisseur['disponibilite'])
-                    
-                    # Rotation de stock
-                    if 'rotation_stock' in fournisseur:
-                        fournisseur_rotation_stock.labels(**labels).set(fournisseur['rotation_stock'])
-                    
-                    # Rentabilité
-                    if 'rentabilite' in fournisseur:
-                        fournisseur_rentabilite.labels(**labels).set(fournisseur['rentabilite'])
             
             # ============================================================================
             # MÉTRIQUES HISTORIQUES DE STOCK

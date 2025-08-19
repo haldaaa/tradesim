@@ -296,7 +296,7 @@ INDIVIDUAL_METRICS_CACHE_ENABLED = True  # Activer le cache LRU pour les calculs
 INDIVIDUAL_METRICS_CACHE_SIZE = 50  # Taille du cache LRU
 
 # Configuration des labels pour les métriques individuelles
-INDIVIDUAL_METRICS_LABELS_ENABLED = True  # Activer les labels par défaut
+INDIVIDUAL_METRICS_LABELS_ENABLED = True  # Réactivé pour conserver les labels détaillés
 
 # ============================================================================
 # STOCK HISTORY METRICS - Configuration des métriques historiques de stock

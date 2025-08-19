@@ -14,7 +14,7 @@ from pathlib import Path
 GRAFANA_URL = "http://localhost:3000"
 GRAFANA_USER = "admin"
 GRAFANA_PASSWORD = "admin"
-DASHBOARDS_DIR = "monitoring/grafana/provisioning/dashboards"
+DASHBOARDS_DIR = "monitoring/grafana/dashboards"
 
 def import_dashboard(dashboard_file):
     """Import un dashboard via l'API Grafana"""
