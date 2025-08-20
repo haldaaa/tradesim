@@ -42,7 +42,7 @@ import time
 import json
 import threading
 from datetime import datetime
-from typing import Dict, Any, Optional
+from typing import Dict, Any, Optional, List
 from prometheus_client import (
     start_http_server, 
     Gauge, 
@@ -309,27 +309,36 @@ fournisseurs_resilience = Gauge('tradesim_fournisseurs_resilience', 'Indice de r
 # MÉTRIQUES DE TRANSACTIONS (16 métriques)
 # ============================================================================
 
-# Métriques de base (6 métriques) - AVEC LABELS
-transactions_total = Gauge('tradesim_transactions_total', 'Nombre total de transactions', ['type', 'statut'])
-transactions_reussies = Gauge('tradesim_transactions_reussies', 'Nombre de transactions réussies', ['type', 'strategie'])
-transactions_echouees = Gauge('tradesim_transactions_echouees', 'Nombre de transactions échouées', ['type', 'raison'])
-transactions_par_strategie = Gauge('tradesim_transactions_par_strategie', 'Répartition des transactions par stratégie', ['strategie', 'statut'])
-transactions_par_produit = Gauge('tradesim_transactions_par_produit', 'Répartition des transactions par produit', ['produit', 'type_produit', 'statut'])
-transactions_par_entreprise = Gauge('tradesim_transactions_par_entreprise', 'Répartition des transactions par entreprise', ['entreprise', 'continent', 'strategie'])
+# Métriques de base (6 métriques) - SANS LABELS (simplifiées)
+transactions_total = Gauge('tradesim_transactions_total', 'Nombre total de transactions')
+transactions_reussies = Counter('tradesim_transactions_reussies_total', 'Nombre de transactions réussies')
+transactions_echouees = Counter('tradesim_transactions_echouees_total', 'Nombre de transactions échouées')
+transactions_par_strategie = Gauge('tradesim_transactions_par_strategie', 'Répartition des transactions par stratégie')
+transactions_par_produit = Gauge('tradesim_transactions_par_produit', 'Répartition des transactions par produit')
+transactions_par_entreprise = Gauge('tradesim_transactions_par_entreprise', 'Répartition des transactions par entreprise')
+transactions_par_fournisseur = Gauge('tradesim_transactions_par_fournisseur', 'Répartition des transactions par fournisseur')
 
-# Métriques de performance (6 métriques) - AVEC LABELS
-transactions_volume_moyen = Gauge('tradesim_transactions_volume_moyen', 'Volume moyen par transaction', ['type', 'strategie'])
-transactions_prix_moyen = Gauge('tradesim_transactions_prix_moyen', 'Prix moyen par transaction', ['type', 'produit'])
-transactions_frequence = Gauge('tradesim_transactions_frequence', 'Fréquence des transactions (par tour)', ['type', 'entreprise'])
-transactions_taux_reussite = Gauge('tradesim_transactions_taux_reussite', 'Taux de réussite des transactions', ['type', 'strategie'])
-transactions_efficacite = Gauge('tradesim_transactions_efficacite', 'Efficacité des transactions', ['type', 'entreprise'])
-transactions_rentabilite = Gauge('tradesim_transactions_rentabilite', 'Rentabilité moyenne des transactions', ['type', 'strategie'])
+# Métriques de performance (6 métriques) - SANS LABELS (simplifiées)
+transactions_volume_moyen = Gauge('tradesim_transactions_volume_moyen', 'Volume moyen par transaction')
+transactions_prix_moyen = Gauge('tradesim_transactions_prix_moyen', 'Prix moyen par transaction')
+transactions_frequence = Gauge('tradesim_transactions_frequence', 'Fréquence des transactions (par tour)')
+transactions_taux_reussite = Gauge('tradesim_transactions_taux_reussite', 'Taux de réussite des transactions')
+transactions_efficacite = Gauge('tradesim_transactions_efficacite', 'Efficacité des transactions')
+transactions_rentabilite = Gauge('tradesim_transactions_rentabilite', 'Rentabilité moyenne des transactions')
 
-# Métriques de comportement (4 métriques) - AVEC LABELS
-transactions_volatilite_prix = Gauge('tradesim_transactions_volatilite_prix', 'Volatilité des prix de transaction', ['produit', 'periode'])
-transactions_tendance_volume = Gauge('tradesim_transactions_tendance_volume', 'Tendance des volumes de transaction', ['type', 'periode'])
-transactions_preference_strategie = Gauge('tradesim_transactions_preference_strategie', 'Préférence de stratégie', ['strategie', 'entreprise'])
-transactions_competitivite = Gauge('tradesim_transactions_competitivite', 'Indice de compétitivité des transactions', ['type', 'marche'])
+# Métriques de comportement (4 métriques) - SANS LABELS (simplifiées)
+transactions_volatilite_prix = Gauge('tradesim_transactions_volatilite_prix', 'Volatilité des prix de transaction')
+transactions_tendance_volume = Gauge('tradesim_transactions_tendance_volume', 'Tendance des volumes de transaction')
+transactions_preference_strategie = Gauge('tradesim_transactions_preference_strategie', 'Préférence de stratégie')
+transactions_competitivite = Gauge('tradesim_transactions_competitivite', 'Indice de compétitivité des transactions')
+
+# Métriques de transactions supplémentaires (utilisées dans le code)
+transactions_moyennes_par_tour = Gauge('tradesim_transactions_moyennes_par_tour', 'Nombre moyen de transactions par tour')
+taux_reussite_transactions = Gauge('tradesim_taux_reussite_transactions', 'Taux de réussite des transactions')
+montant_moyen_transaction = Gauge('tradesim_montant_moyen_transaction', 'Montant moyen par transaction')
+volume_total_transactions = Counter('tradesim_volume_total_transactions_total', 'Volume total des transactions')
+frequence_transactions = Gauge('tradesim_frequence_transactions', 'Fréquence des transactions')
+efficacite_transactions = Gauge('tradesim_efficacite_transactions', 'Efficacité des transactions')
 
 # ============================================================================
 # MÉTRIQUES D'ÉVÉNEMENTS (16 métriques)
@@ -356,6 +365,17 @@ evenements_volatilite = Gauge('tradesim_evenements_volatilite', 'Volatilité des
 evenements_tendance = Gauge('tradesim_evenements_tendance', 'Tendance des événements')
 evenements_correlation = Gauge('tradesim_evenements_correlation', 'Corrélation entre événements')
 evenements_predictibilite = Gauge('tradesim_evenements_predictibilite', 'Prédictibilité des événements')
+
+# Métriques d'événements supplémentaires (utilisées dans le code)
+evenements_inflation = Gauge('tradesim_evenements_inflation', 'Nombre d\'événements d\'inflation')
+evenements_reassort = Gauge('tradesim_evenements_reassort', 'Nombre d\'événements de reassort')
+evenements_recharge_budget = Gauge('tradesim_evenements_recharge_budget', 'Nombre d\'événements de recharge budget')
+evenements_variation_disponibilite = Gauge('tradesim_evenements_variation_disponibilite', 'Nombre d\'événements de variation disponibilité')
+impact_moyen_evenements = Gauge('tradesim_impact_moyen_evenements', 'Impact moyen des événements')
+frequence_evenements_inflation = Gauge('tradesim_frequence_evenements_inflation', 'Fréquence des événements d\'inflation')
+frequence_evenements_reassort = Gauge('tradesim_frequence_evenements_reassort', 'Fréquence des événements de reassort')
+frequence_evenements_recharge = Gauge('tradesim_frequence_evenements_recharge', 'Fréquence des événements de recharge')
+frequence_evenements_disponibilite = Gauge('tradesim_frequence_evenements_disponibilite', 'Fréquence des événements de disponibilité')
 
 # ============================================================================
 # MÉTRIQUES DE PERFORMANCE (16 métriques)
@@ -740,16 +760,28 @@ class PrometheusExporter:
                 entreprises_actives.set(metrics_data['entreprises_actives'])
             
             if 'entreprises_par_pays' in metrics_data:
-                entreprises_par_pays.set(metrics_data['entreprises_par_pays'])
+                if isinstance(metrics_data['entreprises_par_pays'], dict):
+                    entreprises_par_pays.set(sum(metrics_data['entreprises_par_pays'].values()))
+                else:
+                    entreprises_par_pays.set(metrics_data['entreprises_par_pays'])
             
             if 'entreprises_par_continent' in metrics_data:
-                entreprises_par_continent.set(metrics_data['entreprises_par_continent'])
+                if isinstance(metrics_data['entreprises_par_continent'], dict):
+                    entreprises_par_continent.set(sum(metrics_data['entreprises_par_continent'].values()))
+                else:
+                    entreprises_par_continent.set(metrics_data['entreprises_par_continent'])
             
             if 'entreprises_par_strategie' in metrics_data:
-                entreprises_par_strategie.set(metrics_data['entreprises_par_strategie'])
+                if isinstance(metrics_data['entreprises_par_strategie'], dict):
+                    entreprises_par_strategie.set(sum(metrics_data['entreprises_par_strategie'].values()))
+                else:
+                    entreprises_par_strategie.set(metrics_data['entreprises_par_strategie'])
             
             if 'entreprises_par_type_prefere' in metrics_data:
-                entreprises_par_type_prefere.set(metrics_data['entreprises_par_type_prefere'])
+                if isinstance(metrics_data['entreprises_par_type_prefere'], dict):
+                    entreprises_par_type_prefere.set(sum(metrics_data['entreprises_par_type_prefere'].values()))
+                else:
+                    entreprises_par_type_prefere.set(metrics_data['entreprises_par_type_prefere'])
             
             if 'entreprises_transactions_moyennes' in metrics_data:
                 entreprises_transactions_moyennes.set(metrics_data['entreprises_transactions_moyennes'])
@@ -795,10 +827,16 @@ class PrometheusExporter:
                 produits_total.set(metrics_data['produits_total'])
             
             if 'produits_par_type' in metrics_data:
-                produits_par_type.set(metrics_data['produits_par_type'])
+                if isinstance(metrics_data['produits_par_type'], dict):
+                    produits_par_type.set(sum(metrics_data['produits_par_type'].values()))
+                else:
+                    produits_par_type.set(metrics_data['produits_par_type'])
             
             if 'produits_par_continent' in metrics_data:
-                produits_par_continent.set(metrics_data['produits_par_continent'])
+                if isinstance(metrics_data['produits_par_continent'], dict):
+                    produits_par_continent.set(sum(metrics_data['produits_par_continent'].values()))
+                else:
+                    produits_par_continent.set(metrics_data['produits_par_continent'])
             
             if 'produits_prix_moyen' in metrics_data:
                 produits_prix_moyen.set(metrics_data['produits_prix_moyen'])
@@ -847,10 +885,16 @@ class PrometheusExporter:
                 fournisseurs_actifs.set(metrics_data['fournisseurs_actifs'])
             
             if 'fournisseurs_par_pays' in metrics_data:
-                fournisseurs_par_pays.set(metrics_data['fournisseurs_par_pays'])
+                if isinstance(metrics_data['fournisseurs_par_pays'], dict):
+                    fournisseurs_par_pays.set(sum(metrics_data['fournisseurs_par_pays'].values()))
+                else:
+                    fournisseurs_par_pays.set(metrics_data['fournisseurs_par_pays'])
             
             if 'fournisseurs_par_continent' in metrics_data:
-                fournisseurs_par_continent.set(metrics_data['fournisseurs_par_continent'])
+                if isinstance(metrics_data['fournisseurs_par_continent'], dict):
+                    fournisseurs_par_continent.set(sum(metrics_data['fournisseurs_par_continent'].values()))
+                else:
+                    fournisseurs_par_continent.set(metrics_data['fournisseurs_par_continent'])
             
             if 'fournisseurs_stock_moyen' in metrics_data:
                 fournisseurs_stock_moyen.set(metrics_data['fournisseurs_stock_moyen'])
@@ -899,13 +943,22 @@ class PrometheusExporter:
                 volume_total_transactions.inc(metrics_data['volume_total_transactions'])
             
             if 'transactions_par_produit' in metrics_data:
-                transactions_par_produit.set(metrics_data['transactions_par_produit'])
+                if isinstance(metrics_data['transactions_par_produit'], dict):
+                    transactions_par_produit.set(sum(metrics_data['transactions_par_produit'].values()))
+                else:
+                    transactions_par_produit.set(metrics_data['transactions_par_produit'])
             
             if 'transactions_par_entreprise' in metrics_data:
-                transactions_par_entreprise.set(metrics_data['transactions_par_entreprise'])
+                if isinstance(metrics_data['transactions_par_entreprise'], dict):
+                    transactions_par_entreprise.set(sum(metrics_data['transactions_par_entreprise'].values()))
+                else:
+                    transactions_par_entreprise.set(metrics_data['transactions_par_entreprise'])
             
             if 'transactions_par_fournisseur' in metrics_data:
-                transactions_par_fournisseur.set(metrics_data['transactions_par_fournisseur'])
+                if isinstance(metrics_data['transactions_par_fournisseur'], dict):
+                    transactions_par_fournisseur.set(sum(metrics_data['transactions_par_fournisseur'].values()))
+                else:
+                    transactions_par_fournisseur.set(metrics_data['transactions_par_fournisseur'])
             
             if 'frequence_transactions' in metrics_data:
                 frequence_transactions.set(metrics_data['frequence_transactions'])
@@ -982,6 +1035,136 @@ class PrometheusExporter:
                         
                         if operation_type in metric_mapping:
                             metric_mapping[operation_type].inc(int(rate))
+            
+            # ============================================================================
+            # MÉTRIQUES INDIVIDUELLES AVEC LABELS
+            # ============================================================================
+            
+            # Traitement des métriques individuelles par entreprise
+            if 'entreprises_individuales' in metrics_data:
+                for entreprise_metrics in metrics_data['entreprises_individuales']:
+                    try:
+                        # Métriques de budget par entreprise
+                        entreprise_budget.labels(
+                            id=str(entreprise_metrics['id']),
+                            nom=entreprise_metrics['nom'],
+                            continent=entreprise_metrics['continent'],
+                            strategie=entreprise_metrics['strategie']
+                        ).set(entreprise_metrics['budget'])
+                        
+                        entreprise_budget_initial.labels(
+                            id=str(entreprise_metrics['id']),
+                            nom=entreprise_metrics['nom']
+                        ).set(entreprise_metrics['budget_initial'])
+                        
+                        entreprise_budget_evolution.labels(
+                            id=str(entreprise_metrics['id']),
+                            nom=entreprise_metrics['nom']
+                        ).set(entreprise_metrics['budget_evolution'])
+                        
+                        entreprise_budget_tendance.labels(
+                            id=str(entreprise_metrics['id']),
+                            nom=entreprise_metrics['nom']
+                        ).set(entreprise_metrics['budget_tendance'])
+                        
+                        entreprise_transactions_total.labels(
+                            id=str(entreprise_metrics['id']),
+                            nom=entreprise_metrics['nom'],
+                            continent=entreprise_metrics['continent']
+                        ).set(entreprise_metrics['transactions_total'])
+                        
+                        # Métriques de stock par produit par entreprise
+                        if 'stocks_produits' in entreprise_metrics:
+                            for stock_info in entreprise_metrics['stocks_produits']:
+                                try:
+                                    entreprise_stock_produit.labels(
+                                        id_entreprise=str(entreprise_metrics['id']),
+                                        nom_entreprise=entreprise_metrics['nom'],
+                                        id_produit=str(stock_info.get('id_produit', 'unknown')),
+                                        nom_produit=stock_info.get('nom_produit', 'unknown'),
+                                        type_produit=stock_info.get('type_produit', 'unknown')
+                                    ).set(stock_info.get('stock', 0))
+                                except Exception as e:
+                                    print(f"⚠️ Erreur stock entreprise {entreprise_metrics.get('id', 'unknown')}: {e}")
+                                
+                    except Exception as e:
+                        print(f"⚠️ Erreur lors du traitement des métriques entreprise {entreprise_metrics.get('id', 'unknown')}: {e}")
+            
+            # Traitement des métriques individuelles par produit
+            if 'produits_individuales' in metrics_data:
+                for produit_metrics in metrics_data['produits_individuales']:
+                    try:
+                        produit_prix.labels(
+                            id=str(produit_metrics['id']),
+                            nom=produit_metrics['nom'],
+                            type=produit_metrics['type']
+                        ).set(produit_metrics['prix'])
+                        
+                        produit_prix_evolution.labels(
+                            id=str(produit_metrics['id']),
+                            nom=produit_metrics['nom'],
+                            type=produit_metrics['type']
+                        ).set(produit_metrics['prix_evolution'])
+                        
+                        produit_prix_tendance.labels(
+                            id=str(produit_metrics['id']),
+                            nom=produit_metrics['nom'],
+                            type=produit_metrics['type']
+                        ).set(produit_metrics['prix_tendance'])
+                        
+                    except Exception as e:
+                        print(f"⚠️ Erreur lors du traitement des métriques produit {produit_metrics.get('id', 'unknown')}: {e}")
+            
+            # Traitement des métriques individuelles par fournisseur
+            if 'fournisseurs_individuales' in metrics_data:
+                for fournisseur_metrics in metrics_data['fournisseurs_individuales']:
+                    try:
+                        fournisseur_prix_moyen.labels(
+                            id=str(fournisseur_metrics['id']),
+                            nom=fournisseur_metrics['nom'],
+                            continent=fournisseur_metrics['continent']
+                        ).set(fournisseur_metrics['prix_moyen'])
+                        
+                        fournisseur_ventes_total.labels(
+                            id=str(fournisseur_metrics['id']),
+                            nom=fournisseur_metrics['nom'],
+                            continent=fournisseur_metrics['continent']
+                        ).set(fournisseur_metrics['ventes_total'])
+                        
+                        fournisseur_disponibilite.labels(
+                            id=str(fournisseur_metrics['id']),
+                            nom=fournisseur_metrics['nom'],
+                            continent=fournisseur_metrics['continent']
+                        ).set(fournisseur_metrics['disponibilite'])
+                        
+                        fournisseur_rotation_stock.labels(
+                            id=str(fournisseur_metrics['id']),
+                            nom=fournisseur_metrics['nom'],
+                            continent=fournisseur_metrics['continent']
+                        ).set(fournisseur_metrics['rotation_stock'])
+                        
+                        fournisseur_rentabilite.labels(
+                            id=str(fournisseur_metrics['id']),
+                            nom=fournisseur_metrics['nom'],
+                            continent=fournisseur_metrics['continent']
+                        ).set(fournisseur_metrics['rentabilite'])
+                        
+                        # Métriques de stock par produit par fournisseur
+                        if 'stocks_produits' in fournisseur_metrics:
+                            for stock_info in fournisseur_metrics['stocks_produits']:
+                                try:
+                                    fournisseur_stock_produit.labels(
+                                        id_fournisseur=str(fournisseur_metrics['id']),
+                                        nom_fournisseur=fournisseur_metrics['nom'],
+                                        id_produit=str(stock_info.get('id_produit', 'unknown')),
+                                        nom_produit=stock_info.get('nom_produit', 'unknown'),
+                                        type_produit=stock_info.get('type_produit', 'unknown')
+                                    ).set(stock_info.get('stock', 0))
+                                except Exception as e:
+                                    print(f"⚠️ Erreur stock fournisseur {fournisseur_metrics.get('id', 'unknown')}: {e}")
+                                
+                    except Exception as e:
+                        print(f"⚠️ Erreur lors du traitement des métriques fournisseur {fournisseur_metrics.get('id', 'unknown')}: {e}")
             
             # ============================================================================
             # MÉTRIQUES HISTORIQUES DE STOCK
@@ -1084,6 +1267,155 @@ class PrometheusExporter:
                 
         except Exception as e:
             print(f"⚠️  Erreur lors du stockage JSONL: {e}")
+
+# ============================================================================
+# DYNAMIC METRICS MANAGER
+# ============================================================================
+
+class DynamicMetricsManager:
+    """
+    Gestionnaire dynamique des métriques Prometheus
+    
+    Permet de créer et gérer automatiquement les métriques Prometheus
+    sans modification manuelle du code de l'exporter.
+    
+    FONCTIONNALITÉS :
+    - Création automatique des métriques (Gauge, Counter, Histogram)
+    - Cache des métriques pour éviter les doublons
+    - Préfixe automatique 'tradesim_'
+    - Gestion des labels et types de métriques
+    - Traitement automatique des données reçues
+    
+    UTILISATION :
+    - Création : manager.get_or_create_metric('nom', 'gauge', 'description')
+    - Mise à jour : manager.update_metric('nom', 42.5)
+    - Avec labels : manager.update_metric('nom', 100, {'label': 'valeur'})
+    """
+    
+    def __init__(self):
+        """Initialise le gestionnaire de métriques dynamiques"""
+        self.metrics_registry = {}
+        self.prefix = "tradesim_"
+    
+    def get_or_create_metric(self, name: str, metric_type: str, description: str = "", 
+                           labels: List[str] = None, buckets: List[float] = None):
+        """
+        Crée ou récupère une métrique Prometheus
+        
+        Args:
+            name: Nom de la métrique (sera préfixé automatiquement)
+            metric_type: Type de métrique ('gauge', 'counter', 'histogram')
+            description: Description de la métrique
+            labels: Liste des labels supportés
+            buckets: Buckets pour les histogrammes
+            
+        Returns:
+            Objet métrique Prometheus
+        """
+        # Préfixer le nom si nécessaire
+        full_name = name if name.startswith(self.prefix) else f"{self.prefix}{name}"
+        
+        # Vérifier si la métrique existe déjà
+        if full_name in self.metrics_registry:
+            return self.metrics_registry[full_name]
+        
+        # Créer la nouvelle métrique
+        try:
+            if metric_type.lower() == 'gauge':
+                if labels:
+                    metric = Gauge(full_name, description, labels)
+                else:
+                    metric = Gauge(full_name, description)
+            
+            elif metric_type.lower() == 'counter':
+                if labels:
+                    metric = Counter(full_name, description, labels)
+                else:
+                    metric = Counter(full_name, description)
+            
+            elif metric_type.lower() == 'histogram':
+                if buckets:
+                    metric = Histogram(full_name, description, buckets=buckets)
+                else:
+                    metric = Histogram(full_name, description)
+            
+            else:
+                # Type invalide - utiliser Gauge par défaut
+                print(f"⚠️ Type de métrique non supporté: {metric_type}, utilisation de Gauge par défaut")
+                metric = Gauge(full_name, description)
+            
+            # Stocker dans le registre
+            self.metrics_registry[full_name] = metric
+            return metric
+            
+        except Exception as e:
+            print(f"⚠️ Erreur lors de la création de la métrique {full_name}: {e}")
+            return None
+    
+    def update_metric(self, name: str, value: float, labels: Dict[str, str] = None):
+        """
+        Met à jour une métrique
+        
+        Args:
+            name: Nom de la métrique
+            value: Valeur à définir
+            labels: Labels pour la métrique
+        """
+        try:
+            # Préfixer le nom si nécessaire
+            full_name = name if name.startswith(self.prefix) else f"{self.prefix}{name}"
+            
+            # Créer la métrique si elle n'existe pas
+            if full_name not in self.metrics_registry:
+                metric_type = 'gauge'  # Par défaut
+                if labels:
+                    # Extraire les noms des labels
+                    label_names = list(labels.keys())
+                    self.get_or_create_metric(name, metric_type, f"Métrique automatique: {name}", labels=label_names)
+                else:
+                    self.get_or_create_metric(name, metric_type, f"Métrique automatique: {name}")
+            
+            metric = self.metrics_registry[full_name]
+            
+            # Mettre à jour la métrique
+            if labels:
+                metric.labels(**labels).set(value)
+            else:
+                metric.set(value)
+                
+        except Exception as e:
+            print(f"⚠️ Erreur lors de la mise à jour de {name}: {e}")
+    
+    def process_metrics_data(self, metrics_data: Dict[str, Any]):
+        """
+        Traite automatiquement les données de métriques
+        
+        Args:
+            metrics_data: Dictionnaire de données de métriques
+        """
+        for key, value in metrics_data.items():
+            try:
+                if isinstance(value, (int, float)) and not isinstance(value, bool):
+                    # Métrique simple (exclure les booléens)
+                    self.update_metric(key, value)
+                
+                elif isinstance(value, dict):
+                    if 'value' in value and 'labels' in value:
+                        # Métrique avec labels
+                        self.update_metric(key, value['value'], value['labels'])
+                    else:
+                        # Dictionnaire simple - agrégation
+                        total = sum(value.values()) if all(isinstance(v, (int, float)) for v in value.values()) else 0
+                        self.update_metric(key, total)
+                else:
+                    # Type non supporté - ignorer
+                    print(f"⚠️ Type de valeur non supporté pour {key}: {type(value)}")
+                        
+            except Exception as e:
+                print(f"⚠️ Erreur lors du traitement de {key}: {e}")
+
+# Instance globale du gestionnaire
+metrics_manager = DynamicMetricsManager()
 
 # ============================================================================
 # FONCTIONS UTILITAIRES

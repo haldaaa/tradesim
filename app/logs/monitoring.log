@@ -2232,3 +2232,108 @@ Run 'docker run --help' for more information
 [ALERT] budget_critical: Budget total critique: 530.39€
 [ALERT] budget_critical: Budget total critique: 763.35€
 [ALERT] budget_critical: Budget total critique: 275.85€
+[ALERT] budget_critical: Budget total critique: 178.35€
+[ALERT] budget_critical: Budget total critique: 335.39€
+[2025-08-20 11:38:41] [INFO] Tentative de lancement des containers Docker
+[2025-08-20 11:38:41] [ERROR] Erreur Prometheus: docker: Error response from daemon: Conflict. The container name "/tradesim-prometheus" is already in use by container "d90a9dce840dc19200f8b61b45d7d305069144da578eefb3886dc72a3d11e9f0". You have to remove (or rename) that container to be able to reuse that name.
+
+Run 'docker run --help' for more information
+
+[ALERT] budget_critical: Budget total critique: 104.04€
+[2025-08-20 11:49:57] [INFO] Tentative de lancement des containers Docker
+[2025-08-20 11:49:57] [ERROR] Erreur Prometheus: docker: Error response from daemon: Conflict. The container name "/tradesim-prometheus" is already in use by container "d90a9dce840dc19200f8b61b45d7d305069144da578eefb3886dc72a3d11e9f0". You have to remove (or rename) that container to be able to reuse that name.
+
+Run 'docker run --help' for more information
+
+[2025-08-20 11:51:12] [INFO] Tentative de lancement des containers Docker
+[2025-08-20 11:51:12] [ERROR] Erreur Prometheus: docker: Error response from daemon: Conflict. The container name "/tradesim-prometheus" is already in use by container "d90a9dce840dc19200f8b61b45d7d305069144da578eefb3886dc72a3d11e9f0". You have to remove (or rename) that container to be able to reuse that name.
+
+Run 'docker run --help' for more information
+
+[ALERT] budget_critical: Budget total critique: 173.31€
+[2025-08-20 12:31:01] [INFO] Tentative de lancement des containers Docker
+[2025-08-20 12:31:01] [ERROR] Erreur Prometheus: docker: Error response from daemon: Conflict. The container name "/tradesim-prometheus" is already in use by container "d90a9dce840dc19200f8b61b45d7d305069144da578eefb3886dc72a3d11e9f0". You have to remove (or rename) that container to be able to reuse that name.
+
+Run 'docker run --help' for more information
+
+[ALERT] budget_critical: Budget total critique: 138.71€
+[2025-08-20 12:31:58] [INFO] Tentative de lancement des containers Docker
+[2025-08-20 12:31:58] [ERROR] Erreur Prometheus: docker: Error response from daemon: Conflict. The container name "/tradesim-prometheus" is already in use by container "d90a9dce840dc19200f8b61b45d7d305069144da578eefb3886dc72a3d11e9f0". You have to remove (or rename) that container to be able to reuse that name.
+
+Run 'docker run --help' for more information
+
+[2025-08-20 12:36:17] [INFO] Tentative de lancement des containers Docker
+[2025-08-20 12:36:17] [ERROR] Erreur Prometheus: docker: Error response from daemon: Conflict. The container name "/tradesim-prometheus" is already in use by container "d90a9dce840dc19200f8b61b45d7d305069144da578eefb3886dc72a3d11e9f0". You have to remove (or rename) that container to be able to reuse that name.
+
+Run 'docker run --help' for more information
+
+[ALERT] budget_critical: Budget total critique: 437.91€
+[ALERT] budget_critical: Budget total critique: 437.91€
+[ALERT] budget_critical: Budget total critique: 682.37€
+[ALERT] budget_critical: Budget total critique: 464.48€
+[ALERT] budget_critical: Budget total critique: 543.48€
+[ALERT] budget_critical: Budget total critique: 516.91€
+[ALERT] budget_critical: Budget total critique: 613.76€
+[ALERT] budget_critical: Budget total critique: 386.20€
+[ALERT] budget_critical: Budget total critique: 493.62€
+[ALERT] budget_critical: Budget total critique: 437.91€
+[ALERT] budget_critical: Budget total critique: 191.49€
+[ALERT] budget_critical: Budget total critique: 112.86€
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] simulation_tour: unsupported operand type(s) for -: 'list' and 'int'
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] validation: Prix négatif dans test: -5.0
+[ERROR] validation: Quantité invalide dans test: 0
+[ERROR] validation: Budget négatif dans test: -100.0
+[ERROR] test_error: Test error message
+[ALERT] error_rate_critical: Taux d'erreur critique: 20.00%
+[ALERT] budget_critical: Budget total critique: 900.00€
+[ERROR] validation: Prix négatif dans test_transaction: -100.0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] simulation_tour: Cannot choose from an empty sequence
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] prometheus_metrics: Calculation error
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 36.15€
+[ALERT] budget_critical: Budget total critique: 47.60€
+[ALERT] budget_critical: Budget total critique: 56.04€
+[ALERT] budget_critical: Budget total critique: 36.40€
+[ERROR] validation: Prix négatif dans test: -5.0
+[ERROR] validation: Quantité invalide dans test: 0
+[ERROR] validation: Budget négatif dans test: -100.0
+[ERROR] test_error: Test error message
+[ALERT] error_rate_critical: Taux d'erreur critique: 20.00%
+[ALERT] budget_critical: Budget total critique: 900.00€
+[ERROR] validation: Prix négatif dans test_transaction: -100.0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] simulation_tour: Cannot choose from an empty sequence
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] prometheus_metrics: Calculation error
+[ALERT] stock_critical: Stock total critique: 0
+[ERROR] simulation_tour: Cannot choose from an empty sequence
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 0.00€
+[ALERT] stock_critical: Stock total critique: 0
+[ALERT] budget_critical: Budget total critique: 93.30€
+[ALERT] budget_critical: Budget total critique: 100.97€
+[ALERT] budget_critical: Budget total critique: 97.44€
+[ALERT] budget_critical: Budget total critique: 103.14€

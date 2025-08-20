@@ -21,7 +21,10 @@ from datetime import datetime
 
 from repositories import ProduitRepository, FournisseurRepository, EntrepriseRepository
 from models import Produit, Fournisseur, Entreprise, TypeProduit, Transaction
-from config.config import QUANTITE_ACHAT_MIN, QUANTITE_ACHAT_MAX
+from config.config import (
+    QUANTITE_ACHAT_MIN, QUANTITE_ACHAT_MAX,
+    QUANTITE_ACHAT_PRIX_ELEVE_MIN, QUANTITE_ACHAT_PRIX_ELEVE_MAX, SEUIL_PRIX_ELEVE
+)
 
 
 class TransactionService:
@@ -264,8 +267,13 @@ class TransactionService:
         
         # Essayer d'acheter quelques produits
         for produit in random.sample(produits_preferes, min(3, len(produits_preferes))):
-            # Quantité aléatoire selon les constantes de configuration
-            quantite = random.randint(QUANTITE_ACHAT_MIN, QUANTITE_ACHAT_MAX)
+            # Quantité adaptée au prix du produit
+            if produit.prix > SEUIL_PRIX_ELEVE:
+                # Produit cher : quantités réduites
+                quantite = random.randint(QUANTITE_ACHAT_PRIX_ELEVE_MIN, QUANTITE_ACHAT_PRIX_ELEVE_MAX)
+            else:
+                # Produit normal : quantités standard
+                quantite = random.randint(QUANTITE_ACHAT_MIN, QUANTITE_ACHAT_MAX)
             
             transaction = self.effectuer_achat(entreprise, produit.id, quantite)
             if transaction:

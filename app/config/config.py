@@ -73,9 +73,93 @@ TYPES_PRODUITS_PREFERES_MAX = 2       # Nombre maximum de types de produits pré
 QUANTITE_ACHAT_MIN = 1                # Quantité minimum d'achat par entreprise
 QUANTITE_ACHAT_MAX = 100              # Quantité maximum d'achat par entreprise
 
+# Quantités d'achat adaptées aux prix (pour éviter la faillite)
+QUANTITE_ACHAT_PRIX_ELEVE_MIN = 1     # Quantité minimum pour produits chers
+QUANTITE_ACHAT_PRIX_ELEVE_MAX = 20    # Quantité maximum pour produits chers
+SEUIL_PRIX_ELEVE = 100.0              # Seuil en euros pour considérer un produit comme cher
+
 # Budgets des entreprises
 BUDGET_ENTREPRISE_MIN = 6000          # Budget minimum des entreprises (en euros)
 BUDGET_ENTREPRISE_MAX = 20000         # Budget maximum des entreprises (en euros)
+
+# ============================================================================
+# PRODUITS - Configuration des produits
+# ============================================================================
+
+# Prix des produits (en euros)
+PRIX_PRODUIT_MIN = 5.0                # Prix minimum des produits (en euros)
+PRIX_PRODUIT_MAX = 500.0              # Prix maximum des produits (en euros)
+
+# Nombre de produits par défaut
+NOMBRE_PRODUITS_DEFAUT = 12           # Nombre de produits générés par défaut
+PRODUITS_ACTIFS_MIN = 8               # Nombre minimum de produits actifs
+PRODUITS_ACTIFS_MAX = 12              # Nombre maximum de produits actifs
+
+# Types de produits disponibles
+TYPES_PRODUITS_DISPONIBLES = [
+    "matiere_premiere",
+    "consommable", 
+    "equipement",
+    "service"
+]
+
+# ============================================================================
+# PRIX FOURNISSEURS - Configuration des facteurs de prix
+# ============================================================================
+
+# Facteurs de prix fournisseur (logique économique : plus de stock = prix plus bas)
+FACTEUR_PRIX_STOCK_REFERENCE = 50      # Stock de référence pour calcul du facteur
+FACTEUR_PRIX_STOCK_VARIATION = 1000    # Diviseur pour la variation du facteur stock (±5%)
+FACTEUR_PRIX_RANDOM_MIN = 0.95         # Facteur aléatoire minimum (±5%)
+FACTEUR_PRIX_RANDOM_MAX = 1.05         # Facteur aléatoire maximum (±5%)
+
+# ============================================================================
+# EXEMPLE CONCRET - Calcul du prix fournisseur
+# ============================================================================
+# 
+# Formule utilisée dans game_manager.py :
+# facteur_stock = 1.0 + (stock_produit[produit.id] - FACTEUR_PRIX_STOCK_REFERENCE) / FACTEUR_PRIX_STOCK_VARIATION
+# facteur_random = random.uniform(FACTEUR_PRIX_RANDOM_MIN, FACTEUR_PRIX_RANDOM_MAX)
+# facteur_total = facteur_stock * facteur_random
+# prix_fournisseur = round(prix_base * facteur_total, 2)
+#
+# EXEMPLES :
+# 
+# 1. PRODUIT AVEC STOCK ÉLEVÉ (100 unités) :
+#    - Prix de base : 50€
+#    - Stock actuel : 100
+#    - facteur_stock = 1.0 + (100 - 50) / 1000 = 1.0 + 0.05 = 1.05
+#    - facteur_random = 0.98 (exemple)
+#    - facteur_total = 1.05 * 0.98 = 1.029
+#    - Prix final = 50€ * 1.029 = 51.45€
+#    → Prix LÉGÈREMENT PLUS HAUT car stock élevé
+#
+# 2. PRODUIT AVEC STOCK FAIBLE (10 unités) :
+#    - Prix de base : 50€
+#    - Stock actuel : 10
+#    - facteur_stock = 1.0 + (10 - 50) / 1000 = 1.0 - 0.04 = 0.96
+#    - facteur_random = 1.02 (exemple)
+#    - facteur_total = 0.96 * 1.02 = 0.9792
+#    - Prix final = 50€ * 0.9792 = 48.96€
+#    → Prix LÉGÈREMENT PLUS BAS car stock faible
+#
+# 3. PRODUIT AVEC STOCK RÉFÉRENCE (50 unités) :
+#    - Prix de base : 50€
+#    - Stock actuel : 50
+#    - facteur_stock = 1.0 + (50 - 50) / 1000 = 1.0 + 0 = 1.0
+#    - facteur_random = 1.0 (exemple)
+#    - facteur_total = 1.0 * 1.0 = 1.0
+#    - Prix final = 50€ * 1.0 = 50€
+#    → Prix IDENTIQUE car stock = référence
+#
+# LOGIQUE ÉCONOMIQUE : Plus de stock = prix plus bas (économie d'échelle)
+# VARIATION MAXIMALE : ±5% pour le facteur stock + ±5% pour le facteur aléatoire
+
+# TODO: FUTURE ÉVOLUTION - Événements de réassort fournisseur
+# FACTEUR_PRIX_DEMANDE_ENABLED = False  # Activer le facteur demande
+# FACTEUR_PRIX_GEOGRAPHIQUE_ENABLED = False  # Activer le facteur géographique
+# FREQUENCE_REASSORT_FOURNISSEUR = 20   # Tous les N tours
+# PROBABILITE_REASSORT_FOURNISSEUR = 0.3  # 30% de chance par tour
 
 # ============================================================================
 # EVENTS - Paramètres des différents événements

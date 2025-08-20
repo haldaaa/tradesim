@@ -58,7 +58,9 @@ from config.config import (
     TICK_INTERVAL_EVENT, PROBABILITE_EVENEMENT,
     PROBABILITE_SELECTION_ENTREPRISE, DUREE_PAUSE_ENTRE_TOURS,
     TYPES_PRODUITS_PREFERES_MIN, TYPES_PRODUITS_PREFERES_MAX,
-    BUDGET_ENTREPRISE_MIN, BUDGET_ENTREPRISE_MAX
+    BUDGET_ENTREPRISE_MIN, BUDGET_ENTREPRISE_MAX,
+    PRIX_PRODUIT_MIN, PRIX_PRODUIT_MAX,
+    NOMBRE_PRODUITS_DEFAUT, PRODUITS_ACTIFS_MIN, PRODUITS_ACTIFS_MAX
 )
 
 # Initialisation des Repository
@@ -340,10 +342,13 @@ def generate_fournisseurs(config_fournisseurs: Dict[str, Any]):
         
         # Définir les prix APRÈS avoir ajouté le fournisseur
         for produit in produits_attribués:
-            # Calcul d'un prix fournisseur spécifique
+            # Calcul d'un prix fournisseur spécifique (facteur plus raisonnable)
             prix_base = produit.prix
-            facteur = random.uniform(0.9, 1.2) * (100 / (stock_produit[produit.id] + 1))
-            prix_fournisseur = round(prix_base * facteur, 2)
+            # Facteur basé sur le stock : plus de stock = prix légèrement plus bas
+            facteur_stock = 1.0 + (stock_produit[produit.id] - 50) / 1000  # Variation de ±5%
+            facteur_random = random.uniform(0.95, 1.05)  # Variation de ±5%
+            facteur_total = facteur_stock * facteur_random
+            prix_fournisseur = round(prix_base * facteur_total, 2)
             
             # Utilise le service centralisé de gestion des prix (version force)
             from services.price_service import price_service
@@ -541,11 +546,11 @@ def create_interactive_config():
     
     # Configuration des produits
     print("\n📦 PRODUITS")
-    config["produits"]["nombre"] = ask_number("Nombre de produits", 20, 5, 50)
-    config["produits"]["prix_min"] = ask_number("Range prix produits (minimum en €)", 5.0, 0.1, 1000.0, is_float=True)
-    config["produits"]["prix_max"] = ask_number("Range prix produits (maximum en €)", 500.0, config["produits"]["prix_min"], 10000.0, is_float=True)
-    config["produits"]["actifs_min"] = ask_number("Nombre minimum de produits actifs", 3, 1, config["produits"]["nombre"])
-    config["produits"]["actifs_max"] = ask_number("Nombre maximum de produits actifs", 8, config["produits"]["actifs_min"], config["produits"]["nombre"])
+    config["produits"]["nombre"] = ask_number("Nombre de produits", NOMBRE_PRODUITS_DEFAUT, 5, 50)
+    config["produits"]["prix_min"] = ask_number("Range prix produits (minimum en €)", PRIX_PRODUIT_MIN, 0.1, 1000.0, is_float=True)
+    config["produits"]["prix_max"] = ask_number("Range prix produits (maximum en €)", PRIX_PRODUIT_MAX, config["produits"]["prix_min"], 10000.0, is_float=True)
+    config["produits"]["actifs_min"] = ask_number("Nombre minimum de produits actifs", PRODUITS_ACTIFS_MIN, 1, config["produits"]["nombre"])
+    config["produits"]["actifs_max"] = ask_number("Nombre maximum de produits actifs", PRODUITS_ACTIFS_MAX, config["produits"]["actifs_min"], config["produits"]["nombre"])
     
     # Configuration des fournisseurs
     print("\n🏪 FOURNISSEURS")
