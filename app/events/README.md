@@ -23,6 +23,7 @@ events/
 ├── inflation.py                   # Modification des prix
 ├── reassort.py                    # Réapprovisionnement des stocks
 ├── recharge_budget.py             # Recharge des budgets
+├── recharge_stock_fournisseur.py  # Recharge des stocks des fournisseurs
 ├── variation_disponibilite.py     # Activation/désactivation de produits
 ├── event_logger.py                # Système de logging des événements
 ├── inflation_backup.py            # Version de sauvegarde (ancienne)
@@ -114,6 +115,64 @@ events/
 }
 ```
 
+### **`recharge_stock_fournisseur.py` - Recharge des stocks des fournisseurs**
+**Fonction :** `appliquer_recharge_stock_fournisseur(tick: int)`
+
+**Comportement :**
+- **Probabilité** : 40% de chance d'être déclenché
+- **Déclenchement** : Tous les 20 tours (RECHARGE_FOURNISSEUR_INTERVAL)
+- **Cible** : Fournisseur(s) aléatoire(s) avec 40% de chance par fournisseur
+- **Produits** : Produits actifs du fournisseur avec 60% de chance par produit
+- **Effet** : Augmentation du stock (10-50 unités par produit)
+- **Impact** : Réapprovisionnement des stocks des fournisseurs
+
+**Différence avec reassort.py :**
+- **reassort.py** : Met des produits **inactifs** à **actifs** (activation)
+- **recharge_stock_fournisseur.py** : Augmente le **stock** des produits **actifs** (réapprovisionnement)
+
+**MODE CLI :** Met à jour les stocks en mémoire
+**MODE WEB :** Met à jour les stocks en base de données
+
+**Logs générés :**
+```json
+{
+  "timestamp": "2025-08-22T01:53:59.237048+00:00",
+  "event_type": "recharge_stock_fournisseur",
+  "tick": 40,
+  "fournisseur_id": 1,
+  "fournisseur_nom": "EuroSupply",
+  "fournisseur_continent": "Europe",
+  "nb_produits_recharges": 1,
+  "quantite_totale_rechargee": 37,
+  "produits_recharges": [
+    {
+      "produit_id": 2,
+      "produit_nom": "Livre",
+      "produit_type": "consommable",
+      "ancien_stock": 100,
+      "quantite_rechargee": 37,
+      "nouveau_stock": 137
+    }
+  ],
+  "log_humain": "📦 Tour 40 - RECHARGE EuroSupply: Livre(+37) (total: +37 unités)"
+}
+```
+
+**Log résumé statistique :**
+```json
+{
+  "event_type": "recharge_stock_fournisseur_resume",
+  "statistiques": {
+    "nb_fournisseurs_recharges": 2,
+    "nb_produits_recharges": 2,
+    "quantite_totale_rechargee": 53,
+    "moyenne_quantite_par_fournisseur": 26.5,
+    "moyenne_produits_par_fournisseur": 1.0
+  },
+  "log_humain": "📊 RECHARGE STOCK - 2 fournisseurs: EuroSupply(+37), AsiaImport(+16) (total: +53 unités)"
+}
+```
+
 ### **`variation_disponibilite.py` - Activation/désactivation de produits**
 **Fonction :** `appliquer_variation_disponibilite(tick: int)`
 
@@ -143,7 +202,7 @@ events/
 
 ### **Mode CLI (développement) :**
 ```python
-from events import inflation, reassort, recharge_budget, variation_disponibilite
+from events import inflation, reassort, recharge_budget, recharge_stock_fournisseur, variation_disponibilite
 
 # Appliquer un événement d'inflation
 logs = inflation.appliquer_inflation(tick=25)
@@ -153,11 +212,14 @@ logs = reassort.appliquer_reassort(tick=30)
 
 # Appliquer une recharge de budget
 logs = recharge_budget.appliquer_recharge_budget(tick=35)
+
+# Appliquer une recharge de stock fournisseur
+logs = recharge_stock_fournisseur.appliquer_recharge_stock_fournisseur(tick=40)
 ```
 
 ### **Mode Web (production) :**
 ```python
-from events import inflation, reassort
+from events import inflation, reassort, recharge_stock_fournisseur
 from config.mode import is_web_mode
 
 # Les événements utilisent automatiquement les bons Repository
@@ -168,6 +230,9 @@ else:
 
 # Appliquer un événement
 logs = inflation.appliquer_inflation(tick=25)
+
+# Appliquer une recharge de stock fournisseur
+logs = recharge_stock_fournisseur.appliquer_recharge_stock_fournisseur(tick=40)
 ```
 
 ## 🎯 **Avantages de cette architecture**
@@ -204,6 +269,7 @@ def appliquer_evenements(tick: int):
     logs.extend(inflation.appliquer_inflation(tick))
     logs.extend(reassort.appliquer_reassort(tick))
     logs.extend(recharge_budget.appliquer_recharge_budget(tick))
+    logs.extend(recharge_stock_fournisseur.appliquer_recharge_stock_fournisseur(tick))
     logs.extend(variation_disponibilite.appliquer_variation_disponibilite(tick))
     
     return logs

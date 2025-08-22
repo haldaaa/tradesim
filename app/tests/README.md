@@ -32,6 +32,7 @@ Tests des fonctionnalités individuelles en isolation.
 - `test_inflation_correct.py` - Tests corrigés de l'inflation
 - `test_inflation_penalite.py` - Tests de la logique de pénalité d'inflation
 - `test_inflation_retour_normal.py` - Tests de la logique de retour à la normale
+- `test_recharge_stock_fournisseur.py` - Tests de l'événement recharge stock fournisseur
 - `test_simple.py` - Tests simples de base
 
 ### **🔗 `integration/` - Tests d'intégration**

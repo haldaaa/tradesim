@@ -82,6 +82,7 @@ from events.inflation import appliquer_inflation
 from events.recharge_budget import appliquer_recharge_budget
 from events.reassort import evenement_reassort
 from events.variation_disponibilite import appliquer_variation_disponibilite
+from events.recharge_stock_fournisseur import appliquer_recharge_stock_fournisseur
 
 # Import du service de prix (CORRECTION BUG)
 try:
@@ -803,6 +804,13 @@ class SimulationService:
             # Variation disponibilité (CORRECTION BUG)
             if self._valider_probabilite(PROBABILITE_EVENEMENT.get('variation_disponibilite', 0)):
                 logs = appliquer_variation_disponibilite(self.tick_actuel)
+                if logs:
+                    evenements_appliques.extend(logs)
+                    self.evenements_appliques += 1
+            
+            # Recharge stock fournisseur
+            if self._valider_probabilite(PROBABILITE_EVENEMENT.get('recharge_stock_fournisseur', 0)):
+                logs = appliquer_recharge_stock_fournisseur(self.tick_actuel)
                 if logs:
                     evenements_appliques.extend(logs)
                     self.evenements_appliques += 1

@@ -208,11 +208,26 @@ PROBABILITE_REACTIVATION = 0.2        # 20% de chance de réactiver un produit i
 # Intervalles et probabilités
 TICK_INTERVAL_EVENT = 2               # Tous les 2 tours, on tente des événements
 
+# ============================================================================
+# RECHARGE STOCK FOURNISSEUR - Configuration de l'événement de recharge
+# ============================================================================
+# Événement de recharge des stocks des fournisseurs
+# Déclenchement : Tous les 20 tours
+# Logique : 40% de chance par fournisseur, 60% de chance par produit actif
+# Action : Augmentation du stock de 10-50 unités par produit
+
+RECHARGE_FOURNISSEUR_INTERVAL = 20     # Tous les 20 tours
+PROBABILITE_RECHARGE_FOURNISSEUR = 0.4 # 40% de chance de recharge par fournisseur
+PROBABILITE_RECHARGE_PRODUIT = 0.6     # 60% de chance de recharge par produit actif
+RECHARGE_QUANTITE_MIN = 10             # Quantité minimum de recharge
+RECHARGE_QUANTITE_MAX = 50             # Quantité maximum de recharge
+
 PROBABILITE_EVENEMENT = {
     "recharge_budget": 0.5,           # 50% de chance de recharge de budget
     "reassort": 0.5,                  # 50% de chance de réassortiment
     "inflation": 0.4,                 # 40% de chance d'inflation
-    "variation_disponibilite": 0.3    # 30% de chance de variation de disponibilité
+    "variation_disponibilite": 0.3,   # 30% de chance de variation de disponibilité
+    "recharge_stock_fournisseur": 0.4 # 40% de chance de recharge stock fournisseur
 }
 
 # ============================================================================

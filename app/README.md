@@ -8,7 +8,7 @@ TradeSim est une application de simulation économique modulaire et évolutive, 
 ## 🎯 **Fonctionnalités principales**
 
 - **Simulation économique** : Transactions entre entreprises et fournisseurs
-- **Événements dynamiques** : Inflation, recharge de budget, réassortiment
+- **Événements dynamiques** : Inflation, recharge de budget, réassortiment, recharge stock fournisseur
 - **Monitoring en temps réel** : Métriques Prometheus et dashboards Grafana
 - **Logging structuré** : Logs humains et JSON pour analyse
 - **Thread-safety** : Cache optimisé et accès concurrent sécurisé
