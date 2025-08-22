@@ -37,6 +37,7 @@ from typing import List, Dict, Any
 # Imports des Repository (nouvelle architecture)
 from repositories import ProduitRepository, FournisseurRepository
 from events.event_logger import log_evenement_json, log_evenement_humain
+from monitoring.prometheus_exporter import metrics_manager
 from config.config import (
     RECHARGE_FOURNISSEUR_INTERVAL,
     PROBABILITE_RECHARGE_FOURNISSEUR,
@@ -178,6 +179,22 @@ def appliquer_recharge_stock_fournisseur(tick: int) -> List[Dict[str, Any]]:
         }
         
         logs.append(log_resume)
+        
+        # MÉTRIQUES AUTOMATIQUES - Utilisation du DynamicMetricsManager
+        try:
+            metrics_data = {
+                'recharge_stock_fournisseur_total': nb_fournisseurs,
+                'recharge_stock_quantite_totale': total_quantite_rechargee,
+                'recharge_stock_produits_total': total_produits_recharges,
+                'recharge_stock_quantite_moyenne': moy_quantite_par_fournisseur,
+                'recharge_stock_produits_moyenne': moy_produits_par_fournisseur
+            }
+            
+            # Traitement automatique des métriques
+            metrics_manager.process_metrics_data(metrics_data)
+            
+        except Exception as e:
+            print(f"⚠️ Erreur lors de la génération des métriques automatiques: {e}")
     
     return logs
 
