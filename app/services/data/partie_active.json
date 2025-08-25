@@ -1,0 +1,298 @@
+{
+  "metadata": {
+    "date_creation": "2025-08-25T04:49:44.232500+00:00",
+    "version": "0.1"
+  },
+  "produits": [
+    {
+      "id": 1,
+      "nom": "Vernis",
+      "prix": 16.54,
+      "actif": true,
+      "type": "consommable"
+    },
+    {
+      "id": 2,
+      "nom": "Argile",
+      "prix": 246.49,
+      "actif": true,
+      "type": "matiere_premiere"
+    },
+    {
+      "id": 3,
+      "nom": "Meuble",
+      "prix": 122.33,
+      "actif": true,
+      "type": "produit_fini"
+    },
+    {
+      "id": 4,
+      "nom": "Acide",
+      "prix": 416.31,
+      "actif": true,
+      "type": "consommable"
+    },
+    {
+      "id": 5,
+      "nom": "Catalyseur",
+      "prix": 354.05,
+      "actif": true,
+      "type": "consommable"
+    },
+    {
+      "id": 6,
+      "nom": "Métal",
+      "prix": 424.12,
+      "actif": false,
+      "type": "matiere_premiere"
+    },
+    {
+      "id": 7,
+      "nom": "Parfum",
+      "prix": 133.47,
+      "actif": false,
+      "type": "produit_fini"
+    },
+    {
+      "id": 8,
+      "nom": "Ciment",
+      "prix": 51.1,
+      "actif": false,
+      "type": "matiere_premiere"
+    },
+    {
+      "id": 9,
+      "nom": "Boisson",
+      "prix": 46.23,
+      "actif": false,
+      "type": "produit_fini"
+    },
+    {
+      "id": 10,
+      "nom": "Marbre",
+      "prix": 235.46,
+      "actif": false,
+      "type": "matiere_premiere"
+    },
+    {
+      "id": 11,
+      "nom": "Appareil électroménager",
+      "prix": 376.2,
+      "actif": false,
+      "type": "produit_fini"
+    },
+    {
+      "id": 12,
+      "nom": "Aluminium",
+      "prix": 183.76,
+      "actif": false,
+      "type": "matiere_premiere"
+    },
+    {
+      "id": 13,
+      "nom": "Soie",
+      "prix": 460.83,
+      "actif": false,
+      "type": "matiere_premiere"
+    },
+    {
+      "id": 14,
+      "nom": "Carburant",
+      "prix": 30.85,
+      "actif": false,
+      "type": "consommable"
+    },
+    {
+      "id": 15,
+      "nom": "Additif",
+      "prix": 203.56,
+      "actif": false,
+      "type": "consommable"
+    },
+    {
+      "id": 16,
+      "nom": "Pierre",
+      "prix": 114.22,
+      "actif": false,
+      "type": "matiere_premiere"
+    },
+    {
+      "id": 17,
+      "nom": "Cosmétique",
+      "prix": 188.84,
+      "actif": false,
+      "type": "produit_fini"
+    },
+    {
+      "id": 18,
+      "nom": "Électricité",
+      "prix": 74.83,
+      "actif": false,
+      "type": "consommable"
+    },
+    {
+      "id": 19,
+      "nom": "Pigment",
+      "prix": 457.3,
+      "actif": false,
+      "type": "consommable"
+    },
+    {
+      "id": 20,
+      "nom": "Béton",
+      "prix": 322.26,
+      "actif": false,
+      "type": "matiere_premiere"
+    }
+  ],
+  "fournisseurs": [
+    {
+      "id": 1,
+      "nom_entreprise": "GermanDistrib",
+      "pays": "Allemagne",
+      "continent": "Europe",
+      "stock_produit": {
+        "5": 13,
+        "10": 12,
+        "3": 175,
+        "14": 118,
+        "12": 46,
+        "15": 126
+      }
+    },
+    {
+      "id": 2,
+      "nom_entreprise": "KenyanSupply",
+      "pays": "Kenya",
+      "continent": "Afrique",
+      "stock_produit": {
+        "8": 15,
+        "6": 68,
+        "5": 111,
+        "14": 141,
+        "19": 189
+      }
+    },
+    {
+      "id": 3,
+      "nom_entreprise": "MalaysianSupply",
+      "pays": "Malaisie",
+      "continent": "Asie",
+      "stock_produit": {
+        "11": 185,
+        "14": 128,
+        "6": 176,
+        "18": 15,
+        "7": 190,
+        "12": 32,
+        "15": 180,
+        "3": 82
+      }
+    },
+    {
+      "id": 4,
+      "nom_entreprise": "AsiaImport",
+      "pays": "Chine",
+      "continent": "Asie",
+      "stock_produit": {
+        "15": 136,
+        "4": 74,
+        "9": 90,
+        "13": 74,
+        "6": 124,
+        "17": 84
+      }
+    },
+    {
+      "id": 5,
+      "nom_entreprise": "IndianImport",
+      "pays": "Inde",
+      "continent": "Asie",
+      "stock_produit": {
+        "1": 22,
+        "16": 86,
+        "20": 90,
+        "18": 199,
+        "3": 150,
+        "17": 102
+      }
+    }
+  ],
+  "entreprises": [
+    {
+      "id": 1,
+      "nom": "ItalianDesign",
+      "pays": "Italie",
+      "continent": "Europe",
+      "budget": 20046.73,
+      "budget_initial": 22132.91,
+      "types_preferes": [
+        "produit_fini",
+        "consommable"
+      ],
+      "strategie": "par_type",
+      "stocks": {}
+    },
+    {
+      "id": 2,
+      "nom": "ColombianCorp",
+      "pays": "Colombie",
+      "continent": "Amérique du Sud",
+      "budget": 25109.22,
+      "budget_initial": 26542.66,
+      "types_preferes": [
+        "produit_fini",
+        "matiere_premiere"
+      ],
+      "strategie": "par_type",
+      "stocks": {}
+    },
+    {
+      "id": 3,
+      "nom": "IndianTech",
+      "pays": "Inde",
+      "continent": "Asie",
+      "budget": 31142.8,
+      "budget_initial": 23384.97,
+      "types_preferes": [
+        "matiere_premiere",
+        "consommable"
+      ],
+      "strategie": "moins_cher",
+      "stocks": {}
+    }
+  ],
+  "prix": {
+    "1_5": 16.3,
+    "3_1": 104.23,
+    "3_3": 115.54,
+    "3_5": 114.7,
+    "4_4": 388.88,
+    "5_1": 371.78,
+    "5_2": 316.44,
+    "6_2": 403.94,
+    "6_3": 356.5,
+    "6_4": 377.27,
+    "7_3": 117.34,
+    "8_2": 54.06,
+    "9_4": 42.69,
+    "10_1": 239.07,
+    "11_3": 330.16,
+    "12_1": 192.79,
+    "12_3": 190.42,
+    "13_4": 459.43,
+    "14_1": 28.39,
+    "14_2": 28.73,
+    "14_3": 28.48,
+    "15_1": 182.04,
+    "15_3": 176.87,
+    "15_4": 177.26,
+    "16_5": 112.3,
+    "17_4": 184.43,
+    "17_5": 186.04,
+    "18_3": 77.06,
+    "18_5": 60.57,
+    "19_2": 412.63,
+    "20_5": 317.67
+  }
+}

@@ -1,5 +1,83 @@
 # ASSISTANT MEMORY - TRADESIM PROJECT STATUS
-**Dernière mise à jour : 22/08/2025 02:00 (Phuket)**
+**Dernière mise à jour : 25/08/2025 11:45 (Bangkok)**
+
+## 📊 **SESSION 36 - 25/08/2025 11:21 - CONFIGURATION GRAFANA ET CORRECTION LOGIQUE ÉCONOMIQUE**
+
+**🎯 NOUVELLE SESSION DÉMARRÉE**
+- **Heure de début** : 25 août 2025, 11h21 (heure locale Bangkok)
+- **Objectif principal** : Configuration Grafana et correction de la logique économique
+- **TODO de la session précédente** : Dashboards Grafana, métriques automatiques
+- **Focus actuel** : Correction de la logique économique des prix
+
+### **🎯 OBJECTIFS DE LA SESSION**
+- Corriger la logique économique des prix (plus de stock = prix plus bas)
+- Tester et valider la correction
+- Configurer les dashboards Grafana
+- Vérifier les métriques automatiques
+
+### **✅ ACCOMPLISSEMENTS DE LA SESSION**
+
+**1. CORRECTION DE LA LOGIQUE ÉCONOMIQUE**
+- ✅ **Problème identifié** : Formule inversée dans `game_manager.py`
+- ✅ **Correction appliquée** : `1.0 +` → `1.0 -` dans le calcul du facteur stock
+- ✅ **Documentation mise à jour** : Exemples corrigés dans `config.py`
+- ✅ **Tests de validation créés** : 5 tests pour valider la logique
+
+**2. TESTS DE VALIDATION**
+- ✅ **Test stock élevé vs faible** : Confirme plus de stock = prix plus bas
+- ✅ **Test stock de référence** : Confirme prix = prix de base
+- ✅ **Test limites des facteurs** : Confirme les bornes respectées
+- ✅ **Test avec facteur aléatoire** : Confirme la logique reste correcte
+- ✅ **Test prix maximum** : Confirme prix ≤ 560€ (500€ + 12% marge)
+
+**3. RÉSULTATS DES TESTS**
+- ✅ **Stock élevé (100)** : 95.00€ < **Stock faible (10)** : 104.00€
+- ✅ **Stock référence (50)** : 100.00€ = Prix de base
+- ✅ **Facteur stock max (0.850)** < **Facteur stock min (1.049)**
+- ✅ **Prix maximum possible** : 550.73€ ≤ 560€
+
+**4. PROBLÈMES RÉSOLUS**
+- ✅ **Prix > 500€** : Maintenant limités à 560€ maximum
+- ✅ **Logique économique** : Plus de stock = prix plus bas (économie d'échelle)
+- ✅ **Cohérence doc/code** : Documentation et code alignés
+- ✅ **Configuration unifiée** : Une seule source de vérité (config.py)
+- ✅ **Budgets corrects** : 18000€-35000€ au lieu de 1000€-3000€
+- ✅ **Prix corrects** : 5€-50€ selon tes modifications dans config.py
+
+### **📊 IMPACT TECHNIQUE**
+
+**Logique économique corrigée :**
+- ✅ **Avant** : Plus de stock = prix plus haut (incorrect)
+- ✅ **Après** : Plus de stock = prix plus bas (correct)
+- ✅ **Variation** : ±5% pour facteur stock + ±5% pour facteur aléatoire
+- ✅ **Limites** : Prix maximum 560€ (500€ + 12% marge)
+
+**Tests de validation :**
+- ✅ **5 tests créés** : Couverture complète de la logique
+- ✅ **Validation automatique** : Détection des régressions
+- ✅ **Documentation** : Exemples concrets dans les tests
+
+**Configuration unifiée :**
+- ✅ **DEFAULT_CONFIG supprimé** : Plus de duplication
+- ✅ **config.py source unique** : Toutes les modifications prennent effet
+- ✅ **Architecture robuste** : Principe DRY respecté
+- ✅ **Maintenance simplifiée** : Une seule configuration à maintenir
+
+### **🔧 PROCHAINES ÉTAPES**
+
+**Session suivante :**
+1. **Configuration Grafana** : Créer les dashboards pour visualiser les métriques
+2. **Test simulation complète** : Vérifier que les prix respectent les nouvelles limites
+3. **Métriques automatiques** : Valider l'affichage des métriques recharge_stock_fournisseur
+4. **Optimisation dashboard** : Améliorer la présentation des données
+
+### **📋 TODO LISTE - AMÉLIORATIONS**
+
+**🔄 À IMPLÉMENTER (FUTURES SESSIONS)**
+- **Configuration Grafana** : Dashboards pour toutes les métriques
+- **Tests d'intégration** : Simulation complète avec nouveaux prix
+- **Métriques avancées** : Ajout de métriques pour la stabilité des prix
+- **Alertes** : Seuils d'alerte pour prix anormaux
 
 ## 📊 **SESSION 35 - 21/08/2025 13:06 - AUDIT COMPLET DES TESTS**
 
@@ -141,6 +219,9 @@
 - ✅ **DOCUMENTATION COMPLÈTE** : Code commenté, tests documentés, logs structurés
 - ✅ **DOCUMENTATION MISE À JOUR** : README events, tests, principal mis à jour
 - ✅ **SYSTÈME AUTOMATIQUE INTÉGRÉ** : DynamicMetricsManager ajouté à l'événement recharge_stock_fournisseur
+- ✅ **LOGIQUE ÉCONOMIQUE CORRIGÉE** : Plus de stock = prix plus bas (formule inversée)
+- ✅ **TESTS DE VALIDATION CRÉÉS** : 5 tests pour valider la logique économique
+- ✅ **CONFIGURATION UNIFIÉE** : Suppression de DEFAULT_CONFIG, utilisation de config.py partout
 
 ## 📊 **SESSION 34 - 20/08/2025 10:54 - STABILISATION ET SYSTÈME AUTOMATIQUE**
 

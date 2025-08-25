@@ -155,6 +155,36 @@ scrape_configs:
 
 ## 🔍 Dépannage
 
+### **Problème : Docker daemon non démarré**
+**Erreur :** `Cannot connect to the Docker daemon at unix:///Users/fares/.docker/run/docker.sock. Is the docker daemon running?`
+
+**Solution :**
+```bash
+# 1. Lancer Docker Desktop depuis Applications
+# 2. Attendre que l'icône Docker soit stable
+# 3. Vérifier : docker --version
+# 4. Relancer : docker-compose up -d
+```
+
+### **Problème : Aucune donnée dans Grafana**
+**Symptôme :** Grafana accessible mais dashboards vides
+
+**Diagnostic :**
+```bash
+# 1. Vérifier que l'exporter TradeSim fonctionne
+curl http://localhost:8000/health
+curl http://localhost:8000/metrics
+
+# 2. Si non accessible, démarrer l'exporter :
+cd monitoring
+python prometheus_exporter.py
+
+# 3. Ou lancer une simulation avec métriques :
+python services/simulate.py --tours 20 --with-metrics
+```
+
+**Solution :** L'exporter TradeSim (port 8000) doit être démarré pour que Prometheus puisse collecter les métriques.
+
 ### **Problème : Dashboards ne s'affichent pas**
 ```bash
 # Vérifier que Grafana est démarré
@@ -177,6 +207,40 @@ curl http://localhost:9090/api/v1/targets
 1. Vérifier que les métriques existent : `curl http://localhost:8000/metrics | grep nom_metrique`
 2. Relancer une simulation pour générer des données
 3. Actualiser le dashboard dans Grafana
+
+### **Problème : Ports déjà utilisés**
+**Erreur :** `Address already in use`
+
+**Solution :**
+```bash
+# 1. Identifier le processus
+lsof -i :8000  # Pour l'exporter
+lsof -i :9090  # Pour Prometheus
+lsof -i :3000  # Pour Grafana
+
+# 2. Tuer le processus
+kill -9 <PID>
+
+# 3. Relancer les services
+docker-compose up -d
+```
+
+### **Problème : Métriques recharge_stock_fournisseur manquantes**
+**Symptôme :** Les nouvelles métriques automatiques n'apparaissent pas
+
+**Diagnostic :**
+```bash
+# 1. Vérifier que l'événement est intégré
+grep -r 'recharge_stock_fournisseur' services/simulation_service.py
+
+# 2. Vérifier que les métriques sont générées
+curl http://localhost:8000/metrics | grep recharge_stock
+
+# 3. Lancer une simulation avec l'événement
+python services/simulate.py --tours 40 --with-metrics
+```
+
+**Solution :** L'événement doit être déclenché (tick multiple de 20) pour générer les métriques.
 
 ## 📝 Ajout de nouveaux dashboards
 

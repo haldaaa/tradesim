@@ -129,60 +129,84 @@ def lancer_docker_monitoring() -> bool:
         log_monitoring(error_msg, "ERROR")
         return False
 
-# Configuration par défaut
-DEFAULT_CONFIG = {
-    "entreprises": {
-        "nombre": 3,
-        "budget_min": 1000,
-        "budget_max": 3000,
-        "strategies": ["moins_cher", "par_type"],
-        "types_preferes": ["matiere_premiere", "consommable", "produit_fini"]
-    },
-    "produits": {
-        "nombre": 20,
-        "prix_min": 5.0,
-        "prix_max": 500.0,
-        "actifs_min": 3,
-        "actifs_max": 8,
-        "types": ["matiere_premiere", "consommable", "produit_fini"]
-    },
-    "fournisseurs": {
-        "nombre": 5,
-        "produits_min": 3,
-        "produits_max": 8,
-        "stock_min": 10,
-        "stock_max": 200
-    },
-    "simulation": {
-        "probabilite_selection": 0.3,
-        "pause_entre_tours": 0.1
-    },
-    "evenements": {
-        "intervalle": 20,
-        "probabilites": {
-            "recharge_budget": 0.5,
-            "reassort": 0.5,
-            "inflation": 0.4,
-            "variation_disponibilite": 0.3
+def get_default_config():
+    """
+    Retourne la configuration par défaut depuis config.py
+    
+    Cette fonction centralise la configuration par défaut en utilisant
+    les constantes définies dans config.py, assurant la cohérence
+    et évitant la duplication de configuration.
+    
+    Returns:
+        Dict[str, Any]: Configuration par défaut basée sur config.py
+    """
+    from config.config import (
+        # Configuration des entreprises
+        BUDGET_ENTREPRISE_MIN, BUDGET_ENTREPRISE_MAX,
+        TYPES_PRODUITS_PREFERES_MIN, TYPES_PRODUITS_PREFERES_MAX,
+        
+        # Configuration des produits
+        NOMBRE_PRODUITS_DEFAUT, PRIX_PRODUIT_MIN, PRIX_PRODUIT_MAX,
+        PRODUITS_ACTIFS_MIN, PRODUITS_ACTIFS_MAX, TYPES_PRODUITS_DISPONIBLES,
+        
+        # Configuration de simulation
+        PROBABILITE_SELECTION_ENTREPRISE, DUREE_PAUSE_ENTRE_TOURS,
+        
+        # Configuration des événements
+        TICK_INTERVAL_EVENT, PROBABILITE_EVENEMENT,
+        RECHARGE_BUDGET_MIN, RECHARGE_BUDGET_MAX,
+        REASSORT_QUANTITE_MIN, REASSORT_QUANTITE_MAX,
+        INFLATION_POURCENTAGE_MIN, INFLATION_POURCENTAGE_MAX
+    )
+    
+    return {
+        "entreprises": {
+            "nombre": 3,
+            "budget_min": BUDGET_ENTREPRISE_MIN,
+            "budget_max": BUDGET_ENTREPRISE_MAX,
+            "strategies": ["moins_cher", "par_type"],
+            "types_preferes": TYPES_PRODUITS_DISPONIBLES
         },
-        "recharge_budget": {
-            "min": 200,
-            "max": 600
+        "produits": {
+            "nombre": NOMBRE_PRODUITS_DEFAUT,
+            "prix_min": PRIX_PRODUIT_MIN,
+            "prix_max": PRIX_PRODUIT_MAX,
+            "actifs_min": PRODUITS_ACTIFS_MIN,
+            "actifs_max": PRODUITS_ACTIFS_MAX,
+            "types": TYPES_PRODUITS_DISPONIBLES
         },
-        "reassort": {
-            "min": 10,
-            "max": 50
+        "fournisseurs": {
+            "nombre": 5,
+            "produits_min": 3,
+            "produits_max": 8,
+            "stock_min": 10,
+            "stock_max": 200
         },
-        "inflation": {
-            "min": 30,
-            "max": 60
+        "simulation": {
+            "probabilite_selection": PROBABILITE_SELECTION_ENTREPRISE,
+            "pause_entre_tours": DUREE_PAUSE_ENTRE_TOURS
         },
-        "variation_disponibilite": {
-            "desactivation": 0.1,
-            "reactivation": 0.2
+        "evenements": {
+            "intervalle": TICK_INTERVAL_EVENT,
+            "probabilites": PROBABILITE_EVENEMENT,
+            "recharge_budget": {
+                "min": RECHARGE_BUDGET_MIN,
+                "max": RECHARGE_BUDGET_MAX
+            },
+            "reassort": {
+                "min": REASSORT_QUANTITE_MIN,
+                "max": REASSORT_QUANTITE_MAX
+            },
+            "inflation": {
+                "min": INFLATION_POURCENTAGE_MIN,
+                "max": INFLATION_POURCENTAGE_MAX
+            },
+            "variation_disponibilite": {
+                "desactivation": 0.1,
+                "reactivation": 0.2
+            }
         }
     }
-}
 
 # Noms des entreprises et fournisseurs par défaut
 NOMS_ENTREPRISES = ["MagaToys", "BuildTech", "BioLogix"]
@@ -345,7 +369,7 @@ def generate_fournisseurs(config_fournisseurs: Dict[str, Any]):
             # Calcul d'un prix fournisseur spécifique (facteur plus raisonnable)
             prix_base = produit.prix
             # Facteur basé sur le stock : plus de stock = prix légèrement plus bas
-            facteur_stock = 1.0 + (stock_produit[produit.id] - 50) / 1000  # Variation de ±5%
+            facteur_stock = 1.0 - (stock_produit[produit.id] - 50) / 1000  # Variation de ±5%
             facteur_random = random.uniform(0.95, 1.05)  # Variation de ±5%
             facteur_total = facteur_stock * facteur_random
             prix_fournisseur = round(prix_base * facteur_total, 2)
@@ -514,7 +538,7 @@ def interactive_new_game():
             exit(0)
         elif choix == '1':
             # Jouer avec la config par défaut
-            generate_game_data(DEFAULT_CONFIG)
+            generate_game_data(get_default_config())
             print("✅ Configuration par défaut chargée !")
             with_monitoring = ask_launch_game()
             if with_monitoring is not None:  # None = retour au menu
@@ -536,7 +560,7 @@ def create_interactive_config():
     print("\n🎮 CRÉATION D'UNE NOUVELLE CONFIG")
     print("=" * 60)
     
-    config = DEFAULT_CONFIG.copy()
+    config = get_default_config()
     
     # Configuration des entreprises
     print("\n🏢 ENTREPRISES")

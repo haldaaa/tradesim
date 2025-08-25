@@ -79,8 +79,8 @@ QUANTITE_ACHAT_PRIX_ELEVE_MAX = 20    # Quantité maximum pour produits chers
 SEUIL_PRIX_ELEVE = 100.0              # Seuil en euros pour considérer un produit comme cher
 
 # Budgets des entreprises
-BUDGET_ENTREPRISE_MIN = 6000          # Budget minimum des entreprises (en euros)
-BUDGET_ENTREPRISE_MAX = 20000         # Budget maximum des entreprises (en euros)
+BUDGET_ENTREPRISE_MIN = 18000          # Budget minimum des entreprises (en euros)
+BUDGET_ENTREPRISE_MAX = 35000         # Budget maximum des entreprises (en euros)
 
 # ============================================================================
 # PRODUITS - Configuration des produits
@@ -88,7 +88,7 @@ BUDGET_ENTREPRISE_MAX = 20000         # Budget maximum des entreprises (en euros
 
 # Prix des produits (en euros)
 PRIX_PRODUIT_MIN = 5.0                # Prix minimum des produits (en euros)
-PRIX_PRODUIT_MAX = 500.0              # Prix maximum des produits (en euros)
+PRIX_PRODUIT_MAX = 50.0              # Prix maximum des produits (en euros)
 
 # Nombre de produits par défaut
 NOMBRE_PRODUITS_DEFAUT = 12           # Nombre de produits générés par défaut
@@ -118,7 +118,7 @@ FACTEUR_PRIX_RANDOM_MAX = 1.05         # Facteur aléatoire maximum (±5%)
 # ============================================================================
 # 
 # Formule utilisée dans game_manager.py :
-# facteur_stock = 1.0 + (stock_produit[produit.id] - FACTEUR_PRIX_STOCK_REFERENCE) / FACTEUR_PRIX_STOCK_VARIATION
+# facteur_stock = 1.0 - (stock_produit[produit.id] - FACTEUR_PRIX_STOCK_REFERENCE) / FACTEUR_PRIX_STOCK_VARIATION
 # facteur_random = random.uniform(FACTEUR_PRIX_RANDOM_MIN, FACTEUR_PRIX_RANDOM_MAX)
 # facteur_total = facteur_stock * facteur_random
 # prix_fournisseur = round(prix_base * facteur_total, 2)
@@ -128,20 +128,20 @@ FACTEUR_PRIX_RANDOM_MAX = 1.05         # Facteur aléatoire maximum (±5%)
 # 1. PRODUIT AVEC STOCK ÉLEVÉ (100 unités) :
 #    - Prix de base : 50€
 #    - Stock actuel : 100
-#    - facteur_stock = 1.0 + (100 - 50) / 1000 = 1.0 + 0.05 = 1.05
+#    - facteur_stock = 1.0 - (100 - 50) / 1000 = 1.0 - 0.05 = 0.95
 #    - facteur_random = 0.98 (exemple)
-#    - facteur_total = 1.05 * 0.98 = 1.029
-#    - Prix final = 50€ * 1.029 = 51.45€
-#    → Prix LÉGÈREMENT PLUS HAUT car stock élevé
+#    - facteur_total = 0.95 * 0.98 = 0.931
+#    - Prix final = 50€ * 0.931 = 46.55€
+#    → Prix LÉGÈREMENT PLUS BAS car stock élevé
 #
 # 2. PRODUIT AVEC STOCK FAIBLE (10 unités) :
 #    - Prix de base : 50€
 #    - Stock actuel : 10
-#    - facteur_stock = 1.0 + (10 - 50) / 1000 = 1.0 - 0.04 = 0.96
+#    - facteur_stock = 1.0 - (10 - 50) / 1000 = 1.0 + 0.04 = 1.04
 #    - facteur_random = 1.02 (exemple)
-#    - facteur_total = 0.96 * 1.02 = 0.9792
-#    - Prix final = 50€ * 0.9792 = 48.96€
-#    → Prix LÉGÈREMENT PLUS BAS car stock faible
+#    - facteur_total = 1.04 * 1.02 = 1.0608
+#    - Prix final = 50€ * 1.0608 = 53.04€
+#    → Prix LÉGÈREMENT PLUS HAUT car stock faible
 #
 # 3. PRODUIT AVEC STOCK RÉFÉRENCE (50 unités) :
 #    - Prix de base : 50€
