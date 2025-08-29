@@ -701,7 +701,7 @@ class SimulationService:
             # Affichage détaillé
             if self.verbose:
                 print(f"🎯 {entreprise.nom} achète {quantite_achat} {produit.nom} chez {fournisseur.nom_entreprise} (stratégie: {strategie}) :")
-                print(f"\t- 💰 Prix unitaire: {prix:.2f}€ | Total: {montant_total:.2f}€ | Budget restant: {entreprise.budget:.2f}€")
+                print(f"        - 💰 Prix unitaire: {prix:.2f}€ | Total: {montant_total:.2f}€ | Budget restant: {entreprise.budget:.2f}€")
                 print("✅ Achat réussi !")
             
             # Log JSON avec ID
@@ -782,7 +782,7 @@ class SimulationService:
         if tick % TICK_INTERVAL_EVENT == 0:
             # Inflation
             if self._valider_probabilite(PROBABILITE_EVENEMENT.get('inflation', 0)):
-                logs = appliquer_inflation(self.fournisseurs)
+                logs = appliquer_inflation(tick)
                 if logs:
                     evenements_appliques.extend(logs)
                     self.evenements_appliques += 1

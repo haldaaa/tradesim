@@ -708,22 +708,22 @@ class PrometheusExporter:
             # ============================================================================
             
             if 'budget_total_entreprises' in metrics_data:
-                budget_total_entreprises.set(metrics_data['budget_total_entreprises'])
+                budget_total_entreprises.labels(tick=str(tick_actuel)).set(metrics_data['budget_total_entreprises'])
             
             if 'budget_moyen_entreprises' in metrics_data:
-                budget_moyen_entreprises.set(metrics_data['budget_moyen_entreprises'])
+                budget_moyen_entreprises.labels(tick=str(tick_actuel)).set(metrics_data['budget_moyen_entreprises'])
             
             if 'budget_median_entreprises' in metrics_data:
-                budget_median_entreprises.set(metrics_data['budget_median_entreprises'])
+                budget_median_entreprises.labels(tick=str(tick_actuel)).set(metrics_data['budget_median_entreprises'])
             
             if 'budget_ecart_type_entreprises' in metrics_data:
-                budget_ecart_type_entreprises.set(metrics_data['budget_ecart_type_entreprises'])
+                budget_ecart_type_entreprises.labels(tick=str(tick_actuel)).set(metrics_data['budget_ecart_type_entreprises'])
             
             if 'budget_coefficient_variation' in metrics_data:
-                budget_coefficient_variation.set(metrics_data['budget_coefficient_variation'])
+                budget_coefficient_variation.labels(tick=str(tick_actuel)).set(metrics_data['budget_coefficient_variation'])
             
             if 'budget_variation_totale' in metrics_data:
-                budget_variation_totale.set(metrics_data['budget_variation_totale'])
+                budget_variation_totale.labels(tick=str(tick_actuel)).set(metrics_data['budget_variation_totale'])
             
             if 'budget_depenses_totales' in metrics_data:
                 budget_depenses_totales.inc(metrics_data['budget_depenses_totales'])
@@ -732,22 +732,22 @@ class PrometheusExporter:
                 budget_gains_totaux.inc(metrics_data['budget_gains_totaux'])
             
             if 'budget_ratio_depenses_revenus' in metrics_data:
-                budget_ratio_depenses_revenus.set(metrics_data['budget_ratio_depenses_revenus'])
+                budget_ratio_depenses_revenus.labels(tick=str(tick_actuel)).set(metrics_data['budget_ratio_depenses_revenus'])
             
             if 'budget_entreprises_critiques' in metrics_data:
-                budget_entreprises_critiques.set(metrics_data['budget_entreprises_critiques'])
+                budget_entreprises_critiques.labels(tick=str(tick_actuel)).set(metrics_data['budget_entreprises_critiques'])
             
             if 'budget_entreprises_faibles' in metrics_data:
-                budget_entreprises_faibles.set(metrics_data['budget_entreprises_faibles'])
+                budget_entreprises_faibles.labels(tick=str(tick_actuel)).set(metrics_data['budget_entreprises_faibles'])
             
             if 'budget_evolution_tour' in metrics_data:
-                budget_evolution_tour.set(metrics_data['budget_evolution_tour'])
+                budget_evolution_tour.labels(tick=str(tick_actuel)).set(metrics_data['budget_evolution_tour'])
             
             if 'budget_tendance_globale' in metrics_data:
-                budget_tendance_globale.set(metrics_data['budget_tendance_globale'])
+                budget_tendance_globale.labels(tick=str(tick_actuel)).set(metrics_data['budget_tendance_globale'])
             
             if 'budget_skewness' in metrics_data:
-                budget_skewness.set(metrics_data['budget_skewness'])
+                budget_skewness.labels(tick=str(tick_actuel)).set(metrics_data['budget_skewness'])
             
             # ============================================================================
             # MÉTRIQUES D'ENTREPRISES (18 métriques)
@@ -784,40 +784,40 @@ class PrometheusExporter:
                     entreprises_par_type_prefere.set(metrics_data['entreprises_par_type_prefere'])
             
             if 'entreprises_transactions_moyennes' in metrics_data:
-                entreprises_transactions_moyennes.set(metrics_data['entreprises_transactions_moyennes'])
+                entreprises_transactions_moyennes.labels(tick=str(tick_actuel)).set(metrics_data['entreprises_transactions_moyennes'])
             
             if 'entreprises_budget_moyen' in metrics_data:
-                entreprises_budget_moyen.set(metrics_data['entreprises_budget_moyen'])
+                entreprises_budget_moyen.labels(tick=str(tick_actuel)).set(metrics_data['entreprises_budget_moyen'])
             
             if 'entreprises_stock_moyen' in metrics_data:
-                entreprises_stock_moyen.set(metrics_data['entreprises_stock_moyen'])
+                entreprises_stock_moyen.labels(tick=str(tick_actuel)).set(metrics_data['entreprises_stock_moyen'])
             
             if 'entreprises_rentabilite' in metrics_data:
-                entreprises_rentabilite.set(metrics_data['entreprises_rentabilite'])
+                entreprises_rentabilite.labels(tick=str(tick_actuel)).set(metrics_data['entreprises_rentabilite'])
             
             if 'entreprises_efficacite_achat' in metrics_data:
-                entreprises_efficacite_achat.set(metrics_data['entreprises_efficacite_achat'])
+                entreprises_efficacite_achat.labels(tick=str(tick_actuel)).set(metrics_data['entreprises_efficacite_achat'])
             
             if 'entreprises_survie_taux' in metrics_data:
-                entreprises_survie_taux.set(metrics_data['entreprises_survie_taux'])
+                entreprises_survie_taux.labels(tick=str(tick_actuel)).set(metrics_data['entreprises_survie_taux'])
             
             if 'entreprises_frequence_achat' in metrics_data:
-                entreprises_frequence_achat.set(metrics_data['entreprises_frequence_achat'])
+                entreprises_frequence_achat.labels(tick=str(tick_actuel)).set(metrics_data['entreprises_frequence_achat'])
             
             if 'entreprises_preference_produits' in metrics_data:
-                entreprises_preference_produits.set(metrics_data['entreprises_preference_produits'])
+                entreprises_preference_produits.labels(tick=str(tick_actuel)).set(metrics_data['entreprises_preference_produits'])
             
             if 'entreprises_adaptation_prix' in metrics_data:
-                entreprises_adaptation_prix.set(metrics_data['entreprises_adaptation_prix'])
+                entreprises_adaptation_prix.labels(tick=str(tick_actuel)).set(metrics_data['entreprises_adaptation_prix'])
             
             if 'entreprises_competitivite' in metrics_data:
-                entreprises_competitivite.set(metrics_data['entreprises_competitivite'])
+                entreprises_competitivite.labels(tick=str(tick_actuel)).set(metrics_data['entreprises_competitivite'])
             
             if 'entreprises_resilience' in metrics_data:
-                entreprises_resilience.set(metrics_data['entreprises_resilience'])
+                entreprises_resilience.labels(tick=str(tick_actuel)).set(metrics_data['entreprises_resilience'])
             
             if 'entreprises_innovation' in metrics_data:
-                entreprises_innovation.set(metrics_data['entreprises_innovation'])
+                entreprises_innovation.labels(tick=str(tick_actuel)).set(metrics_data['entreprises_innovation'])
             
             # ============================================================================
             # MÉTRIQUES DE PRODUITS (16 métriques)
@@ -839,40 +839,40 @@ class PrometheusExporter:
                     produits_par_continent.set(metrics_data['produits_par_continent'])
             
             if 'produits_prix_moyen' in metrics_data:
-                produits_prix_moyen.set(metrics_data['produits_prix_moyen'])
+                produits_prix_moyen.labels(tick=str(tick_actuel)).set(metrics_data['produits_prix_moyen'])
             
             if 'produits_prix_median' in metrics_data:
-                produits_prix_median.set(metrics_data['produits_prix_median'])
+                produits_prix_median.labels(tick=str(tick_actuel)).set(metrics_data['produits_prix_median'])
             
             if 'produits_demande_moyenne' in metrics_data:
-                produits_demande_moyenne.set(metrics_data['produits_demande_moyenne'])
+                produits_demande_moyenne.labels(tick=str(tick_actuel)).set(metrics_data['produits_demande_moyenne'])
             
             if 'produits_offre_moyenne' in metrics_data:
-                produits_offre_moyenne.set(metrics_data['produits_offre_moyenne'])
+                produits_offre_moyenne.labels(tick=str(tick_actuel)).set(metrics_data['produits_offre_moyenne'])
             
             if 'produits_rotation_stock' in metrics_data:
-                produits_rotation_stock.set(metrics_data['produits_rotation_stock'])
+                produits_rotation_stock.labels(tick=str(tick_actuel)).set(metrics_data['produits_rotation_stock'])
             
             if 'produits_rentabilite' in metrics_data:
-                produits_rentabilite.set(metrics_data['produits_rentabilite'])
+                produits_rentabilite.labels(tick=str(tick_actuel)).set(metrics_data['produits_rentabilite'])
             
             if 'produits_popularite' in metrics_data:
-                produits_popularite.set(metrics_data['produits_popularite'])
+                produits_popularite.labels(tick=str(tick_actuel)).set(metrics_data['produits_popularite'])
             
             if 'produits_disponibilite' in metrics_data:
-                produits_disponibilite.set(metrics_data['produits_disponibilite'])
+                produits_disponibilite.labels(tick=str(tick_actuel)).set(metrics_data['produits_disponibilite'])
             
             if 'produits_volatilite_prix' in metrics_data:
-                produits_volatilite_prix.set(metrics_data['produits_volatilite_prix'])
+                produits_volatilite_prix.labels(tick=str(tick_actuel)).set(metrics_data['produits_volatilite_prix'])
             
             if 'produits_tendance_prix' in metrics_data:
-                produits_tendance_prix.set(metrics_data['produits_tendance_prix'])
+                produits_tendance_prix.labels(tick=str(tick_actuel)).set(metrics_data['produits_tendance_prix'])
             
             if 'produits_elasticite_demande' in metrics_data:
-                produits_elasticite_demande.set(metrics_data['produits_elasticite_demande'])
+                produits_elasticite_demande.labels(tick=str(tick_actuel)).set(metrics_data['produits_elasticite_demande'])
             
             if 'produits_competitivite' in metrics_data:
-                produits_competitivite.set(metrics_data['produits_competitivite'])
+                produits_competitivite.labels(tick=str(tick_actuel)).set(metrics_data['produits_competitivite'])
             
             # ============================================================================
             # MÉTRIQUES DE FOURNISSEURS (16 métriques)
@@ -897,25 +897,25 @@ class PrometheusExporter:
                     fournisseurs_par_continent.set(metrics_data['fournisseurs_par_continent'])
             
             if 'fournisseurs_stock_moyen' in metrics_data:
-                fournisseurs_stock_moyen.set(metrics_data['fournisseurs_stock_moyen'])
+                fournisseurs_stock_moyen.labels(tick=str(tick_actuel)).set(metrics_data['fournisseurs_stock_moyen'])
             
             if 'fournisseurs_produits_moyen' in metrics_data:
-                fournisseurs_produits_moyen.set(metrics_data['fournisseurs_produits_moyen'])
+                fournisseurs_produits_moyen.labels(tick=str(tick_actuel)).set(metrics_data['fournisseurs_produits_moyen'])
             
             if 'fournisseurs_ventes_moyennes' in metrics_data:
-                fournisseurs_ventes_moyennes.set(metrics_data['fournisseurs_ventes_moyennes'])
+                fournisseurs_ventes_moyennes.labels(tick=str(tick_actuel)).set(metrics_data['fournisseurs_ventes_moyennes'])
             
             if 'fournisseurs_rotation_stock' in metrics_data:
-                fournisseurs_rotation_stock.set(metrics_data['fournisseurs_rotation_stock'])
+                fournisseurs_rotation_stock.labels(tick=str(tick_actuel)).set(metrics_data['fournisseurs_rotation_stock'])
             
             if 'fournisseurs_disponibilite' in metrics_data:
-                fournisseurs_disponibilite.set(metrics_data['fournisseurs_disponibilite'])
+                fournisseurs_disponibilite.labels(tick=str(tick_actuel)).set(metrics_data['fournisseurs_disponibilite'])
             
             if 'fournisseurs_rentabilite' in metrics_data:
-                fournisseurs_rentabilite.set(metrics_data['fournisseurs_rentabilite'])
+                fournisseurs_rentabilite.labels(tick=str(tick_actuel)).set(metrics_data['fournisseurs_rentabilite'])
             
             if 'fournisseurs_popularite' in metrics_data:
-                fournisseurs_popularite.set(metrics_data['fournisseurs_popularite'])
+                fournisseurs_popularite.labels(tick=str(tick_actuel)).set(metrics_data['fournisseurs_popularite'])
             
             # ============================================================================
             # MÉTRIQUES DE TRANSACTIONS (12 métriques)
@@ -934,10 +934,10 @@ class PrometheusExporter:
                 transactions_echouees.inc(metrics_data['transactions_echouees'])
             
             if 'taux_reussite_transactions' in metrics_data:
-                taux_reussite_transactions.set(metrics_data['taux_reussite_transactions'])
+                taux_reussite_transactions.labels(tick=str(tick_actuel)).set(metrics_data['taux_reussite_transactions'])
             
             if 'montant_moyen_transaction' in metrics_data:
-                montant_moyen_transaction.set(metrics_data['montant_moyen_transaction'])
+                montant_moyen_transaction.labels(tick=str(tick_actuel)).set(metrics_data['montant_moyen_transaction'])
             
             if 'volume_total_transactions' in metrics_data:
                 volume_total_transactions.inc(metrics_data['volume_total_transactions'])
@@ -986,19 +986,19 @@ class PrometheusExporter:
                 evenements_variation_disponibilite.inc(metrics_data['evenements_variation_disponibilite'])
             
             if 'impact_moyen_evenements' in metrics_data:
-                impact_moyen_evenements.set(metrics_data['impact_moyen_evenements'])
+                impact_moyen_evenements.labels(tick=str(tick_actuel)).set(metrics_data['impact_moyen_evenements'])
             
             if 'frequence_evenements_inflation' in metrics_data:
-                frequence_evenements_inflation.set(metrics_data['frequence_evenements_inflation'])
+                frequence_evenements_inflation.labels(tick=str(tick_actuel)).set(metrics_data['frequence_evenements_inflation'])
             
             if 'frequence_evenements_reassort' in metrics_data:
-                frequence_evenements_reassort.set(metrics_data['frequence_evenements_reassort'])
+                frequence_evenements_reassort.labels(tick=str(tick_actuel)).set(metrics_data['frequence_evenements_reassort'])
             
             if 'frequence_evenements_recharge' in metrics_data:
-                frequence_evenements_recharge.set(metrics_data['frequence_evenements_recharge'])
+                frequence_evenements_recharge.labels(tick=str(tick_actuel)).set(metrics_data['frequence_evenements_recharge'])
             
             if 'frequence_evenements_disponibilite' in metrics_data:
-                frequence_evenements_disponibilite.set(metrics_data['frequence_evenements_disponibilite'])
+                frequence_evenements_disponibilite.labels(tick=str(tick_actuel)).set(metrics_data['frequence_evenements_disponibilite'])
             
             # Mise à jour des métriques de latence
             if 'latency' in metrics_data:
@@ -1049,28 +1049,33 @@ class PrometheusExporter:
                             id=str(entreprise_metrics['id']),
                             nom=entreprise_metrics['nom'],
                             continent=entreprise_metrics['continent'],
-                            strategie=entreprise_metrics['strategie']
+                            strategie=entreprise_metrics['strategie'],
+                            tick=str(tick_actuel)
                         ).set(entreprise_metrics['budget'])
                         
                         entreprise_budget_initial.labels(
                             id=str(entreprise_metrics['id']),
-                            nom=entreprise_metrics['nom']
+                            nom=entreprise_metrics['nom'],
+                            tick=str(tick_actuel)
                         ).set(entreprise_metrics['budget_initial'])
                         
                         entreprise_budget_evolution.labels(
                             id=str(entreprise_metrics['id']),
-                            nom=entreprise_metrics['nom']
+                            nom=entreprise_metrics['nom'],
+                            tick=str(tick_actuel)
                         ).set(entreprise_metrics['budget_evolution'])
                         
                         entreprise_budget_tendance.labels(
                             id=str(entreprise_metrics['id']),
-                            nom=entreprise_metrics['nom']
+                            nom=entreprise_metrics['nom'],
+                            tick=str(tick_actuel)
                         ).set(entreprise_metrics['budget_tendance'])
                         
                         entreprise_transactions_total.labels(
                             id=str(entreprise_metrics['id']),
                             nom=entreprise_metrics['nom'],
-                            continent=entreprise_metrics['continent']
+                            continent=entreprise_metrics['continent'],
+                            tick=str(tick_actuel)
                         ).set(entreprise_metrics['transactions_total'])
                         
                         # Métriques de stock par produit par entreprise
@@ -1082,7 +1087,8 @@ class PrometheusExporter:
                                         nom_entreprise=entreprise_metrics['nom'],
                                         id_produit=str(stock_info.get('id_produit', 'unknown')),
                                         nom_produit=stock_info.get('nom_produit', 'unknown'),
-                                        type_produit=stock_info.get('type_produit', 'unknown')
+                                        type_produit=stock_info.get('type_produit', 'unknown'),
+                                        tick=str(tick_actuel)
                                     ).set(stock_info.get('stock', 0))
                                 except Exception as e:
                                     print(f"⚠️ Erreur stock entreprise {entreprise_metrics.get('id', 'unknown')}: {e}")
@@ -1097,19 +1103,22 @@ class PrometheusExporter:
                         produit_prix.labels(
                             id=str(produit_metrics['id']),
                             nom=produit_metrics['nom'],
-                            type=produit_metrics['type']
+                            type=produit_metrics['type'],
+                            tick=str(tick_actuel)
                         ).set(produit_metrics['prix'])
                         
                         produit_prix_evolution.labels(
                             id=str(produit_metrics['id']),
                             nom=produit_metrics['nom'],
-                            type=produit_metrics['type']
+                            type=produit_metrics['type'],
+                            tick=str(tick_actuel)
                         ).set(produit_metrics['prix_evolution'])
                         
                         produit_prix_tendance.labels(
                             id=str(produit_metrics['id']),
                             nom=produit_metrics['nom'],
-                            type=produit_metrics['type']
+                            type=produit_metrics['type'],
+                            tick=str(tick_actuel)
                         ).set(produit_metrics['prix_tendance'])
                         
                     except Exception as e:
@@ -1122,31 +1131,36 @@ class PrometheusExporter:
                         fournisseur_prix_moyen.labels(
                             id=str(fournisseur_metrics['id']),
                             nom=fournisseur_metrics['nom'],
-                            continent=fournisseur_metrics['continent']
+                            continent=fournisseur_metrics['continent'],
+                            tick=str(tick_actuel)
                         ).set(fournisseur_metrics['prix_moyen'])
                         
                         fournisseur_ventes_total.labels(
                             id=str(fournisseur_metrics['id']),
                             nom=fournisseur_metrics['nom'],
-                            continent=fournisseur_metrics['continent']
+                            continent=fournisseur_metrics['continent'],
+                            tick=str(tick_actuel)
                         ).set(fournisseur_metrics['ventes_total'])
                         
                         fournisseur_disponibilite.labels(
                             id=str(fournisseur_metrics['id']),
                             nom=fournisseur_metrics['nom'],
-                            continent=fournisseur_metrics['continent']
+                            continent=fournisseur_metrics['continent'],
+                            tick=str(tick_actuel)
                         ).set(fournisseur_metrics['disponibilite'])
                         
                         fournisseur_rotation_stock.labels(
                             id=str(fournisseur_metrics['id']),
                             nom=fournisseur_metrics['nom'],
-                            continent=fournisseur_metrics['continent']
+                            continent=fournisseur_metrics['continent'],
+                            tick=str(tick_actuel)
                         ).set(fournisseur_metrics['rotation_stock'])
                         
                         fournisseur_rentabilite.labels(
                             id=str(fournisseur_metrics['id']),
                             nom=fournisseur_metrics['nom'],
-                            continent=fournisseur_metrics['continent']
+                            continent=fournisseur_metrics['continent'],
+                            tick=str(tick_actuel)
                         ).set(fournisseur_metrics['rentabilite'])
                         
                         # Métriques de stock par produit par fournisseur
@@ -1158,7 +1172,8 @@ class PrometheusExporter:
                                         nom_fournisseur=fournisseur_metrics['nom'],
                                         id_produit=str(stock_info.get('id_produit', 'unknown')),
                                         nom_produit=stock_info.get('nom_produit', 'unknown'),
-                                        type_produit=stock_info.get('type_produit', 'unknown')
+                                        type_produit=stock_info.get('type_produit', 'unknown'),
+                                        tick=str(tick_actuel)
                                     ).set(stock_info.get('stock', 0))
                                 except Exception as e:
                                     print(f"⚠️ Erreur stock fournisseur {fournisseur_metrics.get('id', 'unknown')}: {e}")
@@ -1182,7 +1197,8 @@ class PrometheusExporter:
                             'nom_entite': stock_hist['nom_entite'],
                             'id_produit': str(stock_hist['id_produit']),
                             'nom_produit': stock_hist['nom_produit'],
-                            'tour': str(stock_hist['tour'])
+                            'tour': str(stock_hist['tour']),
+                            'tick': str(tick_actuel)
                         }
                         entreprise_stock_historique.labels(**hist_labels).set(stock_hist['stock'])
                 
@@ -1194,7 +1210,8 @@ class PrometheusExporter:
                             'nom_entite': stock_hist['nom_entite'],
                             'id_produit': str(stock_hist['id_produit']),
                             'nom_produit': stock_hist['nom_produit'],
-                            'tour': str(stock_hist['tour'])
+                            'tour': str(stock_hist['tour']),
+                            'tick': str(tick_actuel)
                         }
                         fournisseur_stock_historique.labels(**hist_labels).set(stock_hist['stock'])
                 
@@ -1208,7 +1225,8 @@ class PrometheusExporter:
                                 'nom_entite': evolution['nom_entite'],
                                 'id_produit': str(evolution['id_produit']),
                                 'nom_produit': evolution['nom_produit'],
-                                'periode': evolution['periode']
+                                'periode': evolution['periode'],
+                                'tick': str(tick_actuel)
                             }
                             entreprise_stock_evolution.labels(**evol_labels).set(evolution['evolution'])
                     
@@ -1220,7 +1238,8 @@ class PrometheusExporter:
                                 'nom_entite': evolution['nom_entite'],
                                 'id_produit': str(evolution['id_produit']),
                                 'nom_produit': evolution['nom_produit'],
-                                'periode': evolution['periode']
+                                'periode': evolution['periode'],
+                                'tick': str(tick_actuel)
                             }
                             fournisseur_stock_evolution.labels(**evol_labels).set(evolution['evolution'])
             

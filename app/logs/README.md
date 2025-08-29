@@ -226,6 +226,64 @@ jq 'select(.budget_total_actuel > 50000)' logs/metrics.jsonl
 - Dashboards dynamiques
 - Analyse prédictive
 
+## 🔍 **Mini Tutoriel : Analyser les événements d'inflation**
+
+### **Comment détecter les événements d'inflation**
+
+#### **1. Recherche dans les logs d'événements**
+```bash
+# Rechercher tous les événements d'inflation
+grep -i "inflation" logs/event.log
+
+# Rechercher dans tous les logs
+grep -i "inflation" logs/*.log
+```
+
+#### **2. Vérifier les prix extrêmes dans Prometheus**
+```bash
+# Prix les plus élevés (inflation possible)
+curl -s -u admin:admin "http://localhost:3000/api/datasources/proxy/1/api/v1/query?query=tradesim_produit_prix" | \
+jq '.data.result[] | {nom: .metric.nom, prix: .value[1], type: .metric.type}' | \
+jq -s 'sort_by(.prix | tonumber) | reverse | .[0:10]'
+
+# Prix les plus bas (pas d'inflation)
+curl -s -u admin:admin "http://localhost:3000/api/datasources/proxy/1/api/v1/query?query=tradesim_produit_prix" | \
+jq '.data.result[] | {nom: .metric.nom, prix: .value[1], type: .metric.type}' | \
+jq -s 'sort_by(.prix | tonumber) | .[0:10]'
+```
+
+#### **3. Analyser l'évolution des prix d'un produit**
+```bash
+# Évolution temporelle d'un produit spécifique
+curl -s -u admin:admin "http://localhost:3000/api/datasources/proxy/1/api/v1/query_range?query=tradesim_produit_prix{nom=\"Béton\"}&start=$(date -v-10M +%s)&end=$(date +%s)&step=30s" | \
+jq '.data.result[0].values' | \
+jq -r '.[] | "Timestamp: \(.[0]) | Prix: \(.[1])€"'
+```
+
+### **Exemple d'analyse d'inflation**
+
+#### **Produits avec inflation détectée :**
+- **Béton** : 2876.48€ (vs 2.18€ pour d'autres instances) → **+131,900%**
+- **Métal** : 2803.23€ (vs 4.74€ pour d'autres instances) → **+59,100%**
+- **Électricité** : 1672.23€ (vs 4.52€ pour d'autres instances) → **+36,900%**
+
+#### **Produits sans inflation :**
+- **Cosmétique** : 2.15€
+- **Huile** : 2.22€
+- **Bijou** : 2.34€
+
+### **Interprétation des résultats**
+
+#### **Signes d'inflation :**
+1. **Prix extrêmement élevés** (>100€) pour des produits normalement bon marché
+2. **Écarts importants** entre instances du même produit
+3. **Patterns cohérents** dans les logs d'événements
+
+#### **Limitations actuelles :**
+- Les métriques Prometheus ne stockent que la **dernière valeur** par produit
+- Pas d'**historique temporel** des prix (à implémenter)
+- Les événements d'inflation ne sont pas explicitement marqués dans les logs
+
 ---
 
 **Note :** Ce système d'IDs permet une traçabilité complète pour l'analyse, le debugging et le monitoring de TradeSim.

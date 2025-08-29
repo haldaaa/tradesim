@@ -71,7 +71,7 @@ TYPES_PRODUITS_PREFERES_MAX = 2       # Nombre maximum de types de produits pré
 
 # Quantités d'achat par entreprise
 QUANTITE_ACHAT_MIN = 1                # Quantité minimum d'achat par entreprise
-QUANTITE_ACHAT_MAX = 100              # Quantité maximum d'achat par entreprise
+QUANTITE_ACHAT_MAX = 40              # Quantité maximum d'achat par entreprise
 
 # Quantités d'achat adaptées aux prix (pour éviter la faillite)
 QUANTITE_ACHAT_PRIX_ELEVE_MIN = 1     # Quantité minimum pour produits chers
@@ -99,8 +99,7 @@ PRODUITS_ACTIFS_MAX = 12              # Nombre maximum de produits actifs
 TYPES_PRODUITS_DISPONIBLES = [
     "matiere_premiere",
     "consommable", 
-    "equipement",
-    "service"
+    "produit_fini"
 ]
 
 # ============================================================================

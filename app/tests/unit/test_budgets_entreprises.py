@@ -43,8 +43,8 @@ class TestBudgetsEntreprises:
     
     def test_constantes_configuration(self):
         """Test que les constantes de configuration sont correctement définies"""
-        assert BUDGET_ENTREPRISE_MIN == 6000
-        assert BUDGET_ENTREPRISE_MAX == 20000
+        assert BUDGET_ENTREPRISE_MIN == 18000
+        assert BUDGET_ENTREPRISE_MAX == 35000
         assert BUDGET_ENTREPRISE_MIN < BUDGET_ENTREPRISE_MAX
     
     def test_budget_dans_bornes(self):

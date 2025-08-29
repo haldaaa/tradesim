@@ -60,7 +60,8 @@ from config.config import (
     TYPES_PRODUITS_PREFERES_MIN, TYPES_PRODUITS_PREFERES_MAX,
     BUDGET_ENTREPRISE_MIN, BUDGET_ENTREPRISE_MAX,
     PRIX_PRODUIT_MIN, PRIX_PRODUIT_MAX,
-    NOMBRE_PRODUITS_DEFAUT, PRODUITS_ACTIFS_MIN, PRODUITS_ACTIFS_MAX
+    NOMBRE_PRODUITS_DEFAUT, PRODUITS_ACTIFS_MIN, PRODUITS_ACTIFS_MAX,
+    QUANTITE_ACHAT_MIN, QUANTITE_ACHAT_MAX, N_ENTREPRISES_PAR_TOUR
 )
 
 # Initialisation des Repository
@@ -365,6 +366,7 @@ def generate_fournisseurs(config_fournisseurs: Dict[str, Any]):
         fournisseur_repo.add(fournisseur)
         
         # Définir les prix APRÈS avoir ajouté le fournisseur
+        prix_fournisseur_data = []
         for produit in produits_attribués:
             # Calcul d'un prix fournisseur spécifique (facteur plus raisonnable)
             prix_base = produit.prix
@@ -380,8 +382,29 @@ def generate_fournisseurs(config_fournisseurs: Dict[str, Any]):
             if not success:
                 print(f"⚠️ Échec définition prix: produit {produit.id}, fournisseur {fid}, prix {prix_fournisseur}")
             else:
-                print(f"✅ Prix défini: produit {produit.id}, fournisseur {fid}, prix {prix_fournisseur}")
-                print(f"    📊 Stockage contient maintenant {len(price_service._prix_stockage)} prix")
+                prix_fournisseur_data.append({
+                    'produit_nom': produit.nom,
+                    'produit_id': produit.id,
+                    'fournisseur_nom': fournisseur_data["nom"],
+                    'fournisseur_id': fid,
+                    'prix': prix_fournisseur
+                })
+        
+        # Afficher le tableau des prix pour ce fournisseur
+        if prix_fournisseur_data:
+            print(f"\n💰 PRIX FOURNISSEUR: {fournisseur_data['nom']} ({fournisseur_data['pays']})")
+            print("┌" + "─" * 80 + "┐")
+            print("│ {:<25} {:<15} {:<20} {:<15} │".format("Produit", "ID Produit", "Fournisseur", "Prix"))
+            print("├" + "─" * 80 + "┤")
+            for data in prix_fournisseur_data:
+                print("│ {:<25} {:<15} {:<20} {:<15} │".format(
+                    data['produit_nom'][:24], 
+                    data['produit_id'], 
+                    data['fournisseur_nom'][:19], 
+                    f"{data['prix']}€"
+                ))
+            print("└" + "─" * 80 + "┘")
+            print(f"📊 Stockage contient maintenant {len(price_service._prix_stockage)} prix")
 
 def generate_entreprises(config_entreprises: Dict[str, Any]):
     """
@@ -416,6 +439,22 @@ random.randint(TYPES_PRODUITS_PREFERES_MIN, min(TYPES_PRODUITS_PREFERES_MAX, len
             strategie=random.choice(strategies)
         )
         entreprise_repo.add(entreprise)
+    
+    # Afficher le tableau récapitulatif des budgets des entreprises
+    entreprises = entreprise_repo.get_all()
+    if entreprises:
+        print(f"\n🏢 BUDGETS DES ENTREPRISES")
+        print("┌" + "─" * 70 + "┐")
+        print("│ {:<20} {:<15} {:<15} {:<15} │".format("Entreprise", "Pays", "Budget", "Stratégie"))
+        print("├" + "─" * 70 + "┤")
+        for entreprise in entreprises:
+            print("│ {:<20} {:<15} {:<15} {:<15} │".format(
+                entreprise.nom[:19], 
+                entreprise.pays[:14], 
+                f"{entreprise.budget:.0f}€", 
+                entreprise.strategie[:14]
+            ))
+        print("└" + "─" * 70 + "┘")
 
 def save_template(nom: str):
     """Sauvegarde la configuration actuelle comme template"""
@@ -565,8 +604,8 @@ def create_interactive_config():
     # Configuration des entreprises
     print("\n🏢 ENTREPRISES")
     config["entreprises"]["nombre"] = ask_number("Nombre d'entreprises", 3, 1, 10)
-    config["entreprises"]["budget_min"] = ask_number("Range budget entreprises (minimum en €)", 1000, 100, 10000)
-    config["entreprises"]["budget_max"] = ask_number("Range budget entreprises (maximum en €)", 3000, config["entreprises"]["budget_min"], 20000)
+    config["entreprises"]["budget_min"] = ask_number("Range budget entreprises (minimum en €)", BUDGET_ENTREPRISE_MIN, 1000, 100000)
+    config["entreprises"]["budget_max"] = ask_number("Range budget entreprises (maximum en €)", BUDGET_ENTREPRISE_MAX, config["entreprises"]["budget_min"], 200000)
     
     # Configuration des produits
     print("\n📦 PRODUITS")
@@ -591,7 +630,7 @@ def create_interactive_config():
     
     # Configuration des événements
     print("\n🎲 ÉVÉNEMENTS")
-    config["evenements"]["intervalle"] = ask_number("Intervalle des événements (ticks)", 20, 5, 100)
+    config["evenements"]["intervalle"] = ask_number("Intervalle des événements (ticks)", TICK_INTERVAL_EVENT, 1, 100)
     config["evenements"]["probabilites"]["recharge_budget"] = ask_number("Probabilité recharge budget", 0.5, 0.0, 1.0, is_float=True)
     config["evenements"]["probabilites"]["reassort"] = ask_number("Probabilité reassort", 0.5, 0.0, 1.0, is_float=True)
     config["evenements"]["probabilites"]["inflation"] = ask_number("Probabilité inflation", 0.4, 0.0, 1.0, is_float=True)
@@ -599,14 +638,14 @@ def create_interactive_config():
     
     # Paramètres des événements
     print("\n📊 PARAMÈTRES DES ÉVÉNEMENTS")
-    config["evenements"]["recharge_budget"]["min"] = ask_number("Recharge budget minimum (€)", 200, 10, 10000)
-    config["evenements"]["recharge_budget"]["max"] = ask_number("Recharge budget maximum (€)", 600, config["evenements"]["recharge_budget"]["min"], 50000)
-    config["evenements"]["reassort"]["min"] = ask_number("Reassort minimum (unités)", 10, 1, 1000)
-    config["evenements"]["reassort"]["max"] = ask_number("Reassort maximum (unités)", 50, config["evenements"]["reassort"]["min"], 10000)
-    config["evenements"]["inflation"]["min"] = ask_number("Inflation minimum (%)", 30, 1, 200)
-    config["evenements"]["inflation"]["max"] = ask_number("Inflation maximum (%)", 60, config["evenements"]["inflation"]["min"], 500)
-    config["evenements"]["variation_disponibilite"]["desactivation"] = ask_number("Probabilité désactivation produit", 0.1, 0.0, 1.0, is_float=True)
-    config["evenements"]["variation_disponibilite"]["reactivation"] = ask_number("Probabilité réactivation produit", 0.2, 0.0, 1.0, is_float=True)
+    config["evenements"]["recharge_budget"]["min"] = ask_number("Recharge budget minimum (€)", RECHARGE_BUDGET_MIN, 100, 100000)
+    config["evenements"]["recharge_budget"]["max"] = ask_number("Recharge budget maximum (€)", RECHARGE_BUDGET_MAX, config["evenements"]["recharge_budget"]["min"], 500000)
+    config["evenements"]["reassort"]["min"] = ask_number("Reassort minimum (unités)", REASSORT_QUANTITE_MIN, 1, 1000)
+    config["evenements"]["reassort"]["max"] = ask_number("Reassort maximum (unités)", REASSORT_QUANTITE_MAX, config["evenements"]["reassort"]["min"], 10000)
+    config["evenements"]["inflation"]["min"] = ask_number("Inflation minimum (%)", INFLATION_POURCENTAGE_MIN, 1, 200)
+    config["evenements"]["inflation"]["max"] = ask_number("Inflation maximum (%)", INFLATION_POURCENTAGE_MAX, config["evenements"]["inflation"]["min"], 500)
+    config["evenements"]["variation_disponibilite"]["desactivation"] = ask_number("Probabilité désactivation produit", PROBABILITE_DESACTIVATION, 0.0, 1.0, is_float=True)
+    config["evenements"]["variation_disponibilite"]["reactivation"] = ask_number("Probabilité réactivation produit", PROBABILITE_REACTIVATION, 0.0, 1.0, is_float=True)
     
     # Générer la nouvelle partie
     generate_game_data(config)
@@ -1005,11 +1044,14 @@ def show_game_summary(n_tours: int = None):
         print("│ {:<35} {:<42} │".format("Nombre de tours choisi", f"{n_tours} tours"))
     
     print("│ {:<35} {:<42} │".format("Probabilité sélection", f"{PROBABILITE_SELECTION_ENTREPRISE*100:.0f}% ({PROBABILITE_SELECTION_ENTREPRISE})"))
+    print("│ {:<35} {:<42} │".format("Entreprises par tour", f"{N_ENTREPRISES_PAR_TOUR} entreprises"))
     print("│ {:<35} {:<42} │".format("Pause entre tours", f"{DUREE_PAUSE_ENTRE_TOURS} secondes"))
     print("│ {:<35} {:<42} │".format("Intervalle événements", f"{TICK_INTERVAL_EVENT} ticks"))
     print("│ {:<35} {:<42} │".format("Recharge budget range", f"{RECHARGE_BUDGET_MIN}€ - {RECHARGE_BUDGET_MAX}€"))
     print("│ {:<35} {:<42} │".format("Reassort range", f"{REASSORT_QUANTITE_MIN} - {REASSORT_QUANTITE_MAX} unités"))
-    print("│ {:<35} {:<42} │".format("Inflation range", "30% - 60%"))
+    print("│ {:<35} {:<42} │".format("Inflation range", f"{INFLATION_POURCENTAGE_MIN}% - {INFLATION_POURCENTAGE_MAX}%"))
+    print("│ {:<35} {:<42} │".format("Quantité achat range", f"{QUANTITE_ACHAT_MIN} - {QUANTITE_ACHAT_MAX} unités"))
+    print("│ {:<35} {:<42} │".format("Prix produit range", f"{PRIX_PRODUIT_MIN}€ - {PRIX_PRODUIT_MAX}€"))
     
     probas_str = f"Recharge:{PROBABILITE_EVENEMENT['recharge_budget']*100:.0f}%, Reassort:{PROBABILITE_EVENEMENT['reassort']*100:.0f}%, Inf:{PROBABILITE_EVENEMENT['inflation']*100:.0f}%, Var:{PROBABILITE_EVENEMENT['variation_disponibilite']*100:.0f}%"
     print("│ {:<35} {:<42} │".format("Probabilités événements", probas_str))

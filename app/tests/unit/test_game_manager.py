@@ -21,7 +21,7 @@ from services.game_manager import (
     reset_game, generate_game_data, generate_produits, generate_fournisseurs,
     generate_entreprises, save_template, load_template, list_templates,
     get_current_config, ask_number, ask_launch_game, show_game_summary,
-    DEFAULT_CONFIG, NOMS_ENTREPRISES, NOMS_FOURNISSEURS,
+    get_default_config, NOMS_ENTREPRISES, NOMS_FOURNISSEURS,
     NOMS_PRODUITS
 )
 from models import Produit, TypeProduit, Fournisseur, Entreprise

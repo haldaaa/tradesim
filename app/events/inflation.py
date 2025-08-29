@@ -110,6 +110,8 @@ def appliquer_retour_normal(tick: int) -> List[Dict[str, Any]]:
             if tours_ecoules >= DUREE_RETOUR_INFLATION:
                 timer["phase_retour"] = True
                 timer["tick_debut_retour"] = tick
+                produit = produit_repo.get_by_id(produit_id)
+                print(f"🔄 DÉBUT RETOUR NORMAL: {produit.nom if produit else 'Produit'} - Après {DUREE_RETOUR_INFLATION} tours, début de la baisse progressive")
         
         if timer["phase_retour"]:
             # Calculer le prix actuel selon la phase de retour
@@ -162,17 +164,19 @@ def appliquer_retour_normal(tick: int) -> List[Dict[str, Any]]:
             
             # Log humain
             if tours_retour >= DUREE_BAISSE_INFLATION:
-                message_humain = f"[RETOUR NORMAL] {produit.nom if produit else 'Produit'} - Retour terminé: {nouveau_prix}€ (prix original + {POURCENTAGE_FINAL_INFLATION}%)"
+                message_humain = f"📉 RETOUR NORMAL: {produit.nom if produit else 'Produit'} - Retour terminé: {nouveau_prix}€ (prix original + {POURCENTAGE_FINAL_INFLATION}%)"
             else:
-                message_humain = f"[RETOUR NORMAL] {produit.nom if produit else 'Produit'} - Baisse: {log_retour['pourcentage_baisse']}% → {nouveau_prix}€ (tour {tours_retour}/{DUREE_BAISSE_INFLATION})"
+                message_humain = f"📉 RETOUR NORMAL: {produit.nom if produit else 'Produit'} - Baisse: {log_retour['pourcentage_baisse']}% → {nouveau_prix}€ (tour {tours_retour}/{DUREE_BAISSE_INFLATION})"
             
             # Ajouter aux logs
             retour_logs.append(log_retour)
             
             # Logs automatiques (comme l'inflation)
             from events.event_logger import log_evenement_json, log_evenement_humain
-            log_evenement_json(log_retour)
-            log_evenement_humain(message_humain)
+            horodatage_iso = datetime.now(timezone.utc).isoformat()
+            horodatage_humain = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
+            log_evenement_json(tick, horodatage_iso, horodatage_humain, "retour_normal_inflation", log_retour)
+            log_evenement_humain(tick, horodatage_humain, "retour_normal_inflation", message_humain)
     
     return retour_logs
 
@@ -255,8 +259,11 @@ def appliquer_inflation(tick: int) -> List[Dict[str, Any]]:
         for fournisseur in fournisseurs:
             # Vérifier si le fournisseur a ce produit en stock
             if produit_id in fournisseur.stock_produit and fournisseur.stock_produit[produit_id] > 0:
-                # Calculer le prix (simulation - à améliorer avec un vrai système de prix)
-                prix_base = 100.0  # Prix de base (à améliorer)
+                # Récupérer le vrai prix du produit depuis le repository
+                produit = produit_repo.get_by_id(produit_id)
+                if not produit:
+                    continue
+                prix_base = produit.prix  # Utiliser le vrai prix du produit
                 
                 # Vérifier si le produit a subi une inflation récemment (pénalité active)
                 penalite_active = False
@@ -274,6 +281,7 @@ def appliquer_inflation(tick: int) -> List[Dict[str, Any]]:
                             else:
                                 # Pénalité expirée, supprimer l'entrée
                                 del produits_inflation_timers[produit_id]
+                                print(f"🗑️ TIMER SUPPRIMÉ: Produit {produit_id} - Pénalité expirée")
                         else:
                             print(f"⚠️ derniere_inflation_tick invalide pour produit {produit_id}: {derniere_tick}")
                             tours_ecoules = 0
@@ -286,8 +294,10 @@ def appliquer_inflation(tick: int) -> List[Dict[str, Any]]:
                 
                 # Appliquer la pénalité si nécessaire
                 if penalite_active:
+                    pourcentage_original = pourcentage_inflation
                     pourcentage_inflation -= PENALITE_INFLATION_PRODUIT_EXISTANT
                     pourcentage_inflation = max(pourcentage_inflation, 5)  # Minimum 5% d'inflation
+                    print(f"⚠️ PÉNALITÉ INFLATION: {produit.nom if produit else 'Produit'} - {pourcentage_original:.1f}% → {pourcentage_inflation:.1f}% (-{PENALITE_INFLATION_PRODUIT_EXISTANT}%)")
                 
                 multiplicateur = 1 + (pourcentage_inflation / 100)
                 
@@ -304,6 +314,7 @@ def appliquer_inflation(tick: int) -> List[Dict[str, Any]]:
                     "phase_retour": False,  # Nouvelle inflation arrête le retour
                     "tick_debut_retour": None
                 }
+                print(f"🔧 TIMER CRÉÉ: Produit {produit_id} - Tick {tick} - Prix {ancien_prix}€ → {nouveau_prix}€")
 
                 # Trouver le produit pour les informations
                 produit = produit_repo.get_by_id(produit_id)
@@ -359,6 +370,9 @@ def appliquer_inflation(tick: int) -> List[Dict[str, Any]]:
                 f"💰 Tour {tick} - INFLATION {type_display}: {len(inflation_logs)} produits affectés (prix +{min_pourcentage}% à +{max_pourcentage}%)"
             )
         
+        # Ajouter un log pour indiquer que l'inflation a été appliquée
+        print(f"🔥 INFLATION APPLIQUÉE: {message_humain}")
+        
         log_json = {
             "tick": tick,
             "timestamp": horodatage,
@@ -375,6 +389,11 @@ def appliquer_inflation(tick: int) -> List[Dict[str, Any]]:
             },
             "log_humain": message_humain
         }
+        
+        # Écrire les logs dans les fichiers (JSONL et format humain)
+        from events.event_logger import log_evenement_json, log_evenement_humain
+        log_evenement_json(tick, horodatage, horodatage_humain, "inflation", log_json)
+        log_evenement_humain(tick, horodatage_humain, "inflation", message_humain)
         
         return [log_json]
     else:
