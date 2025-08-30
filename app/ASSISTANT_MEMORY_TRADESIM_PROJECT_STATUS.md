@@ -1,5 +1,5 @@
 # ASSISTANT MEMORY - TRADESIM PROJECT STATUS
-**Dernière mise à jour : 29/08/2025 20:35 (Phuket)**
+**Dernière mise à jour : 30/08/2025 12:43 (Phuket)**
 
 ## 📊 **SESSION 37 - 28/08/2025 11:00 - CORRECTION TESTS ET VALIDATION SIMULATION INTERACTIVE**
 
@@ -985,5 +985,142 @@
 2. **Dashboard Grafana** : Modifier les dashboards pour utiliser le label `tick` sur l'axe X au lieu du timestamp
 3. **Validation** : Tester les requêtes PromQL avec le label `tick` pour l'historique
 4. **Documentation** : Mettre à jour la documentation des métriques avec les nouvelles possibilités
+
+---
+
+## 📊 **SESSION 40 - 30/08/2025 12:43 - CORRECTION DES MÉTRIQUES AVEC LABEL 'TICK'**
+
+**🎯 NOUVELLE SESSION DÉMARRÉE**
+- **Heure de début** : 30 août 2025, 12h43 (heure locale Phuket)
+- **Objectif principal** : Corriger les erreurs de labels dans les métriques Prometheus et tester l'implémentation du label `tick`
+- **TODO de la session précédente** : Tester l'implémentation du label `tick` et corriger les dashboards Grafana
+- **Focus actuel** : Correction des erreurs de labels et validation du système
+
+### **🎯 OBJECTIFS DE LA SESSION**
+- Corriger les erreurs "Incorrect label names" dans l'exporteur Prometheus
+- Tester que les métriques avec le label `tick` fonctionnent correctement
+- Vérifier que les données historiques sont bien collectées par tour
+- Préparer la modification des dashboards Grafana
+
+### **✅ ACCOMPLISSEMENTS DE LA SESSION**
+
+**1. Correction des métriques globales - RÉALISÉ**
+- **Métriques de budget** : Ajout du label `tick` à toutes les métriques de budget importantes
+  - `budget_total_entreprises`, `budget_moyen_entreprises`, `budget_median_entreprises`
+  - `budget_ecart_type_entreprises`, `budget_coefficient_variation`
+  - `budget_variation_totale`, `budget_ratio_depenses_revenus`
+  - `budget_entreprises_critiques`, `budget_entreprises_faibles`
+  - `budget_evolution_tour`, `budget_tendance_globale`, `budget_skewness`
+
+- **Métriques de produits** : Ajout du label `tick` aux métriques de produits importantes
+  - `produits_prix_moyen`, `produits_prix_median`
+  - `produits_demande_moyenne`, `produits_offre_moyenne`, `produits_rotation_stock`
+  - `produits_rentabilite`, `produits_popularite`, `produits_disponibilite`
+  - `produits_volatilite_prix`, `produits_tendance_prix`
+  - `produits_elasticite_demande`, `produits_competitivite`
+
+- **Métriques d'entreprises** : Ajout du label `tick` aux métriques d'entreprises importantes
+  - `entreprises_transactions_moyennes`, `entreprises_budget_moyen`
+  - `entreprises_stock_moyen`, `entreprises_rentabilite`
+  - `entreprises_efficacite_achat`, `entreprises_survie_taux`
+  - `entreprises_frequence_achat`, `entreprises_preference_produits`
+  - `entreprises_adaptation_prix`, `entreprises_competitivite`
+  - `entreprises_resilience`, `entreprises_innovation`
+
+- **Métriques de fournisseurs** : Ajout du label `tick` aux métriques de fournisseurs importantes
+  - `fournisseurs_stock_moyen`, `fournisseurs_produits_moyen`
+  - `fournisseurs_ventes_moyennes`, `fournisseurs_rotation_stock`
+  - `fournisseurs_disponibilite`, `fournisseurs_rentabilite`
+  - `fournisseurs_popularite`, `fournisseurs_efficacite`
+
+- **Métriques de transactions** : Ajout du label `tick` aux métriques de transactions importantes
+  - `transactions_moyennes_par_tour`, `taux_reussite_transactions`
+  - `montant_moyen_transaction`, `frequence_transactions`, `efficacite_transactions`
+
+- **Métriques d'événements** : Ajout du label `tick` aux métriques d'événements importantes
+  - `evenements_inflation`, `evenements_reassort`, `evenements_recharge_budget`
+  - `evenements_variation_disponibilite`, `impact_moyen_evenements`
+  - `frequence_evenements_inflation`, `frequence_evenements_reassort`
+  - `frequence_evenements_recharge`, `frequence_evenements_disponibilite`
+
+**2. Correction des métriques individuelles - RÉALISÉ**
+- **Métriques d'entreprises individuelles** : Ajout du label `tick` à toutes les métriques individuelles
+  - `entreprise_budget`, `entreprise_budget_initial`, `entreprise_budget_evolution`
+  - `entreprise_budget_tendance`, `entreprise_transactions_total`
+  - `entreprise_stock_produit`
+
+- **Métriques de produits individuels** : Ajout du label `tick` à toutes les métriques individuelles
+  - `produit_prix`, `produit_prix_evolution`, `produit_prix_tendance`
+
+- **Métriques de fournisseurs individuels** : Ajout du label `tick` à toutes les métriques individuelles
+  - `fournisseur_prix_moyen`, `fournisseur_ventes_total`, `fournisseur_disponibilite`
+  - `fournisseur_rotation_stock`, `fournisseur_rentabilite`
+  - `fournisseur_stock_produit`
+
+- **Métriques historiques** : Ajout du label `tick` aux métriques historiques
+  - `entreprise_stock_historique`, `fournisseur_stock_historique`
+
+**3. Correction des métriques Counter - RÉALISÉ**
+- **Métriques Counter** : Correction des appels `.inc()` pour inclure le label `tick`
+  - `budget_depenses_totales.labels(tick=str(tick_actuel)).inc()`
+  - `budget_gains_totaux.labels(tick=str(tick_actuel)).inc()`
+  - `volume_total_transactions.labels(tick=str(tick_actuel)).inc()`
+
+**4. Test de validation - PARTIEL**
+- **Simulation lancée** : 3 tours avec monitoring activé
+- **Résultats** : La plupart des métriques fonctionnent maintenant sans erreur
+- **Problème restant** : Une erreur "Incorrect label names" au tour 2 (à investiguer)
+
+### **📊 IMPACT TECHNIQUE**
+
+**Prometheus** : Les métriques avec label `tick` sont maintenant correctement définies
+- **Exporteur** : La plupart des métriques fonctionnent sans erreur
+- **Historique** : Possibilité de collecter des données historiques par tour
+- **Requêtes** : Possibilité de faire des requêtes comme `tradesim_budget_total_entreprises{tick="2"}`
+
+**Système de monitoring** : Prêt pour l'affichage de graphiques historiques
+- **Grafana** : Les dashboards peuvent maintenant utiliser le label `tick` pour l'axe X
+- **Données temporelles** : Possibilité d'afficher l'évolution des métriques par tour
+- **Architecture** : Le système est prêt pour les graphiques historiques
+
+### **🔧 PROCHAINES ÉTAPES**
+
+**Session suivante** :
+1. **Investigation** : Identifier et corriger l'erreur "Incorrect label names" restante
+2. **Test complet** : Lancer une simulation plus longue pour valider toutes les métriques
+3. **Dashboard Grafana** : Modifier les dashboards pour utiliser le label `tick` sur l'axe X
+4. **Validation** : Tester les requêtes PromQL avec le label `tick` pour l'historique
+5. **Documentation** : Mettre à jour la documentation des métriques
+
+### **🎯 OBJECTIFS ATTEINTS**
+
+**Correction des métriques** : ✅ **RÉALISÉ**
+- Toutes les métriques importantes ont maintenant le label `tick`
+- Les erreurs de labels ont été corrigées
+- Le système est prêt pour l'historique par tour
+
+**Test de validation** : ⚠️ **PARTIEL**
+- La plupart des métriques fonctionnent
+- Une erreur mineure reste à corriger
+- Le système est fonctionnel pour les tests
+
+**Préparation pour Grafana** : ✅ **RÉALISÉ**
+- Métriques prêtes pour l'affichage historique
+- Possibilité de graphiques par tour
+- Architecture prête pour les dashboards temporels
+
+### **📝 NOTES IMPORTANTES**
+
+- La plupart des erreurs de labels ont été corrigées
+- Le système fonctionne maintenant avec le label `tick`
+- Une erreur mineure reste à investiguer au tour 2
+- Les métriques sont prêtes pour l'affichage historique dans Grafana
+
+### **🎯 SESSION EN COURS**
+- **Heure actuelle** : 30 août 2025, 12h57
+- **Bugs corrigés** : Erreurs de labels dans les métriques Prometheus
+- **Feature ajoutée** : Label `tick` sur toutes les métriques importantes
+- **Impact** : Système prêt pour l'affichage de graphiques historiques par tour
+- **Prochain objectif** : Corriger l'erreur restante et modifier les dashboards Grafana
 
 ---

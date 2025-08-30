@@ -202,28 +202,28 @@ process_uptime_seconds = Gauge('tradesim_process_uptime_seconds', 'Temps de fonc
 # ============================================================================
 
 # Métriques de base (5 métriques)
-budget_total_entreprises = Gauge('tradesim_budget_total_entreprises', 'Budget total de toutes les entreprises (somme)')
-budget_moyen_entreprises = Gauge('tradesim_budget_moyen_entreprises', 'Budget moyen des entreprises (moyenne arithmétique)')
-budget_median_entreprises = Gauge('tradesim_budget_median_entreprises', 'Budget médian des entreprises (valeur centrale)')
-budget_ecart_type_entreprises = Gauge('tradesim_budget_ecart_type_entreprises', 'Écart-type des budgets (dispersion)')
-budget_coefficient_variation = Gauge('tradesim_budget_coefficient_variation', 'Coefficient de variation (CV = σ/μ)')
+budget_total_entreprises = Gauge('tradesim_budget_total_entreprises', 'Budget total de toutes les entreprises (somme)', ['tick'])
+budget_moyen_entreprises = Gauge('tradesim_budget_moyen_entreprises', 'Budget moyen des entreprises (moyenne arithmétique)', ['tick'])
+budget_median_entreprises = Gauge('tradesim_budget_median_entreprises', 'Budget médian des entreprises (valeur centrale)', ['tick'])
+budget_ecart_type_entreprises = Gauge('tradesim_budget_ecart_type_entreprises', 'Écart-type des budgets (dispersion)', ['tick'])
+budget_coefficient_variation = Gauge('tradesim_budget_coefficient_variation', 'Coefficient de variation (CV = σ/μ)', ['tick'])
 
 # Métriques de variation (3 métriques)
-budget_variation_totale = Gauge('tradesim_budget_variation_totale', 'Variation totale des budgets (actuel - initial)')
-budget_depenses_totales = Counter('tradesim_budget_depenses_totales', 'Dépenses totales cumulées de toutes les entreprises')
-budget_gains_totaux = Counter('tradesim_budget_gains_totaux', 'Gains totaux cumulés de toutes les entreprises')
+budget_variation_totale = Gauge('tradesim_budget_variation_totale', 'Variation totale des budgets (actuel - initial)', ['tick'])
+budget_depenses_totales = Counter('tradesim_budget_depenses_totales', 'Dépenses totales cumulées de toutes les entreprises', ['tick'])
+budget_gains_totaux = Counter('tradesim_budget_gains_totaux', 'Gains totaux cumulés de toutes les entreprises', ['tick'])
 
 # Métriques de santé financière (3 métriques)
-budget_ratio_depenses_revenus = Gauge('tradesim_budget_ratio_depenses_revenus', 'Ratio dépenses/revenus (dépenses/gains)')
-budget_entreprises_critiques = Gauge('tradesim_budget_entreprises_critiques', 'Nombre d\'entreprises avec budget critique (≤1000€)')
-budget_entreprises_faibles = Gauge('tradesim_budget_entreprises_faibles', 'Nombre d\'entreprises avec budget faible (1000-3000€)')
+budget_ratio_depenses_revenus = Gauge('tradesim_budget_ratio_depenses_revenus', 'Ratio dépenses/revenus (dépenses/gains)', ['tick'])
+budget_entreprises_critiques = Gauge('tradesim_budget_entreprises_critiques', 'Nombre d\'entreprises avec budget critique (≤1000€)', ['tick'])
+budget_entreprises_faibles = Gauge('tradesim_budget_entreprises_faibles', 'Nombre d\'entreprises avec budget faible (1000-3000€)', ['tick'])
 
 # Métriques de tendance (2 métriques)
-budget_evolution_tour = Gauge('tradesim_budget_evolution_tour', 'Évolution du budget total depuis le tour précédent')
-budget_tendance_globale = Gauge('tradesim_budget_tendance_globale', 'Tendance globale des budgets (pente de régression)')
+budget_evolution_tour = Gauge('tradesim_budget_evolution_tour', 'Évolution du budget total depuis le tour précédent', ['tick'])
+budget_tendance_globale = Gauge('tradesim_budget_tendance_globale', 'Tendance globale des budgets (pente de régression)', ['tick'])
 
 # Métriques avancées (1 métrique)
-budget_skewness = Gauge('tradesim_budget_skewness', 'Asymétrie de la distribution des budgets (skewness)')
+budget_skewness = Gauge('tradesim_budget_skewness', 'Asymétrie de la distribution des budgets (skewness)', ['tick'])
 
 # ============================================================================
 # MÉTRIQUES D'ENTREPRISES (18 métriques)
@@ -238,20 +238,20 @@ entreprises_par_strategie = Gauge('tradesim_entreprises_par_strategie', 'Répart
 entreprises_par_type_prefere = Gauge('tradesim_entreprises_par_type_prefere', 'Répartition des entreprises par type de produit préféré')
 
 # Métriques de performance (6 métriques)
-entreprises_transactions_moyennes = Gauge('tradesim_entreprises_transactions_moyennes', 'Nombre moyen de transactions par entreprise')
-entreprises_budget_moyen = Gauge('tradesim_entreprises_budget_moyen', 'Budget moyen par entreprise')
-entreprises_stock_moyen = Gauge('tradesim_entreprises_stock_moyen', 'Stock moyen par entreprise')
-entreprises_rentabilite = Gauge('tradesim_entreprises_rentabilite', 'Rentabilité moyenne des entreprises (budget actuel / budget initial)')
-entreprises_efficacite_achat = Gauge('tradesim_entreprises_efficacite_achat', 'Efficacité d\'achat moyenne (transactions / budget dépensé)')
-entreprises_survie_taux = Gauge('tradesim_entreprises_survie_taux', 'Taux de survie des entreprises (budget > 0)')
+entreprises_transactions_moyennes = Gauge('tradesim_entreprises_transactions_moyennes', 'Nombre moyen de transactions par entreprise', ['tick'])
+entreprises_budget_moyen = Gauge('tradesim_entreprises_budget_moyen', 'Budget moyen par entreprise', ['tick'])
+entreprises_stock_moyen = Gauge('tradesim_entreprises_stock_moyen', 'Stock moyen par entreprise', ['tick'])
+entreprises_rentabilite = Gauge('tradesim_entreprises_rentabilite', 'Rentabilité moyenne des entreprises (budget actuel / budget initial)', ['tick'])
+entreprises_efficacite_achat = Gauge('tradesim_entreprises_efficacite_achat', 'Efficacité d\'achat moyenne (transactions / budget dépensé)', ['tick'])
+entreprises_survie_taux = Gauge('tradesim_entreprises_survie_taux', 'Taux de survie des entreprises (budget > 0)', ['tick'])
 
 # Métriques de comportement (6 métriques)
-entreprises_frequence_achat = Gauge('tradesim_entreprises_frequence_achat', 'Fréquence d\'achat moyenne (transactions par tour)')
-entreprises_preference_produits = Gauge('tradesim_entreprises_preference_produits', 'Préférence de produits (diversité des types préférés)')
-entreprises_adaptation_prix = Gauge('tradesim_entreprises_adaptation_prix', 'Adaptation aux variations de prix')
-entreprises_competitivite = Gauge('tradesim_entreprises_competitivite', 'Indice de compétitivité des entreprises')
-entreprises_resilience = Gauge('tradesim_entreprises_resilience', 'Indice de résilience des entreprises')
-entreprises_innovation = Gauge('tradesim_entreprises_innovation', 'Indice d\'innovation des entreprises')
+entreprises_frequence_achat = Gauge('tradesim_entreprises_frequence_achat', 'Fréquence d\'achat moyenne (transactions par tour)', ['tick'])
+entreprises_preference_produits = Gauge('tradesim_entreprises_preference_produits', 'Préférence de produits (diversité des types préférés)', ['tick'])
+entreprises_adaptation_prix = Gauge('tradesim_entreprises_adaptation_prix', 'Adaptation aux variations de prix', ['tick'])
+entreprises_competitivite = Gauge('tradesim_entreprises_competitivite', 'Indice de compétitivité des entreprises', ['tick'])
+entreprises_resilience = Gauge('tradesim_entreprises_resilience', 'Indice de résilience des entreprises', ['tick'])
+entreprises_innovation = Gauge('tradesim_entreprises_innovation', 'Indice d\'innovation des entreprises', ['tick'])
 
 # ============================================================================
 # MÉTRIQUES DE PRODUITS (16 métriques)
@@ -262,22 +262,22 @@ produits_total = Gauge('tradesim_produits_total', 'Nombre total de produits')
 # produits_actifs déjà défini plus haut
 produits_par_type = Gauge('tradesim_produits_par_type', 'Répartition des produits par type')
 produits_par_continent = Gauge('tradesim_produits_par_continent', 'Répartition des produits par continent')
-produits_prix_moyen = Gauge('tradesim_produits_prix_moyen', 'Prix moyen des produits')
-produits_prix_median = Gauge('tradesim_produits_prix_median', 'Prix médian des produits')
+produits_prix_moyen = Gauge('tradesim_produits_prix_moyen', 'Prix moyen des produits', ['tick'])
+produits_prix_median = Gauge('tradesim_produits_prix_median', 'Prix médian des produits', ['tick'])
 
 # Métriques de performance (6 métriques)
-produits_demande_moyenne = Gauge('tradesim_produits_demande_moyenne', 'Demande moyenne par produit')
-produits_offre_moyenne = Gauge('tradesim_produits_offre_moyenne', 'Offre moyenne par produit')
-produits_rotation_stock = Gauge('tradesim_produits_rotation_stock', 'Rotation de stock moyenne')
-produits_rentabilite = Gauge('tradesim_produits_rentabilite', 'Rentabilité moyenne des produits')
-produits_popularite = Gauge('tradesim_produits_popularite', 'Popularité moyenne des produits')
-produits_disponibilite = Gauge('tradesim_produits_disponibilite', 'Taux de disponibilité moyen')
+produits_demande_moyenne = Gauge('tradesim_produits_demande_moyenne', 'Demande moyenne par produit', ['tick'])
+produits_offre_moyenne = Gauge('tradesim_produits_offre_moyenne', 'Offre moyenne par produit', ['tick'])
+produits_rotation_stock = Gauge('tradesim_produits_rotation_stock', 'Rotation de stock moyenne', ['tick'])
+produits_rentabilite = Gauge('tradesim_produits_rentabilite', 'Rentabilité moyenne des produits', ['tick'])
+produits_popularite = Gauge('tradesim_produits_popularite', 'Popularité moyenne des produits', ['tick'])
+produits_disponibilite = Gauge('tradesim_produits_disponibilite', 'Taux de disponibilité moyen', ['tick'])
 
 # Métriques de comportement (4 métriques)
-produits_volatilite_prix = Gauge('tradesim_produits_volatilite_prix', 'Volatilité des prix')
-produits_tendance_prix = Gauge('tradesim_produits_tendance_prix', 'Tendance des prix')
-produits_elasticite_demande = Gauge('tradesim_produits_elasticite_demande', 'Élasticité de la demande')
-produits_competitivite = Gauge('tradesim_produits_competitivite', 'Indice de compétitivité des produits')
+produits_volatilite_prix = Gauge('tradesim_produits_volatilite_prix', 'Volatilité des prix', ['tick'])
+produits_tendance_prix = Gauge('tradesim_produits_tendance_prix', 'Tendance des prix', ['tick'])
+produits_elasticite_demande = Gauge('tradesim_produits_elasticite_demande', 'Élasticité de la demande', ['tick'])
+produits_competitivite = Gauge('tradesim_produits_competitivite', 'Indice de compétitivité des produits', ['tick'])
 
 # ============================================================================
 # MÉTRIQUES DE FOURNISSEURS (16 métriques)
@@ -288,16 +288,16 @@ fournisseurs_total = Gauge('tradesim_fournisseurs_total', 'Nombre total de fourn
 fournisseurs_actifs = Gauge('tradesim_fournisseurs_actifs', 'Nombre de fournisseurs actifs')
 fournisseurs_par_pays = Gauge('tradesim_fournisseurs_par_pays', 'Répartition des fournisseurs par pays')
 fournisseurs_par_continent = Gauge('tradesim_fournisseurs_par_continent', 'Répartition des fournisseurs par continent')
-fournisseurs_stock_moyen = Gauge('tradesim_fournisseurs_stock_moyen', 'Stock moyen par fournisseur')
-fournisseurs_produits_moyen = Gauge('tradesim_fournisseurs_produits_moyen', 'Nombre moyen de produits par fournisseur')
+fournisseurs_stock_moyen = Gauge('tradesim_fournisseurs_stock_moyen', 'Stock moyen par fournisseur', ['tick'])
+fournisseurs_produits_moyen = Gauge('tradesim_fournisseurs_produits_moyen', 'Nombre moyen de produits par fournisseur', ['tick'])
 
 # Métriques de performance (6 métriques)
-fournisseurs_ventes_moyennes = Gauge('tradesim_fournisseurs_ventes_moyennes', 'Ventes moyennes par fournisseur')
-fournisseurs_rotation_stock = Gauge('tradesim_fournisseurs_rotation_stock', 'Rotation de stock moyenne')
-fournisseurs_disponibilite = Gauge('tradesim_fournisseurs_disponibilite', 'Taux de disponibilité moyen')
-fournisseurs_rentabilite = Gauge('tradesim_fournisseurs_rentabilite', 'Rentabilité moyenne des fournisseurs')
-fournisseurs_popularite = Gauge('tradesim_fournisseurs_popularite', 'Popularité moyenne des fournisseurs')
-fournisseurs_efficacite = Gauge('tradesim_fournisseurs_efficacite', 'Efficacité moyenne des fournisseurs')
+fournisseurs_ventes_moyennes = Gauge('tradesim_fournisseurs_ventes_moyennes', 'Ventes moyennes par fournisseur', ['tick'])
+fournisseurs_rotation_stock = Gauge('tradesim_fournisseurs_rotation_stock', 'Rotation de stock moyenne', ['tick'])
+fournisseurs_disponibilite = Gauge('tradesim_fournisseurs_disponibilite', 'Taux de disponibilité moyen', ['tick'])
+fournisseurs_rentabilite = Gauge('tradesim_fournisseurs_rentabilite', 'Rentabilité moyenne des fournisseurs', ['tick'])
+fournisseurs_popularite = Gauge('tradesim_fournisseurs_popularite', 'Popularité moyenne des fournisseurs', ['tick'])
+fournisseurs_efficacite = Gauge('tradesim_fournisseurs_efficacite', 'Efficacité moyenne des fournisseurs', ['tick'])
 
 # Métriques de comportement (4 métriques)
 fournisseurs_volatilite_prix = Gauge('tradesim_fournisseurs_volatilite_prix', 'Volatilité des prix par fournisseur')
@@ -333,12 +333,12 @@ transactions_preference_strategie = Gauge('tradesim_transactions_preference_stra
 transactions_competitivite = Gauge('tradesim_transactions_competitivite', 'Indice de compétitivité des transactions')
 
 # Métriques de transactions supplémentaires (utilisées dans le code)
-transactions_moyennes_par_tour = Gauge('tradesim_transactions_moyennes_par_tour', 'Nombre moyen de transactions par tour')
-taux_reussite_transactions = Gauge('tradesim_taux_reussite_transactions', 'Taux de réussite des transactions')
-montant_moyen_transaction = Gauge('tradesim_montant_moyen_transaction', 'Montant moyen par transaction')
-volume_total_transactions = Counter('tradesim_volume_total_transactions_total', 'Volume total des transactions')
-frequence_transactions = Gauge('tradesim_frequence_transactions', 'Fréquence des transactions')
-efficacite_transactions = Gauge('tradesim_efficacite_transactions', 'Efficacité des transactions')
+transactions_moyennes_par_tour = Gauge('tradesim_transactions_moyennes_par_tour', 'Nombre moyen de transactions par tour', ['tick'])
+taux_reussite_transactions = Gauge('tradesim_taux_reussite_transactions', 'Taux de réussite des transactions', ['tick'])
+montant_moyen_transaction = Gauge('tradesim_montant_moyen_transaction', 'Montant moyen par transaction', ['tick'])
+volume_total_transactions = Counter('tradesim_volume_total_transactions_total', 'Volume total des transactions', ['tick'])
+frequence_transactions = Gauge('tradesim_frequence_transactions', 'Fréquence des transactions', ['tick'])
+efficacite_transactions = Gauge('tradesim_efficacite_transactions', 'Efficacité des transactions', ['tick'])
 
 # ============================================================================
 # MÉTRIQUES D'ÉVÉNEMENTS (16 métriques)
@@ -367,15 +367,15 @@ evenements_correlation = Gauge('tradesim_evenements_correlation', 'Corrélation 
 evenements_predictibilite = Gauge('tradesim_evenements_predictibilite', 'Prédictibilité des événements')
 
 # Métriques d'événements supplémentaires (utilisées dans le code)
-evenements_inflation = Gauge('tradesim_evenements_inflation', 'Nombre d\'événements d\'inflation')
-evenements_reassort = Gauge('tradesim_evenements_reassort', 'Nombre d\'événements de reassort')
-evenements_recharge_budget = Gauge('tradesim_evenements_recharge_budget', 'Nombre d\'événements de recharge budget')
-evenements_variation_disponibilite = Gauge('tradesim_evenements_variation_disponibilite', 'Nombre d\'événements de variation disponibilité')
-impact_moyen_evenements = Gauge('tradesim_impact_moyen_evenements', 'Impact moyen des événements')
-frequence_evenements_inflation = Gauge('tradesim_frequence_evenements_inflation', 'Fréquence des événements d\'inflation')
-frequence_evenements_reassort = Gauge('tradesim_frequence_evenements_reassort', 'Fréquence des événements de reassort')
-frequence_evenements_recharge = Gauge('tradesim_frequence_evenements_recharge', 'Fréquence des événements de recharge')
-frequence_evenements_disponibilite = Gauge('tradesim_frequence_evenements_disponibilite', 'Fréquence des événements de disponibilité')
+evenements_inflation = Gauge('tradesim_evenements_inflation', 'Nombre d\'événements d\'inflation', ['tick'])
+evenements_reassort = Gauge('tradesim_evenements_reassort', 'Nombre d\'événements de reassort', ['tick'])
+evenements_recharge_budget = Gauge('tradesim_evenements_recharge_budget', 'Nombre d\'événements de recharge budget', ['tick'])
+evenements_variation_disponibilite = Gauge('tradesim_evenements_variation_disponibilite', 'Nombre d\'événements de variation disponibilité', ['tick'])
+impact_moyen_evenements = Gauge('tradesim_impact_moyen_evenements', 'Impact moyen des événements', ['tick'])
+frequence_evenements_inflation = Gauge('tradesim_frequence_evenements_inflation', 'Fréquence des événements d\'inflation', ['tick'])
+frequence_evenements_reassort = Gauge('tradesim_frequence_evenements_reassort', 'Fréquence des événements de reassort', ['tick'])
+frequence_evenements_recharge = Gauge('tradesim_frequence_evenements_recharge', 'Fréquence des événements de recharge', ['tick'])
+frequence_evenements_disponibilite = Gauge('tradesim_frequence_evenements_disponibilite', 'Fréquence des événements de disponibilité', ['tick'])
 
 # ============================================================================
 # MÉTRIQUES DE PERFORMANCE (16 métriques)
@@ -408,22 +408,22 @@ performance_optimisations_disponibles = Gauge('tradesim_performance_optimisation
 # ============================================================================
 
 # Métriques par entreprise (avec labels pour filtrage et agrégation)
-entreprise_budget = Gauge('tradesim_entreprise_budget', 'Budget actuel par entreprise', ['id', 'nom', 'continent', 'strategie'])
-entreprise_budget_initial = Gauge('tradesim_entreprise_budget_initial', 'Budget initial par entreprise', ['id', 'nom'])
-entreprise_budget_evolution = Gauge('tradesim_entreprise_budget_evolution', 'Évolution du budget depuis le tour précédent', ['id', 'nom'])
-entreprise_budget_tendance = Gauge('tradesim_entreprise_budget_tendance', 'Tendance du budget sur 5 tours', ['id', 'nom'])
-entreprise_transactions_total = Gauge('tradesim_entreprise_transactions_total', 'Nombre total de transactions par entreprise', ['id', 'nom', 'continent'])
+entreprise_budget = Gauge('tradesim_entreprise_budget', 'Budget actuel par entreprise', ['id', 'nom', 'continent', 'strategie', 'tick'])
+entreprise_budget_initial = Gauge('tradesim_entreprise_budget_initial', 'Budget initial par entreprise', ['id', 'nom', 'tick'])
+entreprise_budget_evolution = Gauge('tradesim_entreprise_budget_evolution', 'Évolution du budget depuis le tour précédent', ['id', 'nom', 'tick'])
+entreprise_budget_tendance = Gauge('tradesim_entreprise_budget_tendance', 'Tendance du budget sur 5 tours', ['id', 'nom', 'tick'])
+entreprise_transactions_total = Gauge('tradesim_entreprise_transactions_total', 'Nombre total de transactions par entreprise', ['id', 'nom', 'continent', 'tick'])
 
 # Métriques de stock par produit par entreprise (granularité complète)
-entreprise_stock_produit = Gauge('tradesim_entreprise_stock_produit', 'Stock par produit par entreprise', ['id_entreprise', 'nom_entreprise', 'id_produit', 'nom_produit', 'type_produit'])
+entreprise_stock_produit = Gauge('tradesim_entreprise_stock_produit', 'Stock par produit par entreprise', ['id_entreprise', 'nom_entreprise', 'id_produit', 'nom_produit', 'type_produit', 'tick'])
 
 # Métriques par produit (prix et évolution uniquement)
-produit_prix = Gauge('tradesim_produit_prix', 'Prix actuel par produit', ['id', 'nom', 'type'])
-produit_prix_evolution = Gauge('tradesim_produit_prix_evolution', 'Évolution du prix depuis le tour précédent', ['id', 'nom', 'type'])
-produit_prix_tendance = Gauge('tradesim_produit_prix_tendance', 'Tendance du prix sur 5 tours', ['id', 'nom', 'type'])
+produit_prix = Gauge('tradesim_produit_prix', 'Prix actuel par produit', ['id', 'nom', 'type', 'tick'])
+produit_prix_evolution = Gauge('tradesim_produit_prix_evolution', 'Évolution du prix depuis le tour précédent', ['id', 'nom', 'type', 'tick'])
+produit_prix_tendance = Gauge('tradesim_produit_prix_tendance', 'Tendance du prix sur 5 tours', ['id', 'nom', 'type', 'tick'])
 
 # Métriques de stock par produit par fournisseur (granularité complète)
-fournisseur_stock_produit = Gauge('tradesim_fournisseur_stock_produit', 'Stock par produit par fournisseur', ['id_fournisseur', 'nom_fournisseur', 'id_produit', 'nom_produit', 'type_produit'])
+fournisseur_stock_produit = Gauge('tradesim_fournisseur_stock_produit', 'Stock par produit par fournisseur', ['id_fournisseur', 'nom_fournisseur', 'id_produit', 'nom_produit', 'type_produit', 'tick'])
 
 # ============================================================================
 # MÉTRIQUES HISTORIQUES DE STOCK
@@ -433,13 +433,13 @@ fournisseur_stock_produit = Gauge('tradesim_fournisseur_stock_produit', 'Stock p
 entreprise_stock_historique = Gauge(
     'tradesim_entreprise_stock_historique',
     'Stock historique par produit par entreprise par tour',
-    ['id_entite', 'nom_entite', 'id_produit', 'nom_produit', 'tour']
+    ['id_entite', 'nom_entite', 'id_produit', 'nom_produit', 'tour', 'tick']
 )
 
 fournisseur_stock_historique = Gauge(
     'tradesim_fournisseur_stock_historique',
     'Stock historique par produit par fournisseur par tour',
-    ['id_entite', 'nom_entite', 'id_produit', 'nom_produit', 'tour']
+    ['id_entite', 'nom_entite', 'id_produit', 'nom_produit', 'tour', 'tick']
 )
 
 # Métriques d'évolution de stock
@@ -456,11 +456,11 @@ fournisseur_stock_evolution = Gauge(
 )
 
 # Métriques par fournisseur (autres métriques)
-fournisseur_prix_moyen = Gauge('tradesim_fournisseur_prix_moyen', 'Prix moyen des produits par fournisseur', ['id', 'nom', 'continent'])
-fournisseur_ventes_total = Gauge('tradesim_fournisseur_ventes_total', 'Nombre total de ventes par fournisseur', ['id', 'nom', 'continent'])
-fournisseur_disponibilite = Gauge('tradesim_fournisseur_disponibilite', 'Taux de disponibilité par fournisseur', ['id', 'nom', 'continent'])
-fournisseur_rotation_stock = Gauge('tradesim_fournisseur_rotation_stock', 'Rotation de stock par fournisseur', ['id', 'nom', 'continent'])
-fournisseur_rentabilite = Gauge('tradesim_fournisseur_rentabilite', 'Rentabilité par fournisseur', ['id', 'nom', 'continent'])
+fournisseur_prix_moyen = Gauge('tradesim_fournisseur_prix_moyen', 'Prix moyen des produits par fournisseur', ['id', 'nom', 'continent', 'tick'])
+fournisseur_ventes_total = Gauge('tradesim_fournisseur_ventes_total', 'Nombre total de ventes par fournisseur', ['id', 'nom', 'continent', 'tick'])
+fournisseur_disponibilite = Gauge('tradesim_fournisseur_disponibilite', 'Taux de disponibilité par fournisseur', ['id', 'nom', 'continent', 'tick'])
+fournisseur_rotation_stock = Gauge('tradesim_fournisseur_rotation_stock', 'Rotation de stock par fournisseur', ['id', 'nom', 'continent', 'tick'])
+fournisseur_rentabilite = Gauge('tradesim_fournisseur_rentabilite', 'Rentabilité par fournisseur', ['id', 'nom', 'continent', 'tick'])
 
 # ============================================================================
 # CLASSE EXPORTER
@@ -726,10 +726,10 @@ class PrometheusExporter:
                 budget_variation_totale.labels(tick=str(tick_actuel)).set(metrics_data['budget_variation_totale'])
             
             if 'budget_depenses_totales' in metrics_data:
-                budget_depenses_totales.inc(metrics_data['budget_depenses_totales'])
+                budget_depenses_totales.labels(tick=str(tick_actuel)).inc(metrics_data['budget_depenses_totales'])
             
             if 'budget_gains_totaux' in metrics_data:
-                budget_gains_totaux.inc(metrics_data['budget_gains_totaux'])
+                budget_gains_totaux.labels(tick=str(tick_actuel)).inc(metrics_data['budget_gains_totaux'])
             
             if 'budget_ratio_depenses_revenus' in metrics_data:
                 budget_ratio_depenses_revenus.labels(tick=str(tick_actuel)).set(metrics_data['budget_ratio_depenses_revenus'])
@@ -940,7 +940,7 @@ class PrometheusExporter:
                 montant_moyen_transaction.labels(tick=str(tick_actuel)).set(metrics_data['montant_moyen_transaction'])
             
             if 'volume_total_transactions' in metrics_data:
-                volume_total_transactions.inc(metrics_data['volume_total_transactions'])
+                volume_total_transactions.labels(tick=str(tick_actuel)).inc(metrics_data['volume_total_transactions'])
             
             if 'transactions_par_produit' in metrics_data:
                 if isinstance(metrics_data['transactions_par_produit'], dict):
