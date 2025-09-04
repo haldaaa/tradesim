@@ -138,17 +138,43 @@ python monitoring/configure_prometheus.py
 - `tradesim_entreprises_nombre_total` - Nombre d'entreprises
 - `tradesim_fournisseurs_nombre_total` - Nombre de fournisseurs
 
-### **Métriques avec labels**
-- `tradesim_entreprise_budget{nom="VietnameseCorp"}` - Budget par entreprise
-- `tradesim_produits_prix_moyen{produit="Ordinateur"}` - Prix moyen par produit
-- `tradesim_transactions_reussies{type="achat"}` - Transactions réussies par type
-- `tradesim_transactions_echouees{raison="budget_insuffisant"}` - Transactions échouées par raison
+### **Métriques avec labels et historique (label 'tick')**
+- `tradesim_entreprise_budget{nom="VietnameseCorp", tick="10"}` - Budget par entreprise au tour 10
+- `tradesim_produits_prix_moyen{produit="Ordinateur", tick="5"}` - Prix moyen par produit au tour 5
+- `tradesim_transactions_reussies{type="achat", tick="15"}` - Transactions réussies par type au tour 15
+- `tradesim_transactions_echouees{raison="budget_insuffisant", tick="20"}` - Transactions échouées par raison au tour 20
 
 ### **Métriques système**
 - `tradesim_cpu_usage_percent` - Utilisation CPU
 - `tradesim_memory_usage_percent` - Utilisation mémoire
 - `tradesim_latency_average_ms` - Latence moyenne
 - `tradesim_throughput_requests_per_second` - Throughput
+
+## 🧹 **Nettoyage du monitoring**
+
+### **Problème : Données persistantes dans Grafana**
+**Symptôme :** Grafana affiche encore des données d'anciennes simulations
+
+**Cause :** L'exporter Python continue à envoyer les anciennes données à Prometheus
+
+**Solution :**
+```bash
+# Nettoyage complet (recommandé)
+./scripts/clean_monitoring_complete.sh
+
+# Nettoyage rapide (moins fiable)
+./scripts/clean_monitoring.sh
+```
+
+**Vérification :**
+```bash
+# Vérifier que Prometheus est vide
+curl -s "http://localhost:9090/api/v1/query?query=tradesim_entreprise_budget" | grep '"result":\[\]'
+```
+
+### **Scripts de nettoyage disponibles**
+- **`clean_monitoring_complete.sh`** : Nettoyage complet (arrête l'exporter, supprime les données)
+- **`clean_monitoring.sh`** : Nettoyage standard (redémarre les services)
 
 ## 🛠️ Dépannage
 
@@ -223,6 +249,15 @@ sum(tradesim_transactions_total) by (type)
 
 # Évolution du budget dans le temps
 tradesim_budget_total_entreprises[5m]
+
+# Évolution du budget d'une entreprise par tour (graphique historique)
+tradesim_entreprise_budget{nom="VietnameseCorp"}
+
+# Budget de toutes les entreprises au tour 10
+tradesim_entreprise_budget{tick="10"}
+
+# Évolution des prix d'un produit par tour
+tradesim_produit_prix{nom="Ordinateur"}
 ```
 
 ### **Alertes Grafana**

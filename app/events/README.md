@@ -358,5 +358,22 @@ pytest tests/integration/test_events_integration.py -v
 - **Context** : Horodatage et contexte de chaque événement
 - **Traçabilité** : Suivi complet des modifications
 
+## 📊 **Métriques automatiques**
+
+### **DynamicMetricsManager**
+Tous les événements utilisent le système de métriques automatiques :
+- **Création automatique** des métriques Prometheus
+- **Label 'tick'** pour l'historique par tour
+- **Cache optimisé** pour les performances
+- **Gestion d'erreurs** robuste
+
+### **Métriques générées par événement**
+- **Inflation** : `tradesim_evenements_inflation`, `tradesim_produit_prix{tick="X"}`
+- **Reassort** : `tradesim_evenements_reassort`, `tradesim_fournisseur_stock{tick="X"}`
+- **Recharge budget** : `tradesim_evenements_recharge_budget`, `tradesim_entreprise_budget{tick="X"}`
+- **Recharge stock fournisseur** : `tradesim_evenements_recharge_stock_fournisseur`
+- **Variation disponibilité** : `tradesim_evenements_variation_disponibilite`
+
 ## 📝 **Auteur**
-Assistant IA - 2024-08-02 
+Assistant IA - 2024-08-02  
+**Dernière mise à jour** : 04/09/2025 - Métriques automatiques et label 'tick' 

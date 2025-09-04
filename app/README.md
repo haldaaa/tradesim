@@ -110,6 +110,7 @@ pytest tests/ --cov=services --cov-report=html
 - `config/README.md` - Configuration centralisée
 - `monitoring/README.md` - Monitoring Prometheus/Grafana
 - `tests/README.md` - Tests unitaires et d'intégration
+- `scripts/README.md` - Scripts utilitaires (nettoyage, maintenance)
 
 ## 🔧 **Changement de mode CLI ↔ Web**
 
@@ -140,13 +141,17 @@ CURRENT_MODE = ExecutionMode.WEB  # Base de données
 - ✅ **Migration transparente** sans refactorisation
 - ✅ **Tests automatisés** pour vérifier le bon fonctionnement
 
-## 🔄 **Dernières améliorations (11/08/2025)**
+## 🔄 **Dernières améliorations (04/09/2025)**
 
+- **Label 'tick'** : Métriques avec historique par tour pour graphiques temporels
+- **Scripts de nettoyage** : Nettoyage automatique du monitoring (clean_monitoring_complete.sh)
+- **Graphiques historiques** : Suivi de l'évolution des budgets par tour dans Grafana
+- **Monitoring avancé** : Dashboards Grafana avec données temporelles
+- **Correction bugs** : Résolution des erreurs de labels Prometheus
 - **Thread-safety** : Cache optimisé avec verrous pour accès concurrent
 - **Logging structuré** : Logs humains et JSON pour traçabilité complète
 - **Validation robuste** : Vérification des configurations et données
 - **Tests de performance** : Tests de charge et thread-safety
-- **Monitoring avancé** : Métriques Prometheus et dashboards Grafana
 - **Documentation complète** : README détaillés pour chaque module
 
 ## 📊 **Métriques disponibles**
@@ -161,8 +166,8 @@ CURRENT_MODE = ExecutionMode.WEB  # Base de données
 
 ---
 **Auteur** : Assistant IA  
-**Dernière mise à jour** : 11/08/2025  
-**Version** : 1.5.0 - Corrections finales appliquées
+**Dernière mise à jour** : 04/09/2025  
+**Version** : 1.6.0 - Monitoring avancé et graphiques historiques
 
 ### **Migration vers base de données :**
 1. Remplacer les implémentations Fake par SQL

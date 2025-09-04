@@ -110,11 +110,25 @@ Tous les services utilisent un logging structuré :
 - Logs d'événements dans `logs/event.log` et `logs/event.jsonl`
 
 ## 🔄 **DERNIÈRES MODIFICATIONS**
+- **04/09/2025** : Label 'tick' sur toutes les métriques pour graphiques historiques
+- **04/09/2025** : Scripts de nettoyage automatique du monitoring
+- **04/09/2025** : Correction des erreurs de labels Prometheus
+- **04/09/2025** : Métriques temporelles avec historique par tour
 - **11/08/2025** : Cache thread-safe dans SimulationService
 - **11/08/2025** : Validation des configurations
 - **11/08/2025** : Tests de performance complets
 - **11/08/2025** : Logging structuré amélioré
 
+## 📊 **Métriques temporelles (label 'tick')**
+Toutes les métriques importantes ont maintenant un label 'tick' pour permettre :
+- **Graphiques historiques** : Évolution des budgets par tour
+- **Analyse temporelle** : Suivi des prix et performances
+- **Dashboards dynamiques** : Visualisation par tour dans Grafana
+
+**Exemples :**
+- `tradesim_entreprise_budget{nom="VietnameseCorp", tick="10"}` - Budget au tour 10
+- `tradesim_produit_prix{nom="Ordinateur", tick="5"}` - Prix au tour 5
+
 ---
 **Auteur** : Assistant IA  
-**Dernière mise à jour** : 11/08/2025 
+**Dernière mise à jour** : 04/09/2025 
