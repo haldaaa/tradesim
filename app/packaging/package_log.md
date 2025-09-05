@@ -36,9 +36,39 @@
   - ✅ **Création du script de lancement** : `run_cli.sh` pour simplifier l'utilisation
   - ✅ **Mise à jour du guide d'utilisation** : Toutes les commandes documentées
 
+### Version 0.2 - 04/09/2025
+- **Package** : `tradesim-app-v0.2.0.tar.gz`
+- **Date** : 04/09/2025 14:00
+- **Description** : Version avec monitoring avancé et graphiques historiques
+- **Tests** : 88/88 tests passent (100% de succès)
+- **Fonctionnalités** :
+  - Application CLI fonctionnelle
+  - Simulation avec vraie logique d'achat
+  - Événements (inflation, réassort, recharge_budget, recharge_stock_fournisseur, variation_disponibilite)
+  - Sauvegarde/chargement de templates
+  - Architecture Repository Pattern + Services
+  - PriceService centralisé
+  - **NOUVEAU** : Monitoring Prometheus/Grafana avec métriques temporelles
+  - **NOUVEAU** : Label 'tick' sur toutes les métriques pour graphiques historiques
+  - **NOUVEAU** : Dashboards Grafana avec visualisation par tour
+  - **NOUVEAU** : Scripts de nettoyage automatique du monitoring
+  - **NOUVEAU** : Correction des erreurs de labels Prometheus
+  - **NOUVEAU** : Documentation complète et cohérente
+- **Package créé** : ✅ `build/tradesim-app-v0.2.0.tar.gz`
+- **Corrections de cette session** :
+  - ✅ **Monitoring avancé** : Métriques avec historique par tour
+  - ✅ **Graphiques historiques** : Suivi de l'évolution des budgets par tour
+  - ✅ **Scripts de nettoyage** : `clean_monitoring_complete.sh` et `clean_monitoring.sh`
+  - ✅ **Correction bugs** : Résolution des erreurs "Incorrect label names"
+  - ✅ **Documentation** : Tous les README mis à jour avec nouvelles fonctionnalités
+  - ✅ **Cahier des charges** : Statuts corrigés (Dashboards Grafana marqués comme implémentés)
+  - ✅ **Guide migration** : Mise à jour avec PostgreSQL et nouvelles fonctionnalités
+  - ✅ **Workflow** : Session 42 documentée avec transition CLI → Web
+
 ### Prochaines versions
-- **0.2** : À définir
-- **0.3** : À définir
+- **0.3** : Interface Web React avec Bootstrap
+- **0.4** : API FastAPI complète
+- **0.5** : Intégration WebSocket temps réel
 - **...**
 - **1.0** : Version stable finale
 

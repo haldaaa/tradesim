@@ -13,13 +13,17 @@
 - Thread-safety et cache optimisé
 
 ### **❌ HORS PÉRIMÈTRE (non implémenté) :**
-- Dashboards Grafana
 - Interface Web fonctionnelle
-- Base de données persistante
+- Base de données persistante (PostgreSQL)
 - Authentification/autorisation
 - Déploiement Cloud
 - CICD automatisé
 - Monitoring avancé (alertes, traces)
+
+### **✅ RÉCEMMENT IMPLÉMENTÉ :**
+- Dashboards Grafana avec graphiques historiques
+- Métriques temporelles avec label 'tick'
+- Scripts de nettoyage automatique du monitoring
 
 ## 📊 **FONCTIONNALITÉS DÉTAILLÉES**
 

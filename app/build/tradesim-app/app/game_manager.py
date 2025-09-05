@@ -1,10 +1,28 @@
 #!/usr/bin/env python3
 """
-Game Manager TradeSim - Gestion du jeu et des templates
+Game Manager TradeSim - Logique métier de configuration
 =======================================================
 
-Ce module gère la génération des données de jeu, les templates
-et l'orchestration de la simulation.
+ROLE : Logique métier pour la gestion des parties et configuration
+- Génération des données de jeu (entreprises, produits, fournisseurs)
+- Gestion des templates (sauvegarde, chargement, liste)
+- Configuration interactive des parties
+- Logique de création et réinitialisation des parties
+
+DIFFÉRENCE AVEC simulate.py :
+- game_manager.py = Logique métier (configuration, templates, génération données)
+- simulate.py = Interface utilisateur (CLI, arguments, menus)
+
+ARCHITECTURE :
+game_manager.py (logique métier)
+├── simulate.py (interface utilisateur) - IMPORTE game_manager.py
+├── repositories/ (accès aux données)
+└── models/ (entités métier)
+
+UTILISATION :
+- Importé par simulate.py pour le mode interactif (--new-game)
+- Fonctions appelées par l'interface utilisateur
+- Réutilisable pour l'API web (même logique métier)
 
 Refactorisation (02/08/2025) :
 - Utilise les Repository au lieu d'accès directs aux données
@@ -18,8 +36,11 @@ Date: 2024-08-02
 import json
 import os
 import random
+import subprocess
+import sys
 from typing import Dict, List, Any
 from datetime import datetime
+import threading
 
 # Imports des Repository (nouvelle architecture)
 import sys
@@ -28,13 +49,19 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
 from repositories import ProduitRepository, FournisseurRepository, EntrepriseRepository
 from models import Produit, TypeProduit, Fournisseur, Entreprise
 from services.simulateur import simulation_tour
-from config import (
+from services.name_manager import name_manager
+from config.config import (
     RECHARGE_BUDGET_MIN, RECHARGE_BUDGET_MAX,
     REASSORT_QUANTITE_MIN, REASSORT_QUANTITE_MAX,
     INFLATION_POURCENTAGE_MIN, INFLATION_POURCENTAGE_MAX,
     PROBABILITE_DESACTIVATION, PROBABILITE_REACTIVATION,
     TICK_INTERVAL_EVENT, PROBABILITE_EVENEMENT,
-    PROBABILITE_SELECTION_ENTREPRISE, DUREE_PAUSE_ENTRE_TOURS
+    PROBABILITE_SELECTION_ENTREPRISE, DUREE_PAUSE_ENTRE_TOURS,
+    TYPES_PRODUITS_PREFERES_MIN, TYPES_PRODUITS_PREFERES_MAX,
+    BUDGET_ENTREPRISE_MIN, BUDGET_ENTREPRISE_MAX,
+    PRIX_PRODUIT_MIN, PRIX_PRODUIT_MAX,
+    NOMBRE_PRODUITS_DEFAUT, PRODUITS_ACTIFS_MIN, PRODUITS_ACTIFS_MAX,
+    QUANTITE_ACHAT_MIN, QUANTITE_ACHAT_MAX, N_ENTREPRISES_PAR_TOUR
 )
 
 # Initialisation des Repository
@@ -42,60 +69,145 @@ produit_repo = ProduitRepository()
 fournisseur_repo = FournisseurRepository()
 entreprise_repo = EntrepriseRepository()
 
-# Configuration par défaut
-DEFAULT_CONFIG = {
-    "entreprises": {
-        "nombre": 3,
-        "budget_min": 1000,
-        "budget_max": 3000,
-        "strategies": ["moins_cher", "par_type"],
-        "types_preferes": ["matiere_premiere", "consommable", "produit_fini"]
-    },
-    "produits": {
-        "nombre": 20,
-        "prix_min": 5.0,
-        "prix_max": 500.0,
-        "actifs_min": 3,
-        "actifs_max": 8,
-        "types": ["matiere_premiere", "consommable", "produit_fini"]
-    },
-    "fournisseurs": {
-        "nombre": 5,
-        "produits_min": 3,
-        "produits_max": 8,
-        "stock_min": 10,
-        "stock_max": 200
-    },
-    "simulation": {
-        "probabilite_selection": 0.3,
-        "pause_entre_tours": 0.1
-    },
-    "evenements": {
-        "intervalle": 20,
-        "probabilites": {
-            "recharge_budget": 0.5,
-            "reassort": 0.5,
-            "inflation": 0.4,
-            "variation_disponibilite": 0.3
+def log_monitoring(message: str, level: str = "INFO"):
+    """Log un message dans le fichier monitoring.log"""
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    log_entry = f"[{timestamp}] [{level}] {message}"
+    
+    # Créer le dossier logs s'il n'existe pas
+    os.makedirs("logs", exist_ok=True)
+    
+    with open("logs/monitoring.log", "a", encoding="utf-8") as f:
+        f.write(log_entry + "\n")
+
+def lancer_docker_monitoring() -> bool:
+    """Lance les containers Docker pour Prometheus et Grafana"""
+    print("🐳 Lancement de Docker...")
+    log_monitoring("Tentative de lancement des containers Docker")
+    
+    try:
+        # Lancer Prometheus
+        print("  📊 Lancement de Prometheus...")
+        result_prometheus = subprocess.run([
+            "docker", "run", "-d", "--name", "tradesim-prometheus",
+            "-p", "9090:9090", "-v", f"{os.getcwd()}/monitoring/prometheus.yml:/etc/prometheus/prometheus.yml",
+            "prom/prometheus:latest"
+        ], capture_output=True, text=True)
+        
+        if result_prometheus.returncode != 0:
+            print(f"❌ Erreur Prometheus: {result_prometheus.stderr}")
+            log_monitoring(f"Erreur Prometheus: {result_prometheus.stderr}", "ERROR")
+            return False
+        
+        print("  ✅ Prometheus lancé avec succès")
+        log_monitoring("Prometheus lancé avec succès")
+        
+        # Lancer Grafana
+        print("  📈 Lancement de Grafana...")
+        result_grafana = subprocess.run([
+            "docker", "run", "-d", "--name", "tradesim-grafana",
+            "-p", "3000:3000", "-e", "GF_SECURITY_ADMIN_PASSWORD=admin",
+            "grafana/grafana:latest"
+        ], capture_output=True, text=True)
+        
+        if result_grafana.returncode != 0:
+            print(f"❌ Erreur Grafana: {result_grafana.stderr}")
+            log_monitoring(f"Erreur Grafana: {result_grafana.stderr}", "ERROR")
+            return False
+        
+        print("  ✅ Grafana lancé avec succès")
+        log_monitoring("Grafana lancé avec succès")
+        
+        print("✅ Docker lancé avec succès !")
+        print("📊 Prometheus: http://localhost:9090")
+        print("📈 Grafana: http://localhost:3000 (admin/admin)")
+        log_monitoring("Tous les containers Docker lancés avec succès")
+        return True
+        
+    except Exception as e:
+        error_msg = f"Erreur lors du lancement Docker: {str(e)}"
+        print(f"❌ {error_msg}")
+        log_monitoring(error_msg, "ERROR")
+        return False
+
+def get_default_config():
+    """
+    Retourne la configuration par défaut depuis config.py
+    
+    Cette fonction centralise la configuration par défaut en utilisant
+    les constantes définies dans config.py, assurant la cohérence
+    et évitant la duplication de configuration.
+    
+    Returns:
+        Dict[str, Any]: Configuration par défaut basée sur config.py
+    """
+    from config.config import (
+        # Configuration des entreprises
+        BUDGET_ENTREPRISE_MIN, BUDGET_ENTREPRISE_MAX,
+        TYPES_PRODUITS_PREFERES_MIN, TYPES_PRODUITS_PREFERES_MAX,
+        
+        # Configuration des produits
+        NOMBRE_PRODUITS_DEFAUT, PRIX_PRODUIT_MIN, PRIX_PRODUIT_MAX,
+        PRODUITS_ACTIFS_MIN, PRODUITS_ACTIFS_MAX, TYPES_PRODUITS_DISPONIBLES,
+        
+        # Configuration de simulation
+        PROBABILITE_SELECTION_ENTREPRISE, DUREE_PAUSE_ENTRE_TOURS,
+        
+        # Configuration des événements
+        TICK_INTERVAL_EVENT, PROBABILITE_EVENEMENT,
+        RECHARGE_BUDGET_MIN, RECHARGE_BUDGET_MAX,
+        REASSORT_QUANTITE_MIN, REASSORT_QUANTITE_MAX,
+        INFLATION_POURCENTAGE_MIN, INFLATION_POURCENTAGE_MAX
+    )
+    
+    return {
+        "entreprises": {
+            "nombre": 3,
+            "budget_min": BUDGET_ENTREPRISE_MIN,
+            "budget_max": BUDGET_ENTREPRISE_MAX,
+            "strategies": ["moins_cher", "par_type"],
+            "types_preferes": TYPES_PRODUITS_DISPONIBLES
         },
-        "recharge_budget": {
-            "min": 200,
-            "max": 600
+        "produits": {
+            "nombre": NOMBRE_PRODUITS_DEFAUT,
+            "prix_min": PRIX_PRODUIT_MIN,
+            "prix_max": PRIX_PRODUIT_MAX,
+            "actifs_min": PRODUITS_ACTIFS_MIN,
+            "actifs_max": PRODUITS_ACTIFS_MAX,
+            "types": TYPES_PRODUITS_DISPONIBLES
         },
-        "reassort": {
-            "min": 10,
-            "max": 50
+        "fournisseurs": {
+            "nombre": 5,
+            "produits_min": 3,
+            "produits_max": 8,
+            "stock_min": 10,
+            "stock_max": 200
         },
-        "inflation": {
-            "min": 30,
-            "max": 60
+        "simulation": {
+            "probabilite_selection": PROBABILITE_SELECTION_ENTREPRISE,
+            "pause_entre_tours": DUREE_PAUSE_ENTRE_TOURS
         },
-        "variation_disponibilite": {
-            "desactivation": 0.1,
-            "reactivation": 0.2
+        "evenements": {
+            "intervalle": TICK_INTERVAL_EVENT,
+            "probabilites": PROBABILITE_EVENEMENT,
+            "recharge_budget": {
+                "min": RECHARGE_BUDGET_MIN,
+                "max": RECHARGE_BUDGET_MAX
+            },
+            "reassort": {
+                "min": REASSORT_QUANTITE_MIN,
+                "max": REASSORT_QUANTITE_MAX
+            },
+            "inflation": {
+                "min": INFLATION_POURCENTAGE_MIN,
+                "max": INFLATION_POURCENTAGE_MAX
+            },
+            "variation_disponibilite": {
+                "desactivation": 0.1,
+                "reactivation": 0.2
+            }
         }
     }
-}
 
 # Noms des entreprises et fournisseurs par défaut
 NOMS_ENTREPRISES = ["MagaToys", "BuildTech", "BioLogix"]
@@ -125,11 +237,19 @@ def reset_game():
     
     Refactorisation (02/08/2025) :
     - Utilise les Repository au lieu d'accès directs aux données
+    - Réinitialise le NameManager pour nouvelle partie
     """
     # Vider tous les Repository
     produit_repo.clear()
     fournisseur_repo.clear()
     entreprise_repo.clear()
+    
+    # Vider le service de prix
+    from services.price_service import price_service
+    price_service.reset()
+    
+    # Réinitialiser le NameManager pour nouvelle partie
+    name_manager.reset()
     
     print("✅ Jeu remis à zéro avec succès")
 
@@ -139,7 +259,20 @@ def generate_game_data(config: Dict[str, Any]):
     
     Refactorisation (02/08/2025) :
     - Utilise les Repository au lieu d'accès directs aux données
+    - Utilise le NameManager pour les noms uniques
     """
+    # Vider les repositories et le price_service
+    produit_repo.clear()
+    fournisseur_repo.clear()
+    entreprise_repo.clear()
+    
+    # Vider le service de prix
+    from services.price_service import price_service
+    price_service.reset()
+    
+    # Réinitialiser le NameManager pour nouvelle partie
+    name_manager.reset()
+    
     # Génération des produits
     generate_produits(config["produits"])
     
@@ -148,6 +281,13 @@ def generate_game_data(config: Dict[str, Any]):
     
     # Génération des entreprises
     generate_entreprises(config["entreprises"])
+    
+    # Sauvegarder l'état du jeu après génération
+    try:
+        from services.game_state_service import game_state_service
+        game_state_service.save_game_state()
+    except Exception as e:
+        print(f"⚠️ Erreur lors de la sauvegarde de l'état: {e}")
 
 def generate_produits(config_produits: Dict[str, Any]):
     """
@@ -155,6 +295,7 @@ def generate_produits(config_produits: Dict[str, Any]):
     
     Refactorisation (02/08/2025) :
     - Utilise ProduitRepository au lieu de fake_produits_db
+    - Utilise le NameManager pour les noms uniques
     """
     nombre_produits = config_produits["nombre"]
     prix_min = config_produits["prix_min"]
@@ -168,14 +309,16 @@ def generate_produits(config_produits: Dict[str, Any]):
     # Vider le repository
     produit_repo.clear()
     
-    for i in range(nombre_produits):
-        nom = NOMS_PRODUITS[i] if i < len(NOMS_PRODUITS) else f"Produit_{i+1}"
+    # Sélectionner des produits uniques via le NameManager
+    produits_selectionnes = name_manager.get_multiple_produits(nombre_produits)
+    
+    for i, produit_data in enumerate(produits_selectionnes):
         produit = Produit(
             id=i + 1,
-            nom=nom,
+            nom=produit_data["nom"],
             prix=round(random.uniform(prix_min, prix_max), 2),
             actif=(i < nb_produits_actifs),
-            type=random.choice([TypeProduit.matiere_premiere, TypeProduit.consommable, TypeProduit.produit_fini])
+            type=TypeProduit(produit_data["type"])
         )
         produit_repo.add(produit)
 
@@ -185,6 +328,7 @@ def generate_fournisseurs(config_fournisseurs: Dict[str, Any]):
     
     Refactorisation (02/08/2025) :
     - Utilise FournisseurRepository au lieu de fake_fournisseurs_db
+    - Utilise le NameManager pour les noms uniques
     - Gestion des prix à migrer vers un service plus tard
     """
     nombre_fournisseurs = config_fournisseurs["nombre"]
@@ -199,9 +343,10 @@ def generate_fournisseurs(config_fournisseurs: Dict[str, Any]):
     # Récupérer tous les produits disponibles
     produits_disponibles = produit_repo.get_all()
     
-    for fid in range(1, nombre_fournisseurs + 1):
-        nom, pays = NOMS_FOURNISSEURS[fid-1] if fid-1 < len(NOMS_FOURNISSEURS) else (f"Fournisseur_{fid}", "France")
-        
+    # Sélectionner des fournisseurs uniques via le NameManager
+    fournisseurs_selectionnes = name_manager.get_multiple_fournisseurs(nombre_fournisseurs)
+    
+    for fid, fournisseur_data in enumerate(fournisseurs_selectionnes, start=1):
         stock_produit = {}
         nb_produits = random.randint(produits_min, produits_max)
         
@@ -210,23 +355,56 @@ def generate_fournisseurs(config_fournisseurs: Dict[str, Any]):
         for produit in produits_attribués:
             stock = random.randint(stock_min, stock_max)
             stock_produit[produit.id] = stock
-            
-            # Calcul d'un prix fournisseur spécifique
-            prix_base = produit.prix
-            facteur = random.uniform(0.9, 1.2) * (100 / (stock + 1))
-            prix_fournisseur = round(prix_base * facteur, 2)
-            
-            # Utilise le service centralisé de gestion des prix
-            from services.price_service import price_service
-            price_service.set_prix_produit_fournisseur(produit.id, fid, prix_fournisseur)
         
         fournisseur = Fournisseur(
             id=fid,
-            nom_entreprise=nom,
-            pays=pays,
+            nom_entreprise=fournisseur_data["nom"],
+            pays=fournisseur_data["pays"],
+            continent=fournisseur_data["continent"],
             stock_produit=stock_produit
         )
         fournisseur_repo.add(fournisseur)
+        
+        # Définir les prix APRÈS avoir ajouté le fournisseur
+        prix_fournisseur_data = []
+        for produit in produits_attribués:
+            # Calcul d'un prix fournisseur spécifique (facteur plus raisonnable)
+            prix_base = produit.prix
+            # Facteur basé sur le stock : plus de stock = prix légèrement plus bas
+            facteur_stock = 1.0 - (stock_produit[produit.id] - 50) / 1000  # Variation de ±5%
+            facteur_random = random.uniform(0.95, 1.05)  # Variation de ±5%
+            facteur_total = facteur_stock * facteur_random
+            prix_fournisseur = round(prix_base * facteur_total, 2)
+            
+            # Utilise le service centralisé de gestion des prix (version force)
+            from services.price_service import price_service
+            success = price_service.set_prix_produit_fournisseur_force(produit.id, fid, prix_fournisseur)
+            if not success:
+                print(f"⚠️ Échec définition prix: produit {produit.id}, fournisseur {fid}, prix {prix_fournisseur}")
+            else:
+                prix_fournisseur_data.append({
+                    'produit_nom': produit.nom,
+                    'produit_id': produit.id,
+                    'fournisseur_nom': fournisseur_data["nom"],
+                    'fournisseur_id': fid,
+                    'prix': prix_fournisseur
+                })
+        
+        # Afficher le tableau des prix pour ce fournisseur
+        if prix_fournisseur_data:
+            print(f"\n💰 PRIX FOURNISSEUR: {fournisseur_data['nom']} ({fournisseur_data['pays']})")
+            print("┌" + "─" * 80 + "┐")
+            print("│ {:<25} {:<15} {:<20} {:<15} │".format("Produit", "ID Produit", "Fournisseur", "Prix"))
+            print("├" + "─" * 80 + "┤")
+            for data in prix_fournisseur_data:
+                print("│ {:<25} {:<15} {:<20} {:<15} │".format(
+                    data['produit_nom'][:24], 
+                    data['produit_id'], 
+                    data['fournisseur_nom'][:19], 
+                    f"{data['prix']}€"
+                ))
+            print("└" + "─" * 80 + "┘")
+            print(f"📊 Stockage contient maintenant {len(price_service._prix_stockage)} prix")
 
 def generate_entreprises(config_entreprises: Dict[str, Any]):
     """
@@ -234,6 +412,7 @@ def generate_entreprises(config_entreprises: Dict[str, Any]):
     
     Refactorisation (02/08/2025) :
     - Utilise EntrepriseRepository au lieu de fake_entreprises_db
+    - Utilise le NameManager pour les noms uniques
     """
     nombre_entreprises = config_entreprises["nombre"]
     budget_min = config_entreprises["budget_min"]
@@ -244,21 +423,38 @@ def generate_entreprises(config_entreprises: Dict[str, Any]):
     # Vider le repository
     entreprise_repo.clear()
     
-    for i in range(nombre_entreprises):
-        nom = NOMS_ENTREPRISES[i] if i < len(NOMS_ENTREPRISES) else f"Entreprise_{i+1}"
-        pays = PAYS_ENTREPRISES[i] if i < len(PAYS_ENTREPRISES) else "France"
-        
+    # Sélectionner des entreprises uniques via le NameManager
+    entreprises_selectionnees = name_manager.get_multiple_entreprises(nombre_entreprises)
+    
+    for i, entreprise_data in enumerate(entreprises_selectionnees):
         entreprise = Entreprise(
             id=i + 1,
-            nom=nom,
-            pays=pays,
-            budget=round(random.uniform(budget_min, budget_max), 2),
-            budget_initial=round(random.uniform(budget_min, budget_max), 2),
-            types_preferes=random.sample([TypeProduit(t) for t in types_preferes], 
-                                       min(2, len(types_preferes))),
+            nom=entreprise_data["nom"],
+            pays=entreprise_data["pays"],
+            continent=entreprise_data["continent"],
+            budget=round(random.uniform(BUDGET_ENTREPRISE_MIN, BUDGET_ENTREPRISE_MAX), 2),
+            budget_initial=round(random.uniform(BUDGET_ENTREPRISE_MIN, BUDGET_ENTREPRISE_MAX), 2),
+                        types_preferes=random.sample([TypeProduit(t) for t in types_preferes],
+random.randint(TYPES_PRODUITS_PREFERES_MIN, min(TYPES_PRODUITS_PREFERES_MAX, len(types_preferes)))),
             strategie=random.choice(strategies)
         )
         entreprise_repo.add(entreprise)
+    
+    # Afficher le tableau récapitulatif des budgets des entreprises
+    entreprises = entreprise_repo.get_all()
+    if entreprises:
+        print(f"\n🏢 BUDGETS DES ENTREPRISES")
+        print("┌" + "─" * 70 + "┐")
+        print("│ {:<20} {:<15} {:<15} {:<15} │".format("Entreprise", "Pays", "Budget", "Stratégie"))
+        print("├" + "─" * 70 + "┤")
+        for entreprise in entreprises:
+            print("│ {:<20} {:<15} {:<15} {:<15} │".format(
+                entreprise.nom[:19], 
+                entreprise.pays[:14], 
+                f"{entreprise.budget:.0f}€", 
+                entreprise.strategie[:14]
+            ))
+        print("└" + "─" * 70 + "┘")
 
 def save_template(nom: str):
     """Sauvegarde la configuration actuelle comme template"""
@@ -352,10 +548,10 @@ def get_current_config() -> Dict[str, Any]:
                 "min": REASSORT_QUANTITE_MIN,
                 "max": REASSORT_QUANTITE_MAX
             },
-            "inflation": {
-                "min": INFLATION_POURCENTAGE_MIN,
-                "max": INFLATION_POURCENTAGE_MAX
-            },
+                    "inflation": {
+            "min": 30,  # INFLATION_POURCENTAGE_MIN
+            "max": 60   # INFLATION_POURCENTAGE_MAX
+        },
             "variation_disponibilite": {
                 "desactivation": PROBABILITE_DESACTIVATION,
                 "reactivation": PROBABILITE_REACTIVATION
@@ -381,10 +577,11 @@ def interactive_new_game():
             exit(0)
         elif choix == '1':
             # Jouer avec la config par défaut
-            generate_game_data(DEFAULT_CONFIG)
+            generate_game_data(get_default_config())
             print("✅ Configuration par défaut chargée !")
-            if ask_launch_game():
-                launch_simulation()
+            with_monitoring = ask_launch_game()
+            if with_monitoring is not None:  # None = retour au menu
+                launch_simulation(with_monitoring)
             return
         elif choix == '2':
             # Créer une nouvelle config interactive
@@ -402,21 +599,21 @@ def create_interactive_config():
     print("\n🎮 CRÉATION D'UNE NOUVELLE CONFIG")
     print("=" * 60)
     
-    config = DEFAULT_CONFIG.copy()
+    config = get_default_config()
     
     # Configuration des entreprises
     print("\n🏢 ENTREPRISES")
     config["entreprises"]["nombre"] = ask_number("Nombre d'entreprises", 3, 1, 10)
-    config["entreprises"]["budget_min"] = ask_number("Range budget entreprises (minimum en €)", 1000, 100, 10000)
-    config["entreprises"]["budget_max"] = ask_number("Range budget entreprises (maximum en €)", 3000, config["entreprises"]["budget_min"], 20000)
+    config["entreprises"]["budget_min"] = ask_number("Range budget entreprises (minimum en €)", BUDGET_ENTREPRISE_MIN, 1000, 100000)
+    config["entreprises"]["budget_max"] = ask_number("Range budget entreprises (maximum en €)", BUDGET_ENTREPRISE_MAX, config["entreprises"]["budget_min"], 200000)
     
     # Configuration des produits
     print("\n📦 PRODUITS")
-    config["produits"]["nombre"] = ask_number("Nombre de produits", 20, 5, 50)
-    config["produits"]["prix_min"] = ask_number("Range prix produits (minimum en €)", 5.0, 0.1, 1000.0, is_float=True)
-    config["produits"]["prix_max"] = ask_number("Range prix produits (maximum en €)", 500.0, config["produits"]["prix_min"], 10000.0, is_float=True)
-    config["produits"]["actifs_min"] = ask_number("Nombre minimum de produits actifs", 3, 1, config["produits"]["nombre"])
-    config["produits"]["actifs_max"] = ask_number("Nombre maximum de produits actifs", 8, config["produits"]["actifs_min"], config["produits"]["nombre"])
+    config["produits"]["nombre"] = ask_number("Nombre de produits", NOMBRE_PRODUITS_DEFAUT, 5, 50)
+    config["produits"]["prix_min"] = ask_number("Range prix produits (minimum en €)", PRIX_PRODUIT_MIN, 0.1, 1000.0, is_float=True)
+    config["produits"]["prix_max"] = ask_number("Range prix produits (maximum en €)", PRIX_PRODUIT_MAX, config["produits"]["prix_min"], 10000.0, is_float=True)
+    config["produits"]["actifs_min"] = ask_number("Nombre minimum de produits actifs", PRODUITS_ACTIFS_MIN, 1, config["produits"]["nombre"])
+    config["produits"]["actifs_max"] = ask_number("Nombre maximum de produits actifs", PRODUITS_ACTIFS_MAX, config["produits"]["actifs_min"], config["produits"]["nombre"])
     
     # Configuration des fournisseurs
     print("\n🏪 FOURNISSEURS")
@@ -433,7 +630,7 @@ def create_interactive_config():
     
     # Configuration des événements
     print("\n🎲 ÉVÉNEMENTS")
-    config["evenements"]["intervalle"] = ask_number("Intervalle des événements (ticks)", 20, 5, 100)
+    config["evenements"]["intervalle"] = ask_number("Intervalle des événements (ticks)", TICK_INTERVAL_EVENT, 1, 100)
     config["evenements"]["probabilites"]["recharge_budget"] = ask_number("Probabilité recharge budget", 0.5, 0.0, 1.0, is_float=True)
     config["evenements"]["probabilites"]["reassort"] = ask_number("Probabilité reassort", 0.5, 0.0, 1.0, is_float=True)
     config["evenements"]["probabilites"]["inflation"] = ask_number("Probabilité inflation", 0.4, 0.0, 1.0, is_float=True)
@@ -441,14 +638,14 @@ def create_interactive_config():
     
     # Paramètres des événements
     print("\n📊 PARAMÈTRES DES ÉVÉNEMENTS")
-    config["evenements"]["recharge_budget"]["min"] = ask_number("Recharge budget minimum (€)", 200, 10, 10000)
-    config["evenements"]["recharge_budget"]["max"] = ask_number("Recharge budget maximum (€)", 600, config["evenements"]["recharge_budget"]["min"], 50000)
-    config["evenements"]["reassort"]["min"] = ask_number("Reassort minimum (unités)", 10, 1, 1000)
-    config["evenements"]["reassort"]["max"] = ask_number("Reassort maximum (unités)", 50, config["evenements"]["reassort"]["min"], 10000)
-    config["evenements"]["inflation"]["min"] = ask_number("Inflation minimum (%)", 30, 1, 200)
-    config["evenements"]["inflation"]["max"] = ask_number("Inflation maximum (%)", 60, config["evenements"]["inflation"]["min"], 500)
-    config["evenements"]["variation_disponibilite"]["desactivation"] = ask_number("Probabilité désactivation produit", 0.1, 0.0, 1.0, is_float=True)
-    config["evenements"]["variation_disponibilite"]["reactivation"] = ask_number("Probabilité réactivation produit", 0.2, 0.0, 1.0, is_float=True)
+    config["evenements"]["recharge_budget"]["min"] = ask_number("Recharge budget minimum (€)", RECHARGE_BUDGET_MIN, 100, 100000)
+    config["evenements"]["recharge_budget"]["max"] = ask_number("Recharge budget maximum (€)", RECHARGE_BUDGET_MAX, config["evenements"]["recharge_budget"]["min"], 500000)
+    config["evenements"]["reassort"]["min"] = ask_number("Reassort minimum (unités)", REASSORT_QUANTITE_MIN, 1, 1000)
+    config["evenements"]["reassort"]["max"] = ask_number("Reassort maximum (unités)", REASSORT_QUANTITE_MAX, config["evenements"]["reassort"]["min"], 10000)
+    config["evenements"]["inflation"]["min"] = ask_number("Inflation minimum (%)", INFLATION_POURCENTAGE_MIN, 1, 200)
+    config["evenements"]["inflation"]["max"] = ask_number("Inflation maximum (%)", INFLATION_POURCENTAGE_MAX, config["evenements"]["inflation"]["min"], 500)
+    config["evenements"]["variation_disponibilite"]["desactivation"] = ask_number("Probabilité désactivation produit", PROBABILITE_DESACTIVATION, 0.0, 1.0, is_float=True)
+    config["evenements"]["variation_disponibilite"]["reactivation"] = ask_number("Probabilité réactivation produit", PROBABILITE_REACTIVATION, 0.0, 1.0, is_float=True)
     
     # Générer la nouvelle partie
     generate_game_data(config)
@@ -463,8 +660,9 @@ def create_interactive_config():
             save_template(nom.strip())
     
     # Demander si lancer la partie
-    if ask_launch_game():
-        launch_simulation()
+    with_monitoring = ask_launch_game()
+    if with_monitoring is not None:  # None = retour au menu
+        launch_simulation(with_monitoring)
 
 def load_existing_config():
     """Charge une config existante"""
@@ -500,8 +698,9 @@ def load_existing_config():
                 nom_template = templates[choix_int - 1]
                 if load_template(nom_template):
                     print("✅ Configuration chargée !")
-                    if ask_launch_game():
-                        launch_simulation()
+                    with_monitoring = ask_launch_game()
+                    if with_monitoring is not None:  # None = retour au menu
+                        launch_simulation(with_monitoring)
                     return
                 else:
                     print("❌ Erreur lors du chargement.")
@@ -543,7 +742,7 @@ def ask_number(question: str, default: float, min_val: float, max_val: float, is
         else:
             print("❌ Veuillez choisir [D], [R], [C] ou [Q]") 
 
-def ask_launch_game() -> bool:
+def ask_launch_game() -> bool | None:
     """Demande si l'utilisateur veut lancer la simulation"""
     print("\n🚀 Voulez-vous lancer la simulation maintenant ?")
     print("  [1] Lancer la simulation")
@@ -553,18 +752,44 @@ def ask_launch_game() -> bool:
         choix = input("Votre choix [1/2]: ").strip()
         
         if choix == '1':
-            return True
+            # Demander si l'utilisateur veut le monitoring
+            print("\n📊 MONITORING PROMETHEUS/GRAFANA")
+            print("=" * 40)
+            print("Voulez-vous activer le monitoring ?")
+            print("  [1] Oui - Activer le monitoring (Docker se lancera automatiquement)")
+            print("  [2] Non - Simulation sans monitoring")
+            
+            while True:
+                monitoring_choix = input("Votre choix [1/2]: ").strip()
+                
+                if monitoring_choix == '1':
+                    print("✅ Monitoring activé - Docker se lancera automatiquement")
+                    return True  # True = avec monitoring
+                elif monitoring_choix == '2':
+                    print("✅ Simulation sans monitoring")
+                    return False  # False = sans monitoring
+                else:
+                    print("❌ Veuillez choisir 1 ou 2")
+                    
         elif choix == '2':
             print("✅ Configuration sauvegardée. Vous pouvez lancer la simulation plus tard avec --tours ou --infinite")
-            return False
+            return None  # None = retour au menu
         else:
             print("❌ Veuillez choisir 1 ou 2")
 
-def launch_simulation():
+def launch_simulation(with_monitoring: bool = False):
     """Lance la simulation interactive"""
     print("\n🎮 LANCEMENT DE LA SIMULATION")
     print("=" * 60)
-    print("Choisissez le mode de simulation :")
+    
+    # Afficher le statut du monitoring
+    if with_monitoring:
+        print("📊 Monitoring Prometheus/Grafana : ACTIVÉ")
+        print("🐳 Docker se lancera automatiquement")
+    else:
+        print("📊 Monitoring Prometheus/Grafana : DÉSACTIVÉ")
+    
+    print("\nChoisissez le mode de simulation :")
     print("  [1] Nombre de tours spécifique (mode verbose)")
     print("  [2] Simulation infinie (mode verbose)")
     print("  [3] Mode silencieux (sans affichage détaillé)")
@@ -582,7 +807,7 @@ def launch_simulation():
                 if tours > 0:
                     show_game_summary(n_tours=tours)
                     print(f"\n🚀 Lancement de la simulation verbose pour {tours} tours...")
-                    run_simulation_tours(tours, verbose=True)
+                    run_simulation_tours(tours, verbose=True, with_monitoring=with_monitoring)
                     return
                 else:
                     print("❌ Le nombre de tours doit être positif")
@@ -592,7 +817,7 @@ def launch_simulation():
             show_game_summary()
             print("\n🚀 Lancement de la simulation infinie (mode verbose)...")
             print("💡 Appuyez sur Ctrl+C pour arrêter")
-            run_simulation_infinite(verbose=True)
+            run_simulation_infinite(verbose=True, with_monitoring=with_monitoring)
             return
         elif choix == '3':
             print("\n🔇 Mode silencieux activé !")
@@ -602,11 +827,11 @@ def launch_simulation():
                     if tours == 0:
                         show_game_summary()
                         print(f"\n🚀 Lancement de la simulation silencieuse infinie...")
-                        run_simulation_infinite(verbose=False)
+                        run_simulation_infinite(verbose=False, with_monitoring=with_monitoring)
                     else:
                         show_game_summary(n_tours=tours)
                         print(f"\n🚀 Lancement de la simulation silencieuse pour {tours} tours...")
-                        run_simulation_tours(tours, verbose=False)
+                        run_simulation_tours(tours, verbose=False, with_monitoring=with_monitoring)
                     return
                 else:
                     print("❌ Le nombre de tours doit être positif ou 0")
@@ -615,64 +840,133 @@ def launch_simulation():
         else:
             print("❌ Veuillez choisir 1, 2, 3 ou Q") 
 
-def run_simulation_tours(n_tours: int, verbose: bool = False):
+def run_simulation_tours(n_tours: int, verbose: bool = False, with_monitoring: bool = False):
     """Lance la simulation pour un nombre défini de tours"""
     import time
     
     print("🚀 Lancement de la simulation...\n")
     
+    # Gestion du monitoring
+    docker_success = True
+    if with_monitoring:
+        docker_success = lancer_docker_monitoring()
+        if not docker_success:
+            print("⚠️ L'application continuera sans monitoring")
+            print("📋 Consultez logs/monitoring.log pour plus de détails")
+    
     if verbose:
         print("📢 Mode parlant activé - Affichage en temps réel des événements\n")
 
-    tick = 0
+    # Utiliser SimulationService pour la cohérence avec le mode direct
+    from services.simulation_service import SimulationService
+    from repositories.entreprise_repository import EntrepriseRepository
+    from repositories.fournisseur_repository import FournisseurRepository
+    from repositories.produit_repository import ProduitRepository
+    
+    # Récupérer les données depuis les Repository
+    entreprise_repo = EntrepriseRepository()
+    fournisseur_repo = FournisseurRepository()
+    produit_repo = ProduitRepository()
+    
+    entreprises = entreprise_repo.get_all()
+    fournisseurs = fournisseur_repo.get_all()
+    produits = produit_repo.get_all()
+    
+    simulation_service = SimulationService(entreprises, fournisseurs, produits, verbose=verbose)
+    
     try:
-        while tick < n_tours:
-            tick += 1
-            
+        # Démarrer le monitoring si Docker a réussi
+        if with_monitoring and docker_success:
+            from monitoring.prometheus_exporter import PrometheusExporter
+            exporter = PrometheusExporter()
+            exporter_thread = threading.Thread(target=exporter.start, daemon=True)
+            exporter_thread.start()
+            time.sleep(2)  # Attendre que l'exporter démarre
+            print("✅ Monitoring démarré sur port 8000")
+        
+        # Lancer la simulation
+        for tour in range(n_tours):
+            result = simulation_service.simulation_tour()
             if verbose:
-                print(f"🔄 Tick {tick} - ", end="", flush=True)
-            
-            simulation_tour(verbose=verbose)
-            
-            if verbose:
-                print("✅ Tour terminé")
-            
-            if tick < n_tours:  # Ne pas faire de pause après le dernier tour
-                time.sleep(DUREE_PAUSE_ENTRE_TOURS)
-
+                print(f"Tour {result.get('tour', 'N/A')} - Transactions: {result.get('transactions_effectuees', 0)}")
+            time.sleep(DUREE_PAUSE_ENTRE_TOURS)
+        
     except KeyboardInterrupt:
         print("\n⏹️ Simulation interrompue manuellement.")
+    except Exception as e:
+        error_msg = f"Erreur lors de la simulation: {str(e)}"
+        print(f"❌ {error_msg}")
+        if with_monitoring:
+            log_monitoring(error_msg, "ERROR")
+    finally:
+        # Arrêter le monitoring si il était actif
+        if with_monitoring and docker_success:
+            print("🛑 Arrêt du monitoring...")
+            log_monitoring("Arrêt du monitoring")
 
-    print("✅ Simulation terminée.")
-
-def run_simulation_infinite(verbose: bool = False):
-    """Lance la simulation en boucle infinie"""
+def run_simulation_infinite(verbose: bool = False, with_monitoring: bool = False):
+    """Lance la simulation indéfiniment"""
     import time
     
     print("🚀 Lancement de la simulation infinie...\n")
     
+    # Gestion du monitoring
+    docker_success = True
+    if with_monitoring:
+        docker_success = lancer_docker_monitoring()
+        if not docker_success:
+            print("⚠️ L'application continuera sans monitoring")
+            print("📋 Consultez logs/monitoring.log pour plus de détails")
+    
     if verbose:
         print("📢 Mode parlant activé - Affichage en temps réel des événements\n")
 
-    tick = 0
+    # Utiliser SimulationService pour la cohérence avec le mode direct
+    from services.simulation_service import SimulationService
+    from repositories.entreprise_repository import EntrepriseRepository
+    from repositories.fournisseur_repository import FournisseurRepository
+    from repositories.produit_repository import ProduitRepository
+    
+    # Récupérer les données depuis les Repository
+    entreprise_repo = EntrepriseRepository()
+    fournisseur_repo = FournisseurRepository()
+    produit_repo = ProduitRepository()
+    
+    entreprises = entreprise_repo.get_all()
+    fournisseurs = fournisseur_repo.get_all()
+    produits = produit_repo.get_all()
+    
+    simulation_service = SimulationService(entreprises, fournisseurs, produits, verbose=verbose)
+    
     try:
+        # Démarrer le monitoring si Docker a réussi
+        if with_monitoring and docker_success:
+            from monitoring.prometheus_exporter import PrometheusExporter
+            exporter = PrometheusExporter()
+            exporter_thread = threading.Thread(target=exporter.start, daemon=True)
+            exporter_thread.start()
+            time.sleep(2)  # Attendre que l'exporter démarre
+            print("✅ Monitoring démarré sur port 8000")
+        
+        # Lancer la simulation infinie
         while True:
-            tick += 1
-            
+            result = simulation_service.simulation_tour()
             if verbose:
-                print(f"🔄 Tick {tick} - ", end="", flush=True)
-            
-            simulation_tour(verbose=verbose)
-            
-            if verbose:
-                print("✅ Tour terminé")
-            
+                print(f"Tour {result.get('tour', 'N/A')} - Transactions: {result.get('transactions_effectuees', 0)}")
             time.sleep(DUREE_PAUSE_ENTRE_TOURS)
-
+        
     except KeyboardInterrupt:
         print("\n⏹️ Simulation interrompue manuellement.")
-
-    print("✅ Simulation terminée.") 
+    except Exception as e:
+        error_msg = f"Erreur lors de la simulation: {str(e)}"
+        print(f"❌ {error_msg}")
+        if with_monitoring:
+            log_monitoring(error_msg, "ERROR")
+    finally:
+        # Arrêter le monitoring si il était actif
+        if with_monitoring and docker_success:
+            print("🛑 Arrêt du monitoring...")
+            log_monitoring("Arrêt du monitoring")
 
 def show_game_summary(n_tours: int = None):
     """Affiche un résumé complet de la configuration du jeu"""
@@ -750,11 +1044,14 @@ def show_game_summary(n_tours: int = None):
         print("│ {:<35} {:<42} │".format("Nombre de tours choisi", f"{n_tours} tours"))
     
     print("│ {:<35} {:<42} │".format("Probabilité sélection", f"{PROBABILITE_SELECTION_ENTREPRISE*100:.0f}% ({PROBABILITE_SELECTION_ENTREPRISE})"))
+    print("│ {:<35} {:<42} │".format("Entreprises par tour", f"{N_ENTREPRISES_PAR_TOUR} entreprises"))
     print("│ {:<35} {:<42} │".format("Pause entre tours", f"{DUREE_PAUSE_ENTRE_TOURS} secondes"))
     print("│ {:<35} {:<42} │".format("Intervalle événements", f"{TICK_INTERVAL_EVENT} ticks"))
     print("│ {:<35} {:<42} │".format("Recharge budget range", f"{RECHARGE_BUDGET_MIN}€ - {RECHARGE_BUDGET_MAX}€"))
     print("│ {:<35} {:<42} │".format("Reassort range", f"{REASSORT_QUANTITE_MIN} - {REASSORT_QUANTITE_MAX} unités"))
     print("│ {:<35} {:<42} │".format("Inflation range", f"{INFLATION_POURCENTAGE_MIN}% - {INFLATION_POURCENTAGE_MAX}%"))
+    print("│ {:<35} {:<42} │".format("Quantité achat range", f"{QUANTITE_ACHAT_MIN} - {QUANTITE_ACHAT_MAX} unités"))
+    print("│ {:<35} {:<42} │".format("Prix produit range", f"{PRIX_PRODUIT_MIN}€ - {PRIX_PRODUIT_MAX}€"))
     
     probas_str = f"Recharge:{PROBABILITE_EVENEMENT['recharge_budget']*100:.0f}%, Reassort:{PROBABILITE_EVENEMENT['reassort']*100:.0f}%, Inf:{PROBABILITE_EVENEMENT['inflation']*100:.0f}%, Var:{PROBABILITE_EVENEMENT['variation_disponibilite']*100:.0f}%"
     print("│ {:<35} {:<42} │".format("Probabilités événements", probas_str))

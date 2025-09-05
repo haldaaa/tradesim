@@ -23,13 +23,16 @@ from datetime import datetime
 
 from repositories import ProduitRepository, FournisseurRepository, EntrepriseRepository
 from models import Produit, TypeProduit, Fournisseur, Entreprise
-from config import (
+from config.config import (
     RECHARGE_BUDGET_MIN, RECHARGE_BUDGET_MAX,
     REASSORT_QUANTITE_MIN, REASSORT_QUANTITE_MAX,
     INFLATION_POURCENTAGE_MIN, INFLATION_POURCENTAGE_MAX,
     PROBABILITE_DESACTIVATION, PROBABILITE_REACTIVATION,
     TICK_INTERVAL_EVENT, PROBABILITE_EVENEMENT,
-    PROBABILITE_SELECTION_ENTREPRISE, DUREE_PAUSE_ENTRE_TOURS
+    PROBABILITE_SELECTION_ENTREPRISE, DUREE_PAUSE_ENTRE_TOURS,
+    TYPES_PRODUITS_PREFERES_MIN, TYPES_PRODUITS_PREFERES_MAX,
+    BUDGET_ENTREPRISE_MIN, BUDGET_ENTREPRISE_MAX,
+    DEFAULT_CONTINENT, validate_continent
 )
 
 
@@ -236,10 +239,14 @@ class GameManagerService:
                 from .price_service import price_service
                 price_service.set_prix_produit_fournisseur(produit.id, fid, prix_fournisseur)
             
+            # Validation du continent avec fallback
+            continent_valide = DEFAULT_CONTINENT if validate_continent(DEFAULT_CONTINENT) else "Europe"
+            
             fournisseur = Fournisseur(
                 id=fid,
                 nom_entreprise=nom,
                 pays=pays,
+                continent=continent_valide,
                 stock_produit=stock_produit
             )
             self.fournisseur_repo.add(fournisseur)
@@ -268,10 +275,11 @@ class GameManagerService:
                 id=i + 1,
                 nom=nom,
                 pays=pays,
-                budget=random.randint(budget_min, budget_max),
-                budget_initial=random.randint(budget_min, budget_max),
-                types_preferes=random.sample([TypeProduit(t) for t in types_preferes], 
-                                           min(2, len(types_preferes))),
+                continent="Europe",  # Valeur par défaut
+                budget=round(random.uniform(BUDGET_ENTREPRISE_MIN, BUDGET_ENTREPRISE_MAX), 2),
+                budget_initial=round(random.uniform(BUDGET_ENTREPRISE_MIN, BUDGET_ENTREPRISE_MAX), 2),
+                types_preferes=random.sample([TypeProduit(t) for t in types_preferes],
+                    random.randint(TYPES_PRODUITS_PREFERES_MIN, min(TYPES_PRODUITS_PREFERES_MAX, len(types_preferes)))),
                 strategie=random.choice(strategies)
             )
             self.entreprise_repo.add(entreprise)
@@ -398,10 +406,10 @@ class GameManagerService:
                     "min": REASSORT_QUANTITE_MIN,
                     "max": REASSORT_QUANTITE_MAX
                 },
-                "inflation": {
-                    "min": INFLATION_POURCENTAGE_MIN,
-                    "max": INFLATION_POURCENTAGE_MAX
-                },
+                        "inflation": {
+            "min": 30,  # INFLATION_POURCENTAGE_MIN
+            "max": 60   # INFLATION_POURCENTAGE_MAX
+        },
                 "variation_disponibilite": {
                     "desactivation": PROBABILITE_DESACTIVATION,
                     "reactivation": PROBABILITE_REACTIVATION

@@ -14,10 +14,12 @@ Ce guide explique comment basculer TradeSim entre le mode CLI (développement) e
 - ✅ **Tests automatisés** - Validation continue
 
 ### **Mode Web (Production)**
-- ✅ **Base de données** - Données persistantes
+- ✅ **Base de données PostgreSQL** - Données persistantes
 - ✅ **API REST** - Interface web
 - ✅ **Scalabilité** - Multi-utilisateurs
 - ✅ **Monitoring** - Métriques et alertes
+- ✅ **Graphiques historiques** - Métriques avec label 'tick'
+- ✅ **Scripts de nettoyage** - Maintenance automatique
 
 ## 🔧 **Migration simple (Recommandée)**
 
@@ -37,7 +39,7 @@ CURRENT_MODE = ExecutionMode.WEB
 
 Le système utilise automatiquement :
 - **Mode CLI** : `FakeProduitRepository`, `FakeFournisseurRepository`, `FakeEntrepriseRepository`
-- **Mode Web** : `SQLProduitRepository`, `SQLFournisseurRepository`, `SQLEntrepriseRepository`
+- **Mode Web** : `SQLProduitRepository`, `SQLFournisseurRepository`, `SQLEntrepriseRepository` (PostgreSQL)
 
 ### **Étape 3 : Tester la migration**
 
@@ -80,6 +82,8 @@ uvicorn==0.24.0
 pydantic==2.5.0
 sqlalchemy==2.0.0
 psycopg2-binary==2.9.0
+prometheus-client==0.19.0
+flask==3.0.0
 ```
 
 ### **Phase 2 : Interface Web**
@@ -88,7 +92,7 @@ psycopg2-binary==2.9.0
 ```bash
 npx create-react-app frontend
 cd frontend
-npm install axios react-router-dom
+npm install axios react-router-dom bootstrap react-bootstrap
 ```
 
 #### **2.2 Composants principaux**
@@ -275,10 +279,10 @@ curl http://localhost:3000/
 
 La migration CLI ↔ Web de TradeSim est **simple et fiable** grâce à l'architecture Repository. Le code reste identique, seule la configuration change.
 
-**Prochaine étape :** Implémenter le monitoring Prometheus/Grafana pour les deux modes.
+**Prochaine étape :** Développer l'interface Web React avec Bootstrap et intégration Grafana.
 
 ---
 
 **Auteur :** Assistant IA  
-**Date :** 2024-08-03  
-**Version :** 2.0 - Guide unifié CLI ↔ Web 
+**Date :** 2024-09-04  
+**Version :** 2.1 - Guide unifié CLI ↔ Web avec nouvelles fonctionnalités 

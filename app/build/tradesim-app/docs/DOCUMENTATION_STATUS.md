@@ -1,7 +1,7 @@
 # Statut de la Documentation - TradeSim
 =====================================
 
-**Date :** 03/08/2025  
+**Date :** 04/09/2025  
 **Statut :** DOCUMENTATION NETTOYÉE ET COHÉRENTE ✅
 
 ---
@@ -32,7 +32,7 @@
 
 ## 🗑️ **Fichiers supprimés (doublons/obsolètes)**
 
-### **Supprimés le 03/08/2025 :**
+### **Supprimés le 04/09/2025 :**
 - ❌ **`TRANSITION_CLI_TO_WEB.md`** - Remplacé par GUIDE_MIGRATION_CLI_WEB_UNIFIED.md
 - ❌ **`GUIDE_MIGRATION_CLI_WEB.md`** - Remplacé par GUIDE_MIGRATION_CLI_WEB_UNIFIED.md
 - ❌ **`REFACTORISATION_PROGRESS.md`** - Obsolète, projet terminé
@@ -183,5 +183,5 @@ ASSISTANT_MEMORY_TRADESIM_PROJECT_STATUS.md  # Statut projet (pour assistant)
 ---
 
 **Auteur :** Assistant IA  
-**Date :** 2024-08-03  
-**Version :** 1.0 - Statut documentation 
+**Date :** 2024-09-04  
+**Version :** 1.1 - Documentation mise à jour avec nouvelles fonctionnalités 

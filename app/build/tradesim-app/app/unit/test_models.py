@@ -21,7 +21,7 @@ from models import (
     Produit, TypeProduit, Fournisseur, Entreprise,
     ProduitChezFournisseur, FournisseurComplet, Transaction
 )
-from datetime import datetime
+from datetime import datetime, timezone
 
 
 class TestTypeProduit:
@@ -124,6 +124,7 @@ class TestFournisseur:
             id=1,
             nom_entreprise="Test Fournisseur",
             pays="France",
+            continent="Europe",
             stock_produit={1: 100, 2: 50}
         )
         
@@ -140,6 +141,7 @@ class TestFournisseur:
             id=1,
             nom_entreprise="Test Fournisseur",
             pays="France",
+            continent="Europe",
             stock_produit={1: -10}  # Stock négatif
         )
         assert fournisseur.stock_produit[1] == -10
@@ -151,6 +153,7 @@ class TestFournisseur:
             id=1,
             nom_entreprise="Test Fournisseur",
             pays="France",
+            continent="Europe",
             stock_produit={}
         )
         
@@ -167,6 +170,7 @@ class TestEntreprise:
             id=1,
             nom="Test Entreprise",
             pays="France",
+            continent="Europe",
             budget=1000.0,
             budget_initial=1000.0,
             types_preferes=[TypeProduit.matiere_premiere, TypeProduit.consommable],
@@ -189,6 +193,7 @@ class TestEntreprise:
             id=1,
             nom="Test Entreprise",
             pays="France",
+            continent="Europe",
             budget=-100.0,  # Budget négatif
             budget_initial=1000.0,
             types_preferes=[TypeProduit.matiere_premiere],
@@ -203,6 +208,7 @@ class TestEntreprise:
             id=1,
             nom="Test Entreprise",
             pays="France",
+            continent="Europe",
             budget=1000.0,
             budget_initial=1000.0,
             types_preferes=[TypeProduit.matiere_premiere],
@@ -217,6 +223,7 @@ class TestEntreprise:
             id=1,
             nom="Test Entreprise",
             pays="France",
+            continent="Europe",
             budget=1000.0,
             budget_initial=1000.0,
             types_preferes=[],  # Liste vide
@@ -271,6 +278,7 @@ class TestFournisseurComplet:
             id=1,
             nom_entreprise="Test Fournisseur",
             pays="France",
+            continent="Europe",
             produits=produits
         )
         
@@ -287,7 +295,7 @@ class TestTransaction:
     
     def test_transaction_creation_valide(self):
         """Test création d'une transaction valide"""
-        timestamp = datetime.utcnow()
+        timestamp = datetime.now(timezone.utc)
         transaction = Transaction(
             timestamp=timestamp,
             entreprise_id=1,
@@ -314,7 +322,7 @@ class TestTransaction:
     
     def test_transaction_echec(self):
         """Test création d'une transaction échouée"""
-        timestamp = datetime.utcnow()
+        timestamp = datetime.now(timezone.utc)
         transaction = Transaction(
             timestamp=timestamp,
             entreprise_id=1,

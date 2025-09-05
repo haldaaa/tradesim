@@ -61,6 +61,13 @@ FICHIER_LOG_HUMAIN = os.path.join(LOG_DIR, "simulation_humain.log")
 EVENT_LOG_JSON = os.path.join(LOG_DIR, "event.jsonl")
 EVENT_LOG_HUMAIN = os.path.join(LOG_DIR, "event.log")
 
+# Configuration des logs
+LOG_LEVEL = "INFO"                         # Niveau de log (DEBUG, INFO, WARNING, ERROR)
+LOG_FORMAT = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"  # Format des logs
+LOG_FILE = FICHIER_LOG_HUMAIN              # Fichier de log principal
+LOG_FILE_MAX_SIZE = 10 * 1024 * 1024       # 10 MB
+LOG_FILE_BACKUP_COUNT = 5                  # Nombre de fichiers de backup
+
 # ============================================================================
 # ENTREPRISES - Configuration des entreprises
 # ============================================================================
@@ -510,3 +517,47 @@ THROUGHPUT_MIN_INTERVAL = 0.01  # Intervalle minimum entre mesures (10ms)
 LATENCY_WARNING_THRESHOLD = 100.0  # Seuil d'avertissement latence (100ms)
 LATENCY_CRITICAL_THRESHOLD = 500.0  # Seuil critique latence (500ms)
 THROUGHPUT_MIN_RATE = 0.1  # Taux minimum de throughput (0.1 op/s)
+
+# ============================================================================
+# FONCTIONS UTILITAIRES
+# ============================================================================
+
+def get_default_config() -> dict:
+    """
+    Retourne la configuration par défaut de TradeSim.
+    
+    Returns:
+        dict: Dictionnaire contenant toute la configuration
+        
+    Exemple:
+        >>> config = get_default_config()
+        >>> config['NOMBRE_TOURS']
+        100
+    """
+    return {
+        # Simulation
+        'NOMBRE_TOURS': NOMBRE_TOURS,
+        'N_ENTREPRISES_PAR_TOUR': N_ENTREPRISES_PAR_TOUR,
+        'DUREE_PAUSE_ENTRE_TOURS': DUREE_PAUSE_ENTRE_TOURS,
+        'PROBABILITE_SELECTION_ENTREPRISE': PROBABILITE_SELECTION_ENTREPRISE,
+        
+        # Debug
+        'DEBUG_MODE': DEBUG_MODE,
+        
+        # Logs
+        'LOG_LEVEL': LOG_LEVEL,
+        'LOG_FORMAT': LOG_FORMAT,
+        'LOG_FILE': LOG_FILE,
+        'LOG_FILE_MAX_SIZE': LOG_FILE_MAX_SIZE,
+        'LOG_FILE_BACKUP_COUNT': LOG_FILE_BACKUP_COUNT,
+        
+        # Fichiers de log
+        'FICHIER_LOG': FICHIER_LOG,
+        'FICHIER_LOG_HUMAIN': FICHIER_LOG_HUMAIN,
+        'EVENT_LOG_JSON': EVENT_LOG_JSON,
+        'EVENT_LOG_HUMAIN': EVENT_LOG_HUMAIN,
+        
+        # Base directory
+        'BASE_DIR': BASE_DIR,
+        'LOG_DIR': LOG_DIR
+    }

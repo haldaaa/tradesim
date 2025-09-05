@@ -1,259 +1,153 @@
-# API - Endpoints FastAPI TradeSim
-==================================
+# Tests TradeSim
 
-## 📋 **Vue d'ensemble**
+## **📋 Principe du dossier**
 
-Le dossier `api/` contient l'interface REST de TradeSim, construite avec FastAPI. L'API expose les fonctionnalités de TradeSim via des endpoints HTTP, permettant l'intégration avec des applications web.
+Ce dossier contient tous les tests du projet TradeSim, organisés selon une architecture en couches pour garantir la qualité et la robustesse du code.
 
-**MODE CLI (développement) :** API utilisée pour les tests et le développement
-**MODE WEB (production) :** API principale pour l'interface utilisateur
+## **🏗️ Architecture des tests**
 
-## 🏗️ **Architecture**
-
-### **FastAPI Framework :**
-- **Performance** : Basé sur Starlette et Pydantic
-- **Documentation automatique** : Swagger UI et ReDoc
-- **Validation** : Validation automatique des données
-- **Type hints** : Support complet des types Python
-
-### **Structure :**
+### **📁 Structure**
 ```
-api/
-├── __init__.py      # Exports de l'API
-├── main.py          # Endpoints FastAPI
-└── README.md        # Cette documentation
+tests/
+├── README.md                    # Ce fichier - Documentation des tests
+├── unit/                        # Tests unitaires - Fonctionnalités isolées
+├── integration/                 # Tests d'intégration - Interactions entre modules
+└── api/                         # Tests API - Interface REST (futur)
 ```
 
-## 📁 **Endpoints disponibles**
+## **📂 Contenu des sous-dossiers**
 
-### **GET /** - Point d'entrée
+### **🔬 `unit/` - Tests unitaires**
+Tests des fonctionnalités individuelles en isolation.
+
+**Fichiers :**
+- `test_models.py` - Tests des modèles de données (Produit, Fournisseur, Entreprise)
+- `test_game_manager.py` - Tests du gestionnaire de jeu et génération de données
+- `test_names_data.py` - Tests des données de noms réalistes
+- `test_budgets_entreprises.py` - Tests des budgets d'entreprises configurables
+- `test_quantites_achat.py` - Tests des quantités d'achat configurables
+- `test_architecture.py` - Tests de l'architecture Repository/Services
+- `test_events_refactorises.py` - Tests des événements refactorisés
+- `test_inflation.py` - Tests de l'événement inflation
+- `test_inflation_correct.py` - Tests corrigés de l'inflation
+- `test_inflation_penalite.py` - Tests de la logique de pénalité d'inflation
+- `test_inflation_retour_normal.py` - Tests de la logique de retour à la normale
+- `test_recharge_stock_fournisseur.py` - Tests de l'événement recharge stock fournisseur
+- `test_simple.py` - Tests simples de base
+
+### **🔗 `integration/` - Tests d'intégration**
+Tests des interactions entre différents modules et services.
+
+**Fichiers :**
+- `test_integration_complete.py` - Tests d'intégration complète du système
+- `test_services_complets.py` - Tests des services (GameManager, Transaction, etc.)
+- `test_simulation_complete.py` - Tests de simulation complète avec événements
+- `test_refactorisation_complete.py` - Tests de refactorisation complète
+- `test_refactorisation_progress.py` - Tests de progression de refactorisation
+
+### **🌐 `api/` - Tests API (futur)**
+Tests de l'interface REST pour le mode Web.
+
+**Fichiers :**
+- `test_api_endpoints.py` - Tests des endpoints REST
+
+## **🚀 Utilisation**
+
+### **Lancement des tests**
+
 ```bash
-curl http://localhost:8000/
-```
-**Réponse :**
-```json
-{
-  "message": "Bienvenue sur TradeSim",
-  "version": "1.0.0",
-  "mode": "CLI",
-  "endpoints": {
-    "produits": "/produits",
-    "fournisseurs": "/fournisseurs", 
-    "entreprises": "/entreprises"
-  }
-}
+# Tous les tests
+python3 -m pytest tests/ -v
+
+# Tests unitaires uniquement
+python3 -m pytest tests/unit/ -v
+
+# Tests d'intégration uniquement
+python3 -m pytest tests/integration/ -v
+
+# Tests API uniquement
+python3 -m pytest tests/api/ -v
+
+# Test spécifique
+python3 -m pytest tests/unit/test_budgets_entreprises.py -v
 ```
 
-### **GET /produits** - Liste des produits actifs
+### **Avec coverage**
 ```bash
-curl http://localhost:8000/produits
-```
-**Réponse :**
-```json
-[
-  {
-    "id": 1,
-    "nom": "Bois",
-    "prix": 25.50,
-    "actif": true,
-    "type": "matiere_premiere"
-  }
-]
+# Coverage complet
+python3 -m pytest tests/ --cov=services --cov-report=term-missing
+
+# Coverage par module
+python3 -m pytest tests/unit/test_budgets_entreprises.py --cov=services --cov-report=term-missing
 ```
 
-### **GET /entreprises** - Liste des entreprises
-```bash
-curl http://localhost:8000/entreprises
-```
-**Réponse :**
-```json
-[
-  {
-    "id": 1,
-    "nom": "MagaToys",
-    "pays": "France",
-    "budget": 1500.0,
-    "strategie": "moins_cher",
-    "types_preferes": ["matiere_premiere"]
-  }
-]
-```
+## **📊 Objectifs de qualité**
 
-### **GET /fournisseurs** - Liste des fournisseurs
-```bash
-curl http://localhost:8000/fournisseurs
-```
-**Réponse :**
-```json
-[
-  {
-    "id": 1,
-    "nom_entreprise": "PlancheCompagnie",
-    "pays": "France",
-    "stock_produit": {
-      "1": 50,
-      "2": 30
-    }
-  }
-]
-```
+### **🎯 Couverture de code**
+- **Objectif** : 100% de couverture
+- **Actuel** : ~95% (en progression)
+- **Méthode** : `pytest --cov=services --cov-report=term-missing`
 
-## 🔧 **Utilisation**
+### **🔍 Types de tests**
+- **Tests unitaires** : Fonctionnalités isolées
+- **Tests d'intégration** : Interactions entre modules
+- **Tests de performance** : Charge et stress
+- **Tests de régression** : Prévention des régressions
 
-### **Lancement du serveur :**
-```bash
-# Mode développement
-uvicorn api.main:app --reload --host 0.0.0.0 --port 8000
+### **📝 Documentation**
+- **Commentaires** : Instructions de lancement manuel et automatique
+- **Docstrings** : Documentation des fonctions de test
+- **README** : Ce fichier pour chaque dossier
 
-# Mode production
-uvicorn api.main:app --host 0.0.0.0 --port 8000 --workers 4
-```
+## **🛠️ Conventions**
 
-### **Documentation automatique :**
-- **Swagger UI** : http://localhost:8000/docs
-- **ReDoc** : http://localhost:8000/redoc
+### **Nommage des tests**
+- `test_*.py` - Fichiers de test
+- `Test*` - Classes de test
+- `test_*` - Méthodes de test
 
-### **Tests de l'API :**
-```bash
-# Tests unitaires
-pytest tests/api/ -v
-
-# Tests d'intégration
-pytest tests/integration/test_api_integration.py -v
-```
-
-## 🎯 **Avantages de cette architecture**
-
-### **Performance :**
-- ✅ **Asynchrone** : Gestion efficace des requêtes concurrentes
-- ✅ **Validation automatique** : Pydantic pour la validation des données
-- ✅ **Documentation automatique** : Swagger UI généré automatiquement
-
-### **Développement :**
-- ✅ **Hot reload** : Redémarrage automatique lors des modifications
-- ✅ **Type hints** : Support complet des types Python
-- ✅ **Tests automatisés** : Tests unitaires et d'intégration
-
-### **Production :**
-- ✅ **Scalabilité** : Support de multiples workers
-- ✅ **Sécurité** : Validation et sanitisation des données
-- ✅ **Monitoring** : Logs détaillés et métriques
-
-## 📝 **Exemples d'utilisation**
-
-### **Client Python :**
+### **Structure des tests**
 ```python
-import httpx
-
-async with httpx.AsyncClient() as client:
-    # Récupérer les produits
-    response = await client.get("http://localhost:8000/produits")
-    produits = response.json()
-    
-    # Récupérer les entreprises
-    response = await client.get("http://localhost:8000/entreprises")
-    entreprises = response.json()
+def test_nom_fonctionnalite():
+    """Test de la fonctionnalité X"""
+    # Arrange
+    # Act
+    # Assert
 ```
 
-### **Client JavaScript :**
-```javascript
-// Récupérer les produits
-const response = await fetch('http://localhost:8000/produits');
-const produits = await response.json();
+### **Mocking et fixtures**
+- **Mocks** : Pour isoler les dépendances
+- **Fixtures** : Pour la réutilisation de données de test
+- **Setup/Teardown** : Pour la préparation et nettoyage
 
-// Récupérer les entreprises
-const response = await fetch('http://localhost:8000/entreprises');
-const entreprises = await response.json();
-```
+## **📈 Métriques**
 
-### **Client cURL :**
-```bash
-# Récupérer tous les produits
-curl -X GET "http://localhost:8000/produits" \
-  -H "accept: application/json"
+### **Statistiques actuelles**
+- **Tests unitaires** : ~50 tests
+- **Tests d'intégration** : ~20 tests
+- **Tests API** : ~10 tests
+- **Couverture** : ~95%
 
-# Récupérer toutes les entreprises
-curl -X GET "http://localhost:8000/entreprises" \
-  -H "accept: application/json"
-```
+### **Objectifs**
+- **100% de couverture** pour tous les modules critiques
+- **Tests de performance** pour le mode 24/7
+- **Tests de récupération** pour la robustesse
 
-## 🔄 **Migration CLI → Web**
+## **🔧 Maintenance**
 
-### **Étape 1 : Vérifier le mode**
-```python
-# Dans api/main.py
-from config.mode import get_current_mode
+### **Ajout de nouveaux tests**
+1. Créer le fichier dans le bon dossier (`unit/`, `integration/`, `api/`)
+2. Suivre les conventions de nommage
+3. Ajouter les commentaires de lancement
+4. Mettre à jour ce README si nécessaire
 
-@app.get("/")
-def root():
-    mode = get_current_mode()
-    return {
-        "message": "Bienvenue sur TradeSim",
-        "mode": mode.value,
-        "endpoints": {...}
-    }
-```
+### **Mise à jour des tests existants**
+1. Vérifier que les tests passent après modification
+2. Mettre à jour les assertions si les comportements changent
+3. Maintenir la cohérence avec les dogmes du projet
 
-### **Étape 2 : Adapter les endpoints**
-```python
-# Les endpoints utilisent déjà les Repository
-# Pas de modification nécessaire !
-```
+---
 
-### **Étape 3 : Tester l'API**
-```bash
-# Lancer le serveur
-uvicorn api.main:app --reload
-
-# Tester les endpoints
-curl http://localhost:8000/
-curl http://localhost:8000/produits
-curl http://localhost:8000/entreprises
-```
-
-## 📚 **Documentation technique**
-
-### **FastAPI Features :**
-- **Automatic docs** : Documentation générée automatiquement
-- **Request validation** : Validation automatique des requêtes
-- **Response serialization** : Sérialisation automatique des réponses
-- **OpenAPI** : Spécification OpenAPI 3.0
-
-### **Repository Integration :**
-- **Abstraction** : API utilise les Repository pour l'accès aux données
-- **Mode agnostic** : Même code pour CLI et Web
-- **Tests** : Tests unitaires et d'intégration
-- **Performance** : Optimisé pour les requêtes concurrentes
-
-### **Error Handling :**
-```python
-from fastapi import HTTPException
-
-@app.get("/produits/{produit_id}")
-def get_produit(produit_id: int):
-    produit = produit_repo.get_by_id(produit_id)
-    if not produit:
-        raise HTTPException(status_code=404, detail="Produit non trouvé")
-    return produit
-```
-
-## 🧪 **Tests**
-
-### **Tests unitaires :**
-```bash
-pytest tests/api/test_api_endpoints.py -v
-```
-
-### **Tests d'intégration :**
-```bash
-pytest tests/integration/test_api_integration.py -v
-```
-
-### **Tests de performance :**
-```bash
-# Avec locust
-locust -f tests/performance/locustfile.py
-```
-
-## 📝 **Auteur**
-Assistant IA - 2024-08-02 
+**Auteur** : Assistant IA  
+**Date** : 2025-01-27  
+**Version** : 1.0 

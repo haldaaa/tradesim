@@ -29,6 +29,9 @@ class PriceService:
         self.produit_repo = ProduitRepository()
         self.fournisseur_repo = FournisseurRepository()
         
+        # Stockage des prix (remplace prix_par_fournisseur de data.py)
+        self._prix_stockage: Dict[Tuple[int, int], float] = {}
+        
         # Cache des prix pour optimiser les performances
         self._prix_cache: Dict[Tuple[int, int], float] = {}
     
@@ -62,9 +65,8 @@ class PriceService:
         if produit_id not in fournisseur.stock_produit:
             return None
         
-        # Récupérer le prix depuis le dictionnaire global (comme avant)
-        from data import prix_par_fournisseur
-        prix = prix_par_fournisseur.get((produit_id, fournisseur_id))
+        # Récupérer le prix depuis le stockage interne
+        prix = self._prix_stockage.get((produit_id, fournisseur_id))
         
         # Mettre en cache
         self._prix_cache[cache_key] = prix
@@ -97,9 +99,30 @@ class PriceService:
         if produit_id not in fournisseur.stock_produit:
             return False
         
-        # Définir le prix dans le dictionnaire global (comme avant)
-        from data import prix_par_fournisseur
-        prix_par_fournisseur[(produit_id, fournisseur_id)] = prix
+        # Définir le prix dans le stockage interne
+        self._prix_stockage[(produit_id, fournisseur_id)] = prix
+        
+        # Mettre à jour le cache
+        cache_key = (produit_id, fournisseur_id)
+        self._prix_cache[cache_key] = prix
+        
+        return True
+    
+    def set_prix_produit_fournisseur_force(self, produit_id: int, fournisseur_id: int, prix: float) -> bool:
+        """
+        Définit le prix d'un produit chez un fournisseur spécifique sans vérification.
+        Utilisé lors de la génération des données.
+        
+        Args:
+            produit_id: ID du produit
+            fournisseur_id: ID du fournisseur
+            prix: Nouveau prix à définir
+            
+        Returns:
+            True si le prix a été défini avec succès
+        """
+        # Définir le prix dans le stockage interne
+        self._prix_stockage[(produit_id, fournisseur_id)] = prix
         
         # Mettre à jour le cache
         cache_key = (produit_id, fournisseur_id)
@@ -168,6 +191,13 @@ class PriceService:
     def clear_cache(self) -> None:
         """Vide le cache des prix."""
         self._prix_cache.clear()
+    
+    def reset(self) -> None:
+        """Remet à zéro le service de prix (vide le stockage et le cache)."""
+        print(f"🔍 DEBUG: PriceService.reset() appelé - Stockage contient {len(self._prix_stockage)} prix")
+        self._prix_stockage.clear()
+        self._prix_cache.clear()
+        print(f"🔍 DEBUG: PriceService.reset() terminé - Stockage contient {len(self._prix_stockage)} prix")
 
 
 # Instance globale du service de prix

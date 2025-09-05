@@ -19,9 +19,10 @@ import os
 # Configuration du path pour les imports
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
 
-from events.inflation import appliquer_inflation
+from events.inflation import appliquer_inflation_et_retour
 from models import Produit, TypeProduit
-from data import fake_produits_db, produits_ayant_subi_inflation
+from repositories import ProduitRepository, FournisseurRepository
+from data import produits_ayant_subi_inflation
 
 class TestInflation:
     """
@@ -43,8 +44,16 @@ class TestInflation:
         - S'assurer que chaque test part d'un état connu
         """
         # Réinitialiser les données de test pour éviter les interférences
-        fake_produits_db.clear()
-        produits_ayant_subi_inflation.clear()
+        from events.inflation import reset_inflation_timers
+        reset_inflation_timers()
+        
+        # Initialiser les repositories
+        self.produit_repo = ProduitRepository()
+        self.fournisseur_repo = FournisseurRepository()
+        
+        # Vider les repositories pour éviter les conflits
+        self.produit_repo.clear()
+        self.fournisseur_repo.clear()
         
         # Créer des produits de test avec des caractéristiques différentes
         self.produit1 = Produit(
@@ -62,15 +71,16 @@ class TestInflation:
             type=TypeProduit.consommable
         )
         
-        # Ajouter les produits à la base de données de test
-        fake_produits_db.extend([self.produit1, self.produit2])
+        # Ajouter les produits aux repositories
+        self.produit_repo.add(self.produit1)
+        self.produit_repo.add(self.produit2)
     
     def test_appliquer_inflation_produit_actif(self):
         """
         Test que l'inflation s'applique correctement sur un produit actif.
         
         Vérifie que :
-        - Le prix augmente après application de l'inflation
+        - Le prix augmente après application de l'inflation (si appliquée)
         - Le produit est marqué comme affecté
         - La fonction retourne un résultat valide
         """
@@ -78,15 +88,16 @@ class TestInflation:
         prix_initial = self.produit1.prix
         
         # Appliquer l'inflation sur le produit (peut ne pas s'appliquer selon la probabilité)
-        resultat = appliquer_inflation(tick=1)
+        resultat = appliquer_inflation_et_retour(tick=1)
         
         # Vérifications des effets de l'inflation
         assert resultat is not None, "La fonction doit retourner un résultat"
         
-        # L'inflation peut ne pas s'appliquer selon la probabilité
+        # L'inflation est probabiliste, on accepte les deux cas
         if resultat:  # Si l'inflation s'est appliquée
-            assert self.produit1.prix > prix_initial, "Le prix doit avoir augmenté"
-            assert self.produit1.id in produits_ayant_subi_inflation, "Le produit doit être marqué comme affecté"
+            assert self.produit1.prix > prix_initial, "Le prix doit avoir augmenté si l'inflation s'applique"
+            from events.inflation import produits_inflation_timers
+            assert self.produit1.id in produits_inflation_timers, "Le produit doit être marqué comme affecté"
             print(f"✅ Test inflation - Prix initial: {prix_initial}, Prix après: {self.produit1.prix}")
         else:
             # Si l'inflation ne s'est pas appliquée, le prix doit rester inchangé
@@ -107,7 +118,7 @@ class TestInflation:
         prix_initial = self.produit1.prix
         
         # Tenter d'appliquer l'inflation
-        resultat = appliquer_inflation(tick=1)
+        resultat = appliquer_inflation_et_retour(tick=1)
         
         # Vérifier que le prix n'a pas changé pour le produit inactif
         assert self.produit1.prix == prix_initial, "Le prix d'un produit inactif ne doit pas changer"
@@ -126,7 +137,7 @@ class TestInflation:
         NOTE: Fonctionnalité non implémentée pour le moment
         """
         # Appliquer une inflation d'abord
-        appliquer_inflation(tick=1)
+        appliquer_inflation_et_retour(tick=1)
         prix_apres_inflation = self.produit1.prix
         
         # TODO: Implémenter reduire_inflation_progressive() plus tard

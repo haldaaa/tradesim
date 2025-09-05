@@ -13,27 +13,27 @@ Date: 2024-08-02
 def test_events_imports():
     """Test que tous les événements peuvent être importés."""
     try:
-        from events.inflation import appliquer_inflation
+        from events.inflation import appliquer_inflation_et_retour
         from events.reassort import evenement_reassort
         from events.recharge_budget import appliquer_recharge_budget
         from events.variation_disponibilite import appliquer_variation_disponibilite
         
         print("✅ Import de tous les événements réussi")
-        return True
+        assert True, "Import de tous les événements réussi"
     except Exception as e:
         print(f"❌ Erreur import événements: {e}")
-        return False
+        assert False, f"Erreur import événements: {e}"
 
 def test_events_execution():
     """Test l'exécution des événements."""
     try:
-        from events.inflation import appliquer_inflation
+        from events.inflation import appliquer_inflation_et_retour
         from events.reassort import evenement_reassort
         from events.recharge_budget import appliquer_recharge_budget
         from events.variation_disponibilite import appliquer_variation_disponibilite
         
         # Test inflation
-        logs_inflation = appliquer_inflation(1)
+        logs_inflation = appliquer_inflation_et_retour(1)
         print(f"✅ Inflation: {len(logs_inflation)} logs générés")
         
         # Test reassort
@@ -48,16 +48,16 @@ def test_events_execution():
         logs_variation = appliquer_variation_disponibilite(1)
         print(f"✅ Variation disponibilité: {len(logs_variation)} logs générés")
         
-        return True
+        assert True, "Exécution des événements réussie"
     except Exception as e:
         print(f"❌ Erreur exécution événements: {e}")
-        return False
+        assert False, f"Erreur exécution événements: {e}"
 
 def test_repository_integration():
     """Test que les événements utilisent bien les Repository."""
     try:
         from repositories import ProduitRepository, FournisseurRepository, EntrepriseRepository
-        from events.inflation import appliquer_inflation
+        from events.inflation import appliquer_inflation_et_retour
         
         # Vérifier que les Repository sont utilisés
         produit_repo = ProduitRepository()
@@ -71,10 +71,10 @@ def test_repository_integration():
         
         print(f"✅ Repository intégration: {len(produits)} produits, {len(fournisseurs)} fournisseurs, {len(entreprises)} entreprises")
         
-        return True
+        assert True, "Repository intégration réussie"
     except Exception as e:
         print(f"❌ Erreur intégration Repository: {e}")
-        return False
+        assert False, f"Erreur intégration Repository: {e}"
 
 def main():
     """Fonction principale de test."""

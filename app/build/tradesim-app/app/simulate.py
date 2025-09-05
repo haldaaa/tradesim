@@ -1,16 +1,33 @@
 #!/usr/bin/env python3
 """
-Simulate TradeSim - Interface de simulation
-==========================================
+Simulate TradeSim - Point d'entrée principal CLI
+================================================
 
-Ce module fournit l'interface de simulation pour TradeSim.
-Il gère l'affichage du statut, le mode cheat et l'exécution
-des simulations.
+ROLE : Interface utilisateur et point d'entrée unique de l'application CLI
+- Gère tous les arguments de ligne de commande (--tours, --new-game, etc.)
+- Interface utilisateur pour les modes direct et interactif
+- Orchestration du monitoring Prometheus/Grafana
+- Point d'entrée unifié pour toute l'application
+
+DIFFÉRENCE AVEC game_manager.py :
+- simulate.py = Interface utilisateur (CLI, arguments, menus)
+- game_manager.py = Logique métier (configuration, templates, génération données)
+
+ARCHITECTURE :
+simulate.py (point d'entrée)
+├── game_manager.py (logique de configuration)
+├── simulateur.py (logique de simulation)
+└── monitoring/ (Prometheus/Grafana)
 
 Refactorisation (02/08/2025) :
 - Utilise les Repository au lieu d'accès directs aux données
 - Code plus modulaire et testable
 - Interface commune pour CLI et API
+
+Monitoring (04/08/2025) :
+- Intégration Prometheus/Grafana
+- Option --with-metrics pour activer le monitoring
+- Affichage du statut monitoring dans la configuration
 
 Auteur: Assistant IA
 Date: 2024-08-02
@@ -20,6 +37,7 @@ import argparse
 import sys
 import time
 import os
+import threading
 
 # Ajouter le chemin parent pour les imports si nécessaire
 if __name__ == "__main__" and __package__ is None:
@@ -28,16 +46,71 @@ if __name__ == "__main__" and __package__ is None:
 # Imports des Repository (nouvelle architecture)
 from repositories import ProduitRepository, FournisseurRepository, EntrepriseRepository
 from services.simulateur import simulation_tour
-from config import DUREE_PAUSE_ENTRE_TOURS
+from config.config import DUREE_PAUSE_ENTRE_TOURS, METRICS_ENABLED, METRICS_EXPORTER_PORT
 from services.game_manager import (
     reset_game, interactive_new_game, save_template, 
     load_template, list_templates
 )
+from services.game_state_service import game_state_service
+
+# Import du monitoring
+from monitoring.prometheus_exporter import PrometheusExporter, format_monitoring_status
 
 # Initialisation des Repository
 produit_repo = ProduitRepository()
 fournisseur_repo = FournisseurRepository()
 entreprise_repo = EntrepriseRepository()
+
+# Variable globale pour l'exporter
+exporter = None
+exporter_thread = None
+
+def afficher_configuration_actuelle():
+    """
+    Affiche la configuration actuelle incluant le statut du monitoring
+    """
+    print("\n" + "="*60)
+    print("⚙️ CONFIGURATION ACTUELLE")
+    print("="*60)
+    print(f"Mode: CLI")
+    print(f"Monitoring: {format_monitoring_status()}")
+    if METRICS_ENABLED:
+        print(f"Métriques: 5 actives")
+        print(f"Stockage: logs/metrics.jsonl")
+        print(f"Prometheus: http://localhost:9090")
+        print(f"Grafana: http://localhost:3000")
+    print("="*60)
+
+def demarrer_monitoring():
+    """
+    Démarre l'exporter Prometheus dans un thread séparé
+    """
+    global exporter, exporter_thread
+    
+    if not METRICS_ENABLED:
+        print("⚠️ Monitoring désactivé dans la configuration")
+        return
+    
+    try:
+        exporter = PrometheusExporter()
+        exporter_thread = threading.Thread(target=exporter.start, daemon=True)
+        exporter_thread.start()
+        
+        # Attendre un peu que l'exporter démarre
+        time.sleep(2)
+        print(f"✅ Monitoring démarré sur port {METRICS_EXPORTER_PORT}")
+        
+    except Exception as e:
+        print(f"❌ Erreur lors du démarrage du monitoring: {e}")
+
+def arreter_monitoring():
+    """
+    Arrête l'exporter Prometheus
+    """
+    global exporter
+    if exporter:
+        print("🛑 Arrêt du monitoring...")
+        # L'exporter s'arrêtera automatiquement quand le processus principal se termine
 
 def afficher_status():
     """
@@ -77,8 +150,15 @@ def afficher_status():
             stock = fournisseur.stock_produit[produit.id]
             
             # Utiliser le service de gestion des prix
-            from services.simulateur import get_prix_produit_fournisseur
-            prix = get_prix_produit_fournisseur(produit.id, fournisseur.id)
+            import services.price_service
+            prix = services.price_service.price_service.get_prix_produit_fournisseur(produit.id, fournisseur.id)
+            
+            # Debug: voir pourquoi prix est None
+            if prix is None:
+                print(f"    🔍 DEBUG: Prix None pour produit {produit.id}, fournisseur {fournisseur.id}")
+                # Vérifier si le prix existe dans le stockage
+                print(f"    🔍 DEBUG: Stockage contient {len(services.price_service.price_service._prix_stockage)} prix")
+                print(f"    🔍 DEBUG: Clé ({produit.id}, {fournisseur.id}) dans stockage: {((produit.id, fournisseur.id)) in services.price_service.price_service._prix_stockage}")
             
             # Si le prix n'est pas défini, utiliser un prix par défaut (comme dans l'API)
             if prix is None:
@@ -132,31 +212,55 @@ def mode_cheat():
             print("❌ Veuillez entrer un numéro valide.")
 
 
-def run_simulation(n_tours: int = None, infinite: bool = False, verbose: bool = False):
+def run_simulation(n_tours: int = None, infinite: bool = False, verbose: bool = False, with_metrics: bool = False):
     """
     Lance la simulation sur un nombre défini de tours,
     ou en boucle infinie si 'infinite' est True.
     
     Refactorisation (02/08/2025) :
     - Utilise SimulationService pour une logique cohérente
+    
+    Monitoring (04/08/2025) :
+    - Intégration avec l'exporter Prometheus
+    - Mise à jour des métriques pendant la simulation
     """
     print("🚀 Lancement de la simulation...\n")
     
     if verbose:
         print("📢 Mode parlant activé - Affichage en temps réel des événements\n")
 
-    # Utiliser SimulationService au lieu de simulation_tour
+    # Démarrer le monitoring si demandé
+    if with_metrics:
+        demarrer_monitoring()
+        afficher_configuration_actuelle()
+
+    # Récupérer les données depuis les Repository
+    entreprises = entreprise_repo.get_all()
+    fournisseurs = fournisseur_repo.get_all()
+    produits = produit_repo.get_all()
+    
+    # Utiliser SimulationService avec les données
     from services.simulation_service import SimulationService
-    simulation_service = SimulationService()
+    simulation_service = SimulationService(entreprises, fournisseurs, produits, verbose=verbose)
+    
+    # 🔄 RÉINITIALISER LA SIMULATION (budgets, compteurs, etc.)
+    simulation_service.reset_simulation()
     
     try:
         if infinite:
+            # Simulation infinie
             simulation_service.run_simulation_infinite(verbose=verbose)
         else:
+            # Simulation avec nombre de tours défini
             simulation_service.run_simulation_tours(n_tours, verbose=verbose)
 
     except KeyboardInterrupt:
         print("\n⏹️ Simulation interrompue manuellement.")
+
+    finally:
+        # Arrêter le monitoring si il était actif
+        if with_metrics:
+            arreter_monitoring()
 
     print("✅ Simulation terminée.")
 
@@ -173,8 +277,17 @@ if __name__ == "__main__":
     parser.add_argument("--save-template", type=str, help="Sauvegarder la configuration actuelle comme template")
     parser.add_argument("--load-template", type=str, help="Charger un template existant")
     parser.add_argument("--list-templates", action="store_true", help="Lister tous les templates disponibles")
+    parser.add_argument("--with-metrics", action="store_true", help="Activer le monitoring Prometheus/Grafana")
 
     args = parser.parse_args()
+    
+    # Essayer de charger l'état du jeu au démarrage
+    try:
+        latest_file = game_state_service.get_latest_game_file()
+        if latest_file:
+            game_state_service.load_game_state(latest_file)
+    except Exception as e:
+        print(f"⚠️ Impossible de charger l'état du jeu: {e}")
 
     # Gestion des modes spéciaux
     if args.status:
@@ -213,9 +326,9 @@ if __name__ == "__main__":
         sys.exit(1)
 
     if args.infinite:
-        run_simulation(infinite=True, verbose=args.verbose)
+        run_simulation(infinite=True, verbose=args.verbose, with_metrics=args.with_metrics)
     elif args.tours:
-        run_simulation(n_tours=args.tours, verbose=args.verbose)
+        run_simulation(n_tours=args.tours, verbose=args.verbose, with_metrics=args.with_metrics)
     else:
         print("❌ Veuillez spécifier --tours <n> ou --infinite")
         sys.exit(1)

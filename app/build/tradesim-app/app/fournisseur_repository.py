@@ -18,7 +18,8 @@ from models import Fournisseur
 from repositories.base_repository import FournisseurRepositoryInterface
 
 # Import des données en mémoire (pour l'implémentation Fake)
-from data import fake_fournisseurs_db
+# Import différé pour éviter les imports circulaires
+fake_fournisseurs_db = None
 
 
 class FakeFournisseurRepository(FournisseurRepositoryInterface):
@@ -37,6 +38,17 @@ class FakeFournisseurRepository(FournisseurRepositoryInterface):
         """
         Initialise le repository avec les données en mémoire.
         """
+        global fake_fournisseurs_db
+        if fake_fournisseurs_db is None:
+            # Import direct depuis data.py
+            import sys
+            import os
+            sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
+            import importlib.util
+            spec = importlib.util.spec_from_file_location("data", os.path.join(os.path.dirname(os.path.dirname(__file__)), "data.py"))
+            data_module = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(data_module)
+            fake_fournisseurs_db = data_module.fake_fournisseurs_db
         self._data = fake_fournisseurs_db
     
     def get_all(self) -> List[Fournisseur]:

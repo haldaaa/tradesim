@@ -22,13 +22,13 @@ Auteur : Fares & GPT
 """
 
 import random
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import List, Dict, Any
 
 # Imports des Repository (nouvelle architecture)
 from repositories import ProduitRepository, FournisseurRepository
 from events.event_logger import log_evenement_json, log_evenement_humain
-from config import REASSORT_QUANTITE_MIN, REASSORT_QUANTITE_MAX
+from config.config import REASSORT_QUANTITE_MIN, REASSORT_QUANTITE_MAX
 
 def evenement_reassort(tick: int) -> List[Dict[str, Any]]:
     """
@@ -50,7 +50,7 @@ def evenement_reassort(tick: int) -> List[Dict[str, Any]]:
     produit_repo = ProduitRepository()
     fournisseur_repo = FournisseurRepository()
 
-    horodatage = datetime.utcnow()
+    horodatage = datetime.now(timezone.utc)
     horodatage_iso = horodatage.isoformat()
     horodatage_humain = horodatage.strftime("%Y-%m-%d %H:%M:%S")
 
@@ -92,11 +92,12 @@ def evenement_reassort(tick: int) -> List[Dict[str, Any]]:
         total_quantite = sum(p['quantite_ajoutee'] for p in produits_concernes)
         fournisseurs_concernes = len(set(p['fournisseur'] for p in produits_concernes))
         
+        # Créer la liste des produits avec leurs quantités
+        produits_liste = ", ".join([f"{p['produit']}(+{p['quantite_ajoutee']})" for p in produits_concernes])
+        fournisseurs_liste = ", ".join(set([p['fournisseur'] for p in produits_concernes]))
+        
         message_humain = (
-            f"[REASSORT] "
-            f"[PRODUITS] {len(produits_concernes)} produits réapprovisionnés | "
-            f"[QUANTITE] +{total_quantite} unités total | "
-            f"[FOURNISSEURS] {fournisseurs_concernes} fournisseurs concernés"
+            f"📦 Tour {tick} - REASSORT: {produits_liste} chez {fournisseurs_liste}"
         )
         
         log_json = {

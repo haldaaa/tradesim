@@ -1,9 +1,18 @@
-# TradeSim - Architecture Modulaire
-=====================================
+# 🎮 TradeSim - Simulation Économique Modulaire
+==============================================
 
 ## 📋 **Vue d'ensemble**
 
-TradeSim est une application de simulation économique modulaire, conçue pour être évolutive et maintenable. L'architecture utilise le pattern Repository pour séparer la logique métier de l'accès aux données.
+TradeSim est une application de simulation économique modulaire et évolutive, conçue pour simuler des transactions entre entreprises et fournisseurs avec des événements dynamiques (inflation, recharge de budget, etc.). L'architecture utilise le pattern Repository pour séparer la logique métier de l'accès aux données.
+
+## 🎯 **Fonctionnalités principales**
+
+- **Simulation économique** : Transactions entre entreprises et fournisseurs
+- **Événements dynamiques** : Inflation, recharge de budget, réassortiment, recharge stock fournisseur
+- **Monitoring en temps réel** : Métriques Prometheus et dashboards Grafana
+- **Logging structuré** : Logs humains et JSON pour analyse
+- **Thread-safety** : Cache optimisé et accès concurrent sécurisé
+- **Validation robuste** : Vérification des données et configurations
 
 ## 🏗️ **Structure du projet**
 
@@ -46,29 +55,62 @@ class SQLProduitRepository(ProduitRepository):
 
 ## 🚀 **Utilisation**
 
-### **Mode CLI (actuel) :**
+### **Lancement rapide :**
 ```bash
-python services/simulateur.py
+# Activer l'environnement virtuel
+source venv/bin/activate
+
+# Nouvelle partie
+python services/simulate.py --new-game
+
+# Simulation de 10 tours
+python services/simulate.py --tours 10
+
+# Simulation infinie avec monitoring
+python services/simulate.py --infinite --with-metrics
 ```
 
-### **Mode API (futur) :**
+### **Mode API :**
 ```bash
+# Lancer l'API
 uvicorn api.main:app --reload
+
+# Accéder aux métriques
+curl http://localhost:8000/metrics
+```
+
+### **Monitoring Prometheus/Grafana :**
+```bash
+# Lancer le monitoring
+cd monitoring && docker-compose up -d
+
+# Accéder à Grafana
+# http://localhost:3000 (admin/admin)
 ```
 
 ### **Tests :**
 ```bash
-pytest tests/ -v
+# Tests unitaires
+pytest tests/unit/ -v
+
+# Tests d'intégration
+pytest tests/integration/ -v
+
+# Tests avec couverture
+pytest tests/ --cov=services --cov-report=html
 ```
 
 ## 📚 **Documentation par module**
 
-- `models/README.md` - Modèles Pydantic
-- `repositories/README.md` - Accès aux données
-- `services/README.md` - Logique métier
-- `events/README.md` - Événements de simulation
-- `api/README.md` - Endpoints FastAPI
-- `config/README.md` - Configuration
+- `models/README.md` - Modèles Pydantic (entités)
+- `repositories/README.md` - Accès aux données (Repository pattern)
+- `services/README.md` - Logique métier (simulation, métriques)
+- `events/README.md` - Événements de simulation (inflation, recharge, etc.)
+- `api/README.md` - Endpoints FastAPI (API REST)
+- `config/README.md` - Configuration centralisée
+- `monitoring/README.md` - Monitoring Prometheus/Grafana
+- `tests/README.md` - Tests unitaires et d'intégration
+- `scripts/README.md` - Scripts utilitaires (nettoyage, maintenance)
 
 ## 🔧 **Changement de mode CLI ↔ Web**
 
@@ -98,6 +140,34 @@ CURRENT_MODE = ExecutionMode.WEB  # Base de données
 - ✅ **Code identique** pour CLI et Web
 - ✅ **Migration transparente** sans refactorisation
 - ✅ **Tests automatisés** pour vérifier le bon fonctionnement
+
+## 🔄 **Dernières améliorations (04/09/2025)**
+
+- **Label 'tick'** : Métriques avec historique par tour pour graphiques temporels
+- **Scripts de nettoyage** : Nettoyage automatique du monitoring (clean_monitoring_complete.sh)
+- **Graphiques historiques** : Suivi de l'évolution des budgets par tour dans Grafana
+- **Monitoring avancé** : Dashboards Grafana avec données temporelles
+- **Correction bugs** : Résolution des erreurs de labels Prometheus
+- **Thread-safety** : Cache optimisé avec verrous pour accès concurrent
+- **Logging structuré** : Logs humains et JSON pour traçabilité complète
+- **Validation robuste** : Vérification des configurations et données
+- **Tests de performance** : Tests de charge et thread-safety
+- **Documentation complète** : README détaillés pour chaque module
+
+## 📊 **Métriques disponibles**
+
+- **Budget** : Revenus, dépenses, ratios
+- **Entreprises** : Performance, stratégies
+- **Produits** : Prix, stocks, disponibilité
+- **Fournisseurs** : Stocks, prix, performance
+- **Transactions** : Volume, succès, échecs
+- **Événements** : Fréquence, impact
+- **Performance** : Latences, débits
+
+---
+**Auteur** : Assistant IA  
+**Dernière mise à jour** : 04/09/2025  
+**Version** : 1.6.0 - Monitoring avancé et graphiques historiques
 
 ### **Migration vers base de données :**
 1. Remplacer les implémentations Fake par SQL

@@ -44,7 +44,7 @@ class TestQuantitesAchat:
     def test_constantes_configuration(self):
         """Test que les constantes de configuration sont correctement définies"""
         assert QUANTITE_ACHAT_MIN == 1
-        assert QUANTITE_ACHAT_MAX == 100
+        assert QUANTITE_ACHAT_MAX == 40
         assert QUANTITE_ACHAT_MIN < QUANTITE_ACHAT_MAX
     
     def test_quantite_dans_bornes(self):

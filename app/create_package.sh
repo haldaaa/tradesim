@@ -14,7 +14,7 @@ set -e  # Arrêter en cas d'erreur
 
 # Configuration
 PACKAGE_NAME="tradesim-app"
-VERSION="0.1.0"
+VERSION="0.2.0"
 BUILD_DIR="build"
 PACKAGE_DIR="$BUILD_DIR/$PACKAGE_NAME"
 

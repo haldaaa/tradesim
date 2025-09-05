@@ -1,354 +1,272 @@
-# Guide de Monitoring CLI - TradeSim
-====================================
+# Guide Monitoring CLI - TradeSim
+================================
 
-## 📊 **Vue d'ensemble**
+Ce guide explique comment utiliser le monitoring Prometheus/Grafana avec TradeSim en mode CLI.
 
-Ce guide explique comment utiliser les solutions de monitoring CLI pour TradeSim, incluant Prometheus, Rich Dashboard, et les métriques disponibles.
+## 🎯 Objectif
 
-## 🎯 **Solutions de monitoring disponibles**
+Fournir un monitoring temps réel de TradeSim avec :
+- **Prometheus** : Collecte et stockage des métriques
+- **Grafana** : Visualisation et dashboards
+- **Exporter Python** : Exposition des métriques depuis l'application
+- **Import automatique** : Dashboards pré-configurés via API REST
 
-### **1. Prometheus Exporteur**
-- **Fichier :** `monitoring/prometheus_exporter.py`
-- **Fonction :** Exporte les métriques vers Prometheus
-- **Port :** 8000 (par défaut)
-- **URL :** http://localhost:8000/metrics
+## 🚀 Démarrage rapide
 
-### **2. Dashboard CLI Rich**
-- **Fichier :** `monitoring/cli_dashboard.py`
-- **Fonction :** Interface CLI moderne avec métriques en temps réel
-- **Technologie :** Rich (bibliothèque Python moderne)
+### 1. Démarrage automatique complet
 
-### **3. Métriques disponibles**
-- **Fichier :** `METRIQUES_DISPONIBLES.md`
-- **Contenu :** Liste complète de toutes les métriques
-
-## 🚀 **Démarrage rapide**
-
-### **Option 1 : Dashboard CLI Rich (Recommandé)**
 ```bash
-# Installer Rich si nécessaire
-pip install rich
-
-# Démarrer le dashboard
-python monitoring/cli_dashboard.py
+# Démarrage complet avec import automatique des dashboards
+./monitoring/start_monitoring.sh
 ```
 
-### **Option 2 : Prometheus Exporteur**
+**Ce script fait automatiquement :**
+- Démarre Prometheus et Grafana
+- Attend que Grafana soit prêt
+- Importe automatiquement tous les dashboards
+- Affiche les URLs d'accès
+
+### 2. Démarrage manuel (ancienne méthode)
+
 ```bash
-# Installer prometheus_client
-pip install prometheus_client
+# Démarrer Prometheus et Grafana
+cd monitoring
+docker-compose up -d
 
-# Démarrer l'exporteur
-python monitoring/prometheus_exporter.py
+# Importer les dashboards manuellement
+cd ..
+python monitoring/import_dashboards.py
 ```
 
-### **Option 3 : Les deux ensemble**
+### 3. Accéder aux interfaces
+
+- **Prometheus**: http://localhost:9090
+- **Grafana**: http://localhost:3000 (admin/admin)
+- **Exporter**: http://localhost:8000
+
+## 📊 Dashboards disponibles
+
+### **Dashboards de base**
+- **TradeSim - Simulation Overview** : Vue d'ensemble de la simulation
+- **TradeSim - Finances & Budgets** : Métriques financières
+- **TradeSim - Entreprises & Stratégies** : Performance des entreprises
+- **TradeSim - Produits & Fournisseurs** : Gestion des produits
+- **TradeSim - Événements & Métriques Avancées** : Événements système
+
+### **Dashboards templates (avec variables)**
+- **TradeSim - Produit: $produit** : Métriques par produit spécifique
+- **TradeSim - Entreprise: $entreprise** : Métriques par entreprise spécifique
+- **TradeSim - Fournisseur: $fournisseur** : Métriques par fournisseur spécifique
+
+### **Utilisation des dashboards templates**
+1. **Ouvrir** le dashboard template (ex: "TradeSim - Produit: $produit")
+2. **Sélectionner** la variable en haut (ex: choisir "Ordinateur")
+3. **Tous les panels** se mettent à jour automatiquement
+
+## ⚙️ Configuration
+
+### Variables de configuration (`config/config.py`)
+
+```python
+# Activation du monitoring
+METRICS_ENABLED = True                # Activer/désactiver le monitoring
+METRICS_COLLECTION_INTERVAL = 1.0    # Intervalle de collecte en secondes
+
+# Configuration de l'exporter Prometheus
+METRICS_EXPORTER_PORT = 8000         # Port de l'exporter Prometheus
+METRICS_EXPORTER_HOST = "0.0.0.0"    # Host de l'exporter
+
+# Configuration Docker (Prometheus/Grafana)
+METRICS_PROMETHEUS_PORT = 9090       # Port de Prometheus
+METRICS_GRAFANA_PORT = 3000          # Port de Grafana
+
+# Métriques système
+METRICS_SYSTEM_ENABLED = True        # Activer les métriques système
+METRICS_SYSTEM_INTERVAL = 5.0        # Intervalle collecte système (secondes)
+
+# Labels (phase 2)
+METRICS_LABELS_ENABLED = False       # Activer les labels
+METRICS_LABELS_CONTINENT = True      # Label continent
+METRICS_LABELS_PRODUIT_TYPE = True   # Label type de produit
+
+# Configuration Latency & Throughput
+LATENCY_COLLECTION_INTERVAL = 0.1    # Intervalle de collecte des latences (100ms)
+LATENCY_HISTOGRAM_BUCKETS = [0.1, 0.5, 1.0, 2.0, 5.0, 10.0, 20.0, 50.0, 100.0]  # Buckets pour histogrammes
+LATENCY_HISTORY_SIZE = 1000          # Nombre de mesures à conserver en historique
+THROUGHPUT_WINDOW_SIZE = 60          # Fenêtre de calcul du throughput (60 secondes)
+THROUGHPUT_MIN_INTERVAL = 0.01       # Intervalle minimum entre mesures (10ms)
+
+# Seuils de performance pour les alertes
+LATENCY_WARNING_THRESHOLD = 100.0    # Seuil d'avertissement latence (100ms)
+LATENCY_CRITICAL_THRESHOLD = 500.0   # Seuil critique latence (500ms)
+```
+
+## 🔧 Scripts disponibles
+
+### **Script de démarrage automatique**
 ```bash
-# Terminal 1 - Prometheus Exporteur
-python monitoring/prometheus_exporter.py
-
-# Terminal 2 - Dashboard CLI
-python monitoring/cli_dashboard.py
+./monitoring/start_monitoring.sh
 ```
+- Démarre tous les services
+- Importe automatiquement les dashboards
+- Affiche les URLs d'accès
 
-## 📈 **Métriques critiques**
-
-### **Métriques de santé économique :**
-1. **Budget total** - Indicateur principal de santé
-2. **Entreprises solvables** - Stabilité du système
-3. **Produits actifs** - Disponibilité des biens
-4. **Transactions réussies** - Activité du marché
-
-### **Métriques de performance :**
-1. **Temps de simulation** - Performance du système
-2. **Nombre de tours** - Progression de la simulation
-3. **Événements appliqués** - Activité des événements
-
-### **Métriques d'alerte :**
-1. **Budget total < 1000€** - Système en difficulté
-2. **Aucune transaction** - Marché stagnant
-3. **Aucun produit actif** - Offre inexistante
-4. **Entreprises en difficulté** - Instabilité
-
-## 🔧 **Configuration Prometheus**
-
-### **Installation de Prometheus :**
+### **Script d'import des dashboards**
 ```bash
-# Télécharger Prometheus
-wget https://github.com/prometheus/prometheus/releases/download/v2.45.0/prometheus-2.45.0.linux-amd64.tar.gz
-tar -xzf prometheus-2.45.0.linux-amd64.tar.gz
-cd prometheus-2.45.0
+python monitoring/import_dashboards.py
 ```
+- Importe tous les dashboards JSON
+- Gestion des erreurs automatique
+- Affiche le statut de chaque import
 
-### **Configuration prometheus.yml :**
-```yaml
-global:
-  scrape_interval: 15s
-
-scrape_configs:
-  - job_name: 'tradesim'
-    static_configs:
-      - targets: ['localhost:8000']
-    metrics_path: '/metrics'
-```
-
-### **Démarrer Prometheus :**
+### **Script de configuration Prometheus**
 ```bash
-./prometheus --config.file=prometheus.yml
+python monitoring/configure_prometheus.py
+```
+- Configure automatiquement Prometheus
+- Détecte l'environnement (Mac/Windows/Linux)
+- Met à jour les targets automatiquement
+
+## 📈 Métriques principales disponibles
+
+### **Métriques de base**
+- `tradesim_budget_total_entreprises` - Budget total des entreprises
+- `tradesim_tours_completes` - Tours de simulation
+- `tradesim_evenements_total` - Événements totaux
+- `tradesim_transactions_total` - Transactions totales
+- `tradesim_produits_actifs` - Nombre de produits actifs
+- `tradesim_entreprises_nombre_total` - Nombre d'entreprises
+- `tradesim_fournisseurs_nombre_total` - Nombre de fournisseurs
+
+### **Métriques avec labels et historique (label 'tick')**
+- `tradesim_entreprise_budget{nom="VietnameseCorp", tick="10"}` - Budget par entreprise au tour 10
+- `tradesim_produits_prix_moyen{produit="Ordinateur", tick="5"}` - Prix moyen par produit au tour 5
+- `tradesim_transactions_reussies{type="achat", tick="15"}` - Transactions réussies par type au tour 15
+- `tradesim_transactions_echouees{raison="budget_insuffisant", tick="20"}` - Transactions échouées par raison au tour 20
+
+### **Métriques système**
+- `tradesim_cpu_usage_percent` - Utilisation CPU
+- `tradesim_memory_usage_percent` - Utilisation mémoire
+- `tradesim_latency_average_ms` - Latence moyenne
+- `tradesim_throughput_requests_per_second` - Throughput
+
+## 🧹 **Nettoyage du monitoring**
+
+### **Problème : Données persistantes dans Grafana**
+**Symptôme :** Grafana affiche encore des données d'anciennes simulations
+
+**Cause :** L'exporter Python continue à envoyer les anciennes données à Prometheus
+
+**Solution :**
+```bash
+# Nettoyage complet (recommandé)
+./scripts/clean_monitoring_complete.sh
+
+# Nettoyage rapide (moins fiable)
+./scripts/clean_monitoring.sh
 ```
 
-### **Accéder à Prometheus :**
-- **URL :** http://localhost:9090
-- **Targets :** http://localhost:9090/targets
-- **Graph :** http://localhost:9090/graph
+**Vérification :**
+```bash
+# Vérifier que Prometheus est vide
+curl -s "http://localhost:9090/api/v1/query?query=tradesim_entreprise_budget" | grep '"result":\[\]'
+```
 
-## 📊 **Requêtes Prometheus utiles**
+### **Scripts de nettoyage disponibles**
+- **`clean_monitoring_complete.sh`** : Nettoyage complet (arrête l'exporter, supprime les données)
+- **`clean_monitoring.sh`** : Nettoyage standard (redémarre les services)
 
-### **Métriques de base :**
+## 🛠️ Dépannage
+
+### **Problème : Dashboards ne s'affichent pas**
+```bash
+# Vérifier que Grafana est démarré
+curl http://localhost:3000/api/health
+
+# Réimporter les dashboards
+python monitoring/import_dashboards.py
+```
+
+### **Problème : Métriques à zéro**
+```bash
+# Vérifier que l'exporteur fonctionne
+curl http://localhost:8000/metrics
+
+# Vérifier que Prometheus scrape l'exporteur
+curl http://localhost:9090/api/v1/targets
+```
+
+### **Problème : Variables de dashboard ne fonctionnent pas**
+1. **Vérifier** que les métriques existent : `curl http://localhost:8000/metrics | grep nom_metrique`
+2. **Relancer** une simulation pour générer des données
+3. **Actualiser** le dashboard dans Grafana
+
+## 📝 Création de nouveaux dashboards
+
+### **Via l'interface Grafana**
+1. **"+"** → **"Dashboard"**
+2. **"Add panel"**
+3. **Query** : Utiliser les métriques TradeSim
+4. **Sauvegarder** le dashboard
+
+### **Via fichier JSON**
+1. **Créer** un fichier JSON dans `monitoring/grafana/provisioning/dashboards/`
+2. **Relancer** l'import : `python monitoring/import_dashboards.py`
+
+### **Structure JSON d'un dashboard**
+```json
+{
+  "dashboard": {
+    "id": null,
+    "title": "Mon Dashboard",
+    "tags": ["tradesim"],
+    "panels": [
+      {
+        "id": 1,
+        "title": "Mon Panel",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "tradesim_transactions_total"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 6, "x": 0, "y": 0}
+      }
+    ]
+  }
+}
+```
+
+## 🎯 Utilisation avancée
+
+### **Requêtes PromQL personnalisées**
 ```promql
-# Budget total
-tradesim_budget_total
+# Budget moyen par entreprise
+avg(tradesim_entreprise_budget)
 
-# Nombre de transactions
-tradesim_transactions_total
+# Transactions par type
+sum(tradesim_transactions_total) by (type)
 
-# Produits actifs
-tradesim_produits_actifs
+# Évolution du budget dans le temps
+tradesim_budget_total_entreprises[5m]
 
-# Entreprises solvables
-tradesim_entreprises_solvables
+# Évolution du budget d'une entreprise par tour (graphique historique)
+tradesim_entreprise_budget{nom="VietnameseCorp"}
+
+# Budget de toutes les entreprises au tour 10
+tradesim_entreprise_budget{tick="10"}
+
+# Évolution des prix d'un produit par tour
+tradesim_produit_prix{nom="Ordinateur"}
 ```
 
-### **Alertes :**
-```promql
-# Budget faible
-tradesim_budget_total < 1000
+### **Alertes Grafana**
+1. **Créer** une alerte dans un panel
+2. **Condition** : `tradesim_budget_total_entreprises < 1000`
+3. **Notification** : Email, Slack, etc.
 
-# Aucune transaction récente
-increase(tradesim_transactions_total[5m]) == 0
-
-# Aucun produit actif
-tradesim_produits_actifs == 0
-```
-
-### **Graphiques :**
-```promql
-# Évolution du budget
-tradesim_budget_total
-
-# Transactions par minute
-rate(tradesim_transactions_total[1m])
-
-# Pourcentage d'entreprises solvables
-tradesim_entreprises_solvables / tradesim_entreprises_total * 100
-```
-
-## 🎨 **Dashboard CLI Rich**
-
-### **Fonctionnalités :**
-- **Affichage en temps réel** des métriques
-- **Panneaux colorés** pour chaque type de métrique
-- **Alertes visuelles** pour les problèmes
-- **Mise à jour automatique** toutes les secondes
-
-### **Panneaux disponibles :**
-1. **💰 Budgets** - Budgets des entreprises
-2. **💸 Transactions** - Statistiques des transactions
-3. **🏢 Entités** - Comptage des entités
-4. **🚨 Alertes** - Alertes et problèmes
-5. **⚡ Performance** - Métriques de performance
-
-### **Contrôles :**
-- **Ctrl+C** - Arrêter le dashboard
-- **Automatique** - Mise à jour toutes les secondes
-- **Thread-safe** - Pas de blocage de la simulation
-
-## 🔄 **Intégration avec la simulation**
-
-### **Démarrage avec monitoring :**
-```python
-# Dans votre script de simulation
-from monitoring.cli_dashboard import TradeSimDashboard
-from monitoring.prometheus_exporter import TradeSimPrometheusExporter
-
-# Démarrer le monitoring
-dashboard = TradeSimDashboard()
-exporter = TradeSimPrometheusExporter(port=8000)
-
-# Démarrer les services
-exporter.start_server()
-exporter.start_collection_thread(interval=5)
-
-# Lancer la simulation
-simulation_service = SimulationService()
-simulation_service.run_simulation_tours(100, verbose=True)
-```
-
-### **Monitoring en arrière-plan :**
-```python
-# Démarrer le dashboard en arrière-plan
-import threading
-
-def run_dashboard():
-    dashboard = TradeSimDashboard()
-    dashboard.start_live_dashboard()
-
-dashboard_thread = threading.Thread(target=run_dashboard, daemon=True)
-dashboard_thread.start()
-```
-
-## 📈 **Métriques avancées**
-
-### **Métriques calculées :**
-```python
-# Ratio de transactions réussies
-ratio_reussite = transactions_reussies / transactions_total * 100
-
-# Évolution du budget
-evolution_budget = budget_actuel - budget_initial
-
-# Tendance des prix
-tendance_prix = prix_moyen_actuel - prix_moyen_initial
-```
-
-### **Métriques de tendance :**
-```python
-# Budget sur le temps
-budget_history = [budget1, budget2, budget3, ...]
-
-# Transactions par minute
-transactions_per_minute = transactions_total / minutes_ecoulees
-
-# Événements par tour
-evenements_per_tour = evenements_total / tours_completes
-```
-
-## 🚨 **Système d'alertes**
-
-### **Alertes automatiques :**
-1. **Budget critique** - Budget total < 1000€
-2. **Marché stagnant** - Aucune transaction depuis 5 minutes
-3. **Offre inexistante** - Aucun produit actif
-4. **Instabilité** - Plus de 50% d'entreprises en difficulté
-
-### **Configuration des alertes :**
-```python
-# Seuils configurables
-ALERTE_BUDGET_CRITIQUE = 1000  # €
-ALERTE_TRANSACTIONS_STAGNANT = 300  # secondes
-ALERTE_PRODUITS_CRITIQUE = 0  # nombre
-ALERTE_ENTREPRISES_CRITIQUE = 0.5  # ratio
-```
-
-## 🔧 **Dépannage**
-
-### **Problèmes courants :**
-
-#### **1. Port déjà utilisé :**
-```bash
-# Changer le port
-python monitoring/prometheus_exporter.py --port 8001
-```
-
-#### **2. Erreur d'import :**
-```bash
-# Vérifier les dépendances
-pip install rich prometheus_client
-
-# Vérifier le PYTHONPATH
-export PYTHONPATH="${PYTHONPATH}:/chemin/vers/tradesim"
-```
-
-#### **3. Dashboard ne s'affiche pas :**
-```bash
-# Vérifier la taille du terminal
-# Le dashboard nécessite un terminal de taille suffisante
-```
-
-### **Logs de debug :**
-```python
-# Activer les logs détaillés
-import logging
-logging.basicConfig(level=logging.DEBUG)
-
-# Vérifier les métriques
-dashboard = TradeSimDashboard()
-summary = dashboard.get_metrics_summary()
-print(f"Métriques: {summary}")
-```
-
-## 📚 **Exemples d'utilisation**
-
-### **Exemple 1 : Monitoring simple**
-```bash
-# Démarrer le dashboard
-python monitoring/cli_dashboard.py
-
-# Dans un autre terminal, lancer la simulation
-python services/simulateur.py
-```
-
-### **Exemple 2 : Monitoring avec Prometheus**
-```bash
-# Terminal 1 - Exporteur Prometheus
-python monitoring/prometheus_exporter.py
-
-# Terminal 2 - Prometheus
-./prometheus --config.file=prometheus.yml
-
-# Terminal 3 - Simulation
-python services/simulateur.py
-
-# Navigateur - Prometheus UI
-# http://localhost:9090
-```
-
-### **Exemple 3 : Monitoring complet**
-```bash
-# Terminal 1 - Dashboard CLI
-python monitoring/cli_dashboard.py
-
-# Terminal 2 - Exporteur Prometheus
-python monitoring/prometheus_exporter.py
-
-# Terminal 3 - Prometheus
-./prometheus --config.file=prometheus.yml
-
-# Terminal 4 - Simulation
-python services/simulateur.py
-```
-
-## 🎯 **Bonnes pratiques**
-
-### **1. Monitoring en production :**
-- Utiliser Prometheus pour la persistance
-- Configurer des alertes automatiques
-- Sauvegarder les métriques historiques
-
-### **2. Monitoring en développement :**
-- Utiliser le dashboard CLI pour le debug
-- Surveiller les métriques en temps réel
-- Tester les alertes
-
-### **3. Performance :**
-- Collecter les métriques toutes les 5 secondes
-- Limiter l'historique à 50 points
-- Utiliser des threads daemon
-
-## 📝 **Conclusion**
-
-Le monitoring CLI de TradeSim offre :
-
-✅ **Prometheus Exporteur** - Métriques pour production  
-✅ **Dashboard CLI Rich** - Interface moderne pour développement  
-✅ **Métriques complètes** - 50+ métriques disponibles  
-✅ **Alertes automatiques** - Détection des problèmes  
-✅ **Performance optimisée** - Impact minimal sur la simulation  
-
-**Le monitoring CLI est maintenant prêt pour TradeSim !** 🚀
-
----
-
-**Auteur :** Assistant IA  
-**Date :** 2024-08-02  
-**Version :** 1.0 
+### **Variables de dashboard**
+1. **Settings** → **Variables**
+2. **Ajouter** une variable de type "Query"
+3. **Query** : `label_values(tradesim_entreprise_budget, nom)`
+4. **Utiliser** avec `$variable` dans les requêtes 

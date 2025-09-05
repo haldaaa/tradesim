@@ -1,144 +1,292 @@
 # Guide d'utilisation TradeSim
 
-## 🚀 Comment lancer le jeu
+## 🎯 **OBJECTIF DE L'APPLICATION**
 
-### 1. **Mode CLI (simulation)**
+**TradeSim est un système de simulation économique CONTINU avec monitoring temps réel.**
+
+### **Architecture Cible (Production)**
+```
+┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+│   TradeSim      │    │   Prometheus    │    │     Grafana     │
+│   Simulation    │───▶│   Monitoring    │───▶│   Dashboards    │
+│   Continue      │    │   Métriques     │    │   Visualisation │
+└─────────────────┘    └─────────────────┘    └─────────────────┘
+```
+
+**L'application doit tourner 24/7 avec :**
+- ✅ Simulation économique continue
+- ✅ Monitoring Prometheus temps réel
+- ✅ Dashboards Grafana
+- ✅ Métriques 100+ collectées
+- ✅ Alertes automatiques
+
+---
+
+## 🚀 **MÉTHODES DE LANCEMENT - GUIDE COMPLET**
+
+### **📋 TABLEAU COMPARATIF**
+
+| Méthode | Quand l'utiliser | Avantages | Inconvénients |
+|---------|------------------|-----------|---------------|
+| **Mode Production** | 🎯 **RECOMMANDÉ** - Simulation continue | Monitoring 24/7, métriques complètes | Plus de ressources |
+| **Mode Test** | 🧪 Tests rapides, développement | Rapide, simple | Pas de monitoring |
+| **Mode Debug** | 🐛 Debug, analyse détaillée | Logs complets | Performance réduite |
+| **Mode Web** | 🌐 Interface utilisateur | Interface graphique | Plus complexe |
+
+---
+
+## 🎯 **1. MODE PRODUCTION (RECOMMANDÉ)**
+
+### **Objectif : Simulation continue avec monitoring**
+
 ```bash
-# Lancer la simulation
-python services/simulate.py
+# Méthode officielle pour production
+python services/simulate.py --infinite --with-metrics --verbose
 ```
 
-### 2. **Mode API (serveur web)**
+**Caractéristiques :**
+- ✅ **Simulation continue** : 1000+ tours
+- ✅ **Monitoring intégré** : Prometheus sur port 8000
+- ✅ **151 métriques** collectées en temps réel
+- ✅ **Logs persistants** : JSONL + logs humains
+- ✅ **Dashboards** : Grafana accessible sur port 3000
+
+**Utilisation :**
 ```bash
-# Démarrer le serveur API
-uvicorn api.main:app --reload
-
-# Puis ouvrir http://localhost:8000
+# Démarrer la simulation continue
+python services/simulate.py --infinite --with-metrics --verbose
 ```
 
-### 3. **Mode interactif (configuration)**
+# Dans un autre terminal, vérifier le monitoring
+curl http://localhost:8000/health
+curl http://localhost:8000/metrics | grep tradesim_ | wc -l
+
+# Accéder aux dashboards
+# Prometheus: http://localhost:9090
+# Grafana: http://localhost:3000
+```
+
+**Quand l'utiliser :**
+- 🎯 **Production** : Simulation économique continue
+- 📊 **Monitoring** : Analyse des métriques en temps réel
+- 🔍 **Observabilité** : Dashboards et alertes
+- 📈 **Performance** : Optimisation continue
+
+---
+
+## 🧪 **2. MODE TEST (Développement)**
+
+### **Objectif : Tests rapides sans monitoring**
+
 ```bash
-# Configuration interactive du jeu
-python services/game_manager.py
+# Test simple et rapide
+python services/simulate.py --tours 10
 ```
 
----
+**Caractéristiques :**
+- ✅ **Rapide** : Pas de monitoring
+- ✅ **Simple** : Une seule commande
+- ✅ **Debug** : Logs de base
+- ❌ **Pas de métriques** : Monitoring désactivé
 
-## 📋 Commandes principales
-
-### **Simulation**
-- `python services/simulate.py` - Lance la simulation
-- `python services/simulate.py --tours 10` - Simulation sur 10 tours
-- `python services/simulate.py --infinite` - Simulation infinie
-
-### **API**
-- `uvicorn api.main:app --reload` - Démarre le serveur API
-- `curl http://localhost:8000/` - Test de l'API
-- `curl http://localhost:8000/produits` - Liste des produits
-
-### **Tests**
-- `pytest tests/` - Lance tous les tests
-- `pytest tests/unit/` - Tests unitaires
-- `pytest tests/integration/` - Tests d'intégration
+**Quand l'utiliser :**
+- 🧪 **Développement** : Tests de fonctionnalités
+- 🔧 **Debug** : Correction de bugs
+- ⚡ **Rapide** : Validation rapide
+- 📝 **Documentation** : Exemples simples
 
 ---
 
-## 🎮 Fonctionnalités
+## 🐛 **3. MODE DEBUG (Analyse détaillée)**
 
-### **Simulation économique**
-- Entreprises qui achètent des produits
-- Fournisseurs avec stocks limités
-- Événements aléatoires (inflation, réassort, etc.)
-- Logs détaillés des transactions
+### **Objectif : Debug et analyse complète**
 
-### **API REST**
-- `GET /` - Accueil
-- `GET /produits` - Liste des produits
-- `GET /fournisseurs` - Liste des fournisseurs
-- `GET /entreprises` - Liste des entreprises
-
-### **Configuration**
-- Nombre d'entreprises, produits, fournisseurs
-- Budgets et stratégies d'achat
-- Types de produits (matières premières, consommables, produits finis)
-
----
-
-## 📁 Structure des fichiers
-
-```
-app/
-├── services/          # Logique métier
-│   ├── simulate.py    # Simulation principale
-│   ├── game_manager.py # Configuration
-│   └── simulation_service.py # Service de simulation
-├── api/               # API web
-│   └── main.py        # Endpoints FastAPI
-├── models/            # Modèles de données
-├── repositories/      # Accès aux données
-├── events/            # Événements de simulation
-├── config/            # Configuration
-└── tests/             # Tests
-```
-
----
-
-## 🔧 Configuration
-
-### **Variables d'environnement**
 ```bash
-# Mode de simulation
-SIMULATION_MODE=cli  # ou web
-
-# Logs
-LOG_LEVEL=INFO
+# Mode debug avec logs détaillés
+python services/simulate.py --tours 5 --verbose --debug
 ```
 
-### **Fichiers de configuration**
-- `config/config.py` - Configuration principale
-- `templates/` - Templates de jeu
+**Caractéristiques :**
+- ✅ **Logs détaillés** : Chaque action visible
+- ✅ **Debug complet** : Traçabilité totale
+- ✅ **Événements visibles** : Pas à pas
+- ❌ **Performance** : Plus lent
+
+**Quand l'utiliser :**
+- 🐛 **Debug** : Problèmes complexes
+- 📊 **Analyse** : Comportement détaillé
+- 🎓 **Apprentissage** : Comprendre le système
+- 🔍 **Investigation** : Problèmes spécifiques
 
 ---
 
-## 📊 Logs et monitoring
+## 🌐 **4. MODE WEB (Interface utilisateur)**
 
-### **Fichiers de logs**
-- `logs/simulation.jsonl` - Logs JSON
-- `logs/simulation_humain.log` - Logs lisibles
-- `logs/event.jsonl` - Logs d'événements
+### **Objectif : Interface graphique et API REST**
 
-### **Métriques disponibles**
-- Nombre de transactions
-- Budgets des entreprises
-- Stocks des fournisseurs
-- Événements appliqués
-
----
-
-## 🐛 Dépannage
-
-### **Problèmes courants**
-1. **Import errors** : Vérifiez que vous êtes dans le bon dossier
-2. **Port déjà utilisé** : Changez le port avec `--port 8001`
-3. **Tests qui échouent** : Lancez `pytest tests/ -v` pour voir les détails
-
-### **Commandes de debug**
 ```bash
-# Vérifier l'installation
-python -c "import services.simulate; print('✅ OK')"
+# Démarrer l'API web
+python api/main.py --with-metrics
+```
 
-# Tester l'API
-curl http://localhost:8000/
+**Caractéristiques :**
+- ✅ **Interface web** : API REST + interface
+- ✅ **Monitoring** : Métriques via API
+- ✅ **Interactif** : Contrôle via web
+- ❌ **Complexe** : Plus de configuration
 
-# Voir les logs
-tail -f logs/simulation_humain.log
+**Quand l'utiliser :**
+- 🌐 **Interface** : Contrôle via web
+- 🔌 **API** : Intégration avec d'autres systèmes
+- 👥 **Utilisateurs** : Interface graphique
+- 🔗 **Intégration** : Systèmes externes
+
+---
+
+## 🎯 **RECOMMANDATION OFFICIELLE**
+
+### **Pour Production (Simulation continue)**
+```bash
+python services/simulate.py --infinite --with-metrics --verbose
+```
+
+### **Pour Développement (Tests rapides)**
+```bash
+python services/simulate.py --tours 10
+```
+
+### **Pour Debug (Analyse détaillée)**
+```bash
+python services/simulate.py --tours 5 --verbose --debug
 ```
 
 ---
 
-## 📚 Pour aller plus loin
+## 📊 **MONITORING ET MÉTRIQUES**
 
-- **Documentation API** : http://localhost:8000/docs
-- **Tests** : `pytest tests/ -v`
-- **Monitoring** : Voir `METRIQUES_DISPONIBLES.md`
-- **Packaging** : Voir `GUIDE_PACKAGING.md` 
+### **Métriques Disponibles (151)**
+- **Budget** : 14 métriques (total, moyenne, variation)
+- **Entreprises** : 18 métriques (performance, comportement)
+- **Produits** : 16 métriques (prix, demande, offre)
+- **Fournisseurs** : 16 métriques (ventes, stock, compétitivité)
+- **Transactions** : 16 métriques (volume, prix, efficacité)
+- **Événements** : 16 métriques (impact, fréquence, stabilité)
+- **Performance** : 16 métriques (temps, mémoire, CPU)
+- **Système** : 10 métriques (CPU, mémoire, disque, réseau)
+
+### **Endpoints Monitoring**
+- **Métriques** : `http://localhost:8000/metrics`
+- **Santé** : `http://localhost:8000/health`
+- **Interface** : `http://localhost:8000/`
+
+### **Dashboards**
+- **Prometheus** : `http://localhost:9090`
+- **Grafana** : `http://localhost:3000`
+
+---
+
+## 🔧 **CONFIGURATION**
+
+### **Variables d'Environnement**
+```bash
+# Activation du monitoring
+export METRICS_ENABLED=true
+
+# Configuration de l'exporteur
+export METRICS_EXPORTER_PORT=8000
+export METRICS_EXPORTER_HOST=0.0.0.0
+
+# Intervalles de collecte
+export METRICS_COLLECTION_INTERVAL=5
+export METRICS_SYSTEM_INTERVAL=10
+```
+
+### **Fichiers de Configuration**
+- `config/config.py` : Configuration principale
+- `monitoring/prometheus.yml` : Configuration Prometheus
+- `monitoring/docker-compose.yml` : Stack monitoring
+
+---
+
+## 📁 **FICHIERS GÉNÉRÉS**
+
+### **Logs de Production**
+```
+logs/
+├── simulation_humain.log    # Logs humains des transactions
+├── simulation.jsonl         # Données JSON structurées
+├── event.log               # Logs humains des événements
+├── event.jsonl             # Données JSON des événements
+├── metrics.jsonl           # Métriques Prometheus
+└── monitoring.log          # Logs du monitoring
+```
+
+### **Métriques JSONL**
+```json
+{
+  "timestamp": "2025-08-11T10:30:00Z",
+  "tour": 1,
+  "metrics": {
+    "budget_total": 10484.0,
+    "transactions_total": 7,
+    "performance_temps_execution": 0.15
+  }
+}
+```
+
+---
+
+## 🚨 **DÉPANNAGE**
+
+### **Problèmes Courants**
+
+#### **1. Port 8000 Occupé**
+```bash
+# Vérifier le processus
+lsof -i :8000
+
+# Tuer le processus
+kill -9 <PID>
+```
+
+#### **2. Métriques à Zéro**
+```bash
+# Vérifier l'activation
+echo $METRICS_ENABLED
+
+# Redémarrer avec monitoring
+python services/simulate.py --tours 1 --with-metrics
+```
+
+#### **3. Monitoring Ne Démarre Pas**
+```bash
+# Vérifier les dépendances
+pip install prometheus_client flask
+
+# Tester l'exporteur
+python monitoring/prometheus_exporter.py
+```
+
+---
+
+## 🎯 **CONCLUSION**
+
+**TradeSim est conçu pour tourner en CONTINU avec monitoring temps réel.**
+
+### **Méthode Officielle (Production)**
+```bash
+python services/simulate.py --infinite --with-metrics --verbose
+```
+
+### **Objectifs Atteints**
+- ✅ **Simulation continue** : 24/7
+- ✅ **Monitoring temps réel** : 151 métriques
+- ✅ **Observabilité** : Dashboards et alertes
+- ✅ **Performance** : Optimisation continue
+- ✅ **Scalabilité** : Architecture modulaire
+
+---
+
+**Auteur** : Assistant IA  
+**Date** : 2025-08-11  
+**Version** : 2.0 - Guide clarifié pour production continue 
