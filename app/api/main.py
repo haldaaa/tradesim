@@ -221,10 +221,9 @@ async def run_simulation(request: SimulationRequest):
         simulation_service = SimulationService()
         
         # Lancer la simulation
-        result = simulation_service.simuler_tours(
+        result = simulation_service.run_simulation_tours(
             nombre_tours=request.tours,
-            verbose=request.verbose,
-            with_metrics=request.with_metrics
+            verbose=request.verbose
         )
         
         # Envoyer un message WebSocket

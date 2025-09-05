@@ -23,7 +23,7 @@ class TradeSimHandler(http.server.SimpleHTTPRequestHandler):
     
     def do_GET(self):
         # Si c'est une requête vers l'API, faire du proxy
-        if self.path.startswith('/api/'):
+        if self.path.startswith('/api/') or self.path == '/ws':
             self.proxy_to_api()
         else:
             # Sinon, servir les fichiers statiques
@@ -79,7 +79,7 @@ class TradeSimHandler(http.server.SimpleHTTPRequestHandler):
         except Exception as e:
             self.send_error(500, f"Erreur proxy: {str(e)}")
 
-def run_server(port=3000):
+def run_server(port=3001):
     """Lance le serveur web"""
     with socketserver.TCPServer(("", port), TradeSimHandler) as httpd:
         print(f"🌐 Interface Web TradeSim disponible sur http://localhost:{port}")
