@@ -306,7 +306,7 @@ class SimulationService:
         if LATENCY_SERVICE_AVAILABLE:
             try:
                 self.latency_service = LatencyService()
-                print("⚡ Service de latence activé")
+                # print("⚡ Service de latence activé")
             except Exception as e:
                 self._log_error("latency_service_init", str(e))
         
@@ -321,7 +321,7 @@ class SimulationService:
                     'update_tradesim_metrics': lambda data: requests.post('http://localhost:8000/update_metrics', json=data, timeout=1)
                 }
                 self.exporter = self.prometheus_exporter  # Alias
-                print("📊 Monitoring Prometheus connecté à l'exporter permanent")
+                # print("📊 Monitoring Prometheus connecté à l'exporter permanent")
             except Exception as e:
                 self._log_error("prometheus_init", str(e))
         
@@ -330,7 +330,7 @@ class SimulationService:
         if BUDGET_METRICS_AVAILABLE:
             try:
                 self.budget_metrics_service = BudgetMetricsService()
-                print("💰 Service de métriques de budget activé")
+                # print("💰 Service de métriques de budget activé")
             except Exception as e:
                 self._log_error("budget_metrics_init", str(e))
         
@@ -339,7 +339,7 @@ class SimulationService:
         if ENTERPRISE_METRICS_AVAILABLE:
             try:
                 self.enterprise_metrics_service = EnterpriseMetricsService()
-                print("🏢 Service de métriques d'entreprises activé")
+                # print("🏢 Service de métriques d'entreprises activé")
             except Exception as e:
                 self._log_error("enterprise_metrics_init", str(e))
 
@@ -348,7 +348,7 @@ class SimulationService:
         if SUPPLIER_METRICS_AVAILABLE:
             try:
                 self.supplier_metrics_service = SupplierMetricsService()
-                print("🏭 Service de métriques de fournisseurs activé")
+                # print("🏭 Service de métriques de fournisseurs activé")
             except Exception as e:
                 self._log_error("supplier_metrics_init", str(e))
 
@@ -357,7 +357,7 @@ class SimulationService:
         if TRANSACTION_METRICS_AVAILABLE:
             try:
                 self.transaction_metrics_service = TransactionMetricsService()
-                print("💳 Service de métriques de transactions activé")
+                # print("💳 Service de métriques de transactions activé")
             except Exception as e:
                 self._log_error("transaction_metrics_init", str(e))
 
@@ -366,7 +366,7 @@ class SimulationService:
         if EVENT_METRICS_AVAILABLE:
             try:
                 self.event_metrics_service = EventMetricsService()
-                print("🎯 Service de métriques d'événements activé")
+                # print("🎯 Service de métriques d'événements activé")
             except Exception as e:
                 self._log_error("event_metrics_init", str(e))
 
@@ -375,7 +375,7 @@ class SimulationService:
         if PERFORMANCE_METRICS_AVAILABLE:
             try:
                 self.performance_metrics_service = PerformanceMetricsService()
-                print("⚡ Service de métriques de performance activé")
+                # print("⚡ Service de métriques de performance activé")
             except Exception as e:
                 self._log_error("performance_metrics_init", str(e))
         
@@ -384,7 +384,7 @@ class SimulationService:
         if PRODUCT_METRICS_AVAILABLE:
             try:
                 self.product_metrics_service = ProductMetricsService()
-                print("📦 Service de métriques de produits activé")
+                # print("📦 Service de métriques de produits activé")
             except Exception as e:
                 self._log_error("product_metrics_init", str(e))
 
@@ -393,7 +393,7 @@ class SimulationService:
         if INDIVIDUAL_METRICS_AVAILABLE:
             try:
                 self.individual_metrics_service = IndividualMetricsService()
-                print("🏷️ Service de métriques individuelles avec labels activé")
+                # print("🏷️ Service de métriques individuelles avec labels activé")
             except Exception as e:
                 self._log_error("individual_metrics_init", str(e))
 

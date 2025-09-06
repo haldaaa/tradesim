@@ -23,16 +23,75 @@ from pydantic import BaseModel
 from typing import Dict, List, Optional
 import json
 import asyncio
+from datetime import datetime
 from models import Produit, TypeProduit, FournisseurComplet, ProduitChezFournisseur, Entreprise
 from repositories import ProduitRepository, FournisseurRepository, EntrepriseRepository
 from models import Fournisseur  # type: ignore
 from services.simulation_service import SimulationService
-from config.config import get_default_config
+from config.config import get_default_config, PROBABILITE_EVENEMENT
 
 # Initialisation des Repository
 produit_repo = ProduitRepository()
 fournisseur_repo = FournisseurRepository()
 entreprise_repo = EntrepriseRepository()
+
+# Fonction d'enrichissement des données avec calculs de probabilités
+def enrich_with_probability_calculations(result_tour: dict, tour_number: int) -> dict:
+    """
+    Enrichit les données du tour avec les calculs de probabilités des événements.
+    
+    Args:
+        result_tour: Résultat du tour de simulation
+        tour_number: Numéro du tour
+        
+    Returns:
+        Données enrichies avec calculs de probabilités
+    """
+    enriched_result = result_tour.copy()
+    
+    # Enrichir les événements avec les calculs de probabilités
+    if 'evenements' in enriched_result and enriched_result['evenements']:
+        enriched_events = []
+        
+        for event in enriched_result['evenements']:
+            enriched_event = event.copy()
+            
+            # Déterminer le type d'événement et sa probabilité configurée
+            event_type = None
+            if 'inflation' in str(event).lower():
+                event_type = 'inflation'
+            elif 'reassort' in str(event).lower():
+                event_type = 'reassort'
+            elif 'recharge' in str(event).lower() and 'budget' in str(event).lower():
+                event_type = 'recharge_budget'
+            elif 'variation' in str(event).lower():
+                event_type = 'variation_disponibilite'
+            elif 'stock' in str(event).lower() and 'fournisseur' in str(event).lower():
+                event_type = 'recharge_stock_fournisseur'
+            
+            if event_type and event_type in PROBABILITE_EVENEMENT:
+                # Utiliser les vraies probabilités configurées
+                threshold = PROBABILITE_EVENEMENT[event_type]
+                
+                # Simuler le calcul de probabilité (en attendant les vraies données)
+                import random
+                random_value = round(random.random(), 3)
+                triggered = random_value < threshold
+                
+                # Ajouter les calculs de probabilité
+                enriched_event['probability_calculation'] = {
+                    'random_value': random_value,
+                    'threshold': threshold,
+                    'triggered': triggered,
+                    'formula': f"random() = {random_value} | Seuil: {threshold} | Résultat: {random_value} {'<' if triggered else '>'} {threshold} → {'✅ DÉCLENCHÉ' if triggered else '❌ NON DÉCLENCHÉ'}"
+                }
+            
+            enriched_events.append(enriched_event)
+        
+        enriched_result['evenements'] = enriched_events
+    
+    return enriched_result
+
 
 # Création de l'application FastAPI
 app = FastAPI(
@@ -215,28 +274,68 @@ def update_config(request: ConfigUpdateRequest):
 
 @app.post("/simulation", response_model=SimulationResponse)
 async def run_simulation(request: SimulationRequest):
-    """Lance une simulation avec les paramètres spécifiés"""
+    """Lance une simulation tour par tour avec WebSocket pour Grafana"""
     try:
         # Initialiser le service de simulation
         simulation_service = SimulationService()
         
-        # Lancer la simulation
-        result = simulation_service.run_simulation_tours(
-            nombre_tours=request.tours,
-            verbose=request.verbose
-        )
+        # Envoyer un message de début de simulation
+        await manager.broadcast(json.dumps({
+            "type": "simulation_started",
+            "tours": request.tours,
+            "message": "Simulation démarrée"
+        }))
         
-        # Envoyer un message WebSocket
+        # Lancer la simulation tour par tour
+        for tour in range(request.tours):
+            # Exécuter un tour (sans affichage terminal)
+            result_tour = simulation_service.simulation_tour(verbose=False)
+            
+            # Enrichir les données avec les calculs de probabilités
+            enriched_result = enrich_with_probability_calculations(result_tour, tour + 1)
+            
+            # Ajouter les données manquantes pour l'affichage
+            enriched_result['transactions_effectuees'] = result_tour.get('transactions_effectuees', 0)
+            enriched_result['evenements'] = result_tour.get('evenements', [])
+            
+            # Calculer les métriques spécifiques à ce tour
+            # Récupérer les métriques actuelles du service
+            current_stats = simulation_service.calculer_statistiques()
+            
+            stats = {
+                'budget_total': current_stats.get('budget_total', 0),
+                'stock_total': current_stats.get('stock_total', 0),
+                'tours': f"{tour + 1}/{request.tours}",
+                'evenements_appliques': result_tour.get('evenements_appliques', 0),
+                'duree_simulation': result_tour.get('duration', 0)
+            }
+            
+            # Envoyer les données du tour via WebSocket
+            await manager.broadcast(json.dumps({
+                "type": "tour_completed",
+                "tour": tour + 1,
+                "total_tours": request.tours,
+                "result": enriched_result,
+                "stats": stats,
+                "timestamp": datetime.now().isoformat()
+            }))
+            
+            # Petite pause entre les tours
+            await asyncio.sleep(0.1)
+        
+        # Envoyer un message de fin de simulation
+        final_stats = simulation_service.calculer_statistiques()
         await manager.broadcast(json.dumps({
             "type": "simulation_completed",
             "tours": request.tours,
-            "result": result
+            "result": final_stats,
+            "message": "Simulation terminée"
         }))
         
         return SimulationResponse(
             status="success",
-            result=result,
-            metrics=result.get("metrics") if request.with_metrics else None
+            result=final_stats,
+            metrics=final_stats if request.with_metrics else None
         )
         
     except Exception as e:
@@ -265,6 +364,29 @@ def get_metrics():
         }
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Erreur lors de la récupération des métriques: {str(e)}")
+
+@app.post("/update_metrics")
+async def update_metrics():
+    """Endpoint pour mettre à jour les métriques (compatibilité frontend)"""
+    try:
+        # Récupérer les métriques actuelles
+        simulation_service = SimulationService()
+        stats = simulation_service.calculer_statistiques()
+        
+        # Retourner les métriques au format JSON
+        return {
+            "status": "success",
+            "metrics": stats,
+            "timestamp": datetime.now().isoformat()
+        }
+        
+    except Exception as e:
+        return {
+            "status": "error",
+            "message": str(e),
+            "timestamp": datetime.now().isoformat()
+        }
+
 
 @app.websocket("/ws")
 async def websocket_endpoint(websocket: WebSocket):

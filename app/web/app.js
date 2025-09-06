@@ -114,6 +114,30 @@ function showPage(pageName) {
     }
 }
 
+/**
+ * Initialise la page de jeu
+ * Met à jour l'interface avec les données actuelles
+ */
+function initializeGamePage() {
+    try {
+        console.log('🎮 Initialisation de la page de jeu...');
+        
+        // Mettre à jour le nombre total de tours
+        const totalToursElement = document.getElementById('total-tours');
+        if (totalToursElement && gameConfig.nombre_tours) {
+            totalToursElement.textContent = gameConfig.nombre_tours;
+        }
+        
+        // Ajouter un message d'initialisation
+        addEventToLog('🎮 Page de jeu initialisée - En attente de la simulation...');
+        
+        console.log('✅ Page de jeu initialisée');
+        
+    } catch (error) {
+        console.error('❌ Erreur lors de l\'initialisation de la page de jeu:', error);
+    }
+}
+
 // Charger la configuration par défaut
 function loadDefaultConfig() {
     gameConfig = { ...defaultConfig };
@@ -492,6 +516,608 @@ function toggleAutoScroll() {
         'btn btn-sm btn-outline-secondary';
 }
 
+// ===== FONCTION DE LANCEMENT DE SIMULATION =====
+
+/**
+ * Lance la simulation en appelant l'API backend
+ * Utilise la configuration actuelle et gère les erreurs
+ */
+async function launchSimulation() {
+    try {
+        console.log('🚀 Lancement de la simulation...');
+        
+        // 1. Sauvegarder la configuration actuelle
+        saveCurrentConfig();
+        
+        // 2. Préparer les données pour l'API
+        const simulationData = {
+            tours: gameConfig.nombre_tours,
+            verbose: true,
+            with_metrics: true
+        };
+        
+        console.log('📡 Envoi de la configuration:', simulationData);
+        
+        // 3. Appeler l'API /simulation
+        const response = await fetch('/api/simulation', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(simulationData)
+        });
+        
+        // 4. Gérer la réponse
+        if (response.ok) {
+            const result = await response.json();
+            console.log('✅ Simulation démarrée avec succès:', result);
+            
+            // 5. Mettre à jour l'interface avec les résultats
+            updateGameInfo(result.result);
+            
+            // 6. Connecter au WebSocket pour les événements temps réel
+            connectWebSocket();
+            
+            return result;
+        } else {
+            const errorData = await response.json();
+            throw new Error(`Erreur API: ${errorData.detail || response.statusText}`);
+        }
+        
+    } catch (error) {
+        console.error('❌ Erreur lors du lancement de la simulation:', error);
+        showError(`Erreur: ${error.message}`);
+        return null;
+    }
+}
+
+/**
+ * Connecte au WebSocket pour recevoir les événements temps réel
+ * Gère la reconnexion automatique en cas de déconnexion
+ */
+function connectWebSocket() {
+    try {
+        console.log('🔌 Connexion au WebSocket...');
+        
+        // Créer la connexion WebSocket
+        const ws = new WebSocket('ws://localhost:8000/ws');
+        
+        // Événement d'ouverture
+        ws.onopen = () => {
+            console.log('✅ WebSocket connecté');
+            
+            // S'abonner aux mises à jour
+            ws.send(JSON.stringify({ type: 'subscribe' }));
+            
+            // Afficher le statut de connexion
+            showConnectionStatus('connecté');
+        };
+        
+        // Événement de réception de message
+        ws.onmessage = (event) => {
+            try {
+                const data = JSON.parse(event.data);
+                console.log('📨 Message WebSocket reçu:', data);
+                
+                // Traiter selon le type de message
+                switch(data.type) {
+                    case 'simulation_started':
+                        handleSimulationStarted(data);
+                        break;
+                    case 'tour_completed':
+                        handleTourCompleted(data);
+                        break;
+                    case 'simulation_completed':
+                        handleSimulationCompleted(data);
+                        break;
+                    case 'simulation_error':
+                        handleSimulationError(data);
+                        break;
+                    case 'subscribed':
+                        console.log('✅ Abonnement WebSocket confirmé');
+                        break;
+                    case 'pong':
+                        console.log('🏓 Pong reçu');
+                        break;
+                    default:
+                        console.log('📨 Message inconnu:', data);
+                }
+            } catch (error) {
+                console.error('❌ Erreur parsing message WebSocket:', error);
+            }
+        };
+        
+        // Événement de fermeture
+        ws.onclose = (event) => {
+            console.log('🔌 WebSocket fermé:', event.code, event.reason);
+            showConnectionStatus('déconnecté');
+            
+            // Tentative de reconnexion après 3 secondes
+            setTimeout(() => {
+                console.log('🔄 Tentative de reconnexion WebSocket...');
+                connectWebSocket();
+            }, 3000);
+        };
+        
+        // Événement d'erreur
+        ws.onerror = (error) => {
+            console.error('❌ Erreur WebSocket:', error);
+            showConnectionStatus('erreur');
+        };
+        
+        // Stocker la référence pour pouvoir fermer la connexion
+        window.tradesimWebSocket = ws;
+        
+    } catch (error) {
+        console.error('❌ Erreur lors de la connexion WebSocket:', error);
+        showConnectionStatus('erreur');
+    }
+}
+
+/**
+ * Gère le début de simulation reçue via WebSocket
+ * Initialise l'interface pour la simulation
+ */
+function handleSimulationStarted(data) {
+    console.log('🚀 Simulation démarrée:', data);
+    
+    // Ajouter un événement au log
+    addEventToLog(`🚀 Simulation démarrée pour ${data.tours} tours`);
+    
+    // Afficher un message de début
+    showSuccess(`Simulation démarrée pour ${data.tours} tours !`);
+}
+
+/**
+ * Gère la fin d'un tour reçue via WebSocket
+ * Met à jour l'interface avec les données du tour
+ * IMPORTANT: C'est ici qu'on collecte les données pour Grafana
+ * FORMAT 4C-C: Timeline ultra détaillée avec calculs de probabilités
+ */
+function handleTourCompleted(data) {
+    console.log('🔄 Tour terminé:', data);
+    
+    // Mettre à jour les informations de jeu avec les stats
+    if (data.stats) {
+        updateGameInfo(data.stats);
+    }
+    
+    // FORMAT 4C-C: Afficher la timeline ultra détaillée
+    displayTourTimeline4CC(data);
+    
+    // Afficher les métriques pour Grafana
+    if (data.stats) {
+        console.log('📊 Métriques pour Grafana:', {
+            tour: data.tour,
+            budget_total: data.stats.budget_total_actuel,
+            stock_total: data.stats.stock_total_actuel,
+            tours_completes: data.stats.tours_completes,
+            evenements_appliques: data.stats.evenements_appliques,
+            timestamp: data.timestamp
+        });
+    }
+}
+
+/**
+ * Gère la fin de simulation reçue via WebSocket
+ * Met à jour l'interface avec les résultats finaux
+ */
+function handleSimulationCompleted(data) {
+    console.log('🎯 Simulation terminée:', data);
+    
+    // Mettre à jour les informations de jeu
+    if (data.result) {
+        updateGameInfo(data.result);
+    }
+    
+    // Ajouter un événement au log
+    addEventToLog(`🎯 Simulation terminée après ${data.tours} tours`);
+    
+    // Afficher un message de succès
+    showSuccess('Simulation terminée avec succès !');
+}
+
+/**
+ * Gère les erreurs de simulation reçues via WebSocket
+ * Affiche les erreurs à l'utilisateur
+ */
+function handleSimulationError(data) {
+    console.error('❌ Erreur de simulation:', data);
+    
+    // Afficher l'erreur
+    showError(`Erreur de simulation: ${data.error}`);
+    
+    // Ajouter l'erreur au log
+    addEventToLog(`❌ Erreur: ${data.error}`);
+}
+
+/**
+ * Met à jour les informations de jeu affichées
+ * Utilise les données reçues de l'API ou du WebSocket
+ */
+function updateGameInfo(result) {
+    if (!result) return;
+    
+    try {
+        // Mettre à jour les éléments de l'interface
+        const budgetElement = document.getElementById('total-budget');
+        const stockElement = document.getElementById('total-stock');
+        const toursElement = document.getElementById('current-tours');
+        
+        if (budgetElement && result.budget_total_actuel !== undefined) {
+            budgetElement.textContent = Math.round(result.budget_total_actuel);
+        }
+        
+        if (stockElement && result.stock_total_actuel !== undefined) {
+            stockElement.textContent = result.stock_total_actuel;
+        }
+        
+        if (toursElement && result.tours_completes !== undefined) {
+            toursElement.textContent = result.tours_completes;
+        }
+        
+        console.log('📊 Interface mise à jour:', {
+            budget: result.budget_total_actuel,
+            stock: result.stock_total_actuel,
+            tours: result.tours_completes
+        });
+        
+    } catch (error) {
+        console.error('❌ Erreur lors de la mise à jour de l\'interface:', error);
+    }
+}
+
+/**
+ * Affiche la timeline ultra détaillée FORMAT 4C-C
+ * Avec calculs de probabilités et formules complètes
+ */
+function displayTourTimeline4CC(data) {
+    try {
+        const eventsLog = document.getElementById('events-log');
+        if (!eventsLog) {
+            console.warn('⚠️ Élément events-log non trouvé');
+            return;
+        }
+        
+        // Créer le conteneur principal du tour
+        const tourContainer = document.createElement('div');
+        tourContainer.className = 'mb-4 p-3 border border-2 border-primary bg-light';
+        
+        // En-tête du tour
+        const tourHeader = document.createElement('div');
+        tourHeader.className = 'fw-bold text-primary mb-3';
+        tourHeader.innerHTML = `🔄 Tour ${data.tour}/${data.total_tours} - Tick ${data.tour}`;
+        tourContainer.appendChild(tourHeader);
+        
+        // Timeline des événements
+        const timeline = document.createElement('div');
+        timeline.className = 'timeline-4cc';
+        
+        // Ajouter les transactions
+        if (data.result.transactions_effectuees > 0) {
+            addTransactionToTimeline(timeline, data);
+        } else {
+            // Afficher "Aucune transaction" même si 0
+            addNoTransactionToTimeline(timeline);
+        }
+        
+        // Ajouter les événements avec calculs de probabilités
+        if (data.result.evenements && data.result.evenements.length > 0) {
+            addEventsToTimeline(timeline, data.result.evenements);
+        } else {
+            // Afficher "Aucun événement" même si 0
+            addNoEventToTimeline(timeline);
+        }
+        
+        // Ajouter les métriques globales
+        addGlobalMetricsToTimeline(timeline, data);
+        
+        tourContainer.appendChild(timeline);
+        
+        // Ajouter au début du log
+        eventsLog.insertBefore(tourContainer, eventsLog.firstChild);
+        
+        // Limiter à 10 tours maximum
+        const tours = eventsLog.querySelectorAll('.border-primary');
+        if (tours.length > 10) {
+            eventsLog.removeChild(tours[tours.length - 1]);
+        }
+        
+        console.log('📝 Timeline 4C-C ajoutée pour le tour:', data.tour);
+        
+    } catch (error) {
+        console.error('❌ Erreur lors de l\'affichage de la timeline 4C-C:', error);
+    }
+}
+
+/**
+ * Ajoute les transactions à la timeline
+ */
+function addTransactionToTimeline(timeline, data) {
+    if (data.result && data.result.transactions_effectuees > 0) {
+        const transactionElement = document.createElement('div');
+        transactionElement.className = 'mb-3 p-2 border-start border-3 border-success bg-white';
+        
+        const timestamp = new Date().toLocaleTimeString();
+        const icon = '🎯';
+        const status = 'TRANSACTIONS EFFECTUÉES';
+        
+        let transactionHTML = `
+            <div class="fw-bold text-success">
+                ${icon} ${status}
+            </div>
+            <div class="ms-3 mt-2">
+                <div><strong>Nombre de transactions:</strong> ${data.result.transactions_effectuees}</div>
+                <div><strong>Timestamp:</strong> ${timestamp}</div>
+        `;
+        
+        transactionHTML += `</div>`;
+        transactionElement.innerHTML = transactionHTML;
+        timeline.appendChild(transactionElement);
+    }
+}
+
+/**
+ * Ajoute "Aucune transaction" à la timeline
+ */
+function addNoTransactionToTimeline(timeline) {
+    const transactionElement = document.createElement('div');
+    transactionElement.className = 'mb-3 p-2 border-start border-3 border-secondary bg-white';
+    
+    const timestamp = new Date().toLocaleTimeString();
+    const icon = '⏸️';
+    const status = 'AUCUNE TRANSACTION';
+    
+    let transactionHTML = `
+        <div class="fw-bold text-muted">
+            ${icon} ${status}
+        </div>
+        <div class="ms-3 mt-2">
+            <div><strong>Raison:</strong> Aucune transaction effectuée dans ce tour</div>
+            <div><strong>Timestamp:</strong> ${timestamp}</div>
+    `;
+    
+    transactionHTML += `</div>`;
+    transactionElement.innerHTML = transactionHTML;
+    timeline.appendChild(transactionElement);
+}
+
+/**
+ * Ajoute les événements avec calculs de probabilités à la timeline
+ */
+function addEventsToTimeline(timeline, events) {
+    if (events && events.length > 0) {
+        events.forEach((event, index) => {
+            const eventElement = document.createElement('div');
+            eventElement.className = 'mb-3 p-2 border-start border-3 border-warning bg-white';
+            
+            let eventType = 'ÉVÉNEMENT';
+            let icon = '🎲';
+            let color = 'warning';
+            
+            if (event.log_humain) {
+                if (event.log_humain.includes('INFLATION')) {
+                    eventType = 'ÉVÉNEMENT INFLATION';
+                    icon = '🔥';
+                    color = 'danger';
+                } else if (event.log_humain.includes('REASSORT')) {
+                    eventType = 'ÉVÉNEMENT REASSORT';
+                    icon = '📦';
+                    color = 'info';
+                } else if (event.log_humain.includes('RECHARGE')) {
+                    eventType = 'ÉVÉNEMENT RECHARGE BUDGET';
+                    icon = '💰';
+                    color = 'success';
+                }
+            }
+            
+            let eventHTML = `
+                <div class="fw-bold text-${color}">
+                    ${icon} ${eventType}
+                </div>
+                <div class="ms-3 mt-2">
+                    <div><strong>Description:</strong> ${event.log_humain || 'Événement appliqué'}</div>
+            `;
+            
+            if (event.probability_calculation) {
+                const calc = event.probability_calculation;
+                eventHTML += `
+                    <div class="mt-2 p-2 bg-light border rounded">
+                        <strong>🧮 CALCUL:</strong> ${calc.formula}
+                    </div>
+                `;
+            }
+            
+            eventHTML += `</div>`;
+            eventElement.innerHTML = eventHTML;
+            timeline.appendChild(eventElement);
+        });
+    }
+}
+
+/**
+ * Ajoute "Aucun événement" à la timeline
+ */
+function addNoEventToTimeline(timeline) {
+    const eventElement = document.createElement('div');
+    eventElement.className = 'mb-3 p-2 border-start border-3 border-secondary bg-white';
+    
+    const timestamp = new Date().toLocaleTimeString();
+    const icon = '⏸️';
+    const status = 'AUCUN ÉVÉNEMENT';
+    
+    let eventHTML = `
+        <div class="fw-bold text-muted">
+            ${icon} ${status}
+        </div>
+        <div class="ms-3 mt-2">
+            <div><strong>Raison:</strong> Aucun événement déclenché dans ce tour</div>
+            <div><strong>Timestamp:</strong> ${timestamp}</div>
+    `;
+    
+    eventHTML += `</div>`;
+    eventElement.innerHTML = eventHTML;
+    timeline.appendChild(eventElement);
+}
+
+/**
+ * Ajoute les métriques globales à la timeline
+ */
+function addGlobalMetricsToTimeline(timeline, data) {
+    const metricsElement = document.createElement('div');
+    metricsElement.className = 'mb-3 p-2 border-start border-3 border-info bg-white';
+    
+    const timestamp = new Date().toLocaleTimeString();
+    
+    let metricsHTML = `
+        <div class="fw-bold text-info">
+            📊 MÉTRIQUES GLOBALES
+        </div>
+        <div class="ms-3 mt-2">
+            <div><strong>Budget total:</strong> ${data.stats.budget_total_actuel?.toFixed(2) || 'N/A'}€ | <strong>Stock total:</strong> ${data.stats.stock_total_actuel || 'N/A'} | <strong>Tours:</strong> ${data.tour}/${data.total_tours}</div>
+            <div><strong>Événements appliqués:</strong> ${data.stats.evenements_appliques || 0} | <strong>Durée simulation:</strong> ${data.stats.duree_simulation || 'N/A'}s</div>
+        </div>
+    `;
+    
+    metricsElement.innerHTML = metricsHTML;
+    timeline.appendChild(metricsElement);
+}
+
+/**
+ * Ajoute un événement au log de la partie
+ * Met à jour l'interface avec les événements en temps réel
+ */
+function addEventToLog(eventText) {
+    try {
+        const eventsLog = document.getElementById('events-log');
+        if (!eventsLog) {
+            console.warn('⚠️ Élément events-log non trouvé');
+            return;
+        }
+        
+        // Créer un nouvel élément d'événement
+        const eventElement = document.createElement('div');
+        eventElement.className = 'mb-2 p-2 border-start border-3 border-primary bg-light';
+        eventElement.innerHTML = `
+            <small class="text-muted">${new Date().toLocaleTimeString()}</small>
+            <div class="fw-bold">${eventText}</div>
+        `;
+        
+        // Ajouter au début du log
+        eventsLog.insertBefore(eventElement, eventsLog.firstChild);
+        
+        // Limiter à 50 événements maximum
+        const events = eventsLog.children;
+        if (events.length > 50) {
+            eventsLog.removeChild(events[events.length - 1]);
+        }
+        
+        console.log('📝 Événement ajouté au log:', eventText);
+        
+    } catch (error) {
+        console.error('❌ Erreur lors de l\'ajout d\'événement au log:', error);
+    }
+}
+
+/**
+ * Affiche le statut de connexion WebSocket
+ * Met à jour l'interface pour indiquer l'état de la connexion
+ */
+function showConnectionStatus(status) {
+    // Créer ou mettre à jour l'indicateur de statut
+    let statusElement = document.getElementById('websocket-status');
+    if (!statusElement) {
+        statusElement = document.createElement('div');
+        statusElement.id = 'websocket-status';
+        statusElement.className = 'alert alert-info';
+        statusElement.style.position = 'fixed';
+        statusElement.style.top = '10px';
+        statusElement.style.right = '10px';
+        statusElement.style.zIndex = '9999';
+        document.body.appendChild(statusElement);
+    }
+    
+    // Mettre à jour le contenu selon le statut
+    switch(status) {
+        case 'connecté':
+            statusElement.className = 'alert alert-success';
+            statusElement.innerHTML = '<i class="fas fa-wifi"></i> WebSocket connecté';
+            break;
+        case 'déconnecté':
+            statusElement.className = 'alert alert-warning';
+            statusElement.innerHTML = '<i class="fas fa-wifi"></i> WebSocket déconnecté - Reconnexion...';
+            break;
+        case 'erreur':
+            statusElement.className = 'alert alert-danger';
+            statusElement.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Erreur WebSocket';
+            break;
+    }
+}
+
+/**
+ * Affiche un message d'erreur à l'utilisateur
+ * Utilise Bootstrap pour un affichage cohérent
+ */
+function showError(message) {
+    // Créer ou mettre à jour l'élément d'erreur
+    let errorElement = document.getElementById('error-message');
+    if (!errorElement) {
+        errorElement = document.createElement('div');
+        errorElement.id = 'error-message';
+        errorElement.className = 'alert alert-danger';
+        errorElement.style.position = 'fixed';
+        errorElement.style.top = '60px';
+        errorElement.style.right = '10px';
+        errorElement.style.zIndex = '9999';
+        errorElement.style.maxWidth = '400px';
+        document.body.appendChild(errorElement);
+    }
+    
+    errorElement.innerHTML = `
+        <i class="fas fa-exclamation-triangle"></i> ${message}
+        <button type="button" class="btn-close" onclick="this.parentElement.remove()"></button>
+    `;
+    
+    // Supprimer automatiquement après 5 secondes
+    setTimeout(() => {
+        if (errorElement && errorElement.parentElement) {
+            errorElement.remove();
+        }
+    }, 5000);
+}
+
+/**
+ * Affiche un message de succès à l'utilisateur
+ * Utilise Bootstrap pour un affichage cohérent
+ */
+function showSuccess(message) {
+    // Créer ou mettre à jour l'élément de succès
+    let successElement = document.getElementById('success-message');
+    if (!successElement) {
+        successElement = document.createElement('div');
+        successElement.id = 'success-message';
+        successElement.className = 'alert alert-success';
+        successElement.style.position = 'fixed';
+        successElement.style.top = '60px';
+        successElement.style.right = '10px';
+        successElement.style.zIndex = '9999';
+        successElement.style.maxWidth = '400px';
+        document.body.appendChild(successElement);
+    }
+    
+    successElement.innerHTML = `
+        <i class="fas fa-check-circle"></i> ${message}
+        <button type="button" class="btn-close" onclick="this.parentElement.remove()"></button>
+    `;
+    
+    // Supprimer automatiquement après 3 secondes
+    setTimeout(() => {
+        if (successElement && successElement.parentElement) {
+            successElement.remove();
+        }
+    }, 3000);
+}
+
 // ===== FONCTIONS POUR LA MODAL DE CONFIRMATION =====
 
 /**
@@ -608,13 +1234,16 @@ function fillModalEvents() {
  * Confirme la configuration et lance la partie
  * Ferme la modal et démarre la simulation
  */
-function confirmAndStartGame() {
+async function confirmAndStartGame() {
     // Fermer la modal
     const modal = bootstrap.Modal.getInstance(document.getElementById('configModal'));
     modal.hide();
     
-    // Lancer la partie (appel direct de la fonction originale)
-    startGameOriginal();
+    // Rediriger vers l'onglet "Jeu"
+    showPage('game');
+    
+    // Lancer la simulation avec la nouvelle fonction
+    await launchSimulation();
 }
 
 // ===== MODIFICATION DE LA FONCTION STARTGAME =====
@@ -636,3 +1265,11 @@ window.clearEvents = clearEvents;
 window.toggleAutoScroll = toggleAutoScroll;
 window.showConfigModal = showConfigModal;
 window.confirmAndStartGame = confirmAndStartGame;
+window.launchSimulation = launchSimulation;
+window.connectWebSocket = connectWebSocket;
+window.updateGameInfo = updateGameInfo;
+window.addEventToLog = addEventToLog;
+window.displayTourTimeline4CC = displayTourTimeline4CC;
+
+window.showError = showError;
+window.showSuccess = showSuccess;
