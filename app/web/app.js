@@ -25,6 +25,7 @@ const defaultConfig = {
     stock_initial: 100,
     
     // Entreprises
+    nombre_entreprises: 3,
     budget_entreprise_min: 18000,
     budget_entreprise_max: 35000,
     
@@ -34,6 +35,9 @@ const defaultConfig = {
     nombre_produits_defaut: 12,
     produits_actifs_min: 8,
     produits_actifs_max: 12,
+    
+    // Fournisseurs
+    nombre_fournisseurs: 5,
     
     // Événements
     enable_inflation: true,
@@ -164,6 +168,7 @@ function loadCurrentConfig() {
     document.getElementById('stock-initial').value = gameConfig.stock_initial;
     
     // Configuration avancée
+    document.getElementById('nombre-entreprises').value = gameConfig.nombre_entreprises;
     document.getElementById('budget-entreprise-min').value = gameConfig.budget_entreprise_min;
     document.getElementById('budget-entreprise-max').value = gameConfig.budget_entreprise_max;
     document.getElementById('prix-produit-min').value = gameConfig.prix_produit_min;
@@ -171,6 +176,7 @@ function loadCurrentConfig() {
     document.getElementById('nombre-produits-defaut').value = gameConfig.nombre_produits_defaut;
     document.getElementById('produits-actifs-min').value = gameConfig.produits_actifs_min;
     document.getElementById('produits-actifs-max').value = gameConfig.produits_actifs_max;
+    document.getElementById('nombre-fournisseurs').value = gameConfig.nombre_fournisseurs;
     
     // Événements
     document.getElementById('enable-inflation').checked = gameConfig.enable_inflation;
@@ -222,6 +228,7 @@ function saveCurrentConfig() {
     gameConfig.stock_initial = parseInt(document.getElementById('stock-initial').value);
     
     // Configuration avancée
+    gameConfig.nombre_entreprises = parseInt(document.getElementById('nombre-entreprises').value);
     gameConfig.budget_entreprise_min = parseInt(document.getElementById('budget-entreprise-min').value);
     gameConfig.budget_entreprise_max = parseInt(document.getElementById('budget-entreprise-max').value);
     gameConfig.prix_produit_min = parseFloat(document.getElementById('prix-produit-min').value);
@@ -229,6 +236,7 @@ function saveCurrentConfig() {
     gameConfig.nombre_produits_defaut = parseInt(document.getElementById('nombre-produits-defaut').value);
     gameConfig.produits_actifs_min = parseInt(document.getElementById('produits-actifs-min').value);
     gameConfig.produits_actifs_max = parseInt(document.getElementById('produits-actifs-max').value);
+    gameConfig.nombre_fournisseurs = parseInt(document.getElementById('nombre-fournisseurs').value);
     
     // Événements
     gameConfig.enable_inflation = document.getElementById('enable-inflation').checked;
@@ -308,7 +316,7 @@ function loadTemplate() {
 }
 
 // Lancer une partie
-async function startGame() {
+async function startGameOriginal() {
     try {
         saveCurrentConfig();
         showPage('game');
@@ -484,10 +492,147 @@ function toggleAutoScroll() {
         'btn btn-sm btn-outline-secondary';
 }
 
+// ===== FONCTIONS POUR LA MODAL DE CONFIRMATION =====
+
+/**
+ * Affiche la modal de confirmation avec tous les paramètres de configuration
+ * Collecte les valeurs actuelles et les affiche dans la modal
+ */
+function showConfigModal() {
+    // Sauvegarder la configuration actuelle
+    saveCurrentConfig();
+    
+    // Remplir la modal avec les valeurs actuelles
+    fillModalWithCurrentConfig();
+    
+    // Afficher la modal
+    const modal = new bootstrap.Modal(document.getElementById('configModal'));
+    modal.show();
+}
+
+/**
+ * Remplit la modal avec la configuration actuelle
+ * Met à jour tous les éléments de la modal avec les valeurs du formulaire
+ */
+function fillModalWithCurrentConfig() {
+    // Section 1: Création de la Partie
+    document.getElementById('modal-nombre-tours').textContent = document.getElementById('nombre-tours').value;
+    document.getElementById('modal-nombre-entreprises').textContent = document.getElementById('nombre-entreprises').value;
+    document.getElementById('modal-nombre-fournisseurs').textContent = document.getElementById('nombre-fournisseurs').value;
+    document.getElementById('modal-nombre-produits-defaut').textContent = document.getElementById('nombre-produits-defaut').value;
+    
+    const produitsActifsMin = document.getElementById('produits-actifs-min').value;
+    const produitsActifsMax = document.getElementById('produits-actifs-max').value;
+    document.getElementById('modal-produits-actifs').textContent = `${produitsActifsMin} - ${produitsActifsMax}`;
+    
+    // Section 2: Configuration des Entités
+    const budgetEntrepriseMin = document.getElementById('budget-entreprise-min').value;
+    const budgetEntrepriseMax = document.getElementById('budget-entreprise-max').value;
+    document.getElementById('modal-budget-entreprise').textContent = `${budgetEntrepriseMin}€ - ${budgetEntrepriseMax}€`;
+    
+    const prixProduitMin = document.getElementById('prix-produit-min').value;
+    const prixProduitMax = document.getElementById('prix-produit-max').value;
+    document.getElementById('modal-prix-produit').textContent = `${prixProduitMin}€ - ${prixProduitMax}€`;
+    
+    document.getElementById('modal-stock-initial').textContent = document.getElementById('stock-initial').value;
+    document.getElementById('modal-budget-initial').textContent = document.getElementById('budget-initial').value + '€';
+    
+    // Section 3: Simulation par Tour
+    document.getElementById('modal-n-entreprises').textContent = document.getElementById('n-entreprises').value;
+    document.getElementById('modal-prob-selection').textContent = document.getElementById('prob-selection').value + '%';
+    document.getElementById('modal-duree-pause').textContent = document.getElementById('duree-pause').value + 'ms';
+    document.getElementById('modal-tick-interval-event').textContent = document.getElementById('tick-interval-event').value;
+    
+    const qteAchatMin = document.getElementById('qte-achat-min').value;
+    const qteAchatMax = document.getElementById('qte-achat-max').value;
+    document.getElementById('modal-qte-achat').textContent = `${qteAchatMin} - ${qteAchatMax}`;
+    
+    document.getElementById('modal-seuil-prix-eleve').textContent = document.getElementById('seuil-prix-eleve').value + '€';
+    
+    // Section 4: Événements
+    fillModalEvents();
+    
+    // Monitoring
+    document.getElementById('modal-metrics-collection-interval').textContent = document.getElementById('metrics-collection-interval').value + 's';
+    document.getElementById('modal-metrics-system-enabled').textContent = document.getElementById('metrics-system-enabled').checked ? 'Activé' : 'Désactivé';
+    document.getElementById('modal-log-level').textContent = document.getElementById('log-level').value;
+}
+
+/**
+ * Remplit la section événements de la modal
+ * Affiche les événements activés et leurs paramètres
+ */
+function fillModalEvents() {
+    // Événements activés
+    const eventsEnabled = [];
+    if (document.getElementById('enable-inflation').checked) eventsEnabled.push('Inflation');
+    if (document.getElementById('enable-recharge-budget').checked) eventsEnabled.push('Recharge Budget');
+    if (document.getElementById('enable-reassort').checked) eventsEnabled.push('Réassort');
+    if (document.getElementById('enable-variation-dispo').checked) eventsEnabled.push('Variation Disponibilité');
+    
+    document.getElementById('modal-events-enabled').innerHTML = eventsEnabled.length > 0 ? 
+        eventsEnabled.map(event => `<span class="badge bg-success me-1">${event}</span>`).join('') : 
+        '<span class="badge bg-secondary">Aucun événement activé</span>';
+    
+    // Paramètres d'événements
+    const rechargeBudgetMin = document.getElementById('recharge-budget-min').value;
+    const rechargeBudgetMax = document.getElementById('recharge-budget-max').value;
+    document.getElementById('modal-recharge-budget').textContent = `${rechargeBudgetMin}€ - ${rechargeBudgetMax}€`;
+    
+    const reassortMin = document.getElementById('reassort-quantite-min').value;
+    const reassortMax = document.getElementById('reassort-quantite-max').value;
+    document.getElementById('modal-reassort').textContent = `${reassortMin} - ${reassortMax} unités`;
+    
+    // Paramètres d'inflation
+    const inflationMin = document.getElementById('inflation-pourcentage-min').value;
+    const inflationMax = document.getElementById('inflation-pourcentage-max').value;
+    document.getElementById('modal-inflation').textContent = `${inflationMin}% - ${inflationMax}%`;
+    
+    const penaliteInflation = document.getElementById('penalite-inflation').value;
+    const dureePenalite = document.getElementById('duree-penalite-inflation').value;
+    document.getElementById('modal-penalite-inflation').textContent = `${penaliteInflation}% (${dureePenalite} tours)`;
+    
+    // Probabilités
+    const probabilities = [
+        `Recharge Budget: ${document.getElementById('prob-recharge-budget').value}%`,
+        `Réassort: ${document.getElementById('prob-reassort').value}%`,
+        `Inflation: ${document.getElementById('prob-inflation').value}%`,
+        `Variation Disponibilité: ${document.getElementById('prob-variation-dispo').value}%`
+    ];
+    document.getElementById('modal-probabilities').innerHTML = probabilities.map(prob => 
+        `<span class="badge bg-info me-1">${prob}</span>`
+    ).join('');
+}
+
+/**
+ * Confirme la configuration et lance la partie
+ * Ferme la modal et démarre la simulation
+ */
+function confirmAndStartGame() {
+    // Fermer la modal
+    const modal = bootstrap.Modal.getInstance(document.getElementById('configModal'));
+    modal.hide();
+    
+    // Lancer la partie (appel direct de la fonction originale)
+    startGameOriginal();
+}
+
+// ===== MODIFICATION DE LA FONCTION STARTGAME =====
+
+/**
+ * Fonction startGame modifiée pour afficher la modal de confirmation
+ * Au lieu de lancer directement, affiche d'abord la modal
+ */
+function startGameWithConfirmation() {
+    showConfigModal();
+}
+
 // Export des fonctions
 window.showPage = showPage;
 window.saveTemplate = saveTemplate;
 window.loadTemplate = loadTemplate;
-window.startGame = startGame;
+window.startGame = startGameWithConfirmation; // Utilise maintenant la version avec confirmation
 window.clearEvents = clearEvents;
 window.toggleAutoScroll = toggleAutoScroll;
+window.showConfigModal = showConfigModal;
+window.confirmAndStartGame = confirmAndStartGame;

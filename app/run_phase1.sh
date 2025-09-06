@@ -45,7 +45,7 @@ echo "⏳ Attente du démarrage de l'API..."
 sleep 3
 
 # Lancer l'interface Web
-echo "🌐 Lancement de l'interface Web sur le port 3000..."
+echo "🌐 Lancement de l'interface Web sur le port 3001..."
 cd web
 python3 server.py &
 WEB_PID=$!
@@ -54,7 +54,7 @@ cd ..
 echo ""
 echo "✅ PHASE 1 DÉMARRÉE AVEC SUCCÈS!"
 echo "================================"
-echo "🌐 Interface Web: http://localhost:3000"
+echo "🌐 Interface Web: http://localhost:3001"
 echo "📡 API FastAPI: http://localhost:8000"
 echo "📊 Documentation API: http://localhost:8000/docs"
 echo "🔗 Grafana: http://localhost:3000 (si monitoring actif)"

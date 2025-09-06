@@ -13,7 +13,7 @@ Interface web complète pour TradeSim avec navigation, configuration et simulati
 
 ### **Fonctionnalités :**
 - ✅ **Navigation fluide** entre les pages
-- ✅ **Configuration complète** (tous les paramètres CLI)
+- ✅ **Configuration complète** (34 paramètres CLI)
 - ✅ **Sauvegarde/chargement** de templates
 - ✅ **Simulation temps réel** via API
 - ✅ **WebSocket** pour événements en direct

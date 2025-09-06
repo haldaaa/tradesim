@@ -101,271 +101,360 @@
     <div id="config-page" class="page" style="display: none;">
         <div class="container my-4">
             <h2><i class="fas fa-cog me-2"></i>Configuration de la Partie</h2>
-            <div class="row">
-                <div class="col-md-6 mb-4">
-                    <div class="card">
-                        <div class="card-header">
-                            <h5>Paramètres de Base</h5>
-                        </div>
-                        <div class="card-body">
-                            <div class="mb-3">
-                                <label for="nombre-tours" class="form-label" data-bs-toggle="tooltip" data-bs-placement="top" title="Nombre total de tours à simuler. Ex: 100 tours = simulation longue">Nombre de tours</label>
-                                <input type="number" class="form-control" id="nombre-tours" value="10">
-                            </div>
-                            <div class="mb-3">
-                                <label for="n-entreprises" class="form-label" data-bs-toggle="tooltip" data-bs-placement="top" title="Entreprises sélectionnées par tour. Ex: 2 = 2 entreprises actives par tour">Nombre d'entreprises par tour</label>
-                                <input type="number" class="form-control" id="n-entreprises" value="3">
-                            </div>
-                            <div class="mb-3">
-                                <label for="prob-selection" class="form-label" data-bs-toggle="tooltip" data-bs-placement="top" title="Chance qu'une entreprise soit choisie. Ex: 30% = 3 chances sur 10">Probabilité de sélection (%)</label>
-                                <input type="number" class="form-control" id="prob-selection" value="80">
-                            </div>
-                            <div class="mb-3">
-                                <label for="duree-pause" class="form-label" data-bs-toggle="tooltip" data-bs-placement="top" title="Temps entre tours en ms. Ex: 100ms = simulation rapide">Durée de pause entre tours (ms)</label>
-                                <input type="number" class="form-control" id="duree-pause" value="100" step="0.1">
-                            </div>
-                            <div class="mb-3">
-                                <label for="tick-interval-event" class="form-label" data-bs-toggle="tooltip" data-bs-placement="top" title="Fréquence des événements. Ex: 2 = événement tous les 2 tours">Intervalle d'événements (tours)</label>
-                                <input type="number" class="form-control" id="tick-interval-event" value="2">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 mb-4">
-                    <div class="card">
-                        <div class="card-header">
-                            <h5>Paramètres de Transaction</h5>
-                        </div>
-                        <div class="card-body">
-                            <div class="mb-3">
-                                <label for="qte-achat-min" class="form-label" data-bs-toggle="tooltip" data-bs-placement="top" title="Plage d'achat par transaction. Ex: 1-40 = entre 1 et 40 unités">Quantité d'achat minimum</label>
-                                <input type="number" class="form-control" id="qte-achat-min" value="1">
-                            </div>
-                            <div class="mb-3">
-                                <label for="qte-achat-max" class="form-label" data-bs-toggle="tooltip" data-bs-placement="top" title="Plage d'achat par transaction. Ex: 1-40 = entre 1 et 40 unités">Quantité d'achat maximum</label>
-                                <input type="number" class="form-control" id="qte-achat-max" value="10">
-                            </div>
-                            <div class="mb-3">
-                                <label for="budget-initial" class="form-label" data-bs-toggle="tooltip" data-bs-placement="top" title="Budget de départ des entreprises. Ex: 10000€ = 10k€ par entreprise">Budget initial (€)</label>
-                                <input type="number" class="form-control" id="budget-initial" value="10000">
-                            </div>
-                            <div class="mb-3">
-                                <label for="stock-initial" class="form-label" data-bs-toggle="tooltip" data-bs-placement="top" title="Stock de départ des fournisseurs. Ex: 100 = 100 unités par produit">Stock initial des fournisseurs</label>
-                                <input type="number" class="form-control" id="stock-initial" value="100">
-                            </div>
-                            <div class="mb-3">
-                                <label for="qte-achat-prix-eleve-min" class="form-label" data-bs-toggle="tooltip" data-bs-placement="top" title="Achats réduits pour produits chers. Ex: 1-20 = moins d'achats si prix > 100€">Quantité achat prix élevé min</label>
-                                <input type="number" class="form-control" id="qte-achat-prix-eleve-min" value="1">
-                            </div>
-                            <div class="mb-3">
-                                <label for="qte-achat-prix-eleve-max" class="form-label" data-bs-toggle="tooltip" data-bs-placement="top" title="Achats réduits pour produits chers. Ex: 1-20 = moins d'achats si prix > 100€">Quantité achat prix élevé max</label>
-                                <input type="number" class="form-control" id="qte-achat-prix-eleve-max" value="20">
-                            </div>
-                            <div class="mb-3">
-                                <label for="seuil-prix-eleve" class="form-label" data-bs-toggle="tooltip" data-bs-placement="top" title="Prix déclenchant les achats réduits. Ex: 100€ = seuil de réduction">Seuil prix élevé (€)</label>
-                                <input type="number" class="form-control" id="seuil-prix-eleve" value="100">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
             
-            <!-- Configuration avancée -->
-            <div class="row">
-                <div class="col-md-6 mb-4">
-                    <div class="card">
-                        <div class="card-header">
-                            <h5>Configuration Avancée</h5>
-                        </div>
-                        <div class="card-body">
-                            <div class="mb-3">
-                                <label for="budget-entreprise-min" class="form-label" data-bs-toggle="tooltip" data-bs-placement="top" title="Plage de budgets pour nouvelles entreprises. Ex: 18000-35000€">Budget entreprise min (€)</label>
-                                <input type="number" class="form-control" id="budget-entreprise-min" value="18000">
-                            </div>
-                            <div class="mb-3">
-                                <label for="budget-entreprise-max" class="form-label" data-bs-toggle="tooltip" data-bs-placement="top" title="Plage de budgets pour nouvelles entreprises. Ex: 18000-35000€">Budget entreprise max (€)</label>
-                                <input type="number" class="form-control" id="budget-entreprise-max" value="35000">
-                            </div>
-                            <div class="mb-3">
-                                <label for="prix-produit-min" class="form-label" data-bs-toggle="tooltip" data-bs-placement="top" title="Plage de prix des produits. Ex: 5-50€ = produits entre 5€ et 50€">Prix produit min (€)</label>
-                                <input type="number" class="form-control" id="prix-produit-min" value="5">
-                            </div>
-                            <div class="mb-3">
-                                <label for="prix-produit-max" class="form-label" data-bs-toggle="tooltip" data-bs-placement="top" title="Plage de prix des produits. Ex: 5-50€ = produits entre 5€ et 50€">Prix produit max (€)</label>
-                                <input type="number" class="form-control" id="prix-produit-max" value="500">
-                            </div>
-                            <div class="mb-3">
-                                <label for="nombre-produits-defaut" class="form-label" data-bs-toggle="tooltip" data-bs-placement="top" title="Total de produits générés. Ex: 12 = 12 produits disponibles">Nombre de produits par défaut</label>
-                                <input type="number" class="form-control" id="nombre-produits-defaut" value="12">
-                            </div>
-                            <div class="mb-3">
-                                <label for="produits-actifs-min" class="form-label" data-bs-toggle="tooltip" data-bs-placement="top" title="Produits actifs simultanément. Ex: 8-12 = entre 8 et 12 produits actifs">Produits actifs minimum</label>
-                                <input type="number" class="form-control" id="produits-actifs-min" value="8">
-                            </div>
-                            <div class="mb-3">
-                                <label for="produits-actifs-max" class="form-label" data-bs-toggle="tooltip" data-bs-placement="top" title="Produits actifs simultanément. Ex: 8-12 = entre 8 et 12 produits actifs">Produits actifs maximum</label>
-                                <input type="number" class="form-control" id="produits-actifs-max" value="12">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-6 mb-4">
-                    <div class="card">
-                        <div class="card-header">
-                            <h5>Événements</h5>
-                        </div>
-                        <div class="card-body">
-                            <div class="mb-3">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="enable-inflation" checked>
-                                    <label class="form-check-label" for="enable-inflation" data-bs-toggle="tooltip" data-bs-placement="top" title="Augmentation des prix des produits. Ex: +30% à +60%">Inflation</label>
-                                </div>
-                            </div>
-                            <div class="mb-3">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="enable-recharge-budget" checked>
-                                    <label class="form-check-label" for="enable-recharge-budget" data-bs-toggle="tooltip" data-bs-placement="top" title="Ajout d'argent aux entreprises. Ex: +4000€ à +8000€">Recharge de budget</label>
-                                </div>
-                            </div>
-                            <div class="mb-3">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="enable-reassort" checked>
-                                    <label class="form-check-label" for="enable-reassort" data-bs-toggle="tooltip" data-bs-placement="top" title="Réapprovisionnement des stocks. Ex: +10 à +50 unités">Réassort</label>
-                                </div>
-                            </div>
-                            <div class="mb-3">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="enable-variation-dispo" checked>
-                                    <label class="form-check-label" for="enable-variation-dispo" data-bs-toggle="tooltip" data-bs-placement="top" title="Activation/désactivation de produits. Ex: 10% désactivation, 20% réactivation">Variation de disponibilité</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Paramètres d'événements détaillés -->
-            <div class="row">
-                <div class="col-md-6 mb-4">
-                    <div class="card">
-                        <div class="card-header">
-                            <h5>Paramètres d'Événements</h5>
-                        </div>
-                        <div class="card-body">
-                            <div class="mb-3">
-                                <label for="recharge-budget-min" class="form-label" data-bs-toggle="tooltip" data-bs-placement="top" title="Montant de recharge budget. Ex: 4000-8000€ = recharge entre 4k€ et 8k€">Recharge budget min (€)</label>
-                                <input type="number" class="form-control" id="recharge-budget-min" value="4000">
-                            </div>
-                            <div class="mb-3">
-                                <label for="recharge-budget-max" class="form-label" data-bs-toggle="tooltip" data-bs-placement="top" title="Montant de recharge budget. Ex: 4000-8000€ = recharge entre 4k€ et 8k€">Recharge budget max (€)</label>
-                                <input type="number" class="form-control" id="recharge-budget-max" value="8000">
-                            </div>
-                            <div class="mb-3">
-                                <label for="reassort-quantite-min" class="form-label" data-bs-toggle="tooltip" data-bs-placement="top" title="Quantité de réassortiment. Ex: 10-50 = entre 10 et 50 unités">Réassort quantité min</label>
-                                <input type="number" class="form-control" id="reassort-quantite-min" value="10">
-                            </div>
-                            <div class="mb-3">
-                                <label for="reassort-quantite-max" class="form-label" data-bs-toggle="tooltip" data-bs-placement="top" title="Quantité de réassortiment. Ex: 10-50 = entre 10 et 50 unités">Réassort quantité max</label>
-                                <input type="number" class="form-control" id="reassort-quantite-max" value="50">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-6 mb-4">
-                    <div class="card">
-                        <div class="card-header">
-                            <h5>Paramètres d'Inflation</h5>
-                        </div>
-                        <div class="card-body">
-                            <div class="mb-3">
-                                <label for="inflation-pourcentage-min" class="form-label" data-bs-toggle="tooltip" data-bs-placement="top" title="Plage d'inflation. Ex: 30-60% = prix +30% à +60%">Inflation % min</label>
-                                <input type="number" class="form-control" id="inflation-pourcentage-min" value="30">
-                            </div>
-                            <div class="mb-3">
-                                <label for="inflation-pourcentage-max" class="form-label" data-bs-toggle="tooltip" data-bs-placement="top" title="Plage d'inflation. Ex: 30-60% = prix +30% à +60%">Inflation % max</label>
-                                <input type="number" class="form-control" id="inflation-pourcentage-max" value="60">
-                            </div>
-                            <div class="mb-3">
-                                <label for="penalite-inflation" class="form-label" data-bs-toggle="tooltip" data-bs-placement="top" title="Réduction d'inflation pour produits déjà affectés. Ex: 15% = -15% d'inflation">Pénalité inflation (%)</label>
-                                <input type="number" class="form-control" id="penalite-inflation" value="15">
-                            </div>
-                            <div class="mb-3">
-                                <label for="duree-penalite-inflation" class="form-label" data-bs-toggle="tooltip" data-bs-placement="top" title="Durée de la pénalité en tours. Ex: 50 = pénalité pendant 50 tours">Durée pénalité (tours)</label>
-                                <input type="number" class="form-control" id="duree-penalite-inflation" value="50">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Probabilités d'événements -->
-            <div class="row">
-                <div class="col-md-6 mb-4">
-                    <div class="card">
-                        <div class="card-header">
-                            <h5>Probabilités d'Événements (%)</h5>
-                        </div>
-                        <div class="card-body">
-                            <div class="mb-3">
-                                <label for="prob-recharge-budget" class="form-label" data-bs-toggle="tooltip" data-bs-placement="top" title="Chance de recharge budget. Ex: 50% = 1 chance sur 2">Recharge budget</label>
-                                <input type="number" class="form-control" id="prob-recharge-budget" value="50" min="0" max="100">
-                            </div>
-                            <div class="mb-3">
-                                <label for="prob-reassort" class="form-label" data-bs-toggle="tooltip" data-bs-placement="top" title="Chance de réassortiment. Ex: 50% = 1 chance sur 2">Réassort</label>
-                                <input type="number" class="form-control" id="prob-reassort" value="50" min="0" max="100">
-                            </div>
-                            <div class="mb-3">
-                                <label for="prob-inflation" class="form-label" data-bs-toggle="tooltip" data-bs-placement="top" title="Chance d'inflation. Ex: 40% = 2 chances sur 5">Inflation</label>
-                                <input type="number" class="form-control" id="prob-inflation" value="40" min="0" max="100">
-                            </div>
-                            <div class="mb-3">
-                                <label for="prob-variation-dispo" class="form-label" data-bs-toggle="tooltip" data-bs-placement="top" title="Chance de variation disponibilité. Ex: 30% = 3 chances sur 10">Variation disponibilité</label>
-                                <input type="number" class="form-control" id="prob-variation-dispo" value="30" min="0" max="100">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-6 mb-4">
-                    <div class="card">
-                        <div class="card-header">
-                            <h5>Monitoring Avancé</h5>
-                        </div>
-                        <div class="card-body">
-                            <div class="mb-3">
-                                <label for="metrics-collection-interval" class="form-label" data-bs-toggle="tooltip" data-bs-placement="top" title="Fréquence de collecte. Ex: 1.0s = métriques toutes les secondes">Intervalle collecte métriques (s)</label>
-                                <input type="number" class="form-control" id="metrics-collection-interval" value="1.0" step="0.1">
-                            </div>
-                            <div class="mb-3">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="metrics-system-enabled" checked>
-                                    <label class="form-check-label" for="metrics-system-enabled" data-bs-toggle="tooltip" data-bs-placement="top" title="Collecte CPU/mémoire. Ex: activé = surveillance système">Métriques système</label>
-                                </div>
-                            </div>
-                            <div class="mb-3">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="metrics-labels-enabled">
-                                    <label class="form-check-label" for="metrics-labels-enabled" data-bs-toggle="tooltip" data-bs-placement="top" title="Labels détaillés. Ex: désactivé = métriques simples">Labels métriques</label>
-                                </div>
-                            </div>
-                            <div class="mb-3">
-                                <label for="log-level" class="form-label" data-bs-toggle="tooltip" data-bs-placement="top" title="Détail des logs. Ex: INFO = logs informatifs">Niveau de log</label>
-                                <select class="form-select" id="log-level">
-                                    <option value="DEBUG">DEBUG</option>
-                                    <option value="INFO" selected>INFO</option>
-                                    <option value="WARNING">WARNING</option>
-                                    <option value="ERROR">ERROR</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
+            <!-- Section 1: Création de la Partie -->
+            <div class="row mb-4">
                 <div class="col-12">
-                    <div class="card">
+                    <div class="card border-primary">
+                        <div class="card-header bg-primary text-white">
+                            <h5><i class="fas fa-play-circle me-2"></i>1. Création de la Partie</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <label for="nombre-tours" class="form-label" data-bs-toggle="tooltip" data-bs-placement="top" title="Nombre total de tours à simuler. Ex: 100 tours = simulation longue">
+                                        <i class="fas fa-flag-checkered me-1"></i>Nombre de tours
+                                    </label>
+                                    <input type="number" class="form-control" id="nombre-tours" value="10" min="1" max="1000">
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="nombre-entreprises" class="form-label" data-bs-toggle="tooltip" data-bs-placement="top" title="Nombre total d'entreprises générées. Ex: 3 = 3 entreprises dans la simulation">
+                                        <i class="fas fa-building me-1"></i>Nombre d'entreprises
+                                    </label>
+                                    <input type="number" class="form-control" id="nombre-entreprises" value="3" min="1" max="10">
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="nombre-fournisseurs" class="form-label" data-bs-toggle="tooltip" data-bs-placement="top" title="Nombre total de fournisseurs générés. Ex: 5 = 5 fournisseurs dans la simulation">
+                                        <i class="fas fa-truck me-1"></i>Nombre de fournisseurs
+                                    </label>
+                                    <input type="number" class="form-control" id="nombre-fournisseurs" value="5" min="1" max="20">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <label for="nombre-produits-defaut" class="form-label" data-bs-toggle="tooltip" data-bs-placement="top" title="Total de produits générés. Ex: 12 = 12 produits disponibles">
+                                        <i class="fas fa-box me-1"></i>Nombre de produits
+                                    </label>
+                                    <input type="number" class="form-control" id="nombre-produits-defaut" value="12" min="1" max="50">
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="produits-actifs-min" class="form-label" data-bs-toggle="tooltip" data-bs-placement="top" title="Produits actifs simultanément. Ex: 8-12 = entre 8 et 12 produits actifs">
+                                        <i class="fas fa-toggle-on me-1"></i>Produits actifs min
+                                    </label>
+                                    <input type="number" class="form-control" id="produits-actifs-min" value="8" min="1" max="20">
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="produits-actifs-max" class="form-label" data-bs-toggle="tooltip" data-bs-placement="top" title="Produits actifs simultanément. Ex: 8-12 = entre 8 et 12 produits actifs">
+                                        <i class="fas fa-toggle-on me-1"></i>Produits actifs max
+                                    </label>
+                                    <input type="number" class="form-control" id="produits-actifs-max" value="12" min="1" max="20">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Section 2: Configuration des Entités -->
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="card border-success">
+                        <div class="card-header bg-success text-white">
+                            <h5><i class="fas fa-cogs me-2"></i>2. Configuration des Entités</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <h6 class="text-primary"><i class="fas fa-building me-1"></i>Entreprises</h6>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <label for="budget-entreprise-min" class="form-label" data-bs-toggle="tooltip" data-bs-placement="top" title="Plage de budgets pour nouvelles entreprises. Ex: 18000-35000€">Budget min (€)</label>
+                                            <input type="number" class="form-control" id="budget-entreprise-min" value="18000">
+                                        </div>
+                                        <div class="col-6">
+                                            <label for="budget-entreprise-max" class="form-label" data-bs-toggle="tooltip" data-bs-placement="top" title="Plage de budgets pour nouvelles entreprises. Ex: 18000-35000€">Budget max (€)</label>
+                                            <input type="number" class="form-control" id="budget-entreprise-max" value="35000">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <h6 class="text-success"><i class="fas fa-box me-1"></i>Produits</h6>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <label for="prix-produit-min" class="form-label" data-bs-toggle="tooltip" data-bs-placement="top" title="Plage de prix des produits. Ex: 5-50€ = produits entre 5€ et 50€">Prix min (€)</label>
+                                            <input type="number" class="form-control" id="prix-produit-min" value="5">
+                                        </div>
+                                        <div class="col-6">
+                                            <label for="prix-produit-max" class="form-label" data-bs-toggle="tooltip" data-bs-placement="top" title="Plage de prix des produits. Ex: 5-50€ = produits entre 5€ et 50€">Prix max (€)</label>
+                                            <input type="number" class="form-control" id="prix-produit-max" value="500">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <h6 class="text-warning"><i class="fas fa-truck me-1"></i>Fournisseurs</h6>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <label for="stock-initial" class="form-label" data-bs-toggle="tooltip" data-bs-placement="top" title="Stock de départ des fournisseurs. Ex: 100 = 100 unités par produit">Stock initial</label>
+                                            <input type="number" class="form-control" id="stock-initial" value="100">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <h6 class="text-info"><i class="fas fa-euro-sign me-1"></i>Budgets</h6>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <label for="budget-initial" class="form-label" data-bs-toggle="tooltip" data-bs-placement="top" title="Budget de départ des entreprises. Ex: 10000€ = 10k€ par entreprise">Budget initial (€)</label>
+                                            <input type="number" class="form-control" id="budget-initial" value="10000">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Section 3: Simulation par Tour -->
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="card border-warning">
+                        <div class="card-header bg-warning text-dark">
+                            <h5><i class="fas fa-play me-2"></i>3. Simulation par Tour</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <label for="n-entreprises" class="form-label" data-bs-toggle="tooltip" data-bs-placement="top" title="Entreprises sélectionnées par tour. Ex: 2 = 2 entreprises actives par tour">
+                                        <i class="fas fa-users me-1"></i>Entreprises par tour
+                                    </label>
+                                    <input type="number" class="form-control" id="n-entreprises" value="3" min="1" max="10">
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="prob-selection" class="form-label" data-bs-toggle="tooltip" data-bs-placement="top" title="Chance qu'une entreprise soit choisie. Ex: 30% = 3 chances sur 10">
+                                        <i class="fas fa-percentage me-1"></i>Probabilité sélection (%)
+                                    </label>
+                                    <input type="number" class="form-control" id="prob-selection" value="80" min="1" max="100">
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="duree-pause" class="form-label" data-bs-toggle="tooltip" data-bs-placement="top" title="Temps entre tours en ms. Ex: 100ms = simulation rapide">
+                                        <i class="fas fa-clock me-1"></i>Pause entre tours (ms)
+                                    </label>
+                                    <input type="number" class="form-control" id="duree-pause" value="100" step="0.1">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <label for="tick-interval-event" class="form-label" data-bs-toggle="tooltip" data-bs-placement="top" title="Fréquence des événements. Ex: 2 = événement tous les 2 tours">
+                                        <i class="fas fa-calendar-alt me-1"></i>Intervalle événements
+                                    </label>
+                                    <input type="number" class="form-control" id="tick-interval-event" value="2" min="1" max="50">
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="qte-achat-min" class="form-label" data-bs-toggle="tooltip" data-bs-placement="top" title="Plage d'achat par transaction. Ex: 1-40 = entre 1 et 40 unités">
+                                        <i class="fas fa-shopping-cart me-1"></i>Quantité achat min
+                                    </label>
+                                    <input type="number" class="form-control" id="qte-achat-min" value="1" min="1" max="100">
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="qte-achat-max" class="form-label" data-bs-toggle="tooltip" data-bs-placement="top" title="Plage d'achat par transaction. Ex: 1-40 = entre 1 et 40 unités">
+                                        <i class="fas fa-shopping-cart me-1"></i>Quantité achat max
+                                    </label>
+                                    <input type="number" class="form-control" id="qte-achat-max" value="10" min="1" max="100">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <label for="qte-achat-prix-eleve-min" class="form-label" data-bs-toggle="tooltip" data-bs-placement="top" title="Achats réduits pour produits chers. Ex: 1-20 = moins d'achats si prix > 100€">
+                                        <i class="fas fa-tag me-1"></i>Qte prix élevé min
+                                    </label>
+                                    <input type="number" class="form-control" id="qte-achat-prix-eleve-min" value="1" min="1" max="50">
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="qte-achat-prix-eleve-max" class="form-label" data-bs-toggle="tooltip" data-bs-placement="top" title="Achats réduits pour produits chers. Ex: 1-20 = moins d'achats si prix > 100€">
+                                        <i class="fas fa-tag me-1"></i>Qte prix élevé max
+                                    </label>
+                                    <input type="number" class="form-control" id="qte-achat-prix-eleve-max" value="20" min="1" max="50">
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="seuil-prix-eleve" class="form-label" data-bs-toggle="tooltip" data-bs-placement="top" title="Prix déclenchant les achats réduits. Ex: 100€ = seuil de réduction">
+                                        <i class="fas fa-euro-sign me-1"></i>Seuil prix élevé (€)
+                                    </label>
+                                    <input type="number" class="form-control" id="seuil-prix-eleve" value="100" min="1" max="1000">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Section 4: Événements -->
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="card border-danger">
+                        <div class="card-header bg-danger text-white">
+                            <h5><i class="fas fa-bolt me-2"></i>4. Événements</h5>
+                        </div>
+                        <div class="card-body">
+                            <!-- Activation des événements -->
+                            <div class="row mb-4">
+                                <div class="col-12">
+                                    <h6 class="text-primary"><i class="fas fa-toggle-on me-1"></i>Activation des Événements</h6>
+                                    <div class="row">
+                                        <div class="col-md-3 mb-2">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="enable-inflation" checked>
+                                                <label class="form-check-label" for="enable-inflation" data-bs-toggle="tooltip" data-bs-placement="top" title="Augmentation des prix des produits. Ex: +30% à +60%">
+                                                    <i class="fas fa-chart-line me-1"></i>Inflation
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 mb-2">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="enable-recharge-budget" checked>
+                                                <label class="form-check-label" for="enable-recharge-budget" data-bs-toggle="tooltip" data-bs-placement="top" title="Ajout d'argent aux entreprises. Ex: +4000€ à +8000€">
+                                                    <i class="fas fa-money-bill-wave me-1"></i>Recharge budget
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 mb-2">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="enable-reassort" checked>
+                                                <label class="form-check-label" for="enable-reassort" data-bs-toggle="tooltip" data-bs-placement="top" title="Réapprovisionnement des stocks. Ex: +10 à +50 unités">
+                                                    <i class="fas fa-boxes me-1"></i>Réassort
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 mb-2">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="enable-variation-dispo" checked>
+                                                <label class="form-check-label" for="enable-variation-dispo" data-bs-toggle="tooltip" data-bs-placement="top" title="Activation/désactivation de produits. Ex: 10% désactivation, 20% réactivation">
+                                                    <i class="fas fa-toggle-on me-1"></i>Variation disponibilité
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Paramètres d'événements -->
+                            <div class="row mb-4">
+                                <div class="col-md-6">
+                                    <h6 class="text-success"><i class="fas fa-cogs me-1"></i>Paramètres d'Événements</h6>
+                                    <div class="row">
+                                        <div class="col-6 mb-2">
+                                            <label for="recharge-budget-min" class="form-label" data-bs-toggle="tooltip" data-bs-placement="top" title="Montant de recharge budget. Ex: 4000-8000€ = recharge entre 4k€ et 8k€">Recharge budget min (€)</label>
+                                            <input type="number" class="form-control" id="recharge-budget-min" value="4000">
+                                        </div>
+                                        <div class="col-6 mb-2">
+                                            <label for="recharge-budget-max" class="form-label" data-bs-toggle="tooltip" data-bs-placement="top" title="Montant de recharge budget. Ex: 4000-8000€ = recharge entre 4k€ et 8k€">Recharge budget max (€)</label>
+                                            <input type="number" class="form-control" id="recharge-budget-max" value="8000">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6 mb-2">
+                                            <label for="reassort-quantite-min" class="form-label" data-bs-toggle="tooltip" data-bs-placement="top" title="Quantité de réassortiment. Ex: 10-50 = entre 10 et 50 unités">Réassort quantité min</label>
+                                            <input type="number" class="form-control" id="reassort-quantite-min" value="10">
+                                        </div>
+                                        <div class="col-6 mb-2">
+                                            <label for="reassort-quantite-max" class="form-label" data-bs-toggle="tooltip" data-bs-placement="top" title="Quantité de réassortiment. Ex: 10-50 = entre 10 et 50 unités">Réassort quantité max</label>
+                                            <input type="number" class="form-control" id="reassort-quantite-max" value="50">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6 class="text-warning"><i class="fas fa-chart-line me-1"></i>Paramètres d'Inflation</h6>
+                                    <div class="row">
+                                        <div class="col-6 mb-2">
+                                            <label for="inflation-pourcentage-min" class="form-label" data-bs-toggle="tooltip" data-bs-placement="top" title="Plage d'inflation. Ex: 30-60% = prix +30% à +60%">Inflation % min</label>
+                                            <input type="number" class="form-control" id="inflation-pourcentage-min" value="30">
+                                        </div>
+                                        <div class="col-6 mb-2">
+                                            <label for="inflation-pourcentage-max" class="form-label" data-bs-toggle="tooltip" data-bs-placement="top" title="Plage d'inflation. Ex: 30-60% = prix +30% à +60%">Inflation % max</label>
+                                            <input type="number" class="form-control" id="inflation-pourcentage-max" value="60">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6 mb-2">
+                                            <label for="penalite-inflation" class="form-label" data-bs-toggle="tooltip" data-bs-placement="top" title="Réduction d'inflation pour produits déjà affectés. Ex: 15% = -15% d'inflation">Pénalité inflation (%)</label>
+                                            <input type="number" class="form-control" id="penalite-inflation" value="15">
+                                        </div>
+                                        <div class="col-6 mb-2">
+                                            <label for="duree-penalite-inflation" class="form-label" data-bs-toggle="tooltip" data-bs-placement="top" title="Durée de la pénalité en tours. Ex: 50 = pénalité pendant 50 tours">Durée pénalité (tours)</label>
+                                            <input type="number" class="form-control" id="duree-penalite-inflation" value="50">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Probabilités d'événements -->
+                            <div class="row mb-4">
+                                <div class="col-12">
+                                    <h6 class="text-info"><i class="fas fa-percentage me-1"></i>Probabilités d'Événements (%)</h6>
+                                    <div class="row">
+                                        <div class="col-md-3 mb-2">
+                                            <label for="prob-recharge-budget" class="form-label" data-bs-toggle="tooltip" data-bs-placement="top" title="Chance de recharge budget. Ex: 50% = 1 chance sur 2">Recharge budget</label>
+                                            <input type="number" class="form-control" id="prob-recharge-budget" value="50" min="0" max="100">
+                                        </div>
+                                        <div class="col-md-3 mb-2">
+                                            <label for="prob-reassort" class="form-label" data-bs-toggle="tooltip" data-bs-placement="top" title="Chance de réassortiment. Ex: 50% = 1 chance sur 2">Réassort</label>
+                                            <input type="number" class="form-control" id="prob-reassort" value="50" min="0" max="100">
+                                        </div>
+                                        <div class="col-md-3 mb-2">
+                                            <label for="prob-inflation" class="form-label" data-bs-toggle="tooltip" data-bs-placement="top" title="Chance d'inflation. Ex: 40% = 2 chances sur 5">Inflation</label>
+                                            <input type="number" class="form-control" id="prob-inflation" value="40" min="0" max="100">
+                                        </div>
+                                        <div class="col-md-3 mb-2">
+                                            <label for="prob-variation-dispo" class="form-label" data-bs-toggle="tooltip" data-bs-placement="top" title="Chance de variation disponibilité. Ex: 30% = 3 chances sur 10">Variation disponibilité</label>
+                                            <input type="number" class="form-control" id="prob-variation-dispo" value="30" min="0" max="100">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Monitoring avancé -->
+                            <div class="row">
+                                <div class="col-12">
+                                    <h6 class="text-secondary"><i class="fas fa-chart-bar me-1"></i>Monitoring Avancé</h6>
+                                    <div class="row">
+                                        <div class="col-md-3 mb-2">
+                                            <label for="metrics-collection-interval" class="form-label" data-bs-toggle="tooltip" data-bs-placement="top" title="Fréquence de collecte. Ex: 1.0s = métriques toutes les secondes">Intervalle collecte (s)</label>
+                                            <input type="number" class="form-control" id="metrics-collection-interval" value="1.0" step="0.1">
+                                        </div>
+                                        <div class="col-md-3 mb-2">
+                                            <div class="form-check mt-4">
+                                                <input class="form-check-input" type="checkbox" id="metrics-system-enabled" checked>
+                                                <label class="form-check-label" for="metrics-system-enabled" data-bs-toggle="tooltip" data-bs-placement="top" title="Collecte CPU/mémoire. Ex: activé = surveillance système">Métriques système</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 mb-2">
+                                            <div class="form-check mt-4">
+                                                <input class="form-check-input" type="checkbox" id="metrics-labels-enabled">
+                                                <label class="form-check-label" for="metrics-labels-enabled" data-bs-toggle="tooltip" data-bs-placement="top" title="Labels détaillés. Ex: désactivé = métriques simples">Labels métriques</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 mb-2">
+                                            <label for="log-level" class="form-label" data-bs-toggle="tooltip" data-bs-placement="top" title="Détail des logs. Ex: INFO = logs informatifs">Niveau de log</label>
+                                            <select class="form-select" id="log-level">
+                                                <option value="DEBUG">DEBUG</option>
+                                                <option value="INFO" selected>INFO</option>
+                                                <option value="WARNING">WARNING</option>
+                                                <option value="ERROR">ERROR</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Actions -->
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="card border-dark">
+                        <div class="card-header bg-dark text-white">
+                            <h5><i class="fas fa-rocket me-2"></i>Actions</h5>
+                        </div>
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-4 mb-2">
@@ -421,6 +510,192 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Confirmation de Configuration -->
+    <div class="modal fade" id="configModal" tabindex="-1" aria-labelledby="configModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="configModalLabel">
+                        <i class="fas fa-check-circle me-2"></i>Confirmation de la Configuration
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <!-- Section 1: Création de la Partie -->
+                        <div class="row mb-4">
+                            <div class="col-12">
+                                <div class="card border-primary">
+                                    <div class="card-header bg-primary text-white">
+                                        <h6><i class="fas fa-play-circle me-2"></i>1. Création de la Partie</h6>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <strong>Nombre de tours:</strong> <span id="modal-nombre-tours" class="text-primary"></span>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <strong>Nombre d'entreprises:</strong> <span id="modal-nombre-entreprises" class="text-primary"></span>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <strong>Nombre de fournisseurs:</strong> <span id="modal-nombre-fournisseurs" class="text-primary"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row mt-2">
+                                            <div class="col-md-4">
+                                                <strong>Nombre de produits:</strong> <span id="modal-nombre-produits-defaut" class="text-primary"></span>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <strong>Produits actifs:</strong> <span id="modal-produits-actifs" class="text-primary"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Section 2: Configuration des Entités -->
+                        <div class="row mb-4">
+                            <div class="col-12">
+                                <div class="card border-success">
+                                    <div class="card-header bg-success text-white">
+                                        <h6><i class="fas fa-cogs me-2"></i>2. Configuration des Entités</h6>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <h6 class="text-primary"><i class="fas fa-building me-1"></i>Entreprises</h6>
+                                                <p><strong>Budget:</strong> <span id="modal-budget-entreprise" class="text-success"></span></p>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <h6 class="text-success"><i class="fas fa-box me-1"></i>Produits</h6>
+                                                <p><strong>Prix:</strong> <span id="modal-prix-produit" class="text-success"></span></p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <h6 class="text-warning"><i class="fas fa-truck me-1"></i>Fournisseurs</h6>
+                                                <p><strong>Stock initial:</strong> <span id="modal-stock-initial" class="text-warning"></span></p>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <h6 class="text-info"><i class="fas fa-euro-sign me-1"></i>Budgets</h6>
+                                                <p><strong>Budget initial:</strong> <span id="modal-budget-initial" class="text-info"></span></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Section 3: Simulation par Tour -->
+                        <div class="row mb-4">
+                            <div class="col-12">
+                                <div class="card border-warning">
+                                    <div class="card-header bg-warning text-dark">
+                                        <h6><i class="fas fa-play me-2"></i>3. Simulation par Tour</h6>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <strong>Entreprises par tour:</strong> <span id="modal-n-entreprises" class="text-warning"></span>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <strong>Probabilité sélection:</strong> <span id="modal-prob-selection" class="text-warning"></span>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <strong>Pause entre tours:</strong> <span id="modal-duree-pause" class="text-warning"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row mt-2">
+                                            <div class="col-md-4">
+                                                <strong>Intervalle événements:</strong> <span id="modal-tick-interval-event" class="text-warning"></span>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <strong>Quantité achat:</strong> <span id="modal-qte-achat" class="text-warning"></span>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <strong>Seuil prix élevé:</strong> <span id="modal-seuil-prix-eleve" class="text-warning"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Section 4: Événements -->
+                        <div class="row mb-4">
+                            <div class="col-12">
+                                <div class="card border-danger">
+                                    <div class="card-header bg-danger text-white">
+                                        <h6><i class="fas fa-bolt me-2"></i>4. Événements</h6>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row mb-3">
+                                            <div class="col-12">
+                                                <h6 class="text-primary"><i class="fas fa-toggle-on me-1"></i>Événements Activés</h6>
+                                                <div id="modal-events-enabled" class="text-danger"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <h6 class="text-success"><i class="fas fa-cogs me-1"></i>Paramètres</h6>
+                                                <p><strong>Recharge budget:</strong> <span id="modal-recharge-budget" class="text-success"></span></p>
+                                                <p><strong>Réassort:</strong> <span id="modal-reassort" class="text-success"></span></p>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <h6 class="text-warning"><i class="fas fa-chart-line me-1"></i>Inflation</h6>
+                                                <p><strong>Pourcentage:</strong> <span id="modal-inflation" class="text-warning"></span></p>
+                                                <p><strong>Pénalité:</strong> <span id="modal-penalite-inflation" class="text-warning"></span></p>
+                                            </div>
+                                        </div>
+                                        <div class="row mt-2">
+                                            <div class="col-12">
+                                                <h6 class="text-info"><i class="fas fa-percentage me-1"></i>Probabilités</h6>
+                                                <div id="modal-probabilities" class="text-info"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Monitoring -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card border-secondary">
+                                    <div class="card-header bg-secondary text-white">
+                                        <h6><i class="fas fa-chart-bar me-2"></i>Monitoring</h6>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <strong>Intervalle collecte:</strong> <span id="modal-metrics-collection-interval" class="text-secondary"></span>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <strong>Métriques système:</strong> <span id="modal-metrics-system-enabled" class="text-secondary"></span>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <strong>Niveau de log:</strong> <span id="modal-log-level" class="text-secondary"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        <i class="fas fa-arrow-left me-2"></i>Retour à la Configuration
+                    </button>
+                    <button type="button" class="btn btn-success" onclick="confirmAndStartGame()">
+                        <i class="fas fa-rocket me-2"></i>Confirmer et Lancer la Partie
+                    </button>
                 </div>
             </div>
         </div>
