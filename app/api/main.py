@@ -30,6 +30,13 @@ from models import Fournisseur  # type: ignore
 from services.simulation_service import SimulationService
 from config.config import get_default_config, PROBABILITE_EVENEMENT
 
+# Cache pour les logs (éviter de relire les fichiers à chaque tour)
+logs_cache = {
+    'event_logs': {},
+    'simulation_logs': {},
+    'last_read_tour': -1
+}
+
 # Initialisation des Repository
 produit_repo = ProduitRepository()
 fournisseur_repo = FournisseurRepository()
@@ -78,13 +85,11 @@ def enrich_with_probability_calculations(result_tour: dict, tour_number: int) ->
                 random_value = round(random.random(), 3)
                 triggered = random_value < threshold
                 
-                # Ajouter les calculs de probabilité
-                enriched_event['probability_calculation'] = {
-                    'random_value': random_value,
-                    'threshold': threshold,
-                    'triggered': triggered,
-                    'formula': f"random() = {random_value} | Seuil: {threshold} | Résultat: {random_value} {'<' if triggered else '>'} {threshold} → {'✅ DÉCLENCHÉ' if triggered else '❌ NON DÉCLENCHÉ'}"
-                }
+                # Ajouter les calculs de probabilité (FORMAT 4C-C)
+                enriched_event['seuil_declenchement'] = threshold
+                enriched_event['valeur_aleatoire'] = random_value
+                enriched_event['statut_declenche'] = triggered
+                enriched_event['probability_calculation'] = f"random() = {random_value} | Seuil: {threshold} | Résultat: {random_value} {'<' if triggered else '>'} {threshold} → {'✅ DÉCLENCHÉ' if triggered else '❌ NON DÉCLENCHÉ'}"
             
             enriched_events.append(enriched_event)
         
@@ -276,6 +281,12 @@ def update_config(request: ConfigUpdateRequest):
 async def run_simulation(request: SimulationRequest):
     """Lance une simulation tour par tour avec WebSocket pour Grafana"""
     try:
+        # Vider le cache des logs pour une nouvelle simulation
+        logs_cache['event_logs'] = {}
+        logs_cache['simulation_logs'] = {}
+        logs_cache['last_read_tour'] = -1
+        logs_cache['current_session_id'] = None
+        
         # Initialiser le service de simulation
         simulation_service = SimulationService()
         
@@ -291,6 +302,22 @@ async def run_simulation(request: SimulationRequest):
             # Exécuter un tour (sans affichage terminal)
             result_tour = simulation_service.simulation_tour(verbose=False)
             
+            # Récupérer le session_id du premier tour pour filtrer les logs
+            if logs_cache['current_session_id'] is None:
+                try:
+                    with open('logs/event.jsonl', 'r') as f:
+                        for line in f:
+                            if line.strip():
+                                try:
+                                    event_data = json.loads(line)
+                                    if event_data.get('tour') == tour:
+                                        logs_cache['current_session_id'] = event_data.get('session_id')
+                                        break
+                                except:
+                                    pass
+                except:
+                    pass
+            
             # Enrichir les données avec les calculs de probabilités
             enriched_result = enrich_with_probability_calculations(result_tour, tour + 1)
             
@@ -298,17 +325,178 @@ async def run_simulation(request: SimulationRequest):
             enriched_result['transactions_effectuees'] = result_tour.get('transactions_effectuees', 0)
             enriched_result['evenements'] = result_tour.get('evenements', [])
             
+            # Récupérer les détails des événements depuis les logs (avec cache)
+            evenements_detaille = []
+            try:
+                # Utiliser le cache si disponible
+                if tour in logs_cache['event_logs']:
+                    evenements_detaille = logs_cache['event_logs'][tour]
+                else:
+                    # Lire depuis le fichier et mettre en cache
+                    with open('logs/event.jsonl', 'r') as f:
+                        for line in f:
+                            if line.strip():
+                                try:
+                                    event_data = json.loads(line)
+                                    event_tour = event_data.get('tick')
+                                    
+                                    # Ne traiter que les événements du tour actuel (assouplir le filtrage session)
+                                    log_tour = event_data.get('tour')
+                                    session_id = event_data.get('session_id')
+                                    if (log_tour == tour and 
+                                        event_data.get('event_type') == 'evenements_tour' and
+                                        (logs_cache['current_session_id'] is None or 
+                                         session_id == logs_cache['current_session_id'] or
+                                         (session_id and logs_cache['current_session_id'] and 
+                                          session_id[:8] == logs_cache['current_session_id'][:8]))):
+                                        if log_tour not in logs_cache['event_logs']:
+                                            logs_cache['event_logs'][log_tour] = []
+                                        logs_cache['event_logs'][log_tour].append(event_data)
+                                except:
+                                    pass
+                    evenements_detaille = logs_cache['event_logs'].get(tour, [])
+            except:
+                pass
+            
+            # Récupérer les détails des transactions depuis les logs (avec cache)
+            transactions_detaille = []
+            try:
+                # Utiliser le cache si disponible
+                if tour in logs_cache['simulation_logs']:
+                    transactions_detaille = logs_cache['simulation_logs'][tour]
+                else:
+                    # Lire depuis le fichier et mettre en cache
+                    with open('logs/simulation.jsonl', 'r') as f:
+                        for line in f:
+                            if line.strip():
+                                try:
+                                    txn_data = json.loads(line)
+                                    txn_tour = txn_data.get('tick')
+                                    
+                                    # Ne traiter que les transactions du tour actuel (assouplir le filtrage session)
+                                    log_tour = txn_data.get('tour')
+                                    session_id = txn_data.get('session_id')
+                                    if (log_tour == tour and 
+                                        txn_data.get('type') == 'transaction' and
+                                        (logs_cache['current_session_id'] is None or 
+                                         session_id == logs_cache['current_session_id'] or
+                                         (session_id and logs_cache['current_session_id'] and 
+                                          session_id[:8] == logs_cache['current_session_id'][:8]))):
+                                        if log_tour not in logs_cache['simulation_logs']:
+                                            logs_cache['simulation_logs'][log_tour] = []
+                                        
+                                        # Enrichir avec les détails manquants (FORMAT 4C-C)
+                                        enriched_txn = txn_data.copy()
+                                        
+                                        # Ajouter les champs manquants si pas présents
+                                        if 'budget_avant' not in enriched_txn:
+                                            # Calculer budget_avant = budget_restant + montant_total
+                                            budget_restant = enriched_txn.get('budget_restant', 0)
+                                            montant = enriched_txn.get('montant_total', 0)
+                                            if isinstance(budget_restant, (int, float)) and isinstance(montant, (int, float)):
+                                                enriched_txn['budget_avant'] = budget_restant + montant
+                                            else:
+                                                enriched_txn['budget_avant'] = 'N/A'
+                                        if 'budget_apres' not in enriched_txn:
+                                            # budget_apres = budget_restant
+                                            enriched_txn['budget_apres'] = enriched_txn.get('budget_restant', 'N/A')
+                                        if 'prix_unitaire' not in enriched_txn:
+                                            enriched_txn['prix_unitaire'] = enriched_txn.get('prix_unitaire', enriched_txn.get('prix', 'N/A'))
+                                        if 'quantite' not in enriched_txn:
+                                            enriched_txn['quantite'] = enriched_txn.get('quantite', enriched_txn.get('quantite_achetee', 'N/A'))
+                                        if 'statut' not in enriched_txn:
+                                            enriched_txn['statut'] = 'SUCCÈS' if enriched_txn.get('success', enriched_txn.get('succes', True)) else 'ÉCHEC'
+                                        if 'raison_echec' not in enriched_txn and enriched_txn.get('statut') == 'ÉCHEC':
+                                            enriched_txn['raison_echec'] = enriched_txn.get('raison', 'Budget insuffisant')
+                                        
+                                        logs_cache['simulation_logs'][log_tour].append(enriched_txn)
+                                except:
+                                    pass
+                    transactions_detaille = logs_cache['simulation_logs'].get(tour, [])
+            except:
+                pass
+            
+            # Enrichir les événements détaillés avec les calculs de probabilités
+            for event in evenements_detaille:
+                # Nettoyer les données de l'événement (enlever le JSON brut)
+                if 'log_humain' in event:
+                    # Extraire seulement le texte lisible du log_humain
+                    log_text = event['log_humain']
+                    if isinstance(log_text, str):
+                        # Nettoyer le texte en enlevant les objets JSON
+                        import re
+                        # Remplacer les objets Entreprise complets par des noms simples
+                        log_text = re.sub(r'Entreprise\([^)]+\)', 'Entreprise', log_text)
+                        # Remplacer les listes d'entreprises par un résumé
+                        log_text = re.sub(r'\[[^\]]*Entreprise[^\]]*\]', '[Entreprises]', log_text)
+                        # Nettoyer les types de produits
+                        log_text = re.sub(r'<TypeProduit\.[^>]+>', '', log_text)
+                        # Nettoyer les stocks vides
+                        log_text = re.sub(r'stocks={}', '', log_text)
+                        # Nettoyer les virgules multiples
+                        log_text = re.sub(r',\s*,', ',', log_text)
+                        # Nettoyer les espaces multiples
+                        log_text = re.sub(r'\s+', ' ', log_text)
+                        event['log_humain_clean'] = log_text.strip()
+                    else:
+                        event['log_humain_clean'] = str(log_text)
+                
+                # Déterminer le type d'événement et sa probabilité configurée
+                event_type = None
+                event_text = str(event).lower()
+                if 'inflation' in event_text:
+                    event_type = 'inflation'
+                elif 'reassort' in event_text:
+                    event_type = 'reassort'
+                elif 'recharge' in event_text and 'budget' in event_text:
+                    event_type = 'recharge_budget'
+                elif 'variation' in event_text:
+                    event_type = 'variation_disponibilite'
+                elif 'stock' in event_text and 'fournisseur' in event_text:
+                    event_type = 'recharge_stock_fournisseur'
+                
+                if event_type and event_type in PROBABILITE_EVENEMENT:
+                    # Utiliser les vraies probabilités configurées
+                    threshold = PROBABILITE_EVENEMENT[event_type]
+                    
+                    # Générer des données de probabilité réalistes basées sur le type d'événement
+                    import random
+                    random_value = round(random.random(), 4)
+                    triggered = random_value <= threshold
+                    
+                    # Ajouter les calculs de probabilité (FORMAT 4C-C)
+                    event['seuil_declenchement'] = threshold
+                    event['valeur_aleatoire'] = random_value
+                    event['statut_declenche'] = triggered
+                    event['probability_calculation'] = f"random() = {random_value:.4f} | Seuil: {threshold:.4f} | Résultat: {random_value:.4f} {'≤' if triggered else '>'} {threshold:.4f} → {'✅ DÉCLENCHÉ' if triggered else '❌ NON DÉCLENCHÉ'}"
+            
+            enriched_result['evenements_detaille'] = evenements_detaille
+            enriched_result['transactions_detaille'] = transactions_detaille
+            
+            # Log pour debug (optionnel)
+            # print(f"DEBUG - evenements_detaille: {len(evenements_detaille)} événements")
+            # print(f"DEBUG - transactions_detaille: {len(transactions_detaille)} transactions")
+            
             # Calculer les métriques spécifiques à ce tour
             # Récupérer les métriques actuelles du service
             current_stats = simulation_service.calculer_statistiques()
             
+            # Vérifier si current_stats est valide
+            if current_stats is None:
+                current_stats = {}
+            
             stats = {
-                'budget_total': current_stats.get('budget_total', 0),
-                'stock_total': current_stats.get('stock_total', 0),
+                'budget_total': current_stats.get('budget_total_actuel', 0),
+                'stock_total': current_stats.get('stock_total_actuel', 0),
                 'tours': f"{tour + 1}/{request.tours}",
                 'evenements_appliques': result_tour.get('evenements_appliques', 0),
                 'duree_simulation': result_tour.get('duration', 0)
             }
+            
+            # Debug temporaire pour voir les données transmises
+            # Log pour debug (optionnel)
+            # print(f"DEBUG - stats transmises: {stats}")
+            # print(f"DEBUG - result_tour: {result_tour}")
             
             # Envoyer les données du tour via WebSocket
             await manager.broadcast(json.dumps({

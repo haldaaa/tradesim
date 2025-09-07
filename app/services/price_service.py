@@ -9,6 +9,10 @@ MODE WEB : Utilisera les données de la base de données
 """
 
 from typing import Optional, Dict, Tuple
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 from models.models import Produit, Fournisseur
 from repositories import ProduitRepository, FournisseurRepository
 

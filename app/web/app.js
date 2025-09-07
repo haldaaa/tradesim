@@ -793,17 +793,20 @@ function displayTourTimeline4CC(data) {
         const timeline = document.createElement('div');
         timeline.className = 'timeline-4cc';
         
-        // Ajouter les transactions
+        // Ajouter les transactions détaillées
         if (data.result.transactions_effectuees > 0) {
-            addTransactionToTimeline(timeline, data);
+            addDetailedTransactionsToTimeline(timeline, data);
         } else {
             // Afficher "Aucune transaction" même si 0
             addNoTransactionToTimeline(timeline);
         }
         
-        // Ajouter les événements avec calculs de probabilités
-        if (data.result.evenements && data.result.evenements.length > 0) {
-            addEventsToTimeline(timeline, data.result.evenements);
+        // Ajouter les événements détaillés avec calculs de probabilités
+        if (data.result.evenements_detaille && data.result.evenements_detaille.length > 0) {
+            addDetailedEventsToTimeline(timeline, data);
+        } else if (data.result.evenements_appliques > 0) {
+            // Si on a des événements mais pas de détails, afficher un message
+            addEventsSummaryToTimeline(timeline, data);
         } else {
             // Afficher "Aucun événement" même si 0
             addNoEventToTimeline(timeline);
@@ -831,7 +834,57 @@ function displayTourTimeline4CC(data) {
 }
 
 /**
- * Ajoute les transactions à la timeline
+ * Ajoute les transactions détaillées à la timeline (comme CLI)
+ */
+function addDetailedTransactionsToTimeline(timeline, data) {
+    const transactionElement = document.createElement('div');
+    transactionElement.className = 'mb-3 p-2 border-start border-3 border-success bg-white';
+    
+    const timestamp = new Date().toLocaleTimeString();
+    const icon = '🎯';
+    const status = 'TRANSACTIONS EFFECTUÉES';
+    
+    // Compter le nombre réel de transactions détaillées
+    const nbTransactions = data.result.transactions_detaille ? data.result.transactions_detaille.length : data.result.transactions_effectuees;
+    
+    let transactionHTML = `
+        <div class="fw-bold text-success">
+            ${icon} ${status}
+        </div>
+        <div class="ms-3 mt-2">
+            <div><strong>Nombre de transactions:</strong> ${nbTransactions}</div>
+            <div><strong>Timestamp:</strong> ${timestamp}</div>
+    `;
+    
+    // Ajouter les détails des transactions si disponibles (FORMAT 4C-C)
+    if (data.result.transactions_detaille && data.result.transactions_detaille.length > 0) {
+        transactionHTML += '<div class="mt-2"><strong>Détails des transactions:</strong></div>';
+        data.result.transactions_detaille.forEach((txn, index) => {
+            const budgetAvant = txn.budget_avant || 'N/A';
+            const budgetApres = txn.budget_apres || 'N/A';
+            const prixUnitaire = txn.prix_unitaire || 'N/A';
+            const quantite = txn.quantite || 'N/A';
+            const statut = txn.statut || 'SUCCÈS';
+            const statutIcon = statut === 'SUCCÈS' ? '✅' : '❌';
+            const raisonEchec = txn.raison_echec ? ` (${txn.raison_echec})` : '';
+            
+            transactionHTML += `
+                <div class="ms-3 mt-1 small">
+                    • ${statutIcon} ${txn.entreprise || 'Entreprise'} → ${txn.produit || 'Produit'} (${txn.fournisseur || 'Fournisseur'})
+                    <br>&nbsp;&nbsp;&nbsp;💰 Budget: ${budgetAvant}€ → ${budgetApres}€
+                    <br>&nbsp;&nbsp;&nbsp;📦 Prix: ${prixUnitaire}€ × ${quantite} = ${txn.montant_total || 'N/A'}€${raisonEchec}
+                </div>
+            `;
+        });
+    }
+    
+    transactionHTML += `</div>`;
+    transactionElement.innerHTML = transactionHTML;
+    timeline.appendChild(transactionElement);
+}
+
+/**
+ * Ajoute les transactions à la timeline (version simple)
  */
 function addTransactionToTimeline(timeline, data) {
     if (data.result && data.result.transactions_effectuees > 0) {
@@ -880,6 +933,100 @@ function addNoTransactionToTimeline(timeline) {
     transactionHTML += `</div>`;
     transactionElement.innerHTML = transactionHTML;
     timeline.appendChild(transactionElement);
+}
+
+/**
+ * Ajoute un résumé des événements quand on n'a pas les détails
+ */
+function addEventsSummaryToTimeline(timeline, data) {
+    const eventElement = document.createElement('div');
+    eventElement.className = 'mb-3 p-2 border-start border-3 border-warning bg-white';
+    
+    const timestamp = new Date().toLocaleTimeString();
+    const icon = '🎲';
+    const status = 'ÉVÉNEMENTS APPLIQUÉS';
+    
+    let eventHTML = `
+        <div class="fw-bold text-warning">
+            ${icon} ${status}
+        </div>
+        <div class="ms-3 mt-2">
+            <div><strong>Nombre d'événements:</strong> ${data.result.evenements_appliques}</div>
+            <div><strong>Timestamp:</strong> ${timestamp}</div>
+            <div class="text-muted small">Détails des événements en cours de traitement...</div>
+        </div>
+    `;
+    
+    eventElement.innerHTML = eventHTML;
+    timeline.appendChild(eventElement);
+}
+
+/**
+ * Ajoute les événements détaillés à la timeline (comme CLI)
+ */
+function addDetailedEventsToTimeline(timeline, data) {
+    if (data.result.evenements_detaille && data.result.evenements_detaille.length > 0) {
+        data.result.evenements_detaille.forEach((event, index) => {
+            const eventElement = document.createElement('div');
+            eventElement.className = 'mb-3 p-2 border-start border-3 border-warning bg-white';
+            
+            let eventType = 'ÉVÉNEMENT';
+            let icon = '🎲';
+            let color = 'warning';
+            
+            // Utiliser les données nettoyées si disponibles
+            const eventDescription = event.log_humain_clean || event.log_humain || 'N/A';
+            
+            if (eventDescription) {
+                if (eventDescription.includes('INFLATION')) {
+                    eventType = 'ÉVÉNEMENT INFLATION';
+                    icon = '🔥';
+                    color = 'danger';
+                } else if (eventDescription.includes('REASSORT')) {
+                    eventType = 'ÉVÉNEMENT REASSORT';
+                    icon = '📦';
+                    color = 'info';
+                } else if (eventDescription.includes('RECHARGE')) {
+                    eventType = 'ÉVÉNEMENT RECHARGE';
+                    icon = '💰';
+                    color = 'success';
+                }
+            }
+            
+            let eventHTML = `
+                <div class="fw-bold text-${color}">
+                    ${icon} ${eventType}
+                </div>
+                <div class="ms-3 mt-2">
+                    <div><strong>Description:</strong> ${eventDescription}</div>
+                    <div><strong>Timestamp:</strong> ${event.timestamp || new Date().toLocaleTimeString()}</div>
+            `;
+            
+            // Ajouter les calculs de probabilités si disponibles (FORMAT 4C-C)
+            if (event.probability_calculation) {
+                eventHTML += `<div class="mt-2"><strong>Calcul de probabilité:</strong></div>`;
+                eventHTML += `<div class="ms-3 small">${event.probability_calculation}</div>`;
+            }
+            
+            // Ajouter les détails du calcul si disponibles
+            if (event.seuil_declenchement !== undefined && event.valeur_aleatoire !== undefined) {
+                const statutDeclenche = event.valeur_aleatoire <= event.seuil_declenchement ? 'DÉCLENCHÉ' : 'NON DÉCLENCHÉ';
+                const statutIcon = statutDeclenche === 'DÉCLENCHÉ' ? '✅' : '❌';
+                const raison = statutDeclenche === 'NON DÉCLENCHÉ' ? ` (${event.valeur_aleatoire.toFixed(3)} > ${event.seuil_declenchement.toFixed(3)})` : ` (${event.valeur_aleatoire.toFixed(3)} ≤ ${event.seuil_declenchement.toFixed(3)})`;
+                
+                eventHTML += `
+                    <div class="mt-2"><strong>Résultat:</strong></div>
+                    <div class="ms-3 small">
+                        ${statutIcon} ${statutDeclenche}${raison}
+                    </div>
+                `;
+            }
+            
+            eventHTML += `</div>`;
+            eventElement.innerHTML = eventHTML;
+            timeline.appendChild(eventElement);
+        });
+    }
 }
 
 /**
@@ -974,7 +1121,7 @@ function addGlobalMetricsToTimeline(timeline, data) {
             📊 MÉTRIQUES GLOBALES
         </div>
         <div class="ms-3 mt-2">
-            <div><strong>Budget total:</strong> ${data.stats.budget_total_actuel?.toFixed(2) || 'N/A'}€ | <strong>Stock total:</strong> ${data.stats.stock_total_actuel || 'N/A'} | <strong>Tours:</strong> ${data.tour}/${data.total_tours}</div>
+            <div><strong>Budget total:</strong> ${data.stats.budget_total?.toFixed(2) || 'N/A'}€ | <strong>Stock total:</strong> ${data.stats.stock_total || 'N/A'} | <strong>Tours:</strong> ${data.tour}/${data.total_tours}</div>
             <div><strong>Événements appliqués:</strong> ${data.stats.evenements_appliques || 0} | <strong>Durée simulation:</strong> ${data.stats.duree_simulation || 'N/A'}s</div>
         </div>
     `;
