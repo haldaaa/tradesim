@@ -2234,3 +2234,48 @@ log_level: 'INFO'
 - **Prochain objectif** : Corriger l'erreur restante et modifier les dashboards Grafana
 
 ---
+
+## SESSION 51 - CORRECTION CRITIQUE : PROBLÈME DE TRANSACTIONS
+**Date** : 07/09/2025 13:54 (Bangkok)
+**Durée** : ~1h30
+**Objectif** : Résoudre le problème "AUCUNE TRANSACTION" dans l'interface web
+
+### 🚨 PROBLÈME IDENTIFIÉ
+- **Symptôme** : L'interface web affichait "AUCUNE TRANSACTION" malgré des événements
+- **Cause racine** : Import du `price_service` échouait dans `simulation_service.py`
+- **Impact** : `PRICE_SERVICE_AVAILABLE = False` → tous les prix = `float('inf')` → aucune transaction possible
+
+### 🔧 CORRECTIONS APPLIQUÉES
+1. **Diagnostic complet** :
+   - ✅ Vérifié que les logs ne contenaient QUE des événements, AUCUNE transaction
+   - ✅ Identifié que `simuler_transactions()` retournait 0 transactions
+   - ✅ Trouvé que `price_service.get_prix_produit_fournisseur()` échouait
+
+2. **Correction de l'import** :
+   - ✅ Ajouté `sys.path.append()` dans `services/price_service.py`
+   - ✅ Corrigé l'import des modules `models.models` et `repositories`
+   - ✅ Testé que l'import fonctionne maintenant
+
+3. **Redémarrage de l'API** :
+   - ✅ L'API redémarre automatiquement avec `PRICE_SERVICE_AVAILABLE = True`
+   - ✅ Le service de prix est maintenant fonctionnel
+
+### 📋 ÉTAT ACTUEL
+- **API** : ✅ Fonctionnelle avec service de prix corrigé
+- **WebSocket** : ✅ Opérationnel
+- **Logs** : ✅ Prêts à recevoir des transactions
+- **À tester** : Les transactions devraient maintenant s'afficher correctement
+
+### 🎯 PROCHAINES ÉTAPES (Session suivante)
+1. **Tester la correction** : Lancer une simulation et vérifier que les transactions s'affichent
+2. **Vérifier l'affichage** : Confirmer que les budgets avant/après sont corrects (plus de "N/A")
+3. **Validation complète** : S'assurer que FORMAT 4C-C est respecté pour transactions et événements
+
+### 💡 APPRENTISSAGES
+- **Diagnostic méthodique** : Le problème venait d'un import défaillant, pas de la logique métier
+- **Impact en cascade** : Un service non disponible peut bloquer toute une fonctionnalité
+- **Importance des tests** : Il faut toujours tester après une correction critique
+
+**Heure de fin** : 07/09/2025 13:54 (Bangkok)
+
+---

@@ -747,29 +747,231 @@ class SimulationService:
             return False
 
     def simuler_transactions(self) -> int:
-        """Simulation des transactions avec monitoring (CORRECTION BUG)"""
+        """Simulation des transactions avec monitoring (LOGIQUE CLI ISOTOPE)"""
         transactions_effectuees = 0
         
+        # Sélection des entreprises avec probabilité (comme CLI)
+        from config.config import PROBABILITE_SELECTION_ENTREPRISE
+        import random
+        
+        entreprises_selectionnees = []
         for entreprise in self.entreprises:
-            for produit in [p for p in self.produits if p.actif]:
-                # Trouver le fournisseur le moins cher (CORRECTION BUG)
-                fournisseur_moins_cher = None
-                prix_min = float('inf')
+            if random.random() < PROBABILITE_SELECTION_ENTREPRISE:
+                entreprises_selectionnees.append(entreprise)
+        
+        for entreprise in entreprises_selectionnees:
+            if entreprise.strategie == "moins_cher":
+                # STRATÉGIE MOINS CHER (comme CLI)
+                produits_disponibles = [p for p in self.produits if p.actif]
+                if not produits_disponibles:
+                    continue
+                    
+                # Filtrer les produits que l'entreprise peut vraiment acheter
+                produits_achetables = []
+                for produit in produits_disponibles:
+                    fournisseurs_possibles = self._get_fournisseurs_avec_stock(produit.id)
+                    if fournisseurs_possibles:
+                        # Vérifier si au moins un fournisseur a un prix abordable
+                        for fournisseur in fournisseurs_possibles:
+                            prix = price_service.get_prix_produit_fournisseur(produit.id, fournisseur.id) if PRICE_SERVICE_AVAILABLE else None
+                            if prix and entreprise.budget >= prix:
+                                produits_achetables.append(produit)
+                                break
                 
-                for fournisseur in self.fournisseurs:
-                    if produit.id in fournisseur.stock_produit and fournisseur.stock_produit[produit.id] > 0:
-                        prix = price_service.get_prix_produit_fournisseur(produit.id, fournisseur.id) if PRICE_SERVICE_AVAILABLE else float('inf')
-                        if prix and prix < prix_min:
-                            prix_min = prix
-                            fournisseur_moins_cher = fournisseur
+                if not produits_achetables:
+                    continue
+                    
+                # Choisir le produit le moins cher (comme CLI)
+                produit_choisi = min(produits_achetables, key=lambda p: self._get_prix_minimum(p.id))
+                if self._acheter_produit_cli(entreprise, produit_choisi, "moins_cher"):
+                    transactions_effectuees += 1
+                    
+            elif entreprise.strategie == "par_type":
+                # STRATÉGIE PAR TYPE (comme CLI)
+                types_voulus = entreprise.types_preferes
+                produits_filtres = [p for p in self.produits if p.type in types_voulus and p.actif]
+                if not produits_filtres:
+                    continue
+                    
+                # Filtrer les produits que l'entreprise peut vraiment acheter
+                produits_achetables = []
+                for produit in produits_filtres:
+                    fournisseurs_possibles = self._get_fournisseurs_avec_stock(produit.id)
+                    if fournisseurs_possibles:
+                        # Vérifier si au moins un fournisseur a un prix abordable
+                        for fournisseur in fournisseurs_possibles:
+                            prix = price_service.get_prix_produit_fournisseur(produit.id, fournisseur.id) if PRICE_SERVICE_AVAILABLE else None
+                            if prix and entreprise.budget >= prix:
+                                produits_achetables.append(produit)
+                                break
                 
-                if fournisseur_moins_cher and self.acheter_produit_detaille(entreprise, produit, fournisseur_moins_cher, "moins_cher"):
+                if not produits_achetables:
+                    continue
+                    
+                # Choisir aléatoirement (comme CLI)
+                import random
+                produit_choisi = random.choice(produits_achetables)
+                if self._acheter_produit_cli(entreprise, produit_choisi, "par_type"):
                     transactions_effectuees += 1
         
         # Écriture du buffer en fin de simulation
         self.id_generator.flush_buffer()
         
         return transactions_effectuees
+
+    def _get_fournisseurs_avec_stock(self, produit_id: int) -> List[Fournisseur]:
+        """Récupère les fournisseurs qui ont du stock pour un produit (comme CLI)"""
+        fournisseurs_avec_stock = []
+        for fournisseur in self.fournisseurs:
+            if produit_id in fournisseur.stock_produit and fournisseur.stock_produit[produit_id] > 0:
+                fournisseurs_avec_stock.append(fournisseur)
+        return fournisseurs_avec_stock
+    
+    def _get_prix_minimum(self, produit_id: int) -> float:
+        """Récupère le prix minimum d'un produit (comme CLI)"""
+        prix_min = float('inf')
+        for fournisseur in self.fournisseurs:
+            if produit_id in fournisseur.stock_produit and fournisseur.stock_produit[produit_id] > 0:
+                prix = price_service.get_prix_produit_fournisseur(produit_id, fournisseur.id) if PRICE_SERVICE_AVAILABLE else None
+                if prix and prix < prix_min:
+                    prix_min = prix
+        return prix_min if prix_min != float('inf') else 0
+    
+    def _acheter_produit_cli(self, entreprise: Entreprise, produit: Produit, strategie: str) -> bool:
+        """Achat avec la logique exacte de la CLI + logs identiques"""
+        from datetime import datetime, timezone
+        from config.config import FICHIER_LOG, FICHIER_LOG_HUMAIN, QUANTITE_ACHAT_MIN, QUANTITE_ACHAT_MAX
+        import random
+        import json
+        
+        # Timestamps comme CLI
+        horodatage_iso = datetime.now(timezone.utc).isoformat()
+        horodatage_humain = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
+        
+        fournisseurs_possibles = self._get_fournisseurs_avec_stock(produit.id)
+        if not fournisseurs_possibles:
+            # Log échec - produit indisponible (comme CLI)
+            msg = f"❌ {entreprise.nom} ne peut pas acheter {produit.nom} : produit indisponible\n\t- 📊 Budget {entreprise.nom}: {entreprise.budget:.2f}€ | Produit: {produit.nom} | Type: {produit.type.value}\n❌ Achat échoué !"
+            log_json = {
+                "tick": 0,  # TODO: Récupérer le tick depuis le contexte
+                "timestamp": horodatage_iso,
+                "timestamp_humain": horodatage_humain,
+                "strategie": strategie,
+                "entreprise_id": entreprise.id,
+                "entreprise_nom": entreprise.nom,
+                "produit_id": produit.id,
+                "produit_nom": produit.nom,
+                "produit_type": produit.type.value,
+                "status": "failed",
+                "erreur": "produit_indisponible"
+            }
+            with open(FICHIER_LOG, "a", encoding="utf-8") as f:
+                f.write(json.dumps(log_json) + "\n")
+            with open(FICHIER_LOG_HUMAIN, "a", encoding="utf-8") as f:
+                f.write(msg + "\n")
+            return False
+        
+        # Choix aléatoire du fournisseur (comme CLI)
+        fournisseur = random.choice(fournisseurs_possibles)
+        prix = price_service.get_prix_produit_fournisseur(produit.id, fournisseur.id) if PRICE_SERVICE_AVAILABLE else None
+        
+        if prix is None:
+            # Log échec - pas de prix défini (comme CLI)
+            msg = f"❌ {entreprise.nom} ne peut pas acheter {produit.nom} chez {fournisseur.nom_entreprise} : pas de prix défini\n\t- 📊 Budget {entreprise.nom}: {entreprise.budget:.2f}€ | Produit: {produit.nom} | Fournisseur: {fournisseur.nom_entreprise}\n❌ Achat échoué !"
+            log_json = {
+                "tick": 0,  # TODO: Récupérer le tick depuis le contexte
+                "timestamp": horodatage_iso,
+                "timestamp_humain": horodatage_humain,
+                "strategie": strategie,
+                "entreprise_id": entreprise.id,
+                "entreprise_nom": entreprise.nom,
+                "produit_id": produit.id,
+                "produit_nom": produit.nom,
+                "produit_type": produit.type.value,
+                "fournisseur_id": fournisseur.id,
+                "fournisseur_nom": fournisseur.nom_entreprise,
+                "status": "failed",
+                "erreur": "pas_de_prix_defini"
+            }
+            with open(FICHIER_LOG, "a", encoding="utf-8") as f:
+                f.write(json.dumps(log_json) + "\n")
+            with open(FICHIER_LOG_HUMAIN, "a", encoding="utf-8") as f:
+                f.write(msg + "\n")
+            return False
+        
+        # Calcul de la quantité (comme CLI)
+        quantite_max_possible = int(entreprise.budget // prix)
+        if quantite_max_possible <= 0:
+            # Log échec - budget insuffisant (comme CLI)
+            quantite_voulue = 1
+            prix_total_voulu = prix * quantite_voulue
+            msg = f"❌ {entreprise.nom} ne peut pas acheter {quantite_voulue} {produit.nom} : budget insuffisant\n\t- 💰 Prix unitaire: {prix:.2f}€ | Total voulu: {prix_total_voulu:.2f}€ | Budget disponible: {entreprise.budget:.2f}€\n❌ Achat échoué !"
+            log_json = {
+                "tick": 0,  # TODO: Récupérer le tick depuis le contexte
+                "timestamp": horodatage_iso,
+                "timestamp_humain": horodatage_humain,
+                "strategie": strategie,
+                "entreprise_id": entreprise.id,
+                "entreprise_nom": entreprise.nom,
+                "produit_id": produit.id,
+                "produit_nom": produit.nom,
+                "produit_type": produit.type.value,
+                "fournisseur_id": fournisseur.id,
+                "fournisseur_nom": fournisseur.nom_entreprise,
+                "prix_unitaire": prix,
+                "quantite_voulue": quantite_voulue,
+                "prix_total_voulu": prix_total_voulu,
+                "budget_disponible": round(entreprise.budget, 2),
+                "status": "failed",
+                "erreur": "budget_insuffisant"
+            }
+            with open(FICHIER_LOG, "a", encoding="utf-8") as f:
+                f.write(json.dumps(log_json) + "\n")
+            with open(FICHIER_LOG_HUMAIN, "a", encoding="utf-8") as f:
+                f.write(msg + "\n")
+            return False
+        
+        quantite_voulue = random.randint(QUANTITE_ACHAT_MIN, min(QUANTITE_ACHAT_MAX, quantite_max_possible, fournisseur.stock_produit[produit.id]))
+        quantite_achat = quantite_voulue
+        montant_total = round(prix * quantite_achat, 2)
+        
+        # Effectuer la transaction
+        entreprise.budget = round(entreprise.budget - montant_total, 2)
+        fournisseur.stock_produit[produit.id] -= quantite_achat
+        entreprise.stocks[produit.id] = entreprise.stocks.get(produit.id, 0) + quantite_achat
+        
+        # Log succès (comme CLI)
+        log_entry = {
+            "tick": 0,  # TODO: Récupérer le tick depuis le contexte
+            "timestamp": horodatage_iso,
+            "timestamp_humain": horodatage_humain,
+            "strategie": strategie,
+            "entreprise_id": entreprise.id,
+            "entreprise_nom": entreprise.nom,
+            "produit_id": produit.id,
+            "produit_nom": produit.nom,
+            "produit_type": produit.type.value,
+            "fournisseur_id": fournisseur.id,
+            "fournisseur_nom": fournisseur.nom_entreprise,
+            "quantite": quantite_achat,
+            "prix_unitaire": prix,
+            "montant_total": montant_total,
+            "budget_restant": round(entreprise.budget, 2),
+            "status": "success"
+        }
+        with open(FICHIER_LOG, "a", encoding="utf-8") as f:
+            f.write(json.dumps(log_entry) + "\n")
+
+        # Log humain lisible avec le nouveau format structuré (comme CLI)
+        log_humain = (
+            f"🎯 {entreprise.nom} achète {quantite_achat} {produit.nom} chez {fournisseur.nom_entreprise} (stratégie: {strategie}) :\n"
+            f"\t- 💰 Prix unitaire: {prix:.2f}€ | Total: {montant_total:.2f}€ | Budget restant: {entreprise.budget:.2f}€\n"
+            f"✅ Achat réussi !"
+        )
+        with open(FICHIER_LOG_HUMAIN, "a", encoding="utf-8") as f:
+            f.write(log_humain + "\n")
+        
+        return True
 
     def appliquer_evenements(self, tick: int) -> List[Dict[str, Any]]:
         """Application des événements avec validation"""

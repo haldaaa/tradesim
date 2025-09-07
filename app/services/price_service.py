@@ -69,8 +69,8 @@ class PriceService:
         if produit_id not in fournisseur.stock_produit:
             return None
         
-        # Récupérer le prix depuis le stockage interne
-        prix = self._prix_stockage.get((produit_id, fournisseur_id))
+        # Utiliser le prix du produit (comme dans la CLI)
+        prix = produit.prix
         
         # Mettre en cache
         self._prix_cache[cache_key] = prix

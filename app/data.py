@@ -46,7 +46,7 @@ for i, produit_data in enumerate(produits_selectionnes):
     produit = Produit(
         id=i + 1,
         nom=produit_data["nom"],
-        prix=round(random.uniform(5.0, 500.0), 2),
+        prix=round(random.uniform(5.0, 50.0), 2),
         actif=(i < nb_produits_actifs),
         type=TypeProduit(produit_data["type"])
     )

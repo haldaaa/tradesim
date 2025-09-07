@@ -65,7 +65,7 @@ class GameManagerService:
             "produits": {
                 "nombre": 20,
                 "prix_min": 5.0,
-                "prix_max": 500.0,
+                "prix_max": 50.0,
                 "actifs_min": 3,
                 "actifs_max": 8,
                 "types": ["matiere_premiere", "consommable", "produit_fini"]

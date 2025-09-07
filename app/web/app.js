@@ -966,46 +966,64 @@ function addEventsSummaryToTimeline(timeline, data) {
  */
 function addDetailedEventsToTimeline(timeline, data) {
     if (data.result.evenements_detaille && data.result.evenements_detaille.length > 0) {
-        data.result.evenements_detaille.forEach((event, index) => {
+        // Regrouper les événements par type
+        const eventsByType = {};
+        
+        data.result.evenements_detaille.forEach((event) => {
+            const eventDescription = event.log_humain_clean || event.log_humain || 'N/A';
+            let eventType = 'ÉVÉNEMENT';
+            let icon = '🎲';
+            
+            if (eventDescription.includes('INFLATION')) {
+                eventType = 'INFLATION';
+                icon = '🔥';
+            } else if (eventDescription.includes('REASSORT')) {
+                eventType = 'REASSORT';
+                icon = '📦';
+            } else if (eventDescription.includes('RECHARGE')) {
+                eventType = 'RECHARGE';
+                icon = '💰';
+            } else if (eventDescription.includes('DISPONIBILITÉ')) {
+                eventType = 'DISPONIBILITÉ';
+                icon = '🔄';
+            }
+            
+            if (!eventsByType[eventType]) {
+                eventsByType[eventType] = [];
+            }
+            eventsByType[eventType].push(event);
+        });
+        
+        // Afficher chaque type d'événement une seule fois
+        Object.keys(eventsByType).forEach(eventType => {
+            const events = eventsByType[eventType];
             const eventElement = document.createElement('div');
             eventElement.className = 'mb-3 p-2 border-start border-3 border-warning bg-white';
             
-            let eventType = 'ÉVÉNEMENT';
             let icon = '🎲';
-            let color = 'warning';
+            if (eventType === 'INFLATION') icon = '🔥';
+            else if (eventType === 'REASSORT') icon = '📦';
+            else if (eventType === 'RECHARGE') icon = '💰';
+            else if (eventType === 'DISPONIBILITÉ') icon = '🔄';
             
-            // Utiliser les données nettoyées si disponibles
-            const eventDescription = event.log_humain_clean || event.log_humain || 'N/A';
-            
-            if (eventDescription) {
-                if (eventDescription.includes('INFLATION')) {
-                    eventType = 'ÉVÉNEMENT INFLATION';
-                    icon = '🔥';
-                    color = 'danger';
-                } else if (eventDescription.includes('REASSORT')) {
-                    eventType = 'ÉVÉNEMENT REASSORT';
-                    icon = '📦';
-                    color = 'info';
-                } else if (eventDescription.includes('RECHARGE')) {
-                    eventType = 'ÉVÉNEMENT RECHARGE';
-                    icon = '💰';
-                    color = 'success';
-                }
-            }
+            // Prendre le premier événement de ce type pour l'affichage
+            const firstEvent = events[0];
+            const eventDescription = firstEvent.log_humain_clean || firstEvent.log_humain || 'N/A';
             
             let eventHTML = `
-                <div class="fw-bold text-${color}">
+                <div class="fw-bold text-warning">
                     ${icon} ${eventType}
                 </div>
                 <div class="ms-3 mt-2">
                     <div><strong>Description:</strong> ${eventDescription}</div>
-                    <div><strong>Timestamp:</strong> ${event.timestamp || new Date().toLocaleTimeString()}</div>
+                    <div><strong>Nombre d'événements:</strong> ${events.length}</div>
+                    <div><strong>Timestamp:</strong> ${firstEvent.timestamp || new Date().toLocaleTimeString()}</div>
             `;
             
             // Ajouter les calculs de probabilités si disponibles (FORMAT 4C-C)
-            if (event.probability_calculation) {
+            if (firstEvent.probability_calculation) {
                 eventHTML += `<div class="mt-2"><strong>Calcul de probabilité:</strong></div>`;
-                eventHTML += `<div class="ms-3 small">${event.probability_calculation}</div>`;
+                eventHTML += `<div class="ms-3 small">${firstEvent.probability_calculation}</div>`;
             }
             
             // Ajouter les détails du calcul si disponibles
