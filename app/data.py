@@ -28,7 +28,7 @@ import random
 from typing import List, Dict, Tuple
 # Import des données de noms directement
 from data.names_data import ENTREPRISES_DATA, FOURNISSEURS_DATA, PRODUITS_DATA
-from config.config import BUDGET_ENTREPRISE_MIN, BUDGET_ENTREPRISE_MAX
+from config.config import BUDGET_ENTREPRISE_MIN, BUDGET_ENTREPRISE_MAX, PRIX_PRODUIT_MIN, PRIX_PRODUIT_MAX
 
 
 # -------------------------
@@ -46,7 +46,7 @@ for i, produit_data in enumerate(produits_selectionnes):
     produit = Produit(
         id=i + 1,
         nom=produit_data["nom"],
-        prix=round(random.uniform(5.0, 50.0), 2),
+        prix=round(random.uniform(PRIX_PRODUIT_MIN, PRIX_PRODUIT_MAX), 2),
         actif=(i < nb_produits_actifs),
         type=TypeProduit(produit_data["type"])
     )

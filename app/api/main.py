@@ -279,16 +279,77 @@ def update_config(request: ConfigUpdateRequest):
 
 @app.post("/simulation", response_model=SimulationResponse)
 async def run_simulation(request: SimulationRequest):
-    """Lance une simulation tour par tour avec WebSocket pour Grafana"""
+    """
+    Lance une simulation tour par tour avec WebSocket pour Grafana
+    
+    ARCHITECTURE :
+    - Initialise le jeu (entreprises, produits, fournisseurs)
+    - Lance la simulation tour par tour
+    - Collecte les logs de transactions et événements
+    - Envoie les données via WebSocket pour monitoring Grafana
+    - Retourne les métriques finales
+    
+    FLUX DE DONNÉES :
+    1. Vider le cache et les fichiers de logs
+    2. Initialiser le jeu avec generate_game_data()
+    3. Lancer la simulation tour par tour
+    4. Lire les logs de transactions et événements
+    5. Enrichir les données pour l'affichage web
+    6. Envoyer via WebSocket et retourner les métriques
+    
+    FILTRAGE DES LOGS :
+    - Transactions : filtrées par tour/tick et présence de 'status'
+    - Événements : filtrés par tour et event_type='evenements_tour'
+    - Session : filtrage par session_id pour éviter les données croisées
+    
+    PERFORMANCE :
+    - Cache des logs pour éviter les relectures
+    - Filtrage optimisé par tour
+    - Enrichissement des données en mémoire
+    
+    Args:
+        request: SimulationRequest avec tours, verbose, with_metrics
+        
+    Returns:
+        SimulationResponse avec métriques et données détaillées
+    """
     try:
+        # ========================================================================
+        # ÉTAPE 1: INITIALISATION ET NETTOYAGE
+        # ========================================================================
+        
         # Vider le cache des logs pour une nouvelle simulation
         logs_cache['event_logs'] = {}
         logs_cache['simulation_logs'] = {}
         logs_cache['last_read_tour'] = -1
         logs_cache['current_session_id'] = None
         
+        # Vider les fichiers de logs pour éviter les données anciennes
+        try:
+            open('logs/simulation.jsonl', 'w').close()
+            open('logs/event.jsonl', 'w').close()
+            print(f"🧹 Fichiers de logs vidés")
+        except Exception as e:
+            print(f"⚠️ Erreur lors du vidage des logs: {e}")
+        
+        print(f"📊 Cache initial: {len(logs_cache['event_logs'])} événements, {len(logs_cache['simulation_logs'])} transactions")
+        
+        # ========================================================================
+        # ÉTAPE 2: INITIALISATION DU JEU
+        # ========================================================================
+        
+        # Initialiser le jeu (entreprises, produits, fournisseurs)
+        from services.game_manager import reset_game, generate_game_data, get_default_config
+        reset_game()
+        generate_game_data(get_default_config())
+        print("🎮 Jeu initialisé (entreprises, produits, fournisseurs)")
+        
         # Initialiser le service de simulation
         simulation_service = SimulationService()
+        
+        # ========================================================================
+        # ÉTAPE 3: LANCEMENT DE LA SIMULATION
+        # ========================================================================
         
         # Envoyer un message de début de simulation
         await manager.broadcast(json.dumps({
@@ -299,8 +360,17 @@ async def run_simulation(request: SimulationRequest):
         
         # Lancer la simulation tour par tour
         for tour in range(request.tours):
+            # Définir le timestamp de début AVANT le premier tour seulement
+            if tour == 0:
+                logs_cache['simulation_start_time'] = datetime.now().isoformat()
+                print(f"🚀 Simulation démarrée à {logs_cache['simulation_start_time']}")
+            
             # Exécuter un tour (sans affichage terminal)
             result_tour = simulation_service.simulation_tour(verbose=False)
+            
+            # ========================================================================
+            # ÉTAPE 4: COLLECTE DES LOGS ET MÉTRIQUES
+            # ========================================================================
             
             # Récupérer le session_id du premier tour pour filtrer les logs
             if logs_cache['current_session_id'] is None:
@@ -343,6 +413,7 @@ async def run_simulation(request: SimulationRequest):
                                     # Ne traiter que les événements du tour actuel (assouplir le filtrage session)
                                     log_tour = event_data.get('tour')
                                     session_id = event_data.get('session_id')
+                                    # Filtrer les événements par tour et type
                                     if (log_tour == tour and 
                                         event_data.get('event_type') == 'evenements_tour' and
                                         (logs_cache['current_session_id'] is None or 
@@ -355,6 +426,9 @@ async def run_simulation(request: SimulationRequest):
                                 except:
                                     pass
                     evenements_detaille = logs_cache['event_logs'].get(tour, [])
+                    
+                    # Debug: Afficher le nombre d'événements trouvés
+                    print(f"🎲 Tour {tour}: {len(evenements_detaille)} événements trouvés")
             except:
                 pass
             
@@ -376,14 +450,13 @@ async def run_simulation(request: SimulationRequest):
                                     # Ne traiter que les transactions du tour actuel (assouplir le filtrage session)
                                     log_tour = txn_data.get('tour')
                                     session_id = txn_data.get('session_id')
-                                    if (log_tour == tour and 
-                                        txn_data.get('type') == 'transaction' and
-                                        (logs_cache['current_session_id'] is None or 
-                                         session_id == logs_cache['current_session_id'] or
-                                         (session_id and logs_cache['current_session_id'] and 
-                                          session_id[:8] == logs_cache['current_session_id'][:8]))):
-                                        if log_tour not in logs_cache['simulation_logs']:
-                                            logs_cache['simulation_logs'][log_tour] = []
+                                    
+                                    # Pour les transactions, on filtre par tick (qui correspond au tour) et présence de 'status'
+                                    if ((log_tour == tour or txn_tour == tour) and 'status' in txn_data):
+                                        # Utiliser le tour ou le tick comme clé
+                                        cache_key = log_tour if log_tour is not None else txn_tour
+                                        if cache_key not in logs_cache['simulation_logs']:
+                                            logs_cache['simulation_logs'][cache_key] = []
                                         
                                         # Enrichir avec les détails manquants (FORMAT 4C-C)
                                         enriched_txn = txn_data.copy()
@@ -409,10 +482,13 @@ async def run_simulation(request: SimulationRequest):
                                         if 'raison_echec' not in enriched_txn and enriched_txn.get('statut') == 'ÉCHEC':
                                             enriched_txn['raison_echec'] = enriched_txn.get('raison', 'Budget insuffisant')
                                         
-                                        logs_cache['simulation_logs'][log_tour].append(enriched_txn)
+                                        logs_cache['simulation_logs'][cache_key].append(enriched_txn)
                                 except:
                                     pass
                     transactions_detaille = logs_cache['simulation_logs'].get(tour, [])
+                    
+                    # Debug: Afficher le nombre de transactions trouvées
+                    print(f"📊 Tour {tour}: {len(transactions_detaille)} transactions trouvées")
             except:
                 pass
             
@@ -520,10 +596,22 @@ async def run_simulation(request: SimulationRequest):
             "message": "Simulation terminée"
         }))
         
+        # Préparer la réponse finale avec toutes les données
+        final_result = {
+            'budget_total_actuel': final_stats.get('budget_total_actuel', 0),
+            'stock_total_actuel': final_stats.get('stock_total_actuel', 0),
+            'tours_completes': request.tours,  # CORRIGÉ : nombre de tours demandés
+            'evenements_appliques': final_stats.get('evenements_appliques', 0),
+            'nombre_produits_actifs': final_stats.get('nombre_produits_actifs', 0),
+            'duree_simulation': final_stats.get('duree_simulation', 0),
+            'transactions_total': sum(len(logs_cache['simulation_logs'].get(tour, [])) for tour in range(request.tours)),
+            'evenements_total': sum(len(logs_cache['event_logs'].get(tour, [])) for tour in range(request.tours))
+        }
+        
         return SimulationResponse(
             status="success",
-            result=final_stats,
-            metrics=final_stats if request.with_metrics else None
+            result=final_result,
+            metrics=final_result if request.with_metrics else None
         )
         
     except Exception as e:

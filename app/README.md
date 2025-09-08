@@ -9,6 +9,9 @@ TradeSim est une application de simulation économique modulaire et évolutive, 
 
 - **Simulation économique** : Transactions entre entreprises et fournisseurs
 - **Événements dynamiques** : Inflation, recharge de budget, réassortiment, recharge stock fournisseur
+- **Interface Web** : Configuration et visualisation via navigateur
+- **API REST** : Endpoints pour intégration et automation
+- **WebSocket** : Streaming temps réel pour monitoring
 - **Monitoring en temps réel** : Métriques Prometheus et dashboards Grafana
 - **Logging structuré** : Logs humains et JSON pour analyse
 - **Thread-safety** : Cache optimisé et accès concurrent sécurisé
@@ -22,8 +25,10 @@ app/
 ├── repositories/     # Accès aux données (Repository pattern)
 ├── services/        # Logique métier (simulation, événements)
 ├── events/          # Événements de simulation
-├── api/             # Endpoints FastAPI
-├── config/          # Configuration
+├── api/             # API REST + WebSocket (FastAPI)
+├── web/             # Interface Web (HTML/CSS/JS)
+├── config/          # Configuration centralisée
+├── monitoring/      # Prometheus + Grafana
 └── tests/           # Tests organisés par module
 ```
 
@@ -124,8 +129,38 @@ CURRENT_MODE = ExecutionMode.CLI  # Données en mémoire
 
 ### **Mode Web (production) :**
 ```python
-# config/mode.py  
+# config/mode.py
 CURRENT_MODE = ExecutionMode.WEB  # Base de données
+```
+
+## 🌐 **Interface Web**
+
+### **Fonctionnalités**
+- **Configuration interactive** : Paramètres de simulation via formulaire
+- **Visualisation temps réel** : Affichage des tours, transactions et événements
+- **Monitoring intégré** : Métriques et statistiques en direct
+- **WebSocket** : Streaming des données pour Grafana
+
+### **Accès**
+```bash
+# Démarrer l'API
+uvicorn api.main:app --host 0.0.0.0 --port 8000 --reload
+
+# Interface Web
+http://localhost:8000/web/index.html
+
+# API REST
+http://localhost:8000/docs
+```
+
+### **Architecture Web**
+```
+Interface Web
+├── Configuration (formulaire)
+├── Simulation (bouton lancer)
+├── Affichage (timeline des événements)
+├── Métriques (statistiques)
+└── WebSocket (streaming temps réel)
 ```
 
 ### **Instructions de changement :**

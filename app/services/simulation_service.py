@@ -759,6 +759,10 @@ class SimulationService:
             if random.random() < PROBABILITE_SELECTION_ENTREPRISE:
                 entreprises_selectionnees.append(entreprise)
         
+        # Garantir au moins une entreprise sélectionnée si aucune n'a été choisie
+        if not entreprises_selectionnees and self.entreprises:
+            entreprises_selectionnees = [random.choice(self.entreprises)]
+        
         for entreprise in entreprises_selectionnees:
             if entreprise.strategie == "moins_cher":
                 # STRATÉGIE MOINS CHER (comme CLI)

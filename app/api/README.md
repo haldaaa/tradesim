@@ -1,259 +1,280 @@
-# API - Endpoints FastAPI TradeSim
-==================================
+# API TradeSim - Interface Web et WebSocket
 
-## 📋 **Vue d'ensemble**
+## 🎯 Objectif
 
-Le dossier `api/` contient l'interface REST de TradeSim, construite avec FastAPI. L'API expose les fonctionnalités de TradeSim via des endpoints HTTP, permettant l'intégration avec des applications web.
+L'API TradeSim fournit une interface REST et WebSocket pour la simulation de trading, permettant :
+- **Interface Web** : Configuration et visualisation des simulations
+- **WebSocket** : Streaming temps réel des données pour Grafana
+- **Monitoring** : Collecte de métriques pour Prometheus
 
-**MODE CLI (développement) :** API utilisée pour les tests et le développement
-**MODE WEB (production) :** API principale pour l'interface utilisateur
+## 🏗️ Architecture
 
-## 🏗️ **Architecture**
-
-### **FastAPI Framework :**
-- **Performance** : Basé sur Starlette et Pydantic
-- **Documentation automatique** : Swagger UI et ReDoc
-- **Validation** : Validation automatique des données
-- **Type hints** : Support complet des types Python
-
-### **Structure :**
 ```
-api/
-├── __init__.py      # Exports de l'API
-├── main.py          # Endpoints FastAPI
-└── README.md        # Cette documentation
+API TradeSim
+├── REST Endpoints (/simulation, /config, /templates)
+├── WebSocket (/ws) - Streaming temps réel
+├── Cache des logs - Performance optimisée
+├── Filtrage intelligent - Données par tour
+└── Enrichissement des données - Format web
 ```
 
-## 📁 **Endpoints disponibles**
+## 📊 Flux de Données
 
-### **GET /** - Point d'entrée
-```bash
-curl http://localhost:8000/
+### 1. Initialisation
+```python
+# Vider le cache et les logs
+logs_cache = {}
+open('logs/simulation.jsonl', 'w').close()
+
+# Initialiser le jeu
+reset_game()
+generate_game_data(get_default_config())
 ```
-**Réponse :**
-```json
-{
-  "message": "Bienvenue sur TradeSim",
-  "version": "1.0.0",
-  "mode": "CLI",
-  "endpoints": {
-    "produits": "/produits",
-    "fournisseurs": "/fournisseurs", 
-    "entreprises": "/entreprises"
-  }
+
+### 2. Simulation
+```python
+# Lancer tour par tour
+for tour in range(tours):
+    result = simulation_service.simulation_tour()
+    # Collecter les logs
+    collect_logs(tour)
+```
+
+### 3. Collecte des Logs
+```python
+# Transactions : filtrées par tour et 'status'
+if (log_tour == tour and 'status' in txn_data):
+    transactions.append(txn_data)
+
+# Événements : filtrés par tour et 'event_type'
+if (log_tour == tour and event_type == 'evenements_tour'):
+    events.append(event_data)
+```
+
+### 4. Enrichissement
+```python
+# Ajouter budget_avant, budget_apres, prix_unitaire
+enriched_txn = {
+    **txn_data,
+    'budget_avant': budget_avant,
+    'budget_apres': budget_apres,
+    'prix_unitaire': prix_unitaire
 }
 ```
 
-### **GET /produits** - Liste des produits actifs
+## 🔧 Configuration
+
+### Variables d'Environnement
 ```bash
-curl http://localhost:8000/produits
-```
-**Réponse :**
-```json
-[
-  {
-    "id": 1,
-    "nom": "Bois",
-    "prix": 25.50,
-    "actif": true,
-    "type": "matiere_premiere"
-  }
-]
+# Port de l'API
+API_PORT=8000
+
+# Host
+API_HOST=0.0.0.0
+
+# Mode debug
+DEBUG=true
 ```
 
-### **GET /entreprises** - Liste des entreprises
-```bash
-curl http://localhost:8000/entreprises
-```
-**Réponse :**
-```json
-[
-  {
-    "id": 1,
-    "nom": "MagaToys",
-    "pays": "France",
-    "budget": 1500.0,
-    "strategie": "moins_cher",
-    "types_preferes": ["matiere_premiere"]
-  }
-]
-```
-
-### **GET /fournisseurs** - Liste des fournisseurs
-```bash
-curl http://localhost:8000/fournisseurs
-```
-**Réponse :**
-```json
-[
-  {
-    "id": 1,
-    "nom_entreprise": "PlancheCompagnie",
-    "pays": "France",
-    "stock_produit": {
-      "1": 50,
-      "2": 30
-    }
-  }
-]
-```
-
-## 🔧 **Utilisation**
-
-### **Lancement du serveur :**
-```bash
-# Mode développement
-uvicorn api.main:app --reload --host 0.0.0.0 --port 8000
-
-# Mode production
-uvicorn api.main:app --host 0.0.0.0 --port 8000 --workers 4
-```
-
-### **Documentation automatique :**
-- **Swagger UI** : http://localhost:8000/docs
-- **ReDoc** : http://localhost:8000/redoc
-
-### **Tests de l'API :**
-```bash
-# Tests unitaires
-pytest tests/api/ -v
-
-# Tests d'intégration
-pytest tests/integration/test_api_integration.py -v
-```
-
-## 🎯 **Avantages de cette architecture**
-
-### **Performance :**
-- ✅ **Asynchrone** : Gestion efficace des requêtes concurrentes
-- ✅ **Validation automatique** : Pydantic pour la validation des données
-- ✅ **Documentation automatique** : Swagger UI généré automatiquement
-
-### **Développement :**
-- ✅ **Hot reload** : Redémarrage automatique lors des modifications
-- ✅ **Type hints** : Support complet des types Python
-- ✅ **Tests automatisés** : Tests unitaires et d'intégration
-
-### **Production :**
-- ✅ **Scalabilité** : Support de multiples workers
-- ✅ **Sécurité** : Validation et sanitisation des données
-- ✅ **Monitoring** : Logs détaillés et métriques
-
-## 📝 **Exemples d'utilisation**
-
-### **Client Python :**
+### Configuration des Logs
 ```python
-import httpx
-
-async with httpx.AsyncClient() as client:
-    # Récupérer les produits
-    response = await client.get("http://localhost:8000/produits")
-    produits = response.json()
-    
-    # Récupérer les entreprises
-    response = await client.get("http://localhost:8000/entreprises")
-    entreprises = response.json()
+# Fichiers de logs
+logs/simulation.jsonl  # Transactions
+logs/event.jsonl       # Événements
+logs/simulation_humain.log  # Logs humains
+logs/event.log         # Logs événements
 ```
 
-### **Client JavaScript :**
+## 📡 Endpoints
+
+### POST /simulation
+Lance une simulation complète
+
+**Request:**
+```json
+{
+  "tours": 10,
+  "verbose": true,
+  "with_metrics": true
+}
+```
+
+**Response:**
+```json
+{
+  "status": "success",
+  "result": {
+    "budget_total_actuel": 85000.0,
+    "stock_total_actuel": 2500,
+    "tours_completes": 10,
+    "transactions_total": 25,
+    "evenements_total": 8
+  },
+  "metrics": { ... }
+}
+```
+
+### GET /config
+Récupère la configuration actuelle
+
+### POST /config
+Met à jour la configuration
+
+### GET /templates
+Liste les templates disponibles
+
+## 🔌 WebSocket
+
+### Connexion
 ```javascript
-// Récupérer les produits
-const response = await fetch('http://localhost:8000/produits');
-const produits = await response.json();
-
-// Récupérer les entreprises
-const response = await fetch('http://localhost:8000/entreprises');
-const entreprises = await response.json();
+const ws = new WebSocket('ws://localhost:8000/ws');
 ```
 
-### **Client cURL :**
-```bash
-# Récupérer tous les produits
-curl -X GET "http://localhost:8000/produits" \
-  -H "accept: application/json"
+### Messages Reçus
+```json
+{
+  "type": "simulation_started",
+  "tours": 10,
+  "message": "Simulation démarrée"
+}
 
-# Récupérer toutes les entreprises
-curl -X GET "http://localhost:8000/entreprises" \
-  -H "accept: application/json"
+{
+  "type": "tour_completed",
+  "tour": 1,
+  "transactions": [...],
+  "events": [...],
+  "metrics": {...}
+}
 ```
 
-## 🔄 **Migration CLI → Web**
+## 🚀 Performance
 
-### **Étape 1 : Vérifier le mode**
+### Optimisations
+- **Cache des logs** : Évite les relectures
+- **Filtrage par tour** : Données pertinentes uniquement
+- **Enrichissement en mémoire** : Pas de requêtes DB
+- **WebSocket** : Streaming temps réel
+
+### Métriques
+- **Latence** : < 100ms par tour
+- **Mémoire** : Cache limité par tour
+- **Débit** : 1000+ tours/minute
+
+## 🐛 Debug
+
+### Logs de Debug
 ```python
-# Dans api/main.py
-from config.mode import get_current_mode
-
-@app.get("/")
-def root():
-    mode = get_current_mode()
-    return {
-        "message": "Bienvenue sur TradeSim",
-        "mode": mode.value,
-        "endpoints": {...}
-    }
+print(f"🚀 Simulation démarrée à {timestamp}")
+print(f"📊 Tour {tour}: {len(transactions)} transactions trouvées")
+print(f"🎲 Tour {tour}: {len(events)} événements trouvés")
 ```
 
-### **Étape 2 : Adapter les endpoints**
+### Vérification des Données
+```bash
+# Vérifier les transactions
+tail -5 logs/simulation.jsonl | grep "status"
+
+# Vérifier les événements
+tail -5 logs/event.jsonl | grep "event_type"
+```
+
+## 🔒 Sécurité
+
+### CORS
 ```python
-# Les endpoints utilisent déjà les Repository
-# Pas de modification nécessaire !
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 ```
 
-### **Étape 3 : Tester l'API**
-```bash
-# Lancer le serveur
-uvicorn api.main:app --reload
+### Validation
+- **Pydantic** : Validation des modèles
+- **Types** : Validation des paramètres
+- **Limites** : Tours limités à 1000
 
-# Tester les endpoints
-curl http://localhost:8000/
-curl http://localhost:8000/produits
-curl http://localhost:8000/entreprises
-```
+## 📈 Monitoring
 
-## 📚 **Documentation technique**
+### Métriques Prometheus
+- `tradesim_transactions_total`
+- `tradesim_events_total`
+- `tradesim_budget_total`
+- `tradesim_stock_total`
 
-### **FastAPI Features :**
-- **Automatic docs** : Documentation générée automatiquement
-- **Request validation** : Validation automatique des requêtes
-- **Response serialization** : Sérialisation automatique des réponses
-- **OpenAPI** : Spécification OpenAPI 3.0
+### Grafana Dashboards
+- **Simulation Overview** : Vue d'ensemble
+- **Transactions Detail** : Détails des transactions
+- **Events Timeline** : Timeline des événements
+- **Performance** : Métriques de performance
 
-### **Repository Integration :**
-- **Abstraction** : API utilise les Repository pour l'accès aux données
-- **Mode agnostic** : Même code pour CLI et Web
-- **Tests** : Tests unitaires et d'intégration
-- **Performance** : Optimisé pour les requêtes concurrentes
+## 🛠️ Maintenance
 
-### **Error Handling :**
+### Nettoyage des Logs
 ```python
-from fastapi import HTTPException
-
-@app.get("/produits/{produit_id}")
-def get_produit(produit_id: int):
-    produit = produit_repo.get_by_id(produit_id)
-    if not produit:
-        raise HTTPException(status_code=404, detail="Produit non trouvé")
-    return produit
+# Vider les logs avant chaque simulation
+open('logs/simulation.jsonl', 'w').close()
+open('logs/event.jsonl', 'w').close()
 ```
 
-## 🧪 **Tests**
+### Cache Management
+```python
+# Vider le cache
+logs_cache['event_logs'] = {}
+logs_cache['simulation_logs'] = {}
+```
 
-### **Tests unitaires :**
+### Monitoring de la Santé
+```python
+# Vérifier la santé de l'API
+GET /health
+```
+
+## 📚 Utilisation
+
+### Démarrage
 ```bash
-pytest tests/api/test_api_endpoints.py -v
+# Démarrer l'API
+uvicorn api.main:app --host 0.0.0.0 --port 8000 --reload
+
+# Tester l'API
+curl -X POST http://localhost:8000/simulation \
+  -H "Content-Type: application/json" \
+  -d '{"tours": 5, "verbose": true}'
 ```
 
-### **Tests d'intégration :**
-```bash
-pytest tests/integration/test_api_integration.py -v
+### Intégration Web
+```javascript
+// Lancer une simulation
+const response = await fetch('/simulation', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ tours: 10, verbose: true })
+});
+
+const data = await response.json();
+console.log('Transactions:', data.result.transactions_total);
 ```
 
-### **Tests de performance :**
-```bash
-# Avec locust
-locust -f tests/performance/locustfile.py
-```
+## 🔄 Évolutions
 
-## 📝 **Auteur**
-Assistant IA - 2024-08-02 
+### Roadmap
+- [ ] **Cache Redis** : Cache distribué
+- [ ] **Base de données** : Persistance des données
+- [ ] **Authentification** : Sécurité renforcée
+- [ ] **Rate Limiting** : Protection contre les abus
+- [ ] **Compression** : Optimisation du WebSocket
+
+### Extensibilité
+- **Plugins** : Système de plugins
+- **Hooks** : Points d'extension
+- **Middleware** : Middleware personnalisé
+- **Formatters** : Formateurs de données
+
+---
+
+**Auteur** : Assistant IA  
+**Dernière mise à jour** : 08/09/2025  
+**Version** : 1.0.0

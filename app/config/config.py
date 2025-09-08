@@ -38,7 +38,7 @@ import os
 NOMBRE_TOURS = 100                     # Nombre total de tours à simuler
 N_ENTREPRISES_PAR_TOUR = 2            # Nombre d'entreprises sélectionnées aléatoirement par tour
 DUREE_PAUSE_ENTRE_TOURS = 0.1         # En secondes (peut servir pour la version crontab/finale)
-PROBABILITE_SELECTION_ENTREPRISE = 0.3 # Probabilité qu'une entreprise soit sélectionnée pour un tour
+PROBABILITE_SELECTION_ENTREPRISE = 0.95 # Probabilité qu'une entreprise soit sélectionnée pour un tour
 
 # ============================================================================
 # DEBUG - Mode debug et options de développement
@@ -78,7 +78,7 @@ TYPES_PRODUITS_PREFERES_MAX = 2       # Nombre maximum de types de produits pré
 
 # Quantités d'achat par entreprise
 QUANTITE_ACHAT_MIN = 1                # Quantité minimum d'achat par entreprise
-QUANTITE_ACHAT_MAX = 40              # Quantité maximum d'achat par entreprise
+QUANTITE_ACHAT_MAX = 10              # Quantité maximum d'achat par entreprise
 
 # Quantités d'achat adaptées aux prix (pour éviter la faillite)
 QUANTITE_ACHAT_PRIX_ELEVE_MIN = 1     # Quantité minimum pour produits chers
@@ -86,8 +86,8 @@ QUANTITE_ACHAT_PRIX_ELEVE_MAX = 20    # Quantité maximum pour produits chers
 SEUIL_PRIX_ELEVE = 100.0              # Seuil en euros pour considérer un produit comme cher
 
 # Budgets des entreprises
-BUDGET_ENTREPRISE_MIN = 18000          # Budget minimum des entreprises (en euros)
-BUDGET_ENTREPRISE_MAX = 35000         # Budget maximum des entreprises (en euros)
+BUDGET_ENTREPRISE_MIN = 50000          # Budget minimum des entreprises (en euros)
+BUDGET_ENTREPRISE_MAX = 100000        # Budget maximum des entreprises (en euros)
 
 # ============================================================================
 # PRODUITS - Configuration des produits

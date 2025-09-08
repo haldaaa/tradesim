@@ -4780,3 +4780,889 @@
 [EVT] 20250907_161807_EVT_001 - evenements_tour: 📦 Tour 0 - RECHARGE DutchTrading: Équipement sportif(+23) (total: +23 unités)
 [EVT] 20250907_161807_EVT_001 - evenements_tour: 📦 Tour 0 - RECHARGE KenyanSupply: Inhibiteur(+24) (total: +24 unités)
 [EVT] 20250907_161807_EVT_001 - evenements_tour: 📊 RECHARGE STOCK - 2 fournisseurs: DutchTrading(+23), KenyanSupply(+24) (total: +47 unités)
+🎯 CanadianDesign achète 19 Granit chez NewZealandSupply (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 16.40€ | Total: 311.60€ | Budget restant: 27152.35€
+✅ Achat réussi !
+[EVT] 20250908_103658_EVT_001 - evenements_tour: 📦 Tour 0 - REASSORT: Carburant(+15) chez BelgianSupply
+🎯 AmericanInnovation achète 3 Carburant chez NewZealandSupply (stratégie: par_type) :
+	- 💰 Prix unitaire: 18.24€ | Total: 54.72€ | Budget restant: 27890.65€
+✅ Achat réussi !
+[EVT] 20250908_103658_EVT_002 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='CanadianDesign', pays='Canada', continent='Amérique du Nord', budget=27152.35, budget_initial=27463.95, types_preferes=[<TypeProduit.consommable: 'consommable'>, <TypeProduit.produit_fini: 'produit_fini'>], strategie='moins_cher', stocks={1: 19}), Entreprise(id=2, nom='CzechTech', pays='République tchèque', continent='Europe', budget=35874.61, budget_initial=31664.61, types_preferes=[<TypeProduit.consommable: 'consommable'>, <TypeProduit.matiere_premiere: 'matiere_premiere'>], strategie='par_type', stocks={}), Entreprise(id=3, nom='AmericanInnovation', pays='États-Unis', continent='Amérique du Nord', budget=27890.65, budget_initial=27945.37, types_preferes=[<TypeProduit.consommable: 'consommable'>], strategie='par_type', stocks={4: 3})] - CzechTech reçoit +4210€ (budget: 31664€ → 35874€)
+[EVT] 20250908_103658_EVT_002 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='CanadianDesign', pays='Canada', continent='Amérique du Nord', budget=27152.35, budget_initial=27463.95, types_preferes=[<TypeProduit.consommable: 'consommable'>, <TypeProduit.produit_fini: 'produit_fini'>], strategie='moins_cher', stocks={1: 19}), Entreprise(id=2, nom='CzechTech', pays='République tchèque', continent='Europe', budget=35874.61, budget_initial=31664.61, types_preferes=[<TypeProduit.consommable: 'consommable'>, <TypeProduit.matiere_premiere: 'matiere_premiere'>], strategie='par_type', stocks={}), Entreprise(id=3, nom='AmericanInnovation', pays='États-Unis', continent='Amérique du Nord', budget=32959.65, budget_initial=27945.37, types_preferes=[<TypeProduit.consommable: 'consommable'>], strategie='par_type', stocks={4: 3})] - AmericanInnovation reçoit +5069€ (budget: 27890€ → 32959€)
+[EVT] 20250908_103658_EVT_002 - evenements_tour: 📊 RECHARGE - 2 entreprises: CzechTech(+4210€), AmericanInnovation(+5069€)
+[EVT] 20250908_103658_EVT_002 - evenements_tour: 📦 Tour 2 - REASSORT: Granit(+47), Argile(+16), Pigment(+44) chez ItalianSupply, NewZealandSupply
+🎯 CanadianDesign achète 3 Granit chez NewZealandSupply (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 16.40€ | Total: 49.20€ | Budget restant: 27103.15€
+✅ Achat réussi !
+🎯 CzechTech achète 18 Soie chez BelgianSupply (stratégie: par_type) :
+	- 💰 Prix unitaire: 24.86€ | Total: 447.48€ | Budget restant: 35427.13€
+✅ Achat réussi !
+🎯 AmericanInnovation achète 6 Solvant chez GermanDistrib (stratégie: par_type) :
+	- 💰 Prix unitaire: 31.76€ | Total: 190.56€ | Budget restant: 32769.09€
+✅ Achat réussi !
+🎯 CanadianDesign achète 24 Granit chez NewZealandSupply (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 16.40€ | Total: 393.60€ | Budget restant: 26709.55€
+✅ Achat réussi !
+🎯 CzechTech achète 12 Granit chez NewZealandSupply (stratégie: par_type) :
+	- 💰 Prix unitaire: 16.40€ | Total: 196.80€ | Budget restant: 35230.33€
+✅ Achat réussi !
+🎯 CanadianDesign achète 1 Granit chez NewZealandSupply (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 16.40€ | Total: 16.40€ | Budget restant: 26693.15€
+✅ Achat réussi !
+🎯 AmericanInnovation achète 13 Carburant chez ItalianSupply (stratégie: par_type) :
+	- 💰 Prix unitaire: 18.24€ | Total: 237.12€ | Budget restant: 32531.97€
+✅ Achat réussi !
+[EVT] 20250908_103658_EVT_003 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='CanadianDesign', pays='Canada', continent='Amérique du Nord', budget=26693.15, budget_initial=27463.95, types_preferes=[<TypeProduit.consommable: 'consommable'>, <TypeProduit.produit_fini: 'produit_fini'>], strategie='moins_cher', stocks={1: 47}), Entreprise(id=2, nom='CzechTech', pays='République tchèque', continent='Europe', budget=35230.33, budget_initial=31664.61, types_preferes=[<TypeProduit.consommable: 'consommable'>, <TypeProduit.matiere_premiere: 'matiere_premiere'>], strategie='par_type', stocks={5: 18, 1: 12}), Entreprise(id=3, nom='AmericanInnovation', pays='États-Unis', continent='Amérique du Nord', budget=40115.97, budget_initial=27945.37, types_preferes=[<TypeProduit.consommable: 'consommable'>], strategie='par_type', stocks={4: 16, 2: 6})] - AmericanInnovation reçoit +7584€ (budget: 32531€ → 40115€)
+[EVT] 20250908_103658_EVT_003 - evenements_tour: 📊 RECHARGE - 1 entreprises: AmericanInnovation(+7584€)
+[EVT] 20250908_103658_EVT_003 - evenements_tour: 📦 Tour 8 - REASSORT: Solvant(+29), Carburant(+46), Soie(+34) chez ItalianSupply, BelgianSupply, ArgentineSupply
+🎯 IndianTech achète 14 Sac chez SouthAfricanImport (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 31.49€ | Total: 440.86€ | Budget restant: 26999.18€
+✅ Achat réussi !
+🎯 CanadianDesign achète 38 Papier chez MoroccanDistrib (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 10.92€ | Total: 414.96€ | Budget restant: 23565.72€
+✅ Achat réussi !
+🎯 ChileanTech achète 17 Papier chez IndianImport (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 10.92€ | Total: 185.64€ | Budget restant: 20955.03€
+✅ Achat réussi !
+[EVT] 20250908_104012_EVT_001 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='CanadianDesign', pays='Canada', continent='Amérique du Nord', budget=28050.72, budget_initial=23980.68, types_preferes=[<TypeProduit.consommable: 'consommable'>, <TypeProduit.produit_fini: 'produit_fini'>], strategie='moins_cher', stocks={3: 38}), Entreprise(id=2, nom='ChileanTech', pays='Chili', continent='Amérique du Sud', budget=20955.03, budget_initial=21140.67, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>], strategie='moins_cher', stocks={3: 17}), Entreprise(id=3, nom='NewZealandCorp', pays='Nouvelle-Zélande', continent='Océanie', budget=27161.81, budget_initial=27161.81, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>], strategie='par_type', stocks={})] - CanadianDesign reçoit +4485€ (budget: 23565€ → 28050€)
+[EVT] 20250908_104012_EVT_001 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='CanadianDesign', pays='Canada', continent='Amérique du Nord', budget=28050.72, budget_initial=23980.68, types_preferes=[<TypeProduit.consommable: 'consommable'>, <TypeProduit.produit_fini: 'produit_fini'>], strategie='moins_cher', stocks={3: 38}), Entreprise(id=2, nom='ChileanTech', pays='Chili', continent='Amérique du Sud', budget=20955.03, budget_initial=21140.67, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>], strategie='moins_cher', stocks={3: 17}), Entreprise(id=3, nom='NewZealandCorp', pays='Nouvelle-Zélande', continent='Océanie', budget=32718.81, budget_initial=27161.81, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>], strategie='par_type', stocks={})] - NewZealandCorp reçoit +5557€ (budget: 27161€ → 32718€)
+[EVT] 20250908_104012_EVT_001 - evenements_tour: 📊 RECHARGE - 2 entreprises: CanadianDesign(+4485€), NewZealandCorp(+5557€)
+🎯 CanadianDesign achète 14 Granit chez NewZealandSupply (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 16.40€ | Total: 229.60€ | Budget restant: 26463.55€
+✅ Achat réussi !
+🎯 AmericanInnovation achète 26 Solvant chez BelgianSupply (stratégie: par_type) :
+	- 💰 Prix unitaire: 31.76€ | Total: 825.76€ | Budget restant: 39290.21€
+✅ Achat réussi !
+[EVT] 20250908_104051_EVT_001 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='CanadianDesign', pays='Canada', continent='Amérique du Nord', budget=31309.55, budget_initial=27463.95, types_preferes=[<TypeProduit.consommable: 'consommable'>, <TypeProduit.produit_fini: 'produit_fini'>], strategie='moins_cher', stocks={1: 61}), Entreprise(id=2, nom='CzechTech', pays='République tchèque', continent='Europe', budget=35230.33, budget_initial=31664.61, types_preferes=[<TypeProduit.consommable: 'consommable'>, <TypeProduit.matiere_premiere: 'matiere_premiere'>], strategie='par_type', stocks={5: 18, 1: 12}), Entreprise(id=3, nom='AmericanInnovation', pays='États-Unis', continent='Amérique du Nord', budget=39290.21, budget_initial=27945.37, types_preferes=[<TypeProduit.consommable: 'consommable'>], strategie='par_type', stocks={4: 16, 2: 32})] - CanadianDesign reçoit +4846€ (budget: 26463€ → 31309€)
+[EVT] 20250908_104051_EVT_001 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='CanadianDesign', pays='Canada', continent='Amérique du Nord', budget=31309.55, budget_initial=27463.95, types_preferes=[<TypeProduit.consommable: 'consommable'>, <TypeProduit.produit_fini: 'produit_fini'>], strategie='moins_cher', stocks={1: 61}), Entreprise(id=2, nom='CzechTech', pays='République tchèque', continent='Europe', budget=41982.33, budget_initial=31664.61, types_preferes=[<TypeProduit.consommable: 'consommable'>, <TypeProduit.matiere_premiere: 'matiere_premiere'>], strategie='par_type', stocks={5: 18, 1: 12}), Entreprise(id=3, nom='AmericanInnovation', pays='États-Unis', continent='Amérique du Nord', budget=39290.21, budget_initial=27945.37, types_preferes=[<TypeProduit.consommable: 'consommable'>], strategie='par_type', stocks={4: 16, 2: 32})] - CzechTech reçoit +6752€ (budget: 35230€ → 41982€)
+[EVT] 20250908_104051_EVT_001 - evenements_tour: 📊 RECHARGE - 2 entreprises: CanadianDesign(+4846€), CzechTech(+6752€)
+[EVT] 20250908_104051_EVT_001 - evenements_tour: 📦 Tour 0 - RECHARGE BelgianSupply: Soie(+37) (total: +37 unités)
+[EVT] 20250908_104051_EVT_001 - evenements_tour: 📊 RECHARGE STOCK - 1 fournisseurs: BelgianSupply(+37) (total: +37 unités)
+🎯 AmericanInnovation achète 32 Pigment chez ItalianSupply (stratégie: par_type) :
+	- 💰 Prix unitaire: 26.33€ | Total: 842.56€ | Budget restant: 38447.65€
+✅ Achat réussi !
+🎯 PeruvianTech achète 14 Huile chez PeruvianSupply (stratégie: par_type) :
+	- 💰 Prix unitaire: 32.37€ | Total: 453.18€ | Budget restant: 30095.38€
+✅ Achat réussi !
+🎯 AustrianTech achète 4 Tissu chez IndonesianDistrib (stratégie: par_type) :
+	- 💰 Prix unitaire: 11.87€ | Total: 47.48€ | Budget restant: 19776.89€
+✅ Achat réussi !
+[EVT] 20250908_104817_EVT_001 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='PeruvianTech', pays='Pérou', continent='Amérique du Sud', budget=37479.380000000005, budget_initial=30548.56, types_preferes=[<TypeProduit.consommable: 'consommable'>], strategie='par_type', stocks={3: 14}), Entreprise(id=2, nom='AmericanInnovation', pays='États-Unis', continent='Amérique du Nord', budget=21087.72, budget_initial=21087.72, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>], strategie='par_type', stocks={}), Entreprise(id=3, nom='AustrianTech', pays='Autriche', continent='Europe', budget=19776.89, budget_initial=19824.37, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>], strategie='par_type', stocks={5: 4})] - PeruvianTech reçoit +7384€ (budget: 30095€ → 37479€)
+[EVT] 20250908_104817_EVT_001 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='PeruvianTech', pays='Pérou', continent='Amérique du Sud', budget=37479.380000000005, budget_initial=30548.56, types_preferes=[<TypeProduit.consommable: 'consommable'>], strategie='par_type', stocks={3: 14}), Entreprise(id=2, nom='AmericanInnovation', pays='États-Unis', continent='Amérique du Nord', budget=21087.72, budget_initial=21087.72, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>], strategie='par_type', stocks={}), Entreprise(id=3, nom='AustrianTech', pays='Autriche', continent='Europe', budget=23928.89, budget_initial=19824.37, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>], strategie='par_type', stocks={5: 4})] - AustrianTech reçoit +4152€ (budget: 19776€ → 23928€)
+[EVT] 20250908_104817_EVT_001 - evenements_tour: 📊 RECHARGE - 2 entreprises: PeruvianTech(+7384€), AustrianTech(+4152€)
+[EVT] 20250908_104817_EVT_001 - evenements_tour: 📦 Tour 0 - REASSORT: Huile(+33), Inhibiteur(+19) chez EgyptianSupply, PeruvianSupply
+[EVT] 20250908_104817_EVT_001 - evenements_tour: 📦 Tour 0 - RECHARGE PeruvianSupply: Huile(+15) (total: +15 unités)
+[EVT] 20250908_104817_EVT_001 - evenements_tour: 📊 RECHARGE STOCK - 1 fournisseurs: PeruvianSupply(+15) (total: +15 unités)
+🎯 AmericanInnovation achète 15 Métal chez ThaiDistrib (stratégie: par_type) :
+	- 💰 Prix unitaire: 43.32€ | Total: 649.80€ | Budget restant: 20437.92€
+✅ Achat réussi !
+🎯 AustrianTech achète 7 Métal chez ThaiDistrib (stratégie: par_type) :
+	- 💰 Prix unitaire: 43.32€ | Total: 303.24€ | Budget restant: 23625.65€
+✅ Achat réussi !
+[EVT] 20250908_104837_EVT_001 - evenements_tour: 📦 Tour 0 - RECHARGE PhilippineSupply: Granit(+31) (total: +31 unités)
+[EVT] 20250908_104837_EVT_001 - evenements_tour: 📦 Tour 0 - RECHARGE VietnameseImport: Cuivre(+50) (total: +50 unités)
+[EVT] 20250908_104837_EVT_001 - evenements_tour: 📊 RECHARGE STOCK - 2 fournisseurs: PhilippineSupply(+31), VietnameseImport(+50) (total: +81 unités)
+🎯 KoreanInnovation achète 6 Solvant chez VietnameseImport (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 22.36€ | Total: 134.16€ | Budget restant: 27961.09€
+✅ Achat réussi !
+[EVT] 20250908_104914_EVT_001 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='KoreanInnovation', pays='Corée du Sud', continent='Asie', budget=35646.09, budget_initial=28095.25, types_preferes=[<TypeProduit.consommable: 'consommable'>], strategie='moins_cher', stocks={4: 6}), Entreprise(id=2, nom='NigerianTech', pays='Nigeria', continent='Afrique', budget=34403.35, budget_initial=34403.35, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>, <TypeProduit.produit_fini: 'produit_fini'>], strategie='moins_cher', stocks={}), Entreprise(id=3, nom='PhilippineCorp', pays='Philippines', continent='Asie', budget=26353.95, budget_initial=26353.95, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>], strategie='par_type', stocks={})] - KoreanInnovation reçoit +7685€ (budget: 27961€ → 35646€)
+[EVT] 20250908_104914_EVT_001 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='KoreanInnovation', pays='Corée du Sud', continent='Asie', budget=35646.09, budget_initial=28095.25, types_preferes=[<TypeProduit.consommable: 'consommable'>], strategie='moins_cher', stocks={4: 6}), Entreprise(id=2, nom='NigerianTech', pays='Nigeria', continent='Afrique', budget=34403.35, budget_initial=34403.35, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>, <TypeProduit.produit_fini: 'produit_fini'>], strategie='moins_cher', stocks={}), Entreprise(id=3, nom='PhilippineCorp', pays='Philippines', continent='Asie', budget=32585.95, budget_initial=26353.95, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>], strategie='par_type', stocks={})] - PhilippineCorp reçoit +6232€ (budget: 26353€ → 32585€)
+[EVT] 20250908_104914_EVT_001 - evenements_tour: 📊 RECHARGE - 2 entreprises: KoreanInnovation(+7685€), PhilippineCorp(+6232€)
+🎯 NigerianTech achète 22 Solvant chez CanadianSupply (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 22.36€ | Total: 491.92€ | Budget restant: 33911.43€
+✅ Achat réussi !
+[08/09/2025 10:49:34] (tick 0) [EVENT-INFLATION] 💰 Tour 0 - INFLATION consommable: 6 produits affectés (prix +23.1% à +42.7%)
+[EVT] 20250908_104934_EVT_001 - evenements_tour: 💰 Tour 0 - INFLATION consommable: 6 produits affectés (prix +23.1% à +42.7%)
+[EVT] 20250908_104934_EVT_001 - evenements_tour: 📦 Tour 0 - RECHARGE NorwegianTools: Catalyseur(+22), Peinture(+37), Sable(+23) (total: +82 unités)
+[EVT] 20250908_104934_EVT_001 - evenements_tour: 📦 Tour 0 - RECHARGE PhilippineSupply: Catalyseur(+27) (total: +27 unités)
+[EVT] 20250908_104934_EVT_001 - evenements_tour: 📦 Tour 0 - RECHARGE SingaporeSupply: Catalyseur(+48), Médicament(+43), Sable(+35) (total: +126 unités)
+[EVT] 20250908_104934_EVT_001 - evenements_tour: 📊 RECHARGE STOCK - 3 fournisseurs: NorwegianTools(+82), PhilippineSupply(+27), SingaporeSupply(+126) (total: +235 unités)
+🎯 ChileanTech achète 24 Parfum chez FinnishDistrib (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 14.21€ | Total: 341.04€ | Budget restant: 30573.35€
+✅ Achat réussi !
+[EVT] 20250908_105012_EVT_001 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='AmericanInnovation', pays='États-Unis', continent='Amérique du Nord', budget=26462.09, budget_initial=22058.09, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>], strategie='par_type', stocks={}), Entreprise(id=2, nom='ChileanTech', pays='Chili', continent='Amérique du Sud', budget=30573.35, budget_initial=30914.39, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>], strategie='moins_cher', stocks={2: 24}), Entreprise(id=3, nom='KoreanInnovation', pays='Corée du Sud', continent='Asie', budget=26584.19, budget_initial=26584.19, types_preferes=[<TypeProduit.consommable: 'consommable'>, <TypeProduit.produit_fini: 'produit_fini'>], strategie='par_type', stocks={})] - AmericanInnovation reçoit +4404€ (budget: 22058€ → 26462€)
+[EVT] 20250908_105012_EVT_001 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='AmericanInnovation', pays='États-Unis', continent='Amérique du Nord', budget=26462.09, budget_initial=22058.09, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>], strategie='par_type', stocks={}), Entreprise(id=2, nom='ChileanTech', pays='Chili', continent='Amérique du Sud', budget=37643.35, budget_initial=30914.39, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>], strategie='moins_cher', stocks={2: 24}), Entreprise(id=3, nom='KoreanInnovation', pays='Corée du Sud', continent='Asie', budget=26584.19, budget_initial=26584.19, types_preferes=[<TypeProduit.consommable: 'consommable'>, <TypeProduit.produit_fini: 'produit_fini'>], strategie='par_type', stocks={})] - ChileanTech reçoit +7070€ (budget: 30573€ → 37643€)
+[EVT] 20250908_105012_EVT_001 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='AmericanInnovation', pays='États-Unis', continent='Amérique du Nord', budget=26462.09, budget_initial=22058.09, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>], strategie='par_type', stocks={}), Entreprise(id=2, nom='ChileanTech', pays='Chili', continent='Amérique du Sud', budget=37643.35, budget_initial=30914.39, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>], strategie='moins_cher', stocks={2: 24}), Entreprise(id=3, nom='KoreanInnovation', pays='Corée du Sud', continent='Asie', budget=31626.19, budget_initial=26584.19, types_preferes=[<TypeProduit.consommable: 'consommable'>, <TypeProduit.produit_fini: 'produit_fini'>], strategie='par_type', stocks={})] - KoreanInnovation reçoit +5042€ (budget: 26584€ → 31626€)
+[EVT] 20250908_105012_EVT_001 - evenements_tour: 📊 RECHARGE - 3 entreprises: AmericanInnovation(+4404€), ChileanTech(+7070€), KoreanInnovation(+5042€)
+[EVT] 20250908_105012_EVT_001 - evenements_tour: 📦 Tour 0 - REASSORT: Boisson(+47), Coton(+11) chez ItalianSupply, FinnishDistrib
+[EVT] 20250908_105012_EVT_001 - evenements_tour: 🔄 Tour 0 - DISPONIBILITÉ: Coton désactivé, Voiture, Lubrifiant, Solvant réactivé
+[EVT] 20250908_105012_EVT_001 - evenements_tour: 📦 Tour 0 - RECHARGE DanishSupply: Lubrifiant(+39) (total: +39 unités)
+[EVT] 20250908_105012_EVT_001 - evenements_tour: 📊 RECHARGE STOCK - 1 fournisseurs: DanishSupply(+39) (total: +39 unités)
+[EVT] 20250908_105042_EVT_001 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='ChileanTech', pays='Chili', continent='Amérique du Sud', budget=30432.56, budget_initial=25203.56, types_preferes=[<TypeProduit.consommable: 'consommable'>, <TypeProduit.matiere_premiere: 'matiere_premiere'>], strategie='par_type', stocks={}), Entreprise(id=2, nom='MexicanCorp', pays='Mexique', continent='Amérique du Nord', budget=26568.76, budget_initial=26568.76, types_preferes=[<TypeProduit.consommable: 'consommable'>], strategie='moins_cher', stocks={}), Entreprise(id=3, nom='MediterraneanTech', pays='Espagne', continent='Europe', budget=31818.96, budget_initial=31818.96, types_preferes=[<TypeProduit.consommable: 'consommable'>], strategie='moins_cher', stocks={})] - ChileanTech reçoit +5229€ (budget: 25203€ → 30432€)
+[EVT] 20250908_105042_EVT_001 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='ChileanTech', pays='Chili', continent='Amérique du Sud', budget=30432.56, budget_initial=25203.56, types_preferes=[<TypeProduit.consommable: 'consommable'>, <TypeProduit.matiere_premiere: 'matiere_premiere'>], strategie='par_type', stocks={}), Entreprise(id=2, nom='MexicanCorp', pays='Mexique', continent='Amérique du Nord', budget=32112.76, budget_initial=26568.76, types_preferes=[<TypeProduit.consommable: 'consommable'>], strategie='moins_cher', stocks={}), Entreprise(id=3, nom='MediterraneanTech', pays='Espagne', continent='Europe', budget=31818.96, budget_initial=31818.96, types_preferes=[<TypeProduit.consommable: 'consommable'>], strategie='moins_cher', stocks={})] - MexicanCorp reçoit +5544€ (budget: 26568€ → 32112€)
+[EVT] 20250908_105042_EVT_001 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='ChileanTech', pays='Chili', continent='Amérique du Sud', budget=30432.56, budget_initial=25203.56, types_preferes=[<TypeProduit.consommable: 'consommable'>, <TypeProduit.matiere_premiere: 'matiere_premiere'>], strategie='par_type', stocks={}), Entreprise(id=2, nom='MexicanCorp', pays='Mexique', continent='Amérique du Nord', budget=32112.76, budget_initial=26568.76, types_preferes=[<TypeProduit.consommable: 'consommable'>], strategie='moins_cher', stocks={}), Entreprise(id=3, nom='MediterraneanTech', pays='Espagne', continent='Europe', budget=38796.96, budget_initial=31818.96, types_preferes=[<TypeProduit.consommable: 'consommable'>], strategie='moins_cher', stocks={})] - MediterraneanTech reçoit +6978€ (budget: 31818€ → 38796€)
+[EVT] 20250908_105042_EVT_001 - evenements_tour: 📊 RECHARGE - 3 entreprises: ChileanTech(+5229€), MexicanCorp(+5544€), MediterraneanTech(+6978€)
+[EVT] 20250908_105042_EVT_001 - evenements_tour: 📦 Tour 0 - REASSORT: Gaz(+13) chez ThaiDistrib
+🎯 SingaporeCorp achète 7 Électricité chez CanadaDistrib (stratégie: par_type) :
+	- 💰 Prix unitaire: 19.70€ | Total: 137.90€ | Budget restant: 34575.69€
+✅ Achat réussi !
+[EVT] 20250908_105058_EVT_001 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='NordicTools', pays='Norvège', continent='Europe', budget=26599.82, budget_initial=19582.82, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>], strategie='par_type', stocks={}), Entreprise(id=2, nom='MoroccanCorp', pays='Maroc', continent='Afrique', budget=27974.61, budget_initial=27974.61, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>], strategie='par_type', stocks={}), Entreprise(id=3, nom='SingaporeCorp', pays='Singapour', continent='Asie', budget=34575.69, budget_initial=34713.59, types_preferes=[<TypeProduit.consommable: 'consommable'>, <TypeProduit.produit_fini: 'produit_fini'>], strategie='par_type', stocks={6: 7})] - NordicTools reçoit +7017€ (budget: 19582€ → 26599€)
+[EVT] 20250908_105058_EVT_001 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='NordicTools', pays='Norvège', continent='Europe', budget=26599.82, budget_initial=19582.82, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>], strategie='par_type', stocks={}), Entreprise(id=2, nom='MoroccanCorp', pays='Maroc', continent='Afrique', budget=27974.61, budget_initial=27974.61, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>], strategie='par_type', stocks={}), Entreprise(id=3, nom='SingaporeCorp', pays='Singapour', continent='Asie', budget=40810.69, budget_initial=34713.59, types_preferes=[<TypeProduit.consommable: 'consommable'>, <TypeProduit.produit_fini: 'produit_fini'>], strategie='par_type', stocks={6: 7})] - SingaporeCorp reçoit +6235€ (budget: 34575€ → 40810€)
+[EVT] 20250908_105058_EVT_001 - evenements_tour: 📊 RECHARGE - 2 entreprises: NordicTools(+7017€), SingaporeCorp(+6235€)
+[EVT] 20250908_105058_EVT_001 - evenements_tour: 📦 Tour 0 - RECHARGE AmericanTools: Électricité(+48), Métal(+48) (total: +96 unités)
+[EVT] 20250908_105058_EVT_001 - evenements_tour: 📦 Tour 0 - RECHARGE USSupply: Ordinateur(+38), Gaz(+50) (total: +88 unités)
+[EVT] 20250908_105058_EVT_001 - evenements_tour: 📦 Tour 0 - RECHARGE DutchTrading: Lunettes(+18) (total: +18 unités)
+[EVT] 20250908_105058_EVT_001 - evenements_tour: 📊 RECHARGE STOCK - 3 fournisseurs: AmericanTools(+96), USSupply(+88), DutchTrading(+18) (total: +202 unités)
+[EVT] 20250908_105058_EVT_002 - evenements_tour: 📦 Tour 2 - REASSORT: Base(+41), Métal(+36) chez DutchTrading, SwedishTools
+[EVT] 20250908_105058_EVT_002 - evenements_tour: 🔄 Tour 2 - DISPONIBILITÉ: Base désactivé, Soie, Acier réactivé
+🎯 BrazilianTech achète 30 Chaussure chez CzechImport (stratégie: par_type) :
+	- 💰 Prix unitaire: 27.27€ | Total: 818.10€ | Budget restant: 19564.70€
+✅ Achat réussi !
+[08/09/2025 10:53:28] (tick 0) [EVENT-INFLATION] 💰 Tour 0 - INFLATION Catégorie: 2 produits affectés (prix +20.7% à +30.0%)
+[EVT] 20250908_105328_EVT_001 - evenements_tour: 💰 Tour 0 - INFLATION Catégorie: 2 produits affectés (prix +20.7% à +30.0%)
+[EVT] 20250908_105328_EVT_001 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='BrazilianTech', pays='Brésil', continent='Amérique du Sud', budget=24069.7, budget_initial=20382.8, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>], strategie='par_type', stocks={4: 30}), Entreprise(id=2, nom='ItalianDesign', pays='Italie', continent='Europe', budget=33415.48, budget_initial=33415.48, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>, <TypeProduit.consommable: 'consommable'>], strategie='moins_cher', stocks={}), Entreprise(id=3, nom='ChileanTech', pays='Chili', continent='Amérique du Sud', budget=18586.7, budget_initial=18586.7, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>], strategie='par_type', stocks={})] - BrazilianTech reçoit +4505€ (budget: 19564€ → 24069€)
+[EVT] 20250908_105328_EVT_001 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='BrazilianTech', pays='Brésil', continent='Amérique du Sud', budget=24069.7, budget_initial=20382.8, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>], strategie='par_type', stocks={4: 30}), Entreprise(id=2, nom='ItalianDesign', pays='Italie', continent='Europe', budget=40120.48, budget_initial=33415.48, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>, <TypeProduit.consommable: 'consommable'>], strategie='moins_cher', stocks={}), Entreprise(id=3, nom='ChileanTech', pays='Chili', continent='Amérique du Sud', budget=18586.7, budget_initial=18586.7, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>], strategie='par_type', stocks={})] - ItalianDesign reçoit +6705€ (budget: 33415€ → 40120€)
+[EVT] 20250908_105328_EVT_001 - evenements_tour: 📊 RECHARGE - 2 entreprises: BrazilianTech(+4505€), ItalianDesign(+6705€)
+[EVT] 20250908_105328_EVT_002 - evenements_tour: 🔄 Tour 2 - DISPONIBILITÉ: Chaussure désactivé, Aliment, Téléphone, Béton réactivé
+🎯 ItalianDesign achète 22 Verre chez CzechImport (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 14.44€ | Total: 317.68€ | Budget restant: 39802.80€
+✅ Achat réussi !
+🎯 ItalianDesign achète 4 Verre chez CzechImport (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 14.44€ | Total: 57.76€ | Budget restant: 39745.04€
+✅ Achat réussi !
+[08/09/2025 10:53:33] (tick 4) [EVENT-INFLATION] 💰 Tour 4 - INFLATION Solvant: 41.9€ → 61.09€ (+45.8%)
+[EVT] 20250908_105328_EVT_003 - evenements_tour: 💰 Tour 4 - INFLATION Solvant: 41.9€ → 61.09€ (+45.8%)
+[EVT] 20250908_105328_EVT_003 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='BrazilianTech', pays='Brésil', continent='Amérique du Sud', budget=29793.7, budget_initial=20382.8, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>], strategie='par_type', stocks={4: 30}), Entreprise(id=2, nom='ItalianDesign', pays='Italie', continent='Europe', budget=39745.04, budget_initial=33415.48, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>, <TypeProduit.consommable: 'consommable'>], strategie='moins_cher', stocks={3: 26}), Entreprise(id=3, nom='ChileanTech', pays='Chili', continent='Amérique du Sud', budget=18586.7, budget_initial=18586.7, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>], strategie='par_type', stocks={})] - BrazilianTech reçoit +5724€ (budget: 24069€ → 29793€)
+[EVT] 20250908_105328_EVT_003 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='BrazilianTech', pays='Brésil', continent='Amérique du Sud', budget=29793.7, budget_initial=20382.8, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>], strategie='par_type', stocks={4: 30}), Entreprise(id=2, nom='ItalianDesign', pays='Italie', continent='Europe', budget=47650.04, budget_initial=33415.48, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>, <TypeProduit.consommable: 'consommable'>], strategie='moins_cher', stocks={3: 26}), Entreprise(id=3, nom='ChileanTech', pays='Chili', continent='Amérique du Sud', budget=18586.7, budget_initial=18586.7, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>], strategie='par_type', stocks={})] - ItalianDesign reçoit +7905€ (budget: 39745€ → 47650€)
+[EVT] 20250908_105328_EVT_003 - evenements_tour: 📊 RECHARGE - 2 entreprises: BrazilianTech(+5724€), ItalianDesign(+7905€)
+[EVT] 20250908_105328_EVT_004 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='BrazilianTech', pays='Brésil', continent='Amérique du Sud', budget=36608.7, budget_initial=20382.8, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>], strategie='par_type', stocks={4: 30}), Entreprise(id=2, nom='ItalianDesign', pays='Italie', continent='Europe', budget=47650.04, budget_initial=33415.48, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>, <TypeProduit.consommable: 'consommable'>], strategie='moins_cher', stocks={3: 26}), Entreprise(id=3, nom='ChileanTech', pays='Chili', continent='Amérique du Sud', budget=18586.7, budget_initial=18586.7, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>], strategie='par_type', stocks={})] - BrazilianTech reçoit +6815€ (budget: 29793€ → 36608€)
+[EVT] 20250908_105328_EVT_004 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='BrazilianTech', pays='Brésil', continent='Amérique du Sud', budget=36608.7, budget_initial=20382.8, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>], strategie='par_type', stocks={4: 30}), Entreprise(id=2, nom='ItalianDesign', pays='Italie', continent='Europe', budget=54516.04, budget_initial=33415.48, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>, <TypeProduit.consommable: 'consommable'>], strategie='moins_cher', stocks={3: 26}), Entreprise(id=3, nom='ChileanTech', pays='Chili', continent='Amérique du Sud', budget=18586.7, budget_initial=18586.7, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>], strategie='par_type', stocks={})] - ItalianDesign reçoit +6866€ (budget: 47650€ → 54516€)
+[EVT] 20250908_105328_EVT_004 - evenements_tour: 📊 RECHARGE - 2 entreprises: BrazilianTech(+6815€), ItalianDesign(+6866€)
+🎯 ItalianDesign achète 37 Verre chez CzechImport (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 14.44€ | Total: 534.28€ | Budget restant: 53981.76€
+✅ Achat réussi !
+🎯 ItalianDesign achète 37 Verre chez CzechImport (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 14.44€ | Total: 534.28€ | Budget restant: 53447.48€
+✅ Achat réussi !
+🎯 MexicanCorp achète 6 Voiture chez FinnishDistrib (stratégie: par_type) :
+	- 💰 Prix unitaire: 10.35€ | Total: 62.10€ | Budget restant: 24371.68€
+✅ Achat réussi !
+[EVT] 20250908_110143_EVT_001 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='ItalianDesign', pays='Italie', continent='Europe', budget=21264.77, budget_initial=21264.77, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>, <TypeProduit.matiere_premiere: 'matiere_premiere'>], strategie='par_type', stocks={}), Entreprise(id=2, nom='VietnameseCorp', pays='Vietnam', continent='Asie', budget=33082.56, budget_initial=25155.56, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>, <TypeProduit.matiere_premiere: 'matiere_premiere'>], strategie='par_type', stocks={}), Entreprise(id=3, nom='MexicanCorp', pays='Mexique', continent='Amérique du Nord', budget=24371.68, budget_initial=24433.78, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>], strategie='par_type', stocks={1: 6})] - VietnameseCorp reçoit +7927€ (budget: 25155€ → 33082€)
+[EVT] 20250908_110143_EVT_001 - evenements_tour: 📊 RECHARGE - 1 entreprises: VietnameseCorp(+7927€)
+🎯 ItalianDesign achète 10 Marbre chez SwedishTools (stratégie: par_type) :
+	- 💰 Prix unitaire: 44.09€ | Total: 440.90€ | Budget restant: 20823.87€
+✅ Achat réussi !
+[EVT] 20250908_110143_EVT_002 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='ItalianDesign', pays='Italie', continent='Europe', budget=26587.87, budget_initial=21264.77, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>, <TypeProduit.matiere_premiere: 'matiere_premiere'>], strategie='par_type', stocks={8: 10}), Entreprise(id=2, nom='VietnameseCorp', pays='Vietnam', continent='Asie', budget=33082.56, budget_initial=25155.56, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>, <TypeProduit.matiere_premiere: 'matiere_premiere'>], strategie='par_type', stocks={}), Entreprise(id=3, nom='MexicanCorp', pays='Mexique', continent='Amérique du Nord', budget=24371.68, budget_initial=24433.78, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>], strategie='par_type', stocks={1: 6})] - ItalianDesign reçoit +5764€ (budget: 20823€ → 26587€)
+[EVT] 20250908_110143_EVT_002 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='ItalianDesign', pays='Italie', continent='Europe', budget=26587.87, budget_initial=21264.77, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>, <TypeProduit.matiere_premiere: 'matiere_premiere'>], strategie='par_type', stocks={8: 10}), Entreprise(id=2, nom='VietnameseCorp', pays='Vietnam', continent='Asie', budget=33082.56, budget_initial=25155.56, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>, <TypeProduit.matiere_premiere: 'matiere_premiere'>], strategie='par_type', stocks={}), Entreprise(id=3, nom='MexicanCorp', pays='Mexique', continent='Amérique du Nord', budget=32093.68, budget_initial=24433.78, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>], strategie='par_type', stocks={1: 6})] - MexicanCorp reçoit +7722€ (budget: 24371€ → 32093€)
+[EVT] 20250908_110143_EVT_002 - evenements_tour: 📊 RECHARGE - 2 entreprises: ItalianDesign(+5764€), MexicanCorp(+7722€)
+[EVT] 20250908_110620_EVT_001 - evenements_tour: 📦 Tour 0 - REASSORT: Aluminium(+33) chez AustrianTools
+🎯 MediterraneanTech achète 39 Eau chez AustrianTools (stratégie: par_type) :
+	- 💰 Prix unitaire: 15.17€ | Total: 591.63€ | Budget restant: 31594.68€
+✅ Achat réussi !
+[08/09/2025 11:06:22] (tick 2) [EVENT-INFLATION] 💰 Tour 2 - INFLATION Eau: 15.17€ → 21.85€ (+44.0%)
+[EVT] 20250908_110620_EVT_002 - evenements_tour: 💰 Tour 2 - INFLATION Eau: 15.17€ → 21.85€ (+44.0%)
+[EVT] 20250908_110620_EVT_002 - evenements_tour: 📦 Tour 2 - REASSORT: Ordinateur(+33) chez DanishSupply
+🎯 TechCorp achète 35 Équipement sportif chez SouthAfricanImport (stratégie: par_type) :
+	- 💰 Prix unitaire: 19.81€ | Total: 693.35€ | Budget restant: 25726.83€
+✅ Achat réussi !
+🎯 CzechTech achète 34 Peinture chez ChileanDistrib (stratégie: par_type) :
+	- 💰 Prix unitaire: 32.52€ | Total: 1105.68€ | Budget restant: 19527.97€
+✅ Achat réussi !
+[EVT] 20250908_110656_EVT_001 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='TechCorp', pays='France', continent='Europe', budget=30608.83, budget_initial=26420.18, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>], strategie='par_type', stocks={4: 35}), Entreprise(id=2, nom='ArgentineCorp', pays='Argentine', continent='Amérique du Sud', budget=28739.11, budget_initial=28739.11, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>], strategie='moins_cher', stocks={}), Entreprise(id=3, nom='CzechTech', pays='République tchèque', continent='Europe', budget=19527.97, budget_initial=20633.65, types_preferes=[<TypeProduit.consommable: 'consommable'>], strategie='par_type', stocks={5: 34})] - TechCorp reçoit +4882€ (budget: 25726€ → 30608€)
+[EVT] 20250908_110656_EVT_001 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='TechCorp', pays='France', continent='Europe', budget=30608.83, budget_initial=26420.18, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>], strategie='par_type', stocks={4: 35}), Entreprise(id=2, nom='ArgentineCorp', pays='Argentine', continent='Amérique du Sud', budget=33967.11, budget_initial=28739.11, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>], strategie='moins_cher', stocks={}), Entreprise(id=3, nom='CzechTech', pays='République tchèque', continent='Europe', budget=19527.97, budget_initial=20633.65, types_preferes=[<TypeProduit.consommable: 'consommable'>], strategie='par_type', stocks={5: 34})] - ArgentineCorp reçoit +5228€ (budget: 28739€ → 33967€)
+[EVT] 20250908_110656_EVT_001 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='TechCorp', pays='France', continent='Europe', budget=30608.83, budget_initial=26420.18, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>], strategie='par_type', stocks={4: 35}), Entreprise(id=2, nom='ArgentineCorp', pays='Argentine', continent='Amérique du Sud', budget=33967.11, budget_initial=28739.11, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>], strategie='moins_cher', stocks={}), Entreprise(id=3, nom='CzechTech', pays='République tchèque', continent='Europe', budget=24966.97, budget_initial=20633.65, types_preferes=[<TypeProduit.consommable: 'consommable'>], strategie='par_type', stocks={5: 34})] - CzechTech reçoit +5439€ (budget: 19527€ → 24966€)
+[EVT] 20250908_110656_EVT_001 - evenements_tour: 📊 RECHARGE - 3 entreprises: TechCorp(+4882€), ArgentineCorp(+5228€), CzechTech(+5439€)
+[EVT] 20250908_110656_EVT_001 - evenements_tour: 📦 Tour 2 - REASSORT: Caoutchouc(+11), Aluminium(+50), Peinture(+18) chez PacificSupply, BrazilianImport, ChileanDistrib
+🎯 USCorp achète 13 Soie chez AmericanTools (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 5.07€ | Total: 65.91€ | Budget restant: 21958.37€
+✅ Achat réussi !
+[EVT] 20250908_110803_EVT_001 - evenements_tour: 🔄 Tour 0 - DISPONIBILITÉ: Huile désactivé, Béton réactivé
+🎯 AmericanInnovation achète 33 Soie chez AmericanTools (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 5.07€ | Total: 167.31€ | Budget restant: 22722.23€
+✅ Achat réussi !
+🎯 PacificCorp achète 18 Argile chez SwissPrecision (stratégie: par_type) :
+	- 💰 Prix unitaire: 15.42€ | Total: 277.56€ | Budget restant: 24848.50€
+✅ Achat réussi !
+[EVT] 20250908_110830_EVT_001 - evenements_tour: 🔄 Tour 0 - DISPONIBILITÉ: Sable désactivé, Granit réactivé
+🎯 AustrianTech achète 4 Granit chez VietnameseImport (stratégie: par_type) :
+	- 💰 Prix unitaire: 39.07€ | Total: 156.28€ | Budget restant: 23194.57€
+✅ Achat réussi !
+🎯 BuildTech achète 16 Granit chez SwedishTools (stratégie: par_type) :
+	- 💰 Prix unitaire: 35.52€ | Total: 568.32€ | Budget restant: 33252.25€
+✅ Achat réussi !
+🎯 PhilippineCorp achète 19 Antioxydant chez BrazilianImport (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 9.08€ | Total: 172.52€ | Budget restant: 28329.88€
+✅ Achat réussi !
+[EVT] 20250908_110857_EVT_001 - evenements_tour: 📦 Tour 0 - REASSORT: Sable(+35), Eau(+15), Instrument de musique(+27) chez SwissPrecision, EuroSupply, PacificSupply
+[EVT] 20250908_110857_EVT_001 - evenements_tour: 📦 Tour 0 - RECHARGE PacificSupply: Ciment(+25), Aliment(+10), Verre(+14), Sable(+14) (total: +63 unités)
+[EVT] 20250908_110857_EVT_001 - evenements_tour: 📦 Tour 0 - RECHARGE BrazilianImport: Antioxydant(+45), Béton(+10), Verre(+29) (total: +84 unités)
+[EVT] 20250908_110857_EVT_001 - evenements_tour: 📊 RECHARGE STOCK - 2 fournisseurs: PacificSupply(+63), BrazilianImport(+84) (total: +147 unités)
+🎯 PhilippineCorp achète 20 Antioxydant chez BrazilianImport (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 9.08€ | Total: 181.60€ | Budget restant: 28148.28€
+✅ Achat réussi !
+🎯 ArgentineCorp achète 33 Antioxydant chez EuroSupply (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 9.56€ | Total: 315.48€ | Budget restant: 33971.77€
+✅ Achat réussi !
+[EVT] 20250908_110857_EVT_002 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='PhilippineCorp', pays='Philippines', continent='Asie', budget=34223.28, budget_initial=23659.77, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>], strategie='moins_cher', stocks={1: 39}), Entreprise(id=2, nom='ChileanTech', pays='Chili', continent='Amérique du Sud', budget=29371.99, budget_initial=27006.57, types_preferes=[<TypeProduit.consommable: 'consommable'>], strategie='par_type', stocks={}), Entreprise(id=3, nom='ArgentineCorp', pays='Argentine', continent='Amérique du Sud', budget=33971.77, budget_initial=19330.91, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>], strategie='moins_cher', stocks={1: 33})] - PhilippineCorp reçoit +6075€ (budget: 28148€ → 34223€)
+[EVT] 20250908_110857_EVT_002 - evenements_tour: 📊 RECHARGE - 1 entreprises: PhilippineCorp(+6075€)
+[EVT] 20250908_110857_EVT_002 - evenements_tour: 📦 Tour 2 - REASSORT: Ciment(+46), Sable(+26), Peinture(+35), Eau(+50) chez SpanishImport, SwissPrecision, EuroSupply, PacificSupply
+🎯 MediterraneanTech achète 1 Sable chez BrazilianImport (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 12.00€ | Total: 12.00€ | Budget restant: 29386.35€
+✅ Achat réussi !
+🎯 IndonesianCorp achète 3 Sable chez BrazilianImport (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 12.00€ | Total: 36.00€ | Budget restant: 27692.40€
+✅ Achat réussi !
+[08/09/2025 11:09:38] (tick 0) [EVENT-INFLATION] 💰 Tour 0 - INFLATION Colle: 22.77€ → 33.84€ (+48.6%)
+[EVT] 20250908_110938_EVT_001 - evenements_tour: 💰 Tour 0 - INFLATION Colle: 22.77€ → 33.84€ (+48.6%)
+[EVT] 20250908_110938_EVT_001 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='TechCorp', pays='France', continent='Europe', budget=24023.99, budget_initial=30348.37, types_preferes=[<TypeProduit.consommable: 'consommable'>, <TypeProduit.produit_fini: 'produit_fini'>], strategie='par_type', stocks={}), Entreprise(id=2, nom='MediterraneanTech', pays='Espagne', continent='Europe', budget=29386.35, budget_initial=18081.21, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>], strategie='moins_cher', stocks={5: 1}), Entreprise(id=3, nom='IndonesianCorp', pays='Indonésie', continent='Asie', budget=27692.4, budget_initial=25751.38, types_preferes=[<TypeProduit.consommable: 'consommable'>, <TypeProduit.produit_fini: 'produit_fini'>], strategie='moins_cher', stocks={5: 3})] - TechCorp reçoit +4563€ (budget: 19460€ → 24023€)
+[EVT] 20250908_110938_EVT_001 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='TechCorp', pays='France', continent='Europe', budget=24023.99, budget_initial=30348.37, types_preferes=[<TypeProduit.consommable: 'consommable'>, <TypeProduit.produit_fini: 'produit_fini'>], strategie='par_type', stocks={}), Entreprise(id=2, nom='MediterraneanTech', pays='Espagne', continent='Europe', budget=35256.35, budget_initial=18081.21, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>], strategie='moins_cher', stocks={5: 1}), Entreprise(id=3, nom='IndonesianCorp', pays='Indonésie', continent='Asie', budget=27692.4, budget_initial=25751.38, types_preferes=[<TypeProduit.consommable: 'consommable'>, <TypeProduit.produit_fini: 'produit_fini'>], strategie='moins_cher', stocks={5: 3})] - MediterraneanTech reçoit +5870€ (budget: 29386€ → 35256€)
+[EVT] 20250908_110938_EVT_001 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='TechCorp', pays='France', continent='Europe', budget=24023.99, budget_initial=30348.37, types_preferes=[<TypeProduit.consommable: 'consommable'>, <TypeProduit.produit_fini: 'produit_fini'>], strategie='par_type', stocks={}), Entreprise(id=2, nom='MediterraneanTech', pays='Espagne', continent='Europe', budget=35256.35, budget_initial=18081.21, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>], strategie='moins_cher', stocks={5: 1}), Entreprise(id=3, nom='IndonesianCorp', pays='Indonésie', continent='Asie', budget=32423.4, budget_initial=25751.38, types_preferes=[<TypeProduit.consommable: 'consommable'>, <TypeProduit.produit_fini: 'produit_fini'>], strategie='moins_cher', stocks={5: 3})] - IndonesianCorp reçoit +4731€ (budget: 27692€ → 32423€)
+[EVT] 20250908_110938_EVT_001 - evenements_tour: 📊 RECHARGE - 3 entreprises: TechCorp(+4563€), MediterraneanTech(+5870€), IndonesianCorp(+4731€)
+🎯 TechCorp achète 33 Lubrifiant chez AsiaImport (stratégie: par_type) :
+	- 💰 Prix unitaire: 47.08€ | Total: 1553.64€ | Budget restant: 22470.35€
+✅ Achat réussi !
+🎯 IndonesianCorp achète 9 Sable chez ColombianImport (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 12.44€ | Total: 111.96€ | Budget restant: 32311.44€
+✅ Achat réussi !
+🎯 NordicSolutions achète 25 Antioxydant chez ItalianSupply (stratégie: par_type) :
+	- 💰 Prix unitaire: 21.12€ | Total: 528.00€ | Budget restant: 33064.12€
+✅ Achat réussi !
+[EVT] 20250908_111013_EVT_001 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='DanishDesign', pays='Danemark', continent='Europe', budget=21225.65, budget_initial=24205.06, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>], strategie='moins_cher', stocks={}), Entreprise(id=2, nom='NordicSolutions', pays='Suède', continent='Europe', budget=33064.12, budget_initial=24874.24, types_preferes=[<TypeProduit.consommable: 'consommable'>], strategie='par_type', stocks={4: 25}), Entreprise(id=3, nom='MalaysianTech', pays='Malaisie', continent='Asie', budget=25713.02, budget_initial=26547.25, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>], strategie='par_type', stocks={})] - MalaysianTech reçoit +4140€ (budget: 21573€ → 25713€)
+[EVT] 20250908_111013_EVT_001 - evenements_tour: 📊 RECHARGE - 1 entreprises: MalaysianTech(+4140€)
+🎯 NordicSolutions achète 13 Acide chez ItalianSupply (stratégie: par_type) :
+	- 💰 Prix unitaire: 41.28€ | Total: 536.64€ | Budget restant: 32527.48€
+✅ Achat réussi !
+[EVT] 20250908_111046_EVT_001 - evenements_tour: 📦 Tour 0 - RECHARGE FinnishDistrib: Chaussure(+37), Base(+44) (total: +81 unités)
+[EVT] 20250908_111046_EVT_001 - evenements_tour: 📦 Tour 0 - RECHARGE EgyptianSupply: Antioxydant(+17), Solvant(+35) (total: +52 unités)
+[EVT] 20250908_111046_EVT_001 - evenements_tour: 📊 RECHARGE STOCK - 2 fournisseurs: FinnishDistrib(+81), EgyptianSupply(+52) (total: +133 unités)
+🎯 ChileanTech achète 13 Carburant chez ThaiDistrib (stratégie: par_type) :
+	- 💰 Prix unitaire: 19.29€ | Total: 250.77€ | Budget restant: 24857.71€
+✅ Achat réussi !
+🎯 DutchInnovation achète 4 Antioxydant chez FinnishDistrib (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 11.57€ | Total: 46.28€ | Budget restant: 22084.36€
+✅ Achat réussi !
+🎯 TaiwanTech achète 6 Vêtement chez TaiwanImport (stratégie: par_type) :
+	- 💰 Prix unitaire: 18.87€ | Total: 113.22€ | Budget restant: 19207.70€
+✅ Achat réussi !
+[08/09/2025 11:10:48] (tick 2) [EVENT-INFLATION] 💰 Tour 2 - INFLATION matiere_premiere: 2 produits affectés (prix +36.9% à +41.5%)
+[EVT] 20250908_111046_EVT_002 - evenements_tour: 💰 Tour 2 - INFLATION matiere_premiere: 2 produits affectés (prix +36.9% à +41.5%)
+[EVT] 20250908_111046_EVT_002 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='DutchInnovation', pays='Pays-Bas', continent='Europe', budget=22084.36, budget_initial=27510.91, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>], strategie='moins_cher', stocks={4: 4}), Entreprise(id=2, nom='ChileanTech', pays='Chili', continent='Amérique du Sud', budget=29347.71, budget_initial=22325.69, types_preferes=[<TypeProduit.consommable: 'consommable'>], strategie='par_type', stocks={1: 13}), Entreprise(id=3, nom='TaiwanTech', pays='Taïwan', continent='Asie', budget=19207.7, budget_initial=23525.42, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>], strategie='par_type', stocks={6: 6})] - ChileanTech reçoit +4490€ (budget: 24857€ → 29347€)
+[EVT] 20250908_111046_EVT_002 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='DutchInnovation', pays='Pays-Bas', continent='Europe', budget=22084.36, budget_initial=27510.91, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>], strategie='moins_cher', stocks={4: 4}), Entreprise(id=2, nom='ChileanTech', pays='Chili', continent='Amérique du Sud', budget=29347.71, budget_initial=22325.69, types_preferes=[<TypeProduit.consommable: 'consommable'>], strategie='par_type', stocks={1: 13}), Entreprise(id=3, nom='TaiwanTech', pays='Taïwan', continent='Asie', budget=25318.7, budget_initial=23525.42, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>], strategie='par_type', stocks={6: 6})] - TaiwanTech reçoit +6111€ (budget: 19207€ → 25318€)
+[EVT] 20250908_111046_EVT_002 - evenements_tour: 📊 RECHARGE - 2 entreprises: ChileanTech(+4490€), TaiwanTech(+6111€)
+[EVT] 20250908_111046_EVT_002 - evenements_tour: 📦 Tour 2 - REASSORT: Cuivre(+15), Huile(+37), Antioxydant(+14), Vêtement(+30), Solvant(+21), Soie(+24) chez TaiwanImport, ChileanDistrib
+[EVT] 20250908_111102_EVT_001 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='AmericanInnovation', pays='États-Unis', continent='Amérique du Nord', budget=27010.26, budget_initial=23449.18, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>, <TypeProduit.produit_fini: 'produit_fini'>], strategie='moins_cher', stocks={}), Entreprise(id=2, nom='PeruvianTech', pays='Pérou', continent='Amérique du Sud', budget=28453.66, budget_initial=25720.78, types_preferes=[<TypeProduit.consommable: 'consommable'>, <TypeProduit.matiere_premiere: 'matiere_premiere'>], strategie='moins_cher', stocks={}), Entreprise(id=3, nom='BuildTech', pays='Allemagne', continent='Europe', budget=27821.43, budget_initial=21752.44, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>], strategie='moins_cher', stocks={})] - AmericanInnovation reçoit +5612€ (budget: 21398€ → 27010€)
+[EVT] 20250908_111102_EVT_001 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='AmericanInnovation', pays='États-Unis', continent='Amérique du Nord', budget=27010.26, budget_initial=23449.18, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>, <TypeProduit.produit_fini: 'produit_fini'>], strategie='moins_cher', stocks={}), Entreprise(id=2, nom='PeruvianTech', pays='Pérou', continent='Amérique du Sud', budget=35028.66, budget_initial=25720.78, types_preferes=[<TypeProduit.consommable: 'consommable'>, <TypeProduit.matiere_premiere: 'matiere_premiere'>], strategie='moins_cher', stocks={}), Entreprise(id=3, nom='BuildTech', pays='Allemagne', continent='Europe', budget=27821.43, budget_initial=21752.44, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>], strategie='moins_cher', stocks={})] - PeruvianTech reçoit +6575€ (budget: 28453€ → 35028€)
+[EVT] 20250908_111102_EVT_001 - evenements_tour: 📊 RECHARGE - 2 entreprises: AmericanInnovation(+5612€), PeruvianTech(+6575€)
+[EVT] 20250908_111102_EVT_001 - evenements_tour: 📦 Tour 0 - REASSORT: Électricité(+19), Téléphone(+45), Pigment(+46) chez ArgentineSupply
+[EVT] 20250908_111102_EVT_001 - evenements_tour: 📦 Tour 0 - RECHARGE SouthAfricanImport: Jouet(+39), Carburant(+14) (total: +53 unités)
+[EVT] 20250908_111102_EVT_001 - evenements_tour: 📊 RECHARGE STOCK - 1 fournisseurs: SouthAfricanImport(+53) (total: +53 unités)
+[EVT] 20250908_111122_EVT_001 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='ArgentineCorp', pays='Argentine', continent='Amérique du Sud', budget=41512.4, budget_initial=27089.62, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>, <TypeProduit.consommable: 'consommable'>], strategie='par_type', stocks={}), Entreprise(id=2, nom='SingaporeCorp', pays='Singapour', continent='Asie', budget=22584.78, budget_initial=18892.24, types_preferes=[<TypeProduit.consommable: 'consommable'>], strategie='par_type', stocks={}), Entreprise(id=3, nom='AmericanInnovation', pays='États-Unis', continent='Amérique du Nord', budget=30199.17, budget_initial=27687.92, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>, <TypeProduit.produit_fini: 'produit_fini'>], strategie='moins_cher', stocks={})] - ArgentineCorp reçoit +7546€ (budget: 33966€ → 41512€)
+[EVT] 20250908_111122_EVT_001 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='ArgentineCorp', pays='Argentine', continent='Amérique du Sud', budget=41512.4, budget_initial=27089.62, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>, <TypeProduit.consommable: 'consommable'>], strategie='par_type', stocks={}), Entreprise(id=2, nom='SingaporeCorp', pays='Singapour', continent='Asie', budget=29477.78, budget_initial=18892.24, types_preferes=[<TypeProduit.consommable: 'consommable'>], strategie='par_type', stocks={}), Entreprise(id=3, nom='AmericanInnovation', pays='États-Unis', continent='Amérique du Nord', budget=30199.17, budget_initial=27687.92, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>, <TypeProduit.produit_fini: 'produit_fini'>], strategie='moins_cher', stocks={})] - SingaporeCorp reçoit +6893€ (budget: 22584€ → 29477€)
+[EVT] 20250908_111122_EVT_001 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='ArgentineCorp', pays='Argentine', continent='Amérique du Sud', budget=41512.4, budget_initial=27089.62, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>, <TypeProduit.consommable: 'consommable'>], strategie='par_type', stocks={}), Entreprise(id=2, nom='SingaporeCorp', pays='Singapour', continent='Asie', budget=29477.78, budget_initial=18892.24, types_preferes=[<TypeProduit.consommable: 'consommable'>], strategie='par_type', stocks={}), Entreprise(id=3, nom='AmericanInnovation', pays='États-Unis', continent='Amérique du Nord', budget=35973.17, budget_initial=27687.92, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>, <TypeProduit.produit_fini: 'produit_fini'>], strategie='moins_cher', stocks={})] - AmericanInnovation reçoit +5774€ (budget: 30199€ → 35973€)
+[EVT] 20250908_111122_EVT_001 - evenements_tour: 📊 RECHARGE - 3 entreprises: ArgentineCorp(+7546€), SingaporeCorp(+6893€), AmericanInnovation(+5774€)
+[EVT] 20250908_111122_EVT_001 - evenements_tour: 📦 Tour 0 - REASSORT: Gaz(+44), Appareil électroménager(+19), Meuble(+12) chez SpanishImport, DutchTrading, PolishDistrib
+🎯 PeruvianTech achète 22 Appareil électroménager chez IndonesianDistrib (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 6.46€ | Total: 142.12€ | Budget restant: 27987.98€
+✅ Achat réussi !
+[08/09/2025 11:11:28] (tick 0) [EVENT-INFLATION] 💰 Tour 0 - INFLATION produit_fini: 5 produits affectés (prix +20.4% à +58.6%)
+[EVT] 20250908_111128_EVT_001 - evenements_tour: 💰 Tour 0 - INFLATION produit_fini: 5 produits affectés (prix +20.4% à +58.6%)
+🎯 MediterraneanTech achète 1 Outillage chez MoroccanDistrib (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 7.39€ | Total: 7.39€ | Budget restant: 22104.34€
+✅ Achat réussi !
+🎯 SouthAfricanCorp achète 1 Outillage chez ThaiDistrib (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 8.25€ | Total: 8.25€ | Budget restant: 31255.00€
+✅ Achat réussi !
+[EVT] 20250908_111137_EVT_001 - evenements_tour: 📦 Tour 0 - REASSORT: Marbre(+13), Vêtement(+13), Appareil électroménager(+41), Bijou(+41) chez MoroccanDistrib, AmericanTools, PeruvianSupply
+[EVT] 20250908_111137_EVT_001 - evenements_tour: 📦 Tour 0 - RECHARGE PeruvianSupply: Vêtement(+39), Solvant(+41), Additif(+38), Soie(+21) (total: +139 unités)
+[EVT] 20250908_111137_EVT_001 - evenements_tour: 📦 Tour 0 - RECHARGE AmericanTools: Marbre(+15), Additif(+26), Appareil électroménager(+46), Chaussure(+12) (total: +99 unités)
+[EVT] 20250908_111137_EVT_001 - evenements_tour: 📦 Tour 0 - RECHARGE ThaiDistrib: Marbre(+32), Outillage(+10), Chaussure(+34) (total: +76 unités)
+[EVT] 20250908_111137_EVT_001 - evenements_tour: 📦 Tour 0 - RECHARGE MoroccanDistrib: Solvant(+50), Jouet(+15) (total: +65 unités)
+[EVT] 20250908_111137_EVT_001 - evenements_tour: 📊 RECHARGE STOCK - 4 fournisseurs: PeruvianSupply(+139), AmericanTools(+99), ThaiDistrib(+76), MoroccanDistrib(+65) (total: +379 unités)
+🎯 DanishDesign achète 30 Soie chez PolishDistrib (stratégie: par_type) :
+	- 💰 Prix unitaire: 14.14€ | Total: 424.20€ | Budget restant: 25206.18€
+✅ Achat réussi !
+🎯 SouthAfricanCorp achète 20 Outillage chez PolishDistrib (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 8.82€ | Total: 176.40€ | Budget restant: 31078.60€
+✅ Achat réussi !
+🎯 DanishDesign achète 18 Vêtement chez AmericanTools (stratégie: par_type) :
+	- 💰 Prix unitaire: 31.86€ | Total: 573.48€ | Budget restant: 24632.70€
+✅ Achat réussi !
+🎯 MediterraneanTech achète 21 Outillage chez MoroccanDistrib (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 7.39€ | Total: 155.19€ | Budget restant: 21949.15€
+✅ Achat réussi !
+🎯 SouthAfricanCorp achète 34 Outillage chez MoroccanDistrib (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 7.39€ | Total: 251.26€ | Budget restant: 30827.34€
+✅ Achat réussi !
+[EVT] 20250908_111137_EVT_002 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='DanishDesign', pays='Danemark', continent='Europe', budget=28923.7, budget_initial=25073.7, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>, <TypeProduit.produit_fini: 'produit_fini'>], strategie='par_type', stocks={8: 30, 2: 18}), Entreprise(id=2, nom='MediterraneanTech', pays='Espagne', continent='Europe', budget=21949.15, budget_initial=24829.15, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>], strategie='moins_cher', stocks={3: 22}), Entreprise(id=3, nom='SouthAfricanCorp', pays='Afrique du Sud', continent='Afrique', budget=30827.34, budget_initial=21560.18, types_preferes=[<TypeProduit.consommable: 'consommable'>], strategie='moins_cher', stocks={3: 55})] - DanishDesign reçoit +4291€ (budget: 24632€ → 28923€)
+[EVT] 20250908_111137_EVT_002 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='DanishDesign', pays='Danemark', continent='Europe', budget=28923.7, budget_initial=25073.7, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>, <TypeProduit.produit_fini: 'produit_fini'>], strategie='par_type', stocks={8: 30, 2: 18}), Entreprise(id=2, nom='MediterraneanTech', pays='Espagne', continent='Europe', budget=26885.15, budget_initial=24829.15, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>], strategie='moins_cher', stocks={3: 22}), Entreprise(id=3, nom='SouthAfricanCorp', pays='Afrique du Sud', continent='Afrique', budget=30827.34, budget_initial=21560.18, types_preferes=[<TypeProduit.consommable: 'consommable'>], strategie='moins_cher', stocks={3: 55})] - MediterraneanTech reçoit +4936€ (budget: 21949€ → 26885€)
+[EVT] 20250908_111137_EVT_002 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='DanishDesign', pays='Danemark', continent='Europe', budget=28923.7, budget_initial=25073.7, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>, <TypeProduit.produit_fini: 'produit_fini'>], strategie='par_type', stocks={8: 30, 2: 18}), Entreprise(id=2, nom='MediterraneanTech', pays='Espagne', continent='Europe', budget=26885.15, budget_initial=24829.15, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>], strategie='moins_cher', stocks={3: 22}), Entreprise(id=3, nom='SouthAfricanCorp', pays='Afrique du Sud', continent='Afrique', budget=37927.34, budget_initial=21560.18, types_preferes=[<TypeProduit.consommable: 'consommable'>], strategie='moins_cher', stocks={3: 55})] - SouthAfricanCorp reçoit +7100€ (budget: 30827€ → 37927€)
+[EVT] 20250908_111137_EVT_002 - evenements_tour: 📊 RECHARGE - 3 entreprises: DanishDesign(+4291€), MediterraneanTech(+4936€), SouthAfricanCorp(+7100€)
+[EVT] 20250908_111137_EVT_002 - evenements_tour: 📦 Tour 2 - REASSORT: Outillage(+40), Additif(+39), Appareil électroménager(+27), Soie(+13) chez PolishDistrib, MoroccanDistrib
+🎯 KoreanInnovation achète 16 Argile chez CzechImport (stratégie: par_type) :
+	- 💰 Prix unitaire: 8.29€ | Total: 132.64€ | Budget restant: 21929.26€
+✅ Achat réussi !
+🎯 BrazilianTech achète 6 Argile chez AustralianImport (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 8.58€ | Total: 51.48€ | Budget restant: 25307.44€
+✅ Achat réussi !
+🎯 USCorp achète 33 Carburant chez AustralianImport (stratégie: par_type) :
+	- 💰 Prix unitaire: 25.54€ | Total: 842.82€ | Budget restant: 20145.06€
+✅ Achat réussi !
+[EVT] 20250908_111157_EVT_001 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='KoreanInnovation', pays='Corée du Sud', continent='Asie', budget=26646.26, budget_initial=18797.41, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>], strategie='par_type', stocks={9: 16}), Entreprise(id=2, nom='BrazilianTech', pays='Brésil', continent='Amérique du Sud', budget=25307.44, budget_initial=19615.46, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>], strategie='moins_cher', stocks={9: 6}), Entreprise(id=3, nom='USCorp', pays='États-Unis', continent='Amérique du Nord', budget=20145.06, budget_initial=21669.0, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>, <TypeProduit.consommable: 'consommable'>], strategie='par_type', stocks={7: 33})] - KoreanInnovation reçoit +4717€ (budget: 21929€ → 26646€)
+[EVT] 20250908_111157_EVT_001 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='KoreanInnovation', pays='Corée du Sud', continent='Asie', budget=26646.26, budget_initial=18797.41, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>], strategie='par_type', stocks={9: 16}), Entreprise(id=2, nom='BrazilianTech', pays='Brésil', continent='Amérique du Sud', budget=30937.44, budget_initial=19615.46, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>], strategie='moins_cher', stocks={9: 6}), Entreprise(id=3, nom='USCorp', pays='États-Unis', continent='Amérique du Nord', budget=20145.06, budget_initial=21669.0, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>, <TypeProduit.consommable: 'consommable'>], strategie='par_type', stocks={7: 33})] - BrazilianTech reçoit +5630€ (budget: 25307€ → 30937€)
+[EVT] 20250908_111157_EVT_001 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='KoreanInnovation', pays='Corée du Sud', continent='Asie', budget=26646.26, budget_initial=18797.41, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>], strategie='par_type', stocks={9: 16}), Entreprise(id=2, nom='BrazilianTech', pays='Brésil', continent='Amérique du Sud', budget=30937.44, budget_initial=19615.46, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>], strategie='moins_cher', stocks={9: 6}), Entreprise(id=3, nom='USCorp', pays='États-Unis', continent='Amérique du Nord', budget=24148.06, budget_initial=21669.0, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>, <TypeProduit.consommable: 'consommable'>], strategie='par_type', stocks={7: 33})] - USCorp reçoit +4003€ (budget: 20145€ → 24148€)
+[EVT] 20250908_111157_EVT_001 - evenements_tour: 📊 RECHARGE - 3 entreprises: KoreanInnovation(+4717€), BrazilianTech(+5630€), USCorp(+4003€)
+🎯 BrazilianTech achète 19 Carburant chez GermanDistrib (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 5.72€ | Total: 108.68€ | Budget restant: 26722.76€
+✅ Achat réussi !
+🎯 SingaporeCorp achète 17 Chaussure chez GermanDistrib (stratégie: par_type) :
+	- 💰 Prix unitaire: 7.71€ | Total: 131.07€ | Budget restant: 26777.14€
+✅ Achat réussi !
+🎯 CzechTech achète 15 Lunettes chez CanadaDistrib (stratégie: par_type) :
+	- 💰 Prix unitaire: 13.43€ | Total: 201.45€ | Budget restant: 22071.04€
+✅ Achat réussi !
+[EVT] 20250908_111237_EVT_001 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='BrazilianTech', pays='Brésil', continent='Amérique du Sud', budget=26722.76, budget_initial=29581.04, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>], strategie='moins_cher', stocks={8: 19}), Entreprise(id=2, nom='SingaporeCorp', pays='Singapour', continent='Asie', budget=34585.14, budget_initial=18026.11, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>, <TypeProduit.produit_fini: 'produit_fini'>], strategie='par_type', stocks={2: 17}), Entreprise(id=3, nom='CzechTech', pays='République tchèque', continent='Europe', budget=22071.04, budget_initial=23278.6, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>], strategie='par_type', stocks={1: 15})] - SingaporeCorp reçoit +7808€ (budget: 26777€ → 34585€)
+[EVT] 20250908_111237_EVT_001 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='BrazilianTech', pays='Brésil', continent='Amérique du Sud', budget=26722.76, budget_initial=29581.04, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>], strategie='moins_cher', stocks={8: 19}), Entreprise(id=2, nom='SingaporeCorp', pays='Singapour', continent='Asie', budget=34585.14, budget_initial=18026.11, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>, <TypeProduit.produit_fini: 'produit_fini'>], strategie='par_type', stocks={2: 17}), Entreprise(id=3, nom='CzechTech', pays='République tchèque', continent='Europe', budget=27752.04, budget_initial=23278.6, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>], strategie='par_type', stocks={1: 15})] - CzechTech reçoit +5681€ (budget: 22071€ → 27752€)
+[EVT] 20250908_111237_EVT_001 - evenements_tour: 📊 RECHARGE - 2 entreprises: SingaporeCorp(+7808€), CzechTech(+5681€)
+[EVT] 20250908_111237_EVT_001 - evenements_tour: 📦 Tour 0 - REASSORT: Livre(+38) chez GermanDistrib
+[EVT] 20250908_111237_EVT_001 - evenements_tour: 📦 Tour 0 - RECHARGE CanadaDistrib: Boisson(+28) (total: +28 unités)
+[EVT] 20250908_111237_EVT_001 - evenements_tour: 📦 Tour 0 - RECHARGE SwissPrecision: Boisson(+42) (total: +42 unités)
+[EVT] 20250908_111237_EVT_001 - evenements_tour: 📦 Tour 0 - RECHARGE TaiwanImport: Catalyseur(+24) (total: +24 unités)
+[EVT] 20250908_111237_EVT_001 - evenements_tour: 📊 RECHARGE STOCK - 3 fournisseurs: CanadaDistrib(+28), SwissPrecision(+42), TaiwanImport(+24) (total: +94 unités)
+🎯 BrazilianTech achète 24 Carburant chez GermanDistrib (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 5.72€ | Total: 137.28€ | Budget restant: 26585.48€
+✅ Achat réussi !
+🎯 SingaporeCorp achète 8 Chaussure chez GermanDistrib (stratégie: par_type) :
+	- 💰 Prix unitaire: 7.71€ | Total: 61.68€ | Budget restant: 34523.46€
+✅ Achat réussi !
+🎯 CzechTech achète 12 Boisson chez GermanDistrib (stratégie: par_type) :
+	- 💰 Prix unitaire: 13.10€ | Total: 157.20€ | Budget restant: 27594.84€
+✅ Achat réussi !
+🎯 BrazilianTech achète 22 Carburant chez CanadaDistrib (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 5.89€ | Total: 129.58€ | Budget restant: 26455.90€
+✅ Achat réussi !
+🎯 CzechTech achète 2 Lunettes chez TaiwanImport (stratégie: par_type) :
+	- 💰 Prix unitaire: 14.93€ | Total: 29.86€ | Budget restant: 27564.98€
+✅ Achat réussi !
+[EVT] 20250908_111237_EVT_002 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='BrazilianTech', pays='Brésil', continent='Amérique du Sud', budget=33883.9, budget_initial=29581.04, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>], strategie='moins_cher', stocks={8: 65}), Entreprise(id=2, nom='SingaporeCorp', pays='Singapour', continent='Asie', budget=34523.46, budget_initial=18026.11, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>, <TypeProduit.produit_fini: 'produit_fini'>], strategie='par_type', stocks={2: 25}), Entreprise(id=3, nom='CzechTech', pays='République tchèque', continent='Europe', budget=27564.98, budget_initial=23278.6, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>], strategie='par_type', stocks={1: 17, 6: 12})] - BrazilianTech reçoit +7428€ (budget: 26455€ → 33883€)
+[EVT] 20250908_111237_EVT_002 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='BrazilianTech', pays='Brésil', continent='Amérique du Sud', budget=33883.9, budget_initial=29581.04, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>], strategie='moins_cher', stocks={8: 65}), Entreprise(id=2, nom='SingaporeCorp', pays='Singapour', continent='Asie', budget=34523.46, budget_initial=18026.11, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>, <TypeProduit.produit_fini: 'produit_fini'>], strategie='par_type', stocks={2: 25}), Entreprise(id=3, nom='CzechTech', pays='République tchèque', continent='Europe', budget=32758.98, budget_initial=23278.6, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>], strategie='par_type', stocks={1: 17, 6: 12})] - CzechTech reçoit +5194€ (budget: 27564€ → 32758€)
+[EVT] 20250908_111237_EVT_002 - evenements_tour: 📊 RECHARGE - 2 entreprises: BrazilianTech(+7428€), CzechTech(+5194€)
+[EVT] 20250908_111237_EVT_002 - evenements_tour: 📦 Tour 2 - REASSORT: Chaussure(+47), Catalyseur(+49), Boisson(+29), Carburant(+19) chez DanishSupply, TaiwanImport, CanadaDistrib
+🎯 IndonesianCorp achète 19 Inhibiteur chez BrazilianImport (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 5.30€ | Total: 100.70€ | Budget restant: 34288.24€
+✅ Achat réussi !
+🎯 NordicSolutions achète 23 Caoutchouc chez BrazilianImport (stratégie: par_type) :
+	- 💰 Prix unitaire: 12.31€ | Total: 283.13€ | Budget restant: 27417.44€
+✅ Achat réussi !
+🎯 AmericanInnovation achète 38 Inhibiteur chez BelgianSupply (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 5.47€ | Total: 207.86€ | Budget restant: 21868.54€
+✅ Achat réussi !
+[EVT] 20250908_111454_EVT_001 - evenements_tour: 📦 Tour 0 - RECHARGE PacificSupply: Tissu(+30), Solvant(+38), Colle(+21), Inhibiteur(+23), Granit(+21), Pigment(+17) (total: +150 unités)
+[EVT] 20250908_111454_EVT_001 - evenements_tour: 📊 RECHARGE STOCK - 1 fournisseurs: PacificSupply(+150) (total: +150 unités)
+🎯 AmericanInnovation achète 37 Inhibiteur chez BelgianSupply (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 5.47€ | Total: 202.39€ | Budget restant: 21666.15€
+✅ Achat réussi !
+🎯 IndonesianCorp achète 24 Inhibiteur chez BelgianSupply (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 5.47€ | Total: 131.28€ | Budget restant: 34156.96€
+✅ Achat réussi !
+🎯 NordicSolutions achète 32 Acier chez IndianImport (stratégie: par_type) :
+	- 💰 Prix unitaire: 19.35€ | Total: 619.20€ | Budget restant: 26798.24€
+✅ Achat réussi !
+[EVT] 20250908_111454_EVT_002 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='IndonesianCorp', pays='Indonésie', continent='Asie', budget=40720.96, budget_initial=19259.13, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>, <TypeProduit.matiere_premiere: 'matiere_premiere'>], strategie='moins_cher', stocks={8: 43}), Entreprise(id=2, nom='NordicSolutions', pays='Suède', continent='Europe', budget=26798.24, budget_initial=18218.84, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>, <TypeProduit.matiere_premiere: 'matiere_premiere'>], strategie='par_type', stocks={9: 23, 3: 32}), Entreprise(id=3, nom='AmericanInnovation', pays='États-Unis', continent='Amérique du Nord', budget=21666.15, budget_initial=26294.96, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>, <TypeProduit.produit_fini: 'produit_fini'>], strategie='moins_cher', stocks={8: 75})] - IndonesianCorp reçoit +6564€ (budget: 34156€ → 40720€)
+[EVT] 20250908_111454_EVT_002 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='IndonesianCorp', pays='Indonésie', continent='Asie', budget=40720.96, budget_initial=19259.13, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>, <TypeProduit.matiere_premiere: 'matiere_premiere'>], strategie='moins_cher', stocks={8: 43}), Entreprise(id=2, nom='NordicSolutions', pays='Suède', continent='Europe', budget=32853.240000000005, budget_initial=18218.84, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>, <TypeProduit.matiere_premiere: 'matiere_premiere'>], strategie='par_type', stocks={9: 23, 3: 32}), Entreprise(id=3, nom='AmericanInnovation', pays='États-Unis', continent='Amérique du Nord', budget=21666.15, budget_initial=26294.96, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>, <TypeProduit.produit_fini: 'produit_fini'>], strategie='moins_cher', stocks={8: 75})] - NordicSolutions reçoit +6055€ (budget: 26798€ → 32853€)
+[EVT] 20250908_111454_EVT_002 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='IndonesianCorp', pays='Indonésie', continent='Asie', budget=40720.96, budget_initial=19259.13, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>, <TypeProduit.matiere_premiere: 'matiere_premiere'>], strategie='moins_cher', stocks={8: 43}), Entreprise(id=2, nom='NordicSolutions', pays='Suède', continent='Europe', budget=32853.240000000005, budget_initial=18218.84, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>, <TypeProduit.matiere_premiere: 'matiere_premiere'>], strategie='par_type', stocks={9: 23, 3: 32}), Entreprise(id=3, nom='AmericanInnovation', pays='États-Unis', continent='Amérique du Nord', budget=28450.15, budget_initial=26294.96, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>, <TypeProduit.produit_fini: 'produit_fini'>], strategie='moins_cher', stocks={8: 75})] - AmericanInnovation reçoit +6784€ (budget: 21666€ → 28450€)
+[EVT] 20250908_111454_EVT_002 - evenements_tour: 📊 RECHARGE - 3 entreprises: IndonesianCorp(+6564€), NordicSolutions(+6055€), AmericanInnovation(+6784€)
+🎯 CanadianDesign achète 21 Instrument de musique chez ItalianSupply (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 4.83€ | Total: 101.43€ | Budget restant: 20900.58€
+✅ Achat réussi !
+🎯 NewZealandCorp achète 9 Plastifiant chez USSupply (stratégie: par_type) :
+	- 💰 Prix unitaire: 7.83€ | Total: 70.47€ | Budget restant: 19147.74€
+✅ Achat réussi !
+🎯 SingaporeCorp achète 40 Instrument de musique chez PolishDistrib (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 4.80€ | Total: 192.00€ | Budget restant: 23061.03€
+✅ Achat réussi !
+[EVT] 20250908_112241_EVT_001 - evenements_tour: 📦 Tour 0 - RECHARGE ItalianSupply: Laine(+26), Parfum(+32), Sac(+20), Instrument de musique(+47), Bois(+38) (total: +163 unités)
+[EVT] 20250908_112241_EVT_001 - evenements_tour: 📦 Tour 0 - RECHARGE NigerianImport: Aliment(+21), Sac(+46), Instrument de musique(+35) (total: +102 unités)
+[EVT] 20250908_112241_EVT_001 - evenements_tour: 📊 RECHARGE STOCK - 2 fournisseurs: ItalianSupply(+163), NigerianImport(+102) (total: +265 unités)
+🎯 CanadianDesign achète 25 Instrument de musique chez NigerianImport (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 4.84€ | Total: 121.00€ | Budget restant: 20779.58€
+✅ Achat réussi !
+🎯 NewZealandCorp achète 8 Plastifiant chez USSupply (stratégie: par_type) :
+	- 💰 Prix unitaire: 7.83€ | Total: 62.64€ | Budget restant: 19085.10€
+✅ Achat réussi !
+🎯 CanadianDesign achète 2 Instrument de musique chez PolishDistrib (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 4.80€ | Total: 9.60€ | Budget restant: 20769.98€
+✅ Achat réussi !
+🎯 NewZealandCorp achète 39 Plastifiant chez PhilippineSupply (stratégie: par_type) :
+	- 💰 Prix unitaire: 6.77€ | Total: 264.03€ | Budget restant: 18821.07€
+✅ Achat réussi !
+🎯 SingaporeCorp achète 39 Instrument de musique chez NigerianImport (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 4.84€ | Total: 188.76€ | Budget restant: 22872.27€
+✅ Achat réussi !
+[EVT] 20250908_112241_EVT_002 - evenements_tour: 📦 Tour 2 - REASSORT: Sac(+36), Instrument de musique(+25), Plastifiant(+15), Lunettes(+46), Pigment(+16) chez NigerianImport, PolishDistrib, PhilippineSupply
+🎯 MalaysianTech achète 22 Téléphone chez AsiaImport (stratégie: par_type) :
+	- 💰 Prix unitaire: 8.50€ | Total: 187.00€ | Budget restant: 24176.71€
+✅ Achat réussi !
+🎯 DutchInnovation achète 1 Téléphone chez AsiaImport (stratégie: par_type) :
+	- 💰 Prix unitaire: 8.50€ | Total: 8.50€ | Budget restant: 23508.42€
+✅ Achat réussi !
+[EVT] 20250908_113838_EVT_001 - evenements_tour: 📦 Tour 0 - REASSORT: Catalyseur(+44), Téléphone(+39), Cosmétique(+34), Lunettes(+29), Chaussure(+38), Sac(+42) chez DutchTrading, NigerianImport, PhilippineSupply, EuroSupply
+🎯 DutchInnovation achète 3 Cosmétique chez EuroSupply (stratégie: par_type) :
+	- 💰 Prix unitaire: 41.27€ | Total: 123.81€ | Budget restant: 23384.61€
+✅ Achat réussi !
+🎯 MalaysianTech achète 8 Téléphone chez AsiaImport (stratégie: par_type) :
+	- 💰 Prix unitaire: 8.50€ | Total: 68.00€ | Budget restant: 24108.71€
+✅ Achat réussi !
+🎯 ArgentineCorp achète 2 Téléphone chez EuroSupply (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 9.96€ | Total: 19.92€ | Budget restant: 25188.64€
+✅ Achat réussi !
+🎯 DutchInnovation achète 6 Chaussure chez NigerianImport (stratégie: par_type) :
+	- 💰 Prix unitaire: 11.98€ | Total: 71.88€ | Budget restant: 23312.73€
+✅ Achat réussi !
+[08/09/2025 11:38:40] (tick 2) [EVENT-INFLATION] 💰 Tour 2 - INFLATION Catégorie: 2 produits affectés (prix +39.3% à +43.1%)
+[EVT] 20250908_113838_EVT_002 - evenements_tour: 💰 Tour 2 - INFLATION Catégorie: 2 produits affectés (prix +39.3% à +43.1%)
+[EVT] 20250908_113838_EVT_002 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='MalaysianTech', pays='Malaisie', continent='Asie', budget=24108.71, budget_initial=18755.89, types_preferes=[<TypeProduit.consommable: 'consommable'>, <TypeProduit.produit_fini: 'produit_fini'>], strategie='par_type', stocks={3: 30}), Entreprise(id=2, nom='ArgentineCorp', pays='Argentine', continent='Amérique du Sud', budget=32362.64, budget_initial=33155.61, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>, <TypeProduit.consommable: 'consommable'>], strategie='moins_cher', stocks={3: 2}), Entreprise(id=3, nom='DutchInnovation', pays='Pays-Bas', continent='Europe', budget=23312.73, budget_initial=34531.37, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>, <TypeProduit.produit_fini: 'produit_fini'>], strategie='par_type', stocks={3: 1, 4: 3, 7: 6})] - ArgentineCorp reçoit +7174€ (budget: 25188€ → 32362€)
+[EVT] 20250908_113838_EVT_002 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='MalaysianTech', pays='Malaisie', continent='Asie', budget=24108.71, budget_initial=18755.89, types_preferes=[<TypeProduit.consommable: 'consommable'>, <TypeProduit.produit_fini: 'produit_fini'>], strategie='par_type', stocks={3: 30}), Entreprise(id=2, nom='ArgentineCorp', pays='Argentine', continent='Amérique du Sud', budget=32362.64, budget_initial=33155.61, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>, <TypeProduit.consommable: 'consommable'>], strategie='moins_cher', stocks={3: 2}), Entreprise(id=3, nom='DutchInnovation', pays='Pays-Bas', continent='Europe', budget=30970.73, budget_initial=34531.37, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>, <TypeProduit.produit_fini: 'produit_fini'>], strategie='par_type', stocks={3: 1, 4: 3, 7: 6})] - DutchInnovation reçoit +7658€ (budget: 23312€ → 30970€)
+[EVT] 20250908_113838_EVT_002 - evenements_tour: 📊 RECHARGE - 2 entreprises: ArgentineCorp(+7174€), DutchInnovation(+7658€)
+[EVT] 20250908_113838_EVT_002 - evenements_tour: 📦 Tour 2 - REASSORT: Catalyseur(+43), Aliment(+43), Téléphone(+37), Lunettes(+36), Chaussure(+12), Sac(+16) chez DutchTrading, AsiaImport, PhilippineSupply, NigerianImport
+🎯 MalaysianTech achète 35 Sac chez PhilippineSupply (stratégie: par_type) :
+	- 💰 Prix unitaire: 44.34€ | Total: 1551.90€ | Budget restant: 22556.81€
+✅ Achat réussi !
+🎯 ArgentineCorp achète 3 Téléphone chez EuroSupply (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 9.96€ | Total: 29.88€ | Budget restant: 32332.76€
+✅ Achat réussi !
+🎯 DutchInnovation achète 26 Cosmétique chez EuroSupply (stratégie: par_type) :
+	- 💰 Prix unitaire: 41.27€ | Total: 1073.02€ | Budget restant: 29897.71€
+✅ Achat réussi !
+🎯 MalaysianTech achète 5 Cosmétique chez EuroSupply (stratégie: par_type) :
+	- 💰 Prix unitaire: 41.27€ | Total: 206.35€ | Budget restant: 22350.46€
+✅ Achat réussi !
+🎯 ArgentineCorp achète 32 Téléphone chez NigerianImport (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 10.26€ | Total: 328.32€ | Budget restant: 32004.44€
+✅ Achat réussi !
+[EVT] 20250908_113838_EVT_003 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='MalaysianTech', pays='Malaisie', continent='Asie', budget=27045.46, budget_initial=18755.89, types_preferes=[<TypeProduit.consommable: 'consommable'>, <TypeProduit.produit_fini: 'produit_fini'>], strategie='par_type', stocks={3: 30, 8: 35, 4: 5}), Entreprise(id=2, nom='ArgentineCorp', pays='Argentine', continent='Amérique du Sud', budget=32004.44, budget_initial=33155.61, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>, <TypeProduit.consommable: 'consommable'>], strategie='moins_cher', stocks={3: 37}), Entreprise(id=3, nom='DutchInnovation', pays='Pays-Bas', continent='Europe', budget=29897.71, budget_initial=34531.37, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>, <TypeProduit.produit_fini: 'produit_fini'>], strategie='par_type', stocks={3: 1, 4: 29, 7: 6})] - MalaysianTech reçoit +4695€ (budget: 22350€ → 27045€)
+[EVT] 20250908_113838_EVT_003 - evenements_tour: 📊 RECHARGE - 1 entreprises: MalaysianTech(+4695€)
+[EVT] 20250908_113838_EVT_003 - evenements_tour: 🔄 Tour 4 - DISPONIBILITÉ: Téléphone désactivé, Eau réactivé
+🎯 MalaysianTech achète 30 Aliment chez NigerianImport (stratégie: par_type) :
+	- 💰 Prix unitaire: 17.14€ | Total: 514.20€ | Budget restant: 26531.26€
+✅ Achat réussi !
+🎯 ArgentineCorp achète 34 Aliment chez DutchTrading (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 15.41€ | Total: 523.94€ | Budget restant: 31480.50€
+✅ Achat réussi !
+🎯 DutchInnovation achète 16 Chaussure chez EuroSupply (stratégie: par_type) :
+	- 💰 Prix unitaire: 24.28€ | Total: 388.48€ | Budget restant: 29509.23€
+✅ Achat réussi !
+🎯 MalaysianTech achète 34 Antioxydant chez NigerianImport (stratégie: par_type) :
+	- 💰 Prix unitaire: 19.70€ | Total: 669.80€ | Budget restant: 25861.46€
+✅ Achat réussi !
+🎯 ArgentineCorp achète 26 Aliment chez NigerianImport (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 17.14€ | Total: 445.64€ | Budget restant: 31034.86€
+✅ Achat réussi !
+🎯 MalaysianTech achète 18 Sac chez DutchTrading (stratégie: par_type) :
+	- 💰 Prix unitaire: 47.95€ | Total: 863.10€ | Budget restant: 24998.36€
+✅ Achat réussi !
+🎯 ArgentineCorp achète 16 Aliment chez DutchTrading (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 15.41€ | Total: 246.56€ | Budget restant: 30788.30€
+✅ Achat réussi !
+🎯 ArgentineCorp achète 5 Aliment chez NigerianImport (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 17.14€ | Total: 85.70€ | Budget restant: 30702.60€
+✅ Achat réussi !
+[EVT] 20250908_113838_EVT_004 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='MalaysianTech', pays='Malaisie', continent='Asie', budget=24998.36, budget_initial=18755.89, types_preferes=[<TypeProduit.consommable: 'consommable'>, <TypeProduit.produit_fini: 'produit_fini'>], strategie='par_type', stocks={3: 30, 8: 53, 4: 5, 2: 30, 5: 34}), Entreprise(id=2, nom='ArgentineCorp', pays='Argentine', continent='Amérique du Sud', budget=30702.6, budget_initial=33155.61, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>, <TypeProduit.consommable: 'consommable'>], strategie='moins_cher', stocks={3: 37, 2: 81}), Entreprise(id=3, nom='DutchInnovation', pays='Pays-Bas', continent='Europe', budget=35100.229999999996, budget_initial=34531.37, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>, <TypeProduit.produit_fini: 'produit_fini'>], strategie='par_type', stocks={3: 1, 4: 29, 7: 22})] - DutchInnovation reçoit +5591€ (budget: 29509€ → 35100€)
+[EVT] 20250908_113838_EVT_004 - evenements_tour: 📊 RECHARGE - 1 entreprises: DutchInnovation(+5591€)
+[EVT] 20250908_113838_EVT_004 - evenements_tour: 📦 Tour 8 - REASSORT: Aliment(+44), Lunettes(+21) chez AsiaImport, EuroSupply
+🎯 MalaysianTech achète 12 Eau chez PhilippineSupply (stratégie: par_type) :
+	- 💰 Prix unitaire: 40.12€ | Total: 481.44€ | Budget restant: 24516.92€
+✅ Achat réussi !
+🎯 ArgentineCorp achète 8 Aliment chez DutchTrading (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 15.41€ | Total: 123.28€ | Budget restant: 30579.32€
+✅ Achat réussi !
+🎯 DutchInnovation achète 25 Lunettes chez PhilippineSupply (stratégie: par_type) :
+	- 💰 Prix unitaire: 28.19€ | Total: 704.75€ | Budget restant: 34395.48€
+✅ Achat réussi !
+🎯 IndianTech achète 6 Catalyseur chez TaiwanImport (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 5.78€ | Total: 34.68€ | Budget restant: 64432.63€
+✅ Achat réussi !
+🎯 ColombianCorp achète 3 Vêtement chez ArgentineSupply (stratégie: par_type) :
+	- 💰 Prix unitaire: 29.64€ | Total: 88.92€ | Budget restant: 61108.54€
+✅ Achat réussi !
+[08/09/2025 11:39:57] (tick 0) [EVENT-INFLATION] 💰 Tour 0 - INFLATION Catégorie: 3 produits affectés (prix +19.1% à +37.7%)
+[EVT] 20250908_113957_EVT_001 - evenements_tour: 💰 Tour 0 - INFLATION Catégorie: 3 produits affectés (prix +19.1% à +37.7%)
+[EVT] 20250908_113957_EVT_001 - evenements_tour: 📦 Tour 0 - REASSORT: Peinture(+35), Vêtement(+21), Verre(+46) chez TaiwanImport, AsiaImport, ItalianSupply
+🎯 IndianTech achète 4 Catalyseur chez ArgentineSupply (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 12.70€ | Total: 50.80€ | Budget restant: 64381.83€
+✅ Achat réussi !
+🎯 ColombianCorp achète 2 Vêtement chez AsiaImport (stratégie: par_type) :
+	- 💰 Prix unitaire: 26.25€ | Total: 52.50€ | Budget restant: 61056.04€
+✅ Achat réussi !
+🎯 IndianTech achète 1 Catalyseur chez TaiwanImport (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 10.09€ | Total: 10.09€ | Budget restant: 64371.74€
+✅ Achat réussi !
+🎯 ColombianCorp achète 10 Meuble chez ItalianSupply (stratégie: par_type) :
+	- 💰 Prix unitaire: 26.33€ | Total: 263.30€ | Budget restant: 60792.74€
+✅ Achat réussi !
+🎯 ChileanTech achète 8 Meuble chez ArgentineSupply (stratégie: par_type) :
+	- 💰 Prix unitaire: 30.16€ | Total: 241.28€ | Budget restant: 69179.58€
+✅ Achat réussi !
+[EVT] 20250908_113957_EVT_002 - evenements_tour: 📦 Tour 2 - REASSORT: Sable(+46) chez TaiwanImport
+🎯 IndianTech achète 6 Catalyseur chez TaiwanImport (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 10.09€ | Total: 60.54€ | Budget restant: 64311.20€
+✅ Achat réussi !
+🎯 ColombianCorp achète 2 Cosmétique chez ArgentineSupply (stratégie: par_type) :
+	- 💰 Prix unitaire: 31.62€ | Total: 63.24€ | Budget restant: 60729.50€
+✅ Achat réussi !
+🎯 ChileanTech achète 4 Cosmétique chez ArgentineSupply (stratégie: par_type) :
+	- 💰 Prix unitaire: 31.62€ | Total: 126.48€ | Budget restant: 69053.10€
+✅ Achat réussi !
+🎯 IndianTech achète 8 Catalyseur chez ArgentineSupply (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 12.70€ | Total: 101.60€ | Budget restant: 64209.60€
+✅ Achat réussi !
+🎯 ColombianCorp achète 6 Vêtement chez ArgentineSupply (stratégie: par_type) :
+	- 💰 Prix unitaire: 29.64€ | Total: 177.84€ | Budget restant: 60551.66€
+✅ Achat réussi !
+🎯 ChileanTech achète 6 Cosmétique chez ArgentineSupply (stratégie: par_type) :
+	- 💰 Prix unitaire: 31.62€ | Total: 189.72€ | Budget restant: 68863.38€
+✅ Achat réussi !
+[EVT] 20250908_113957_EVT_003 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='IndianTech', pays='Inde', continent='Asie', budget=69066.6, budget_initial=88885.26, types_preferes=[<TypeProduit.consommable: 'consommable'>, <TypeProduit.produit_fini: 'produit_fini'>], strategie='moins_cher', stocks={3: 25}), Entreprise(id=2, nom='ColombianCorp', pays='Colombie', continent='Amérique du Sud', budget=60551.66, budget_initial=84197.91, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>], strategie='par_type', stocks={5: 11, 12: 10, 2: 2}), Entreprise(id=3, nom='ChileanTech', pays='Chili', continent='Amérique du Sud', budget=68863.38, budget_initial=85947.52, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>], strategie='par_type', stocks={12: 8, 2: 10})] - IndianTech reçoit +4857€ (budget: 64209€ → 69066€)
+[EVT] 20250908_113957_EVT_003 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='IndianTech', pays='Inde', continent='Asie', budget=69066.6, budget_initial=88885.26, types_preferes=[<TypeProduit.consommable: 'consommable'>, <TypeProduit.produit_fini: 'produit_fini'>], strategie='moins_cher', stocks={3: 25}), Entreprise(id=2, nom='ColombianCorp', pays='Colombie', continent='Amérique du Sud', budget=65891.66, budget_initial=84197.91, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>], strategie='par_type', stocks={5: 11, 12: 10, 2: 2}), Entreprise(id=3, nom='ChileanTech', pays='Chili', continent='Amérique du Sud', budget=68863.38, budget_initial=85947.52, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>], strategie='par_type', stocks={12: 8, 2: 10})] - ColombianCorp reçoit +5340€ (budget: 60551€ → 65891€)
+[EVT] 20250908_113957_EVT_003 - evenements_tour: 📊 RECHARGE - 2 entreprises: IndianTech(+4857€), ColombianCorp(+5340€)
+[EVT] 20250908_113957_EVT_003 - evenements_tour: 🔄 Tour 4 - DISPONIBILITÉ: Métal, Marbre désactivé, Métal réactivé
+🎯 PhilippineCorp achète 9 Coton chez AmericanTools (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 11.71€ | Total: 105.39€ | Budget restant: 95099.40€
+✅ Achat réussi !
+🎯 AlpineCorp achète 6 Coton chez AmericanTools (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 11.71€ | Total: 70.26€ | Budget restant: 67982.40€
+✅ Achat réussi !
+[EVT] 20250908_114018_EVT_001 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='PhilippineCorp', pays='Philippines', continent='Asie', budget=99324.4, budget_initial=65579.93, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>], strategie='moins_cher', stocks={6: 9}), Entreprise(id=2, nom='MoroccanCorp', pays='Maroc', continent='Afrique', budget=83000.39, budget_initial=55940.37, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>], strategie='moins_cher', stocks={}), Entreprise(id=3, nom='AlpineCorp', pays='Suisse', continent='Europe', budget=67982.4, budget_initial=81983.58, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>], strategie='moins_cher', stocks={6: 6})] - PhilippineCorp reçoit +4225€ (budget: 95099€ → 99324€)
+[EVT] 20250908_114018_EVT_001 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='PhilippineCorp', pays='Philippines', continent='Asie', budget=99324.4, budget_initial=65579.93, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>], strategie='moins_cher', stocks={6: 9}), Entreprise(id=2, nom='MoroccanCorp', pays='Maroc', continent='Afrique', budget=90342.39, budget_initial=55940.37, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>], strategie='moins_cher', stocks={}), Entreprise(id=3, nom='AlpineCorp', pays='Suisse', continent='Europe', budget=67982.4, budget_initial=81983.58, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>], strategie='moins_cher', stocks={6: 6})] - MoroccanCorp reçoit +7342€ (budget: 83000€ → 90342€)
+[EVT] 20250908_114018_EVT_001 - evenements_tour: 📊 RECHARGE - 2 entreprises: PhilippineCorp(+4225€), MoroccanCorp(+7342€)
+[EVT] 20250908_114018_EVT_001 - evenements_tour: 📦 Tour 0 - REASSORT: Colle(+44), Soie(+50), Coton(+23), Vernis(+12), Bijou(+35) chez MalaysianSupply, ArgentineSupply, BelgianSupply
+🎯 PhilippineCorp achète 2 Coton chez MalaysianSupply (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 13.24€ | Total: 26.48€ | Budget restant: 99297.92€
+✅ Achat réussi !
+🎯 MoroccanCorp achète 7 Coton chez AmericanTools (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 11.71€ | Total: 81.97€ | Budget restant: 90260.42€
+✅ Achat réussi !
+🎯 PhilippineCorp achète 9 Coton chez AmericanTools (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 11.71€ | Total: 105.39€ | Budget restant: 99192.53€
+✅ Achat réussi !
+🎯 MoroccanCorp achète 6 Coton chez AmericanTools (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 11.71€ | Total: 70.26€ | Budget restant: 90190.16€
+✅ Achat réussi !
+🎯 AlpineCorp achète 5 Coton chez AmericanTools (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 11.71€ | Total: 58.55€ | Budget restant: 67923.85€
+✅ Achat réussi !
+[EVT] 20250908_114018_EVT_002 - evenements_tour: 📦 Tour 2 - REASSORT: Inhibiteur(+38), Coton(+44), Caoutchouc(+47) chez AmericanTools, BelgianSupply
+🎯 PhilippineCorp achète 6 Coton chez MalaysianSupply (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 13.24€ | Total: 79.44€ | Budget restant: 99113.09€
+✅ Achat réussi !
+🎯 MoroccanCorp achète 8 Coton chez BelgianSupply (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 13.13€ | Total: 105.04€ | Budget restant: 90085.12€
+✅ Achat réussi !
+🎯 PhilippineCorp achète 5 Coton chez AmericanTools (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 11.71€ | Total: 58.55€ | Budget restant: 99054.54€
+✅ Achat réussi !
+🎯 MoroccanCorp achète 6 Coton chez MalaysianSupply (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 13.24€ | Total: 79.44€ | Budget restant: 90005.68€
+✅ Achat réussi !
+🎯 AlpineCorp achète 10 Coton chez AmericanTools (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 11.71€ | Total: 117.10€ | Budget restant: 67806.75€
+✅ Achat réussi !
+[EVT] 20250908_114018_EVT_003 - evenements_tour: 🔄 Tour 4 - DISPONIBILITÉ: Antioxydant, Bijou désactivé, Bijou réactivé
+🎯 MediterraneanTech achète 8 Caoutchouc chez SouthAfricanImport (stratégie: par_type) :
+	- 💰 Prix unitaire: 9.42€ | Total: 75.36€ | Budget restant: 50332.44€
+✅ Achat réussi !
+🎯 VietnameseCorp achète 5 Caoutchouc chez MoroccanDistrib (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 8.89€ | Total: 44.45€ | Budget restant: 57001.00€
+✅ Achat réussi !
+🎯 BelgianTech achète 10 Caoutchouc chez NewZealandSupply (stratégie: par_type) :
+	- 💰 Prix unitaire: 9.08€ | Total: 90.80€ | Budget restant: 51301.38€
+✅ Achat réussi !
+[EVT] 20250908_114314_EVT_001 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='MediterraneanTech', pays='Espagne', continent='Europe', budget=50332.44, budget_initial=79405.54, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>], strategie='par_type', stocks={6: 8}), Entreprise(id=2, nom='VietnameseCorp', pays='Vietnam', continent='Asie', budget=57001.0, budget_initial=92522.78, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>], strategie='moins_cher', stocks={6: 5}), Entreprise(id=3, nom='BelgianTech', pays='Belgique', continent='Europe', budget=57441.38, budget_initial=86881.7, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>], strategie='par_type', stocks={6: 10})] - BelgianTech reçoit +6140€ (budget: 51301€ → 57441€)
+[EVT] 20250908_114314_EVT_001 - evenements_tour: 📊 RECHARGE - 1 entreprises: BelgianTech(+6140€)
+🎯 MediterraneanTech achète 3 Caoutchouc chez SouthAfricanImport (stratégie: par_type) :
+	- 💰 Prix unitaire: 9.42€ | Total: 28.26€ | Budget restant: 50304.18€
+✅ Achat réussi !
+🎯 MediterraneanTech achète 9 Caoutchouc chez MoroccanDistrib (stratégie: par_type) :
+	- 💰 Prix unitaire: 8.89€ | Total: 80.01€ | Budget restant: 50224.17€
+✅ Achat réussi !
+🎯 VietnameseCorp achète 8 Caoutchouc chez SouthAfricanImport (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 9.42€ | Total: 75.36€ | Budget restant: 56925.64€
+✅ Achat réussi !
+🎯 BelgianTech achète 2 Caoutchouc chez MoroccanDistrib (stratégie: par_type) :
+	- 💰 Prix unitaire: 8.89€ | Total: 17.78€ | Budget restant: 57423.60€
+✅ Achat réussi !
+🎯 MediterraneanTech achète 7 Caoutchouc chez MoroccanDistrib (stratégie: par_type) :
+	- 💰 Prix unitaire: 8.89€ | Total: 62.23€ | Budget restant: 50161.94€
+✅ Achat réussi !
+🎯 VietnameseCorp achète 3 Caoutchouc chez SouthAfricanImport (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 9.42€ | Total: 28.26€ | Budget restant: 56897.38€
+✅ Achat réussi !
+🎯 MediterraneanTech achète 5 Caoutchouc chez SouthAfricanImport (stratégie: par_type) :
+	- 💰 Prix unitaire: 9.42€ | Total: 47.10€ | Budget restant: 50114.84€
+✅ Achat réussi !
+🎯 VietnameseCorp achète 8 Caoutchouc chez NewZealandSupply (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 9.08€ | Total: 72.64€ | Budget restant: 56824.74€
+✅ Achat réussi !
+🎯 BelgianTech achète 1 Caoutchouc chez MoroccanDistrib (stratégie: par_type) :
+	- 💰 Prix unitaire: 8.89€ | Total: 8.89€ | Budget restant: 57414.71€
+✅ Achat réussi !
+[EVT] 20250908_114314_EVT_002 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='MediterraneanTech', pays='Espagne', continent='Europe', budget=55732.84, budget_initial=79405.54, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>], strategie='par_type', stocks={6: 32}), Entreprise(id=2, nom='VietnameseCorp', pays='Vietnam', continent='Asie', budget=56824.74, budget_initial=92522.78, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>], strategie='moins_cher', stocks={6: 24}), Entreprise(id=3, nom='BelgianTech', pays='Belgique', continent='Europe', budget=57414.71, budget_initial=86881.7, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>], strategie='par_type', stocks={6: 13})] - MediterraneanTech reçoit +5618€ (budget: 50114€ → 55732€)
+[EVT] 20250908_114314_EVT_002 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='MediterraneanTech', pays='Espagne', continent='Europe', budget=55732.84, budget_initial=79405.54, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>], strategie='par_type', stocks={6: 32}), Entreprise(id=2, nom='VietnameseCorp', pays='Vietnam', continent='Asie', budget=61259.74, budget_initial=92522.78, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>], strategie='moins_cher', stocks={6: 24}), Entreprise(id=3, nom='BelgianTech', pays='Belgique', continent='Europe', budget=57414.71, budget_initial=86881.7, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>], strategie='par_type', stocks={6: 13})] - VietnameseCorp reçoit +4435€ (budget: 56824€ → 61259€)
+[EVT] 20250908_114314_EVT_002 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='MediterraneanTech', pays='Espagne', continent='Europe', budget=55732.84, budget_initial=79405.54, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>], strategie='par_type', stocks={6: 32}), Entreprise(id=2, nom='VietnameseCorp', pays='Vietnam', continent='Asie', budget=61259.74, budget_initial=92522.78, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>], strategie='moins_cher', stocks={6: 24}), Entreprise(id=3, nom='BelgianTech', pays='Belgique', continent='Europe', budget=61986.71, budget_initial=86881.7, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>], strategie='par_type', stocks={6: 13})] - BelgianTech reçoit +4572€ (budget: 57414€ → 61986€)
+[EVT] 20250908_114314_EVT_002 - evenements_tour: 📊 RECHARGE - 3 entreprises: MediterraneanTech(+5618€), VietnameseCorp(+4435€), BelgianTech(+4572€)
+[EVT] 20250908_114314_EVT_002 - evenements_tour: 📦 Tour 4 - REASSORT: Aliment(+25), Cosmétique(+21), Produits chimiques(+31) chez ChileanDistrib, MoroccanDistrib, SwissPrecision
+[EVT] 20250908_114314_EVT_002 - evenements_tour: 🔄 Tour 4 - DISPONIBILITÉ: Cosmétique, Chaussure désactivé, Chaussure réactivé
+🎯 AustrianTech achète 10 Cuivre chez ColombianImport (stratégie: par_type) :
+	- 💰 Prix unitaire: 12.23€ | Total: 122.30€ | Budget restant: 52499.61€
+✅ Achat réussi !
+🎯 MexicanCorp achète 2 Argile chez SouthAfricanImport (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 5.95€ | Total: 11.90€ | Budget restant: 58678.98€
+✅ Achat réussi !
+[08/09/2025 11:46:36] (tick 0) [EVENT-INFLATION] 💰 Tour 0 - INFLATION matiere_premiere: 9 produits affectés (prix +15.1% à +57.2%)
+[EVT] 20250908_114636_EVT_001 - evenements_tour: 💰 Tour 0 - INFLATION matiere_premiere: 9 produits affectés (prix +15.1% à +57.2%)
+[EVT] 20250908_114636_EVT_001 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='AustrianTech', pays='Autriche', continent='Europe', budget=56659.61, budget_initial=70089.51, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>, <TypeProduit.produit_fini: 'produit_fini'>], strategie='par_type', stocks={6: 10}), Entreprise(id=2, nom='DutchInnovation', pays='Pays-Bas', continent='Europe', budget=77787.34, budget_initial=75668.38, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>], strategie='moins_cher', stocks={}), Entreprise(id=3, nom='MexicanCorp', pays='Mexique', continent='Amérique du Nord', budget=58678.98, budget_initial=50139.27, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>, <TypeProduit.consommable: 'consommable'>], strategie='moins_cher', stocks={7: 2})] - AustrianTech reçoit +4160€ (budget: 52499€ → 56659€)
+[EVT] 20250908_114636_EVT_001 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='AustrianTech', pays='Autriche', continent='Europe', budget=56659.61, budget_initial=70089.51, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>, <TypeProduit.produit_fini: 'produit_fini'>], strategie='par_type', stocks={6: 10}), Entreprise(id=2, nom='DutchInnovation', pays='Pays-Bas', continent='Europe', budget=82416.34, budget_initial=75668.38, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>], strategie='moins_cher', stocks={}), Entreprise(id=3, nom='MexicanCorp', pays='Mexique', continent='Amérique du Nord', budget=58678.98, budget_initial=50139.27, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>, <TypeProduit.consommable: 'consommable'>], strategie='moins_cher', stocks={7: 2})] - DutchInnovation reçoit +4629€ (budget: 77787€ → 82416€)
+[EVT] 20250908_114636_EVT_001 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='AustrianTech', pays='Autriche', continent='Europe', budget=56659.61, budget_initial=70089.51, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>, <TypeProduit.produit_fini: 'produit_fini'>], strategie='par_type', stocks={6: 10}), Entreprise(id=2, nom='DutchInnovation', pays='Pays-Bas', continent='Europe', budget=82416.34, budget_initial=75668.38, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>], strategie='moins_cher', stocks={}), Entreprise(id=3, nom='MexicanCorp', pays='Mexique', continent='Amérique du Nord', budget=65180.98, budget_initial=50139.27, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>, <TypeProduit.consommable: 'consommable'>], strategie='moins_cher', stocks={7: 2})] - MexicanCorp reçoit +6502€ (budget: 58678€ → 65180€)
+[EVT] 20250908_114636_EVT_001 - evenements_tour: 📊 RECHARGE - 3 entreprises: AustrianTech(+4160€), DutchInnovation(+4629€), MexicanCorp(+6502€)
+[EVT] 20250908_114636_EVT_001 - evenements_tour: 🔄 Tour 0 - DISPONIBILITÉ: Tissu désactivé, Tissu réactivé
+🎯 AustrianTech achète 3 Téléphone chez FinnishDistrib (stratégie: par_type) :
+	- 💰 Prix unitaire: 9.49€ | Total: 28.47€ | Budget restant: 56631.14€
+✅ Achat réussi !
+🎯 DutchInnovation achète 1 Téléphone chez MexicanImport (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 8.89€ | Total: 8.89€ | Budget restant: 82407.45€
+✅ Achat réussi !
+🎯 MexicanCorp achète 7 Téléphone chez MexicanImport (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 8.89€ | Total: 62.23€ | Budget restant: 65118.75€
+✅ Achat réussi !
+🎯 AustrianTech achète 5 Tissu chez ColombianImport (stratégie: par_type) :
+	- 💰 Prix unitaire: 19.39€ | Total: 96.95€ | Budget restant: 56534.19€
+✅ Achat réussi !
+🎯 DutchInnovation achète 6 Téléphone chez MexicanImport (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 8.89€ | Total: 53.34€ | Budget restant: 82354.11€
+✅ Achat réussi !
+[EVT] 20250908_114636_EVT_002 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='AustrianTech', pays='Autriche', continent='Europe', budget=56534.19, budget_initial=70089.51, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>, <TypeProduit.produit_fini: 'produit_fini'>], strategie='par_type', stocks={6: 10, 3: 3, 9: 5}), Entreprise(id=2, nom='DutchInnovation', pays='Pays-Bas', continent='Europe', budget=87455.11, budget_initial=75668.38, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>], strategie='moins_cher', stocks={3: 7}), Entreprise(id=3, nom='MexicanCorp', pays='Mexique', continent='Amérique du Nord', budget=65118.75, budget_initial=50139.27, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>, <TypeProduit.consommable: 'consommable'>], strategie='moins_cher', stocks={7: 2, 3: 7})] - DutchInnovation reçoit +5101€ (budget: 82354€ → 87455€)
+[EVT] 20250908_114636_EVT_002 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='AustrianTech', pays='Autriche', continent='Europe', budget=56534.19, budget_initial=70089.51, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>, <TypeProduit.produit_fini: 'produit_fini'>], strategie='par_type', stocks={6: 10, 3: 3, 9: 5}), Entreprise(id=2, nom='DutchInnovation', pays='Pays-Bas', continent='Europe', budget=87455.11, budget_initial=75668.38, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>], strategie='moins_cher', stocks={3: 7}), Entreprise(id=3, nom='MexicanCorp', pays='Mexique', continent='Amérique du Nord', budget=69441.75, budget_initial=50139.27, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>, <TypeProduit.consommable: 'consommable'>], strategie='moins_cher', stocks={7: 2, 3: 7})] - MexicanCorp reçoit +4323€ (budget: 65118€ → 69441€)
+[EVT] 20250908_114636_EVT_002 - evenements_tour: 📊 RECHARGE - 2 entreprises: DutchInnovation(+5101€), MexicanCorp(+4323€)
+🎯 AustrianTech achète 2 Tissu chez SouthAfricanImport (stratégie: par_type) :
+	- 💰 Prix unitaire: 15.87€ | Total: 31.74€ | Budget restant: 56502.45€
+✅ Achat réussi !
+🎯 DutchInnovation achète 9 Téléphone chez FinnishDistrib (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 9.49€ | Total: 85.41€ | Budget restant: 87369.70€
+✅ Achat réussi !
+🎯 MexicanCorp achète 9 Téléphone chez MexicanImport (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 8.89€ | Total: 80.01€ | Budget restant: 69361.74€
+✅ Achat réussi !
+🎯 AustrianTech achète 9 Verre chez NewZealandSupply (stratégie: par_type) :
+	- 💰 Prix unitaire: 38.18€ | Total: 343.62€ | Budget restant: 56158.83€
+✅ Achat réussi !
+🎯 DutchInnovation achète 1 Téléphone chez FinnishDistrib (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 9.49€ | Total: 9.49€ | Budget restant: 87360.21€
+✅ Achat réussi !
+🎯 MexicanCorp achète 2 Téléphone chez MexicanImport (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 8.89€ | Total: 17.78€ | Budget restant: 69343.96€
+✅ Achat réussi !
+[EVT] 20250908_114636_EVT_003 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='AustrianTech', pays='Autriche', continent='Europe', budget=60512.83, budget_initial=70089.51, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>, <TypeProduit.produit_fini: 'produit_fini'>], strategie='par_type', stocks={6: 10, 3: 3, 9: 7, 1: 9}), Entreprise(id=2, nom='DutchInnovation', pays='Pays-Bas', continent='Europe', budget=87360.21, budget_initial=75668.38, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>], strategie='moins_cher', stocks={3: 17}), Entreprise(id=3, nom='MexicanCorp', pays='Mexique', continent='Amérique du Nord', budget=69343.96, budget_initial=50139.27, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>, <TypeProduit.consommable: 'consommable'>], strategie='moins_cher', stocks={7: 2, 3: 18})] - AustrianTech reçoit +4354€ (budget: 56158€ → 60512€)
+[EVT] 20250908_114636_EVT_003 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='AustrianTech', pays='Autriche', continent='Europe', budget=60512.83, budget_initial=70089.51, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>, <TypeProduit.produit_fini: 'produit_fini'>], strategie='par_type', stocks={6: 10, 3: 3, 9: 7, 1: 9}), Entreprise(id=2, nom='DutchInnovation', pays='Pays-Bas', continent='Europe', budget=93547.21, budget_initial=75668.38, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>], strategie='moins_cher', stocks={3: 17}), Entreprise(id=3, nom='MexicanCorp', pays='Mexique', continent='Amérique du Nord', budget=69343.96, budget_initial=50139.27, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>, <TypeProduit.consommable: 'consommable'>], strategie='moins_cher', stocks={7: 2, 3: 18})] - DutchInnovation reçoit +6187€ (budget: 87360€ → 93547€)
+[EVT] 20250908_114636_EVT_003 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='AustrianTech', pays='Autriche', continent='Europe', budget=60512.83, budget_initial=70089.51, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>, <TypeProduit.produit_fini: 'produit_fini'>], strategie='par_type', stocks={6: 10, 3: 3, 9: 7, 1: 9}), Entreprise(id=2, nom='DutchInnovation', pays='Pays-Bas', continent='Europe', budget=93547.21, budget_initial=75668.38, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>], strategie='moins_cher', stocks={3: 17}), Entreprise(id=3, nom='MexicanCorp', pays='Mexique', continent='Amérique du Nord', budget=74617.96, budget_initial=50139.27, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>, <TypeProduit.consommable: 'consommable'>], strategie='moins_cher', stocks={7: 2, 3: 18})] - MexicanCorp reçoit +5274€ (budget: 69343€ → 74617€)
+[EVT] 20250908_114636_EVT_003 - evenements_tour: 📊 RECHARGE - 3 entreprises: AustrianTech(+4354€), DutchInnovation(+6187€), MexicanCorp(+5274€)
+[EVT] 20250908_114636_EVT_003 - evenements_tour: 📦 Tour 4 - REASSORT: Appareil électroménager(+49), Inhibiteur(+36), Cuivre(+40), Livre(+40), Tissu(+30) chez NewZealandSupply, SouthAfricanImport, ColombianImport
+🎯 AustrianTech achète 7 Livre chez ColombianImport (stratégie: par_type) :
+	- 💰 Prix unitaire: 45.61€ | Total: 319.27€ | Budget restant: 60193.56€
+✅ Achat réussi !
+🎯 DutchInnovation achète 6 Téléphone chez MexicanImport (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 8.89€ | Total: 53.34€ | Budget restant: 93493.87€
+✅ Achat réussi !
+🎯 MexicanCorp achète 3 Téléphone chez FinnishDistrib (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 9.49€ | Total: 28.47€ | Budget restant: 74589.49€
+✅ Achat réussi !
+🎯 MexicanCorp achète 6 Téléphone chez MexicanImport (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 8.89€ | Total: 53.34€ | Budget restant: 74536.15€
+✅ Achat réussi !
+🎯 AustrianTech achète 7 Tissu chez ColombianImport (stratégie: par_type) :
+	- 💰 Prix unitaire: 19.39€ | Total: 135.73€ | Budget restant: 60057.83€
+✅ Achat réussi !
+🎯 DutchInnovation achète 8 Téléphone chez FinnishDistrib (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 9.49€ | Total: 75.92€ | Budget restant: 93417.95€
+✅ Achat réussi !
+🎯 MexicanCorp achète 1 Téléphone chez MexicanImport (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 8.89€ | Total: 8.89€ | Budget restant: 74527.26€
+✅ Achat réussi !
+🎯 AustrianTech achète 2 Appareil électroménager chez SouthAfricanImport (stratégie: par_type) :
+	- 💰 Prix unitaire: 40.56€ | Total: 81.12€ | Budget restant: 59976.71€
+✅ Achat réussi !
+🎯 DutchInnovation achète 8 Téléphone chez MexicanImport (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 8.89€ | Total: 71.12€ | Budget restant: 93346.83€
+✅ Achat réussi !
+🎯 MexicanCorp achète 3 Téléphone chez MexicanImport (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 8.89€ | Total: 26.67€ | Budget restant: 74500.59€
+✅ Achat réussi !
+[EVT] 20250908_114636_EVT_004 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='AustrianTech', pays='Autriche', continent='Europe', budget=64708.71, budget_initial=70089.51, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>, <TypeProduit.produit_fini: 'produit_fini'>], strategie='par_type', stocks={6: 10, 3: 3, 9: 14, 1: 9, 8: 7, 2: 2}), Entreprise(id=2, nom='DutchInnovation', pays='Pays-Bas', continent='Europe', budget=93346.83, budget_initial=75668.38, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>], strategie='moins_cher', stocks={3: 39}), Entreprise(id=3, nom='MexicanCorp', pays='Mexique', continent='Amérique du Nord', budget=74500.59, budget_initial=50139.27, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>, <TypeProduit.consommable: 'consommable'>], strategie='moins_cher', stocks={7: 2, 3: 31})] - AustrianTech reçoit +4732€ (budget: 59976€ → 64708€)
+[EVT] 20250908_114636_EVT_004 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='AustrianTech', pays='Autriche', continent='Europe', budget=64708.71, budget_initial=70089.51, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>, <TypeProduit.produit_fini: 'produit_fini'>], strategie='par_type', stocks={6: 10, 3: 3, 9: 14, 1: 9, 8: 7, 2: 2}), Entreprise(id=2, nom='DutchInnovation', pays='Pays-Bas', continent='Europe', budget=97958.83, budget_initial=75668.38, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>], strategie='moins_cher', stocks={3: 39}), Entreprise(id=3, nom='MexicanCorp', pays='Mexique', continent='Amérique du Nord', budget=74500.59, budget_initial=50139.27, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>, <TypeProduit.consommable: 'consommable'>], strategie='moins_cher', stocks={7: 2, 3: 31})] - DutchInnovation reçoit +4612€ (budget: 93346€ → 97958€)
+[EVT] 20250908_114636_EVT_004 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='AustrianTech', pays='Autriche', continent='Europe', budget=64708.71, budget_initial=70089.51, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>, <TypeProduit.produit_fini: 'produit_fini'>], strategie='par_type', stocks={6: 10, 3: 3, 9: 14, 1: 9, 8: 7, 2: 2}), Entreprise(id=2, nom='DutchInnovation', pays='Pays-Bas', continent='Europe', budget=97958.83, budget_initial=75668.38, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>], strategie='moins_cher', stocks={3: 39}), Entreprise(id=3, nom='MexicanCorp', pays='Mexique', continent='Amérique du Nord', budget=80014.59, budget_initial=50139.27, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>, <TypeProduit.consommable: 'consommable'>], strategie='moins_cher', stocks={7: 2, 3: 31})] - MexicanCorp reçoit +5514€ (budget: 74500€ → 80014€)
+[EVT] 20250908_114636_EVT_004 - evenements_tour: 📊 RECHARGE - 3 entreprises: AustrianTech(+4732€), DutchInnovation(+4612€), MexicanCorp(+5514€)
+🎯 AustrianTech achète 9 Tissu chez SouthAfricanImport (stratégie: par_type) :
+	- 💰 Prix unitaire: 15.87€ | Total: 142.83€ | Budget restant: 64565.88€
+✅ Achat réussi !
+🎯 DutchInnovation achète 7 Téléphone chez MexicanImport (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 8.89€ | Total: 62.23€ | Budget restant: 97896.60€
+✅ Achat réussi !
+🎯 MexicanCorp achète 1 Téléphone chez FinnishDistrib (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 9.49€ | Total: 9.49€ | Budget restant: 80005.10€
+✅ Achat réussi !
+🎯 SingaporeCorp achète 1 Solvant chez CanadaDistrib (stratégie: par_type) :
+	- 💰 Prix unitaire: 6.24€ | Total: 6.24€ | Budget restant: 80885.88€
+✅ Achat réussi !
+🎯 KoreanInnovation achète 1 Jouet chez NewZealandSupply (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 4.95€ | Total: 4.95€ | Budget restant: 72451.44€
+✅ Achat réussi !
+[EVT] 20250908_115431_EVT_001 - evenements_tour: 📦 Tour 0 - REASSORT: Catalyseur(+11), Médicament(+20), Électricité(+19), Jouet(+23) chez PhilippineSupply, ThaiDistrib, ChileanDistrib
+[EVT] 20250908_115431_EVT_001 - evenements_tour: 📦 Tour 0 - RECHARGE CanadaDistrib: Solvant(+25), Voiture(+41), Produits chimiques(+29) (total: +95 unités)
+[EVT] 20250908_115431_EVT_001 - evenements_tour: 📦 Tour 0 - RECHARGE ChileanDistrib: Catalyseur(+42), Médicament(+22), Voiture(+32), Jouet(+44) (total: +140 unités)
+[EVT] 20250908_115431_EVT_001 - evenements_tour: 📊 RECHARGE STOCK - 2 fournisseurs: CanadaDistrib(+95), ChileanDistrib(+140) (total: +235 unités)
+🎯 SingaporeCorp achète 1 Catalyseur chez ThaiDistrib (stratégie: par_type) :
+	- 💰 Prix unitaire: 9.33€ | Total: 9.33€ | Budget restant: 80876.55€
+✅ Achat réussi !
+🎯 KoreanInnovation achète 7 Jouet chez ThaiDistrib (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 5.46€ | Total: 38.22€ | Budget restant: 72413.22€
+✅ Achat réussi !
+🎯 CanadianDesign achète 6 Catalyseur chez NewZealandSupply (stratégie: par_type) :
+	- 💰 Prix unitaire: 8.71€ | Total: 52.26€ | Budget restant: 74081.21€
+✅ Achat réussi !
+🎯 SingaporeCorp achète 4 Antioxydant chez NewZealandSupply (stratégie: par_type) :
+	- 💰 Prix unitaire: 26.91€ | Total: 107.64€ | Budget restant: 80768.91€
+✅ Achat réussi !
+[EVT] 20250908_115431_EVT_002 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='SingaporeCorp', pays='Singapour', continent='Asie', budget=80768.91, budget_initial=77269.15, types_preferes=[<TypeProduit.consommable: 'consommable'>], strategie='par_type', stocks={5: 1, 1: 1, 3: 4}), Entreprise(id=2, nom='KoreanInnovation', pays='Corée du Sud', continent='Asie', budget=72413.22, budget_initial=99952.76, types_preferes=[<TypeProduit.consommable: 'consommable'>], strategie='moins_cher', stocks={12: 8}), Entreprise(id=3, nom='CanadianDesign', pays='Canada', continent='Amérique du Nord', budget=78769.21, budget_initial=55307.59, types_preferes=[<TypeProduit.consommable: 'consommable'>, <TypeProduit.matiere_premiere: 'matiere_premiere'>], strategie='par_type', stocks={1: 6})] - CanadianDesign reçoit +4688€ (budget: 74081€ → 78769€)
+[EVT] 20250908_115431_EVT_002 - evenements_tour: 📊 RECHARGE - 1 entreprises: CanadianDesign(+4688€)
+[EVT] 20250908_115431_EVT_002 - evenements_tour: 📦 Tour 2 - REASSORT: Médicament(+18), Produits chimiques(+40) chez PhilippineSupply, ThaiDistrib
+🎯 KoreanInnovation achète 2 Jouet chez NewZealandSupply (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 4.95€ | Total: 9.90€ | Budget restant: 72403.32€
+✅ Achat réussi !
+🎯 CanadianDesign achète 2 Antioxydant chez ChileanDistrib (stratégie: par_type) :
+	- 💰 Prix unitaire: 26.26€ | Total: 52.52€ | Budget restant: 78716.69€
+✅ Achat réussi !
+🎯 SingaporeCorp achète 3 Antioxydant chez ChileanDistrib (stratégie: par_type) :
+	- 💰 Prix unitaire: 26.26€ | Total: 78.78€ | Budget restant: 80690.13€
+✅ Achat réussi !
+🎯 KoreanInnovation achète 9 Jouet chez NewZealandSupply (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 4.95€ | Total: 44.55€ | Budget restant: 72358.77€
+✅ Achat réussi !
+🎯 CanadianDesign achète 8 Électricité chez ThaiDistrib (stratégie: par_type) :
+	- 💰 Prix unitaire: 21.93€ | Total: 175.44€ | Budget restant: 78541.25€
+✅ Achat réussi !
+🎯 SingaporeCorp achète 2 Catalyseur chez NewZealandSupply (stratégie: par_type) :
+	- 💰 Prix unitaire: 8.71€ | Total: 17.42€ | Budget restant: 80672.71€
+✅ Achat réussi !
+🎯 KoreanInnovation achète 10 Jouet chez PhilippineSupply (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 5.84€ | Total: 58.40€ | Budget restant: 72300.37€
+✅ Achat réussi !
+🎯 CanadianDesign achète 7 Solvant chez ThaiDistrib (stratégie: par_type) :
+	- 💰 Prix unitaire: 6.47€ | Total: 45.29€ | Budget restant: 78495.96€
+✅ Achat réussi !
+🎯 SingaporeCorp achète 6 Antioxydant chez NewZealandSupply (stratégie: par_type) :
+	- 💰 Prix unitaire: 26.91€ | Total: 161.46€ | Budget restant: 80511.25€
+✅ Achat réussi !
+[08/09/2025 11:54:37] (tick 6) [EVENT-INFLATION] 💰 Tour 6 - INFLATION produit_fini: 12 produits affectés (prix +21.9% à +54.6%)
+[EVT] 20250908_115431_EVT_003 - evenements_tour: 💰 Tour 6 - INFLATION produit_fini: 12 produits affectés (prix +21.9% à +54.6%)
+[EVT] 20250908_115431_EVT_003 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='SingaporeCorp', pays='Singapour', continent='Asie', budget=80511.25, budget_initial=77269.15, types_preferes=[<TypeProduit.consommable: 'consommable'>], strategie='par_type', stocks={5: 1, 1: 3, 3: 13}), Entreprise(id=2, nom='KoreanInnovation', pays='Corée du Sud', continent='Asie', budget=77757.37, budget_initial=99952.76, types_preferes=[<TypeProduit.consommable: 'consommable'>], strategie='moins_cher', stocks={12: 29}), Entreprise(id=3, nom='CanadianDesign', pays='Canada', continent='Amérique du Nord', budget=78495.96, budget_initial=55307.59, types_preferes=[<TypeProduit.consommable: 'consommable'>, <TypeProduit.matiere_premiere: 'matiere_premiere'>], strategie='par_type', stocks={1: 6, 3: 2, 8: 8, 5: 7})] - KoreanInnovation reçoit +5457€ (budget: 72300€ → 77757€)
+[EVT] 20250908_115431_EVT_003 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='SingaporeCorp', pays='Singapour', continent='Asie', budget=80511.25, budget_initial=77269.15, types_preferes=[<TypeProduit.consommable: 'consommable'>], strategie='par_type', stocks={5: 1, 1: 3, 3: 13}), Entreprise(id=2, nom='KoreanInnovation', pays='Corée du Sud', continent='Asie', budget=77757.37, budget_initial=99952.76, types_preferes=[<TypeProduit.consommable: 'consommable'>], strategie='moins_cher', stocks={12: 29}), Entreprise(id=3, nom='CanadianDesign', pays='Canada', continent='Amérique du Nord', budget=83769.96, budget_initial=55307.59, types_preferes=[<TypeProduit.consommable: 'consommable'>, <TypeProduit.matiere_premiere: 'matiere_premiere'>], strategie='par_type', stocks={1: 6, 3: 2, 8: 8, 5: 7})] - CanadianDesign reçoit +5274€ (budget: 78495€ → 83769€)
+[EVT] 20250908_115431_EVT_003 - evenements_tour: 📊 RECHARGE - 2 entreprises: KoreanInnovation(+5457€), CanadianDesign(+5274€)
+🎯 SingaporeCorp achète 8 Catalyseur chez ChileanDistrib (stratégie: par_type) :
+	- 💰 Prix unitaire: 7.83€ | Total: 62.64€ | Budget restant: 80448.61€
+✅ Achat réussi !
+🎯 CanadianDesign achète 4 Électricité chez PhilippineSupply (stratégie: par_type) :
+	- 💰 Prix unitaire: 20.86€ | Total: 83.44€ | Budget restant: 83686.52€
+✅ Achat réussi !
+🎯 SingaporeCorp achète 9 Solvant chez ThaiDistrib (stratégie: par_type) :
+	- 💰 Prix unitaire: 6.47€ | Total: 58.23€ | Budget restant: 80390.38€
+✅ Achat réussi !
+🎯 KoreanInnovation achète 8 Solvant chez ThaiDistrib (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 6.47€ | Total: 51.76€ | Budget restant: 77705.61€
+✅ Achat réussi !
+🎯 CanadianDesign achète 4 Électricité chez PhilippineSupply (stratégie: par_type) :
+	- 💰 Prix unitaire: 20.86€ | Total: 83.44€ | Budget restant: 83603.08€
+✅ Achat réussi !
+[08/09/2025 11:54:40] (tick 8) [EVENT-INFLATION] 💰 Tour 8 - INFLATION Argile: 45.62€ → 57.32€ (+25.6%)
+[EVT] 20250908_115431_EVT_004 - evenements_tour: 💰 Tour 8 - INFLATION Argile: 45.62€ → 57.32€ (+25.6%)
+🎯 SingaporeCorp achète 6 Électricité chez CanadaDistrib (stratégie: par_type) :
+	- 💰 Prix unitaire: 19.75€ | Total: 118.50€ | Budget restant: 80271.88€
+✅ Achat réussi !
+🎯 KoreanInnovation achète 8 Solvant chez NewZealandSupply (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 6.30€ | Total: 50.40€ | Budget restant: 77655.21€
+✅ Achat réussi !
+🎯 CanadianDesign achète 7 Électricité chez PhilippineSupply (stratégie: par_type) :
+	- 💰 Prix unitaire: 20.86€ | Total: 146.02€ | Budget restant: 83457.06€
+✅ Achat réussi !
+🎯 NigerianTech achète 9 Lunettes chez VietnameseImport (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 8.37€ | Total: 75.33€ | Budget restant: 54342.54€
+✅ Achat réussi !
+🎯 CanadaTech achète 9 Lunettes chez VietnameseImport (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 8.37€ | Total: 75.33€ | Budget restant: 87098.04€
+✅ Achat réussi !
+🎯 SingaporeCorp achète 7 Jouet chez AmericanTools (stratégie: par_type) :
+	- 💰 Prix unitaire: 24.27€ | Total: 169.89€ | Budget restant: 85975.18€
+✅ Achat réussi !
+[EVT] 20250908_115556_EVT_001 - evenements_tour: 🔄 Tour 0 - DISPONIBILITÉ: Lunettes, Marbre désactivé, Lunettes réactivé
+[EVT] 20250908_115556_EVT_001 - evenements_tour: 📦 Tour 0 - RECHARGE SingaporeSupply: Base(+48), Laine(+26) (total: +74 unités)
+[EVT] 20250908_115556_EVT_001 - evenements_tour: 📦 Tour 0 - RECHARGE AmericanTools: Gaz(+45), Peinture(+27), Laine(+15) (total: +87 unités)
+[EVT] 20250908_115556_EVT_001 - evenements_tour: 📦 Tour 0 - RECHARGE GermanDistrib: Électricité(+17), Base(+19), Verre(+21), Acier(+39) (total: +96 unités)
+[EVT] 20250908_115556_EVT_001 - evenements_tour: 📦 Tour 0 - RECHARGE KenyanSupply: Peinture(+19), Vernis(+12), Lunettes(+44) (total: +75 unités)
+[EVT] 20250908_115556_EVT_001 - evenements_tour: 📊 RECHARGE STOCK - 4 fournisseurs: SingaporeSupply(+74), AmericanTools(+87), GermanDistrib(+96), KenyanSupply(+75) (total: +332 unités)
+🎯 NigerianTech achète 6 Lunettes chez VietnameseImport (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 8.37€ | Total: 50.22€ | Budget restant: 54292.32€
+✅ Achat réussi !
+🎯 SingaporeCorp achète 1 Jouet chez KenyanSupply (stratégie: par_type) :
+	- 💰 Prix unitaire: 21.96€ | Total: 21.96€ | Budget restant: 85953.22€
+✅ Achat réussi !
+[EVT] 20250908_115556_EVT_002 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='NigerianTech', pays='Nigeria', continent='Afrique', budget=54292.32, budget_initial=52212.18, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>, <TypeProduit.produit_fini: 'produit_fini'>], strategie='moins_cher', stocks={12: 15}), Entreprise(id=2, nom='CanadaTech', pays='Canada', continent='Amérique du Nord', budget=87098.04, budget_initial=81625.64, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>, <TypeProduit.consommable: 'consommable'>], strategie='moins_cher', stocks={12: 9}), Entreprise(id=3, nom='SingaporeCorp', pays='Singapour', continent='Asie', budget=93727.22, budget_initial=79561.04, types_preferes=[<TypeProduit.produit_fini: 'produit_fini'>], strategie='par_type', stocks={11: 8})] - SingaporeCorp reçoit +7774€ (budget: 85953€ → 93727€)
+[EVT] 20250908_115556_EVT_002 - evenements_tour: 📊 RECHARGE - 1 entreprises: SingaporeCorp(+7774€)
+[EVT] 20250908_115556_EVT_002 - evenements_tour: 📦 Tour 2 - REASSORT: Acier(+37), Lunettes(+36) chez SingaporeSupply, KenyanSupply
+🎯 BuildTech achète 4 Granit chez AustralianImport (stratégie: par_type) :
+	- 💰 Prix unitaire: 17.76€ | Total: 71.04€ | Budget restant: 96544.02€
+✅ Achat réussi !
+🎯 NordicTools achète 10 Sable chez AustralianImport (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 5.43€ | Total: 54.30€ | Budget restant: 83668.63€
+✅ Achat réussi !
+[EVT] 20250908_120023_EVT_001 - evenements_tour: 📦 Tour 0 - REASSORT: Voiture(+38) chez SwissPrecision
+🎯 KenyanCorp achète 7 Sable chez ChileanDistrib (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 5.34€ | Total: 37.38€ | Budget restant: 96346.36€
+✅ Achat réussi !
+🎯 BuildTech achète 9 Sable chez SwissPrecision (stratégie: par_type) :
+	- 💰 Prix unitaire: 4.68€ | Total: 42.12€ | Budget restant: 96501.90€
+✅ Achat réussi !
+🎯 NordicTools achète 3 Sable chez ChileanDistrib (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 5.34€ | Total: 16.02€ | Budget restant: 83652.61€
+✅ Achat réussi !
+🎯 KenyanCorp achète 10 Sable chez ChileanDistrib (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 5.34€ | Total: 53.40€ | Budget restant: 96292.96€
+✅ Achat réussi !
+🎯 BuildTech achète 10 Granit chez FinnishDistrib (stratégie: par_type) :
+	- 💰 Prix unitaire: 19.33€ | Total: 193.30€ | Budget restant: 96308.60€
+✅ Achat réussi !
+🎯 NordicTools achète 8 Sable chez ChileanDistrib (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 5.34€ | Total: 42.72€ | Budget restant: 83609.89€
+✅ Achat réussi !
+[EVT] 20250908_120023_EVT_002 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='KenyanCorp', pays='Kenya', continent='Afrique', budget=96292.96, budget_initial=89833.34, types_preferes=[<TypeProduit.consommable: 'consommable'>, <TypeProduit.matiere_premiere: 'matiere_premiere'>], strategie='moins_cher', stocks={6: 17}), Entreprise(id=2, nom='BuildTech', pays='Allemagne', continent='Europe', budget=101224.6, budget_initial=53912.72, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>], strategie='par_type', stocks={8: 14, 6: 9}), Entreprise(id=3, nom='NordicTools', pays='Norvège', continent='Europe', budget=83609.89, budget_initial=73466.2, types_preferes=[<TypeProduit.consommable: 'consommable'>, <TypeProduit.produit_fini: 'produit_fini'>], strategie='moins_cher', stocks={6: 21})] - BuildTech reçoit +4916€ (budget: 96308€ → 101224€)
+[EVT] 20250908_120023_EVT_002 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='KenyanCorp', pays='Kenya', continent='Afrique', budget=96292.96, budget_initial=89833.34, types_preferes=[<TypeProduit.consommable: 'consommable'>, <TypeProduit.matiere_premiere: 'matiere_premiere'>], strategie='moins_cher', stocks={6: 17}), Entreprise(id=2, nom='BuildTech', pays='Allemagne', continent='Europe', budget=101224.6, budget_initial=53912.72, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>], strategie='par_type', stocks={8: 14, 6: 9}), Entreprise(id=3, nom='NordicTools', pays='Norvège', continent='Europe', budget=88394.89, budget_initial=73466.2, types_preferes=[<TypeProduit.consommable: 'consommable'>, <TypeProduit.produit_fini: 'produit_fini'>], strategie='moins_cher', stocks={6: 21})] - NordicTools reçoit +4785€ (budget: 83609€ → 88394€)
+[EVT] 20250908_120023_EVT_002 - evenements_tour: 📊 RECHARGE - 2 entreprises: BuildTech(+4916€), NordicTools(+4785€)
+🎯 KenyanCorp achète 8 Sable chez SwissPrecision (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 4.68€ | Total: 37.44€ | Budget restant: 96255.52€
+✅ Achat réussi !
+🎯 BuildTech achète 9 Granit chez ChileanDistrib (stratégie: par_type) :
+	- 💰 Prix unitaire: 19.94€ | Total: 179.46€ | Budget restant: 101045.14€
+✅ Achat réussi !
+🎯 NordicTools achète 10 Sable chez ChileanDistrib (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 5.34€ | Total: 53.40€ | Budget restant: 88341.49€
+✅ Achat réussi !
+🎯 KenyanCorp achète 1 Sable chez AustralianImport (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 5.43€ | Total: 5.43€ | Budget restant: 96250.09€
+✅ Achat réussi !
+🎯 BuildTech achète 3 Sable chez ChileanDistrib (stratégie: par_type) :
+	- 💰 Prix unitaire: 5.34€ | Total: 16.02€ | Budget restant: 101029.12€
+✅ Achat réussi !
+🎯 NordicTools achète 1 Sable chez ChileanDistrib (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 5.34€ | Total: 5.34€ | Budget restant: 88336.15€
+✅ Achat réussi !
+[EVT] 20250908_120023_EVT_003 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='KenyanCorp', pays='Kenya', continent='Afrique', budget=96250.09, budget_initial=89833.34, types_preferes=[<TypeProduit.consommable: 'consommable'>, <TypeProduit.matiere_premiere: 'matiere_premiere'>], strategie='moins_cher', stocks={6: 26}), Entreprise(id=2, nom='BuildTech', pays='Allemagne', continent='Europe', budget=108141.12, budget_initial=53912.72, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>], strategie='par_type', stocks={8: 23, 6: 12}), Entreprise(id=3, nom='NordicTools', pays='Norvège', continent='Europe', budget=88336.15, budget_initial=73466.2, types_preferes=[<TypeProduit.consommable: 'consommable'>, <TypeProduit.produit_fini: 'produit_fini'>], strategie='moins_cher', stocks={6: 32})] - BuildTech reçoit +7112€ (budget: 101029€ → 108141€)
+[EVT] 20250908_120023_EVT_003 - evenements_tour: 💰 Tour [Entreprise(id=1, nom='KenyanCorp', pays='Kenya', continent='Afrique', budget=96250.09, budget_initial=89833.34, types_preferes=[<TypeProduit.consommable: 'consommable'>, <TypeProduit.matiere_premiere: 'matiere_premiere'>], strategie='moins_cher', stocks={6: 26}), Entreprise(id=2, nom='BuildTech', pays='Allemagne', continent='Europe', budget=108141.12, budget_initial=53912.72, types_preferes=[<TypeProduit.matiere_premiere: 'matiere_premiere'>], strategie='par_type', stocks={8: 23, 6: 12}), Entreprise(id=3, nom='NordicTools', pays='Norvège', continent='Europe', budget=92949.15, budget_initial=73466.2, types_preferes=[<TypeProduit.consommable: 'consommable'>, <TypeProduit.produit_fini: 'produit_fini'>], strategie='moins_cher', stocks={6: 32})] - NordicTools reçoit +4613€ (budget: 88336€ → 92949€)
+[EVT] 20250908_120023_EVT_003 - evenements_tour: 📊 RECHARGE - 2 entreprises: BuildTech(+7112€), NordicTools(+4613€)
+[EVT] 20250908_120023_EVT_003 - evenements_tour: 📦 Tour 4 - REASSORT: Jouet(+14) chez CanadianSupply
+🎯 NewZealandCorp achète 7 Caoutchouc chez MoroccanDistrib (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 6.74€ | Total: 47.18€ | Budget restant: 57096.96€
+✅ Achat réussi !
+🎯 NordicTools achète 5 Caoutchouc chez GermanDistrib (stratégie: moins_cher) :
+	- 💰 Prix unitaire: 5.69€ | Total: 28.45€ | Budget restant: 97268.21€
+✅ Achat réussi !
+🎯 CanadianDesign achète 1 Ordinateur chez GermanDistrib (stratégie: par_type) :
+	- 💰 Prix unitaire: 32.38€ | Total: 32.38€ | Budget restant: 67384.32€
+✅ Achat réussi !
+[EVT] 20250908_121619_EVT_001 - evenements_tour: 📦 Tour 0 - REASSORT: Inhibiteur(+18), Ordinateur(+46), Granit(+15), Livre(+36) chez BelgianSupply, MoroccanDistrib, SpanishImport
+[EVT] 20250908_121619_EVT_001 - evenements_tour: 🔄 Tour 0 - DISPONIBILITÉ: Granit, Appareil électroménager désactivé, Appareil électroménager réactivé

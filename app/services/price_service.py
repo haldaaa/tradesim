@@ -70,6 +70,7 @@ class PriceService:
             return None
         
         # Utiliser le prix du produit (comme dans la CLI)
+        # TODO: Implémenter les prix par fournisseur comme dans la CLI
         prix = produit.prix
         
         # Mettre en cache
